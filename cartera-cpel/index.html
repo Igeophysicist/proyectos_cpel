@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="theme-color" content="#234240">
+<title>Cartera CPEL</title>
+
+<!-- Tokens de marca y barra superior compartidos con la página principal -->
+<link rel="stylesheet" href="../assets/css/landing.css" />
+<link rel="stylesheet" href="assets/css/cartera.css" />
+</head>
+<body>
+
+  <header class="topbar">
+    <a class="topbar__back" href="../index.html" aria-label="Volver al portal">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+    <div class="topbar__select-wrap">
+      <select id="projectSelect" class="topbar__select" aria-label="Seleccionar proyecto">
+        <option>Cargando proyectos…</option>
+      </select>
+      <svg class="topbar__select-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+  </header>
+
+  <main class="cartera" id="cartera">
+
+    <!-- Encabezado del proyecto (imagen) -->
+    <section class="hero-card">
+      <img id="projectImg" src="" alt="">
+      <div class="hero-card__overlay">
+        <span class="hero-card__tag" id="projectTech" hidden></span>
+        <div class="hero-card__name" id="projectName">Cargando…</div>
+        <div class="hero-card__loc">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0112 2.5a7 7 0 017 7C19 14.8 12 21 12 21z" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="9.5" r="2.5" stroke="currentColor" stroke-width="2"/></svg>
+          <span id="projectLocation">—</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Avance general -->
+    <section class="card">
+      <div class="card__title">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M3 17l6-6 4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 7h6v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Avance General
+      </div>
+      <div class="progress-stack">
+        <div class="progress-row progress-row--prog">
+          <div class="progress-row__info"><span>Programado</span><span id="progGenVal">0%</span></div>
+          <div class="bar"><span id="progGenBar" class="bar__fill bar__fill--prog"></span></div>
+        </div>
+        <div class="progress-row progress-row--real">
+          <div class="progress-row__info"><span>Real</span><span id="realGenVal">0%</span></div>
+          <div class="bar"><span id="realGenBar" class="bar__fill bar__fill--real"></span></div>
+        </div>
+      </div>
+      <div id="variance" class="variance" hidden></div>
+    </section>
+
+    <!-- Avances particulares (se generan desde cartera.js) -->
+    <section class="card">
+      <div class="card__title">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        Avances particulares
+      </div>
+      <div class="legend">
+        <span><i class="l-prog"></i>Programado</span>
+        <span><i class="l-real"></i>Real</span>
+      </div>
+      <div class="particular-grid" id="particularGrid"></div>
+    </section>
+
+    <!-- Hitos (se generan desde cartera.js) -->
+    <section class="card card--hitos">
+      <div class="card__title">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 21V4M5 4h11l-2 4 2 4H5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Hitos
+      </div>
+      <div class="hitos" id="hitosGrid"></div>
+    </section>
+
+    <!-- Información general -->
+    <section class="card">
+      <div class="card__title">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 11v5M12 8h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        Información general
+      </div>
+      <div class="info-list">
+        <div class="info-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 21V5a1 1 0 011-1h9a1 1 0 011 1v16M15 9h4a1 1 0 011 1v11M2 21h20M8 8h3M8 12h3M8 16h3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <div><div class="info-item__label">Desarrollador</div><div class="info-item__value" id="devVal">—</div></div>
+        </div>
+        <div class="info-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2v20M17 6.5C17 4.6 14.8 3.5 12 3.5S7 4.6 7 6.5 9.2 9.4 12 10s5 1.6 5 3.8-2.2 3.2-5 3.2-5-1.2-5-3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <div><div class="info-item__label">Inversión</div><div class="info-item__value" id="invVal">—</div></div>
+        </div>
+        <div class="info-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="15" rx="2" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12.5" r="3" stroke="currentColor" stroke-width="2"/><path d="M7 20v2M17 20v2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <div><div class="info-item__label">Fuente de recursos</div><div class="info-item__value" id="srcVal">—</div></div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Barra inferior de acciones -->
+  <nav class="actionbar">
+    <button class="actionbar__btn" data-open-sheet="sheetFicha">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M14 3H6a1 1 0 00-1 1v16a1 1 0 001 1h12a1 1 0 001-1V8l-5-5z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M14 3v5h5M9 13h6M9 17h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      Ficha técnica
+    </button>
+    <button class="actionbar__btn" data-open-sheet="sheetPlazos">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="16" rx="2" stroke="currentColor" stroke-width="2"/><path d="M3 10h18M8 3v4M16 3v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M9 15l2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Plazos
+    </button>
+  </nav>
+
+  <!-- Ventana: Ficha técnica -->
+  <div class="sheet" id="sheetFicha" aria-hidden="true">
+    <div class="sheet__scrim" data-close-sheet></div>
+    <div class="sheet__panel" role="dialog" aria-labelledby="sheetFichaTitle">
+      <div class="sheet__head">
+        <div class="sheet__title" id="sheetFichaTitle">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M14 3H6a1 1 0 00-1 1v16a1 1 0 001 1h12a1 1 0 001-1V8l-5-5z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M14 3v5h5" stroke="currentColor" stroke-width="2"/></svg>
+          Ficha técnica
+        </div>
+        <div class="sheet__sub" data-project-name></div>
+        <button class="sheet__close" data-close-sheet aria-label="Cerrar">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+      <div class="sheet__body" id="fichaBody"></div>
+    </div>
+  </div>
+
+  <!-- Ventana: Plazos -->
+  <div class="sheet" id="sheetPlazos" aria-hidden="true">
+    <div class="sheet__scrim" data-close-sheet></div>
+    <div class="sheet__panel" role="dialog" aria-labelledby="sheetPlazosTitle">
+      <div class="sheet__head">
+        <div class="sheet__title" id="sheetPlazosTitle">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="16" rx="2" stroke="currentColor" stroke-width="2"/><path d="M3 10h18M8 3v4M16 3v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          Plazos del proyecto
+        </div>
+        <div class="sheet__sub" data-project-name></div>
+        <button class="sheet__close" data-close-sheet aria-label="Cerrar">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+      <div class="sheet__body" id="plazosBody"></div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  <script src="assets/js/cartera.js"></script>
+</body>
+</html>

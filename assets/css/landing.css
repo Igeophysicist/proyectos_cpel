@@ -1,0 +1,115 @@
+/* =======================================================================
+   Página principal — mismos tokens de marca que el Panel de Proyectos
+   (assets/css/styles.css dentro de /panel-proyectos), para que ambas
+   páginas se sientan parte del mismo sitio.
+   ======================================================================= */
+
+:root{
+  --teal-900:#1b332f;
+  --teal-800:#234240;
+  --teal-700:#2e534f;
+  --teal-100:#e8efed;
+  --gold-700:#8a6a26;
+  --gold-500:#b6893a;
+  --sand-300:#c9b280;
+
+  --bg:#f3f5f4;
+  --surface:#ffffff;
+  --surface-sunken:#eef1f0;
+  --border:#dfe3e1;
+  --border-strong:#c7cdca;
+
+  --ink-900:#1a2422;
+  --ink-700:#3d4a47;
+  --ink-500:#6b7572;
+  --ink-on-dark:#eef3f1;
+
+  --radius-s:6px;
+  --radius-m:10px;
+  --radius-l:16px;
+  --space-2:8px;
+  --space-3:12px;
+  --space-4:16px;
+  --space-5:24px;
+  --space-6:32px;
+  --shadow-card:0 1px 2px rgba(26,36,34,.06), 0 4px 16px rgba(26,36,34,.06);
+
+  --font: -apple-system, "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --topbar-h:56px;
+}
+
+*{box-sizing:border-box;}
+html,body{min-height:100%;}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink-900);
+  font-family:var(--font);
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,p{margin:0;}
+a{color:inherit; text-decoration:none;}
+
+.topbar{
+  height:var(--topbar-h);
+  background:var(--teal-800);
+  color:var(--ink-on-dark);
+  display:flex; align-items:center; gap:var(--space-3);
+  padding:0 var(--space-4);
+}
+.topbar__mark{
+  width:28px; height:28px; border-radius:7px; flex:none;
+  background:linear-gradient(155deg, var(--gold-500), var(--gold-700));
+}
+.topbar__title{font-size:15px; font-weight:700; letter-spacing:.1px;}
+
+.main{max-width:760px; margin:0 auto; padding:var(--space-5) var(--space-4) var(--space-6);}
+
+.hero{margin-bottom:var(--space-5);}
+.hero__title{font-size:20px; font-weight:800; color:var(--teal-900);}
+.hero__subtitle{font-size:13.5px; color:var(--ink-500); margin-top:4px;}
+
+/* ---------- Accesos (tarjetas de navegación) ---------- */
+.nav-grid{display:flex; flex-direction:column; gap:var(--space-3); margin-bottom:var(--space-6);}
+.nav-card{
+  display:flex; align-items:center; gap:var(--space-4);
+  background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-l);
+  padding:var(--space-4); box-shadow:var(--shadow-card);
+}
+.nav-card__icon{
+  flex:none; width:46px; height:46px; border-radius:var(--radius-m);
+  display:flex; align-items:center; justify-content:center;
+  background:var(--teal-100); color:var(--teal-800);
+}
+.nav-card__body{flex:1; min-width:0;}
+.nav-card__title{font-size:15px; font-weight:700; color:var(--teal-900);}
+.nav-card__desc{font-size:12.5px; color:var(--ink-500); margin-top:2px;}
+.nav-card__arrow{flex:none; color:var(--ink-500);}
+.nav-card--soon{opacity:.7;}
+.nav-card--soon .nav-card__icon{background:var(--surface-sunken); color:var(--ink-500);}
+.nav-card__badge{
+  font-size:10.5px; font-weight:700; color:var(--gold-700); background:#f6ead2;
+  border-radius:99px; padding:2px 8px; margin-left:8px; vertical-align:middle;
+}
+
+/* ---------- Panel de avisos ---------- */
+.section-title{font-size:13px; font-weight:700; color:var(--ink-700); margin-bottom:var(--space-3);}
+.avisos{display:flex; flex-direction:column; gap:var(--space-2);}
+.aviso{
+  background:var(--surface); border:1px solid var(--border); border-left:3px solid var(--gold-700);
+  border-radius:var(--radius-m); padding:var(--space-3) var(--space-4); box-shadow:var(--shadow-card);
+}
+.aviso__fecha{font-size:11px; font-weight:700; color:var(--gold-700); text-transform:uppercase; letter-spacing:.3px;}
+.aviso__texto{font-size:13px; color:var(--ink-700); margin-top:3px; line-height:1.45; white-space:pre-line;}
+.avisos-empty{font-size:13px; color:var(--ink-500);}
+
+.site-footer{
+  text-align:center; font-size:11.5px; color:var(--ink-500);
+  padding:var(--space-4) var(--space-4) calc(var(--space-4) + env(safe-area-inset-bottom,0px));
+}
+
+@media (min-width:700px){
+  .nav-grid{flex-direction:row;}
+  .nav-card{flex-direction:column; align-items:flex-start; text-align:left;}
+  .nav-card__arrow{display:none;}
+}
