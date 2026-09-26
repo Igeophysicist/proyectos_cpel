@@ -107,7 +107,7 @@
     const top = [...projects]
       .filter((p) => p.parquePct !== null)
       .sort((a, b) => b.parquePct - a.parquePct)
-      .slice(0, 12);
+      .slice(0, 13);
 
     if (!top.length) {
       list.innerHTML = `<li style="color:var(--ink-500); font-size:13px;">Sin datos de avance disponibles.</li>`;
