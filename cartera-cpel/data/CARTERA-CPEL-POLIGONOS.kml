@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>CARTERA-CPEL-POLÍGONOS.kml</name>
+	<Schema name="convertido" id="convertido">
+		<SimpleField type="string" name="id">
+		</SimpleField>
+		<SimpleField type="string" name="descriptio">
+		</SimpleField>
+		<SimpleField type="string" name="timestamp">
+		</SimpleField>
+		<SimpleField type="string" name="begin">
+		</SimpleField>
+		<SimpleField type="string" name="end">
+		</SimpleField>
+		<SimpleField type="string" name="altitudeMo">
+		</SimpleField>
+		<SimpleField type="float" name="tessellate">
+		</SimpleField>
+		<SimpleField type="float" name="extrude">
+		</SimpleField>
+		<SimpleField type="float" name="visibility">
+		</SimpleField>
+		<SimpleField type="float" name="drawOrder">
+		</SimpleField>
+		<SimpleField type="string" name="icon">
+		</SimpleField>
+	</Schema>
+	<StyleMap id="area10">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#area12</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#area11</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="area11">
+		<LineStyle>
+			<color>ff000000</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<color>99ffff00</color>
+		</PolyStyle>
+	</Style>
+	<Style id="area12">
+		<LineStyle>
+			<color>ff000000</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<color>99ffff00</color>
+		</PolyStyle>
+	</Style>
+	<Style id="style">
+		<LineStyle>
+			<color>ff000000</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<color>997fffff</color>
+		</PolyStyle>
+	</Style>
+	<Style id="style0">
+		<LineStyle>
+			<color>ff000000</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<color>997fffff</color>
+		</PolyStyle>
+	</Style>
+	<StyleMap id="stylemap_id0">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#style0</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#style</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Folder>
+		<name>CARTERA-CPEL-POLÍGONOS</name>
+		<open>1</open>
+		<Placemark id="convertido.1">
+			<name>CFV PUERTO PEÑASCO SECUENCIA III</name>
+			<styleUrl>#stylemap_id0</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#convertido">
+					<SimpleData name="tessellate">1</SimpleData>
+					<SimpleData name="extrude">0</SimpleData>
+					<SimpleData name="visibility">-1</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-113.2243382,31.32554816,0 -113.2210267,31.32897026,0 -113.2200327,31.3282615,0 -113.217331805852,31.3263246322085,0 -113.2155468,31.32816925,0 -113.2125258,31.33129059,0 -113.2165662,31.33417191,0 -113.2149833,31.33580739,0 -113.1973342,31.35403727,0 -113.1916095,31.35994842,0 -113.1940681,31.34852506,0 -113.1951825,31.34850599,0 -113.1952027,31.34937743,0 -113.197225,31.34934281,0 -113.1970677,31.34257526,0 -113.2136185,31.32479719,0 -113.223068,31.3246424,0 -113.2239341,31.32526006,0 -113.2240013,31.32519069,0 -113.2234957,31.32483020999999,0 -113.2229058,31.31481759,0 -113.2315533,31.30552307,0 -113.2357108,31.30105366,0 -113.2406683,31.29572368,0 -113.244863,31.29792388,0 -113.2451791,31.29808897,0 -113.2455005,31.29824634,0 -113.245827,31.29839583,0 -113.2461582,31.29853736,0 -113.246494,31.29867079,0 -113.246834,31.29879603,0 -113.247178,31.29891296,0 -113.2475258,31.29902151,0 -113.2478769,31.29912158,0 -113.2482312,31.29921309,0 -113.2499347,31.29967887999999,0 -113.2501567,31.29973992,0 -113.2514097,31.30008205,0 -113.2513276,31.3001916,0 -113.2512668,31.30019516,0 -113.250898,31.30009432,0 -113.2504737,31.30053076,0 -113.2479481,31.30133322,0 -113.2478619,31.30136431,0 -113.2477793,31.30140173,0 -113.2477021,31.30144444,0 -113.2476269,31.30149436,0 -113.2475584,31.30154885,0 -113.2474956,31.30160828,0 -113.2244053,31.32547879,0 -113.2243382,31.32554816,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>CFV PUERTO PEÑASCO SECUENCIA IV</name>
+			<styleUrl>#area10</styleUrl>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-113.1644020026,31.3633133778,0 -113.1760079119,31.3756517413,0 -113.1761425816,31.375794889,0 -113.1761993441,31.3758552144,0 -113.1827100977,31.3691352773,0 -113.1840330039,31.3662972734,0 -113.1843467537,31.3656241565,0 -113.184839317,31.3645673886,0 -113.1924321419,31.3482746244,0 -113.1946292646,31.3459154115,0 -113.1940677142,31.3485249232,0 -113.1951820861,31.3485058561,0 -113.1952023358,31.3493772973,0 -113.1972246814,31.349342669,0 -113.1970673022,31.3425751251,0 -113.1948313722,31.3449761885,0 -113.1931055317,31.3468293885,0 -113.1905699488,31.3495519161,0 -113.1824279377,31.343966172,0 -113.1644020026,31.3633133778,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<atom:link rel="app" href="https://www.google.com/earth/about/versions/#earth-pro" title="Google Earth Pro 7.3.7.1327"></atom:link>
+	</Folder>
+</Document>
+</kml>
