@@ -264,7 +264,12 @@ a{color:inherit;}
 
 /* ---------- Barra de pestañas (móvil) ---------- */
 .tabbar{
-  position:fixed; left:0; right:0; bottom:0; z-index:500; height:var(--tabbar-h);
+  position:fixed; left:0; right:0; bottom:0; z-index:500;
+  /* La altura suma el espacio seguro del "home indicator" en vez de
+     restarlo del alto fijo de la barra: así, cuando Safari oculta su
+     barra de herramientas al hacer scroll (y ese espacio seguro crece),
+     los íconos y textos no se comprimen — solo crece el colchón inferior. */
+  height:calc(var(--tabbar-h) + env(safe-area-inset-bottom));
   background:var(--surface); border-top:1px solid var(--border);
   display:flex; padding-bottom:env(safe-area-inset-bottom);
   box-shadow:0 -2px 12px rgba(26,36,34,.06);
