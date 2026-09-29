@@ -264,7 +264,7 @@ a{color:inherit;}
 
 /* ---------- Barra de pestañas (móvil) ---------- */
 .tabbar{
-  position:fixed; left:0; right:0; bottom:0; z-index:500;
+  position:fixed; left:0; right:0; bottom:0; z-index:2000;
   /* La altura suma el espacio seguro del "home indicator" en vez de
      restarlo del alto fijo de la barra: así, cuando Safari oculta su
      barra de herramientas al hacer scroll (y ese espacio seguro crece),
