@@ -253,7 +253,7 @@
     }).join("");
 
     // Hitos (1 a 4)
-/*     const hitos = [];
+    const hitos = [];
     for (let i = 1; i <= 4; i++) {
       const num = String(p[`hito${i}_num`] ?? "").trim();
       const titulo = String(p[`hito${i}_titulo`] ?? "").trim();
@@ -261,6 +261,7 @@
       hitos.push(`
         <div class="hito">
           <div class="hito__num">${esc(encabezado)}</div>
+          <div class="hito__nom"> ${esc(titulo)}</div>
           <div class="hito__date">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="16" rx="2" stroke="currentColor" stroke-width="2.4"/><path d="M3 10h18" stroke="currentColor" stroke-width="2.4"/></svg>
             ${esc(texto(p[`hito${i}_fecha`], "--/--/----"))}
@@ -268,7 +269,7 @@
           <div class="hito__desc">${esc(texto(p[`hito${i}_desc`], ""))}</div>
         </div>`);
     }
-    $("hitosGrid").innerHTML = hitos.join(""); */
+    $("hitosGrid").innerHTML = hitos.join("");
 
     // Información general
     $("devVal").textContent = texto(p.desarrollador);
