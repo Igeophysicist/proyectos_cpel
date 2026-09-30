@@ -57,12 +57,27 @@
     <div class="avisos" id="avisos-list"></div>
   </main>
 
-  <footer class="site-footer">
-    <div class="brand-strip_t">  
+  <footer class="site-footer" id="siteFooter" role="button" tabindex="0" aria-haspopup="dialog" aria-controls="sheetColaboradores">
+    <div class="brand-strip_t">
       <img src="assets/img/logo-cfe.png" alt="CFE" class="brand-strip_t__logo brand-strip_t__logo--cfe">
     </div>
     <div class="site-footer__text">© Gerencia de Construcción // Subgerencia Técnica de Construcción</div>
   </footer>
+
+  <!-- Colaboradores: se despliega al hacer clic en el footer. Los nombres
+       vienen de data/colaboradores.json (ver landing.js) -->
+  <div class="sheet" id="sheetColaboradores" aria-hidden="true">
+    <div class="sheet__scrim" data-close-sheet></div>
+    <div class="sheet__panel" role="dialog" aria-modal="true" aria-labelledby="sheetColaboradoresTitle">
+      <div class="sheet__head">
+        <div class="sheet__title" id="sheetColaboradoresTitle">Colaboradores</div>
+        <button class="sheet__close" data-close-sheet aria-label="Cerrar">&times;</button>
+      </div>
+      <div class="sheet__body">
+        <ul class="colaboradores-list" id="colaboradoresList"></ul>
+      </div>
+    </div>
+  </div>
 
   <script src="assets/js/landing.js"></script>
 </body>
