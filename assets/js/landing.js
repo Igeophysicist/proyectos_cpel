@@ -7,6 +7,7 @@
  */
 (function () {
   const AVISOS_URL = "data/avisos.json";
+  const COLABORADORES_URL = "data/colaboradores.json";
 
   function formatFecha(iso) {
     const d = new Date(iso + "T00:00:00");
@@ -48,5 +49,75 @@
     }
   }
 
-  document.addEventListener("DOMContentLoaded", init);
+  // -------------------------------------------------- Colaboradores
+  // Panel que se abre al hacer clic en el footer. La lista de nombres
+  // viene de data/colaboradores.json (un simple arreglo de strings) —
+  // para agregar o quitar colaboradores solo se edita ese archivo, no
+  // hace falta tocar este script.
+  function escHtml(value) {
+    return String(value ?? "")
+      .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  }
+
+  let colaboradoresCargados = false;
+
+  async function cargarColaboradores() {
+    const lista = document.getElementById("colaboradoresList");
+    try {
+      const res = await fetch(COLABORADORES_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      const nombres = await res.json();
+      colaboradoresCargados = true;
+      if (!Array.isArray(nombres) || !nombres.length) {
+        lista.innerHTML = `<li class="colaboradores-empty">Sin colaboradores registrados.</li>`;
+        return;
+      }
+      lista.innerHTML = nombres.map((nombre) => `<li>${escHtml(nombre)}</li>`).join("");
+    } catch (err) {
+      console.error("No se pudieron cargar los colaboradores:", err);
+      lista.innerHTML = `<li class="colaboradores-empty">No se pudieron cargar los colaboradores.</li>`;
+    }
+  }
+
+  function abrirColaboradores() {
+    const sheet = document.getElementById("sheetColaboradores");
+    if (!sheet) return;
+    sheet.classList.add("is-open");
+    sheet.setAttribute("aria-hidden", "false");
+    // Se carga la primera vez que se abre (no en cada apertura), así el
+    // dato no queda desactualizado si se edita el JSON durante la sesión
+    // pero tampoco se repite la petición innecesariamente.
+    if (!colaboradoresCargados) cargarColaboradores();
+  }
+
+  function cerrarColaboradores() {
+    const sheet = document.getElementById("sheetColaboradores");
+    if (!sheet) return;
+    sheet.classList.remove("is-open");
+    sheet.setAttribute("aria-hidden", "true");
+  }
+
+  function wireColaboradores() {
+    const footer = document.getElementById("siteFooter");
+    if (footer) {
+      footer.addEventListener("click", abrirColaboradores);
+      footer.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          abrirColaboradores();
+        }
+      });
+    }
+    document.addEventListener("click", (e) => {
+      if (e.target.closest("[data-close-sheet]")) cerrarColaboradores();
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") cerrarColaboradores();
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    init();
+    wireColaboradores();
+  });
 })();
