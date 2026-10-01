@@ -84,8 +84,16 @@ function validateCartera({ headers, rows, placemarkNames = [], fileExists = () =
     names.push({ name, row });
     CARTERA_PERCENTS.forEach((c) => checkPercent(r[c], `Fila ${row} (${name}), columna ${c}`, errors));
     dateCols.forEach((c) => checkDate(r[c], `Fila ${row} (${name}), columna ${c}`, errors));
-    if (!isEmpty(r.imagen) && !fileExists(String(r.imagen).trim())) {
-      errors.push(`Fila ${row} (${name}), columna imagen: no existe el archivo "${r.imagen}".`);
+    if (!isEmpty(r.imagen)) {
+      const imagen = String(r.imagen).trim();
+      if (!/\.(jpe?g|png)$/i.test(imagen)) {
+        errors.push(
+          `Fila ${row} (${name}), columna imagen: "${imagen}" debe ser JPG o PNG` +
+            (/\.hei[cf]$/i.test(imagen) ? " (las fotos HEIC del iPhone no se ven en Chrome ni Android: conviértela a JPG)." : ".")
+        );
+      } else if (!fileExists(imagen)) {
+        errors.push(`Fila ${row} (${name}), columna imagen: no existe el archivo "${r.imagen}".`);
+      }
     }
     if (!geo.has(normalizeText(name))) {
       warnings.push(`Fila ${row}: "${name}" no tiene ubicación en el KML; no aparecerá en el mapa.`);

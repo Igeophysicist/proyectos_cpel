@@ -23,6 +23,13 @@ test("Cartera: datos correctos pasan sin errores ni avisos", () => {
   assert.deepEqual(cartera([carteraRow()]), { errors: [], warnings: [] });
 });
 
+test("Cartera: imagen HEIC u otro formato es error (con indicación de convertir a JPG)", () => {
+  const heic = cartera([carteraRow({ imagen: "data/CARTERA-CPEL/FOTO.HEIC" })]).errors;
+  assert.ok(heic.some((e) => /imagen: "data\/CARTERA-CPEL\/FOTO.HEIC" debe ser JPG o PNG .*conviértela a JPG/.test(e)));
+  assert.ok(cartera([carteraRow({ imagen: "data/x.gif" })]).errors.some((e) => /debe ser JPG o PNG\.$/.test(e)));
+  assert.deepEqual(cartera([carteraRow({ imagen: "data/x.JPEG" })]).errors, []);
+});
+
 test("Cartera: columna renombrada es error", () => {
   const { errors } = validateCartera({ headers: CARTERA_HEADERS.filter((h) => h !== "avanceReal"), rows: [carteraRow()] });
   assert.ok(errors.some((e) => /Falta la columna "avanceReal"/.test(e)));

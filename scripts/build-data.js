@@ -18,6 +18,11 @@
  * las filas son exactamente las que antes leía la página desde el Excel
  * (mismas opciones de SheetJS), para no cambiar nada de su lógica.
  *
+ * También optimiza las imágenes de encabezado de Cartera CPEL
+ * (scripts/imagenes.js): las reduce a 1200 px, les quita los metadatos
+ * (ubicación GPS) y las guarda con el mismo nombre. Con --check solo
+ * avisa cuáles faltan por optimizar.
+ *
  * Además registra el CORTE SEMANAL en data/historial.json de cada tablero
  * (curva de avance; ver scripts/historial.js): un punto por semana
  * (Cartera: jueves 8:00 a jueves 8:00; Mixtos: lunes a domingo).
@@ -26,6 +31,7 @@ const fs = require("fs");
 const path = require("path");
 const XLSX = require("xlsx");
 const { validateCartera, validateMixtos, MIXTOS_SHEET } = require("./data-rules.js");
+const { optimizarCarpeta } = require("./imagenes.js");
 const { snapshotCartera, snapshotMixtos, upsertCorte } = require("./historial.js");
 
 const ROOT = path.resolve(__dirname, "..");
@@ -40,6 +46,7 @@ const DATASETS = [
     regla: "jueves", // corte cada jueves 8:00
     snapshot: snapshotCartera,
     kml: ["data/CARTERA-CPEL.kml"],
+    imagenes: "data/CARTERA-CPEL", // se optimizan al subirlas (scripts/imagenes.js)
     // Igual que cartera.js antes: primera hoja, valores crudos.
     read: (wb) => ({ sheetName: wb.SheetNames[0], options: { defval: "" } }),
     validate: validateCartera,
@@ -151,9 +158,28 @@ function report(ds, { errors, warnings }, summary) {
   summary.push("");
 }
 
-function main() {
+/** Optimiza (o, con --check, solo lista) las imágenes de cada tablero que las tenga. */
+async function imagenes(check, summary) {
+  const kb = (n) => `${Math.round(n / 1024)} KB`;
+  for (const ds of DATASETS.filter((d) => d.imagenes)) {
+    const cambios = await optimizarCarpeta(path.join(ROOT, ds.dir, ds.imagenes), { dryRun: check });
+    if (cambios.length) summary.push(`### 🖼️ Imágenes — \`${ds.dir}/${ds.imagenes}\``);
+    cambios.forEach((c) => {
+      const rel = path.relative(ROOT, c.file);
+      const texto = check
+        ? `${rel}: sin optimizar (${kb(c.antes)}); se optimiza al subirla o con "npm run data".`
+        : `${rel}: optimizada, ${kb(c.antes)} → ${kb(c.despues)} (${c.width} px de ancho).`;
+      console.log(texto);
+      summary.push(`- ${texto}`);
+    });
+    if (cambios.length) summary.push("");
+  }
+}
+
+async function main() {
   const check = process.argv.includes("--check");
   const summary = ["## Validación de datos", ""];
+  await imagenes(check, summary);
   const results = DATASETS.map((ds) => ({ ds, ...buildDataset(ds) }));
   results.forEach((r) => report(r.ds, r, summary));
 
@@ -188,6 +214,11 @@ function main() {
   process.exit(exitCode);
 }
 
-if (require.main === module) main();
+if (require.main === module) {
+  main().catch((err) => {
+    console.error(err);
+    process.exit(1);
+  });
+}
 
 module.exports = { DATASETS, buildDataset, toJson, ROOT };

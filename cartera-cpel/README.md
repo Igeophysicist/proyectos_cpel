@@ -22,7 +22,7 @@ cartera-cpel/
     ├── historial.json          cortes semanales para la curva de avance (generado)
     ├── CARTERA-CPEL.kml        ubicación de cada proyecto (vinculada por nombre)
     ├── CARTERA-CPEL-POLIGONOS.kml  polígonos de secuencias ("... SEC III", etc.)
-    └── CARTERA-CPEL/*.jpg      imágenes de encabezado
+    └── CARTERA-CPEL/*.jpg      imágenes de encabezado (se optimizan solas al subirlas)
 ```
 
 También usa los módulos compartidos de `../assets/js/shared/`
@@ -38,7 +38,7 @@ del Excel al sitio" en el README de la raíz).
 | Columnas | Uso |
 |---|---|
 | `nombre`, `tecnologia`, `ubicacion` | Encabezado. `nombre` debe coincidir con el `<name>` del Placemark en `CARTERA-CPEL.kml` para que aparezca en el mapa (sin importar acentos ni mayúsculas). |
-| `imagen` | Ruta de la imagen, p. ej. `data/CARTERA-CPEL/AMATA.jpg`. Usa JPG de ~1200 px de ancho como máximo. |
+| `imagen` | Ruta de la imagen, p. ej. `data/CARTERA-CPEL/AMATA.jpg` (JPG o PNG). Se puede subir pesada: la Action "Datos" la reduce a 1200 px y le quita los metadatos (ver "Imágenes de Cartera CPEL" en el README de la raíz). |
 | `avanceProg`, `avanceReal` | Avance general (número o `"30.5%"`). |
 | `prog<X>`, `real<X>` | Avances particulares (`Ing`, `Sum`, `Cons`, `Pps`). Ver `PARTICULARES` en `cartera.js`. |
 | `hitoN_num`, `hitoN_titulo`, `hitoN_fecha`, `hitoN_desc` | Hitos. Se muestran tantos como columnas `hitoN_*` existan: para un quinto hito, agrega `hito5_*`. |

@@ -1,8 +1,10 @@
 # Valida los Excel y genera los JSON que leen las páginas.
 #
-# - En cada push que cambie datos (Excel/KML) o el convertidor: si no hay
-#   errores y los JSON cambiaron, los sube a la misma rama con un commit
-#   "Actualiza datos (JSON) desde Excel" (Cloudflare publica ese commit).
+# - En cada push que cambie datos (Excel/KML/imágenes) o el convertidor:
+#   si no hay errores y los JSON cambiaron, los sube a la misma rama con
+#   un commit "Actualiza datos (JSON) desde Excel" (Cloudflare publica ese
+#   commit). Las imágenes de Cartera CPEL se optimizan en el mismo paso
+#   (1200 px, sin metadatos; ver scripts/imagenes.js).
 # - Si hay errores, NO se actualizan los JSON (el sitio sigue con los
 #   datos anteriores) y el commit queda en rojo: la lista de errores, con
 #   fila y columna del Excel, aparece en el resumen de esta ejecución.
@@ -47,16 +49,23 @@ jobs:
       - run: npm ci
       - name: Validar Excel y generar JSON
         run: npm run data
-      - name: Subir JSON actualizados
+      - name: Subir JSON e imágenes actualizados
         if: github.event_name != 'pull_request'
         run: |
           if git diff --quiet -- cartera-cpel/data cartera-mixtos/data; then
-            echo "Los JSON ya estaban al día."
+            echo "Los JSON y las imágenes ya estaban al día."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add cartera-cpel/data/*.json cartera-mixtos/data/*.json
-          git commit -m "Actualiza datos (JSON) desde Excel"
+          git add cartera-cpel/data/*.json cartera-mixtos/data/*.json cartera-cpel/data/CARTERA-CPEL
+          if git diff --cached --quiet -- '*.json'; then
+            mensaje="Optimiza imágenes de Cartera CPEL"
+          elif git diff --cached --quiet -- cartera-cpel/data/CARTERA-CPEL; then
+            mensaje="Actualiza datos (JSON) desde Excel"
+          else
+            mensaje="Actualiza datos (JSON) desde Excel y optimiza imágenes"
+          fi
+          git commit -m "$mensaje"
           git pull --rebase origin "${GITHUB_REF_NAME}"
           git push origin "HEAD:${GITHUB_REF_NAME}"
