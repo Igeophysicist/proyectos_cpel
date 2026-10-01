@@ -13,10 +13,11 @@ cartera-cpel/
 ├── assets/
 │   ├── css/cartera.css         estilos propios (usa los tokens de ../assets/css/landing.css)
 │   └── js/
-│       ├── cartera.js          lee el Excel y pinta la ficha del proyecto
+│       ├── cartera.js          lee el JSON y pinta la ficha del proyecto
 │       └── map.js              mapa Leaflet de un proyecto a la vez
 └── data/
-    ├── datos_proyectos.xlsx    fuente de datos (primera hoja)
+    ├── datos_proyectos.xlsx    fuente de datos (primera hoja) — se edita este
+    ├── datos_proyectos.json    generado y validado desde el Excel (no editar a mano)
     ├── CARTERA-CPEL.kml        ubicación de cada proyecto (vinculada por nombre)
     ├── CARTERA-CPEL-POLIGONOS.kml  polígonos de secuencias ("... SEC III", etc.)
     └── CARTERA-CPEL/*.jpg      imágenes de encabezado
@@ -28,7 +29,9 @@ También usa los módulos compartidos de `../assets/js/shared/`
 ## Cómo editar los datos
 
 Abre `data/datos_proyectos.xlsx`. Una fila por proyecto; los
-encabezados de la fila 1 se leen por nombre exacto.
+encabezados de la fila 1 se leen por nombre exacto. Al subirlo, se
+valida y se genera `datos_proyectos.json` automáticamente (ver "Datos:
+del Excel al sitio" en el README de la raíz).
 
 | Columnas | Uso |
 |---|---|

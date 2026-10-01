@@ -1,8 +1,9 @@
 /**
  * cartera.js
- * Lee data/datos_proyectos.xlsx (primera hoja) y pinta la ficha del
- * proyecto seleccionado. Las columnas del Excel son las mismas que ya
- * usabas; no hace falta cambiar el archivo.
+ * Pinta la ficha del proyecto seleccionado. Los datos se editan en
+ * data/datos_proyectos.xlsx (primera hoja); la página lee
+ * data/datos_proyectos.json, que se genera y valida automáticamente a
+ * partir del Excel (ver scripts/build-data.js y el README).
  *
  * FICHA TÉCNICA POR TECNOLOGÍA
  * ---------------------------------------------------------------
@@ -41,7 +42,8 @@
  * Requiere: shared/text-utils.js, shared/dialog.js y map.js.
  */
 (function () {
-  const EXCEL_FILE_PATH = "data/datos_proyectos.xlsx";
+  // Generado desde data/datos_proyectos.xlsx por scripts/build-data.js.
+  const DATA_FILE_PATH = "data/datos_proyectos.json";
 
   // Avances particulares: [sufijo de columna, etiqueta]. Lee prog<Sufijo> y real<Sufijo>.
   const PARTICULARES = [
@@ -199,17 +201,14 @@
     // El KML no depende del Excel: se pide en paralelo.
     const kmlListo = window.CarteraMap ? window.CarteraMap.cargarKML() : Promise.resolve(false);
     try {
-      const res = await fetch(EXCEL_FILE_PATH, { cache: "no-store" });
-      if (!res.ok) throw new Error(`No se pudo cargar ${EXCEL_FILE_PATH} (HTTP ${res.status})`);
-      const workbook = XLSX.read(await res.arrayBuffer(), { type: "array" });
-      const hoja = workbook.Sheets[workbook.SheetNames[0]];
-      proyectos = XLSX.utils
-        .sheet_to_json(hoja, { defval: "" })
-        .filter((p) => String(p.nombre || "").trim() !== ""); // descarta filas vacías
+      const res = await fetch(DATA_FILE_PATH, { cache: "no-store" });
+      if (!res.ok) throw new Error(`No se pudo cargar ${DATA_FILE_PATH} (HTTP ${res.status})`);
+      const datos = await res.json();
+      proyectos = (datos.proyectos || []).filter((p) => String(p.nombre || "").trim() !== ""); // descarta filas vacías
 
       if (!proyectos.length) throw new Error("El Excel no tiene proyectos.");
       totalHitos = contarHitos(proyectos);
-      mostrarFechaDatos(workbook.Props && workbook.Props.ModifiedDate);
+      mostrarFechaDatos(datos.excelModificado ? new Date(datos.excelModificado) : null);
       poblarSelector();
       await kmlListo;
       seleccionar(indiceDesdeUrl());

@@ -1,0 +1,62 @@
+# Valida los Excel y genera los JSON que leen las páginas.
+#
+# - En cada push que cambie datos (Excel/KML) o el convertidor: si no hay
+#   errores y los JSON cambiaron, los sube a la misma rama con un commit
+#   "Actualiza datos (JSON) desde Excel" (Cloudflare publica ese commit).
+# - Si hay errores, NO se actualizan los JSON (el sitio sigue con los
+#   datos anteriores) y el commit queda en rojo: la lista de errores, con
+#   fila y columna del Excel, aparece en el resumen de esta ejecución.
+# - En pull requests solo valida.
+name: Datos
+
+on:
+  push:
+    paths:
+      - "cartera-cpel/data/**"
+      - "cartera-mixtos/data/**"
+      - "scripts/**"
+      - "assets/js/shared/text-utils.js"
+      - "package-lock.json"
+      - ".github/workflows/datos.yml"
+  pull_request:
+    paths:
+      - "cartera-cpel/data/**"
+      - "cartera-mixtos/data/**"
+      - "scripts/**"
+      - "assets/js/shared/text-utils.js"
+      - "package-lock.json"
+      - ".github/workflows/datos.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: datos-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  datos:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Validar Excel y generar JSON
+        run: npm run data
+      - name: Subir JSON actualizados
+        if: github.event_name != 'pull_request'
+        run: |
+          if git diff --quiet -- cartera-cpel/data cartera-mixtos/data; then
+            echo "Los JSON ya estaban al día."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add cartera-cpel/data/*.json cartera-mixtos/data/*.json
+          git commit -m "Actualiza datos (JSON) desde Excel"
+          git pull --rebase origin "${GITHUB_REF_NAME}"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
