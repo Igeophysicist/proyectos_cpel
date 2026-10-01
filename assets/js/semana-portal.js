@@ -21,6 +21,8 @@
     });
 
   const fmtPct = (v) => (v === null ? "—" : v.toLocaleString("es-MX", { maximumFractionDigits: 2 }) + "%");
+  // Cartera: siempre 2 decimales para que las cifras queden alineadas en la tabla.
+  const fmtPct2 = (v) => (v === null ? "—" : v.toLocaleString("es-MX", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + "%");
   const fmtNum = (v) => Math.abs(v).toLocaleString("es-MX", { maximumFractionDigits: 2 });
   const fecha = (s, opts) => {
     const [y, m, d] = s.split("-").map(Number);
@@ -77,26 +79,35 @@
       <div class="semana-card__pie">Comparado con el corte del ${fCorta(r.desde)}</div>`;
   }
 
+  /** Flecha corta para la tabla de Cartera. */
+  function flecha(v) {
+    if (v === null) return "";
+    if (v === 0) return `<span class="semana-delta semana-delta--igual" aria-label="sin cambio">=</span>`;
+    return delta(v);
+  }
+
   function htmlCartera(r) {
     const corte = r.esJueves ? fecha(r.fecha, { weekday: "long", day: "numeric", month: "short" }) : fCorta(r.fecha);
+    const sub = `Corte del ${corte}` + (r.desde ? ` · cambio vs. ${fCorta(r.desde)}` : "");
     return `
       <div class="semana-card__head">
         <a class="semana-card__titulo" href="${CARTERA}">Cartera CPEL</a>
-        <div class="semana-card__sub">Corte del ${corte}</div>
+        <div class="semana-card__sub">${sub}</div>
       </div>
-      <ul class="semana-list">${r.filas
-        .map(
-          (f) => `
-        <li class="semana-item semana-item--fila">
-          <div>
-            <a class="semana-item__nombre" href="${CARTERA}?proyecto=${encodeURIComponent(f.slug)}">${esc(f.nombre)}</a>
-            <div class="semana-item__linea">Real <b>${fmtPct(f.real)}</b> · Programado ${fmtPct(f.prog)}</div>
-          </div>
-          ${delta(f.cambio)}
-        </li>`
-        )
-        .join("")}</ul>
-      ${r.desde ? `<div class="semana-card__pie">Flecha: cambio del avance real contra el corte del ${fCorta(r.desde)}</div>` : ""}`;
+      <table class="semana-tabla">
+        <thead><tr><th scope="col">Proyecto</th><th scope="col">Real</th><th scope="col">Prog.</th>${r.desde ? '<th scope="col">Cambio</th>' : ""}</tr></thead>
+        <tbody>${r.filas
+          .map(
+            (f) => `
+          <tr>
+            <td><a class="semana-item__nombre" href="${CARTERA}?proyecto=${encodeURIComponent(f.slug)}">${esc(f.nombre)}</a></td>
+            <td class="semana-real">${fmtPct2(f.real)}</td>
+            <td>${fmtPct2(f.prog)}</td>
+            ${r.desde ? `<td>${flecha(f.cambio)}</td>` : ""}
+          </tr>`
+          )
+          .join("")}</tbody>
+      </table>`;
   }
 
   function pintar(id, html) {

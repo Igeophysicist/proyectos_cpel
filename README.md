@@ -4,7 +4,7 @@ Sitio estático (HTML/CSS/JS sin build step) publicado en GitHub Pages.
 
 | Ruta | Contenido |
 |---|---|
-| `index.html` | Portal: accesos, avisos (`data/avisos.json`) y colaboradores (`data/colaboradores.json`). |
+| `index.html` | Portal: accesos, sección "Esta semana" y colaboradores (`data/colaboradores.json`). |
 | `cartera-mixtos/` | Panel de proyectos mixtos: listado, filtros, mapa y resumen. Ver su [README](cartera-mixtos/README.md). |
 | `cartera-cpel/` | Ficha por proyecto de la cartera CPEL. Ver su [README](cartera-cpel/README.md). |
 | `assets/js/shared/` | Módulos compartidos por las tres páginas (ver abajo). |
@@ -91,7 +91,7 @@ revisar un Excel antes de subirlo: `npm install` y luego `npm run data`
 
 ## Esta semana (portal)
 
-Sección del portal, arriba de los avisos, que se arma sola con los
+Sección del portal, debajo de los accesos, que se arma sola con los
 historiales (`assets/js/semana-resumen.js` calcula y
 `assets/js/semana-portal.js` pinta):
 
@@ -100,9 +100,9 @@ historiales (`assets/js/semana-resumen.js` calcula y
   puntos y si su **grupo de atención** cambió o se mantuvo. Si en la
   semana actual no hubo actualizaciones, lo dice y muestra la última
   semana que sí tuvo.
-- **Cartera CPEL:** los proyectos con su avance **Real** y
-  **Programado** del último corte y una flecha con el cambio del Real
-  contra el corte anterior.
+- **Cartera CPEL:** tabla compacta con el avance **Real** y
+  **Programado** de cada proyecto en el último corte y una flecha con
+  el cambio del Real contra el corte anterior.
 
 Cada nombre abre la ficha del proyecto. Si los datos no cargan, la
 sección no aparece.
@@ -210,13 +210,13 @@ Pages ese archivo no hace nada y el sitio queda abierto.
    vuelve **privado** este repositorio (Settings → General → Change
    visibility). Mientras el repositorio sea público, los Excel y KML
    se pueden descargar directo desde GitHub sin contraseña.
-9. Haz un cambio pequeño (p. ej. un aviso) y confirma que aparece una
+9. Haz un cambio pequeño (p. ej. en este README) y confirma que aparece una
    publicación nueva en **Deployments**. Si no, en GitHub: Settings →
    Applications → Cloudflare Workers and Pages → Configure, y agrega
    este repositorio.
 
 No escribas el link de Cloudflare ni la contraseña en el repositorio
-(avisos, README, commits) mientras sea público.
+(README, commits, datos) mientras sea público.
 
 Usa una frase larga (4–5 palabras) como contraseña: el formulario
 espera 1.5 s tras cada intento fallido, pero no bloquea por IP.
@@ -232,13 +232,6 @@ Settings → Variables and Secrets → edita `SITE_PASSWORD` → Deployments
 npx wrangler pages dev . --binding SITE_PASSWORD="contraseña de prueba"
 # abre http://127.0.0.1:8788/
 ```
-
-## Avisos
-
-Para publicar un aviso, agrega un objeto a `data/avisos.json` con
-`fecha` (`AAAA-MM-DD`) y `texto`. El texto se inserta como HTML a
-propósito (permite `<b>`, `<br>`), así que solo debe editarlo personal
-de confianza.
 
 ## Probar en local
 
