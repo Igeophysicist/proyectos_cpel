@@ -191,12 +191,24 @@ a{color:inherit;}
   position:absolute; left:var(--space-3); bottom:calc(var(--tabbar-h) + var(--space-3));
   z-index:400; background:rgba(255,255,255,.95); border:1px solid var(--border);
   border-radius:var(--radius-m); padding:8px 10px; font-size:11.5px; box-shadow:var(--shadow-card);
-  display:flex; gap:10px;
+  display:flex; flex-wrap:wrap; gap:6px 10px; max-width:calc(100% - 2 * var(--space-3));
 }
 .map-legend span{display:flex; align-items:center; gap:5px; color:var(--ink-700); font-weight:600;}
 .dot{width:9px; height:9px; border-radius:50%; flex:none;}
 .dot--a{background:var(--status-a);} .dot--b{background:var(--status-b);} .dot--c{background:var(--status-c);}
+.dot--grupo{
+  width:15px; height:15px; background:var(--teal-800); color:#fff; font-size:9px; font-weight:800;
+  display:inline-flex; align-items:center; justify-content:center; border:1.5px solid #fff; box-shadow:0 0 0 1px var(--teal-800);
+}
 .map-heading{display:none;}
+
+/* Grupo de proyectos cercanos (Leaflet.markercluster, ver map.js) */
+.map-cluster{
+  background:var(--teal-800); color:#fff; border:2px solid #fff; border-radius:50%;
+  box-shadow:0 0 0 3px rgba(35,66,64,.35), 0 2px 6px rgba(26,36,34,.3);
+  display:flex; align-items:center; justify-content:center;
+  font-family:var(--font); font-size:13px; font-weight:800;
+}
 .map-empty{
   position:absolute; z-index:400; top:calc(var(--topbar-h) + 12px); left:50%; transform:translateX(-50%);
   background:rgba(255,255,255,.96); border:1px solid var(--border); border-radius:var(--radius-m);
@@ -226,6 +238,15 @@ a{color:inherit;}
 /* ---------- Lista de proyectos ---------- */
 .list-toolbar{display:flex; align-items:center; justify-content:space-between; margin-bottom:var(--space-3);}
 .list-toolbar__count{font-size:13px; color:var(--ink-500);}
+.list-toolbar__btn{
+  display:inline-flex; align-items:center; gap:6px; flex:none;
+  font-family:var(--font); font-size:12.5px; font-weight:700; color:var(--teal-800);
+  background:var(--surface); border:1px solid var(--border-strong); border-radius:var(--radius-s);
+  padding:6px 10px; cursor:pointer;
+}
+.list-toolbar__btn svg{color:var(--gold-700);}
+.list-toolbar__btn:hover{background:var(--surface-sunken);}
+.list-toolbar__btn:disabled{opacity:.55; cursor:default;}
 .sortsel{
   font-size:13px; border:1px solid var(--border); border-radius:var(--radius-s);
   padding:6px 8px; background:var(--surface); color:var(--ink-700);

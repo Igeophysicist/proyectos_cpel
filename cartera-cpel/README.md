@@ -54,6 +54,16 @@ tendencia (ritmo reciente proyectado). Los cortes salen de
 `data/historial.json`, que se actualiza solo con cada Excel (ver "Curva
 de avance" en el README de la raíz). Lógica en `assets/js/curva.js`.
 
+## Imprimir o guardar en PDF
+
+El botón **PDF** de la barra superior abre la impresión del navegador
+(ahí se elige "Guardar como PDF"). Sale una hoja carta por proyecto
+con el encabezado, avance general y particulares, eventos, hitos,
+información general, ficha técnica y plazos; sin mapa ni botones.
+También funciona con Ctrl+P. Los estilos están en la sección
+"Impresión" de `assets/css/cartera.css`. Si los eventos son muy largos,
+puede pasar a una segunda hoja.
+
 ## Enlace directo y fecha de los datos
 
 - La dirección lleva el proyecto seleccionado (`?proyecto=ph-chicoasen-ii`,
