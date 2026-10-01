@@ -24,6 +24,12 @@ module.exports = [
     },
   },
   {
+    // Cloudflare Pages Functions: módulos ES con las APIs web del runtime
+    // de Workers (Request, Response, crypto, etc.).
+    files: ["functions/**/*.js"],
+    languageOptions: { ecmaVersion: 2022, sourceType: "module", globals: globals.serviceworker },
+  },
+  {
     files: ["tests/**/*.js", "eslint.config.js"],
     languageOptions: { ecmaVersion: 2022, sourceType: "commonjs", globals: globals.node },
   },

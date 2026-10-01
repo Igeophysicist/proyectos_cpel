@@ -20,6 +20,9 @@
     <div class="brand-strip_t">
       <img src="assets/img/logo-cpel.png" alt="CPEL" class="brand-strip_t__logo brand-strip_t__logo--cpel">
     </div>
+    <!-- Solo se muestra cuando el sitio está protegido con contraseña en
+         Cloudflare Pages (ver functions/_middleware.js y landing.js). -->
+    <a class="topbar__logout" id="logoutLink" href="/__logout" hidden>Salir</a>
   </header>
 
   <main class="main">

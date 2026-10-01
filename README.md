@@ -21,6 +21,56 @@ Sitio estático (HTML/CSS/JS sin build step) publicado en GitHub Pages.
 - `dialog.js`: abre y cierra paneles emergentes (Escape, foco y
   `aria-hidden`).
 
+## Acceso con contraseña (Cloudflare Pages)
+
+`functions/_middleware.js` protege **todo** el sitio (páginas, scripts,
+Excel, KML e imágenes) con una sola contraseña compartida. Solo
+funciona cuando el sitio se publica en **Cloudflare Pages**; en GitHub
+Pages ese archivo no hace nada y el sitio queda abierto.
+
+- Al entrar se guarda una sesión de 30 días que se renueva sola con el
+  uso. El botón **Salir** del portal la cierra.
+- **Cambiar la contraseña cierra la sesión de todos** (útil si se
+  filtró o si alguien deja el equipo).
+- Si la contraseña no está configurada, el sitio queda cerrado (nunca
+  abierto por descuido).
+
+### Configuración inicial (una sola vez)
+
+1. Crea una cuenta en <https://dash.cloudflare.com> (de preferencia con
+   un correo institucional o compartido del área).
+2. **Workers & Pages → Create → Pages → Connect to Git**, autoriza
+   GitHub y elige este repositorio y la rama `main`.
+3. Configuración de compilación: *Framework preset* **None**, comando
+   de compilación **vacío** y como directorio de salida la raíz del
+   repositorio. Cloudflare detecta la carpeta `functions/` sola.
+4. En el proyecto: **Settings → Variables and Secrets → Add**, tipo
+   **Secret**, nombre `SITE_PASSWORD`, con la contraseña como valor.
+   Agrégala para *Production* y también para *Preview* (si falta, esas
+   versiones quedan cerradas con un aviso).
+5. **Deployments → Retry deployment** para que tome la contraseña.
+6. Abre la dirección `https://<proyecto>.pages.dev`: debe pedir la
+   contraseña.
+7. Ya con el sitio nuevo funcionando: vuelve **privado** este
+   repositorio (Settings → General → Change visibility) y desactiva
+   GitHub Pages. Mientras el repositorio sea público, los Excel y KML
+   se pueden descargar directo desde GitHub sin contraseña.
+
+Usa una frase larga (4–5 palabras) como contraseña: el formulario
+espera 1.5 s tras cada intento fallido, pero no bloquea por IP.
+
+### Cambiar la contraseña
+
+Settings → Variables and Secrets → edita `SITE_PASSWORD` → Deployments
+→ Retry deployment. Todas las sesiones abiertas se cierran.
+
+### Probar en local con contraseña
+
+```bash
+npx wrangler pages dev . --binding SITE_PASSWORD="contraseña de prueba"
+# abre http://127.0.0.1:8788/
+```
+
 ## Avisos
 
 Para publicar un aviso, agrega un objeto a `data/avisos.json` con
@@ -41,7 +91,7 @@ Requiere Node.js 22:
 
 ```bash
 npm install
-npm run check   # ESLint + pruebas de assets/js/shared/text-utils.js
+npm run check   # ESLint + pruebas de text-utils.js y del middleware de contraseña
 ```
 
 La misma revisión corre en GitHub Actions (`.github/workflows/ci.yml`)
