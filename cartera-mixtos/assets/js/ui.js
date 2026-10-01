@@ -192,7 +192,13 @@
 
   // ------------------------------------------------------------ Filtros
   function renderFilterOptions(elId, options, state, onToggle) {
-    const LABELS = global.AppFilters.LABELS;
+    const LABELS = {
+      tecnologia: "Tecnología",
+      estado: "Estado",
+      socio: "Socio",
+      grupo: "Grupo de atención",
+      codAnio: "Año de COD",
+    };
     const GRUPO_LABELS = { A: "Grupo A", B: "Grupo B", C: "Grupo C" };
 
     const groups = Object.keys(options).map((field) => {

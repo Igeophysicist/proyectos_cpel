@@ -30,7 +30,6 @@ cartera-mixtos/
 │       ├── filters.js         estado y lógica de filtros
 │       ├── ui.js              KPIs, tarjetas, panel de detalle
 │       ├── url-state.js       vista actual <-> dirección (enlaces directos)
-│       ├── exportar.js        botón "Descargar Excel" del listado
 │       └── app.js             orquestador (conecta todo)
 └── data/
     ├── DATOS_MIXTOS.xlsx      fuente de datos ejecutiva (única fuente de verdad)
@@ -86,8 +85,6 @@ reescribe `map.js`.
 - **Leaflet** (mapa, con **Leaflet.markercluster** para agrupar
   puntos) y **Chart.js** (gráficos), cargados por CDN. Son ligeras,
   muy usadas y no requieren licencia.
-- **SheetJS** (versión reducida) solo para "Descargar Excel": se
-  descarga la primera vez que se toca el botón.
 - **Parser KML propio** (`kml-parser.js`, ~100 líneas) en vez de una
   librería externa (p. ej. `leaflet-omnivore`): los KML de este
   proyecto usan solo `Point`, `LineString` y `Polygon` simples, así
@@ -144,15 +141,6 @@ se agrupan. "Ver en el mapa" en una ficha acerca hasta el proyecto y
 abre su popup aunque esté dentro de un grupo. Los polígonos y líneas
 no se agrupan. `CLUSTER_RADIUS` (en `map.js`) controla qué tan cerca
 deben estar los puntos para juntarse.
-
-## Descargar Excel
-
-El botón **Descargar Excel** del listado genera un `.xlsx` con los
-proyectos que se están viendo (búsqueda y filtros aplicados) y las
-mismas columnas del Excel original. Parque, LT y Global van como
-porcentaje numérico, para poder ordenar y sumar. La hoja
-"Información" dice la fecha de los datos, la búsqueda y los filtros.
-El archivo se llama `Mixtos_AAAA-MM-DD.xlsx` (o `..._filtrado.xlsx`).
 
 ## Filtros
 

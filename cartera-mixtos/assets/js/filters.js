@@ -7,15 +7,6 @@
 (function (global) {
   const normalize = global.TextUtils.normalizeText;
 
-  // Nombre visible de cada filtro (chips y hoja "Información" del Excel descargado).
-  const LABELS = {
-    tecnologia: "Tecnología",
-    estado: "Estado",
-    socio: "Socio",
-    grupo: "Grupo de atención",
-    codAnio: "Año de COD",
-  };
-
   const state = {
     search: "",
     tecnologia: new Set(),
@@ -85,13 +76,6 @@
     );
   }
 
-  /** Filtros activos como texto, p. ej. ["Tecnología: EO - Eólica, FV - Fotovoltaica"]. */
-  function describe() {
-    return Object.keys(LABELS)
-      .filter((field) => state[field].size)
-      .map((field) => `${LABELS[field]}: ${Array.from(state[field]).sort().join(", ")}`);
-  }
-
   function matchesSearch(project) {
     if (!state.search) return true;
     const haystack = normalize(
@@ -119,8 +103,6 @@
     setSearch,
     clearAll,
     activeCount,
-    describe,
     apply,
-    LABELS,
   };
 })(window);

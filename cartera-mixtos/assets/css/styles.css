@@ -238,15 +238,6 @@ a{color:inherit;}
 /* ---------- Lista de proyectos ---------- */
 .list-toolbar{display:flex; align-items:center; justify-content:space-between; margin-bottom:var(--space-3);}
 .list-toolbar__count{font-size:13px; color:var(--ink-500);}
-.list-toolbar__btn{
-  display:inline-flex; align-items:center; gap:6px; flex:none;
-  font-family:var(--font); font-size:12.5px; font-weight:700; color:var(--teal-800);
-  background:var(--surface); border:1px solid var(--border-strong); border-radius:var(--radius-s);
-  padding:6px 10px; cursor:pointer;
-}
-.list-toolbar__btn svg{color:var(--gold-700);}
-.list-toolbar__btn:hover{background:var(--surface-sunken);}
-.list-toolbar__btn:disabled{opacity:.55; cursor:default;}
 .sortsel{
   font-size:13px; border:1px solid var(--border); border-radius:var(--radius-s);
   padding:6px 8px; background:var(--surface); color:var(--ink-700);

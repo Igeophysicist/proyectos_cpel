@@ -16,7 +16,6 @@
   let projectsById = new Map();
   let currentTab = "proyectos";
   let openProjectSlug = null; // ficha abierta (para la dirección)
-  let filteredProjects = []; // lo que se ve ahora (para "Descargar Excel")
   const { slugify, formatDateShort } = window.TextUtils;
 
   const els = {
@@ -36,7 +35,6 @@
     toast: document.getElementById("toast"),
     rankingHint: document.getElementById("ranking-hint"),
     dataDate: document.getElementById("data-date"),
-    exportBtn: document.getElementById("export-btn"),
   };
 
   // Espera tras la última tecla antes de volver a filtrar y redibujar
@@ -45,8 +43,6 @@
 
   function render() {
     const filtered = window.AppFilters.apply(allProjects);
-    filteredProjects = filtered;
-    els.exportBtn.disabled = filtered.length === 0;
 
     window.AppUI.renderKPIs("kpis", filtered);
     window.AppCharts.renderGrupoChart("chart-grupo", filtered);
@@ -129,26 +125,6 @@
     }
   }
 
-  /** Descarga en Excel los proyectos que se están viendo. */
-  async function exportExcel() {
-    const label = els.exportBtn.querySelector("span");
-    els.exportBtn.disabled = true;
-    label.textContent = "Preparando…";
-    try {
-      await window.AppExportar.descargar(filteredProjects, {
-        search: els.search.value.trim(),
-        filtros: window.AppFilters.describe(),
-        fechaDatos: /^Datos al /.test(els.dataDate.textContent) ? els.dataDate.textContent.slice(9) : "",
-      });
-    } catch (err) {
-      console.error(err);
-      window.AppUI.showToast("toast", "No se pudo preparar el Excel (revisa tu conexión) e inténtalo de nuevo.");
-    } finally {
-      label.textContent = "Descargar Excel";
-      els.exportBtn.disabled = filteredProjects.length === 0;
-    }
-  }
-
   function closeDetail() {
     window.Dialog.close(els.detail);
   }
@@ -222,7 +198,6 @@
     });
 
     window.AppMap.setOnMarkerSelect(openDetail);
-    els.exportBtn.addEventListener("click", exportExcel);
 
     window.addEventListener("resize", () => window.AppMap.invalidateSize());
   }
