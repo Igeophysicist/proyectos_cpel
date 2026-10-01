@@ -1,16 +1,16 @@
 /**
  * data.js
- * Carga los proyectos desde un archivo Excel (.xlsx) y el/los KML, los
- * vincula por nombre normalizado y expone un arreglo único de proyectos
- * enriquecidos.
+ * Carga los proyectos y el/los KML, los vincula por nombre normalizado
+ * y expone un arreglo único de proyectos enriquecidos.
  *
- * POR QUÉ EXCEL EN VEZ DE JSON
+ * DE DÓNDE VIENEN LOS DATOS
  * ---------------------------------------------------------------
- * El archivo se lee en el navegador con la librería SheetJS (cargada en
- * index.html), que convierte la hoja "Proyectos" en un arreglo de
- * objetos usando la fila 1 (encabezados) como claves — por eso los
- * encabezados de esa hoja deben coincidir EXACTAMENTE con los nombres
- * de columna que este archivo espera (ver data/DATOS_MIXTOS.xlsx).
+ * Se editan en data/DATOS_MIXTOS.xlsx (hoja "Proyectos"). La página lee
+ * data/DATOS_MIXTOS.json, que scripts/build-data.js genera y valida a
+ * partir del Excel (automáticamente en GitHub Actions). Cada fila es un
+ * objeto con la fila 1 (encabezados) como claves — por eso los
+ * encabezados deben coincidir EXACTAMENTE con los nombres de columna que
+ * este archivo espera; la validación avisa si falta alguno.
  *
  * ESTRATEGIA DE VINCULACIÓN EXCEL <-> KML
  * ---------------------------------------------------------------
@@ -31,10 +31,8 @@
 (function (global) {
   const { normalizeText, parseNumber, parseDate } = global.TextUtils;
 
-  const DATA_SOURCES = {
-    excel: "data/DATOS_MIXTOS.xlsx",
-    excelSheet: "Proyectos", // nombre de la hoja que contiene los datos
-  };
+  // Generado desde data/DATOS_MIXTOS.xlsx por scripts/build-data.js.
+  const DATA_FILE = "data/DATOS_MIXTOS.json";
 
   const KML_SOURCES = [
     "data/ENTRADA_PROYECTOS.kml",
@@ -67,21 +65,16 @@
     return partes[partes.length - 1].trim();
   }
 
-  async function fetchExcelRows(url, sheetName) {
+  /**
+   * Filas del Excel ya convertidas a JSON. Los valores llegan como texto
+   * tal como se ven en Excel (p. ej. "Parque" = "92%", no 0.92).
+   * "modified" = fecha de último guardado del Excel ("Datos al ...").
+   */
+  async function fetchDataRows(url) {
     const res = await fetch(url, { cache: "no-store" });
     if (!res.ok) throw new Error(`No se pudo cargar ${url} (HTTP ${res.status})`);
-    const buffer = await res.arrayBuffer();
-    const workbook = XLSX.read(buffer, { type: "array" });
-    const targetSheet = workbook.SheetNames.includes(sheetName) ? sheetName : workbook.SheetNames[0];
-    const sheet = workbook.Sheets[targetSheet];
-    // raw:false devuelve el texto tal como se ve en Excel (respeta el
-    // formato de cada celda), igual que antes veníamos leyendo texto del
-    // JSON — así "Parque" sigue llegando como "92%" y no como 0.92.
-    const rows = XLSX.utils.sheet_to_json(sheet, { raw: false, defval: "" });
-    // Fecha en que se guardó por última vez el Excel ("Datos al ..." en
-    // la barra superior).
-    const modified = workbook.Props && workbook.Props.ModifiedDate;
-    return { rows, modified: modified ? new Date(modified) : null };
+    const datos = await res.json();
+    return { rows: datos.proyectos || [], modified: datos.excelModificado ? new Date(datos.excelModificado) : null };
   }
 
   async function fetchText(url) {
@@ -134,7 +127,7 @@
   /** Carga y ensambla todo el dataset de la aplicación */
   async function loadDataset() {
     const [{ rows: rawRows, modified }, geo] = await Promise.all([
-      fetchExcelRows(DATA_SOURCES.excel, DATA_SOURCES.excelSheet),
+      fetchDataRows(DATA_FILE),
       buildGeoIndex(KML_SOURCES),
     ]);
 

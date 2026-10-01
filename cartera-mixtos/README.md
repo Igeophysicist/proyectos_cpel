@@ -33,6 +33,7 @@ cartera-mixtos/
 │       └── app.js             orquestador (conecta todo)
 └── data/
     ├── DATOS_MIXTOS.xlsx      fuente de datos ejecutiva (única fuente de verdad)
+    ├── DATOS_MIXTOS.json      generado y validado desde el Excel (no editar a mano)
     ├── ENTRADA_PROYECTOS.kml  puntos de ubicación de cada proyecto
     └── AREAS_REFERENCIA.kml   polígonos de referencia (se vinculan por nombre)
 ```
@@ -42,11 +43,11 @@ Además usa los módulos compartidos de la raíz del sitio
 HTML, leer números y fechas), `kml-parser.js`, `base-map.js` (capas
 base del mapa) y `dialog.js` (paneles accesibles: Escape y foco).
 
-Los datos se leen de un archivo **Excel** (`.xlsx`) en vez de JSON: es
-más cómodo de editar para alguien sin conocimientos técnicos (como
-cualquier hoja de cálculo), y la app lo convierte a los mismos datos
-internos en el navegador con la librería
-[SheetJS](https://sheetjs.com) — sin backend ni conversión manual.
+Los datos se editan en un archivo **Excel** (`.xlsx`), más cómodo para
+cualquiera que use hojas de cálculo. Al subirlo, una GitHub Action lo
+valida y lo convierte a `data/DATOS_MIXTOS.json`, que es lo que lee la
+página (así el navegador ya no descarga la librería SheetJS). Ver
+"Datos: del Excel al sitio" en el README de la raíz.
 
 ### Cómo editar los datos
 
@@ -150,7 +151,8 @@ nombre, socio, ubicación y tecnología.
 
 Edita únicamente `data/DATOS_MIXTOS.xlsx` (hoja "Proyectos") y
 el/los KML si cambian ubicaciones, conservando exactamente los mismos
-encabezados de columna. El resto de la aplicación no requiere cambios.
+encabezados de columna. El JSON se regenera y valida solo; si el Excel
+tiene errores, el sitio sigue con los datos anteriores hasta corregirlo.
 
 ## Probar en local antes de publicar
 

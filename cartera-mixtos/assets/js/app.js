@@ -236,7 +236,7 @@
     } catch (err) {
       console.error(err);
       els.loaderText.textContent =
-        "No se pudieron cargar los datos. Verifica que data/DATOS_MIXTOS.xlsx y los KML estén publicados junto a este HTML. Detalle: " +
+        "No se pudieron cargar los datos. Verifica que data/DATOS_MIXTOS.json y los KML estén publicados junto a este HTML. Detalle: " +
         err.message;
     }
   }

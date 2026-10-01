@@ -21,6 +21,42 @@ Sitio estático (HTML/CSS/JS sin build step) publicado en GitHub Pages.
 - `dialog.js`: abre y cierra paneles emergentes (Escape, foco y
   `aria-hidden`).
 
+## Datos: del Excel al sitio
+
+Los datos se siguen editando en los **Excel** de cada tablero
+(`cartera-cpel/data/datos_proyectos.xlsx`,
+`cartera-mixtos/data/DATOS_MIXTOS.xlsx`). Las páginas no leen el Excel:
+leen un **JSON** que se genera y **valida** automáticamente.
+
+1. Subes el Excel (o un KML) a GitHub, como siempre.
+2. La GitHub Action **Datos** (`.github/workflows/datos.yml`) revisa el
+   Excel con `scripts/build-data.js`.
+3. **Si está bien:** agrega un commit "Actualiza datos (JSON) desde
+   Excel" y Cloudflare publica los datos nuevos (1–2 minutos).
+4. **Si hay errores:** el commit queda con ❌, GitHub te avisa por correo
+   y **el sitio sigue mostrando los datos anteriores**. Para ver qué
+   corregir: pestaña **Actions** → la ejecución "Datos" en rojo → el
+   resumen lista cada error con **fila y columna** del Excel. Corrige
+   y vuelve a subir el Excel.
+
+Qué se revisa (`scripts/data-rules.js`):
+
+| Errores (bloquean la publicación) | Avisos (solo se reportan) |
+|---|---|
+| Falta una columna que usa la página (renombrada o borrada) | Proyecto sin ubicación en el KML (no sale en el mapa) |
+| Porcentaje que no es número o fuera de 0–100 | |
+| Fecha que no se puede leer | |
+| Proyecto repetido | |
+| Imagen que no existe (Cartera) | |
+| Grupo de atención distinto de A, B o C (Mixtos) | |
+
+Las celdas vacías y los marcadores de dato pendiente ("SIN DATO",
+"N/A", "PENDIENTE", "POR DEFINIR", "-") no son errores.
+
+**No edites los JSON a mano:** se sobrescriben con cada Excel. Para
+revisar un Excel antes de subirlo: `npm install` y luego `npm run data`
+(valida y regenera) o `npm run data:check` (solo revisa).
+
 ## Enlaces directos y fecha de los datos
 
 - **Enlaces directos:** la dirección de cada tablero refleja lo que se
