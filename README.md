@@ -57,6 +57,34 @@ Las celdas vacías y los marcadores de dato pendiente ("SIN DATO",
 revisar un Excel antes de subirlo: `npm install` y luego `npm run data`
 (valida y regenera) o `npm run data:check` (solo revisa).
 
+## Curva de avance (cortes semanales)
+
+- **Cartera CPEL:** botón **Curva de avance** (junto a Ficha técnica y
+  Plazos). **Mixtos:** sección **Evolución por corte** en la ficha de
+  cada proyecto (Parque, LT y Global).
+- **El corte semanal es cada jueves a las 8:00** (hora de México). La
+  Action "Datos" guarda el avance en `data/historial.json` de cada
+  tablero (`scripts/historial.js`) según la fecha de guardado del
+  Excel: lo guardado de jueves 8:00 al jueves siguiente 7:59 es **un
+  solo punto**, el de ese primer jueves. Las correcciones de esos días
+  reemplazan ese punto; el siguiente aparece con el corte del jueves
+  siguiente. Subir solo un KML (sin cambiar el Excel) no agrega puntos.
+- Los cortes previos a esta regla (24–30 sep 2026, reconstruidos de las
+  versiones anteriores de los Excel) se conservan en la fecha en que se
+  guardó su Excel.
+- **Tendencia** (línea punteada): recta ajustada a los últimos 6 cortes
+  reales (`assets/js/shared/trend.js`), es decir, el ritmo reciente
+  proyectado. En **Cartera** el resumen muestra el ritmo en pts/semana,
+  cuándo llegaría a 100% y cuánto llevaría en la fecha de operación (con
+  menos de 4 cortes, la fecha se marca como estimación preliminar). En
+  **Mixtos** solo dice si Global avanzó, disminuyó o se mantuvo en el
+  último corte, sin fechas estimadas: esos proyectos aún son volátiles.
+  La tendencia no sustituye al programa de obra.
+- Los proyectos se identifican por su nombre: si se renombra en el
+  Excel, su historial empieza de nuevo.
+- Para quitar un corte que quedó mal, se borra su bloque en
+  `data/historial.json` (o pídeselo a quien mantenga el sitio).
+
 ## Enlaces directos y fecha de los datos
 
 - **Enlaces directos:** la dirección de cada tablero refleja lo que se

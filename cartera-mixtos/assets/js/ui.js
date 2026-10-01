@@ -165,9 +165,10 @@
     const grupoInfo = GRUPO_INFO[p.grupo];
     const sections = DETAIL_FIELDS.map((sec) => {
       const fields = sec.items.map(([key, label]) => detailField(p, key, label)).filter(Boolean).join("");
-      if (!fields) return "";
-      return `<div class="detail__section-title">${sec.section}</div><div class="detail-grid">${fields}</div>`;
+      return fields ? `<div class="detail__section-title">${sec.section}</div><div class="detail-grid">${fields}</div>` : "";
     }).join("");
+    // "Evolución por corte" va al final, después de "Financiero".
+    const evolucion = global.AppEvolucion ? global.AppEvolucion.html(p) : "";
 
     document.getElementById(elId).innerHTML = `
       <div class="detail__head">
@@ -183,8 +184,9 @@
           ${progressRow("LT", p.ltPct)}
           ${progressRow("Global", p.globalPct)}
         </div>
-        ${sections}
         ${p.geo ? `<button class="detail__mapbtn" data-view-on-map="${esc(p.id)}">Ver en el mapa</button>` : ""}
+        ${sections}
+        ${evolucion}
       </div>`;
   }
 

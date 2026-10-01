@@ -17,11 +17,16 @@
  * Cada JSON es: { fuente, excelModificado, proyectos: [filas] }, donde
  * las filas son exactamente las que antes leía la página desde el Excel
  * (mismas opciones de SheetJS), para no cambiar nada de su lógica.
+ *
+ * Además registra el CORTE SEMANAL en data/historial.json de cada tablero
+ * (curva de avance; ver scripts/historial.js): jueves 8:00 a jueves 8:00;
+ * las correcciones dentro de ese lapso reemplazan su punto.
  */
 const fs = require("fs");
 const path = require("path");
 const XLSX = require("xlsx");
 const { validateCartera, validateMixtos, MIXTOS_SHEET } = require("./data-rules.js");
+const { snapshotCartera, snapshotMixtos, upsertCorte } = require("./historial.js");
 
 const ROOT = path.resolve(__dirname, "..");
 
@@ -31,6 +36,8 @@ const DATASETS = [
     dir: "cartera-cpel",
     excel: "data/datos_proyectos.xlsx",
     json: "data/datos_proyectos.json",
+    historial: "data/historial.json",
+    snapshot: snapshotCartera,
     kml: ["data/CARTERA-CPEL.kml"],
     // Igual que cartera.js antes: primera hoja, valores crudos.
     read: (wb) => ({ sheetName: wb.SheetNames[0], options: { defval: "" } }),
@@ -41,6 +48,8 @@ const DATASETS = [
     dir: "cartera-mixtos",
     excel: "data/DATOS_MIXTOS.xlsx",
     json: "data/DATOS_MIXTOS.json",
+    historial: "data/historial.json",
+    snapshot: snapshotMixtos,
     kml: ["data/ENTRADA_PROYECTOS.kml", "data/AREAS_REFERENCIA.kml"],
     // Igual que data.js antes: hoja "Proyectos", texto tal como se ve en Excel.
     read: (wb) => ({ sheetName: wb.SheetNames.includes(MIXTOS_SHEET) ? MIXTOS_SHEET : null, options: { raw: false, defval: "" } }),
@@ -69,6 +78,9 @@ function placemarkNames(file) {
   return names;
 }
 
+const toJson = (data) => JSON.stringify(data, null, 2) + "\n";
+
+/** Lee y valida el Excel de un tablero. */
 function buildDataset(ds) {
   const dir = path.join(ROOT, ds.dir);
   const excelPath = path.join(dir, ds.excel);
@@ -94,7 +106,24 @@ function buildDataset(ds) {
     excelModificado: modified && !Number.isNaN(modified.getTime()) ? modified.toISOString() : null,
     proyectos: rows,
   };
-  return { errors, warnings, json: JSON.stringify(data, null, 2) + "\n", jsonPath: path.join(dir, ds.json) };
+  // Corte semanal para la curva de avance (solo si el Excel trae su fecha de guardado).
+  if (!data.excelModificado) warnings.push("El Excel no tiene fecha de guardado: no se registró el corte en la curva de avance.");
+  return {
+    errors,
+    warnings,
+    json: toJson(data),
+    jsonPath: path.join(dir, ds.json),
+    corte: data.excelModificado ? { excel: data.excelModificado, proyectos: ds.snapshot(rows) } : null,
+    historialPath: path.join(dir, ds.historial),
+  };
+}
+
+const readJson = (file) => (fs.existsSync(file) ? JSON.parse(fs.readFileSync(file, "utf8")) : null);
+
+/** Historial con el corte de este Excel agregado (o reemplazado en su jueves). */
+function historialWithCorte(result) {
+  const current = readJson(result.historialPath);
+  return result.corte ? upsertCorte(current, result.corte) : current || { cortes: [] };
 }
 
 // ------------------------------------------------------------ reporte
@@ -132,16 +161,20 @@ function main() {
     summary.push("**Hay errores: no se actualizaron los datos del sitio.** Corrige el Excel y vuelve a subirlo.");
     exitCode = 1;
   } else {
-    results.forEach((r) => {
-      const current = fs.existsSync(r.jsonPath) ? fs.readFileSync(r.jsonPath, "utf8") : null;
-      const rel = path.relative(ROOT, r.jsonPath);
-      if (current === r.json) {
+    const outputs = results.flatMap((r) => [
+      [r.jsonPath, r.json],
+      [r.historialPath, toJson(historialWithCorte(r))],
+    ]);
+    outputs.forEach(([file, content]) => {
+      const current = fs.existsSync(file) ? fs.readFileSync(file, "utf8") : null;
+      const rel = path.relative(ROOT, file);
+      if (current === content) {
         console.log(`${rel}: al día.`);
       } else if (check) {
         console.log(`${rel}: DESACTUALIZADO (ejecuta "npm run data").`);
         exitCode = 1;
       } else {
-        fs.writeFileSync(r.jsonPath, r.json);
+        fs.writeFileSync(file, content);
         console.log(`${rel}: actualizado.`);
       }
     });
@@ -152,4 +185,6 @@ function main() {
   process.exit(exitCode);
 }
 
-main();
+if (require.main === module) main();
+
+module.exports = { DATASETS, buildDataset, toJson, ROOT };

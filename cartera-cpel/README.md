@@ -18,6 +18,7 @@ cartera-cpel/
 └── data/
     ├── datos_proyectos.xlsx    fuente de datos (primera hoja) — se edita este
     ├── datos_proyectos.json    generado y validado desde el Excel (no editar a mano)
+    ├── historial.json          cortes semanales para la curva de avance (generado)
     ├── CARTERA-CPEL.kml        ubicación de cada proyecto (vinculada por nombre)
     ├── CARTERA-CPEL-POLIGONOS.kml  polígonos de secuencias ("... SEC III", etc.)
     └── CARTERA-CPEL/*.jpg      imágenes de encabezado
@@ -44,6 +45,14 @@ del Excel al sitio" en el README de la raíz).
 | `desarrollador`, `inversion`, `fuenteRecursos` | Información general. |
 | `plazo_*` | Ventana "Plazos". Las fechas (`dd/mm/aaaa`) que ya pasaron se marcan en la línea de tiempo. |
 | `ft_*` / `ht_*` | Ficha técnica fotovoltaica / hidroeléctrica, según el texto de `tecnologia`. Ver `TECH_SPECS` en `cartera.js` para agregar otra tecnología. |
+
+## Curva de avance
+
+El tercer botón de la barra inferior abre la **Curva de avance** del
+proyecto: Programado y Real de cada corte semanal (jueves 8:00) y una línea de
+tendencia (ritmo reciente proyectado). Los cortes salen de
+`data/historial.json`, que se actualiza solo con cada Excel (ver "Curva
+de avance" en el README de la raíz). Lógica en `assets/js/curva.js`.
 
 ## Enlace directo y fecha de los datos
 

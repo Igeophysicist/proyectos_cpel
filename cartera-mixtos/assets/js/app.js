@@ -104,9 +104,11 @@
     const project = projectsById.get(projectId);
     if (!project) return;
     window.AppUI.renderDetail("detail-body", project);
+    window.AppEvolucion.render(els.detailBody, project);
     openProjectSlug = slugify(project.nombre);
     window.Dialog.open(els.detail, {
       onClose: () => {
+        window.AppEvolucion.destroy();
         openProjectSlug = null;
         syncUrl();
       },
