@@ -5,7 +5,7 @@ process.env.TZ = "America/Mexico_City";
 
 const test = require("node:test");
 const assert = require("node:assert/strict");
-const { normalizeText, esc, parseNumber, parseDate, isPastOrToday, debounce } = require(
+const { normalizeText, esc, parseNumber, parseDate, isPastOrToday, debounce, slugify, formatDateShort } = require(
   "../assets/js/shared/text-utils.js"
 );
 
@@ -73,4 +73,18 @@ test("debounce ejecuta solo la última llamada", async () => {
   fn(3);
   await new Promise((r) => setTimeout(r, 50));
   assert.deepEqual(calls, [3]);
+});
+
+test("slugify crea identificadores estables para enlaces", () => {
+  assert.equal(slugify("PH CHICOASÉN II"), "ph-chicoasen-ii");
+  assert.equal(slugify("CFV PUERTO PEÑASCO SECUENCIA III"), "cfv-puerto-penasco-secuencia-iii");
+  assert.equal(slugify("SIERRA MADRE [EL CHORRO] (2DA RONDA)"), "sierra-madre-el-chorro-2da-ronda");
+  assert.equal(slugify("  Proyecto  Eólico / Región  "), "proyecto-eolico-region");
+  assert.equal(slugify(""), "");
+});
+
+test("formatDateShort usa fecha corta en español", () => {
+  assert.match(formatDateShort(new Date(2026, 8, 30)), /^30 sept? 2026$/);
+  assert.equal(formatDateShort(null), "");
+  assert.equal(formatDateShort(new Date("x")), "");
 });

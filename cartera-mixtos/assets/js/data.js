@@ -77,7 +77,11 @@
     // raw:false devuelve el texto tal como se ve en Excel (respeta el
     // formato de cada celda), igual que antes veníamos leyendo texto del
     // JSON — así "Parque" sigue llegando como "92%" y no como 0.92.
-    return XLSX.utils.sheet_to_json(sheet, { raw: false, defval: "" });
+    const rows = XLSX.utils.sheet_to_json(sheet, { raw: false, defval: "" });
+    // Fecha en que se guardó por última vez el Excel ("Datos al ..." en
+    // la barra superior).
+    const modified = workbook.Props && workbook.Props.ModifiedDate;
+    return { rows, modified: modified ? new Date(modified) : null };
   }
 
   async function fetchText(url) {
@@ -129,7 +133,7 @@
 
   /** Carga y ensambla todo el dataset de la aplicación */
   async function loadDataset() {
-    const [rawRows, geo] = await Promise.all([
+    const [{ rows: rawRows, modified }, geo] = await Promise.all([
       fetchExcelRows(DATA_SOURCES.excel, DATA_SOURCES.excelSheet),
       buildGeoIndex(KML_SOURCES),
     ]);
@@ -198,7 +202,7 @@
         };
       });
 
-    return { projects, warnings };
+    return { projects, warnings, dataDate: modified };
   }
 
   global.AppData = {

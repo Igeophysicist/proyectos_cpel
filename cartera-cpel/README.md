@@ -42,6 +42,15 @@ encabezados de la fila 1 se leen por nombre exacto.
 | `plazo_*` | Ventana "Plazos". Las fechas (`dd/mm/aaaa`) que ya pasaron se marcan en la línea de tiempo. |
 | `ft_*` / `ht_*` | Ficha técnica fotovoltaica / hidroeléctrica, según el texto de `tecnologia`. Ver `TECH_SPECS` en `cartera.js` para agregar otra tecnología. |
 
+## Enlace directo y fecha de los datos
+
+- La dirección lleva el proyecto seleccionado (`?proyecto=ph-chicoasen-ii`,
+  a partir de la columna `nombre`), así que basta con copiarla para
+  compartir el proyecto. Si cambia el nombre en el Excel, el enlace viejo
+  abre el primer proyecto.
+- "Datos al …" (en el encabezado) es la fecha de último guardado del
+  Excel.
+
 ## Probar en local
 
 Sirve la **raíz del repositorio** (no solo esta carpeta):

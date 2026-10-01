@@ -86,6 +86,7 @@ body{ padding-bottom: calc(var(--tabbar-h) + env(safe-area-inset-bottom, 0px)); 
   font-size: 13px; color: #cfe0db;
 }
 .hero-card__loc svg{ color: var(--gold-500); flex: none; }
+.hero-card__date{ margin-top: 6px; font-size: 11.5px; color: #cfe0db; }
 
 /* ---------- Avance general ---------- */
 .legend{ display: flex; gap: 14px; font-size: 11.5px; font-weight: 600; color: var(--ink-700); margin-bottom: var(--space-3); }
@@ -196,9 +197,10 @@ body{ padding-bottom: calc(var(--tabbar-h) + env(safe-area-inset-bottom, 0px)); 
 .sheet__head{
   position: relative; padding: var(--space-4); background: var(--teal-800); color: #fff;
 }
-.sheet__title{ display: flex; align-items: center; gap: 8px; font-size: 16px; font-weight: 800; padding-right: 36px; }
-.sheet__title svg{ color: var(--gold-500); }
-.sheet__sub{ font-size: 12.5px; color: #bcd0cb; margin-top: 3px; }
+/* Título y nombre del proyecto dejan libre la esquina de la X (padding-right). */
+.sheet__title{ display: flex; align-items: center; gap: 8px; font-size: 16px; font-weight: 800; color: #fff; padding-right: 40px; }
+.sheet__title svg{ color: var(--gold-500); flex: none; }
+.sheet__sub{ font-size: 12.5px; color: #d6e4e0; margin-top: 3px; padding-right: 40px; overflow-wrap: anywhere; }
 .sheet__close{
   position: absolute; top: 12px; right: 12px; width: 30px; height: 30px; border-radius: 50%;
   background: rgba(255,255,255,.16); border: 0; color: #fff; cursor: pointer;
