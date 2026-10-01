@@ -83,7 +83,7 @@ a{color:inherit; text-decoration:none;}
   display:flex; align-items:center; gap:var(--space-4);
   background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-l);
   padding:var(--space-4); box-shadow:var(--shadow-card);
-  opacity:0; animation:aviso-in .45s ease-out forwards;
+  opacity:0; animation:entrada-in .45s ease-out forwards;
   animation-delay:calc(var(--i, 0) * .15s);
   transition:transform .18s ease, box-shadow .18s ease;
 }
@@ -105,23 +105,59 @@ a{color:inherit; text-decoration:none;}
   border-radius:99px; padding:2px 8px; margin-left:8px; vertical-align:middle;
 }
 
-/* ---------- Panel de avisos ---------- */
-.section-title{font-size:13px; font-weight:700; color:var(--ink-700); margin-bottom:var(--space-3); text-align: center;}
-.avisos{display:flex; flex-direction:column; gap:var(--space-2);}
-.aviso{
-  background:var(--surface); border:1px solid var(--border); border-left:3px solid var(--gold-700);
-  border-radius:var(--radius-m); padding:var(--space-3) var(--space-4); box-shadow:var(--shadow-card);
-  /* Entrada en cascada: cada tarjeta se desliza y aparece un poco después
-     que la anterior. "--i" (0, 1, 2...) lo pone landing.js al pintar cada
-     aviso; súbele el "0.07s" de abajo para separarlas más entre sí. */
-  opacity:0; animation:aviso-in .45s ease-out forwards;
-  animation-delay:calc(var(--i, 0) * .15s);
+/* ---------- Esta semana (semana-portal.js) ---------- */
+.semana{margin-bottom:var(--space-6);}
+.semana[hidden], .semana-card[hidden]{display:none;}
+.semana__tarjetas{display:flex; flex-direction:column; gap:var(--space-3);}
+.semana-card{
+  background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-l);
+  padding:var(--space-4); box-shadow:var(--shadow-card);
 }
-.aviso__fecha{font-size:11px; font-weight:700; color:var(--gold-700); text-transform:uppercase; letter-spacing:.3px;}
-.aviso__texto{font-size:13px; color:var(--ink-700); margin-top:3px; line-height:1.45; white-space:pre-line;}
-.avisos-empty{font-size:13px; color:var(--ink-500);}
+.semana-card__head{margin-bottom:var(--space-2);}
+.semana-card__titulo{font-size:15px; font-weight:700; color:var(--teal-900);}
+.semana-card__titulo:hover{text-decoration:underline;}
+.semana-card__sub{font-size:12.5px; color:var(--ink-500); margin-top:2px;}
+.semana-card__pie{font-size:11.5px; color:var(--ink-500); margin-top:var(--space-3);}
+.semana-list{list-style:none; margin:0; padding:0;}
+.semana-item{padding:var(--space-3) 0; border-top:1px solid var(--border);}
+.semana-item--fila{display:flex; align-items:center; justify-content:space-between; gap:var(--space-3);}
+.semana-item__nombre{font-size:13.5px; font-weight:700; color:var(--teal-800);}
+.semana-item__nombre:hover{text-decoration:underline;}
+.semana-item__linea{font-size:13px; color:var(--ink-700); margin-top:3px; display:flex; flex-wrap:wrap; align-items:center; gap:4px 6px;}
+.semana-item__nota{font-size:12px; color:var(--ink-500);}
+b.semana-item__nota{color:var(--ink-900);}
+.semana-vacio{font-size:13px; color:var(--ink-500); padding-top:var(--space-2); border-top:1px solid var(--border);}
+.semana-delta{font-size:13px; font-weight:700; white-space:nowrap; font-variant-numeric:tabular-nums;}
+.semana-delta--sube{color:#1e7a52;}
+.semana-delta--baja{color:#b83b3b;}
+.semana-delta--igual{color:var(--ink-500); font-weight:600;}
+.semana-grupo{display:inline-block; min-width:22px; text-align:center; padding:1px 7px; border-radius:999px; font-size:12px; font-weight:700;}
+.semana-grupo--a{background:#e4f3ec; color:#1e7a52;}
+.semana-grupo--b{background:#faf1de; color:#8a6a26;}
+.semana-grupo--c{background:#fbe9e9; color:#b83b3b;}
 
-@keyframes aviso-in{
+/* Cartera: tabla compacta, una fila por proyecto */
+.semana-tabla{width:100%; border-collapse:collapse; font-size:12.5px; font-variant-numeric:tabular-nums;}
+.semana-tabla th{
+  font-size:11px; font-weight:700; color:var(--ink-500); text-align:right;
+  padding:0 0 6px 8px; border-bottom:1px solid var(--border); white-space:nowrap;
+}
+.semana-tabla th:first-child, .semana-tabla td:first-child{text-align:left; padding-left:0;}
+.semana-tabla td{padding:8px 0 8px 8px; border-bottom:1px solid var(--border); text-align:right; color:var(--ink-700); white-space:nowrap; vertical-align:middle;}
+.semana-tabla tr:last-child td{border-bottom:0;}
+.semana-tabla td:first-child{white-space:normal; line-height:1.3;}
+.semana-tabla .semana-item__nombre{font-size:12.5px;}
+.semana-tabla .semana-real{font-weight:700; color:var(--ink-900);}
+.semana-tabla .semana-delta{font-size:12.5px;}
+@media (max-width:420px){
+  .semana-card{padding:var(--space-3);}
+}
+
+/* ---------- Títulos de sección ---------- */
+.section-title{font-size:13px; font-weight:700; color:var(--ink-700); margin-bottom:var(--space-3); text-align: center;}
+
+/* Entrada en cascada de las tarjetas de acceso ("--i" = 0, 1, ...). */
+@keyframes entrada-in{
   from{opacity:0; transform:translateY(10px);}
   to{opacity:1; transform:translateY(0);}
 }

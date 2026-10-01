@@ -7,192 +7,230 @@
         "san-simon-solar": {
           "parque": 94,
           "lt": 93,
-          "global": 93.8
+          "global": 93.8,
+          "grupo": "A"
         },
         "proyecto-eolico-region-noreste-la-noria": {
           "parque": 56.75,
           "lt": 55.5,
-          "global": 56.5
+          "global": 56.5,
+          "grupo": "C"
         },
         "solitario": {
           "parque": 73,
           "lt": 55.5,
-          "global": 69.5
+          "global": 69.5,
+          "grupo": "C"
         },
         "alvaro-obregon": {
           "parque": 86.5,
           "lt": 85.5,
-          "global": 86.3
+          "global": 86.3,
+          "grupo": "A"
         },
         "pv-sandom-solar": {
           "parque": 76,
           "lt": 51.5,
-          "global": 71.1
+          "global": 71.1,
+          "grupo": "B"
         },
         "santa-gertrudis": {
           "parque": 54,
           "lt": 25,
-          "global": 48.2
+          "global": 48.2,
+          "grupo": "C"
         },
         "el-guajillo": {
           "parque": 54,
           "lt": 25,
-          "global": 48.2
+          "global": 48.2,
+          "grupo": "C"
         },
         "solar-energia-tres-hermanos": {
           "parque": 73.5,
           "lt": 33,
-          "global": 65.4
+          "global": 65.4,
+          "grupo": "C"
         },
         "los-girasoles": {
           "parque": 66,
           "lt": 66,
-          "global": 66
+          "global": 66,
+          "grupo": "C"
         },
         "don-humberto": {
           "parque": 83,
           "lt": 71.5,
-          "global": 80.7
+          "global": 80.7,
+          "grupo": "B"
         },
         "planta-solar-haab-kiin": {
           "parque": 74,
           "lt": 69.5,
-          "global": 73.1
+          "global": 73.1,
+          "grupo": "C"
         },
         "planta-solar-cerro-colorado": {
           "parque": 78,
           "lt": 64,
-          "global": 75.2
+          "global": 75.2,
+          "grupo": "B"
         },
         "central-fotovoltaica-quasara": {
           "parque": 37.5,
           "lt": 15,
-          "global": 33
+          "global": 33,
+          "grupo": "C"
         },
         "tikinmul": {
           "parque": 50,
           "lt": 32.5,
-          "global": 46.5
+          "global": 46.5,
+          "grupo": "C"
         },
         "el-palmar": {
           "parque": 73,
           "lt": 58,
-          "global": 70
+          "global": 70,
+          "grupo": "C"
         },
         "la-pasion": {
           "parque": 55,
           "lt": 44,
-          "global": 52.8
+          "global": 52.8,
+          "grupo": "C"
         },
         "san-pedro-solar": {
           "parque": 80.5,
           "lt": 75.5,
-          "global": 79.5
+          "global": 79.5,
+          "grupo": "B"
         },
         "energia-limpia-el-mezquite": {
           "parque": 70,
           "lt": 60.5,
-          "global": 68.1
+          "global": 68.1,
+          "grupo": "C"
         },
         "parque-fv-energias-renovables-de-mexico-tres": {
           "parque": 71.5,
           "lt": 54,
-          "global": 68
+          "global": 68,
+          "grupo": "C"
         },
         "parque-fv-energias-renovables-saas-peto": {
           "parque": 72.5,
           "lt": 39.5,
-          "global": 65.9
+          "global": 65.9,
+          "grupo": "C"
         },
         "parque-fv-energias-renovables-kiin-tekax": {
           "parque": 73,
           "lt": 55.5,
-          "global": 69.5
+          "global": 69.5,
+          "grupo": "C"
         },
         "parque-fv-energias-renovables-de-tamaulipas": {
           "parque": 85,
           "lt": 71,
-          "global": 82.2
+          "global": 82.2,
+          "grupo": "A"
         },
         "viento-de-bella-union": {
           "parque": 57.5,
           "lt": 62,
-          "global": 58.4
+          "global": 58.4,
+          "grupo": "C"
         },
         "dalia-3-pv-castamay": {
           "parque": 72.5,
           "lt": 25,
-          "global": 63
+          "global": 63,
+          "grupo": "C"
         },
         "fresnillo-pv-atocha": {
           "parque": 61.5,
           "lt": 48,
-          "global": 58.8
+          "global": 58.8,
+          "grupo": "C"
         },
         "energeo-los-molinos": {
           "parque": 79.5,
           "lt": 71,
-          "global": 77.8
+          "global": 77.8,
+          "grupo": "B"
         },
         "montecristo": {
           "parque": 54,
           "lt": 25,
-          "global": 48.2
+          "global": 48.2,
+          "grupo": "C"
         },
         "sol-de-sonora-70": {
           "parque": 80.5,
           "lt": 76,
-          "global": 79.6
+          "global": 79.6,
+          "grupo": "B"
         },
         "pv-moquel-solar": {
           "parque": 77,
           "lt": 57.65,
-          "global": 73.13
+          "global": 73.13,
+          "grupo": "B"
         },
         "selka-power-plant-i": {
           "parque": 86.5,
           "lt": 37,
-          "global": 76.6
+          "global": 76.6,
+          "grupo": "A"
         },
         "global-solar-3-campeche": {
           "parque": 64.75,
           "lt": 59,
-          "global": 63.6
+          "global": 63.6,
+          "grupo": "C"
         },
         "concepcion-mendizabal-mendoza-fase-i-ii-iii": {
           "parque": 74,
           "lt": 74,
-          "global": 74
+          "global": 74,
+          "grupo": "C"
         },
         "cfv-las-garzas": {
           "parque": 58,
           "lt": 45,
-          "global": 55.4
+          "global": 55.4,
+          "grupo": "C"
         },
         "cimarron-solar": {
           "parque": 32.5,
           "lt": 25,
-          "global": 31
+          "global": 31,
+          "grupo": "C"
         },
         "sunora": {
           "parque": 49.5,
           "lt": 25,
-          "global": 44.6
+          "global": 44.6,
+          "grupo": "C"
         },
         "la-poza-solar": {
           "parque": 57.5,
           "lt": 25,
-          "global": 51
+          "global": 51,
+          "grupo": "C"
         },
         "sierra-madre-el-chorro-2da-ronda": {
           "parque": 10,
           "lt": 10,
-          "global": 10
+          "global": 10,
+          "grupo": "C"
         },
         "delaro-2da-ronda": {
           "parque": 79.5,
           "lt": 75,
-          "global": 78.6
+          "global": 78.6,
+          "grupo": "B"
         }
       }
     },
@@ -203,192 +241,230 @@
         "san-simon-solar": {
           "parque": 94,
           "lt": 93,
-          "global": 93.8
+          "global": 93.8,
+          "grupo": "A"
         },
         "proyecto-eolico-region-noreste-la-noria": {
           "parque": 56.75,
           "lt": 55.5,
-          "global": 56.5
+          "global": 56.5,
+          "grupo": "C"
         },
         "solitario": {
           "parque": 73,
           "lt": 55.5,
-          "global": 69.5
+          "global": 69.5,
+          "grupo": "C"
         },
         "alvaro-obregon": {
           "parque": 86.5,
           "lt": 85.5,
-          "global": 86.3
+          "global": 86.3,
+          "grupo": "A"
         },
         "pv-sandom-solar": {
           "parque": 76,
           "lt": 51.5,
-          "global": 71.1
+          "global": 71.1,
+          "grupo": "B"
         },
         "santa-gertrudis": {
           "parque": 54,
           "lt": 25,
-          "global": 48.2
+          "global": 48.2,
+          "grupo": "C"
         },
         "el-guajillo": {
           "parque": 54,
           "lt": 25,
-          "global": 48.2
+          "global": 48.2,
+          "grupo": "C"
         },
         "solar-energia-tres-hermanos": {
           "parque": 73.5,
           "lt": 33,
-          "global": 65.4
+          "global": 65.4,
+          "grupo": "C"
         },
         "los-girasoles": {
           "parque": 66,
           "lt": 66,
-          "global": 66
+          "global": 66,
+          "grupo": "C"
         },
         "don-humberto": {
           "parque": 83,
           "lt": 71.5,
-          "global": 80.7
+          "global": 80.7,
+          "grupo": "B"
         },
         "planta-solar-haab-kiin": {
           "parque": 74,
           "lt": 69.5,
-          "global": 73.1
+          "global": 73.1,
+          "grupo": "C"
         },
         "planta-solar-cerro-colorado": {
           "parque": 78,
           "lt": 64,
-          "global": 75.2
+          "global": 75.2,
+          "grupo": "B"
         },
         "central-fotovoltaica-quasara": {
           "parque": 18,
           "lt": 25,
-          "global": 19.4
+          "global": 19.4,
+          "grupo": "C"
         },
         "tikinmul": {
           "parque": 50,
           "lt": 32.5,
-          "global": 46.5
+          "global": 46.5,
+          "grupo": "C"
         },
         "el-palmar": {
           "parque": 73,
           "lt": 58,
-          "global": 70
+          "global": 70,
+          "grupo": "C"
         },
         "la-pasion": {
           "parque": 55,
           "lt": 44,
-          "global": 52.8
+          "global": 52.8,
+          "grupo": "C"
         },
         "san-pedro-solar": {
           "parque": 80.5,
           "lt": 75.5,
-          "global": 79.5
+          "global": 79.5,
+          "grupo": "B"
         },
         "energia-limpia-el-mezquite": {
           "parque": 70,
           "lt": 60.5,
-          "global": 68.1
+          "global": 68.1,
+          "grupo": "C"
         },
         "parque-fv-energias-renovables-de-mexico-tres": {
           "parque": 71.5,
           "lt": 54,
-          "global": 68
+          "global": 68,
+          "grupo": "C"
         },
         "parque-fv-energias-renovables-saas-peto": {
           "parque": 72.5,
           "lt": 39.5,
-          "global": 65.9
+          "global": 65.9,
+          "grupo": "C"
         },
         "parque-fv-energias-renovables-kiin-tekax": {
           "parque": 73,
           "lt": 55.5,
-          "global": 69.5
+          "global": 69.5,
+          "grupo": "C"
         },
         "parque-fv-energias-renovables-de-tamaulipas": {
           "parque": 85,
           "lt": 71,
-          "global": 82.2
+          "global": 82.2,
+          "grupo": "A"
         },
         "viento-de-bella-union": {
           "parque": 57.5,
           "lt": 62,
-          "global": 58.4
+          "global": 58.4,
+          "grupo": "C"
         },
         "dalia-3-pv-castamay": {
           "parque": 72.5,
           "lt": 25,
-          "global": 63
+          "global": 63,
+          "grupo": "C"
         },
         "fresnillo-pv-atocha": {
           "parque": 61.5,
           "lt": 48,
-          "global": 58.8
+          "global": 58.8,
+          "grupo": "C"
         },
         "energeo-los-molinos": {
           "parque": 79.5,
           "lt": 71,
-          "global": 77.8
+          "global": 77.8,
+          "grupo": "B"
         },
         "montecristo": {
           "parque": 54,
           "lt": 25,
-          "global": 48.2
+          "global": 48.2,
+          "grupo": "C"
         },
         "sol-de-sonora-70": {
           "parque": 80.5,
           "lt": 76,
-          "global": 79.6
+          "global": 79.6,
+          "grupo": "B"
         },
         "pv-moquel-solar": {
           "parque": 77,
           "lt": 57.65,
-          "global": 73.13
+          "global": 73.13,
+          "grupo": "B"
         },
         "selka-power-plant-i": {
           "parque": 86.5,
           "lt": 37,
-          "global": 76.6
+          "global": 76.6,
+          "grupo": "A"
         },
         "concepcion-mendizabal-mendoza-fase-i-ii-iii": {
           "parque": 81.5,
           "lt": 81.5,
-          "global": 81.5
+          "global": 81.5,
+          "grupo": "B"
         },
         "global-solar-3-campeche": {
           "parque": 81.5,
           "lt": 69,
-          "global": 79
+          "global": 79,
+          "grupo": "B"
         },
         "cfv-las-garzas": {
           "parque": 58,
           "lt": 45,
-          "global": 55.4
+          "global": 55.4,
+          "grupo": "C"
         },
         "cimarron-solar": {
           "parque": 32.5,
           "lt": 25,
-          "global": 31
+          "global": 31,
+          "grupo": "C"
         },
         "sunora": {
           "parque": 49.5,
           "lt": 25,
-          "global": 44.6
+          "global": 44.6,
+          "grupo": "C"
         },
         "la-poza-solar": {
           "parque": 57.5,
           "lt": 25,
-          "global": 51
+          "global": 51,
+          "grupo": "C"
         },
         "sierra-madre-el-chorro-2da-ronda": {
           "parque": 10,
           "lt": 10,
-          "global": 10
+          "global": 10,
+          "grupo": "C"
         },
         "delaro-2da-ronda": {
           "parque": 79.5,
           "lt": 75,
-          "global": 78.6
+          "global": 78.6,
+          "grupo": "B"
         }
       }
     }

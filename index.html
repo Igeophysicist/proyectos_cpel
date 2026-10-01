@@ -56,9 +56,13 @@
       </a>
     </div>
   
-    <div class="section-title">AVISOS Y ACTUALIZACIONES</div>
-
-    <div class="avisos" id="avisos-list"></div>
+    <section class="semana" id="semana" aria-labelledby="semanaTitulo" hidden>
+      <h2 class="section-title" id="semanaTitulo">ESTA SEMANA</h2>
+      <div class="semana__tarjetas">
+        <article class="semana-card" id="semanaMixtos" hidden></article>
+        <article class="semana-card" id="semanaCartera" hidden></article>
+      </div>
+    </section>
   </main>
 
   <footer class="site-footer" id="siteFooter" role="button" tabindex="0" aria-haspopup="dialog" aria-controls="sheetColaboradores">
@@ -87,5 +91,7 @@
   <script src="assets/js/shared/dialog.js"></script>
   <script src="assets/js/shared/pwa.js"></script>
   <script src="assets/js/landing.js"></script>
+  <script src="assets/js/semana-resumen.js"></script>
+  <script src="assets/js/semana-portal.js"></script>
 </body>
 </html>

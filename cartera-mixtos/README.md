@@ -117,7 +117,7 @@ agregar más archivos KML, súmalos al arreglo `KML_SOURCES` en
 ## Evolución por corte
 
 La ficha de cada proyecto muestra, al final (después de "Financiero"), Parque,
-LT y Global de cada corte semanal (jueves 8:00) y la tendencia de Global
+LT y Global de cada semana con actualizaciones y la tendencia de Global
 (`assets/js/evolucion.js`, con datos de `data/historial.json`; ver
 "Curva de avance" en el README de la raíz). El texto solo indica si
 Global avanzó, disminuyó o se mantuvo en el último corte; no hace

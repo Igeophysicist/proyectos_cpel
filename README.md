@@ -4,7 +4,7 @@ Sitio estático (HTML/CSS/JS sin build step) publicado en GitHub Pages.
 
 | Ruta | Contenido |
 |---|---|
-| `index.html` | Portal: accesos, avisos (`data/avisos.json`) y colaboradores (`data/colaboradores.json`). |
+| `index.html` | Portal: accesos, sección "Esta semana" y colaboradores (`data/colaboradores.json`). |
 | `cartera-mixtos/` | Panel de proyectos mixtos: listado, filtros, mapa y resumen. Ver su [README](cartera-mixtos/README.md). |
 | `cartera-cpel/` | Ficha por proyecto de la cartera CPEL. Ver su [README](cartera-cpel/README.md). |
 | `assets/js/shared/` | Módulos compartidos por las tres páginas (ver abajo). |
@@ -62,13 +62,17 @@ revisar un Excel antes de subirlo: `npm install` y luego `npm run data`
 - **Cartera CPEL:** botón **Curva de avance** (junto a Ficha técnica y
   Plazos). **Mixtos:** sección **Evolución por corte** en la ficha de
   cada proyecto (Parque, LT y Global).
-- **El corte semanal es cada jueves a las 8:00** (hora de México). La
-  Action "Datos" guarda el avance en `data/historial.json` de cada
-  tablero (`scripts/historial.js`) según la fecha de guardado del
-  Excel: lo guardado de jueves 8:00 al jueves siguiente 7:59 es **un
-  solo punto**, el de ese primer jueves. Las correcciones de esos días
-  reemplazan ese punto; el siguiente aparece con el corte del jueves
-  siguiente. Subir solo un KML (sin cambiar el Excel) no agrega puntos.
+- **Un punto por semana.** La Action "Datos" guarda el avance en
+  `data/historial.json` de cada tablero (`scripts/historial.js`) según
+  la fecha de guardado del Excel (hora de México). Lo guardado después
+  dentro de la misma semana **reemplaza** ese punto (cada Excel trae la
+  hoja completa). Subir solo un KML (sin cambiar el Excel) no agrega
+  puntos.
+  - **Cartera CPEL:** corte cada **jueves a las 8:00**; lo guardado de
+    jueves 8:00 al jueves siguiente 7:59 es el punto de ese jueves.
+  - **Mixtos:** se actualiza lunes, miércoles y viernes; la semana va
+    de **lunes a domingo** y el punto queda en el día de la última
+    actualización. Las semanas sin actualizaciones no tienen punto.
 - Los cortes previos a esta regla (24–30 sep 2026, reconstruidos de las
   versiones anteriores de los Excel) se conservan en la fecha en que se
   guardó su Excel.
@@ -84,6 +88,24 @@ revisar un Excel antes de subirlo: `npm install` y luego `npm run data`
   Excel, su historial empieza de nuevo.
 - Para quitar un corte que quedó mal, se borra su bloque en
   `data/historial.json` (o pídeselo a quien mantenga el sitio).
+
+## Esta semana (portal)
+
+Sección del portal, debajo de los accesos, que se arma sola con los
+historiales (`assets/js/semana-resumen.js` calcula y
+`assets/js/semana-portal.js` pinta):
+
+- **Mixtos:** los proyectos cuyo avance de **Parque** cambió entre la
+  última semana con actualizaciones y la anterior, con el cambio en
+  puntos y si su **grupo de atención** cambió o se mantuvo. Si en la
+  semana actual no hubo actualizaciones, lo dice y muestra la última
+  semana que sí tuvo.
+- **Cartera CPEL:** tabla compacta con el avance **Real** y
+  **Programado** de cada proyecto en el último corte y una flecha con
+  el cambio del Real contra el corte anterior.
+
+Cada nombre abre la ficha del proyecto. Si los datos no cargan, la
+sección no aparece.
 
 ## Enlaces directos y fecha de los datos
 
@@ -188,13 +210,13 @@ Pages ese archivo no hace nada y el sitio queda abierto.
    vuelve **privado** este repositorio (Settings → General → Change
    visibility). Mientras el repositorio sea público, los Excel y KML
    se pueden descargar directo desde GitHub sin contraseña.
-9. Haz un cambio pequeño (p. ej. un aviso) y confirma que aparece una
+9. Haz un cambio pequeño (p. ej. en este README) y confirma que aparece una
    publicación nueva en **Deployments**. Si no, en GitHub: Settings →
    Applications → Cloudflare Workers and Pages → Configure, y agrega
    este repositorio.
 
 No escribas el link de Cloudflare ni la contraseña en el repositorio
-(avisos, README, commits) mientras sea público.
+(README, commits, datos) mientras sea público.
 
 Usa una frase larga (4–5 palabras) como contraseña: el formulario
 espera 1.5 s tras cada intento fallido, pero no bloquea por IP.
@@ -210,13 +232,6 @@ Settings → Variables and Secrets → edita `SITE_PASSWORD` → Deployments
 npx wrangler pages dev . --binding SITE_PASSWORD="contraseña de prueba"
 # abre http://127.0.0.1:8788/
 ```
-
-## Avisos
-
-Para publicar un aviso, agrega un objeto a `data/avisos.json` con
-`fecha` (`AAAA-MM-DD`) y `texto`. El texto se inserta como HTML a
-propósito (permite `<b>`, `<br>`), así que solo debe editarlo personal
-de confianza.
 
 ## Probar en local
 
