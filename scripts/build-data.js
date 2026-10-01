@@ -19,8 +19,8 @@
  * (mismas opciones de SheetJS), para no cambiar nada de su lógica.
  *
  * Además registra el CORTE SEMANAL en data/historial.json de cada tablero
- * (curva de avance; ver scripts/historial.js): jueves 8:00 a jueves 8:00;
- * las correcciones dentro de ese lapso reemplazan su punto.
+ * (curva de avance; ver scripts/historial.js): un punto por semana
+ * (Cartera: jueves 8:00 a jueves 8:00; Mixtos: lunes a domingo).
  */
 const fs = require("fs");
 const path = require("path");
@@ -37,6 +37,7 @@ const DATASETS = [
     excel: "data/datos_proyectos.xlsx",
     json: "data/datos_proyectos.json",
     historial: "data/historial.json",
+    regla: "jueves", // corte cada jueves 8:00
     snapshot: snapshotCartera,
     kml: ["data/CARTERA-CPEL.kml"],
     // Igual que cartera.js antes: primera hoja, valores crudos.
@@ -49,6 +50,7 @@ const DATASETS = [
     excel: "data/DATOS_MIXTOS.xlsx",
     json: "data/DATOS_MIXTOS.json",
     historial: "data/historial.json",
+    regla: "semana", // lunes a domingo (se actualiza lunes, miércoles y viernes)
     snapshot: snapshotMixtos,
     kml: ["data/ENTRADA_PROYECTOS.kml", "data/AREAS_REFERENCIA.kml"],
     // Igual que data.js antes: hoja "Proyectos", texto tal como se ve en Excel.
@@ -114,16 +116,17 @@ function buildDataset(ds) {
     json: toJson(data),
     jsonPath: path.join(dir, ds.json),
     corte: data.excelModificado ? { excel: data.excelModificado, proyectos: ds.snapshot(rows) } : null,
+    regla: ds.regla,
     historialPath: path.join(dir, ds.historial),
   };
 }
 
 const readJson = (file) => (fs.existsSync(file) ? JSON.parse(fs.readFileSync(file, "utf8")) : null);
 
-/** Historial con el corte de este Excel agregado (o reemplazado en su jueves). */
+/** Historial con el corte de este Excel agregado (o reemplazado en su semana). */
 function historialWithCorte(result) {
   const current = readJson(result.historialPath);
-  return result.corte ? upsertCorte(current, result.corte) : current || { cortes: [] };
+  return result.corte ? upsertCorte(current, result.corte, result.regla) : current || { cortes: [] };
 }
 
 // ------------------------------------------------------------ reporte
