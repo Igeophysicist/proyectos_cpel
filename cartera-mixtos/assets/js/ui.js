@@ -5,6 +5,7 @@
  */
 (function (global) {
   const GRUPO_INFO = global.AppData.GRUPO_INFO;
+  const { esc } = global.TextUtils;
   const fmtInt = new Intl.NumberFormat("es-MX", { maximumFractionDigits: 0 });
   const fmtMoney = new Intl.NumberFormat("es-MX", {
     style: "currency",
@@ -13,8 +14,21 @@
     notation: "compact",
   });
 
-  function badgeClass(grupo) {
-    return (GRUPO_INFO[grupo] || {}).css || "";
+  /**
+   * Hace "activables" los elementos que coinciden con selector dentro de
+   * container: responden al clic y, para quien navega con teclado, a
+   * Enter y Espacio (los elementos deben llevar role="button" tabindex="0").
+   */
+  function onActivate(container, selector, callback) {
+    container.querySelectorAll(selector).forEach((el) => {
+      el.addEventListener("click", () => callback(el));
+      el.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          callback(el);
+        }
+      });
+    });
   }
 
   // ---------------------------------------------------------------- KPIs
@@ -75,7 +89,7 @@
     // styles.css) en lugar de aparecer ya llena.
     return `
       <div class="pbar">
-        <span class="pbar__label">${label}</span>
+        <span class="pbar__label">${esc(label)}</span>
         <span class="pbar__track"><span class="pbar__fill" style="--pct:${Math.min(pct, 100)}%"></span></span>
         <span class="pbar__val tabular">${pct}%</span>
       </div>`;
@@ -84,18 +98,18 @@
   function projectCardHtml(p) {
     const grupoInfo = GRUPO_INFO[p.grupo];
     return `
-      <div class="pcard ${p.geo ? "" : "pcard--nogeo"}" data-id="${p.id}">
+      <div class="pcard ${p.geo ? "" : "pcard--nogeo"}" data-id="${esc(p.id)}" role="button" tabindex="0">
         <div class="pcard__top">
           <div>
-            <div class="pcard__title">${p.nombre}</div>
-            <div class="pcard__sub">${[p.socio, p.ubicacion].filter(Boolean).join(" · ")}</div>
+            <div class="pcard__title">${esc(p.nombre)}</div>
+            <div class="pcard__sub">${esc([p.socio, p.ubicacion].filter(Boolean).join(" · "))}</div>
           </div>
           ${grupoInfo ? `<span class="badge badge--${grupoInfo.css}">${grupoInfo.label}</span>` : ""}
         </div>
         <div class="pcard__meta">
-          ${p.tecnologia ? `<span><b>${p.tecnologia}</b></span>` : ""}
-          ${p.capacidad ? `<span>${p.capacidad}</span>` : ""}
-          ${p.capex ? `<span>${p.capex}</span>` : ""}
+          ${p.tecnologia ? `<span><b>${esc(p.tecnologia)}</b></span>` : ""}
+          ${p.capacidad ? `<span>${esc(p.capacidad)}</span>` : ""}
+          ${p.capex ? `<span>${esc(p.capex)}</span>` : ""}
         </div>
         <div class="pcard__bars">
           ${progressRow("Parque", p.parquePct)}
@@ -122,9 +136,7 @@
     }
 
     container.innerHTML = projects.map(projectCardHtml).join("");
-    container.querySelectorAll(".pcard").forEach((card) => {
-      card.addEventListener("click", () => onSelect(card.getAttribute("data-id")));
-    });
+    onActivate(container, ".pcard", (card) => onSelect(card.getAttribute("data-id")));
   }
 
   // ------------------------------------------------------------ Detalle
@@ -146,7 +158,7 @@
   function detailField(p, key, label) {
     const value = p[key];
     if (value === null || value === undefined || value === "") return "";
-    return `<div><div class="detail-field__label">${label}</div><div class="detail-field__value">${value}</div></div>`;
+    return `<div><div class="detail-field__label">${esc(label)}</div><div class="detail-field__value">${esc(value)}</div></div>`;
   }
 
   function renderDetail(elId, p) {
@@ -161,8 +173,8 @@
       <div class="detail__head">
         <button class="detail__close" data-close-detail aria-label="Cerrar">&times;</button>
         ${grupoInfo ? `<span class="detail__badge badge--${grupoInfo.css}">${grupoInfo.label}</span>` : ""}
-        <div class="detail__title">${p.nombre}</div>
-        <div class="detail__sub">${[p.socio, p.ubicacion].filter(Boolean).join(" · ")}</div>
+        <div class="detail__title" id="detail-title">${esc(p.nombre)}</div>
+        <div class="detail__sub">${esc([p.socio, p.ubicacion].filter(Boolean).join(" · "))}</div>
       </div>
       <div class="detail__body">
         <div class="detail__section-title">Avance</div>
@@ -172,7 +184,7 @@
           ${progressRow("Global", p.globalPct)}
         </div>
         ${sections}
-        ${p.geo ? `<button class="detail__mapbtn" data-view-on-map="${p.id}">Ver en el mapa</button>` : ""}
+        ${p.geo ? `<button class="detail__mapbtn" data-view-on-map="${esc(p.id)}">Ver en el mapa</button>` : ""}
       </div>`;
   }
 
@@ -192,12 +204,12 @@
         .map((value) => {
           const active = state[field].has(value);
           const text = field === "grupo" ? GRUPO_LABELS[value] || value : value;
-          return `<button class="chip ${active ? "is-active" : ""}" data-field="${field}" data-value="${value}">${text}</button>`;
+          return `<button class="chip ${active ? "is-active" : ""}" data-field="${esc(field)}" data-value="${esc(value)}" aria-pressed="${active}">${esc(text)}</button>`;
         })
         .join("");
       return `
         <div class="filter-group">
-          <div class="filter-group__title">${LABELS[field] || field}</div>
+          <div class="filter-group__title">${esc(LABELS[field] || field)}</div>
           <div class="chip-row">${chips}</div>
         </div>`;
     });
@@ -218,5 +230,5 @@
     el._t = setTimeout(() => el.classList.remove("is-visible"), 4000);
   }
 
-  global.AppUI = { renderKPIs, renderProjectList, renderDetail, renderFilterOptions, showToast };
+  global.AppUI = { renderKPIs, renderProjectList, renderDetail, renderFilterOptions, showToast, onActivate };
 })(window);

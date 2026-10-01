@@ -3,6 +3,9 @@
  * Orquesta la carga de datos y conecta filtros, mapa, gráficos, lista
  * y panel de detalle. Es el único archivo que conoce la aplicación
  * completa; los demás módulos son independientes entre sí.
+ *
+ * Requiere: shared/text-utils.js, shared/dialog.js y el resto de
+ * módulos de assets/js (data, map, charts, filters, ui).
  */
 (function () {
   let allProjects = [];
@@ -23,7 +26,12 @@
     mapEmpty: document.getElementById("map-empty"),
     tabbarBtns: Array.from(document.querySelectorAll(".tabbar__btn")),
     toast: document.getElementById("toast"),
+    rankingHint: document.getElementById("ranking-hint"),
   };
+
+  // Espera tras la última tecla antes de volver a filtrar y redibujar
+  // (gráficas, mapa y lista se reconstruyen en cada render).
+  const SEARCH_DEBOUNCE_MS = 150;
 
   function render() {
     const filtered = window.AppFilters.apply(allProjects);
@@ -51,7 +59,7 @@
     const project = projectsById.get(projectId);
     if (!project) return;
     window.AppUI.renderDetail("detail-body", project);
-    els.detail.classList.add("is-open");
+    window.Dialog.open(els.detail);
 
     const mapBtn = els.detailBody.querySelector("[data-view-on-map]");
     if (mapBtn) {
@@ -64,25 +72,38 @@
   }
 
   function closeDetail() {
-    els.detail.classList.remove("is-open");
+    window.Dialog.close(els.detail);
   }
 
-  function openFilters() {
+  /** Redibuja los chips de filtro; "focus" = {field, value} a re-enfocar. */
+  function renderFilters(focus) {
     window.AppUI.renderFilterOptions(
       "filter-options",
       window.AppFilters.buildFilterOptions(allProjects),
       window.AppFilters.state,
       (field, value) => {
         window.AppFilters.toggle(field, value);
-        openFilters(); // re-render chips con nuevo estado activo
+        renderFilters({ field, value }); // chips con el nuevo estado activo
         render();
       }
     );
-    els.filters.classList.add("is-open");
+    // Al redibujar se pierde el chip enfocado; se recupera para que quien
+    // usa teclado no salga despedido al inicio de la página.
+    if (focus) {
+      const chip = Array.from(els.filterOptions.querySelectorAll(".chip")).find(
+        (c) => c.dataset.field === focus.field && c.dataset.value === focus.value
+      );
+      if (chip) chip.focus();
+    }
+  }
+
+  function openFilters() {
+    renderFilters();
+    window.Dialog.open(els.filters);
   }
 
   function closeFilters() {
-    els.filters.classList.remove("is-open");
+    window.Dialog.close(els.filters);
   }
 
   function switchTab(name) {
@@ -95,9 +116,10 @@
   }
 
   function wireEvents() {
+    const renderDebounced = window.TextUtils.debounce(render, SEARCH_DEBOUNCE_MS);
     els.search.addEventListener("input", (e) => {
       window.AppFilters.setSearch(e.target.value);
-      render();
+      renderDebounced();
     });
 
     els.filterBtn.addEventListener("click", openFilters);
@@ -106,16 +128,13 @@
     els.filterClear.addEventListener("click", () => {
       window.AppFilters.clearAll();
       els.search.value = "";
-      openFilters();
+      renderFilters();
       render();
     });
 
     els.detail.querySelector(".detail__scrim").addEventListener("click", closeDetail);
     els.detailBody.addEventListener("click", (e) => {
-      if (e.target.matches("[data-close-detail]")) closeDetail();
-    });
-    document.addEventListener("click", (e) => {
-      if (e.target.matches("[data-close-detail]")) closeDetail();
+      if (e.target.closest("[data-close-detail]")) closeDetail();
     });
 
     els.tabbarBtns.forEach((btn) => {
@@ -129,6 +148,7 @@
 
   async function bootstrap() {
     try {
+      els.rankingHint.textContent = `Top ${window.AppCharts.RANKING_TOP_N}`;
       window.AppMap.initMap("map");
       wireEvents();
 
@@ -143,8 +163,12 @@
       // después de la primera pintura).
       setTimeout(() => window.AppMap.refit(), 100);
 
+      // Los avisos de vinculación quedan en la consola para diagnóstico;
+      // el toast visible sigue desactivado a propósito.
+      if (warnings.length) {
+        console.warn("Avisos de vinculación Excel ↔ KML:\n" + warnings.join("\n"));
+      }
       //if (warnings.length) {
-      //  console.warn("Avisos de vinculación Excel ↔ KML:\n" + warnings.join("\n"));
       //  window.AppUI.showToast(
       //    "toast",
       //    `${warnings.length} proyecto(s) sin vínculo geográfico exacto. Ver consola para detalle.`
@@ -153,7 +177,7 @@
     } catch (err) {
       console.error(err);
       els.loaderText.textContent =
-        "No se pudieron cargar los datos. Verifica que dataparsedprueba.xlsx y el KML estén publicados junto a este HTML. Detalle: " +
+        "No se pudieron cargar los datos. Verifica que data/DATOS_MIXTOS.xlsx y los KML estén publicados junto a este HTML. Detalle: " +
         err.message;
     }
   }

@@ -4,14 +4,22 @@
  * principal. Para publicar un aviso nuevo, solo agrega un objeto al
  * arreglo de ese archivo (fecha "AAAA-MM-DD" + texto) — no hace falta
  * tocar este script. El más reciente por fecha se muestra primero.
+ *
+ * IMPORTANTE: el campo "texto" de avisos.json se inserta como HTML a
+ * propósito (para permitir <b>, <br>, <i>, etc.). Solo deben editarlo
+ * personas de confianza; nunca se debe llenar con texto de terceros.
+ *
+ * Requiere: shared/text-utils.js y shared/dialog.js.
  */
 (function () {
   const AVISOS_URL = "data/avisos.json";
   const COLABORADORES_URL = "data/colaboradores.json";
 
+  const { esc, parseDate } = window.TextUtils;
+
   function formatFecha(iso) {
-    const d = new Date(iso + "T00:00:00");
-    if (Number.isNaN(d.getTime())) return iso;
+    const d = parseDate(iso);
+    if (!d) return esc(iso);
     return d.toLocaleDateString("es-MX", { day: "numeric", month: "long", year: "numeric" });
   }
 
@@ -54,11 +62,6 @@
   // viene de data/colaboradores.json (un simple arreglo de strings) —
   // para agregar o quitar colaboradores solo se edita ese archivo, no
   // hace falta tocar este script.
-  function escHtml(value) {
-    return String(value ?? "")
-      .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-  }
-
   let colaboradoresCargados = false;
 
   async function cargarColaboradores() {
@@ -72,7 +75,7 @@
         lista.innerHTML = `<li class="colaboradores-empty">Sin colaboradores registrados.</li>`;
         return;
       }
-      lista.innerHTML = nombres.map((nombre) => `<li>${escHtml(nombre)}</li>`).join("");
+      lista.innerHTML = nombres.map((nombre) => `<li>${esc(nombre)}</li>`).join("");
     } catch (err) {
       console.error("No se pudieron cargar los colaboradores:", err);
       lista.innerHTML = `<li class="colaboradores-empty">No se pudieron cargar los colaboradores.</li>`;
@@ -80,10 +83,7 @@
   }
 
   function abrirColaboradores() {
-    const sheet = document.getElementById("sheetColaboradores");
-    if (!sheet) return;
-    sheet.classList.add("is-open");
-    sheet.setAttribute("aria-hidden", "false");
+    window.Dialog.open(document.getElementById("sheetColaboradores"));
     // Se carga la primera vez que se abre (no en cada apertura), así el
     // dato no queda desactualizado si se edita el JSON durante la sesión
     // pero tampoco se repite la petición innecesariamente.
@@ -91,10 +91,7 @@
   }
 
   function cerrarColaboradores() {
-    const sheet = document.getElementById("sheetColaboradores");
-    if (!sheet) return;
-    sheet.classList.remove("is-open");
-    sheet.setAttribute("aria-hidden", "true");
+    window.Dialog.close(document.getElementById("sheetColaboradores"));
   }
 
   function wireColaboradores() {
@@ -110,9 +107,6 @@
     }
     document.addEventListener("click", (e) => {
       if (e.target.closest("[data-close-sheet]")) cerrarColaboradores();
-    });
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") cerrarColaboradores();
     });
   }
 

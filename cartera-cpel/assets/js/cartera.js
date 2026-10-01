@@ -25,10 +25,15 @@
  *
  * Para agregar/quitar campos de los Avances particulares, edita la
  * lista PARTICULARES: cada entrada es [columna del Excel, etiqueta].
+ *
+ * HITOS: se muestran tantos hitos como columnas "hitoN_..." tenga el
+ * Excel (hito1_num, hito1_titulo, hito1_fecha, hito1_desc, hito2_...).
+ * Para agregar un quinto hito basta con agregar las columnas hito5_*.
+ *
+ * Requiere: shared/text-utils.js, shared/dialog.js y map.js.
  */
 (function () {
   const EXCEL_FILE_PATH = "data/datos_proyectos.xlsx";
-  const IMAGEN_POR_DEFECTO = "";
 
   // Avances particulares: [sufijo de columna, etiqueta]. Lee prog<Sufijo> y real<Sufijo>.
   const PARTICULARES = [
@@ -135,55 +140,58 @@
     ["plazo_operacion_fecha", "Operación"],
   ];
 
+  const { esc, parseNumber, parseDate, isPastOrToday } = window.TextUtils;
+
   let proyectos = [];
+  let totalHitos = 0;
   const $ = (id) => document.getElementById(id);
 
   // ---------------------------------------------------------- utilidades
-  function esc(value) {
-    return String(value ?? "")
-      .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
-  }
-
   function texto(value, fallback = "—") {
     const s = String(value ?? "").trim();
     return s === "" ? fallback : s;
   }
 
-  /** Convierte "dd/mm/aaaa" (como vienen las fechas del Excel) a Date, o null si no aplica. */
-  function parseFechaDMY(value) {
-    const s = String(value ?? "").trim();
-    const m = s.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/);
-    if (!m) return null;
-    const [, d, mo, y] = m;
-    const fecha = new Date(Number(y), Number(mo) - 1, Number(d));
-    return Number.isNaN(fecha.getTime()) ? null : fecha;
-  }
-
-  /** true si la fecha (dd/mm/aaaa) ya pasó (es hoy o anterior a hoy). */
+  /** true si la fecha de la celda (dd/mm/aaaa o dd/mm/aa) ya pasó o es hoy. */
   function yaPaso(value) {
-    const fecha = parseFechaDMY(value);
-    if (!fecha) return false;
-    const hoy = new Date();
-    hoy.setHours(0, 0, 0, 0);
-    return fecha.getTime() <= hoy.getTime();
+    return isPastOrToday(parseDate(String(value ?? "")));
   }
 
+  /** Porcentaje redondeado a 1 decimal ("30.76" o "30.76%" -> 30.8). */
   function pct(value) {
-    const n = parseFloat(String(value ?? "").replace("%", ""));
-    if (!Number.isFinite(n)) return 0;
-    return Math.round(n * 10) / 10;
+    const n = parseNumber(value);
+    return n === null ? 0 : Math.round(n * 10) / 10;
+  }
+
+  /** Ancho de barra acotado a 0–100%. */
+  function ancho(v) {
+    return Math.max(0, Math.min(v, 100));
   }
 
   function setBar(barId, valId, value) {
     const v = pct(value);
-    $(barId).style.width = Math.max(0, Math.min(v, 100)) + "%";
+    $(barId).style.width = ancho(v) + "%";
     $(valId).textContent = v + "%";
+  }
+
+  /** Mayor N de las columnas "hitoN_..." presentes en el Excel. */
+  function contarHitos(filas) {
+    let max = 0;
+    filas.forEach((fila) => {
+      Object.keys(fila).forEach((col) => {
+        const m = col.match(/^hito(\d+)_/);
+        if (m) max = Math.max(max, Number(m[1]));
+      });
+    });
+    return max;
   }
 
   // ------------------------------------------------------------- carga
   async function cargarExcel() {
+    // El KML no depende del Excel: se pide en paralelo.
+    const kmlListo = window.CarteraMap ? window.CarteraMap.cargarKML() : Promise.resolve(false);
     try {
-      const res = await fetch(EXCEL_FILE_PATH);
+      const res = await fetch(EXCEL_FILE_PATH, { cache: "no-store" });
       if (!res.ok) throw new Error(`No se pudo cargar ${EXCEL_FILE_PATH} (HTTP ${res.status})`);
       const workbook = XLSX.read(await res.arrayBuffer(), { type: "array" });
       const hoja = workbook.Sheets[workbook.SheetNames[0]];
@@ -192,8 +200,9 @@
         .filter((p) => String(p.nombre || "").trim() !== ""); // descarta filas vacías
 
       if (!proyectos.length) throw new Error("El Excel no tiene proyectos.");
+      totalHitos = contarHitos(proyectos);
       poblarSelector();
-      if (window.CarteraMap) await window.CarteraMap.cargarKML();
+      await kmlListo;
       mostrarProyecto(proyectos[0]);
     } catch (err) {
       console.error(err);
@@ -212,9 +221,11 @@
   function mostrarProyecto(p) {
     // Encabezado
     const img = $("projectImg");
-    img.src = p.imagen || IMAGEN_POR_DEFECTO;
+    const imagen = String(p.imagen || "").trim();
+    if (imagen) img.src = imagen;
+    else img.removeAttribute("src");
     img.alt = texto(p.nombre, "");
-    img.style.visibility = p.imagen ? "visible" : "hidden";
+    img.style.visibility = imagen ? "visible" : "hidden";
     $("projectName").textContent = texto(p.nombre, "Sin nombre");
     $("projectLocation").textContent = texto(p.ubicacion, "Sin ubicación");
     const tech = $("projectTech");
@@ -229,8 +240,9 @@
     const variance = $("variance");
     variance.hidden = false;
     variance.className = "variance " + (diff >= 0 ? "variance--ok" : "variance--late");
-    variance.textContent =
-      diff >= 0 ? `Adelantado ${diff} pts respecto al programa` : `Atraso de ${Math.abs(diff)} pts respecto al programa`;
+    if (diff > 0) variance.textContent = `Adelantado ${diff} pts respecto al programa`;
+    else if (diff < 0) variance.textContent = `Atraso de ${Math.abs(diff)} pts respecto al programa`;
+    else variance.textContent = "Al día respecto al programa";
 
     // Avances particulares
     $("particularGrid").innerHTML = PARTICULARES.map(([key, label]) => {
@@ -241,20 +253,20 @@
           <div class="particular__title">${label}</div>
           <div class="mini-row">
             <span class="mini-row__tag mini-row__tag--prog">P</span>
-            <div class="bar bar--mini"><span class="bar__fill bar__fill--prog" style="width:${Math.min(pv, 100)}%"></span></div>
+            <div class="bar bar--mini"><span class="bar__fill bar__fill--prog" style="width:${ancho(pv)}%"></span></div>
             <span class="mini-row__val">${pv}%</span>
           </div>
           <div class="mini-row">
             <span class="mini-row__tag mini-row__tag--real">R</span>
-            <div class="bar bar--mini"><span class="bar__fill bar__fill--real" style="width:${Math.min(rv, 100)}%"></span></div>
+            <div class="bar bar--mini"><span class="bar__fill bar__fill--real" style="width:${ancho(rv)}%"></span></div>
             <span class="mini-row__val">${rv}%</span>
           </div>
         </div>`;
     }).join("");
 
-    // Hitos (1 a 4)
+    // Hitos (tantos como columnas hitoN_* tenga el Excel)
     const hitos = [];
-    for (let i = 1; i <= 4; i++) {
+    for (let i = 1; i <= totalHitos; i++) {
       const num = String(p[`hito${i}_num`] ?? "").trim();
       const titulo = String(p[`hito${i}_titulo`] ?? "").trim();
       const encabezado = num ? `Hito ${num}` : titulo || `Hito ${i}`;
@@ -269,7 +281,9 @@
           <div class="hito__desc">${esc(texto(p[`hito${i}_desc`], ""))}</div>
         </div>`);
     }
-    $("hitosGrid").innerHTML = hitos.join("");
+    $("hitosGrid").innerHTML = hitos.length
+      ? hitos.join("")
+      : `<div class="state-msg">El Excel no tiene columnas de hitos.</div>`;
 
     // Información general
     $("devVal").textContent = texto(p.desarrollador);
@@ -322,16 +336,11 @@
 
   // ----------------------------------------------------------- ventanas
   function abrir(id) {
-    const el = $(id);
-    el.classList.add("is-open");
-    el.setAttribute("aria-hidden", "false");
+    window.Dialog.open($(id));
   }
 
   function cerrarTodas() {
-    document.querySelectorAll(".sheet.is-open").forEach((el) => {
-      el.classList.remove("is-open");
-      el.setAttribute("aria-hidden", "true");
-    });
+    document.querySelectorAll(".sheet.is-open").forEach((el) => window.Dialog.close(el));
   }
 
   // ------------------------------------------------------------ eventos
@@ -349,9 +358,6 @@
     );
     document.addEventListener("click", (e) => {
       if (e.target.closest("[data-close-sheet]")) cerrarTodas();
-    });
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") cerrarTodas();
     });
 
     if (window.CarteraMap) window.CarteraMap.initMap("mapaProyecto");

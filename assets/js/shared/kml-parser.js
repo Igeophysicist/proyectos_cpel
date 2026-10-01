@@ -1,5 +1,5 @@
 /**
- * kml-parser.js
+ * kml-parser.js (compartido por cartera-cpel y cartera-mixtos)
  * Parser KML mínimo y autocontenido (sin librerías externas).
  * Soporta Point, LineString y Polygon (frontera exterior), que cubre
  * los archivos KML exportados desde Google Earth Pro usados en este

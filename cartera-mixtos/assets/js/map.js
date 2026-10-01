@@ -2,6 +2,8 @@
  * map.js
  * Encapsula el mapa Leaflet: renderizado de proyectos geolocalizados,
  * resaltado al seleccionar y sincronización con el resto del dashboard.
+ *
+ * Requiere: shared/text-utils.js, shared/base-map.js y data.js.
  */
 (function (global) {
   // ------------------------------------------------------------------
@@ -30,67 +32,28 @@
   let markersById = new Map();
   let onMarkerSelect = () => {};
   let lastFitBounds = null;
+  const { esc } = global.TextUtils;
 
   function colorFor(grupo) {
     return (global.AppData.GRUPO_INFO[grupo] || {}).color || "#5c6866";
   }
 
   function initMap(elementId) {
-    map = L.map(elementId, {
-      zoomControl: false,
-      attributionControl: true,
-    }).fitBounds(MEXICO_BOUNDS);
-
-    L.control.zoom({ position: "bottomright" }).addTo(map);
-
-    // Dos capas base para elegir: satelital (Esri, por defecto) y calles
-    // (OpenStreetMap). El selector de abajo (L.control.layers) agrega un
-    // icono de capas junto a los botones de zoom; al tocarlo se despliega
-    // la lista para cambiar entre ambas.
-    const capaSatelital = L.tileLayer(
-      "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
-      { attribution: "Tiles &copy; Esri", maxZoom: 18 }
-    );
-    const capaCalles = L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-      maxZoom: 19,
-    });
-
-    capaSatelital.addTo(map); // capa inicial
-
-    L.control
-      .layers(
-        { Satelital: capaSatelital, Calles: capaCalles },
-        {},
-        { position: "bottomright", collapsed: true }
-      )
-      .addTo(map);
-
-    // Aviso no bloqueante si las imágenes del mapa no cargan (red/CDN
-    // bloqueados), sea cual sea la capa activa — los puntos de los
-    // proyectos igual se ven, porque no dependen de esas imágenes.
-    let avisoTiles = false;
-    const avisarSiFallaTile = () => {
-      if (avisoTiles) return;
-      avisoTiles = true;
-      const el = document.getElementById("map-tile-warning");
-      if (el) el.hidden = false;
-    };
-    capaSatelital.on("tileerror", avisarSiFallaTile);
-    capaCalles.on("tileerror", avisarSiFallaTile);
-    // Si el usuario cambia de capa, permite que un nuevo fallo (de la
-    // otra capa) vuelva a mostrar el aviso.
-    map.on("baselayerchange", () => {
-      avisoTiles = false;
-      const el = document.getElementById("map-tile-warning");
-      if (el) el.hidden = true;
-    });
-
+    map = global.BaseMap.create(elementId, { tileWarningId: "map-tile-warning" }).fitBounds(MEXICO_BOUNDS);
     layerGroup = L.layerGroup().addTo(map);
 
     // Muestra/oculta los nombres de proyecto según el zoom actual cada
     // vez que el usuario hace zoom (rueda, pellizco o botones +/-).
     map.on("zoomend", updateLabelVisibility);
+
+    // Clic en "Ver ficha completa" dentro de cualquier popup. Se registra
+    // una sola vez aquí (y no en cada renderProjects) para no acumular
+    // ni borrar otros manejadores de "popupopen".
+    map.on("popupopen", (e) => {
+      const el = e.popup.getElement();
+      const btn = el && el.querySelector("[data-open-detail]");
+      if (btn) btn.addEventListener("click", () => onMarkerSelect(btn.getAttribute("data-open-detail")));
+    });
 
     return map;
   }
@@ -98,9 +61,9 @@
   function popupHtml(project) {
     return `
       <div class="map-popup">
-        <div class="map-popup__title">${project.nombre}</div>
-        <div class="map-popup__meta">${project.ubicacion || project.tecnologia || ""}</div>
-        <div class="map-popup__link" data-open-detail="${project.id}">Ver ficha completa</div>
+        <div class="map-popup__title">${esc(project.nombre)}</div>
+        <div class="map-popup__meta">${esc(project.ubicacion || project.tecnologia || "")}</div>
+        <button type="button" class="map-popup__link" data-open-detail="${esc(project.id)}">Ver ficha completa</button>
       </div>`;
   }
 
@@ -153,7 +116,8 @@
       // Etiqueta con el nombre del proyecto, oculta hasta que se alcanza
       // LABEL_MIN_ZOOM (ver updateLabelVisibility). "permanent: true" es
       // lo que la mantiene fija junto al marcador en vez de requerir hover.
-      layer.bindTooltip(project.nombre, {
+      // Leaflet inserta el texto como HTML, por eso se escapa.
+      layer.bindTooltip(esc(project.nombre), {
         permanent: true,
         direction: "top",
         offset: [0, -8],
@@ -189,17 +153,6 @@
     // Las etiquetas parten ocultas (LABEL_MIN_ZOOM > zoom de país) hasta
     // que el usuario se acerca.
     updateLabelVisibility();
-
-    // delega el clic en "ver ficha completa" dentro del popup
-    map.off("popupopen").on("popupopen", (e) => {
-      const el = e.popup.getElement();
-      const btn = el && el.querySelector("[data-open-detail]");
-      if (btn) {
-        btn.addEventListener("click", () => {
-          onMarkerSelect(btn.getAttribute("data-open-detail"));
-        });
-      }
-    });
   }
 
   function highlight(projectId) {
