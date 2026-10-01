@@ -73,11 +73,11 @@
             titleFont: { weight: "700" },
             padding: 10,
             callbacks: {
-              // Cortes: fecha real del corte; tendencia: semana proyectada.
+              // Cortes: fecha del corte; tendencia: fecha proyectada.
               title: (items) => {
                 if (!items.length) return "";
                 const raw = items[0].raw;
-                return raw.fecha ? "Corte del " + fmtFull(raw.fecha) : "Semana del " + fmtFull(items[0].parsed.x);
+                return raw.fecha ? "Corte del " + fmtFull(raw.fecha) : "Tendencia al " + fmtFull(items[0].parsed.x);
               },
               label: (item) => ` ${item.dataset.label}: ${item.parsed.y.toFixed(1)}%`,
             },
@@ -89,11 +89,11 @@
             min,
             max,
             ticks: { color: MUTED, font: { size: 11 }, callback: (v) => fmtDay(v), maxRotation: 0 },
-            // Marcas en los lunes (donde se ubica cada corte semanal).
+            // Marcas en los jueves (día del corte semanal).
             afterBuildTicks: (axis) => {
               const first = new Date(min);
               first.setHours(12, 0, 0, 0);
-              first.setDate(first.getDate() + ((8 - first.getDay()) % 7)); // siguiente lunes (o el mismo)
+              first.setDate(first.getDate() + ((11 - first.getDay()) % 7)); // siguiente jueves (o el mismo)
               const ticks = [];
               for (let t = first.getTime(); t <= max; t += step) ticks.push({ value: t });
               axis.ticks = ticks;

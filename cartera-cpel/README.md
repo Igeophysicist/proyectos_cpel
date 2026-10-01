@@ -49,7 +49,7 @@ del Excel al sitio" en el README de la raíz).
 ## Curva de avance
 
 El tercer botón de la barra inferior abre la **Curva de avance** del
-proyecto: Programado y Real de cada corte semanal y una línea de
+proyecto: Programado y Real de cada corte semanal (jueves 8:00) y una línea de
 tendencia (ritmo reciente proyectado). Los cortes salen de
 `data/historial.json`, que se actualiza solo con cada Excel (ver "Curva
 de avance" en el README de la raíz). Lógica en `assets/js/curva.js`.

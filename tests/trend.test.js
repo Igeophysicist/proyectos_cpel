@@ -36,16 +36,13 @@ test("sin avance o retroceso: no hay fecha estimada; valores acotados a 0–100"
   assert.equal(valueAt(fit, day("2027-09-29")), 100);
 });
 
-test("cortePoint ubica cada corte en el lunes de su semana y conserva la fecha real", () => {
-  const a = cortePoint("2026-09-25", 63.6); // viernes
-  const b = cortePoint("2026-09-30", 79); // miércoles de la semana siguiente
-  assert.equal(new Date(a.t).getDate(), 21); // lunes 21 sep
-  assert.equal(new Date(b.t).getDate(), 28); // lunes 28 sep
+test("cortePoint ubica cada corte en su fecha (mediodía local)", () => {
+  const a = cortePoint("2026-09-24", 63.6); // jueves
+  const b = cortePoint("2026-10-01", 79); // jueves siguiente
+  assert.equal(new Date(a.t).getDate(), 24);
+  assert.equal(new Date(a.t).getHours(), 12);
   assert.equal(b.t - a.t, 7 * DAY_MS);
-  assert.equal(new Date(b.fecha).getDate(), 30);
-  assert.equal(new Date(cortePoint("2026-09-28", 1).t).getDate(), 28); // un lunes se queda igual
-  assert.equal(new Date(cortePoint("2026-10-04", 1).t).getDate(), 28); // domingo -> lunes anterior
-  // Ritmo semanal correcto aunque las subidas estén a 5 días:
+  assert.equal(b.fecha, b.t);
   near(weeklyRate(fitTrend([a, b])), 15.4);
 });
 

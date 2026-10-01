@@ -19,14 +19,14 @@
  * (mismas opciones de SheetJS), para no cambiar nada de su lógica.
  *
  * Además registra el CORTE SEMANAL en data/historial.json de cada tablero
- * (curva de avance; ver scripts/historial.js): las subidas de la misma
- * semana reemplazan su punto.
+ * (curva de avance; ver scripts/historial.js): jueves 8:00 a jueves 8:00;
+ * las correcciones dentro de ese lapso reemplazan su punto.
  */
 const fs = require("fs");
 const path = require("path");
 const XLSX = require("xlsx");
 const { validateCartera, validateMixtos, MIXTOS_SHEET } = require("./data-rules.js");
-const { localDate, snapshotCartera, snapshotMixtos, upsertCorte } = require("./historial.js");
+const { snapshotCartera, snapshotMixtos, upsertCorte } = require("./historial.js");
 
 const ROOT = path.resolve(__dirname, "..");
 
@@ -80,14 +80,11 @@ function placemarkNames(file) {
 
 const toJson = (data) => JSON.stringify(data, null, 2) + "\n";
 
-/**
- * Lee y valida un Excel. "buffer" permite procesar versiones anteriores
- * del archivo (scripts/backfill-historial.js); por omisión se lee el actual.
- */
-function buildDataset(ds, buffer) {
+/** Lee y valida el Excel de un tablero. */
+function buildDataset(ds) {
   const dir = path.join(ROOT, ds.dir);
   const excelPath = path.join(dir, ds.excel);
-  const wb = XLSX.read(buffer || fs.readFileSync(excelPath), { type: "buffer" });
+  const wb = XLSX.read(fs.readFileSync(excelPath), { type: "buffer" });
   const { sheetName, options } = ds.read(wb);
   if (!sheetName) {
     return { errors: [`No existe la hoja "${MIXTOS_SHEET}" en ${ds.excel}.`], warnings: [] };
@@ -110,21 +107,20 @@ function buildDataset(ds, buffer) {
     proyectos: rows,
   };
   // Corte semanal para la curva de avance (solo si el Excel trae su fecha de guardado).
-  const fecha = data.excelModificado ? localDate(data.excelModificado) : null;
-  if (!fecha) warnings.push("El Excel no tiene fecha de guardado: no se registró el corte en la curva de avance.");
+  if (!data.excelModificado) warnings.push("El Excel no tiene fecha de guardado: no se registró el corte en la curva de avance.");
   return {
     errors,
     warnings,
     json: toJson(data),
     jsonPath: path.join(dir, ds.json),
-    corte: fecha ? { fecha, proyectos: ds.snapshot(rows) } : null,
+    corte: data.excelModificado ? { excel: data.excelModificado, proyectos: ds.snapshot(rows) } : null,
     historialPath: path.join(dir, ds.historial),
   };
 }
 
 const readJson = (file) => (fs.existsSync(file) ? JSON.parse(fs.readFileSync(file, "utf8")) : null);
 
-/** Historial con el corte de este Excel agregado (o reemplazado en su semana). */
+/** Historial con el corte de este Excel agregado (o reemplazado en su jueves). */
 function historialWithCorte(result) {
   const current = readJson(result.historialPath);
   return result.corte ? upsertCorte(current, result.corte) : current || { cortes: [] };

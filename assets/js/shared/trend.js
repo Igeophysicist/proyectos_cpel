@@ -69,16 +69,14 @@
   }
 
   /**
-   * Punto de un corte semanal. Los cortes se ubican en el LUNES de su
-   * semana (t) para que queden a 7 días entre sí aunque el Excel se haya
-   * subido en días distintos de la semana; "fecha" conserva el día real
-   * del corte (para tooltips y textos). fechaStr = "AAAA-MM-DD".
+   * Punto de un corte semanal en su fecha ("AAAA-MM-DD", a mediodía local):
+   * el jueves del corte (ver scripts/historial.js) o, en los cortes
+   * anteriores a esa regla, el día en que se guardó el Excel.
    */
   function cortePoint(fechaStr, v) {
     const [y, m, d] = fechaStr.split("-").map(Number);
-    const fecha = new Date(y, m - 1, d, 12);
-    const lunes = new Date(y, m - 1, d - ((fecha.getDay() + 6) % 7), 12);
-    return { t: lunes.getTime(), fecha: fecha.getTime(), v };
+    const t = new Date(y, m - 1, d, 12).getTime();
+    return { t, fecha: t, v };
   }
 
   /**

@@ -144,7 +144,6 @@
       const v = c.proyectos[slug];
       if (!v) return;
       Object.keys(out).forEach((k) => {
-        // Cada corte en el lunes de su semana (ver Trend.cortePoint).
         if (Number.isFinite(v[k])) out[k].push(global.Trend.cortePoint(c.fecha, v[k]));
       });
     });

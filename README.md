@@ -62,13 +62,16 @@ revisar un Excel antes de subirlo: `npm install` y luego `npm run data`
 - **Cartera CPEL:** botón **Curva de avance** (junto a Ficha técnica y
   Plazos). **Mixtos:** sección **Evolución por corte** en la ficha de
   cada proyecto (Parque, LT y Global).
-- **Cada actualización del Excel es un corte.** La Action "Datos" lo
-  guarda en `data/historial.json` de cada tablero
-  (`scripts/historial.js`). Hay **un punto por semana** (lunes a
-  domingo, hora de México): las correcciones subidas en la misma semana
-  reemplazan ese punto; el siguiente aparece con el siguiente corte.
-  En la gráfica cada corte se ubica en el lunes de su semana; la fecha
-  real del corte se ve al tocar el punto y en la tabla de datos.
+- **El corte semanal es cada jueves a las 8:00** (hora de México). La
+  Action "Datos" guarda el avance en `data/historial.json` de cada
+  tablero (`scripts/historial.js`) según la fecha de guardado del
+  Excel: lo guardado de jueves 8:00 al jueves siguiente 7:59 es **un
+  solo punto**, el de ese primer jueves. Las correcciones de esos días
+  reemplazan ese punto; el siguiente aparece con el corte del jueves
+  siguiente. Subir solo un KML (sin cambiar el Excel) no agrega puntos.
+- Los cortes previos a esta regla (24–30 sep 2026, reconstruidos de las
+  versiones anteriores de los Excel) se conservan en la fecha en que se
+  guardó su Excel.
 - **Tendencia** (línea punteada): recta ajustada a los últimos 6 cortes
   reales (`assets/js/shared/trend.js`), es decir, el ritmo reciente
   proyectado. En **Cartera** el resumen muestra el ritmo en pts/semana,
@@ -79,9 +82,6 @@ revisar un Excel antes de subirlo: `npm install` y luego `npm run data`
   La tendencia no sustituye al programa de obra.
 - Los proyectos se identifican por su nombre: si se renombra en el
   Excel, su historial empieza de nuevo.
-- El historial inicial se reconstruyó con las versiones anteriores de
-  los Excel guardadas en git (`node scripts/backfill-historial.js`); no
-  hace falta volver a ejecutarlo.
 - Para quitar un corte que quedó mal, se borra su bloque en
   `data/historial.json` (o pídeselo a quien mantenga el sitio).
 

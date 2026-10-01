@@ -57,7 +57,7 @@
     return chartJsPromise;
   }
 
-  /** Puntos de un campo (prog/real); cada corte va en el lunes de su semana (ver Trend.cortePoint). */
+  /** Puntos de un campo (prog/real), uno por corte semanal (ver Trend.cortePoint). */
   function puntos(cortes, slug, campo) {
     return cortes
       .map((c) => cortePoint(c.fecha, c.proyectos[slug] ? c.proyectos[slug][campo] : null))
