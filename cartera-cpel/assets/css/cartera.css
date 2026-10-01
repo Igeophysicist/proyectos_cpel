@@ -11,6 +11,8 @@
   --tabbar-h: 68px;
 }
 
+/* Sin agrandado automático de texto en iPhone (deformaba la hoja del PDF). */
+html{ -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 body{ padding-bottom: calc(var(--tabbar-h) + env(safe-area-inset-bottom, 0px)); }
 
 /* ---------- Barra superior con regreso + selector ---------- */
@@ -331,10 +333,12 @@ body{ padding-bottom: calc(var(--tabbar-h) + env(safe-area-inset-bottom, 0px)); 
    particulares, eventos, hitos, información general, ficha técnica y
    plazos. Sin mapa, barra superior ni botones.
 
-   Los estilos cuelgan de body.modo-pdf (ver pdf.js), que se activa al
-   imprimir (computadora) y al generar el archivo PDF (celular), para
-   que ambas salidas se vean igual. */
+   Siempre UNA hoja: ancho carta y, si el contenido no cabe, la hoja se
+   alarga (pdf.js). Los estilos cuelgan de body.modo-pdf, que pdf.js
+   activa al imprimir (computadora) y al generar el archivo PDF
+   (celular), para que ambas salidas se vean igual. */
 @media print{
+  /* Ancho carta; el alto lo ajusta pdf.js para que todo quepa en una hoja. */
   @page{ size: letter portrait; margin: 9mm; }
   *{ -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   .topbar, .actionbar, .sheet{ display: none !important; }
@@ -348,8 +352,10 @@ body.modo-pdf .print-head{
   color: var(--ink-500); border-bottom: 1px solid var(--border); padding-bottom: 3px; margin-bottom: 6px;
 }
 body.modo-pdf .cartera{
-  display: grid; grid-template-columns: 1fr 1fr; gap: 6px; padding: 0; max-width: none;
+  /* minmax(0, 1fr): un texto largo no ensancha la columna (se parte en líneas). */
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 6px; padding: 0; max-width: none;
 }
+body.modo-pdf .card, body.modo-pdf .hero-card__name{ overflow-wrap: anywhere; }
 body.modo-pdf .hero-card{ grid-column: 1 / -1; height: 90px; border-radius: 8px; box-shadow: none; }
 body.modo-pdf .hero-card__overlay{ padding: 16px 12px 8px; }
 body.modo-pdf .card{ padding: 8px 10px; border-radius: 8px; box-shadow: none; break-inside: avoid; }

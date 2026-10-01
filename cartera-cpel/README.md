@@ -58,7 +58,8 @@ de avance" en el README de la raíz). Lógica en `assets/js/curva.js`.
 ## Ficha en PDF
 
 El botón **PDF** de la barra superior entrega la ficha del proyecto en
-una hoja carta: encabezado, avance general y particulares, eventos,
+**una sola hoja** (ancho carta; si el contenido no cabe en el alto
+carta, la hoja se alarga en vez de partirse): encabezado, avance general y particulares, eventos,
 hitos, información general, ficha técnica y plazos; sin mapa ni
 botones.
 
@@ -74,8 +75,7 @@ botones.
 
 Lógica en `assets/js/pdf.js`; estilos de la hoja en la sección "Ficha
 en PDF" de `assets/css/cartera.css` (`body.modo-pdf`), compartidos por
-ambas salidas. Si los eventos son muy largos, puede pasar a una segunda
-hoja.
+ambas salidas.
 
 ## Enlace directo y fecha de los datos
 

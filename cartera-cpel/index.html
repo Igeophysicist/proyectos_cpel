@@ -36,7 +36,8 @@
     </button>
   </header>
 
-  <!-- Solo al imprimir: encabezado de la hoja -->
+  <!-- Contenido de la hoja PDF: encabezado (solo en el PDF) + ficha (ver pdf.js) -->
+  <div id="pdfRoot">
   <div class="print-head" aria-hidden="true">
     <span>Cartera CPEL · Ficha de proyecto</span>
     <span id="printDate"></span>
@@ -163,6 +164,7 @@
 
 
   </main>
+  </div>
 
   <!-- Barra inferior de acciones -->
   <nav class="actionbar">

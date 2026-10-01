@@ -11,6 +11,9 @@
  *    instalado como app en iPhone, navegadores dentro de WhatsApp,
  *    Teams, Gmail…).
  *
+ * Siempre sale en UNA hoja: ancho carta y, si el contenido no cabe en
+ * el alto carta, la hoja se alarga (en vez de cortarse en dos).
+ *
  * Ambas salidas usan los estilos de body.modo-pdf (cartera.css). Las
  * librerías del archivo (html2canvas + jsPDF, ~560 KB) se descargan solo
  * la primera vez que se genera un PDF en el celular.
@@ -29,8 +32,9 @@
       integrity: "sha384-en/ztfPSRkGfME4KIm05joYXynqzUgbsG5nMrj/xEFAHXkeZfO3yMK8QQ+mP7p1/",
     },
   ];
-  // Hoja carta: 612 x 792 pt, márgenes de 9 mm (igual que @page en cartera.css).
+  // Hoja carta: 612 x 792 pt (215.9 x 279.4 mm), márgenes de 9 mm.
   const PAGE = { w: 612, h: 792, margin: 25.5 };
+  const PAGE_MM = { w: 215.9, h: 279.4, margin: 9 };
   // Ancho del contenido de la hoja en píxeles CSS (216 mm - 18 mm a 96 dpi),
   // para que el archivo se vea igual que la impresión.
   const CONTENT_PX = 748;
@@ -59,6 +63,25 @@
   function imprimir() {
     cerrarVentanas();
     global.print(); // beforeprint/afterprint activan y quitan el modo PDF
+  }
+
+  /**
+   * Alto (mm) de la hoja impresa para que todo quepa en una: se mide la
+   * ficha en modo PDF al ancho de la hoja y se fija con @page.
+   */
+  function ajustarHojaImpresa() {
+    const root = $("pdfRoot");
+    root.style.width = CONTENT_PX + "px";
+    const altoPx = root.scrollHeight;
+    root.style.width = "";
+    const altoMm = Math.max(PAGE_MM.h, Math.ceil((altoPx * 25.4) / 96 + 2 * PAGE_MM.margin + 2));
+    let estilo = $("pdfPageSize");
+    if (!estilo) {
+      estilo = document.createElement("style");
+      estilo.id = "pdfPageSize";
+      document.head.appendChild(estilo);
+    }
+    estilo.textContent = `@page{ size: ${PAGE_MM.w}mm ${altoMm}mm; margin: ${PAGE_MM.margin}mm; }`;
   }
 
   // --------------------------------------------------------- celular
@@ -94,36 +117,26 @@
   async function crearArchivo() {
     await cargarLibrerias();
     preparar();
-    const canvas = await global.html2canvas(document.body, {
+    // Se captura el contenido completo (aunque algo quedara más ancho que
+    // la hoja, no se corta: la imagen se ajusta al ancho de la página).
+    const canvas = await global.html2canvas($("pdfRoot"), {
       scale: 2,
       windowWidth: CONTENT_PX,
-      width: CONTENT_PX,
-      x: 0,
-      y: 0,
-      scrollX: 0,
-      scrollY: 0,
       backgroundColor: "#ffffff",
       logging: false,
       onclone: (doc) => {
+        doc.documentElement.style.webkitTextSizeAdjust = "100%";
         doc.body.classList.add("modo-pdf");
-        doc.body.style.width = CONTENT_PX + "px";
+        doc.getElementById("pdfRoot").style.width = CONTENT_PX + "px";
       },
     });
 
-    const pdf = new global.jspdf.jsPDF({ unit: "pt", format: "letter", orientation: "portrait" });
+    // Una sola hoja: ancho carta y el alto que haga falta (mínimo carta).
     const anchoPt = PAGE.w - 2 * PAGE.margin;
-    const pxPorPt = canvas.width / anchoPt;
-    const altoPaginaPx = Math.floor((PAGE.h - 2 * PAGE.margin) * pxPorPt);
-    // Normalmente cabe en una hoja; si no, se reparte en varias.
-    for (let y = 0, pagina = 0; y < canvas.height; y += altoPaginaPx, pagina++) {
-      const alto = Math.min(altoPaginaPx, canvas.height - y);
-      const trozo = document.createElement("canvas");
-      trozo.width = canvas.width;
-      trozo.height = alto;
-      trozo.getContext("2d").drawImage(canvas, 0, y, canvas.width, alto, 0, 0, canvas.width, alto);
-      if (pagina > 0) pdf.addPage();
-      pdf.addImage(trozo.toDataURL("image/jpeg", 0.92), "JPEG", PAGE.margin, PAGE.margin, anchoPt, alto / pxPorPt);
-    }
+    const altoPt = (canvas.height * anchoPt) / canvas.width;
+    const altoHoja = Math.max(PAGE.h, altoPt + 2 * PAGE.margin);
+    const pdf = new global.jspdf.jsPDF({ unit: "pt", format: [PAGE.w, altoHoja], orientation: "portrait" });
+    pdf.addImage(canvas.toDataURL("image/jpeg", 0.92), "JPEG", PAGE.margin, PAGE.margin, anchoPt, altoPt);
 
     const nombre = `Cartera_${slugify(nombreProyecto()) || "proyecto"}_${hoy()}.pdf`;
     return new File([pdf.output("blob")], nombre, { type: "application/pdf" });
@@ -201,6 +214,7 @@
     global.addEventListener("beforeprint", () => {
       preparar();
       document.body.classList.add("modo-pdf");
+      ajustarHojaImpresa();
     });
     global.addEventListener("afterprint", () => document.body.classList.remove("modo-pdf"));
   }
