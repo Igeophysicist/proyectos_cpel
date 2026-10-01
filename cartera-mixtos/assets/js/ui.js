@@ -183,6 +183,7 @@
           ${progressRow("LT", p.ltPct)}
           ${progressRow("Global", p.globalPct)}
         </div>
+        ${global.AppEvolucion ? global.AppEvolucion.html(p) : ""}
         ${sections}
         ${p.geo ? `<button class="detail__mapbtn" data-view-on-map="${esc(p.id)}">Ver en el mapa</button>` : ""}
       </div>`;

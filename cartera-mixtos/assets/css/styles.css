@@ -349,6 +349,9 @@ a{color:inherit;}
 .detail-field__label{font-size:11.5px; color:var(--ink-500);}
 .detail-field__value{font-size:13.5px; font-weight:600; color:var(--ink-900); margin-top:1px;}
 .detail-progress{display:flex; flex-direction:column; gap:10px; margin-top:2px;}
+.evolucion__chart{position:relative; height:200px; margin:var(--space-2) 0;}
+.evolucion__resumen{font-size:12.5px; color:var(--ink-700); line-height:1.5; margin:0;}
+.evolucion__resumen b{color:var(--ink-900);}
 .detail__mapbtn{
   margin-top:var(--space-4); width:100%; padding:12px; border-radius:var(--radius-m);
   border:1px solid var(--border-strong); background:var(--surface); color:var(--teal-800);

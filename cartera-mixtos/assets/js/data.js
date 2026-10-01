@@ -29,10 +29,12 @@
  * Requiere: shared/text-utils.js y shared/kml-parser.js.
  */
 (function (global) {
-  const { normalizeText, parseNumber, parseDate } = global.TextUtils;
+  const { normalizeText, parseNumber, parseDate, slugify } = global.TextUtils;
 
   // Generado desde data/DATOS_MIXTOS.xlsx por scripts/build-data.js.
   const DATA_FILE = "data/DATOS_MIXTOS.json";
+  // Cortes semanales (Parque/LT/Global) para la evolución en la ficha.
+  const HISTORIAL_FILE = "data/historial.json";
 
   const KML_SOURCES = [
     "data/ENTRADA_PROYECTOS.kml",
@@ -125,11 +127,37 @@
   }
 
   /** Carga y ensambla todo el dataset de la aplicación */
+  /** Historial de cortes; es opcional (sin él solo no se muestra la evolución). */
+  async function fetchHistorial(url) {
+    try {
+      const res = await fetch(url, { cache: "no-store" });
+      return res.ok ? await res.json() : { cortes: [] };
+    } catch {
+      return { cortes: [] };
+    }
+  }
+
+  /** { parque, lt, global }: [{ t, fecha, v }] del proyecto, por corte semanal. */
+  function historialDe(cortes, slug) {
+    const out = { parque: [], lt: [], global: [] };
+    cortes.forEach((c) => {
+      const v = c.proyectos[slug];
+      if (!v) return;
+      Object.keys(out).forEach((k) => {
+        // Cada corte en el lunes de su semana (ver Trend.cortePoint).
+        if (Number.isFinite(v[k])) out[k].push(global.Trend.cortePoint(c.fecha, v[k]));
+      });
+    });
+    return out;
+  }
+
   async function loadDataset() {
-    const [{ rows: rawRows, modified }, geo] = await Promise.all([
+    const [{ rows: rawRows, modified }, geo, historial] = await Promise.all([
       fetchDataRows(DATA_FILE),
       buildGeoIndex(KML_SOURCES),
+      fetchHistorial(HISTORIAL_FILE),
     ]);
+    const cortes = historial.cortes || [];
 
     const warnings = [...geo.warnings];
     const projects = rawRows
@@ -192,6 +220,7 @@
             ? { type: primary.type, latlngs: primary.latlngs, folderPath: primary.folderPath }
             : null,
           geoAreas: areas.map((a) => ({ type: a.type, latlngs: a.latlngs, folderPath: a.folderPath })),
+          historial: historialDe(cortes, slugify(nombre)),
         };
       });
 

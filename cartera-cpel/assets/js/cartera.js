@@ -39,7 +39,10 @@
  * FECHA DE LOS DATOS: se muestra la fecha en que se guardó por última
  * vez el Excel (propiedad del propio archivo); no hay que capturarla.
  *
- * Requiere: shared/text-utils.js, shared/dialog.js y map.js.
+ * CURVA DE AVANCE: el tercer botón de la barra inferior abre la curva del
+ * proyecto (ver curva.js y data/historial.json).
+ *
+ * Requiere: shared/text-utils.js, shared/dialog.js, map.js y curva.js.
  */
 (function () {
   // Generado desde data/datos_proyectos.xlsx por scripts/build-data.js.
@@ -154,6 +157,7 @@
 
   let proyectos = [];
   let totalHitos = 0;
+  let actual = null; // proyecto mostrado (para la curva de avance)
   const $ = (id) => document.getElementById(id);
 
   // ---------------------------------------------------------- utilidades
@@ -198,8 +202,9 @@
 
   // ------------------------------------------------------------- carga
   async function cargarExcel() {
-    // El KML no depende del Excel: se pide en paralelo.
+    // El KML y el historial no dependen de los datos: se piden en paralelo.
     const kmlListo = window.CarteraMap ? window.CarteraMap.cargarKML() : Promise.resolve(false);
+    if (window.CarteraCurva) window.CarteraCurva.cargar();
     try {
       const res = await fetch(DATA_FILE_PATH, { cache: "no-store" });
       if (!res.ok) throw new Error(`No se pudo cargar ${DATA_FILE_PATH} (HTTP ${res.status})`);
@@ -244,6 +249,7 @@
   function seleccionar(i) {
     const p = proyectos[i];
     if (!p) return;
+    actual = p;
     $("projectSelect").value = String(i);
     mostrarProyecto(p);
     const url = new URL(window.location.href);
@@ -372,6 +378,7 @@
   // ----------------------------------------------------------- ventanas
   function abrir(id) {
     window.Dialog.open($(id));
+    if (id === "sheetCurva" && actual && window.CarteraCurva) window.CarteraCurva.mostrar(actual);
   }
 
   function cerrarTodas() {

@@ -1,0 +1,64 @@
+{
+  "cortes": [
+    {
+      "semana": "2026-W39",
+      "fecha": "2026-09-24",
+      "proyectos": {
+        "cfv-puerto-penasco-secuencia-iii": {
+          "prog": 30.76,
+          "real": 27.79
+        },
+        "cfv-puerto-penasco-secuencia-iv": {
+          "prog": 4.8,
+          "real": 4.08
+        },
+        "peh-santa-maria": {
+          "prog": 77.44,
+          "real": 80.72
+        },
+        "peh-picachos": {
+          "prog": 93.31,
+          "real": 70.3
+        },
+        "peh-amata": {
+          "prog": 100,
+          "real": 33.43
+        },
+        "ph-chicoasen-ii": {
+          "prog": 49.66,
+          "real": 49.7
+        }
+      }
+    },
+    {
+      "semana": "2026-W40",
+      "fecha": "2026-09-29",
+      "proyectos": {
+        "cfv-puerto-penasco-secuencia-iii": {
+          "prog": 30.76,
+          "real": 27.79
+        },
+        "cfv-puerto-penasco-secuencia-iv": {
+          "prog": 4.76,
+          "real": 4.08
+        },
+        "peh-santa-maria": {
+          "prog": 77.44,
+          "real": 80.72
+        },
+        "peh-picachos": {
+          "prog": 93.31,
+          "real": 70.3
+        },
+        "peh-amata": {
+          "prog": 100,
+          "real": 33.43
+        },
+        "ph-chicoasen-ii": {
+          "prog": 49.7,
+          "real": 49.7
+        }
+      }
+    }
+  ]
+}

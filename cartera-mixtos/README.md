@@ -34,6 +34,7 @@ cartera-mixtos/
 └── data/
     ├── DATOS_MIXTOS.xlsx      fuente de datos ejecutiva (única fuente de verdad)
     ├── DATOS_MIXTOS.json      generado y validado desde el Excel (no editar a mano)
+    ├── historial.json         cortes semanales para la evolución (generado)
     ├── ENTRADA_PROYECTOS.kml  puntos de ubicación de cada proyecto
     └── AREAS_REFERENCIA.kml   polígonos de referencia (se vinculan por nombre)
 ```
@@ -112,6 +113,12 @@ aparezca en el mapa es que su nombre en el KML coincida con
 `TÍTULO 2` del Excel.** No hace falta mantener un ID paralelo. Para
 agregar más archivos KML, súmalos al arreglo `KML_SOURCES` en
 `assets/js/data.js`.
+
+## Evolución por corte
+
+La ficha de cada proyecto muestra Parque, LT y Global de cada corte
+semanal y la tendencia de Global (`assets/js/evolucion.js`, con datos de
+`data/historial.json`; ver "Curva de avance" en el README de la raíz).
 
 ## Enlaces directos
 
