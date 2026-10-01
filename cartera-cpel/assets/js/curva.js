@@ -83,7 +83,7 @@
     if (rate > 0.005) {
       items.push(`Ritmo real reciente: <b>+${fmt2(rate)} pts por semana</b> (últimos ${fit.n} cortes).`);
     } else if (rate < -0.005) {
-      items.push(`El avance real <b>bajó ${fmt2(-rate)} pts por semana</b> en los últimos ${fit.n} cortes (¿corrección de cifras?).`);
+      items.push(`El avance real <b>bajó ${fmt2(-rate)} pts por semana</b> en los últimos ${fit.n} cortes.`);
     } else {
       items.push(`<b>Sin avance real</b> entre los últimos ${fit.n} cortes.`);
     }

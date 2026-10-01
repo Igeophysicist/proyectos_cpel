@@ -71,10 +71,12 @@ revisar un Excel antes de subirlo: `npm install` y luego `npm run data`
   real del corte se ve al tocar el punto y en la tabla de datos.
 - **Tendencia** (línea punteada): recta ajustada a los últimos 6 cortes
   reales (`assets/js/shared/trend.js`), es decir, el ritmo reciente
-  proyectado. Muestra el ritmo en pts/semana, cuándo llegaría a 100% y
-  (Cartera) cuánto llevaría en la fecha de operación. Con menos de 4
-  cortes la fecha se marca como estimación preliminar. No sustituye al
-  programa de obra.
+  proyectado. En **Cartera** el resumen muestra el ritmo en pts/semana,
+  cuándo llegaría a 100% y cuánto llevaría en la fecha de operación (con
+  menos de 4 cortes, la fecha se marca como estimación preliminar). En
+  **Mixtos** solo dice si Global avanzó, disminuyó o se mantuvo en el
+  último corte, sin fechas estimadas: esos proyectos aún son volátiles.
+  La tendencia no sustituye al programa de obra.
 - Los proyectos se identifican por su nombre: si se renombra en el
   Excel, su historial empieza de nuevo.
 - El historial inicial se reconstruyó con las versiones anteriores de
