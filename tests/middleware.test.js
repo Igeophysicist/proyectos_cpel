@@ -56,9 +56,13 @@ test("sin sesión: páginas muestran el formulario y los datos no se entregan", 
   assert.equal(data.served, false);
 });
 
-test("los recursos de la pantalla de acceso son públicos", async () => {
-  const { served } = await run("/assets/img/logo-cpel.png", { accept: "image/*" });
-  assert.equal(served, true);
+test("los recursos de la pantalla de acceso y del modo app son públicos", async () => {
+  for (const path of ["/assets/img/logo-cpel.png", "/manifest.json", "/assets/img/icon-192.png"]) {
+    const { served } = await run(path, { accept: "*/*" });
+    assert.equal(served, true, path);
+  }
+  // sw.js sigue protegido: solo se registra desde páginas con sesión.
+  assert.equal((await run("/sw.js", { accept: "*/*" })).served, false);
 });
 
 test("contraseña correcta: crea la sesión y redirige", async () => {
