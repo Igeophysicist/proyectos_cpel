@@ -14,6 +14,7 @@ cartera-cpel/
 │   ├── css/cartera.css         estilos propios (usa los tokens de ../assets/css/landing.css)
 │   └── js/
 │       ├── cartera.js          lee el JSON y pinta la ficha del proyecto
+│       ├── pdf.js              botón "PDF" (imprimir / archivo en celular)
 │       └── map.js              mapa Leaflet de un proyecto a la vez
 └── data/
     ├── datos_proyectos.xlsx    fuente de datos (primera hoja) — se edita este
@@ -54,15 +55,27 @@ tendencia (ritmo reciente proyectado). Los cortes salen de
 `data/historial.json`, que se actualiza solo con cada Excel (ver "Curva
 de avance" en el README de la raíz). Lógica en `assets/js/curva.js`.
 
-## Imprimir o guardar en PDF
+## Ficha en PDF
 
-El botón **PDF** de la barra superior abre la impresión del navegador
-(ahí se elige "Guardar como PDF"). Sale una hoja carta por proyecto
-con el encabezado, avance general y particulares, eventos, hitos,
-información general, ficha técnica y plazos; sin mapa ni botones.
-También funciona con Ctrl+P. Los estilos están en la sección
-"Impresión" de `assets/css/cartera.css`. Si los eventos son muy largos,
-puede pasar a una segunda hoja.
+El botón **PDF** de la barra superior entrega la ficha del proyecto en
+una hoja carta: encabezado, avance general y particulares, eventos,
+hitos, información general, ficha técnica y plazos; sin mapa ni
+botones.
+
+- **Computadora:** abre la impresión del navegador (ahí se elige
+  "Guardar como PDF" o una impresora). También funciona con Ctrl+P.
+- **Celular:** genera el archivo `Cartera_<proyecto>_<fecha>.pdf` en la
+  página y abre el menú de compartir del teléfono (guardar en Archivos,
+  WhatsApp, correo…); si el teléfono no tiene ese menú, lo descarga. Se
+  hace así porque en el celular la impresión no funciona en varios
+  casos (sitio instalado como app en iPhone, navegadores dentro de
+  WhatsApp, Teams o Gmail). Las librerías para esto (html2canvas y
+  jsPDF, ~560 KB) se descargan solo la primera vez que se toca el botón.
+
+Lógica en `assets/js/pdf.js`; estilos de la hoja en la sección "Ficha
+en PDF" de `assets/css/cartera.css` (`body.modo-pdf`), compartidos por
+ambas salidas. Si los eventos son muy largos, puede pasar a una segunda
+hoja.
 
 ## Enlace directo y fecha de los datos
 

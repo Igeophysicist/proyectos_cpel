@@ -385,23 +385,6 @@
     document.querySelectorAll(".sheet.is-open").forEach((el) => window.Dialog.close(el));
   }
 
-  // ----------------------------------------------------------- impresión
-  // La hoja impresa (o PDF) lleva la ficha, la Ficha técnica y los Plazos
-  // del proyecto en pantalla (ver "Impresión" en cartera.css). También
-  // funciona con Ctrl+P / Compartir > Imprimir del navegador.
-  function prepararImpresion() {
-    $("printFicha").innerHTML = $("fichaBody").innerHTML;
-    $("printPlazos").innerHTML = $("plazosBody").innerHTML;
-    $("printDate").textContent =
-      "Impreso el " + new Date().toLocaleDateString("es-MX", { day: "numeric", month: "long", year: "numeric" });
-  }
-
-  function imprimir() {
-    cerrarTodas();
-    prepararImpresion();
-    window.print();
-  }
-
   // ------------------------------------------------------------ eventos
   document.addEventListener("DOMContentLoaded", () => {
     $("projectSelect").addEventListener("change", (e) => {
@@ -409,8 +392,8 @@
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
 
-    $("printBtn").addEventListener("click", imprimir);
-    window.addEventListener("beforeprint", prepararImpresion);
+    // Botón "PDF" (ver pdf.js).
+    if (window.CarteraPdf) window.CarteraPdf.init({ nombre: () => (actual ? actual.nombre : "") });
 
     document.querySelectorAll("[data-open-sheet]").forEach((btn) =>
       btn.addEventListener("click", () => abrir(btn.dataset.openSheet))

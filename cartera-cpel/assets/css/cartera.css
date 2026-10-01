@@ -43,6 +43,12 @@ body{ padding-bottom: calc(var(--tabbar-h) + env(safe-area-inset-bottom, 0px)); 
 }
 .topbar__print:hover{ background: rgba(255,255,255,.18); }
 .print-head, .print-only{ display: none; }
+/* Viñetas de los Plazos del PDF. Van fuera de body.modo-pdf porque al
+   generar el archivo en el celular (pdf.js) los ::before se copian de
+   la página tal como está; esta tarjeta no se ve en pantalla. */
+.print-plazos .timeline::before{ display: none; }
+.print-plazos .timeline li{ padding: 0 0 5px 22px; }
+.print-plazos .timeline li::before{ width: 11px; height: 11px; top: 2px; }
 
 /* ---------- Animación de entrada (reutilizada en varias secciones) ---------- */
 @keyframes card-in{
@@ -320,65 +326,61 @@ body{ padding-bottom: calc(var(--tabbar-h) + env(safe-area-inset-bottom, 0px)); 
   *{ animation-duration:.01ms !important; transition-duration:.01ms !important; }
 }
 
-/* ---------- Impresión / PDF (botón "PDF" o Ctrl+P) ----------
+/* ---------- Ficha en PDF (botón "PDF" o Ctrl+P) ----------
    Una hoja carta vertical por proyecto: encabezado, avance, avances
    particulares, eventos, hitos, información general, ficha técnica y
-   plazos. Sin mapa, barra superior ni botones. */
+   plazos. Sin mapa, barra superior ni botones.
+
+   Los estilos cuelgan de body.modo-pdf (ver pdf.js), que se activa al
+   imprimir (computadora) y al generar el archivo PDF (celular), para
+   que ambas salidas se vean igual. */
 @media print{
   @page{ size: letter portrait; margin: 9mm; }
-  html, body{ background: #fff; }
-  body{ padding: 0; font-size: 11px; }
   *{ -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-  *, *::before, *::after{ animation: none !important; transition: none !important; }
-  .cartera > *, .timeline li, .info-item, .hito, .particular{ opacity: 1 !important; }
-
-  .topbar, .actionbar, .sheet__scrim, .sheet__close, #sheetCurva, .card:has(.map-wrap){ display: none !important; }
-
-  .print-head{
-    display: flex; justify-content: space-between; font-size: 10px; font-weight: 700;
-    color: var(--ink-500); border-bottom: 1px solid var(--border); padding-bottom: 3px; margin-bottom: 6px;
-  }
-
-  .cartera{
-    display: grid; grid-template-columns: 1fr 1fr; gap: 6px; padding: 0; max-width: none;
-  }
-  .hero-card{ grid-column: 1 / -1; height: 90px; border-radius: 8px; box-shadow: none; }
-  .hero-card__overlay{ padding: 16px 12px 8px; }
-  .card{ padding: 8px 10px; border-radius: 8px; box-shadow: none; break-inside: avoid; }
-  .card__title{ font-size: 11.5px; margin-bottom: 5px; }
-  .card__title svg{ width: 13px; height: 13px; }
-  .card--hitos, .card:has(#eventosVal){ grid-column: 1 / -1; }
-  .progress-stack{ gap: 5px; }
-  .bar{ height: 7px; }
-  .variance{ margin-top: 5px; padding: 3px 8px; font-size: 10.5px; }
-  .legend{ margin-bottom: 4px; font-size: 10px; }
-  .particular-grid, .hitos{ gap: 5px; }
-  .particular, .hito{ padding: 5px 7px; }
-  .hitos{ grid-template-columns: repeat(4, 1fr); }
-  .hito__date{ margin: 1px 0 3px; font-size: 10px; }
-  .hito__desc{ font-size: 9.5px; line-height: 1.3; }
-  .particular__title{ font-size: 10px; padding-bottom: 3px; margin-bottom: 4px; }
-  .mini-row + .mini-row{ margin-top: 3px; }
-  .eventos-text{ font-size: 10px; line-height: 1.35; column-count: 2; column-gap: 14px; }
-  .info-list{ gap: 4px; }
-
-  .sheet{ display: none !important; }
-  .print-only{ display: block; }
-  /* Información general y Plazos a la izquierda; Ficha técnica a la derecha. */
-  .cartera{ grid-auto-flow: row dense; }
-  .print-ficha{ grid-column: 2; grid-row: span 2; }
-  .spec-group + .spec-group{ margin-top: 4px; }
-  .spec-group__title{ font-size: 10.5px; margin-bottom: 1px; }
-  .spec{ font-size: 10px; }
-  .spec td{ padding: 1.5px 2px; }
-  .info-item__value{ font-size: 11.5px; }
-  .plazo-summary{ gap: 5px; margin-bottom: 6px; }
-  .print-plazos .timeline{ display: grid; grid-template-columns: 1fr 1fr; gap: 4px 8px; }
-  .print-plazos .timeline::before{ display: none; }
-  .plazo-summary__item{ padding: 4px 8px; }
-  .plazo-summary__value{ font-size: 11.5px; }
-  .timeline li{ padding: 0 0 5px 22px; }
-  .timeline li::before{ width: 11px; height: 11px; top: 2px; }
-  .timeline::before{ left: 5px; }
-  .timeline__date{ font-size: 11.5px; }
+  .topbar, .actionbar, .sheet{ display: none !important; }
 }
+body.modo-pdf{ background: #fff; padding: 0; font-size: 11px; }
+body.modo-pdf *, body.modo-pdf *::before, body.modo-pdf *::after{ animation: none !important; transition: none !important; }
+body.modo-pdf .cartera > *, body.modo-pdf .timeline li, body.modo-pdf .info-item, body.modo-pdf .hito, body.modo-pdf .particular{ opacity: 1 !important; }
+body.modo-pdf .topbar, body.modo-pdf .actionbar, body.modo-pdf .sheet__scrim, body.modo-pdf .sheet__close, body.modo-pdf #sheetCurva, body.modo-pdf .card:has(.map-wrap){ display: none !important; }
+body.modo-pdf .print-head{
+  display: flex; justify-content: space-between; font-size: 10px; font-weight: 700;
+  color: var(--ink-500); border-bottom: 1px solid var(--border); padding-bottom: 3px; margin-bottom: 6px;
+}
+body.modo-pdf .cartera{
+  display: grid; grid-template-columns: 1fr 1fr; gap: 6px; padding: 0; max-width: none;
+}
+body.modo-pdf .hero-card{ grid-column: 1 / -1; height: 90px; border-radius: 8px; box-shadow: none; }
+body.modo-pdf .hero-card__overlay{ padding: 16px 12px 8px; }
+body.modo-pdf .card{ padding: 8px 10px; border-radius: 8px; box-shadow: none; break-inside: avoid; }
+body.modo-pdf .card__title{ font-size: 11.5px; margin-bottom: 5px; }
+body.modo-pdf .card__title svg{ width: 13px; height: 13px; }
+body.modo-pdf .card--hitos, body.modo-pdf .card:has(#eventosVal){ grid-column: 1 / -1; }
+body.modo-pdf .progress-stack{ gap: 5px; }
+body.modo-pdf .bar{ height: 7px; }
+body.modo-pdf .variance{ margin-top: 5px; padding: 3px 8px; font-size: 10.5px; }
+body.modo-pdf .legend{ margin-bottom: 4px; font-size: 10px; }
+body.modo-pdf .particular-grid, body.modo-pdf .hitos{ gap: 5px; }
+body.modo-pdf .particular, body.modo-pdf .hito{ padding: 5px 7px; }
+body.modo-pdf .hitos{ grid-template-columns: repeat(4, 1fr); }
+body.modo-pdf .hito__date{ margin: 1px 0 3px; font-size: 10px; }
+body.modo-pdf .hito__desc{ font-size: 9.5px; line-height: 1.3; }
+body.modo-pdf .particular__title{ font-size: 10px; padding-bottom: 3px; margin-bottom: 4px; }
+body.modo-pdf .mini-row + .mini-row{ margin-top: 3px; }
+body.modo-pdf .eventos-text{ font-size: 10px; line-height: 1.35; column-count: 2; column-gap: 14px; }
+body.modo-pdf .info-list{ gap: 4px; }
+body.modo-pdf .sheet{ display: none !important; }
+body.modo-pdf .print-only{ display: block; }
+/* Información general y Plazos a la izquierda; Ficha técnica a la derecha. */
+body.modo-pdf .cartera{ grid-auto-flow: row dense; }
+body.modo-pdf .print-ficha{ grid-column: 2; grid-row: span 2; }
+body.modo-pdf .spec-group + .spec-group{ margin-top: 4px; }
+body.modo-pdf .spec-group__title{ font-size: 10.5px; margin-bottom: 1px; }
+body.modo-pdf .spec{ font-size: 10px; }
+body.modo-pdf .spec td{ padding: 1.5px 2px; }
+body.modo-pdf .info-item__value{ font-size: 11.5px; }
+body.modo-pdf .plazo-summary{ gap: 5px; margin-bottom: 6px; }
+body.modo-pdf .print-plazos .timeline{ display: grid; grid-template-columns: 1fr 1fr; gap: 4px 8px; }
+body.modo-pdf .plazo-summary__item{ padding: 4px 8px; }
+body.modo-pdf .plazo-summary__value{ font-size: 11.5px; }
+body.modo-pdf .timeline__date{ font-size: 11.5px; }
