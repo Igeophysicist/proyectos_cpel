@@ -21,6 +21,24 @@ Sitio estático (HTML/CSS/JS sin build step) publicado en GitHub Pages.
 - `dialog.js`: abre y cierra paneles emergentes (Escape, foco y
   `aria-hidden`).
 
+## Enlaces directos y fecha de los datos
+
+- **Enlaces directos:** la dirección de cada tablero refleja lo que se
+  está viendo, así que se puede compartir tal cual (o con los botones
+  **Compartir**, que en el celular abren WhatsApp/correo y en la
+  computadora copian el enlace):
+  - Cartera CPEL: `cartera-cpel/?proyecto=ph-chicoasen-ii`
+  - Mixtos: `cartera-mixtos/?proyecto=san-simon-solar` (ficha abierta) o
+    una vista filtrada, p. ej. `?tecnologia=EO%20-%20Eólica&q=noria&tab=mapa`.
+
+  El identificador sale del nombre del proyecto (sin acentos ni
+  símbolos). Si alguien abre un enlace sin sesión, después de la
+  contraseña llega a la misma vista.
+- **"Datos al …":** es la fecha en que se guardó por última vez el
+  Excel de cada tablero (Cartera: en el encabezado del proyecto; Mixtos:
+  bajo el título de la barra superior). Se actualiza sola al subir un
+  Excel nuevo; no hay que capturarla.
+
 ## Modo app (instalable)
 
 El sitio se puede instalar en el celular o la computadora como una app

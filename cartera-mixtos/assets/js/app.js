@@ -4,12 +4,18 @@
  * y panel de detalle. Es el único archivo que conoce la aplicación
  * completa; los demás módulos son independientes entre sí.
  *
- * Requiere: shared/text-utils.js, shared/dialog.js y el resto de
- * módulos de assets/js (data, map, charts, filters, ui).
+ * La vista actual (filtros, búsqueda, pestaña y ficha abierta) se
+ * guarda en la dirección (ver url-state.js) para poder compartirla.
+ *
+ * Requiere: shared/text-utils.js, shared/dialog.js, shared/share.js y el
+ * resto de módulos de assets/js (data, map, charts, filters, ui, url-state).
  */
 (function () {
   let allProjects = [];
   let projectsById = new Map();
+  let currentTab = "proyectos";
+  let openProjectSlug = null; // ficha abierta (para la dirección)
+  const { slugify, formatDateShort } = window.TextUtils;
 
   const els = {
     loader: document.getElementById("loader"),
@@ -27,6 +33,8 @@
     tabbarBtns: Array.from(document.querySelectorAll(".tabbar__btn")),
     toast: document.getElementById("toast"),
     rankingHint: document.getElementById("ranking-hint"),
+    dataDate: document.getElementById("data-date"),
+    shareView: document.getElementById("share-view"),
   };
 
   // Espera tras la última tecla antes de volver a filtrar y redibujar
@@ -53,13 +61,64 @@
     const count = window.AppFilters.activeCount();
     els.filterCount.textContent = count;
     els.filterCount.style.display = count ? "inline-flex" : "none";
+    syncUrl();
+  }
+
+  /** Deja en la dirección la vista actual (ver url-state.js). */
+  function syncUrl() {
+    window.AppUrlState.write({
+      search: els.search.value,
+      state: window.AppFilters.state,
+      tab: currentTab,
+      proyecto: openProjectSlug,
+    });
+  }
+
+  /**
+   * Aplica la vista pedida en la dirección al abrir la página. Los
+   * valores de filtro que ya no existen en los datos se ignoran.
+   */
+  function applyUrlState() {
+    const view = window.AppUrlState.read();
+    if (view.search) {
+      els.search.value = view.search;
+      window.AppFilters.setSearch(view.search);
+    }
+    const options = window.AppFilters.buildFilterOptions(allProjects);
+    Object.entries(view.filters).forEach(([field, values]) => {
+      values
+        .filter((v) => (options[field] || []).includes(v))
+        .forEach((v) => window.AppFilters.toggle(field, v));
+    });
+    if (view.tab) switchTab(view.tab);
+    return view;
+  }
+
+  function openProjectBySlug(slug) {
+    const wanted = slugify(slug);
+    const project = allProjects.find((p) => slugify(p.nombre) === wanted);
+    if (project) openDetail(project.id);
   }
 
   function openDetail(projectId) {
     const project = projectsById.get(projectId);
     if (!project) return;
     window.AppUI.renderDetail("detail-body", project);
-    window.Dialog.open(els.detail);
+    openProjectSlug = slugify(project.nombre);
+    window.Dialog.open(els.detail, {
+      onClose: () => {
+        openProjectSlug = null;
+        syncUrl();
+      },
+    });
+    syncUrl();
+
+    const shareBtn = els.detailBody.querySelector("[data-share-project]");
+    if (shareBtn) {
+      shareBtn.addEventListener("click", () =>
+        window.Share.link({ url: window.location.href, title: `${project.nombre} — Panel Mixtos` })
+      );
+    }
 
     const mapBtn = els.detailBody.querySelector("[data-view-on-map]");
     if (mapBtn) {
@@ -107,12 +166,14 @@
   }
 
   function switchTab(name) {
+    currentTab = name;
     document.querySelectorAll(".tabgroup").forEach((el) => el.classList.remove("is-active"));
     document.getElementById("group-" + name).classList.add("is-active");
     els.tabbarBtns.forEach((btn) => btn.classList.toggle("is-active", btn.dataset.tab === name));
     if (name === "mapa") {
       setTimeout(() => window.AppMap.refit(), 50);
     }
+    syncUrl();
   }
 
   function wireEvents() {
@@ -143,6 +204,10 @@
 
     window.AppMap.setOnMarkerSelect(openDetail);
 
+    els.shareView.addEventListener("click", () =>
+      window.Share.link({ url: window.location.href, title: "Panel Mixtos" })
+    );
+
     window.addEventListener("resize", () => window.AppMap.invalidateSize());
   }
 
@@ -152,12 +217,17 @@
       window.AppMap.initMap("map");
       wireEvents();
 
-      const { projects, warnings } = await window.AppData.loadDataset();
+      const { projects, warnings, dataDate } = await window.AppData.loadDataset();
       allProjects = projects;
       projectsById = new Map(projects.map((p) => [p.id, p]));
 
+      const fecha = formatDateShort(dataDate);
+      if (fecha) els.dataDate.textContent = `Datos al ${fecha}`;
+
+      const view = applyUrlState();
       render();
       els.loader.classList.add("is-hidden");
+      if (view.proyecto) openProjectBySlug(view.proyecto);
       // Asegura un encuadre correcto también en escritorio (el mapa ya es
       // visible desde el inicio ahí, pero por si el layout se asienta
       // después de la primera pintura).

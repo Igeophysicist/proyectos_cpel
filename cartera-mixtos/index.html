@@ -31,7 +31,8 @@
       </a>
       <div>
         <div class="topbar__title">Panel Mixtos</div>
-        <div class="topbar__subtitle">Seguimiento</div>
+        <!-- "Datos al ..." = fecha de guardado del Excel (ver app.js) -->
+        <div class="topbar__subtitle" id="data-date">Seguimiento</div>
       </div>
     </div>
     <div class="topbar__search">
@@ -100,6 +101,8 @@
       <div class="tabgroup is-active" id="group-proyectos">
         <div class="list-toolbar">
           <span class="list-toolbar__count" id="list-count"></span>
+          <!-- Comparte la vista actual (filtros y búsqueda) como enlace -->
+          <button class="list-toolbar__share" id="share-view" type="button">Compartir vista</button>
         </div>
         <div class="project-list" id="project-list"></div>
       </div>
@@ -160,6 +163,7 @@
 
   <script src="../assets/js/shared/text-utils.js"></script>
   <script src="../assets/js/shared/dialog.js"></script>
+  <script src="../assets/js/shared/share.js"></script>
   <script src="../assets/js/shared/pwa.js"></script>
   <script src="../assets/js/shared/kml-parser.js"></script>
   <script src="../assets/js/shared/base-map.js"></script>
@@ -168,6 +172,7 @@
   <script src="assets/js/charts.js"></script>
   <script src="assets/js/filters.js"></script>
   <script src="assets/js/ui.js"></script>
+  <script src="assets/js/url-state.js"></script>
   <script src="assets/js/app.js"></script>
 </body>
 </html>

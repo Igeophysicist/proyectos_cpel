@@ -29,6 +29,7 @@ cartera-mixtos/
 │       ├── charts.js          gráficos Chart.js
 │       ├── filters.js         estado y lógica de filtros
 │       ├── ui.js              KPIs, tarjetas, panel de detalle
+│       ├── url-state.js       vista actual <-> dirección (enlaces directos)
 │       └── app.js             orquestador (conecta todo)
 └── data/
     ├── DATOS_MIXTOS.xlsx      fuente de datos ejecutiva (única fuente de verdad)
@@ -110,6 +111,15 @@ aparezca en el mapa es que su nombre en el KML coincida con
 `TÍTULO 2` del Excel.** No hace falta mantener un ID paralelo. Para
 agregar más archivos KML, súmalos al arreglo `KML_SOURCES` en
 `assets/js/data.js`.
+
+## Enlaces directos
+
+La dirección guarda la vista actual: ficha abierta (`?proyecto=san-simon-solar`),
+búsqueda (`q`), filtros (`tecnologia`, `estado`, `socio`, `grupo`, `cod`;
+se repiten si hay varios valores) y pestaña (`tab`). **Compartir vista**
+(sobre el listado) y **Compartir enlace a este proyecto** (en la ficha)
+envían esa dirección. Los valores que ya no existen en el Excel se
+ignoran al abrir el enlace.
 
 ## Filtros
 

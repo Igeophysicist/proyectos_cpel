@@ -30,7 +30,16 @@
  * Excel (hito1_num, hito1_titulo, hito1_fecha, hito1_desc, hito2_...).
  * Para agregar un quinto hito basta con agregar las columnas hito5_*.
  *
- * Requiere: shared/text-utils.js, shared/dialog.js y map.js.
+ * ENLACE DIRECTO: la dirección lleva el proyecto seleccionado
+ * (?proyecto=ph-chicoasen-ii, a partir de la columna "nombre"), así que
+ * se puede compartir con el botón de la barra superior o copiando la
+ * dirección. Si el nombre cambia en el Excel, el enlace viejo abre el
+ * primer proyecto.
+ *
+ * FECHA DE LOS DATOS: se muestra la fecha en que se guardó por última
+ * vez el Excel (propiedad del propio archivo); no hay que capturarla.
+ *
+ * Requiere: shared/text-utils.js, shared/dialog.js, shared/share.js y map.js.
  */
 (function () {
   const EXCEL_FILE_PATH = "data/datos_proyectos.xlsx";
@@ -140,10 +149,11 @@
     ["plazo_operacion_fecha", "Operación"],
   ];
 
-  const { esc, parseNumber, parseDate, isPastOrToday } = window.TextUtils;
+  const { esc, parseNumber, parseDate, isPastOrToday, slugify, formatDateShort } = window.TextUtils;
 
   let proyectos = [];
   let totalHitos = 0;
+  let actual = null; // proyecto mostrado
   const $ = (id) => document.getElementById(id);
 
   // ---------------------------------------------------------- utilidades
@@ -201,9 +211,10 @@
 
       if (!proyectos.length) throw new Error("El Excel no tiene proyectos.");
       totalHitos = contarHitos(proyectos);
+      mostrarFechaDatos(workbook.Props && workbook.Props.ModifiedDate);
       poblarSelector();
       await kmlListo;
-      mostrarProyecto(proyectos[0]);
+      seleccionar(indiceDesdeUrl());
     } catch (err) {
       console.error(err);
       $("projectSelect").innerHTML = "<option>Error al cargar datos</option>";
@@ -215,6 +226,34 @@
     $("projectSelect").innerHTML = proyectos
       .map((p, i) => `<option value="${i}">${esc(p.nombre)}</option>`)
       .join("");
+  }
+
+  function mostrarFechaDatos(fecha) {
+    const texto = formatDateShort(fecha instanceof Date ? fecha : new Date(fecha));
+    $("dataDate").textContent = texto ? `Datos al ${texto}` : "";
+    $("dataDate").hidden = !texto;
+  }
+
+  // ----------------------------------------------------- enlace directo
+  /** Índice del proyecto indicado en ?proyecto=..., o 0 si no hay o no existe. */
+  function indiceDesdeUrl() {
+    const buscado = new URLSearchParams(window.location.search).get("proyecto");
+    if (!buscado) return 0;
+    const i = proyectos.findIndex((p) => slugify(p.nombre) === slugify(buscado));
+    return i === -1 ? 0 : i;
+  }
+
+  /** Muestra el proyecto i y deja su enlace directo en la dirección. */
+  function seleccionar(i) {
+    const p = proyectos[i];
+    if (!p) return;
+    actual = p;
+    $("projectSelect").value = String(i);
+    mostrarProyecto(p);
+    const url = new URL(window.location.href);
+    url.searchParams.set("proyecto", slugify(p.nombre));
+    window.history.replaceState(null, "", url);
+    document.title = `${texto(p.nombre, "Proyecto")} — Cartera CPEL`;
   }
 
   // ------------------------------------------------------------ render
@@ -346,11 +385,13 @@
   // ------------------------------------------------------------ eventos
   document.addEventListener("DOMContentLoaded", () => {
     $("projectSelect").addEventListener("change", (e) => {
-      const p = proyectos[Number(e.target.value)];
-      if (p) {
-        mostrarProyecto(p);
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      }
+      seleccionar(Number(e.target.value));
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    $("shareBtn").addEventListener("click", () => {
+      if (!actual) return;
+      window.Share.link({ url: window.location.href, title: `${texto(actual.nombre, "Proyecto")} — Cartera CPEL` });
     });
 
     document.querySelectorAll("[data-open-sheet]").forEach((btn) =>

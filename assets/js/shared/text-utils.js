@@ -106,6 +106,26 @@
     return date.getTime() <= hoy.getTime();
   }
 
+  /**
+   * Identificador para enlaces a partir del nombre de un proyecto:
+   * "PH CHICOASÉN II" -> "ph-chicoasen-ii". Sin acentos ni símbolos,
+   * así el enlace se puede compartir por WhatsApp o correo sin romperse.
+   */
+  function slugify(str) {
+    return normalizeText(str)
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-+|-+$/g, "");
+  }
+
+  /** Fecha corta en español, p. ej. "30 sep 2026" (el mes abreviado varía un poco según el navegador). "" si no es válida. */
+  function formatDateShort(date) {
+    if (!(date instanceof Date) || Number.isNaN(date.getTime())) return "";
+    return date
+      .toLocaleDateString("es-MX", { day: "numeric", month: "short", year: "numeric" })
+      .replace(/\./g, "");
+  }
+
   /** Ejecuta fn solo cuando dejan de llegar llamadas durante "ms". */
   function debounce(fn, ms) {
     let t = null;
@@ -115,7 +135,7 @@
     };
   }
 
-  const api = { normalizeText, esc, parseNumber, parseDate, isPastOrToday, debounce };
+  const api = { normalizeText, esc, parseNumber, parseDate, isPastOrToday, debounce, slugify, formatDateShort };
 
   if (typeof module !== "undefined" && module.exports) module.exports = api;
   else global.TextUtils = api;
