@@ -25,7 +25,7 @@ cartera-mixtos/
 │   │   └── styles.css         sistema de diseño completo
 │   └── js/
 │       ├── data.js            carga Excel+KML, normaliza, vincula
-│       ├── map.js             mapa Leaflet (agrupa puntos cercanos)
+│       ├── map.js             mapa Leaflet
 │       ├── charts.js          gráficos Chart.js
 │       ├── filters.js         estado y lógica de filtros
 │       ├── ui.js              KPIs, tarjetas, panel de detalle
@@ -82,9 +82,8 @@ reescribe `map.js`.
   editando archivos de datos y se publica en GitHub Pages — un
   proyecto React/Vue añadiría un paso de compilación sin aportar
   beneficio aquí.
-- **Leaflet** (mapa, con **Leaflet.markercluster** para agrupar
-  puntos) y **Chart.js** (gráficos), cargados por CDN. Son ligeras,
-  muy usadas y no requieren licencia.
+- **Leaflet** (mapa) y **Chart.js** (gráficos), cargados por CDN.
+  Ambas son ligeras, muy usadas y no requieren licencia.
 - **Parser KML propio** (`kml-parser.js`, ~100 líneas) en vez de una
   librería externa (p. ej. `leaflet-omnivore`): los KML de este
   proyecto usan solo `Point`, `LineString` y `Polygon` simples, así
@@ -131,16 +130,6 @@ búsqueda (`q`), filtros (`tecnologia`, `estado`, `socio`, `grupo`, `cod`;
 se repiten si hay varios valores) y pestaña (`tab`), así que basta con
 copiar la dirección para compartir esa vista. Los valores que ya no
 existen en el Excel se ignoran al abrir el enlace.
-
-## Mapa: grupos de proyectos
-
-A escala de país, los puntos cercanos se juntan en un círculo con el
-número de proyectos. Al tocarlo (o al acercarse) se separan; desde el
-zoom en que aparecen los nombres (`LABEL_MIN_ZOOM` en `map.js`) ya no
-se agrupan. "Ver en el mapa" en una ficha acerca hasta el proyecto y
-abre su popup aunque esté dentro de un grupo. Los polígonos y líneas
-no se agrupan. `CLUSTER_RADIUS` (en `map.js`) controla qué tan cerca
-deben estar los puntos para juntarse.
 
 ## Filtros
 
@@ -192,5 +181,8 @@ compartidos).
 
 ## Extensiones sugeridas para más adelante
 
+- Exportar el listado filtrado a Excel/CSV.
 - Filtro por rango de fechas (el código ya interpreta las fechas de
   `Inicio de Construcción` / `Fin de Construcción`).
+- Capa de agrupación (clustering) en el mapa si el número de
+  proyectos crece mucho más allá de unas cuantas decenas.

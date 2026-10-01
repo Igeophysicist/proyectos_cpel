@@ -13,8 +13,6 @@
 
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
       integrity="sha384-sHL9NAb7lN7rfvG5lfHpm643Xkcjzp4jFvuavGOndn6pjVqS6ny56CAt3nsEVT4H" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css"
-      integrity="sha384-pmjIAcz2bAn0xukfxADbZIb3t8oRT9Sv0rvO+BR5Csr6Dhqq+nZs59P0pPKQJkEV" crossorigin="anonymous" />
 <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 <body>
@@ -94,7 +92,6 @@
           <span><span class="dot dot--a"></span>Grupo A</span>
           <span><span class="dot dot--b"></span>Grupo B</span>
           <span><span class="dot dot--c"></span>Grupo C</span>
-          <span><span class="dot dot--grupo">3</span>Varios proyectos</span>
         </div>
         <div class="map-empty" id="map-empty" style="display:none;"></div>
         <div class="map-tile-warning" id="map-tile-warning" hidden>No se pudieron cargar las imágenes del mapa (revisa tu conexión). Los proyectos siguen visibles como puntos.</div>
@@ -153,8 +150,6 @@
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
           integrity="sha384-cxOPjt7s7Iz04uaHJceBmS+qpjv2JkIHNVcuOrM+YHwZOmJGBXI00mdUXEq65HTH" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"
-          integrity="sha384-eXVCORTRlv4FUUgS/xmOyr66XBVraen8ATNLMESp92FKXLAMiKkerixTiBvXriZr" crossorigin="anonymous"></script>
   <!-- chart.umd.js ya viene minificado en Chart.js 4.4.4 (chart.umd.min.js no
        existe en el paquete: jsDelivr lo generaba al vuelo y no admite SRI). -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.js"

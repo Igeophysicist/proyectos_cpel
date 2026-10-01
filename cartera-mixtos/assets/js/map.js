@@ -3,13 +3,7 @@
  * Encapsula el mapa Leaflet: renderizado de proyectos geolocalizados,
  * resaltado al seleccionar y sincronización con el resto del dashboard.
  *
- * Los PUNTOS cercanos se agrupan en un círculo con el número de
- * proyectos (Leaflet.markercluster); al acercarse se separan. A partir
- * de LABEL_MIN_ZOOM ya no se agrupan y aparece el nombre de cada
- * proyecto. Polígonos y líneas no se agrupan.
- *
- * Requiere: Leaflet.markercluster, shared/text-utils.js,
- * shared/base-map.js y data.js.
+ * Requiere: shared/text-utils.js, shared/base-map.js y data.js.
  */
 (function (global) {
   // ------------------------------------------------------------------
@@ -33,12 +27,8 @@
   ];
   // ------------------------------------------------------------------
 
-  // Radio (px) dentro del cual los puntos se juntan en un grupo.
-  const CLUSTER_RADIUS = 45;
-
   let map = null;
-  let layerGroup = null; // polígonos y líneas
-  let clusterGroup = null; // puntos (se agrupan)
+  let layerGroup = null;
   let markersById = new Map();
   let onMarkerSelect = () => {};
   let lastFitBounds = null;
@@ -51,13 +41,6 @@
   function initMap(elementId) {
     map = global.BaseMap.create(elementId, { tileWarningId: "map-tile-warning" }).fitBounds(MEXICO_BOUNDS);
     layerGroup = L.layerGroup().addTo(map);
-    clusterGroup = L.markerClusterGroup({
-      maxClusterRadius: CLUSTER_RADIUS,
-      disableClusteringAtZoom: LABEL_MIN_ZOOM, // con nombres visibles ya no se agrupa
-      showCoverageOnHover: false,
-      spiderfyOnMaxZoom: false,
-      iconCreateFunction: clusterIcon,
-    }).addTo(map);
 
     // Muestra/oculta los nombres de proyecto según el zoom actual cada
     // vez que el usuario hace zoom (rueda, pellizco o botones +/-).
@@ -75,17 +58,6 @@
     return map;
   }
 
-  /** Círculo con el número de proyectos del grupo (más grande si son más). */
-  function clusterIcon(cluster) {
-    const n = cluster.getChildCount();
-    const size = n < 5 ? 34 : n < 10 ? 40 : 46;
-    return L.divIcon({
-      html: `<span role="img" aria-label="${n} proyectos">${n}</span>`,
-      className: "map-cluster",
-      iconSize: [size, size],
-    });
-  }
-
   function popupHtml(project) {
     return `
       <div class="map-popup">
@@ -98,20 +70,17 @@
   /** Abre o cierra la etiqueta (tooltip permanente) de cada marcador según LABEL_MIN_ZOOM */
   function updateLabelVisibility() {
     if (!map) return;
-    markersById.forEach(applyLabel);
-  }
-
-  function applyLabel(layer) {
-    if (!map || !layer.getTooltip || !layer.getTooltip() || !map.hasLayer(layer)) return;
-    if (map.getZoom() >= LABEL_MIN_ZOOM) layer.openTooltip();
-    else layer.closeTooltip();
+    const shouldShow = map.getZoom() >= LABEL_MIN_ZOOM;
+    markersById.forEach((layer) => {
+      if (!layer.getTooltip || !layer.getTooltip()) return;
+      if (shouldShow) layer.openTooltip();
+      else layer.closeTooltip();
+    });
   }
 
   function renderProjects(projects) {
     layerGroup.clearLayers();
-    clusterGroup.clearLayers();
     markersById.clear();
-    const points = [];
     const bounds = [];
 
     projects.forEach((project) => {
@@ -155,15 +124,7 @@
         className: "project-label",
         interactive: false,
       });
-      if (project.geo.type === "point") {
-        // Al salir de un grupo, el marcador vuelve al mapa: su nombre se
-        // muestra u oculta según el zoom (Leaflet abre las etiquetas
-        // permanentes al agregarlas).
-        layer.on("add", () => applyLabel(layer));
-        points.push(layer);
-      } else {
-        layer.addTo(layerGroup);
-      }
+      layer.addTo(layerGroup);
       markersById.set(project.id, layer);
 
       // Geometrías adicionales del mismo proyecto (p. ej. un polígono de
@@ -184,8 +145,6 @@
       });
     });
 
-    clusterGroup.addLayers(points);
-
     // Encuadre: siempre incluye al menos todo México, y se amplía para
     // cubrir también los proyectos filtrados si caen fuera de esa área.
     lastFitBounds = L.latLngBounds(MEXICO_BOUNDS);
@@ -199,16 +158,9 @@
   function highlight(projectId) {
     const layer = markersById.get(projectId);
     if (!layer) return false;
-    if (clusterGroup.hasLayer(layer)) {
-      // Con zoom >= LABEL_MIN_ZOOM ya no hay grupos: el punto vuelve al
-      // mapa (de inmediato o al terminar la animación) y se abre su popup.
-      const open = () => layer.openPopup();
-      map.setView(layer.getLatLng(), Math.max(map.getZoom(), 11), { animate: false });
-      if (map.hasLayer(layer)) open();
-      else layer.once("add", open);
-      return true;
-    }
-    if (layer.getBounds) {
+    if (layer.getLatLng) {
+      map.setView(layer.getLatLng(), Math.max(map.getZoom(), 11), { animate: true });
+    } else if (layer.getBounds) {
       map.fitBounds(layer.getBounds(), { padding: [40, 40] });
     }
     layer.openPopup();
