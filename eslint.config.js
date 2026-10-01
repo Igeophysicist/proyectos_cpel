@@ -24,6 +24,11 @@ module.exports = [
     },
   },
   {
+    // Service Worker del modo app.
+    files: ["sw.js"],
+    languageOptions: { ecmaVersion: 2022, sourceType: "script", globals: globals.serviceworker },
+  },
+  {
     // Cloudflare Pages Functions: módulos ES con las APIs web del runtime
     // de Workers (Request, Response, crypto, etc.).
     files: ["functions/**/*.js"],

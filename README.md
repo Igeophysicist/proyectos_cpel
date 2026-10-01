@@ -21,6 +21,31 @@ Sitio estático (HTML/CSS/JS sin build step) publicado en GitHub Pages.
 - `dialog.js`: abre y cierra paneles emergentes (Escape, foco y
   `aria-hidden`).
 
+## Modo app (instalable)
+
+El sitio se puede instalar en el celular o la computadora como una app
+(`manifest.json` + íconos en `assets/img/icon-*.png`).
+
+- **Android / Chrome / Edge:** menú del navegador → *Instalar app* o
+  *Agregar a pantalla de inicio*.
+- **iPhone / iPad (Safari):** botón Compartir → *Agregar a inicio*.
+
+`sw.js` (Service Worker, registrado por `assets/js/shared/pwa.js`):
+
+- **Siempre la versión más reciente:** páginas, CSS, JS e imágenes del
+  sitio se piden primero al servidor; la copia guardada solo se usa sin
+  conexión. No hace falta cambiar nada al publicar.
+- **Sin conexión:** abren las páginas ya visitadas en ese dispositivo;
+  las demás muestran un aviso. Los **datos** (`/data/`: Excel, KML,
+  JSON) **nunca** se guardan, así que sin conexión las páginas abren
+  pero sin datos.
+- Las librerías de CDN se guardan porque su URL incluye la versión
+  (cambiar de versión = cambiar la URL en el HTML).
+- **Salir** borra todo lo guardado y desactiva el Service Worker en ese
+  dispositivo.
+- `VERSION` en `sw.js` solo se cambia si se modifica la lógica del
+  propio `sw.js` (borra lo guardado por la versión anterior).
+
 ## Acceso con contraseña (Cloudflare Pages)
 
 `functions/_middleware.js` protege **todo** el sitio (páginas, scripts,

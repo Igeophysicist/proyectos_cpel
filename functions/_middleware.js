@@ -38,10 +38,15 @@ const FAILED_LOGIN_DELAY_MS = 1500;
 
 const DAY_S = 24 * 60 * 60;
 
-// Archivos visibles sin sesión (solo los que usa la pantalla de acceso).
+// Archivos visibles sin sesión: los que usa la pantalla de acceso y los
+// del modo app (el navegador pide el manifest y los íconos sin cookies).
 const PUBLIC_PATHS = new Set([
   "/assets/img/apple-touch-icon.png",
   "/assets/img/logo-cpel.png",
+  "/manifest.json",
+  "/assets/img/icon-192.png",
+  "/assets/img/icon-512.png",
+  "/assets/img/icon-512-maskable.png",
 ]);
 
 const encoder = new TextEncoder();
@@ -147,6 +152,8 @@ function loginPage({ next = "/", error = "" } = {}, status = 401) {
 <meta name="theme-color" content="#234240">
 <title>CPEL — Acceso</title>
 <link rel="icon" href="/assets/img/apple-touch-icon.png">
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.json">
 <style>
   *{box-sizing:border-box}
   body{margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center; padding:16px;
