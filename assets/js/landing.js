@@ -110,8 +110,16 @@
     });
   }
 
+  // Botón "Salir": la cookie cpel_auth la pone functions/_middleware.js
+  // al entrar con la contraseña (solo existe en Cloudflare Pages).
+  function mostrarSalirSiHaySesion() {
+    const link = document.getElementById("logoutLink");
+    if (link && /(?:^|;\s*)cpel_auth=1(?:;|$)/.test(document.cookie)) link.hidden = false;
+  }
+
   document.addEventListener("DOMContentLoaded", () => {
     init();
     wireColaboradores();
+    mostrarSalirSiHaySesion();
   });
 })();
