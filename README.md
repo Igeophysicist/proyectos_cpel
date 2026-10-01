@@ -39,22 +39,57 @@ Pages ese archivo no hace nada y el sitio queda abierto.
 
 1. Crea una cuenta en <https://dash.cloudflare.com> (de preferencia con
    un correo institucional o compartido del área).
-2. **Workers & Pages → Create → Pages → Connect to Git**, autoriza
-   GitHub y elige este repositorio y la rama `main`.
-3. Configuración de compilación: *Framework preset* **None**, comando
-   de compilación **vacío** y como directorio de salida la raíz del
-   repositorio. Cloudflare detecta la carpeta `functions/` sola.
+2. **Workers & Pages → Create** y busca la opción de **Pages** (pestaña
+   "Pages" o el enlace *"Looking to deploy Pages? Get started"*) →
+   **Import an existing Git repository** → este repositorio → **Begin
+   setup**.
+
+   > ⚠️ **No uses "Import a repository" de Workers.** Eso crea un
+   > *Worker*, no un proyecto de Pages: el despliegue corre
+   > `npx wrangler deploy`, ignora la carpeta `functions/` (el sitio
+   > quedaría **sin contraseña**) e intenta publicar `node_modules`,
+   > por lo que falla con *"Asset too large"*. Si te pasa, borra ese
+   > Worker (Settings → Delete) y crea el proyecto de Pages.
+3. Configuración de compilación:
+
+   | Campo | Valor |
+   |---|---|
+   | Production branch | `main` |
+   | Framework preset | **None** |
+   | Build command | vacío |
+   | Build output directory | vacío (la raíz); si no lo acepta, `/` |
+
+   En **Environment variables (advanced)** agrega
+   `SKIP_DEPENDENCY_INSTALL` = `1`, para que Cloudflare no instale ni
+   publique las herramientas de desarrollo (`node_modules`).
+
+   En el log del despliegue **no** deben aparecer
+   `npx wrangler deploy` ni `Installing project dependencies`, y debe
+   detectar la carpeta `functions`. El primer despliegue muestra
+   "Falta configurar SITE_PASSWORD": es lo esperado.
 4. En el proyecto: **Settings → Variables and Secrets → Add**, tipo
    **Secret**, nombre `SITE_PASSWORD`, con la contraseña como valor.
    Agrégala para *Production* y también para *Preview* (si falta, esas
    versiones quedan cerradas con un aviso).
 5. **Deployments → Retry deployment** para que tome la contraseña.
-6. Abre la dirección `https://<proyecto>.pages.dev`: debe pedir la
-   contraseña.
-7. Ya con el sitio nuevo funcionando: vuelve **privado** este
-   repositorio (Settings → General → Change visibility) y desactiva
-   GitHub Pages. Mientras el repositorio sea público, los Excel y KML
+6. Comprueba en `https://<proyecto>.pages.dev`:
+   - pide contraseña; una equivocada muestra error y la correcta entra;
+   - Mixtos y Cartera cargan y el portal muestra el botón **Salir**;
+   - en una ventana de incógnito,
+     `/cartera-mixtos/data/DATOS_MIXTOS.xlsx` **no** se descarga.
+7. Comparte el link y la contraseña por canales distintos y avisa la
+   fecha en que dejará de funcionar el link de GitHub Pages.
+8. Llegada esa fecha: desactiva GitHub Pages (Settings → Pages) y
+   vuelve **privado** este repositorio (Settings → General → Change
+   visibility). Mientras el repositorio sea público, los Excel y KML
    se pueden descargar directo desde GitHub sin contraseña.
+9. Haz un cambio pequeño (p. ej. un aviso) y confirma que aparece una
+   publicación nueva en **Deployments**. Si no, en GitHub: Settings →
+   Applications → Cloudflare Workers and Pages → Configure, y agrega
+   este repositorio.
+
+No escribas el link de Cloudflare ni la contraseña en el repositorio
+(avisos, README, commits) mientras sea público.
 
 Usa una frase larga (4–5 palabras) como contraseña: el formulario
 espera 1.5 s tras cada intento fallido, pero no bloquea por IP.
