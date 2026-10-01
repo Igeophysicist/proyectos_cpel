@@ -116,10 +116,9 @@ agregar más archivos KML, súmalos al arreglo `KML_SOURCES` en
 
 La dirección guarda la vista actual: ficha abierta (`?proyecto=san-simon-solar`),
 búsqueda (`q`), filtros (`tecnologia`, `estado`, `socio`, `grupo`, `cod`;
-se repiten si hay varios valores) y pestaña (`tab`). **Compartir vista**
-(sobre el listado) y **Compartir enlace a este proyecto** (en la ficha)
-envían esa dirección. Los valores que ya no existen en el Excel se
-ignoran al abrir el enlace.
+se repiten si hay varios valores) y pestaña (`tab`), así que basta con
+copiar la dirección para compartir esa vista. Los valores que ya no
+existen en el Excel se ignoran al abrir el enlace.
 
 ## Filtros
 

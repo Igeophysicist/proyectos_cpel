@@ -45,9 +45,9 @@ encabezados de la fila 1 se leen por nombre exacto.
 ## Enlace directo y fecha de los datos
 
 - La dirección lleva el proyecto seleccionado (`?proyecto=ph-chicoasen-ii`,
-  a partir de la columna `nombre`); el botón de compartir de la barra
-  superior envía ese enlace. Si cambia el nombre en el Excel, el enlace
-  viejo abre el primer proyecto.
+  a partir de la columna `nombre`), así que basta con copiarla para
+  compartir el proyecto. Si cambia el nombre en el Excel, el enlace viejo
+  abre el primer proyecto.
 - "Datos al …" (en el encabezado) es la fecha de último guardado del
   Excel.
 

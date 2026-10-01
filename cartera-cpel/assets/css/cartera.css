@@ -30,8 +30,6 @@ body{ padding-bottom: calc(var(--tabbar-h) + env(safe-area-inset-bottom, 0px)); 
   text-overflow: ellipsis; white-space: nowrap; overflow: hidden;
 }
 .topbar__select option{ color: var(--ink-900); }
-.topbar__share{ border: 0; cursor: pointer; }
-.topbar__share:active{ transform: scale(.94); }
 .topbar__select-arrow{
   position: absolute; right: 10px; top: 50%; transform: translateY(-50%);
   pointer-events: none; color: #cfe0db;

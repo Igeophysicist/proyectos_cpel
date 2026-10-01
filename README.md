@@ -24,9 +24,7 @@ Sitio estático (HTML/CSS/JS sin build step) publicado en GitHub Pages.
 ## Enlaces directos y fecha de los datos
 
 - **Enlaces directos:** la dirección de cada tablero refleja lo que se
-  está viendo, así que se puede compartir tal cual (o con los botones
-  **Compartir**, que en el celular abren WhatsApp/correo y en la
-  computadora copian el enlace):
+  está viendo, así que basta con copiarla y compartirla:
   - Cartera CPEL: `cartera-cpel/?proyecto=ph-chicoasen-ii`
   - Mixtos: `cartera-mixtos/?proyecto=san-simon-solar` (ficha abierta) o
     una vista filtrada, p. ej. `?tecnologia=EO%20-%20Eólica&q=noria&tab=mapa`.

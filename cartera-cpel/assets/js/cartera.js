@@ -32,14 +32,13 @@
  *
  * ENLACE DIRECTO: la dirección lleva el proyecto seleccionado
  * (?proyecto=ph-chicoasen-ii, a partir de la columna "nombre"), así que
- * se puede compartir con el botón de la barra superior o copiando la
- * dirección. Si el nombre cambia en el Excel, el enlace viejo abre el
+ * se puede compartir copiando la dirección. Si el nombre cambia en el Excel, el enlace viejo abre el
  * primer proyecto.
  *
  * FECHA DE LOS DATOS: se muestra la fecha en que se guardó por última
  * vez el Excel (propiedad del propio archivo); no hay que capturarla.
  *
- * Requiere: shared/text-utils.js, shared/dialog.js, shared/share.js y map.js.
+ * Requiere: shared/text-utils.js, shared/dialog.js y map.js.
  */
 (function () {
   const EXCEL_FILE_PATH = "data/datos_proyectos.xlsx";
@@ -153,7 +152,6 @@
 
   let proyectos = [];
   let totalHitos = 0;
-  let actual = null; // proyecto mostrado
   const $ = (id) => document.getElementById(id);
 
   // ---------------------------------------------------------- utilidades
@@ -247,7 +245,6 @@
   function seleccionar(i) {
     const p = proyectos[i];
     if (!p) return;
-    actual = p;
     $("projectSelect").value = String(i);
     mostrarProyecto(p);
     const url = new URL(window.location.href);
@@ -387,11 +384,6 @@
     $("projectSelect").addEventListener("change", (e) => {
       seleccionar(Number(e.target.value));
       window.scrollTo({ top: 0, behavior: "smooth" });
-    });
-
-    $("shareBtn").addEventListener("click", () => {
-      if (!actual) return;
-      window.Share.link({ url: window.location.href, title: `${texto(actual.nombre, "Proyecto")} — Cartera CPEL` });
     });
 
     document.querySelectorAll("[data-open-sheet]").forEach((btn) =>

@@ -226,11 +226,6 @@ a{color:inherit;}
 /* ---------- Lista de proyectos ---------- */
 .list-toolbar{display:flex; align-items:center; justify-content:space-between; margin-bottom:var(--space-3);}
 .list-toolbar__count{font-size:13px; color:var(--ink-500);}
-.list-toolbar__share{
-  font:inherit; font-size:12.5px; font-weight:700; color:var(--teal-800); cursor:pointer;
-  background:var(--surface); border:1px solid var(--border-strong); border-radius:var(--radius-s); padding:6px 10px;
-}
-.list-toolbar__share:active{transform:scale(.97);}
 .sortsel{
   font-size:13px; border:1px solid var(--border); border-radius:var(--radius-s);
   padding:6px 8px; background:var(--surface); color:var(--ink-700);
@@ -355,11 +350,10 @@ a{color:inherit;}
 .detail-field__value{font-size:13.5px; font-weight:600; color:var(--ink-900); margin-top:1px;}
 .detail-progress{display:flex; flex-direction:column; gap:10px; margin-top:2px;}
 .detail__mapbtn{
-  display:block; margin-top:var(--space-4); width:100%; padding:12px; border-radius:var(--radius-m);
+  margin-top:var(--space-4); width:100%; padding:12px; border-radius:var(--radius-m);
   border:1px solid var(--border-strong); background:var(--surface); color:var(--teal-800);
   font-weight:700; font-size:13.5px; cursor:pointer;
 }
-.detail__mapbtn + .detail__mapbtn{margin-top:var(--space-2);}
 
 /* ---------- Loader / errores ---------- */
 .loader{

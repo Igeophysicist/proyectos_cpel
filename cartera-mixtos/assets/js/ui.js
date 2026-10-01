@@ -185,7 +185,6 @@
         </div>
         ${sections}
         ${p.geo ? `<button class="detail__mapbtn" data-view-on-map="${esc(p.id)}">Ver en el mapa</button>` : ""}
-        <button class="detail__mapbtn" type="button" data-share-project>Compartir enlace a este proyecto</button>
       </div>`;
   }
 

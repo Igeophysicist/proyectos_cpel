@@ -5,10 +5,11 @@
  * completa; los demás módulos son independientes entre sí.
  *
  * La vista actual (filtros, búsqueda, pestaña y ficha abierta) se
- * guarda en la dirección (ver url-state.js) para poder compartirla.
+ * guarda en la dirección (ver url-state.js) para poder compartirla
+ * copiando el enlace.
  *
- * Requiere: shared/text-utils.js, shared/dialog.js, shared/share.js y el
- * resto de módulos de assets/js (data, map, charts, filters, ui, url-state).
+ * Requiere: shared/text-utils.js, shared/dialog.js y el resto de
+ * módulos de assets/js (data, map, charts, filters, ui, url-state).
  */
 (function () {
   let allProjects = [];
@@ -34,7 +35,6 @@
     toast: document.getElementById("toast"),
     rankingHint: document.getElementById("ranking-hint"),
     dataDate: document.getElementById("data-date"),
-    shareView: document.getElementById("share-view"),
   };
 
   // Espera tras la última tecla antes de volver a filtrar y redibujar
@@ -112,13 +112,6 @@
       },
     });
     syncUrl();
-
-    const shareBtn = els.detailBody.querySelector("[data-share-project]");
-    if (shareBtn) {
-      shareBtn.addEventListener("click", () =>
-        window.Share.link({ url: window.location.href, title: `${project.nombre} — Panel Mixtos` })
-      );
-    }
 
     const mapBtn = els.detailBody.querySelector("[data-view-on-map]");
     if (mapBtn) {
@@ -203,10 +196,6 @@
     });
 
     window.AppMap.setOnMarkerSelect(openDetail);
-
-    els.shareView.addEventListener("click", () =>
-      window.Share.link({ url: window.location.href, title: "Panel Mixtos" })
-    );
 
     window.addEventListener("resize", () => window.AppMap.invalidateSize());
   }
