@@ -12,29 +12,34 @@ ejecutivo (varios proyectos, consulta mayormente desde celular,
 necesidad de mapa) esa arquitectura no escalaba: no había manera de
 comparar proyectos, filtrar, ver el conjunto agregado ni ubicarlos en
 el mapa. Se rediseñó desde cero conservando únicamente la fuente de
-datos (`dataparsedprueba.xlsx`) y los colores/identidad de marca
+datos (hoy `DATOS_MIXTOS.xlsx`) y los colores/identidad de marca
 originales (teal, oro, arena).
 
 ## Estructura de carpetas
 
 ```
-/
+cartera-mixtos/
 ├── index.html                 punto de entrada, único HTML
 ├── assets/
 │   ├── css/
 │   │   └── styles.css         sistema de diseño completo
 │   └── js/
-│       ├── kml-parser.js      parser KML propio (sin dependencias)
 │       ├── data.js            carga Excel+KML, normaliza, vincula
 │       ├── map.js             mapa Leaflet
 │       ├── charts.js          gráficos Chart.js
 │       ├── filters.js         estado y lógica de filtros
-│       ├── ui.js               KPIs, tarjetas, panel de detalle
+│       ├── ui.js              KPIs, tarjetas, panel de detalle
 │       └── app.js             orquestador (conecta todo)
 └── data/
-    ├── dataparsedprueba.xlsx  fuente de datos ejecutiva (única fuente de verdad)
-    └── ENTRADA_PROYECTOS.kml  geometrías de proyectos
+    ├── DATOS_MIXTOS.xlsx      fuente de datos ejecutiva (única fuente de verdad)
+    ├── ENTRADA_PROYECTOS.kml  puntos de ubicación de cada proyecto
+    └── AREAS_REFERENCIA.kml   polígonos de referencia (se vinculan por nombre)
 ```
+
+Además usa los módulos compartidos de la raíz del sitio
+(`../assets/js/shared/`): `text-utils.js` (normalizar nombres, escapar
+HTML, leer números y fechas), `kml-parser.js`, `base-map.js` (capas
+base del mapa) y `dialog.js` (paneles accesibles: Escape y foco).
 
 Los datos se leen de un archivo **Excel** (`.xlsx`) en vez de JSON: es
 más cómodo de editar para alguien sin conocimientos técnicos (como
@@ -44,7 +49,7 @@ internos en el navegador con la librería
 
 ### Cómo editar los datos
 
-Abre `data/dataparsedprueba.xlsx`:
+Abre `data/DATOS_MIXTOS.xlsx`:
 - Todo va en la hoja **"Proyectos"** — una fila por proyecto. No
   cambies los encabezados de la fila 1 (el código los lee por nombre
   exacto) ni renombres esa hoja.
@@ -54,9 +59,11 @@ Abre `data/dataparsedprueba.xlsx`:
   de fecha/porcentaje nativo de Excel, para que se lean tal cual se
   escriben (evita que Excel reinterprete "92%" como 9200%, o una
   fecha según la configuración regional de quien la edite).
-- `TÍTULO 2` debe coincidir exactamente con el `<name>` del Placemark
-  en el KML para que ese proyecto aparezca en el mapa (ver
-  "Estrategia de vinculación" más abajo).
+- `TÍTULO 2` (o, en su defecto, `TÍTULO 1`) debe coincidir con el
+  `<name>` del Placemark en el KML para que ese proyecto aparezca en el
+  mapa (ver "Estrategia de vinculación" más abajo).
+- Las fechas pueden escribirse como `31 de diciembre de 2028`,
+  `31/12/2028` o `2028-12-31`.
 - Guarda y publica — no hace falta build step ni conversión.
 
 Cada módulo JS es independiente y solo se comunica a través de un
@@ -89,14 +96,14 @@ ejecutivos. El o los KML solo aportan geometría. La vinculación es
 automática, por nombre:
 
 1. Cada proyecto en la hoja "Proyectos" tiene `TÍTULO 2` (con
-   `TÍTULO 1` como respaldo si el primero falta).
+   `TÍTULO 1` como respaldo si el primero falta o no coincide con
+   ningún Placemark).
 2. Cada `Placemark` del KML tiene `<name>`.
 3. Ambos valores se normalizan (mayúsculas, sin acentos, sin
    puntuación redundante, espacios colapsados) y se comparan.
 4. Si coinciden, el proyecto queda geolocalizado. Si no, el proyecto
    se sigue mostrando en KPIs, gráficos y listado — simplemente no
-   aparece en el mapa, y se muestra un aviso (toast) con el detalle
-   en la consola del navegador.
+   aparece en el mapa, y el detalle queda en la consola del navegador.
 
 **Esto significa que el único requisito para que un proyecto nuevo
 aparezca en el mapa es que su nombre en el KML coincida con
@@ -104,16 +111,10 @@ aparezca en el mapa es que su nombre en el KML coincida con
 agregar más archivos KML, súmalos al arreglo `KML_SOURCES` en
 `assets/js/data.js`.
 
-> Nota: el Excel de ejemplo incluido (`dataparsedprueba.xlsx`) usa dos
-> proyectos reales del KML (`SAN PEDRO SOLAR` y `SUNORA`) como
-> demostración funcional de la vinculación. Reemplaza esas filas por
-> tus proyectos reales conservando exactamente los mismos encabezados
-> de columna (ver hoja "Instrucciones" dentro del propio archivo).
-
 ## Filtros
 
 Los filtros se generan dinámicamente a partir de los datos: un campo
-(Tecnología, Ubicación, Socio) solo aparece como filtro si tiene más
+(Tecnología, Estado, Socio, Año de COD) solo aparece como filtro si tiene más
 de un valor distinto en el dataset actual, para no mostrar controles
 inútiles. El filtro por Grupo de atención siempre aparece si hay al
 menos un proyecto clasificado. La búsqueda de texto libre cubre
@@ -130,15 +131,15 @@ nombre, socio, ubicación y tecnología.
 
 ## Publicar en GitHub Pages
 
-1. Sube esta carpeta completa (manteniendo la estructura) a la raíz
-   de tu repositorio.
+1. Sube el repositorio completo: esta carpeta depende de
+   `../assets/js/shared/`, así que no se puede publicar sola.
 2. Settings → Pages → Deploy from branch → selecciona la rama y
    carpeta `/ (root)`.
 3. Listo — no hay paso de build.
 
 ## Actualizar datos
 
-Edita únicamente `data/dataparsedprueba.xlsx` (hoja "Proyectos") y
+Edita únicamente `data/DATOS_MIXTOS.xlsx` (hoja "Proyectos") y
 el/los KML si cambian ubicaciones, conservando exactamente los mismos
 encabezados de columna. El resto de la aplicación no requiere cambios.
 
@@ -149,17 +150,18 @@ funciona abriendo `index.html` con doble clic** (bloqueo CORS de
 `file://`). Sirve la carpeta con un servidor local, por ejemplo:
 
 ```bash
-cd carpeta-del-proyecto
+cd raiz-del-repositorio
 python3 -m http.server 8000
 ```
 
-y abre `http://localhost:8000/index.html`.
+y abre `http://localhost:8000/cartera-mixtos/index.html` (hay que servir
+la raíz del repositorio, no solo esta carpeta, por los módulos
+compartidos).
 
 ## Extensiones sugeridas para más adelante
 
 - Exportar el listado filtrado a Excel/CSV.
-- Filtro por rango de fechas una vez que `Inicio de Construcción`
-  / `Fin de Construcción` tengan fechas reales (el código ya intenta
-  parsear fechas en formato `AAAA-MM-DD` o `DD/MM/AAAA`).
+- Filtro por rango de fechas (el código ya interpreta las fechas de
+  `Inicio de Construcción` / `Fin de Construcción`).
 - Capa de agrupación (clustering) en el mapa si el número de
   proyectos crece mucho más allá de unas cuantas decenas.

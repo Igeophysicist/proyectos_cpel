@@ -9,6 +9,8 @@
 <title>Cartera CPEL</title>
 
 <!-- Tokens de marca y barra superior compartidos con la página principal -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha384-sHL9NAb7lN7rfvG5lfHpm643Xkcjzp4jFvuavGOndn6pjVqS6ny56CAt3nsEVT4H" crossorigin="anonymous" />
 <link rel="stylesheet" href="../assets/css/landing.css" />
 <link rel="stylesheet" href="assets/css/cartera.css" />
 </head>
@@ -30,7 +32,7 @@
 
     <!-- Encabezado del proyecto (imagen) -->
     <section class="hero-card">
-      <img id="projectImg" src="" alt="">
+      <img id="projectImg" alt="">
       <div class="hero-card__overlay">
         <span class="hero-card__tag" id="projectTech" hidden></span>
         <div class="hero-card__name" id="projectName">Cargando…</div>
@@ -145,7 +147,7 @@
   <!-- Ventana: Ficha técnica -->
   <div class="sheet" id="sheetFicha" aria-hidden="true">
     <div class="sheet__scrim" data-close-sheet></div>
-    <div class="sheet__panel" role="dialog" aria-labelledby="sheetFichaTitle">
+    <div class="sheet__panel" role="dialog" aria-modal="true" aria-labelledby="sheetFichaTitle">
       <div class="sheet__head">
         <div class="sheet__title" id="sheetFichaTitle">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M14 3H6a1 1 0 00-1 1v16a1 1 0 001 1h12a1 1 0 001-1V8l-5-5z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M14 3v5h5" stroke="currentColor" stroke-width="2"/></svg>
@@ -163,7 +165,7 @@
   <!-- Ventana: Plazos -->
   <div class="sheet" id="sheetPlazos" aria-hidden="true">
     <div class="sheet__scrim" data-close-sheet></div>
-    <div class="sheet__panel" role="dialog" aria-labelledby="sheetPlazosTitle">
+    <div class="sheet__panel" role="dialog" aria-modal="true" aria-labelledby="sheetPlazosTitle">
       <div class="sheet__head">
         <div class="sheet__title" id="sheetPlazosTitle">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="16" rx="2" stroke="currentColor" stroke-width="2"/><path d="M3 10h18M8 3v4M16 3v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
@@ -178,10 +180,14 @@
     </div>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script src="assets/js/kml-parser.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"
+          integrity="sha384-vtjasyidUo0kW94K5MXDXntzOJpQgBKXmE7e2Ga4LG0skTTLeBi97eFAXsqewJjw" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+          integrity="sha384-cxOPjt7s7Iz04uaHJceBmS+qpjv2JkIHNVcuOrM+YHwZOmJGBXI00mdUXEq65HTH" crossorigin="anonymous"></script>
+  <script src="../assets/js/shared/text-utils.js"></script>
+  <script src="../assets/js/shared/dialog.js"></script>
+  <script src="../assets/js/shared/kml-parser.js"></script>
+  <script src="../assets/js/shared/base-map.js"></script>
   <script src="assets/js/map.js"></script>
   <script src="assets/js/cartera.js"></script>
 </body>

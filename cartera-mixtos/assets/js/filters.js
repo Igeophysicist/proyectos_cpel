@@ -5,6 +5,8 @@
  * el arreglo de proyectos.
  */
 (function (global) {
+  const normalize = global.TextUtils.normalizeText;
+
   const state = {
     search: "",
     tecnologia: new Set(),
@@ -52,14 +54,6 @@
 
   function setSearch(value) {
     state.search = normalize(value);
-  }
-
-  function normalize(str) {
-    return (str || "")
-      .toLowerCase()
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "")
-      .trim();
   }
 
   function clearAll() {

@@ -6,6 +6,11 @@
 (function (global) {
   const instances = {};
   const GRUPO_INFO = global.AppData.GRUPO_INFO;
+  const { esc } = global.TextUtils;
+
+  // Cuántos proyectos muestra el ranking de avance (el encabezado de la
+  // sección se actualiza solo con este número).
+  const RANKING_TOP_N = 13;
 
   // Registra el plugin que dibuja los valores directamente sobre el
   // gráfico (rueda y barras), para que sean visibles siempre y no solo
@@ -107,7 +112,7 @@
     const top = [...projects]
       .filter((p) => p.parquePct !== null)
       .sort((a, b) => b.parquePct - a.parquePct)
-      .slice(0, 13);
+      .slice(0, RANKING_TOP_N);
 
     if (!top.length) {
       list.innerHTML = `<li style="color:var(--ink-500); font-size:13px;">Sin datos de avance disponibles.</li>`;
@@ -119,9 +124,9 @@
         // "--pct" deja que la barra crezca desde 0 al pintarse (ver
         // @keyframes bar-grow en styles.css) en vez de aparecer ya llena.
         (p, i) => `
-      <li data-id="${p.id}">
+      <li data-id="${esc(p.id)}" role="button" tabindex="0">
         <span class="ranking__rank">${i + 1}</span>
-        <span class="ranking__name">${p.nombre}</span>
+        <span class="ranking__name">${esc(p.nombre)}</span>
         <span class="ranking__bar"><span style="--pct:${Math.min(p.parquePct, 100)}%; background:${
           (GRUPO_INFO[p.grupo] || {}).color || "#2e534f"
         }"></span></span>
@@ -130,10 +135,8 @@
       )
       .join("");
 
-    list.querySelectorAll("li[data-id]").forEach((li) => {
-      li.addEventListener("click", () => onSelect(li.getAttribute("data-id")));
-    });
+    global.AppUI.onActivate(list, "li[data-id]", (li) => onSelect(li.getAttribute("data-id")));
   }
 
-  global.AppCharts = { renderGrupoChart, renderTecnologiaChart, renderRanking };
+  global.AppCharts = { renderGrupoChart, renderTecnologiaChart, renderRanking, RANKING_TOP_N };
 })(window);

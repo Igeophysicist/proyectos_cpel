@@ -8,7 +8,8 @@
 <meta name="theme-color" content="#234240">
 <title>Panel Proyectos Mixtos</title>
 
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha384-sHL9NAb7lN7rfvG5lfHpm643Xkcjzp4jFvuavGOndn6pjVqS6ny56CAt3nsEVT4H" crossorigin="anonymous" />
 <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 <body>
@@ -32,7 +33,7 @@
     </div>
     <div class="topbar__search">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="M21 21l-4.3-4.3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-      <input type="text" id="search-input" placeholder="Buscar proyecto, socio o ubicación">
+      <input type="search" id="search-input" placeholder="Buscar proyecto, socio o ubicación" aria-label="Buscar proyecto, socio o ubicación">
     </div>
     <button class="topbar__filterbtn" id="filter-btn">
       Filtros <span class="count" id="filter-count" style="display:none;">0</span>
@@ -48,7 +49,7 @@
         <section class="section">
           <div class="section__head">
             <span class="section__title">Ranking de avance de trámites (Central)</span>
-            <span class="section__hint">Top 13  </span>
+            <span class="section__hint" id="ranking-hint"></span>
           </div>
           <ul class="ranking" id="ranking"></ul>
         </section>
@@ -121,11 +122,11 @@
   </nav>
 
   <!-- Hoja de filtros -->
-  <div class="filters" id="filters">
+  <div class="filters" id="filters" aria-hidden="true">
     <div class="filters__scrim"></div>
-    <div class="filters__panel">
+    <div class="filters__panel" role="dialog" aria-modal="true" aria-labelledby="filters-title">
       <div class="filters__head">
-        <span class="filters__title">Filtros</span>
+        <span class="filters__title" id="filters-title">Filtros</span>
         <button class="filters__clear" id="filter-clear">Limpiar todo</button>
       </div>
       <div class="filters__body" id="filter-options"></div>
@@ -136,20 +137,28 @@
   </div>
 
   <!-- Panel de detalle -->
-  <div class="detail" id="detail">
+  <div class="detail" id="detail" aria-hidden="true">
     <div class="detail__scrim"></div>
-    <div class="detail__panel" id="detail-body"></div>
+    <div class="detail__panel" id="detail-body" role="dialog" aria-modal="true" aria-labelledby="detail-title"></div>
   </div>
 
   <div class="toast" id="toast"></div>
 
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+          integrity="sha384-cxOPjt7s7Iz04uaHJceBmS+qpjv2JkIHNVcuOrM+YHwZOmJGBXI00mdUXEq65HTH" crossorigin="anonymous"></script>
+  <!-- chart.umd.js ya viene minificado en Chart.js 4.4.4 (chart.umd.min.js no
+       existe en el paquete: jsDelivr lo generaba al vuelo y no admite SRI). -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.js"
+          integrity="sha384-G436+Z2nlA8+PNoeRvWdxKbvOf8E/y+lYxqht2iBwNHTQDV5CJr3+AGVj8fGZi5t" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"
+          integrity="sha384-y49Zu59jZHJL/PLKgZPv3k2WI9c0Yp3pWB76V8OBVCb0QBKS8l4Ff3YslzHVX76Y" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"
+          integrity="sha384-vtjasyidUo0kW94K5MXDXntzOJpQgBKXmE7e2Ga4LG0skTTLeBi97eFAXsqewJjw" crossorigin="anonymous"></script>
 
-  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
-
-  <script src="assets/js/kml-parser.js"></script>
+  <script src="../assets/js/shared/text-utils.js"></script>
+  <script src="../assets/js/shared/dialog.js"></script>
+  <script src="../assets/js/shared/kml-parser.js"></script>
+  <script src="../assets/js/shared/base-map.js"></script>
   <script src="assets/js/data.js"></script>
   <script src="assets/js/map.js"></script>
   <script src="assets/js/charts.js"></script>
