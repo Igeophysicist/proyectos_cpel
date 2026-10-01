@@ -47,15 +47,31 @@ Qué se revisa (`scripts/data-rules.js`):
 | Porcentaje que no es número o fuera de 0–100 | |
 | Fecha que no se puede leer | |
 | Proyecto repetido | |
-| Imagen que no existe (Cartera) | |
+| Imagen que no existe o que no es JPG/PNG, p. ej. HEIC (Cartera) | |
 | Grupo de atención distinto de A, B o C (Mixtos) | |
 
 Las celdas vacías y los marcadores de dato pendiente ("SIN DATO",
 "N/A", "PENDIENTE", "POR DEFINIR", "-") no son errores.
 
+### Imágenes de Cartera CPEL
+
+Las imágenes de encabezado (`cartera-cpel/data/CARTERA-CPEL/`) se suben
+tal cual, aunque sean fotos pesadas de celular. La Action **Datos** las
+optimiza (`scripts/imagenes.js`): ancho máximo de 1200 px, giradas
+según la cámara, **sin metadatos** (se borra la ubicación GPS de las
+fotos) y con el **mismo nombre**, así que la columna `imagen` del Excel
+no cambia. Sube la versión ligera en un commit "Optimiza imágenes de
+Cartera CPEL". Las que ya están optimizadas no se tocan, y el original
+queda en el historial de GitHub.
+
+Usa **JPG** o PNG. Las fotos **HEIC** del iPhone no se ven en Chrome ni
+en Android: la validación las marca como error. Para que el iPhone
+guarde JPG: Ajustes → Cámara → Formatos → "Más compatible".
+
 **No edites los JSON a mano:** se sobrescriben con cada Excel. Para
 revisar un Excel antes de subirlo: `npm install` y luego `npm run data`
-(valida y regenera) o `npm run data:check` (solo revisa).
+(valida, regenera y optimiza imágenes) o `npm run data:check` (solo
+revisa).
 
 ## Curva de avance (cortes semanales)
 
