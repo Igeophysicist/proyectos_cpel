@@ -1,6 +1,6 @@
 {
   "fuente": "DATOS_MIXTOS.xlsx",
-  "excelModificado": "2026-10-02T00:22:10.000Z",
+  "excelModificado": "2026-10-02T00:24:38.000Z",
   "proyectos": [
     {
       "NO.": "1",
@@ -323,7 +323,7 @@
       "Parque": "90.50%",
       "LT": "85.50%",
       "Global": "89.50%",
-      "Grupo de atención": "B"
+      "Grupo de atención": "A"
     },
     {
       "NO.": "18",
