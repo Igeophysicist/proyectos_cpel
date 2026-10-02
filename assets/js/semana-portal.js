@@ -1,8 +1,8 @@
 /**
  * semana-portal.js
  * Pinta la sección "Esta semana" del portal (index.html) con los cálculos
- * de semana-resumen.js. Lee los JSON e historiales que genera la Action
- * "Datos"; no hay que capturar nada. Si algo no carga o aún no hay cortes
+ * de semana-resumen.js. Lee los JSON, historiales y el registro de
+ * actualizaciones que genera la Action "Datos"; no hay que capturar nada. Si algo no carga o aún no hay cortes
  * suficientes, la sección (o la tarjeta de ese tablero) no aparece.
  *
  * Requiere: shared/text-utils.js y semana-resumen.js.
@@ -52,31 +52,45 @@
     return `<div class="semana-item__linea">Grupo ${grupo(c.grupoAhora)} <span class="semana-item__nota">se mantuvo</span></div>`;
   }
 
+  /** "Mié 30 sep · 6:10 p.m." (hora de la subida, por si hay varias el mismo día). */
+  function cuando(e) {
+    const d = new Date(e.excel);
+    const dia = fecha(e.fecha, { weekday: "short", day: "numeric", month: "short" }).replace(/,? de /g, " ").replace(",", "");
+    const hora = d.toLocaleTimeString("es-MX", { hour: "numeric", minute: "2-digit", timeZone: "America/Mexico_City" });
+    return `${dia[0].toUpperCase() + dia.slice(1)} · ${hora}`;
+  }
+
   function htmlMixtos(r) {
-    const semana = `semana del ${fCorta(r.semanaIni)} al ${fCorta(r.semanaFin)}`;
-    const n = r.cambios.length;
+    const semana = `del ${fCorta(r.semanaIni)} al ${fCorta(r.semanaFin)}`;
+    const n = r.entradas.length;
     const sub = r.esActual
-      ? `${semana[0].toUpperCase() + semana.slice(1)} · ${n === 1 ? "1 proyecto actualizado" : n + " proyectos actualizados"}`
-      : `Sin actualizaciones esta semana · última: ${semana}`;
-    const lista = n
-      ? `<ul class="semana-list">${r.cambios
+      ? `Semana ${semana} · ${n === 1 ? "1 actualización" : n + " actualizaciones"}`
+      : `Última semana con actualizaciones: ${semana}`;
+    const entradas = r.entradas
+      .map(
+        (e) => `
+      <li class="semana-entrada">
+        <div class="semana-entrada__fecha">${esc(cuando(e))}</div>
+        <ul class="semana-list">${e.cambios
           .map(
             (c) => `
-        <li class="semana-item">
-          <a class="semana-item__nombre" href="${MIXTOS}?proyecto=${encodeURIComponent(c.slug)}">${esc(c.nombre)}</a>
-          <div class="semana-item__linea">Parque ${fmtPct(c.antes)} → ${fmtPct(c.ahora)} ${delta(c.diff)}</div>
-          ${grupoLinea(c)}
-        </li>`
+          <li class="semana-item">
+            <a class="semana-item__nombre" href="${MIXTOS}?proyecto=${encodeURIComponent(c.slug)}">${esc(c.nombre)}</a>
+            <div class="semana-item__linea">Parque ${fmtPct(c.antes)} → ${fmtPct(c.ahora)} ${delta(c.diff)}</div>
+            ${grupoLinea(c)}
+          </li>`
           )
-          .join("")}</ul>`
-      : `<p class="semana-vacio">Sin cambios de avance en Parque.</p>`;
+          .join("")}</ul>
+      </li>`
+      )
+      .join("");
     return `
       <div class="semana-card__head">
         <a class="semana-card__titulo" href="${MIXTOS}">Mixtos</a>
         <div class="semana-card__sub">${sub}</div>
       </div>
-      ${lista}
-      <div class="semana-card__pie">Comparado con el corte del ${fCorta(r.desde)}</div>`;
+      <ol class="semana-entradas">${entradas}</ol>
+      <div class="semana-card__pie">Cada cambio se compara con el dato anterior del proyecto.</div>`;
   }
 
   /** Flecha corta para la tabla de Cartera. */
@@ -119,13 +133,8 @@
   }
 
   async function mixtos() {
-    const [datos, hist] = await Promise.all([getJson(MIXTOS + "data/DATOS_MIXTOS.json"), getJson(MIXTOS + "data/historial.json")]);
-    const nombres = {};
-    datos.proyectos.forEach((r) => {
-      const nombre = String(r["TÍTULO 2"] || r["TÍTULO 1"] || "").trim();
-      if (nombre) nombres[slugify(nombre)] = nombre;
-    });
-    const r = resumenMixtos(hist.cortes, nombres, hoyLocal());
+    const { registros } = await getJson(MIXTOS + "data/actualizaciones.json");
+    const r = resumenMixtos(registros, hoyLocal());
     return r && htmlMixtos(r);
   }
 

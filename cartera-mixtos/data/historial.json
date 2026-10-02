@@ -1,7 +1,7 @@
 {
   "cortes": [
     {
-      "semana": "2026-W39",
+      "semana": "2026-09-20",
       "fecha": "2026-09-25",
       "proyectos": {
         "san-simon-solar": {
@@ -235,7 +235,7 @@
       }
     },
     {
-      "semana": "2026-W40",
+      "semana": "2026-09-27",
       "fecha": "2026-10-01",
       "excel": "2026-10-02T00:24:38.000Z",
       "proyectos": {

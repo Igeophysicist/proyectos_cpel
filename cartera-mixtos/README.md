@@ -35,6 +35,7 @@ cartera-mixtos/
     ├── DATOS_MIXTOS.xlsx      fuente de datos ejecutiva (única fuente de verdad)
     ├── DATOS_MIXTOS.json      generado y validado desde el Excel (no editar a mano)
     ├── historial.json         cortes semanales para la evolución (generado)
+    ├── actualizaciones.json   cada subida con cambios de Parque, para el portal (generado)
     ├── ENTRADA_PROYECTOS.kml  puntos de ubicación de cada proyecto
     └── AREAS_REFERENCIA.kml   polígonos de referencia (se vinculan por nombre)
 ```
@@ -116,8 +117,10 @@ agregar más archivos KML, súmalos al arreglo `KML_SOURCES` en
 
 ## Evolución por corte
 
-La ficha de cada proyecto muestra, al final (después de "Financiero"), Parque,
-LT y Global de cada semana con actualizaciones y la tendencia de Global
+El botón **Evolución** (en cada tarjeta del listado, debajo de la
+etiqueta de grupo, y en la ficha junto a "Ver en el mapa") abre un
+panel con Parque, LT y Global de cada semana con actualizaciones
+(domingo a sábado, un punto con el último dato) y la tendencia de Global
 (`assets/js/evolucion.js`, con datos de `data/historial.json`; ver
 "Curva de avance" en el README de la raíz). El texto solo indica si
 Global avanzó, disminuyó o se mantuvo en el último corte; no hace

@@ -15,12 +15,22 @@
  *    jueves 8:00 al jueves siguiente 7:59 es el corte de ese primer
  *    jueves; se grafica en ese jueves.
  *      { "corte": "2026-10-01", "fecha": "2026-10-01", "excel": "<ISO>", "proyectos": {...} }
- *  - "semana" (Mixtos, se actualiza lunes, miércoles y viernes): semana
- *    de lunes a domingo; se grafica en el día de la última actualización.
- *    Las semanas sin actualizaciones no tienen punto.
- *      { "semana": "2026-W40", "fecha": "2026-10-02", "excel": "<ISO>", "proyectos": {...} }
+ *  - "domingo" (Mixtos, se actualiza lunes, miércoles y viernes): semana
+ *    de domingo a sábado ("semana" = su domingo); se grafica en el día de
+ *    la última actualización. Las semanas sin actualizaciones no tienen
+ *    punto.
+ *      { "semana": "2026-09-27", "fecha": "2026-10-01", "excel": "<ISO>", "proyectos": {...} }
  *
  * Archivo: data/historial.json de cada tablero ({ "cortes": [...] }).
+ *
+ * REGISTRO DE ACTUALIZACIONES (Mixtos, sección "Esta semana" del portal):
+ * además del punto semanal, cada Excel que cambia el avance de Parque de
+ * algún proyecto queda registrado con esos cambios, comparados con la
+ * subida ANTERIOR (no con la semana anterior). Archivo
+ * data/actualizaciones.json:
+ *   { "registros": [ { "excel": "<ISO>", "fecha": "2026-10-01",
+ *       "cambios": [ { "slug", "nombre", "antes": { parque, grupo },
+ *                      "ahora": { parque, grupo } } ] } ] }
  * Los cortes anteriores a estas reglas (sin "excel") se conservan tal
  * cual, con la fecha de guardado de su Excel.
  * Los proyectos se identifican por el nombre (TextUtils.slugify); si un
@@ -55,15 +65,12 @@ function localDate(iso, timeZone = TIME_ZONE) {
   return p ? ymd(new Date(Date.UTC(p.y, p.m - 1, p.d))) : null;
 }
 
-/** Semana ISO-8601 ("2026-W40", semanas de lunes a domingo) de una fecha "AAAA-MM-DD". */
-function isoWeek(dateStr) {
+/** Domingo ("AAAA-MM-DD") de la semana (domingo a sábado) de una fecha "AAAA-MM-DD". */
+function domingoDe(dateStr) {
   const [y, m, d] = dateStr.split("-").map(Number);
   const date = new Date(Date.UTC(y, m - 1, d));
-  const day = date.getUTCDay() || 7; // lunes = 1 ... domingo = 7
-  date.setUTCDate(date.getUTCDate() + 4 - day); // jueves de esa semana
-  const year = date.getUTCFullYear();
-  const week = Math.ceil(((date - Date.UTC(year, 0, 1)) / 86400000 + 1) / 7);
-  return `${year}-W${String(week).padStart(2, "0")}`;
+  date.setUTCDate(date.getUTCDate() - date.getUTCDay());
+  return ymd(date);
 }
 
 /** Jueves ("AAAA-MM-DD") del corte al que pertenece un Excel guardado en "iso". */
@@ -111,9 +118,9 @@ const REGLAS = {
     const corte = corteDe(excel);
     return corte && { clave: { corte }, fecha: corte };
   },
-  semana: (excel) => {
+  domingo: (excel) => {
     const fecha = localDate(excel);
-    return fecha && { clave: { semana: isoWeek(fecha) }, fecha };
+    return fecha && { clave: { semana: domingoDe(fecha) }, fecha };
   },
 };
 
@@ -121,7 +128,7 @@ const mismaClave = (c, clave) => Object.keys(clave).every((k) => c[k] === clave[
 
 /**
  * Registra el corte del Excel guardado en "excel" (ISO) según la regla
- * ("jueves" o "semana"): agrega el punto de su semana o reemplaza el que
+ * ("jueves" o "domingo"): agrega el punto de su semana o reemplaza el que
  * ya había. Si ese Excel ya está registrado, no cambia nada. No modifica
  * el historial recibido.
  */
@@ -136,4 +143,51 @@ function upsertCorte(historial, { excel, proyectos }, regla = "jueves") {
   return { cortes: out };
 }
 
-module.exports = { localDate, isoWeek, corteDe, snapshotCartera, snapshotMixtos, upsertCorte, TIME_ZONE };
+// ------------------------------------------------ registro (Mixtos)
+const UMBRAL = 0.005; // diferencias menores son redondeo, no cambio
+
+/**
+ * Proyectos cuyo avance de Parque cambió entre dos fotos de Mixtos
+ * ({ slug: { parque, grupo, ... } }). "nombres": { slug: nombre visible }.
+ * Los proyectos nuevos o sin dato de Parque no cuentan.
+ */
+function cambiosMixtos(antes, ahora, nombres = {}) {
+  if (!antes || !ahora) return [];
+  return Object.keys(ahora)
+    .filter((slug) => {
+      const a = antes[slug];
+      const b = ahora[slug];
+      return a && Number.isFinite(a.parque) && Number.isFinite(b.parque) && Math.abs(b.parque - a.parque) > UMBRAL;
+    })
+    .map((slug) => ({
+      slug,
+      nombre: nombres[slug] || slug,
+      antes: { parque: antes[slug].parque, grupo: antes[slug].grupo ?? null },
+      ahora: { parque: ahora[slug].parque, grupo: ahora[slug].grupo ?? null },
+    }));
+}
+
+/**
+ * Agrega la actualización del Excel guardado en "excel" (si tuvo cambios
+ * y no estaba ya registrada), en orden cronológico. No modifica el
+ * registro recibido.
+ */
+function registrarActualizacion(registro, { excel, cambios }) {
+  const registros = registro && registro.registros ? registro.registros.slice() : [];
+  if (!cambios.length || registros.some((r) => r.excel === excel)) return { registros };
+  registros.push({ excel, fecha: localDate(excel), cambios });
+  registros.sort((a, b) => (a.excel < b.excel ? -1 : a.excel > b.excel ? 1 : 0));
+  return { registros };
+}
+
+module.exports = {
+  localDate,
+  domingoDe,
+  corteDe,
+  snapshotCartera,
+  snapshotMixtos,
+  upsertCorte,
+  cambiosMixtos,
+  registrarActualizacion,
+  TIME_ZONE,
+};

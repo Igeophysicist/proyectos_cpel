@@ -76,8 +76,9 @@ revisa).
 ## Curva de avance (cortes semanales)
 
 - **Cartera CPEL:** botón **Curva de avance** (junto a Ficha técnica y
-  Plazos). **Mixtos:** sección **Evolución por corte** en la ficha de
-  cada proyecto (Parque, LT y Global).
+  Plazos). **Mixtos:** botón **Evolución** en cada tarjeta del listado
+  (debajo de la etiqueta de grupo) y en la ficha; abre un panel con
+  Parque, LT y Global.
 - **Un punto por semana.** La Action "Datos" guarda el avance en
   `data/historial.json` de cada tablero (`scripts/historial.js`) según
   la fecha de guardado del Excel (hora de México). Lo guardado después
@@ -87,7 +88,7 @@ revisa).
   - **Cartera CPEL:** corte cada **jueves a las 8:00**; lo guardado de
     jueves 8:00 al jueves siguiente 7:59 es el punto de ese jueves.
   - **Mixtos:** se actualiza lunes, miércoles y viernes; la semana va
-    de **lunes a domingo** y el punto queda en el día de la última
+    de **domingo a sábado** y el punto queda en el día de la última
     actualización. Las semanas sin actualizaciones no tienen punto.
 - Los cortes previos a esta regla (24–30 sep 2026, reconstruidos de las
   versiones anteriores de los Excel) se conservan en la fecha en que se
@@ -108,14 +109,18 @@ revisa).
 ## Esta semana (portal)
 
 Sección del portal, debajo de los accesos, que se arma sola con los
-historiales (`assets/js/semana-resumen.js` calcula y
+datos que genera la Action (`assets/js/semana-resumen.js` calcula y
 `assets/js/semana-portal.js` pinta):
 
-- **Mixtos:** los proyectos cuyo avance de **Parque** cambió entre la
-  última semana con actualizaciones y la anterior, con el cambio en
-  puntos y si su **grupo de atención** cambió o se mantuvo. Si en la
-  semana actual no hubo actualizaciones, lo dice y muestra la última
-  semana que sí tuvo.
+- **Mixtos:** lista cronológica de las actualizaciones de la semana
+  (domingo a sábado), **la más reciente arriba**, con fecha y hora de
+  cada subida. En cada una, los proyectos cuyo avance de **Parque**
+  cambió, **comparados con su dato anterior** (la subida previa), y si
+  su **grupo de atención** cambió o se mantuvo. La semana no se vacía
+  el domingo: se sigue mostrando hasta que llega una actualización de
+  otra semana. Los datos salen de `cartera-mixtos/data/actualizaciones.json`,
+  que la Action llena sola en cada subida que cambia Parque
+  (`scripts/historial.js`).
 - **Cartera CPEL:** tabla compacta con el avance **Real** y
   **Programado** de cada proyecto en el último corte y una flecha con
   el cambio del Real contra el corte anterior.
