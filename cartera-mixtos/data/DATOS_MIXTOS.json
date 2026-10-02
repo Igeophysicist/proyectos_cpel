@@ -1,6 +1,6 @@
 {
   "fuente": "DATOS_MIXTOS.xlsx",
-  "excelModificado": "2026-10-01T00:10:24.000Z",
+  "excelModificado": "2026-10-02T00:22:10.000Z",
   "proyectos": [
     {
       "NO.": "1",
@@ -320,9 +320,9 @@
       "Fin de Construcción": "31 de marzo de 2028",
       "Fecha firma de contrato": "09 de julio de 2026",
       "CAPEX": "$90,724,532.90",
-      "Parque": "80.50%",
-      "LT": "75.50%",
-      "Global": "79.50%",
+      "Parque": "90.50%",
+      "LT": "85.50%",
+      "Global": "89.50%",
       "Grupo de atención": "B"
     },
     {

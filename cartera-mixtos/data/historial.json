@@ -236,7 +236,8 @@
     },
     {
       "semana": "2026-W40",
-      "fecha": "2026-09-30",
+      "fecha": "2026-10-01",
+      "excel": "2026-10-02T00:22:10.000Z",
       "proyectos": {
         "san-simon-solar": {
           "parque": 94,
@@ -335,9 +336,9 @@
           "grupo": "C"
         },
         "san-pedro-solar": {
-          "parque": 80.5,
-          "lt": 75.5,
-          "global": 79.5,
+          "parque": 90.5,
+          "lt": 85.5,
+          "global": 89.5,
           "grupo": "B"
         },
         "energia-limpia-el-mezquite": {
