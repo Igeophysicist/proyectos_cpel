@@ -48,7 +48,7 @@
     window.AppCharts.renderGrupoChart("chart-grupo", filtered);
     window.AppCharts.renderTecnologiaChart("chart-tecnologia", filtered);
     window.AppCharts.renderRanking("ranking", filtered, openDetail);
-    window.AppUI.renderProjectList("project-list", "list-count", filtered, openDetail);
+    window.AppUI.renderProjectList("project-list", "list-count", filtered, openDetail, openEvolucion);
     window.AppMap.renderProjects(filtered);
 
     const geoCount = filtered.filter((p) => p.geo).length;
@@ -104,16 +104,17 @@
     const project = projectsById.get(projectId);
     if (!project) return;
     window.AppUI.renderDetail("detail-body", project);
-    window.AppEvolucion.render(els.detailBody, project);
     openProjectSlug = slugify(project.nombre);
     window.Dialog.open(els.detail, {
       onClose: () => {
-        window.AppEvolucion.destroy();
         openProjectSlug = null;
         syncUrl();
       },
     });
     syncUrl();
+
+    const evoBtn = els.detailBody.querySelector("[data-open-evolucion]");
+    if (evoBtn) evoBtn.addEventListener("click", () => openEvolucion(projectId));
 
     const mapBtn = els.detailBody.querySelector("[data-view-on-map]");
     if (mapBtn) {
@@ -123,6 +124,12 @@
         setTimeout(() => window.AppMap.highlight(projectId), 250);
       });
     }
+  }
+
+  /** Panel "Evolución por corte" (desde la tarjeta o desde la ficha). */
+  function openEvolucion(projectId) {
+    const project = projectsById.get(projectId);
+    if (project) window.AppEvolucion.abrir(project);
   }
 
   function closeDetail() {

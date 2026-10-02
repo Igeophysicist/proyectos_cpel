@@ -1,17 +1,19 @@
 /**
  * semana-resumen.js
- * Cálculo de la sección "Esta semana" del portal a partir de los
- * historial.json de cada tablero (ver scripts/historial.js). Funciones
- * puras (se prueban en tests/semana-resumen.test.js); semana-portal.js
- * las pinta.
+ * Cálculo de la sección "Esta semana" del portal (ver scripts/historial.js).
+ * Funciones puras (se prueban en tests/semana-resumen.test.js);
+ * semana-portal.js las pinta.
  *
- *  - Mixtos (se actualiza lunes, miércoles y viernes, 3 a 5 proyectos):
- *    proyectos cuyo avance de Parque cambió entre el último corte y el
- *    anterior, y si su grupo de atención cambió o se mantuvo.
+ *  - Mixtos (se actualiza lunes, miércoles y viernes, 3 a 5 proyectos),
+ *    desde data/actualizaciones.json: las actualizaciones de la semana
+ *    (domingo a sábado) de la más reciente, de la última a la primera.
+ *    Cada proyecto se compara con su dato anterior (la subida previa) y
+ *    se indica si su grupo cambió o se mantuvo. La semana se sigue
+ *    mostrando hasta que llega una actualización de otra semana.
  *  - Cartera CPEL (corte cada jueves): Real y Programado de cada proyecto
  *    en el último corte y el cambio del Real contra el corte anterior.
  *
- * Fechas como "AAAA-MM-DD" (las del historial).
+ * Fechas como "AAAA-MM-DD" (las de los JSON).
  * Expone: window.SemanaResumen (o module.exports en Node)
  */
 (function (global) {
@@ -23,49 +25,42 @@
     return Date.UTC(y, m - 1, d);
   };
   const fromUTC = (t) => new Date(t).toISOString().slice(0, 10);
-  /** Lunes ("AAAA-MM-DD") de la semana de una fecha. */
-  const lunesDe = (s) => {
+  /** Domingo ("AAAA-MM-DD") de la semana (domingo a sábado) de una fecha. */
+  const domingoDe = (s) => {
     const t = toUTC(s);
-    return fromUTC(t - ((new Date(t).getUTCDay() + 6) % 7) * DAY_MS);
+    return fromUTC(t - new Date(t).getUTCDay() * DAY_MS);
   };
   const sumarDias = (s, n) => fromUTC(toUTC(s) + n * DAY_MS);
   const num = (v) => (Number.isFinite(v) ? v : null);
 
   /**
-   * cortes: historial de Mixtos; nombres: { slug: nombre visible };
-   * hoy: "AAAA-MM-DD". Devuelve null si aún no hay dos cortes.
+   * registros: data/actualizaciones.json de Mixtos; hoy: "AAAA-MM-DD".
+   * Devuelve null si aún no hay actualizaciones.
    */
-  function resumenMixtos(cortes, nombres, hoy) {
-    if (!cortes || cortes.length < 2) return null;
-    const ultimo = cortes[cortes.length - 1];
-    const previo = cortes[cortes.length - 2];
-    const cambios = [];
-    Object.keys(ultimo.proyectos).forEach((slug) => {
-      const ahora = ultimo.proyectos[slug];
-      const antes = previo.proyectos[slug];
-      if (!antes || num(ahora.parque) === null || num(antes.parque) === null) return;
-      const diff = ahora.parque - antes.parque;
-      if (Math.abs(diff) <= UMBRAL) return;
-      cambios.push({
-        slug,
-        nombre: nombres[slug] || slug,
-        antes: antes.parque,
-        ahora: ahora.parque,
-        diff,
-        grupoAntes: antes.grupo || null,
-        grupoAhora: ahora.grupo || null,
-      });
-    });
-    cambios.sort((a, b) => b.diff - a.diff);
-    const lunes = lunesDe(ultimo.fecha);
-    return {
-      semanaIni: lunes,
-      semanaFin: sumarDias(lunes, 6),
-      esActual: lunes === lunesDe(hoy),
-      fecha: ultimo.fecha,
-      desde: previo.fecha,
-      cambios,
-    };
+  function resumenMixtos(registros, hoy) {
+    if (!registros || !registros.length) return null;
+    const ultimo = registros.reduce((a, b) => (b.excel > a.excel ? b : a));
+    const ini = domingoDe(ultimo.fecha);
+    const fin = sumarDias(ini, 6);
+    const entradas = registros
+      .filter((r) => r.fecha >= ini && r.fecha <= fin)
+      .sort((a, b) => (a.excel < b.excel ? 1 : -1))
+      .map((r) => ({
+        fecha: r.fecha,
+        excel: r.excel,
+        cambios: r.cambios
+          .map((c) => ({
+            slug: c.slug,
+            nombre: c.nombre || c.slug,
+            antes: num(c.antes.parque),
+            ahora: num(c.ahora.parque),
+            diff: c.ahora.parque - c.antes.parque,
+            grupoAntes: c.antes.grupo || null,
+            grupoAhora: c.ahora.grupo || null,
+          }))
+          .sort((x, y) => y.diff - x.diff),
+      }));
+    return { semanaIni: ini, semanaFin: fin, esActual: ini === domingoDe(hoy), entradas };
   }
 
   /**
@@ -89,7 +84,7 @@
     return { fecha: ultimo.fecha, esJueves: !!ultimo.corte, desde: previo ? previo.fecha : null, filas };
   }
 
-  const api = { resumenMixtos, resumenCartera, lunesDe, UMBRAL };
+  const api = { resumenMixtos, resumenCartera, domingoDe, UMBRAL };
 
   if (typeof module !== "undefined" && module.exports) module.exports = api;
   else global.SemanaResumen = api;

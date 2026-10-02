@@ -32,7 +32,8 @@ const path = require("path");
 const XLSX = require("xlsx");
 const { validateCartera, validateMixtos, MIXTOS_SHEET } = require("./data-rules.js");
 const { optimizarCarpeta } = require("./imagenes.js");
-const { snapshotCartera, snapshotMixtos, upsertCorte } = require("./historial.js");
+const { snapshotCartera, snapshotMixtos, upsertCorte, cambiosMixtos, registrarActualizacion } = require("./historial.js");
+const { slugify } = require("../assets/js/shared/text-utils.js");
 
 const ROOT = path.resolve(__dirname, "..");
 
@@ -57,8 +58,11 @@ const DATASETS = [
     excel: "data/DATOS_MIXTOS.xlsx",
     json: "data/DATOS_MIXTOS.json",
     historial: "data/historial.json",
-    regla: "semana", // lunes a domingo (se actualiza lunes, miércoles y viernes)
+    regla: "domingo", // domingo a sábado (se actualiza lunes, miércoles y viernes)
     snapshot: snapshotMixtos,
+    // Cada subida con cambios de Parque, para "Esta semana" del portal.
+    actualizaciones: "data/actualizaciones.json",
+    nombre: (r) => String(r["TÍTULO 2"] || r["TÍTULO 1"] || "").trim(),
     kml: ["data/ENTRADA_PROYECTOS.kml", "data/AREAS_REFERENCIA.kml"],
     // Igual que data.js antes: hoja "Proyectos", texto tal como se ve en Excel.
     read: (wb) => ({ sheetName: wb.SheetNames.includes(MIXTOS_SHEET) ? MIXTOS_SHEET : null, options: { raw: false, defval: "" } }),
@@ -125,6 +129,8 @@ function buildDataset(ds) {
     corte: data.excelModificado ? { excel: data.excelModificado, proyectos: ds.snapshot(rows) } : null,
     regla: ds.regla,
     historialPath: path.join(dir, ds.historial),
+    actualizacionesPath: ds.actualizaciones ? path.join(dir, ds.actualizaciones) : null,
+    nombres: ds.nombre ? Object.fromEntries(rows.map(ds.nombre).filter(Boolean).map((n) => [slugify(n), n])) : {},
   };
 }
 
@@ -134,6 +140,20 @@ const readJson = (file) => (fs.existsSync(file) ? JSON.parse(fs.readFileSync(fil
 function historialWithCorte(result) {
   const current = readJson(result.historialPath);
   return result.corte ? upsertCorte(current, result.corte, result.regla) : current || { cortes: [] };
+}
+
+/**
+ * Registro de actualizaciones con la de este Excel: sus cambios contra la
+ * subida anterior (el último corte del historial, que siempre es la foto
+ * del último Excel procesado). Si este Excel ya estaba procesado, no cambia.
+ */
+function actualizacionesWithExcel(result) {
+  const current = readJson(result.actualizacionesPath) || { registros: [] };
+  const cortes = (readJson(result.historialPath) || { cortes: [] }).cortes;
+  const previo = cortes[cortes.length - 1];
+  if (!result.corte || !previo || previo.excel === result.corte.excel) return current;
+  const cambios = cambiosMixtos(previo.proyectos, result.corte.proyectos, result.nombres);
+  return registrarActualizacion(current, { excel: result.corte.excel, cambios });
 }
 
 // ------------------------------------------------------------ reporte
@@ -192,6 +212,8 @@ async function main() {
   } else {
     const outputs = results.flatMap((r) => [
       [r.jsonPath, r.json],
+      // Antes que el historial: compara contra el último corte guardado.
+      ...(r.actualizacionesPath ? [[r.actualizacionesPath, toJson(actualizacionesWithExcel(r))]] : []),
       [r.historialPath, toJson(historialWithCorte(r))],
     ]);
     outputs.forEach(([file, content]) => {

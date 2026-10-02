@@ -1,0 +1,130 @@
+{
+  "registros": [
+    {
+      "excel": "2026-09-25T23:55:23.000Z",
+      "fecha": "2026-09-25",
+      "cambios": [
+        {
+          "slug": "alvaro-obregon",
+          "nombre": "ÁLVARO OBREGÓN",
+          "antes": {
+            "parque": 87.5,
+            "grupo": "A"
+          },
+          "ahora": {
+            "parque": 86.5,
+            "grupo": "A"
+          }
+        },
+        {
+          "slug": "solar-energia-tres-hermanos",
+          "nombre": "SOLAR ENERGÍA TRES HERMANOS",
+          "antes": {
+            "parque": 75.5,
+            "grupo": "C"
+          },
+          "ahora": {
+            "parque": 73.5,
+            "grupo": "C"
+          }
+        },
+        {
+          "slug": "los-girasoles",
+          "nombre": "LOS GIRASOLES",
+          "antes": {
+            "parque": 67.25,
+            "grupo": "C"
+          },
+          "ahora": {
+            "parque": 66,
+            "grupo": "C"
+          }
+        },
+        {
+          "slug": "don-humberto",
+          "nombre": "DON HUMBERTO",
+          "antes": {
+            "parque": 67.5,
+            "grupo": "C"
+          },
+          "ahora": {
+            "parque": 83,
+            "grupo": "B"
+          }
+        },
+        {
+          "slug": "san-pedro-solar",
+          "nombre": "SAN PEDRO SOLAR",
+          "antes": {
+            "parque": 82.75,
+            "grupo": "B"
+          },
+          "ahora": {
+            "parque": 80.5,
+            "grupo": "B"
+          }
+        }
+      ]
+    },
+    {
+      "excel": "2026-10-01T00:10:24.000Z",
+      "fecha": "2026-09-30",
+      "cambios": [
+        {
+          "slug": "central-fotovoltaica-quasara",
+          "nombre": "CENTRAL FOTOVOLTAICA QUASARA",
+          "antes": {
+            "parque": 37.5,
+            "grupo": "C"
+          },
+          "ahora": {
+            "parque": 18,
+            "grupo": "C"
+          }
+        },
+        {
+          "slug": "concepcion-mendizabal-mendoza-fase-i-ii-iii",
+          "nombre": "CONCEPCIÓN MENDIZÁBAL MENDOZA FASE I, II & III",
+          "antes": {
+            "parque": 74,
+            "grupo": "C"
+          },
+          "ahora": {
+            "parque": 81.5,
+            "grupo": "B"
+          }
+        },
+        {
+          "slug": "global-solar-3-campeche",
+          "nombre": "GLOBAL SOLAR 3 CAMPECHE",
+          "antes": {
+            "parque": 64.75,
+            "grupo": "C"
+          },
+          "ahora": {
+            "parque": 81.5,
+            "grupo": "B"
+          }
+        }
+      ]
+    },
+    {
+      "excel": "2026-10-02T00:22:10.000Z",
+      "fecha": "2026-10-01",
+      "cambios": [
+        {
+          "slug": "san-pedro-solar",
+          "nombre": "SAN PEDRO SOLAR",
+          "antes": {
+            "parque": 80.5,
+            "grupo": "B"
+          },
+          "ahora": {
+            "parque": 90.5,
+            "grupo": "B"
+          }
+        }
+      ]
+    }
+  ]
+}

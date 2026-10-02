@@ -95,6 +95,9 @@
       </div>`;
   }
 
+  const EVO_ICON = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 3v18h18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M7 15l4-4 3 3 6-7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+  const tieneEvolucion = (p) => global.AppEvolucion && global.AppEvolucion.tieneDatos(p);
+
   function projectCardHtml(p) {
     const grupoInfo = GRUPO_INFO[p.grupo];
     return `
@@ -104,7 +107,10 @@
             <div class="pcard__title">${esc(p.nombre)}</div>
             <div class="pcard__sub">${esc([p.socio, p.ubicacion].filter(Boolean).join(" · "))}</div>
           </div>
-          ${grupoInfo ? `<span class="badge badge--${grupoInfo.css}">${grupoInfo.label}</span>` : ""}
+          <div class="pcard__side">
+            ${grupoInfo ? `<span class="badge badge--${grupoInfo.css}">${grupoInfo.label}</span>` : ""}
+            ${tieneEvolucion(p) ? `<button type="button" class="evo-btn" data-evolucion="${esc(p.id)}" aria-label="Evolución por corte de ${esc(p.nombre)}">${EVO_ICON}Evolución</button>` : ""}
+          </div>
         </div>
         <div class="pcard__meta">
           ${p.tecnologia ? `<span><b>${esc(p.tecnologia)}</b></span>` : ""}
@@ -120,7 +126,7 @@
       </div>`;
   }
 
-  function renderProjectList(elId, countElId, projects, onSelect) {
+  function renderProjectList(elId, countElId, projects, onSelect, onEvolucion) {
     const container = document.getElementById(elId);
     document.getElementById(countElId).textContent = `${projects.length} proyecto${
       projects.length === 1 ? "" : "s"
@@ -137,6 +143,14 @@
 
     container.innerHTML = projects.map(projectCardHtml).join("");
     onActivate(container, ".pcard", (card) => onSelect(card.getAttribute("data-id")));
+    // El botón "Evolución" abre su panel sin abrir la ficha de la tarjeta.
+    container.querySelectorAll("[data-evolucion]").forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        onEvolucion(btn.getAttribute("data-evolucion"));
+      });
+      btn.addEventListener("keydown", (e) => e.stopPropagation());
+    });
   }
 
   // ------------------------------------------------------------ Detalle
@@ -163,12 +177,14 @@
 
   function renderDetail(elId, p) {
     const grupoInfo = GRUPO_INFO[p.grupo];
+    const acciones = [
+      p.geo ? `<button class="detail__mapbtn" data-view-on-map="${esc(p.id)}">Ver en el mapa</button>` : "",
+      tieneEvolucion(p) ? `<button class="detail__mapbtn" data-open-evolucion>${EVO_ICON}Evolución</button>` : "",
+    ].join("");
     const sections = DETAIL_FIELDS.map((sec) => {
       const fields = sec.items.map(([key, label]) => detailField(p, key, label)).filter(Boolean).join("");
       return fields ? `<div class="detail__section-title">${sec.section}</div><div class="detail-grid">${fields}</div>` : "";
     }).join("");
-    // "Evolución por corte" va al final, después de "Financiero".
-    const evolucion = global.AppEvolucion ? global.AppEvolucion.html(p) : "";
 
     document.getElementById(elId).innerHTML = `
       <div class="detail__head">
@@ -184,9 +200,8 @@
           ${progressRow("LT", p.ltPct)}
           ${progressRow("Global", p.globalPct)}
         </div>
-        ${p.geo ? `<button class="detail__mapbtn" data-view-on-map="${esc(p.id)}">Ver en el mapa</button>` : ""}
+        ${acciones ? `<div class="detail__actions">${acciones}</div>` : ""}
         ${sections}
-        ${evolucion}
       </div>`;
   }
 

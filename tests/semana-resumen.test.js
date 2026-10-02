@@ -1,62 +1,55 @@
 // Pruebas de assets/js/semana-resumen.js (sección "Esta semana" del portal).
 const test = require("node:test");
 const assert = require("node:assert/strict");
-const { resumenMixtos, resumenCartera, lunesDe } = require("../assets/js/semana-resumen.js");
+const { resumenMixtos, resumenCartera, domingoDe } = require("../assets/js/semana-resumen.js");
 
-test("lunesDe: lunes de la semana (lunes a domingo)", () => {
-  assert.equal(lunesDe("2026-10-01"), "2026-09-28"); // jueves
-  assert.equal(lunesDe("2026-09-28"), "2026-09-28"); // lunes
-  assert.equal(lunesDe("2026-10-04"), "2026-09-28"); // domingo
+test("domingoDe: semana de domingo a sábado", () => {
+  assert.equal(domingoDe("2026-10-01"), "2026-09-27"); // jueves
+  assert.equal(domingoDe("2026-09-27"), "2026-09-27"); // domingo
+  assert.equal(domingoDe("2026-10-03"), "2026-09-27"); // sábado
 });
 
-const mixtos = [
-  {
-    semana: "2026-W39",
-    fecha: "2026-09-25",
-    proyectos: {
-      a: { parque: 64.75, grupo: "C" },
-      b: { parque: 37.5, grupo: "C" },
-      c: { parque: 94, grupo: "A" },
-      d: { parque: 10, grupo: "B" },
-    },
-  },
-  {
-    semana: "2026-W40",
-    fecha: "2026-10-02",
-    proyectos: {
-      a: { parque: 81.5, grupo: "B" }, // avanzó y cambió de grupo
-      b: { parque: 18, grupo: "C" }, // bajó, mismo grupo
-      c: { parque: 94, grupo: "B" }, // solo cambió el grupo: no cuenta
-      d: { parque: 10.004, grupo: "B" }, // redondeo: no cuenta
-      e: { parque: 5, grupo: "A" }, // nuevo: no hay con qué comparar
-    },
-  },
+const cambio = (slug, antes, ahora, ga = "C", gb = "C") => ({
+  slug, nombre: slug.toUpperCase(), antes: { parque: antes, grupo: ga }, ahora: { parque: ahora, grupo: gb },
+});
+const registros = [
+  { excel: "2026-09-25T23:55:23.000Z", fecha: "2026-09-25", cambios: [cambio("x", 67.5, 83, "C", "B")] }, // semana anterior
+  { excel: "2026-10-01T00:10:24.000Z", fecha: "2026-09-30", cambios: [cambio("b", 37.5, 18), cambio("a", 64.75, 81.5, "C", "B")] },
+  { excel: "2026-10-02T00:22:10.000Z", fecha: "2026-10-01", cambios: [cambio("s", 80.5, 90.5, "B", "B")] },
 ];
 
-test("resumenMixtos: solo proyectos cuyo Parque cambió, con el estado del grupo", () => {
-  const r = resumenMixtos(mixtos, { a: "Proyecto A" }, "2026-10-03");
-  assert.equal(r.semanaIni, "2026-09-28");
-  assert.equal(r.semanaFin, "2026-10-04");
+test("resumenMixtos: actualizaciones de la semana (domingo a sábado), la más reciente arriba", () => {
+  const r = resumenMixtos(registros, "2026-10-02");
+  assert.equal(r.semanaIni, "2026-09-27");
+  assert.equal(r.semanaFin, "2026-10-03");
   assert.equal(r.esActual, true);
-  assert.equal(r.desde, "2026-09-25");
-  assert.deepEqual(
-    r.cambios.map((c) => [c.slug, c.nombre, c.antes, c.ahora, c.grupoAntes, c.grupoAhora]),
-    [
-      ["a", "Proyecto A", 64.75, 81.5, "C", "B"],
-      ["b", "b", 37.5, 18, "C", "C"],
-    ]
-  );
+  assert.deepEqual(r.entradas.map((e) => e.fecha), ["2026-10-01", "2026-09-30"]); // sin la de la semana anterior
+  // dentro de cada actualización: primero lo que más avanzó
+  assert.deepEqual(r.entradas[1].cambios.map((c) => [c.slug, c.antes, c.ahora, c.grupoAntes, c.grupoAhora]), [
+    ["a", 64.75, 81.5, "C", "B"],
+    ["b", 37.5, 18, "C", "C"],
+  ]);
+  assert.equal(r.entradas[0].cambios[0].diff, 10);
 });
 
-test("resumenMixtos: semana sin actualizaciones muestra la última que sí tuvo", () => {
-  const r = resumenMixtos(mixtos, {}, "2026-10-06"); // martes de la semana siguiente
+test("resumenMixtos: sin actualizaciones nuevas, se sigue mostrando la última semana", () => {
+  const r = resumenMixtos(registros, "2026-10-13"); // dos semanas después
   assert.equal(r.esActual, false);
-  assert.equal(r.semanaIni, "2026-09-28");
+  assert.equal(r.semanaIni, "2026-09-27");
+  assert.equal(r.entradas.length, 2);
+  // con una actualización nueva, la semana cambia y solo se ve esa
+  const r2 = resumenMixtos(
+    [...registros, { excel: "2026-10-12T23:00:00.000Z", fecha: "2026-10-12", cambios: [cambio("a", 81.5, 85)] }],
+    "2026-10-13"
+  );
+  assert.equal(r2.semanaIni, "2026-10-11");
+  assert.equal(r2.esActual, true);
+  assert.deepEqual(r2.entradas.map((e) => e.fecha), ["2026-10-12"]);
 });
 
-test("resumenMixtos: con menos de dos cortes no hay resumen", () => {
-  assert.equal(resumenMixtos([mixtos[0]], {}, "2026-10-01"), null);
-  assert.equal(resumenMixtos(null, {}, "2026-10-01"), null);
+test("resumenMixtos: sin registros no hay resumen", () => {
+  assert.equal(resumenMixtos([], "2026-10-01"), null);
+  assert.equal(resumenMixtos(null, "2026-10-01"), null);
 });
 
 test("resumenCartera: Real y Programado del último corte y flecha contra el anterior", () => {

@@ -1,16 +1,17 @@
 /**
  * evolucion.js
- * Sección "Evolución por corte" de la ficha de un proyecto: Parque, LT y
- * Global de cada corte semanal (data/historial.json) y la TENDENCIA de
- * Global punteada (ritmo de los últimos cortes, ver shared/trend.js).
+ * Panel "Evolución por corte" de un proyecto (botón "Evolución" en cada
+ * tarjeta del listado y en la ficha): Parque, LT y Global de cada semana
+ * con actualizaciones (domingo a sábado, data/historial.json) y la
+ * TENDENCIA de Global punteada (ver shared/trend.js).
  *
  * El texto solo dice si Global avanzó, disminuyó o se mantuvo: SIN fechas
  * estimadas ni predicciones, porque estos proyectos aún son volátiles y
  * pueden pasar tiempo sin avanzar aunque tengan COD.
  *
- * Requiere: Chart.js, shared/trend.js, shared/progress-chart.js y data.js
- * (que agrega project.historial).
- * Expone: window.AppEvolucion.html(project), window.AppEvolucion.render(container, project)
+ * Requiere: Chart.js, shared/trend.js, shared/progress-chart.js,
+ * shared/dialog.js y data.js (que agrega project.historial).
+ * Expone: window.AppEvolucion.tieneDatos(project), .abrir(project)
  */
 (function (global) {
   const TREND_WINDOW = 6;
@@ -25,15 +26,19 @@
     return !!h && (h.parque.length || h.lt.length || h.global.length);
   }
 
-  /** Marcador HTML de la sección (vacío si el proyecto no tiene cortes). */
+  /** Contenido del panel. */
   function html(p) {
-    if (!hasData(p)) return "";
     return `
-      <div class="detail__section-title">Evolución por corte</div>
-      <div class="evolucion" data-evolucion>
+      <div class="detail__head">
+        <button class="detail__close" data-close-evolucion aria-label="Cerrar">&times;</button>
+        <div class="detail__title" id="evolucion-title">Evolución por corte</div>
+        <div class="detail__sub">${global.TextUtils.esc(p.nombre)}</div>
+      </div>
+      <div class="detail__body evolucion" data-evolucion>
         <div class="pc-legend"></div>
         <div class="evolucion__chart"><canvas role="img" aria-label="Avance de Parque, LT y Global por corte semanal"></canvas></div>
         <p class="evolucion__resumen"></p>
+        <p class="evolucion__nota">Un punto por semana (domingo a sábado) con el último dato de esa semana; las semanas sin actualizaciones no tienen punto.</p>
       </div>`;
   }
 
@@ -86,5 +91,19 @@
     }
   }
 
-  global.AppEvolucion = { html, render, destroy };
+  /** Abre el panel con la evolución del proyecto. */
+  function abrir(p) {
+    if (!hasData(p)) return;
+    const el = document.getElementById("evolucion");
+    const body = document.getElementById("evolucion-body");
+    body.innerHTML = html(p);
+    global.Dialog.open(el, { onClose: destroy });
+    render(body, p); // ya visible: la gráfica toma el tamaño del panel
+  }
+
+  document.addEventListener("click", (e) => {
+    if (e.target.closest("[data-close-evolucion]")) global.Dialog.close(document.getElementById("evolucion"));
+  });
+
+  global.AppEvolucion = { tieneDatos: (p) => !!hasData(p), abrir };
 })(window);

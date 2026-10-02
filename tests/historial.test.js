@@ -1,7 +1,16 @@
 // Pruebas de scripts/historial.js (cortes semanales de la curva de avance).
 const test = require("node:test");
 const assert = require("node:assert/strict");
-const { localDate, isoWeek, corteDe, snapshotCartera, snapshotMixtos, upsertCorte } = require("../scripts/historial.js");
+const {
+  localDate,
+  domingoDe,
+  corteDe,
+  snapshotCartera,
+  snapshotMixtos,
+  upsertCorte,
+  cambiosMixtos,
+  registrarActualizacion,
+} = require("../scripts/historial.js");
 
 test("localDate usa la hora de México (no UTC)", () => {
   // Guardado el 30 sep 00:18 UTC = 29 sep 18:18 en México.
@@ -10,12 +19,12 @@ test("localDate usa la hora de México (no UTC)", () => {
   assert.equal(localDate("no es fecha"), null);
 });
 
-test("isoWeek: semanas de lunes a domingo", () => {
-  assert.equal(isoWeek("2026-09-28"), "2026-W40"); // lunes
-  assert.equal(isoWeek("2026-10-04"), "2026-W40"); // domingo
-  assert.equal(isoWeek("2026-09-27"), "2026-W39"); // domingo anterior
-  assert.equal(isoWeek("2027-01-01"), "2026-W53"); // pertenece a la semana del año anterior
-  assert.equal(isoWeek("2027-01-04"), "2027-W01");
+test("domingoDe: semanas de domingo a sábado", () => {
+  assert.equal(domingoDe("2026-09-27"), "2026-09-27"); // domingo
+  assert.equal(domingoDe("2026-10-01"), "2026-09-27"); // jueves
+  assert.equal(domingoDe("2026-10-03"), "2026-09-27"); // sábado
+  assert.equal(domingoDe("2026-10-04"), "2026-10-04"); // domingo siguiente
+  assert.equal(domingoDe("2027-01-01"), "2026-12-27"); // cambio de año
 });
 
 test("corteDe: corte de jueves 8:00 a jueves 7:59 (hora de México)", () => {
@@ -79,17 +88,43 @@ test("upsertCorte conserva los cortes anteriores a la regla de los jueves", () =
   assert.deepEqual(h.cortes.map((c) => c.fecha), ["2026-09-24", "2026-09-29", "2026-10-01"]);
 });
 
-test("upsertCorte regla semana (Mixtos): lunes a domingo, la última actualización manda", () => {
-  const legado = { cortes: [{ semana: "2026-W40", fecha: "2026-09-30", proyectos: { a: { parque: 1 } } }] };
-  // Viernes 2 oct (misma semana que el corte legado del miércoles): lo reemplaza.
-  let h = upsertCorte(legado, { excel: "2026-10-02T23:00:00Z", proyectos: { a: { parque: 2 } } }, "semana");
-  assert.deepEqual(h.cortes.map((c) => [c.semana, c.fecha, c.proyectos.a.parque]), [["2026-W40", "2026-10-02", 2]]);
+test("upsertCorte regla domingo (Mixtos): domingo a sábado, la última actualización manda", () => {
+  const h0 = { cortes: [{ semana: "2026-09-27", fecha: "2026-09-30", excel: "2026-10-01T00:10:24.000Z", proyectos: { a: { parque: 1 } } }] };
+  // Jueves 1 oct (misma semana): reemplaza.
+  let h = upsertCorte(h0, { excel: "2026-10-02T00:22:10.000Z", proyectos: { a: { parque: 2 } } }, "domingo");
+  assert.deepEqual(h.cortes.map((c) => [c.semana, c.fecha, c.proyectos.a.parque]), [["2026-09-27", "2026-10-01", 2]]);
+  // Sábado 3 oct 23:00 (México) sigue en la misma semana.
+  h = upsertCorte(h, { excel: "2026-10-04T05:00:00Z", proyectos: { a: { parque: 3 } } }, "domingo");
+  assert.deepEqual(h.cortes.map((c) => [c.semana, c.fecha]), [["2026-09-27", "2026-10-03"]]);
   // Lunes 5 oct: semana nueva.
-  h = upsertCorte(h, { excel: "2026-10-05T23:00:00Z", proyectos: { a: { parque: 3 } } }, "semana");
-  // Miércoles 7 oct: reemplaza el del lunes.
-  h = upsertCorte(h, { excel: "2026-10-07T23:00:00Z", proyectos: { a: { parque: 4 } } }, "semana");
-  assert.deepEqual(
-    h.cortes.map((c) => [c.semana, c.fecha, c.proyectos.a.parque]),
-    [["2026-W40", "2026-10-02", 2], ["2026-W41", "2026-10-07", 4]]
-  );
+  h = upsertCorte(h, { excel: "2026-10-05T23:00:00Z", proyectos: { a: { parque: 4 } } }, "domingo");
+  assert.deepEqual(h.cortes.map((c) => [c.semana, c.fecha, c.proyectos.a.parque]), [["2026-09-27", "2026-10-03", 3], ["2026-10-04", "2026-10-05", 4]]);
+});
+
+test("cambiosMixtos: solo proyectos cuyo Parque cambió, contra la foto anterior", () => {
+  const antes = { a: { parque: 64.75, grupo: "C" }, b: { parque: 37.5, grupo: "C" }, c: { parque: 94, grupo: "A" }, d: { parque: null } };
+  const ahora = {
+    a: { parque: 81.5, grupo: "B" },
+    b: { parque: 37.504, grupo: "B" }, // redondeo: no cuenta (aunque cambie el grupo)
+    c: { parque: 90, grupo: "A" },
+    d: { parque: 5 }, // sin dato antes
+    e: { parque: 5 }, // nuevo
+  };
+  assert.deepEqual(cambiosMixtos(antes, ahora, { a: "Proyecto A" }), [
+    { slug: "a", nombre: "Proyecto A", antes: { parque: 64.75, grupo: "C" }, ahora: { parque: 81.5, grupo: "B" } },
+    { slug: "c", nombre: "c", antes: { parque: 94, grupo: "A" }, ahora: { parque: 90, grupo: "A" } },
+  ]);
+  assert.deepEqual(cambiosMixtos(null, ahora), []);
+});
+
+test("registrarActualizacion: orden cronológico, sin repetir ni registrar subidas sin cambios", () => {
+  const c = [{ slug: "a" }];
+  let r = registrarActualizacion(null, { excel: "2026-10-02T00:22:10.000Z", cambios: c });
+  r = registrarActualizacion(r, { excel: "2026-10-01T00:10:24.000Z", cambios: c });
+  r = registrarActualizacion(r, { excel: "2026-10-02T00:22:10.000Z", cambios: c }); // repetido
+  r = registrarActualizacion(r, { excel: "2026-10-02T00:24:38.000Z", cambios: [] }); // sin cambios
+  assert.deepEqual(r.registros.map((x) => [x.excel, x.fecha]), [
+    ["2026-10-01T00:10:24.000Z", "2026-09-30"],
+    ["2026-10-02T00:22:10.000Z", "2026-10-01"],
+  ]);
 });
