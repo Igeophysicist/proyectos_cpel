@@ -4,7 +4,7 @@ const js = require("@eslint/js");
 const globals = require("globals");
 
 module.exports = [
-  { ignores: ["node_modules/"] },
+  { ignores: ["node_modules/", ".wrangler/", "test-results/", "playwright-report/"] },
   js.configs.recommended,
   {
     files: ["**/assets/js/**/*.js"],
@@ -35,7 +35,12 @@ module.exports = [
     languageOptions: { ecmaVersion: 2022, sourceType: "module", globals: globals.serviceworker },
   },
   {
-    files: ["tests/**/*.js", "scripts/**/*.js", "eslint.config.js"],
+    files: ["tests/**/*.js", "scripts/**/*.js", "eslint.config.js", "playwright.config.js"],
     languageOptions: { ecmaVersion: 2022, sourceType: "commonjs", globals: globals.node },
+  },
+  {
+    // Pruebas en el navegador: el código de page.evaluate() corre en la página.
+    files: ["tests/e2e/**/*.js"],
+    languageOptions: { globals: { ...globals.node, ...globals.browser, Chart: "readonly" } },
   },
 ];

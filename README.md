@@ -270,8 +270,39 @@ Requiere Node.js 22:
 
 ```bash
 npm install
-npm run check   # ESLint + pruebas de text-utils.js y del middleware de contraseña
+npm run check      # ESLint + pruebas de los scripts y del middleware de contraseña
+npm run test:e2e   # pruebas en el navegador (ver abajo)
 ```
 
-La misma revisión corre en GitHub Actions (`.github/workflows/ci.yml`)
-en cada push y pull request.
+`npm run check` corre en GitHub Actions (`.github/workflows/ci.yml`) en
+cada push y pull request.
+
+### Pruebas en el navegador
+
+`tests/e2e/` (Playwright) abre el sitio en Chromium con el mismo motor de
+Cloudflare Pages (`wrangler pages dev`, con una contraseña **de prueba**,
+nunca la real) y lo recorre en **celular** y **computadora**:
+
+- **Acceso:** sin contraseña no se ve nada ni se descargan los datos; una
+  contraseña equivocada muestra error; con la correcta llega a la página
+  pedida; "Salir" cierra la sesión.
+- **Portal:** "Esta semana" muestra lo mismo que los datos (Mixtos y
+  Cartera) y sus enlaces abren la ficha; colaboradores.
+- **Cartera CPEL:** selector y enlace directo, Ficha técnica, Plazos,
+  Curva de avance, PDF (impresión en computadora y archivo de una hoja en
+  celular) y **todas las fichas**.
+- **Mixtos:** listado completo, búsqueda, filtros por enlace, ficha,
+  botón Evolución (desde la tarjeta y desde la ficha), Ver en el mapa y
+  **todas las fichas**.
+- En todas: sin errores de JavaScript y sin desplazamiento horizontal.
+
+Comparan contra los JSON del repositorio, así que no fallan porque
+cambien los datos; sí fallan si una página se rompe. Corren solas en
+GitHub (`.github/workflows/navegador.yml`) en cada PR, en cada push a
+`main` (también al subir un Excel) y a mano desde **Actions → Navegador
+→ Run workflow**. **No bloquean la publicación.** Si fallan, la
+ejecución guarda en *Artifacts* ("pruebas-navegador") capturas y un
+*trace* de cada prueba fallida (se abre con `npx playwright show-trace`).
+
+Para correrlas en tu computadora: `npx playwright install chromium` (una
+vez) y `npm run test:e2e`.
