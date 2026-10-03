@@ -92,13 +92,15 @@ test("todas las fichas abren (cada proyecto del Excel)", async ({ page, isMobile
   }
 });
 
-test("Ordenar por cambia el orden de las tarjetas y queda en el enlace", async ({ page }) => {
+test("Ordenar por (y su contrario) cambia el orden de las tarjetas y queda en el enlace", async ({ page }) => {
   const { mixtos } = datos();
   const pct = (v) => parseFloat(String(v).replace("%", ""));
   const conGlobal = mixtos.filter((r) => Number.isFinite(pct(r.Global)));
   const mayor = conGlobal.reduce((a, b) => (pct(b.Global) > pct(a.Global) ? b : a));
+  const menor = conGlobal.reduce((a, b) => (pct(b.Global) < pct(a.Global) ? b : a));
   await page.goto("/cartera-mixtos/");
   await cargado(page);
+  await expect(page.locator("#sort-select option:checked")).toHaveText("Default");
   await page.selectOption("#sort-select", "global");
   await expect(page.locator("#project-list .pcard__title").first()).toHaveText(mayor.nombre);
   await expect(page).toHaveURL(/orden=global/);
@@ -106,6 +108,9 @@ test("Ordenar por cambia el orden de las tarjetas y queda en el enlace", async (
   await cargado(page);
   await expect(page.locator("#sort-select")).toHaveValue("global");
   await expect(page.locator("#project-list .pcard__title").first()).toHaveText(mayor.nombre);
+  await page.selectOption("#sort-select", "global_asc");
+  await expect(page.locator("#project-list .pcard__title").first()).toHaveText(menor.nombre);
+  await expect(page).toHaveURL(/orden=global_asc/);
   await page.selectOption("#sort-select", "excel");
   await expect(page.locator("#project-list .pcard__title").first()).toHaveText(mixtos[0].nombre);
   await expect(page).not.toHaveURL(/orden=/);

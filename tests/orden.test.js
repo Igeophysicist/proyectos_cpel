@@ -21,6 +21,22 @@ test("ordenar: cada criterio, sin dato al final y empates en orden del Excel", (
   assert.equal(ids(ordenar(P, "capacidad")), "1,3,0,2");
 });
 
+test("ordenar: los contrarios invierten el criterio; sin dato sigue al final y empates en orden del Excel", () => {
+  assert.equal(ids(ordenar(P, "nombre_za")), "0,3,2,1");
+  assert.equal(ids(ordenar(P, "global_asc")), "0,1,3,2"); // 40, 90, 90 (empate: Excel), sin dato
+  assert.equal(ids(ordenar(P, "parque_asc")), "2,3,0,1");
+  assert.equal(ids(ordenar(P, "grupo_ca")), "0,3,1,2");
+  assert.equal(ids(ordenar(P, "cod_lejano")), "0,2,3,1"); // 2028, 2027 (empate: Excel), sin COD
+  assert.equal(ids(ordenar(P, "capacidad_asc")), "0,1,3,2");
+});
+
+test("la primera opción es Default y cada criterio tiene su contrario", () => {
+  const claves = Object.keys(ORDENES);
+  assert.equal(claves[0], "excel");
+  assert.equal(ORDENES.excel.etiqueta, "Default");
+  assert.equal(claves.length, 13);
+});
+
 test("ordenar no modifica la lista original; claves desconocidas = orden del Excel", () => {
   const copia = P.slice();
   ordenar(P, "global");

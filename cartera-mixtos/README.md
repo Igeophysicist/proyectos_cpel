@@ -147,10 +147,12 @@ nombre, socio, ubicación y tecnología.
 ## Ordenar por
 
 El selector **Ordenar por** del listado (junto al número de proyectos)
-cambia el orden de las tarjetas: orden del Excel (el de siempre),
-nombre, avance Global o Parque (de mayor a menor), grupo de atención
-(A → C), COD más próximo o capacidad (de mayor a menor). Los proyectos
-sin ese dato van al final y los empates conservan el orden del Excel.
+cambia el orden de las tarjetas: Default (el orden del Excel, el de
+siempre), nombre (A–Z o Z–A), avance Global o Parque (de mayor a menor o
+de menor a mayor), grupo de atención (A → C o C → A), COD (más próximo o
+más lejano) o capacidad (de mayor a menor o de menor a mayor). Los
+proyectos sin ese dato van al final en ambos sentidos y los empates
+conservan el orden del Excel.
 Solo afecta al listado (no al mapa ni al resumen) y queda en el enlace
 (`?orden=global`), así que se puede compartir. Las opciones están en
 `ORDENES` de `assets/js/orden.js`.

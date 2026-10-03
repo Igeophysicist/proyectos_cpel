@@ -11,15 +11,29 @@
   const num = (v) => (Number.isFinite(v) ? v : null);
   const fecha = (d) => (d instanceof Date && !Number.isNaN(d.getTime()) ? d.getTime() : null);
 
-  // clave -> { etiqueta, valor(p), desc }: desc = de mayor a menor.
+  const nombre = (p) => p.nombre || null;
+  const global_ = (p) => num(p.globalPct);
+  const parque = (p) => num(p.parquePct);
+  const grupo = (p) => p.grupo || null;
+  const cod = (p) => fecha(p.finConstruccionFecha);
+  const capacidad = (p) => num(p.capacidadNum);
+
+  // clave -> { etiqueta, valor(p), texto, desc }: desc = de mayor a menor
+  // (Z–A en texto). Cada criterio va junto a su contrario.
   const ORDENES = {
-    excel: { etiqueta: "Orden del Excel" },
-    nombre: { etiqueta: "Nombre (A–Z)", valor: (p) => p.nombre || null, texto: true },
-    global: { etiqueta: "Avance Global (mayor a menor)", valor: (p) => num(p.globalPct), desc: true },
-    parque: { etiqueta: "Avance Parque (mayor a menor)", valor: (p) => num(p.parquePct), desc: true },
-    grupo: { etiqueta: "Grupo de atención (A → C)", valor: (p) => p.grupo || null, texto: true },
-    cod: { etiqueta: "COD más próximo", valor: (p) => fecha(p.finConstruccionFecha) },
-    capacidad: { etiqueta: "Capacidad (mayor a menor)", valor: (p) => num(p.capacidadNum), desc: true },
+    excel: { etiqueta: "Default" },
+    nombre: { etiqueta: "Nombre (A–Z)", valor: nombre, texto: true },
+    nombre_za: { etiqueta: "Nombre (Z–A)", valor: nombre, texto: true, desc: true },
+    global: { etiqueta: "Avance Global (mayor a menor)", valor: global_, desc: true },
+    global_asc: { etiqueta: "Avance Global (menor a mayor)", valor: global_ },
+    parque: { etiqueta: "Avance Parque (mayor a menor)", valor: parque, desc: true },
+    parque_asc: { etiqueta: "Avance Parque (menor a mayor)", valor: parque },
+    grupo: { etiqueta: "Grupo de atención (A → C)", valor: grupo, texto: true },
+    grupo_ca: { etiqueta: "Grupo de atención (C → A)", valor: grupo, texto: true, desc: true },
+    cod: { etiqueta: "COD más próximo", valor: cod },
+    cod_lejano: { etiqueta: "COD más lejano", valor: cod, desc: true },
+    capacidad: { etiqueta: "Capacidad (mayor a menor)", valor: capacidad, desc: true },
+    capacidad_asc: { etiqueta: "Capacidad (menor a mayor)", valor: capacidad },
   };
 
   const valida = (clave) => (Object.prototype.hasOwnProperty.call(ORDENES, clave) ? clave : "excel");
