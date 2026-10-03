@@ -14,23 +14,6 @@
     notation: "compact",
   });
 
-  /**
-   * Hace "activables" los elementos que coinciden con selector dentro de
-   * container: responden al clic y, para quien navega con teclado, a
-   * Enter y Espacio (los elementos deben llevar role="button" tabindex="0").
-   */
-  function onActivate(container, selector, callback) {
-    container.querySelectorAll(selector).forEach((el) => {
-      el.addEventListener("click", () => callback(el));
-      el.addEventListener("keydown", (e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          callback(el);
-        }
-      });
-    });
-  }
-
   // ---------------------------------------------------------------- KPIs
   function renderKPIs(elId, projects) {
     const total = projects.length;
@@ -101,10 +84,10 @@
   function projectCardHtml(p) {
     const grupoInfo = GRUPO_INFO[p.grupo];
     return `
-      <div class="pcard ${p.geo ? "" : "pcard--nogeo"}" data-id="${esc(p.id)}" role="button" tabindex="0">
+      <div class="pcard ${p.geo ? "" : "pcard--nogeo"}" data-id="${esc(p.id)}">
         <div class="pcard__top">
           <div>
-            <div class="pcard__title">${esc(p.nombre)}</div>
+            <h2 class="pcard__title"><button type="button" class="pcard__open" data-id="${esc(p.id)}">${esc(p.nombre)}</button></h2>
             <div class="pcard__sub">${esc([p.socio, p.ubicacion].filter(Boolean).join(" · "))}</div>
           </div>
           <div class="pcard__side">
@@ -142,14 +125,14 @@
     }
 
     container.innerHTML = projects.map(projectCardHtml).join("");
-    onActivate(container, ".pcard", (card) => onSelect(card.getAttribute("data-id")));
-    // El botón "Evolución" abre su panel sin abrir la ficha de la tarjeta.
+    // El nombre es el botón que abre la ficha; cubre toda la tarjeta (ver
+    // .pcard__open::after en styles.css), así que se puede tocar en
+    // cualquier parte. "Evolución" es otro botón, encima, que abre su panel.
+    container.querySelectorAll(".pcard__open").forEach((btn) => {
+      btn.addEventListener("click", () => onSelect(btn.getAttribute("data-id")));
+    });
     container.querySelectorAll("[data-evolucion]").forEach((btn) => {
-      btn.addEventListener("click", (e) => {
-        e.stopPropagation();
-        onEvolucion(btn.getAttribute("data-evolucion"));
-      });
-      btn.addEventListener("keydown", (e) => e.stopPropagation());
+      btn.addEventListener("click", () => onEvolucion(btn.getAttribute("data-evolucion")));
     });
   }
 
@@ -247,5 +230,5 @@
     el._t = setTimeout(() => el.classList.remove("is-visible"), 4000);
   }
 
-  global.AppUI = { renderKPIs, renderProjectList, renderDetail, renderFilterOptions, showToast, onActivate };
+  global.AppUI = { renderKPIs, renderProjectList, renderDetail, renderFilterOptions, showToast };
 })(window);

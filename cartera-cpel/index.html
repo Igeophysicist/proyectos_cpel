@@ -50,7 +50,7 @@
       <img id="projectImg" alt="">
       <div class="hero-card__overlay">
         <span class="hero-card__tag" id="projectTech" hidden></span>
-        <div class="hero-card__name" id="projectName">Cargando…</div>
+        <h1 class="hero-card__name" id="projectName">Cargando…</h1>
         <div class="hero-card__loc">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0112 2.5a7 7 0 017 7C19 14.8 12 21 12 21z" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="9.5" r="2.5" stroke="currentColor" stroke-width="2"/></svg>
           <span id="projectLocation">—</span>
@@ -62,10 +62,10 @@
 
     <!-- Avance general -->
     <section class="card">
-      <div class="card__title">
+      <h2 class="card__title">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M3 17l6-6 4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 7h6v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         Avance General
-      </div>
+      </h2>
       <div class="progress-stack">
         <div class="progress-row progress-row--prog">
           <div class="progress-row__info"><span>Programado</span><span id="progGenVal">0%</span></div>
@@ -81,10 +81,10 @@
 
     <!-- Avances particulares (se generan desde cartera.js) -->
     <section class="card">
-      <div class="card__title">
+      <h2 class="card__title">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
         Avances particulares
-      </div>
+      </h2>
       <div class="legend">
         <span><i class="l-prog"></i>Programado</span>
         <span><i class="l-real"></i>Real</span>
@@ -94,28 +94,28 @@
 
     <!-- Eventos importantes (texto libre desde el Excel) -->
     <section class="card">
-      <div class="card__title">
+      <h2 class="card__title">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 21V4M5 4h11l-2 4 2 4H5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         Eventos importantes
-      </div>
+      </h2>
       <div class="eventos-text" id="eventosVal">Sin eventos registrados para este proyecto.</div>
     </section>
 
     <!-- Hitos (se generan desde cartera.js) -->
     <section class="card card--hitos">
-      <div class="card__title">
+      <h2 class="card__title">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 21V4M5 4h11l-2 4 2 4H5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         Seguimiento de Hitos
-      </div>
+      </h2>
       <div class="hitos" id="hitosGrid"></div>
     </section>
 
     <!-- Información general -->
     <section class="card">
-      <div class="card__title">
+      <h2 class="card__title">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 11v5M12 8h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
         Información general
-      </div>
+      </h2>
       <div class="info-list">
         <div class="info-item">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 21V5a1 1 0 011-1h9a1 1 0 011 1v16M15 9h4a1 1 0 011 1v11M2 21h20M8 8h3M8 12h3M8 16h3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
@@ -134,26 +134,26 @@
 
     <!-- Solo en el PDF: copia de Ficha técnica y Plazos (ver preparar en pdf.js) -->
     <section class="card print-only print-ficha">
-      <div class="card__title">
+      <h2 class="card__title">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M14 3H6a1 1 0 00-1 1v16a1 1 0 001 1h12a1 1 0 001-1V8l-5-5z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M14 3v5h5" stroke="currentColor" stroke-width="2"/></svg>
         Ficha técnica
-      </div>
+      </h2>
       <div id="printFicha"></div>
     </section>
     <section class="card print-only print-plazos">
-      <div class="card__title">
+      <h2 class="card__title">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="16" rx="2" stroke="currentColor" stroke-width="2"/><path d="M3 10h18M8 3v4M16 3v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
         Plazos del proyecto
-      </div>
+      </h2>
       <div id="printPlazos"></div>
     </section>
 
     <!-- Ubicación (mapa, se llena desde map.js) -->
     <section class="card">
-      <div class="card__title">
+      <h2 class="card__title">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0112 2.5a7 7 0 017 7C19 14.8 12 21 12 21z" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="9.5" r="2.5" stroke="currentColor" stroke-width="2"/></svg>
         Ubicación
-      </div>
+      </h2>
       <div class="map-wrap">
         <div id="mapaProyecto"></div>
         <div class="map-empty" id="mapEmpty" hidden></div>

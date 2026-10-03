@@ -294,6 +294,10 @@ nunca la real) y lo recorre en **celular** y **computadora**:
 - **Mixtos:** listado completo, búsqueda, filtros por enlace, ficha,
   botón Evolución (desde la tarjeta y desde la ficha), Ver en el mapa y
   **todas las fichas**.
+- **Accesibilidad:** axe-core (WCAG 2.2 AA + buenas prácticas) revisa la
+  pantalla de contraseña, el portal, Cartera y Mixtos con sus ventanas
+  (contraste, títulos, botones, nombres para lectores de pantalla…), y
+  con una ventana abierta el tabulador no sale de ella.
 - En todas: sin errores de JavaScript y sin desplazamiento horizontal.
 
 Comparan contra los JSON del repositorio, así que no fallan porque

@@ -49,15 +49,7 @@
 
   function wireColaboradores() {
     const footer = document.getElementById("siteFooter");
-    if (footer) {
-      footer.addEventListener("click", abrirColaboradores);
-      footer.addEventListener("keydown", (e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          abrirColaboradores();
-        }
-      });
-    }
+    if (footer) footer.addEventListener("click", abrirColaboradores);
     document.addEventListener("click", (e) => {
       if (e.target.closest("[data-close-sheet]")) cerrarColaboradores();
     });

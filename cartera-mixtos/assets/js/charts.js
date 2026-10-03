@@ -36,6 +36,13 @@
     return map;
   }
 
+  /** Texto alternativo de la gráfica (lectores de pantalla): sus números. */
+  function describir(canvas, titulo, partes) {
+    canvas.setAttribute("role", "img");
+    canvas.setAttribute("aria-label", `${titulo}: ${partes.length ? partes.join("; ") : "sin datos"}.`);
+  }
+  const proyectos = (n) => `${n} proyecto${n === 1 ? "" : "s"}`;
+
   function renderGrupoChart(canvasId, projects) {
     destroy(canvasId);
     const counts = { A: 0, B: 0, C: 0 };
@@ -43,6 +50,7 @@
       if (counts[p.grupo] !== undefined) counts[p.grupo]++;
     });
     const ctx = document.getElementById(canvasId);
+    describir(ctx, "Distribución por grupo de atención", ["A", "B", "C"].map((g) => `Grupo ${g}, ${proyectos(counts[g])}`));
     instances[canvasId] = new Chart(ctx, {
       type: "doughnut",
       data: {
@@ -77,6 +85,7 @@
     const labels = Array.from(counts.keys());
     const data = Array.from(counts.values());
     const ctx = document.getElementById(canvasId);
+    describir(ctx, "Proyectos por tecnología", labels.map((l, i) => `${l}, ${proyectos(data[i])}`));
     instances[canvasId] = new Chart(ctx, {
       type: "bar",
       data: {
@@ -124,18 +133,20 @@
         // "--pct" deja que la barra crezca desde 0 al pintarse (ver
         // @keyframes bar-grow en styles.css) en vez de aparecer ya llena.
         (p, i) => `
-      <li data-id="${esc(p.id)}" role="button" tabindex="0">
+      <li><button type="button" class="ranking__btn" data-id="${esc(p.id)}">
         <span class="ranking__rank">${i + 1}</span>
         <span class="ranking__name">${esc(p.nombre)}</span>
         <span class="ranking__bar"><span style="--pct:${Math.min(p.parquePct, 100)}%; background:${
           (GRUPO_INFO[p.grupo] || {}).color || "#2e534f"
         }"></span></span>
         <span class="ranking__pct tabular">${p.parquePct}%</span>
-      </li>`
+      </button></li>`
       )
       .join("");
 
-    global.AppUI.onActivate(list, "li[data-id]", (li) => onSelect(li.getAttribute("data-id")));
+    list.querySelectorAll(".ranking__btn").forEach((btn) => {
+      btn.addEventListener("click", () => onSelect(btn.getAttribute("data-id")));
+    });
   }
 
   global.AppCharts = { renderGrupoChart, renderTecnologiaChart, renderRanking, RANKING_TOP_N };
