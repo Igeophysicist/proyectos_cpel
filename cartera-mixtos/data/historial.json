@@ -236,8 +236,8 @@
     },
     {
       "semana": "2026-09-27",
-      "fecha": "2026-10-01",
-      "excel": "2026-10-02T00:24:38.000Z",
+      "fecha": "2026-10-02",
+      "excel": "2026-10-02T23:59:11.000Z",
       "proyectos": {
         "san-simon-solar": {
           "parque": 94,
@@ -342,33 +342,33 @@
           "grupo": "A"
         },
         "energia-limpia-el-mezquite": {
-          "parque": 70,
-          "lt": 60.5,
-          "global": 68.1,
+          "parque": 68.5,
+          "lt": 62.5,
+          "global": 67.3,
           "grupo": "C"
         },
         "parque-fv-energias-renovables-de-mexico-tres": {
-          "parque": 71.5,
-          "lt": 54,
-          "global": 68,
-          "grupo": "C"
+          "parque": 79,
+          "lt": 78,
+          "global": 78.8,
+          "grupo": "B"
         },
         "parque-fv-energias-renovables-saas-peto": {
-          "parque": 72.5,
-          "lt": 39.5,
-          "global": 65.9,
+          "parque": 69,
+          "lt": 59,
+          "global": 67,
           "grupo": "C"
         },
         "parque-fv-energias-renovables-kiin-tekax": {
-          "parque": 73,
-          "lt": 55.5,
-          "global": 69.5,
+          "parque": 69,
+          "lt": 68,
+          "global": 68.8,
           "grupo": "C"
         },
         "parque-fv-energias-renovables-de-tamaulipas": {
-          "parque": 85,
-          "lt": 71,
-          "global": 82.2,
+          "parque": 90,
+          "lt": 89,
+          "global": 89.8,
           "grupo": "A"
         },
         "viento-de-bella-union": {
@@ -420,9 +420,9 @@
           "grupo": "A"
         },
         "concepcion-mendizabal-mendoza-fase-i-ii-iii": {
-          "parque": 81.5,
-          "lt": 81.5,
-          "global": 81.5,
+          "parque": 83.5,
+          "lt": 83.5,
+          "global": 83.5,
           "grupo": "B"
         },
         "global-solar-3-campeche": {

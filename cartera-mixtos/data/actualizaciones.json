@@ -125,6 +125,84 @@
           }
         }
       ]
+    },
+    {
+      "excel": "2026-10-02T23:59:11.000Z",
+      "fecha": "2026-10-02",
+      "cambios": [
+        {
+          "slug": "energia-limpia-el-mezquite",
+          "nombre": "ENERGÍA LIMPIA EL MEZQUITE",
+          "antes": {
+            "parque": 70,
+            "grupo": "C"
+          },
+          "ahora": {
+            "parque": 68.5,
+            "grupo": "C"
+          }
+        },
+        {
+          "slug": "parque-fv-energias-renovables-de-mexico-tres",
+          "nombre": "PARQUE FV ENERGÍAS RENOVABLES DE MÉXICO TRES",
+          "antes": {
+            "parque": 71.5,
+            "grupo": "C"
+          },
+          "ahora": {
+            "parque": 79,
+            "grupo": "B"
+          }
+        },
+        {
+          "slug": "parque-fv-energias-renovables-saas-peto",
+          "nombre": "PARQUE FV ENERGÍAS RENOVABLES SAAS (PETO)",
+          "antes": {
+            "parque": 72.5,
+            "grupo": "C"
+          },
+          "ahora": {
+            "parque": 69,
+            "grupo": "C"
+          }
+        },
+        {
+          "slug": "parque-fv-energias-renovables-kiin-tekax",
+          "nombre": "PARQUE FV ENERGÍAS RENOVABLES KIIN (TEKAX)",
+          "antes": {
+            "parque": 73,
+            "grupo": "C"
+          },
+          "ahora": {
+            "parque": 69,
+            "grupo": "C"
+          }
+        },
+        {
+          "slug": "parque-fv-energias-renovables-de-tamaulipas",
+          "nombre": "PARQUE FV ENERGÍAS RENOVABLES DE TAMAULIPAS",
+          "antes": {
+            "parque": 85,
+            "grupo": "A"
+          },
+          "ahora": {
+            "parque": 90,
+            "grupo": "A"
+          }
+        },
+        {
+          "slug": "concepcion-mendizabal-mendoza-fase-i-ii-iii",
+          "nombre": "CONCEPCIÓN MENDIZÁBAL MENDOZA FASE I, II & III",
+          "antes": {
+            "parque": 81.5,
+            "grupo": "B"
+          },
+          "ahora": {
+            "parque": 83.5,
+            "grupo": "B"
+          }
+        }
+      ]
     }
   ]
 }
