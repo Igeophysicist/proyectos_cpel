@@ -24,10 +24,13 @@
  * Archivo: data/historial.json de cada tablero ({ "cortes": [...] }).
  *
  * REGISTRO DE ACTUALIZACIONES (Mixtos, sección "Esta semana" del portal):
- * además del punto semanal, cada Excel que cambia el avance de Parque de
- * algún proyecto queda registrado con esos cambios, comparados con la
- * subida ANTERIOR (no con la semana anterior). Archivo
- * data/actualizaciones.json:
+ * además del punto semanal, cada Excel que cambia el avance de Parque o
+ * el grupo de atención de algún proyecto queda registrado con esos
+ * cambios, comparados con el dato ANTERIOR (no con la semana anterior).
+ * Las subidas del MISMO DÍA se juntan en una sola entrada: cada proyecto
+ * se compara con cómo estaba antes de la primera subida de ese día (así
+ * una corrección minutos después no aparece como otra actualización).
+ * Archivo data/actualizaciones.json:
  *   { "registros": [ { "excel": "<ISO>", "fecha": "2026-10-01",
  *       "cambios": [ { "slug", "nombre", "antes": { parque, grupo },
  *                      "ahora": { parque, grupo } } ] } ] }
@@ -146,36 +149,54 @@ function upsertCorte(historial, { excel, proyectos }, regla = "jueves") {
 // ------------------------------------------------ registro (Mixtos)
 const UMBRAL = 0.005; // diferencias menores son redondeo, no cambio
 
+const parqueCambio = (a, b) =>
+  Number.isFinite(a.parque) && Number.isFinite(b.parque) && Math.abs(b.parque - a.parque) > UMBRAL;
+const grupoCambio = (a, b) => !!a.grupo && !!b.grupo && a.grupo !== b.grupo;
+const hayCambio = (a, b) => parqueCambio(a, b) || grupoCambio(a, b);
+
 /**
- * Proyectos cuyo avance de Parque cambió entre dos fotos de Mixtos
- * ({ slug: { parque, grupo, ... } }). "nombres": { slug: nombre visible }.
- * Los proyectos nuevos o sin dato de Parque no cuentan.
+ * Proyectos cuyo avance de Parque o grupo de atención cambió entre dos
+ * fotos de Mixtos ({ slug: { parque, grupo, ... } }). "nombres":
+ * { slug: nombre visible }. Los proyectos nuevos no cuentan.
  */
 function cambiosMixtos(antes, ahora, nombres = {}) {
   if (!antes || !ahora) return [];
   return Object.keys(ahora)
-    .filter((slug) => {
-      const a = antes[slug];
-      const b = ahora[slug];
-      return a && Number.isFinite(a.parque) && Number.isFinite(b.parque) && Math.abs(b.parque - a.parque) > UMBRAL;
-    })
+    .filter((slug) => antes[slug] && hayCambio(antes[slug], ahora[slug]))
     .map((slug) => ({
       slug,
       nombre: nombres[slug] || slug,
-      antes: { parque: antes[slug].parque, grupo: antes[slug].grupo ?? null },
-      ahora: { parque: ahora[slug].parque, grupo: ahora[slug].grupo ?? null },
+      antes: { parque: antes[slug].parque ?? null, grupo: antes[slug].grupo ?? null },
+      ahora: { parque: ahora[slug].parque ?? null, grupo: ahora[slug].grupo ?? null },
     }));
 }
 
 /**
- * Agrega la actualización del Excel guardado en "excel" (si tuvo cambios
- * y no estaba ya registrada), en orden cronológico. No modifica el
+ * Agrega la actualización del Excel guardado en "excel" al registro, en
+ * orden cronológico. Si ya hay una entrada del mismo día, la combina con
+ * ella: cada proyecto conserva su dato de antes de ese día y toma el
+ * último; los que regresaron a como estaban se quitan. No registra
+ * subidas sin cambios ni repite un Excel ya registrado. No modifica el
  * registro recibido.
  */
 function registrarActualizacion(registro, { excel, cambios }) {
   const registros = registro && registro.registros ? registro.registros.slice() : [];
-  if (!cambios.length || registros.some((r) => r.excel === excel)) return { registros };
-  registros.push({ excel, fecha: localDate(excel), cambios });
+  if (registros.some((r) => r.excel === excel)) return { registros };
+  const fecha = localDate(excel);
+  const ultimo = registros[registros.length - 1];
+  if (ultimo && ultimo.fecha === fecha && ultimo.excel < excel) {
+    const porSlug = new Map(ultimo.cambios.map((c) => [c.slug, { ...c }]));
+    cambios.forEach((c) => {
+      const previo = porSlug.get(c.slug);
+      porSlug.set(c.slug, previo ? { ...previo, nombre: c.nombre, ahora: c.ahora } : c);
+    });
+    const combinados = [...porSlug.values()].filter((c) => hayCambio(c.antes, c.ahora));
+    registros.pop();
+    if (combinados.length) registros.push({ excel, fecha, cambios: combinados });
+    return { registros };
+  }
+  if (!cambios.length) return { registros };
+  registros.push({ excel, fecha, cambios });
   registros.sort((a, b) => (a.excel < b.excel ? -1 : a.excel > b.excel ? 1 : 0));
   return { registros };
 }

@@ -35,7 +35,7 @@ cartera-mixtos/
     ├── DATOS_MIXTOS.xlsx      fuente de datos ejecutiva (única fuente de verdad)
     ├── DATOS_MIXTOS.json      generado y validado desde el Excel (no editar a mano)
     ├── historial.json         cortes semanales para la evolución (generado)
-    ├── actualizaciones.json   cada subida con cambios de Parque, para el portal (generado)
+    ├── actualizaciones.json   cambios de Parque o grupo por día, para el portal (generado)
     ├── ENTRADA_PROYECTOS.kml  puntos de ubicación de cada proyecto
     └── AREAS_REFERENCIA.kml   polígonos de referencia (se vinculan por nombre)
 ```

@@ -101,30 +101,44 @@ test("upsertCorte regla domingo (Mixtos): domingo a sábado, la última actualiz
   assert.deepEqual(h.cortes.map((c) => [c.semana, c.fecha, c.proyectos.a.parque]), [["2026-09-27", "2026-10-03", 3], ["2026-10-04", "2026-10-05", 4]]);
 });
 
-test("cambiosMixtos: solo proyectos cuyo Parque cambió, contra la foto anterior", () => {
-  const antes = { a: { parque: 64.75, grupo: "C" }, b: { parque: 37.5, grupo: "C" }, c: { parque: 94, grupo: "A" }, d: { parque: null } };
+test("cambiosMixtos: proyectos cuyo Parque o grupo cambió, contra la foto anterior", () => {
+  const antes = { a: { parque: 64.75, grupo: "C" }, b: { parque: 90.5, grupo: "B" }, c: { parque: 94, grupo: "A" }, d: { parque: 10, grupo: "C" } };
   const ahora = {
-    a: { parque: 81.5, grupo: "B" },
-    b: { parque: 37.504, grupo: "B" }, // redondeo: no cuenta (aunque cambie el grupo)
-    c: { parque: 90, grupo: "A" },
-    d: { parque: 5 }, // sin dato antes
-    e: { parque: 5 }, // nuevo
+    a: { parque: 81.5, grupo: "B" }, // Parque y grupo
+    b: { parque: 90.504, grupo: "A" }, // solo grupo (Parque es redondeo)
+    c: { parque: 94, grupo: "A" }, // sin cambio
+    d: { parque: 10.003, grupo: "C" }, // redondeo: no cuenta
+    e: { parque: 5, grupo: "A" }, // nuevo
   };
   assert.deepEqual(cambiosMixtos(antes, ahora, { a: "Proyecto A" }), [
     { slug: "a", nombre: "Proyecto A", antes: { parque: 64.75, grupo: "C" }, ahora: { parque: 81.5, grupo: "B" } },
-    { slug: "c", nombre: "c", antes: { parque: 94, grupo: "A" }, ahora: { parque: 90, grupo: "A" } },
+    { slug: "b", nombre: "b", antes: { parque: 90.5, grupo: "B" }, ahora: { parque: 90.504, grupo: "A" } },
   ]);
   assert.deepEqual(cambiosMixtos(null, ahora), []);
 });
 
 test("registrarActualizacion: orden cronológico, sin repetir ni registrar subidas sin cambios", () => {
-  const c = [{ slug: "a" }];
+  const c = [{ slug: "a", antes: { parque: 1, grupo: "C" }, ahora: { parque: 2, grupo: "C" } }];
   let r = registrarActualizacion(null, { excel: "2026-10-02T00:22:10.000Z", cambios: c });
-  r = registrarActualizacion(r, { excel: "2026-10-01T00:10:24.000Z", cambios: c });
+  r = registrarActualizacion(r, { excel: "2026-09-25T23:55:23.000Z", cambios: c });
   r = registrarActualizacion(r, { excel: "2026-10-02T00:22:10.000Z", cambios: c }); // repetido
-  r = registrarActualizacion(r, { excel: "2026-10-02T00:24:38.000Z", cambios: [] }); // sin cambios
+  r = registrarActualizacion(r, { excel: "2026-10-05T23:00:00.000Z", cambios: [] }); // sin cambios
   assert.deepEqual(r.registros.map((x) => [x.excel, x.fecha]), [
-    ["2026-10-01T00:10:24.000Z", "2026-09-30"],
+    ["2026-09-25T23:55:23.000Z", "2026-09-25"],
     ["2026-10-02T00:22:10.000Z", "2026-10-01"],
   ]);
+});
+
+test("registrarActualizacion: las subidas del mismo día se juntan (caso San Pedro Solar)", () => {
+  const sp = (pa, ga, pb, gb) => ({ slug: "san-pedro", nombre: "SAN PEDRO SOLAR", antes: { parque: pa, grupo: ga }, ahora: { parque: pb, grupo: gb } });
+  // Jue 1 oct 6:22 p.m.: Parque 80.5 -> 90.5, grupo B.
+  let r = registrarActualizacion(null, { excel: "2026-10-02T00:22:10.000Z", cambios: [sp(80.5, "B", 90.5, "B")] });
+  // 6:24 p.m.: corrección, solo el grupo B -> A.
+  r = registrarActualizacion(r, { excel: "2026-10-02T00:24:38.000Z", cambios: [sp(90.5, "B", 90.5, "A")] });
+  assert.equal(r.registros.length, 1);
+  assert.equal(r.registros[0].excel, "2026-10-02T00:24:38.000Z");
+  assert.deepEqual(r.registros[0].cambios, [sp(80.5, "B", 90.5, "A")]);
+  // Otra subida ese día que regresa todo a como estaba: la entrada desaparece.
+  r = registrarActualizacion(r, { excel: "2026-10-02T01:00:00.000Z", cambios: [sp(90.5, "A", 80.5, "B")] });
+  assert.deepEqual(r.registros, []);
 });

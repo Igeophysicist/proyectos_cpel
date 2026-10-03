@@ -47,6 +47,11 @@ test("resumenMixtos: sin actualizaciones nuevas, se sigue mostrando la última s
   assert.deepEqual(r2.entradas.map((e) => e.fecha), ["2026-10-12"]);
 });
 
+test("resumenMixtos: cambio solo de grupo queda con diferencia 0", () => {
+  const r = resumenMixtos([{ excel: "2026-10-02T00:24:38.000Z", fecha: "2026-10-01", cambios: [cambio("s", 90.5, 90.5, "B", "A")] }], "2026-10-02");
+  assert.deepEqual([r.entradas[0].cambios[0].diff, r.entradas[0].cambios[0].grupoAntes, r.entradas[0].cambios[0].grupoAhora], [0, "B", "A"]);
+});
+
 test("resumenMixtos: sin registros no hay resumen", () => {
   assert.equal(resumenMixtos([], "2026-10-01"), null);
   assert.equal(resumenMixtos(null, "2026-10-01"), null);

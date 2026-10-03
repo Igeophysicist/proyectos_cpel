@@ -113,13 +113,16 @@ datos que genera la Action (`assets/js/semana-resumen.js` calcula y
 `assets/js/semana-portal.js` pinta):
 
 - **Mixtos:** lista cronológica de las actualizaciones de la semana
-  (domingo a sábado), **la más reciente arriba**, con fecha y hora de
-  cada subida. En cada una, los proyectos cuyo avance de **Parque**
-  cambió, **comparados con su dato anterior** (la subida previa), y si
-  su **grupo de atención** cambió o se mantuvo. La semana no se vacía
+  (domingo a sábado), **la más reciente arriba**, con fecha y hora. En
+  cada una, los proyectos cuyo avance de **Parque** o **grupo de
+  atención** cambió, **comparados con su dato anterior**, y si el grupo
+  cambió o se mantuvo. Las subidas del **mismo día se juntan** en una
+  sola entrada (una corrección minutos después no sale aparte: cada
+  proyecto se compara con cómo estaba antes de la primera subida del
+  día). La semana no se vacía
   el domingo: se sigue mostrando hasta que llega una actualización de
   otra semana. Los datos salen de `cartera-mixtos/data/actualizaciones.json`,
-  que la Action llena sola en cada subida que cambia Parque
+  que la Action llena sola en cada subida que cambia Parque o grupo
   (`scripts/historial.js`).
 - **Cartera CPEL:** tabla compacta con el avance **Real** y
   **Programado** de cada proyecto en el último corte y una flecha con
