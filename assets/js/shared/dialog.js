@@ -5,7 +5,9 @@
  *   - alterna la clase "is-open" y aria-hidden,
  *   - mueve el foco al panel al abrir y lo devuelve al botón que lo
  *     abrió al cerrar,
- *   - cierra el panel abierto más reciente con la tecla Escape.
+ *   - cierra el panel abierto más reciente con la tecla Escape,
+ *   - mantiene el foco del teclado dentro del panel abierto (Tab y
+ *     Mayús+Tab dan la vuelta en vez de salir a la página de atrás).
  *
  * Expone: window.Dialog.open(el, { onClose }), window.Dialog.close(el)
  */
@@ -47,10 +49,39 @@
     return stack.some((d) => d.el === el);
   }
 
+  /** Elementos enfocables y visibles del panel (en orden de tabulación). */
+  function focusables(panel) {
+    return Array.from(panel.querySelectorAll(FOCUSABLE)).filter((el) => el.getClientRects().length);
+  }
+
+  function trapTab(e) {
+    const top = stack[stack.length - 1];
+    const panel = top.el.querySelector('[role="dialog"]') || top.el;
+    const items = focusables(panel);
+    if (!items.length) {
+      e.preventDefault();
+      panel.focus({ preventScroll: true });
+      return;
+    }
+    const first = items[0];
+    const last = items[items.length - 1];
+    const dentro = panel.contains(document.activeElement);
+    if (e.shiftKey && (!dentro || document.activeElement === first || document.activeElement === panel)) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && (!dentro || document.activeElement === last)) {
+      e.preventDefault();
+      first.focus();
+    }
+  }
+
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && stack.length) {
+    if (!stack.length) return;
+    if (e.key === "Escape") {
       e.preventDefault();
       closeTop();
+    } else if (e.key === "Tab") {
+      trapTab(e);
     }
   });
 
