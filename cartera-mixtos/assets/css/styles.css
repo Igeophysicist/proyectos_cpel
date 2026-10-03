@@ -224,8 +224,10 @@ a{color:inherit;}
 .leaflet-tooltip.project-label::before{border-top-color:rgba(255,255,255,.95);}
 
 /* ---------- Lista de proyectos ---------- */
-.list-toolbar{display:flex; align-items:center; justify-content:space-between; margin-bottom:var(--space-3);}
-.list-toolbar__count{font-size:13px; color:var(--ink-500);}
+.list-toolbar{display:flex; align-items:center; justify-content:space-between; gap:var(--space-2); margin-bottom:var(--space-3);}
+.list-toolbar__orden{display:flex; align-items:center; justify-content:flex-end; gap:6px; flex:1; min-width:0; font-size:12.5px; color:var(--ink-500); white-space:nowrap;}
+.list-toolbar__orden .sortsel{min-width:0; max-width:240px; flex:0 1 auto; text-overflow:ellipsis; font-family:var(--font); font-weight:600; color:var(--teal-800); cursor:pointer;}
+.list-toolbar__count{font-size:13px; color:var(--ink-500); white-space:nowrap;}
 .sortsel{
   font-size:13px; border:1px solid var(--border); border-radius:var(--radius-s);
   padding:6px 8px; background:var(--surface); color:var(--ink-700);

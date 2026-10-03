@@ -29,6 +29,7 @@ cartera-mixtos/
 │       ├── charts.js          gráficos Chart.js
 │       ├── filters.js         estado y lógica de filtros
 │       ├── ui.js              KPIs, tarjetas, panel de detalle
+│       ├── orden.js           "Ordenar por" del listado
 │       ├── url-state.js       vista actual <-> dirección (enlaces directos)
 │       └── app.js             orquestador (conecta todo)
 └── data/
@@ -142,6 +143,17 @@ de un valor distinto en el dataset actual, para no mostrar controles
 inútiles. El filtro por Grupo de atención siempre aparece si hay al
 menos un proyecto clasificado. La búsqueda de texto libre cubre
 nombre, socio, ubicación y tecnología.
+
+## Ordenar por
+
+El selector **Ordenar por** del listado (junto al número de proyectos)
+cambia el orden de las tarjetas: orden del Excel (el de siempre),
+nombre, avance Global o Parque (de mayor a menor), grupo de atención
+(A → C), COD más próximo o capacidad (de mayor a menor). Los proyectos
+sin ese dato van al final y los empates conservan el orden del Excel.
+Solo afecta al listado (no al mapa ni al resumen) y queda en el enlace
+(`?orden=global`), así que se puede compartir. Las opciones están en
+`ORDENES` de `assets/js/orden.js`.
 
 ## Experiencia móvil vs. escritorio
 
