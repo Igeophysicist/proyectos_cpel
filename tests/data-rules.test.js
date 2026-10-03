@@ -58,12 +58,12 @@ test("Cartera: filas vacías se ignoran; Excel sin proyectos es error", () => {
 
 const MIXTOS_HEADERS = [
   "TÍTULO 1", "TÍTULO 2", "Socio", "Tecnología", "Ubicación", "Capacidad", "Almacenamiento (BESS)",
-  "Horas de Almacenamiento", "Inicio de Construcción", "Fin de Construcción", "Fecha firma de contrato",
+  "Horas de Almacenamiento", "Inicio de Inversión", "Fin de Construcción", "Fecha firma de contrato",
   "CAPEX", "Parque", "LT", "Global", "Grupo de atención",
 ];
 const mixRow = (extra = {}) => ({
   "TÍTULO 1": "SAN SIMÓN SOLAR", "TÍTULO 2": "SAN SIMÓN SOLAR", Parque: "94.00%", LT: "93.00%", Global: "93.80%",
-  "Inicio de Construcción": "15 de noviembre de 2026", "Fin de Construcción": "01 de enero de 2029",
+  "Inicio de Inversión": "15 de noviembre de 2026", "Fin de Construcción": "01 de enero de 2029",
   "Fecha firma de contrato": "SIN DATO", "Grupo de atención": "A", ...extra,
 });
 const mixtos = (rows, names = ["SAN SIMON SOLAR"]) => validateMixtos({ headers: MIXTOS_HEADERS, rows, placemarkNames: names });

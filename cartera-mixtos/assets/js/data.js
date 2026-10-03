@@ -197,8 +197,8 @@
           capacidadNum: parseNumber(raw["Capacidad"]),
           bess: raw["Almacenamiento (BESS)"] || "",
           horasAlmacenamiento: raw["Horas de Almacenamiento"] ?? null,
-          inicioConstruccion: raw["Inicio de Construcción"] || "",
-          inicioConstruccionFecha: parseDate(raw["Inicio de Construcción"]),
+          inicioInversion: raw["Inicio de Inversión"] || "",
+          inicioInversionFecha: parseDate(raw["Inicio de Inversión"]),
           finConstruccion: raw["Fin de Construcción"] || "",
           finConstruccionFecha,
           // Año de COD derivado de la fecha ya parseada, usado para el
