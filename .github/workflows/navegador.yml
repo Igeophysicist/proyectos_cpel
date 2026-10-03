@@ -1,0 +1,48 @@
+# Pruebas en el navegador (tests/e2e, Playwright): abre el sitio en
+# Chromium con el mismo motor de Cloudflare Pages (wrangler) y una
+# contraseña de prueba, y recorre portal, Cartera CPEL y Mixtos en
+# celular y computadora. Comparan contra los JSON del repositorio, así que
+# subir un Excel nuevo no las hace fallar; sí fallan si una página se
+# rompe (con ese Excel o con un cambio de código).
+#
+# - Corre en cada PR, en cada push a main (también al subir un Excel) y a
+#   mano desde la pestaña Actions.
+# - Solo avisa: NO bloquea la publicación en Cloudflare.
+# - Si falla, la ejecución guarda capturas y un "trace" de cada prueba
+#   fallida en "Artifacts" (pruebas-navegador).
+name: Navegador
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: navegador-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  e2e:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Instalar Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Pruebas en el navegador
+        run: npx playwright test
+      - name: Guardar capturas de las pruebas fallidas
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pruebas-navegador
+          path: |
+            playwright-report/
+            test-results/
+          retention-days: 14
