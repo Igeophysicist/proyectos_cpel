@@ -243,6 +243,10 @@ body{ padding-bottom: calc(var(--tabbar-h) + env(safe-area-inset-bottom, 0px)); 
   display: flex; align-items: center; justify-content: center;
 }
 .sheet__body{ padding: var(--space-4); overflow-y: auto; padding-bottom: calc(var(--space-4) + env(safe-area-inset-bottom, 0px)); }
+/* Asa: en celular la ventana se cierra deslizándola hacia abajo (dialog.js). */
+@media (max-width: 899px){
+  .sheet__panel::before{ content:""; position:absolute; z-index:5; top:6px; left:50%; width:38px; height:4px; margin-left:-19px; border-radius:2px; background:rgba(150,160,157,.75); pointer-events:none; }
+}
 
 /* Ficha técnica */
 .spec-group + .spec-group{ margin-top: var(--space-4); }

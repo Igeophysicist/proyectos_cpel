@@ -298,6 +298,10 @@ nunca la real) y lo recorre en **celular** y **computadora**:
   pantalla de contraseña, el portal, Cartera y Mixtos con sus ventanas
   (contraste, títulos, botones, nombres para lectores de pantalla…), y
   con una ventana abierta el tabulador no sale de ella.
+- **Uso en celular:** la leyenda del mapa de Mixtos se ve aunque la
+  lista se haya desplazado; con una ventana abierta la página de atrás
+  no se mueve; las ventanas se cierran deslizando hacia abajo (y si su
+  contenido está desplazado, el gesto primero lo regresa hacia arriba).
 - En todas: sin errores de JavaScript y sin desplazamiento horizontal.
 
 Comparan contra los JSON del repositorio, así que no fallan porque
