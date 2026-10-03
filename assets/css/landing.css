@@ -232,6 +232,19 @@ b.semana-item__nota{color:var(--ink-900);}
   padding:0 4px;
 }
 .sheet--portal .sheet__body{padding:var(--space-4); overflow-y:auto;}
+
+/* ---------- Ventanas: fondo quieto y "deslizar para cerrar" ----------
+   Con una ventana abierta la página de atrás no se desplaza (dialog.js
+   pone la clase en <html>), y al llegar al final del contenido de la
+   ventana el desplazamiento no pasa a la página. Aplica también a las
+   ventanas de Cartera CPEL, que carga este archivo. */
+html.dialogo-abierto{overflow:hidden;}
+.sheet__body{overscroll-behavior:contain;}
+.sheet__scrim{touch-action:none;}
+/* Asa: indica que la ventana se cierra deslizándola hacia abajo. */
+@media (max-width:699px){
+  .sheet--portal .sheet__panel::before{content:""; position:absolute; z-index:5; top:6px; left:50%; width:38px; height:4px; margin-left:-19px; border-radius:2px; background:rgba(150,160,157,.75); pointer-events:none;}
+}
 .colaboradores-list{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:var(--space-2);}
 .colaboradores-list li{
   font-size:13.5px; color:var(--ink-900); padding:var(--space-3) var(--space-4);

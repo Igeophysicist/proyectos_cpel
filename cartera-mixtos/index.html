@@ -87,14 +87,17 @@
           <h2 class="section__title">Ubicación geográfica de proyectos</h2>
           <span class="section__hint">Fuente: KML vinculado por nombre de proyecto</span>
         </div>
-        <div id="map"></div>
-        <div class="map-legend">
-          <span><span class="dot dot--a"></span>Grupo A</span>
-          <span><span class="dot dot--b"></span>Grupo B</span>
-          <span><span class="dot dot--c"></span>Grupo C</span>
+        <!-- Marco del mapa: la leyenda y los avisos van encima del mapa. -->
+        <div class="map-frame">
+          <div id="map"></div>
+          <div class="map-legend">
+            <span><span class="dot dot--a"></span>Grupo A</span>
+            <span><span class="dot dot--b"></span>Grupo B</span>
+            <span><span class="dot dot--c"></span>Grupo C</span>
+          </div>
+          <div class="map-empty" id="map-empty" style="display:none;"></div>
+          <div class="map-tile-warning" id="map-tile-warning" hidden>No se pudieron cargar las imágenes del mapa (revisa tu conexión). Los proyectos siguen visibles como puntos.</div>
         </div>
-        <div class="map-empty" id="map-empty" style="display:none;"></div>
-        <div class="map-tile-warning" id="map-tile-warning" hidden>No se pudieron cargar las imágenes del mapa (revisa tu conexión). Los proyectos siguen visibles como puntos.</div>
       </div>
 
       <!-- Listado de proyectos -->

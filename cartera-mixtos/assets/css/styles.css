@@ -188,11 +188,17 @@ a{color:inherit;}
 
 /* ---------- Mapa ---------- */
 #group-mapa.tabgroup.is-active{padding:0; max-width:none;}
-#map{
-  position:absolute; inset:0; top:var(--topbar-h); bottom:var(--tabbar-h);
+/* Celular: el marco del mapa queda fijo en la pantalla visible, entre la
+   barra superior y la de pestañas (incluido el espacio inferior del
+   iPhone). Fijo y no "absolute": así no se mueve si la página se desplaza
+   ni queda debajo de la barra del navegador, y la leyenda siempre se ve. */
+.map-frame{
+  position:fixed; left:0; right:0; top:var(--topbar-h);
+  bottom:calc(var(--tabbar-h) + env(safe-area-inset-bottom, 0px));
 }
+#map{position:absolute; inset:0;}
 .map-legend{
-  position:absolute; left:var(--space-3); bottom:calc(var(--tabbar-h) + var(--space-3));
+  position:absolute; left:var(--space-3); bottom:var(--space-3);
   z-index:400; background:rgba(255,255,255,.95); border:1px solid var(--border);
   border-radius:var(--radius-m); padding:8px 10px; font-size:11.5px; box-shadow:var(--shadow-card);
   display:flex; gap:10px;
@@ -202,12 +208,12 @@ a{color:inherit;}
 .dot--a{background:var(--status-a);} .dot--b{background:var(--status-b);} .dot--c{background:var(--status-c);}
 .map-heading{display:none;}
 .map-empty{
-  position:absolute; z-index:400; top:calc(var(--topbar-h) + 12px); left:50%; transform:translateX(-50%);
+  position:absolute; z-index:400; top:12px; left:50%; transform:translateX(-50%);
   background:rgba(255,255,255,.96); border:1px solid var(--border); border-radius:var(--radius-m);
   padding:8px 14px; font-size:12.5px; color:var(--ink-700); box-shadow:var(--shadow-card);
 }
 .map-tile-warning{
-  position:absolute; z-index:420; left:10px; right:10px; top:calc(var(--topbar-h) + 12px);
+  position:absolute; z-index:420; left:10px; right:10px; top:10px;
   background:rgba(184,59,59,.94); color:#fff; font-size:11px; font-weight:600;
   border-radius:var(--radius-s); padding:6px 10px; text-align:center;
 }
@@ -370,6 +376,18 @@ a{color:inherit;}
 .detail__title{font-size:18px; font-weight:800; line-height:1.25; padding-right:34px;}
 .detail__sub{font-size:12.5px; color:#bcd0cb; margin-top:4px;}
 .detail__body{padding:var(--space-4); overflow-y:auto;}
+
+/* ---------- Ventanas: fondo quieto y "deslizar para cerrar" ----------
+   Con una ventana abierta la página de atrás no se desplaza (dialog.js
+   pone la clase en <html>), y al llegar al final del contenido de la
+   ventana el desplazamiento no pasa a la página. */
+html.dialogo-abierto{overflow:hidden;}
+.filters__body, .detail__body{overscroll-behavior:contain;}
+.filters__scrim, .detail__scrim{touch-action:none;}
+/* Asa: en celular la ventana se cierra deslizándola hacia abajo. */
+@media (max-width:899px){
+  .filters__panel::before, .detail__panel::before{content:""; position:absolute; z-index:5; top:6px; left:50%; width:38px; height:4px; margin-left:-19px; border-radius:2px; background:rgba(150,160,157,.75); pointer-events:none;}
+}
 .detail__section-title{font-size:12px; font-weight:700; text-transform:none; color:var(--ink-500); margin:var(--space-4) 0 var(--space-2);}
 .detail__section-title:first-child{margin-top:0;}
 .detail-grid{display:grid; grid-template-columns:1fr 1fr; gap:10px 10px;}
@@ -439,8 +457,7 @@ a{color:inherit;}
 
   #group-mapa.tabgroup{padding:0; max-width:none; margin-bottom:var(--space-5);}
   .map-heading{display:flex; align-items:baseline; justify-content:space-between; margin-bottom:var(--space-3);}
-  #map{position:relative; inset:auto; height:440px; border-radius:var(--radius-l); overflow:hidden; border:1px solid var(--border);}
-  .map-legend{bottom:var(--space-3);}
+  .map-frame{position:relative; inset:auto; height:440px; border-radius:var(--radius-l); overflow:hidden; border:1px solid var(--border);}
 
   .project-list{display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:var(--space-3);}
 
