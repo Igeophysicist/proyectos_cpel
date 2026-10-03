@@ -16,6 +16,7 @@
   let projectsById = new Map();
   let currentTab = "proyectos";
   let openProjectSlug = null; // ficha abierta (para la dirección)
+  let orden = "excel"; // "Ordenar por" del listado (ver orden.js)
   const { slugify, formatDateShort } = window.TextUtils;
 
   const els = {
@@ -35,6 +36,7 @@
     toast: document.getElementById("toast"),
     rankingHint: document.getElementById("ranking-hint"),
     dataDate: document.getElementById("data-date"),
+    sortSelect: document.getElementById("sort-select"),
   };
 
   // Espera tras la última tecla antes de volver a filtrar y redibujar
@@ -48,7 +50,7 @@
     window.AppCharts.renderGrupoChart("chart-grupo", filtered);
     window.AppCharts.renderTecnologiaChart("chart-tecnologia", filtered);
     window.AppCharts.renderRanking("ranking", filtered, openDetail);
-    window.AppUI.renderProjectList("project-list", "list-count", filtered, openDetail, openEvolucion);
+    window.AppUI.renderProjectList("project-list", "list-count", window.AppOrden.ordenar(filtered, orden), openDetail, openEvolucion);
     window.AppMap.renderProjects(filtered);
 
     const geoCount = filtered.filter((p) => p.geo).length;
@@ -71,6 +73,7 @@
       state: window.AppFilters.state,
       tab: currentTab,
       proyecto: openProjectSlug,
+      orden,
     });
   }
 
@@ -91,6 +94,8 @@
         .forEach((v) => window.AppFilters.toggle(field, v));
     });
     if (view.tab) switchTab(view.tab);
+    orden = window.AppOrden.valida(view.orden);
+    els.sortSelect.value = orden;
     return view;
   }
 
@@ -183,6 +188,14 @@
     els.search.addEventListener("input", (e) => {
       window.AppFilters.setSearch(e.target.value);
       renderDebounced();
+    });
+
+    els.sortSelect.innerHTML = Object.entries(window.AppOrden.ORDENES)
+      .map(([clave, o]) => `<option value="${clave}">${o.etiqueta}</option>`)
+      .join("");
+    els.sortSelect.addEventListener("change", () => {
+      orden = window.AppOrden.valida(els.sortSelect.value);
+      render();
     });
 
     els.filterBtn.addEventListener("click", openFilters);

@@ -8,6 +8,7 @@
  *   &tecnologia=FV%20-%20Fotovoltaica   filtros (se repiten si hay varios)
  *   &estado=…&socio=…&grupo=A&cod=2029
  *   &tab=mapa                           pestaña (en celular)
+ *   &orden=global                       orden del listado (ver orden.js)
  *
  * El proyecto se identifica por su nombre ("TÍTULO 2"/"TÍTULO 1")
  * convertido con TextUtils.slugify, no por su posición en el Excel, así
@@ -40,15 +41,16 @@
       filters,
       tab: TABS.includes(tab) ? tab : null,
       proyecto: params.get("proyecto") || null,
+      orden: params.get("orden") || null,
     };
   }
 
   /**
    * Escribe la vista en la dirección sin agregar entradas al historial
    * (el botón "atrás" sigue saliendo de la página, como antes).
-   * view = { search, state (AppFilters.state), tab, proyecto }
+   * view = { search, state (AppFilters.state), tab, proyecto, orden }
    */
-  function write({ search, state, tab, proyecto }) {
+  function write({ search, state, tab, proyecto, orden }) {
     const params = new URLSearchParams();
     if (proyecto) params.set("proyecto", proyecto);
     if (search && search.trim()) params.set("q", search.trim());
@@ -56,6 +58,7 @@
       (state[field] ? Array.from(state[field]) : []).forEach((v) => params.append(param, v));
     });
     if (tab && tab !== TABS[0]) params.set("tab", tab);
+    if (orden && orden !== "excel") params.set("orden", orden);
     const query = params.toString();
     const url = global.location.pathname + (query ? "?" + query : "") + global.location.hash;
     global.history.replaceState(null, "", url);
