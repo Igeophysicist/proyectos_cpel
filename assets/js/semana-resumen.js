@@ -7,8 +7,8 @@
  *  - Mixtos (se actualiza lunes, miércoles y viernes, 3 a 5 proyectos),
  *    desde data/actualizaciones.json: las actualizaciones de la semana
  *    (domingo a sábado) de la más reciente, de la última a la primera.
- *    Cada proyecto se compara con su dato anterior (la subida previa) y
- *    se indica si su grupo cambió o se mantuvo. La semana se sigue
+ *    Cada proyecto (Parque o grupo cambiaron) se compara con su dato
+ *    anterior y se indica si su grupo cambió o se mantuvo. La semana se sigue
  *    mostrando hasta que llega una actualización de otra semana.
  *  - Cartera CPEL (corte cada jueves): Real y Programado de cada proyecto
  *    en el último corte y el cambio del Real contra el corte anterior.
@@ -54,7 +54,7 @@
             nombre: c.nombre || c.slug,
             antes: num(c.antes.parque),
             ahora: num(c.ahora.parque),
-            diff: c.ahora.parque - c.antes.parque,
+            diff: Number.isFinite(c.ahora.parque - c.antes.parque) && Math.abs(c.ahora.parque - c.antes.parque) > UMBRAL ? c.ahora.parque - c.antes.parque : 0,
             grupoAntes: c.antes.grupo || null,
             grupoAhora: c.ahora.grupo || null,
           }))

@@ -76,7 +76,9 @@
             (c) => `
           <li class="semana-item">
             <a class="semana-item__nombre" href="${MIXTOS}?proyecto=${encodeURIComponent(c.slug)}">${esc(c.nombre)}</a>
-            <div class="semana-item__linea">Parque ${fmtPct(c.antes)} → ${fmtPct(c.ahora)} ${delta(c.diff)}</div>
+            <div class="semana-item__linea">${
+              c.diff === 0 ? `Parque ${fmtPct(c.ahora)} ${delta(0)}` : `Parque ${fmtPct(c.antes)} → ${fmtPct(c.ahora)} ${delta(c.diff)}`
+            }</div>
             ${grupoLinea(c)}
           </li>`
           )
