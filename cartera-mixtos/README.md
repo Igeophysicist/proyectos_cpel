@@ -186,6 +186,6 @@ compartidos).
 
 - Exportar el listado filtrado a Excel/CSV.
 - Filtro por rango de fechas (el código ya interpreta las fechas de
-  `Inicio de Construcción` / `Fin de Construcción`).
+  `Inicio de Inversión` / `Fin de Construcción`).
 - Capa de agrupación (clustering) en el mapa si el número de
   proyectos crece mucho más allá de unas cuantas decenas.

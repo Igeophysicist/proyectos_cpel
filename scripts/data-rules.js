@@ -110,11 +110,11 @@ const MIXTOS_SHEET = "Proyectos";
 const MIXTOS_REQUIRED = [
   "TÍTULO 1", "TÍTULO 2", "Socio", "Tecnología", "Ubicación", "Capacidad",
   "Almacenamiento (BESS)", "Horas de Almacenamiento",
-  "Inicio de Construcción", "Fin de Construcción", "Fecha firma de contrato",
+  "Inicio de Inversión", "Fin de Construcción", "Fecha firma de contrato",
   "CAPEX", "Parque", "LT", "Global", "Grupo de atención",
 ];
 const MIXTOS_PERCENTS = ["Parque", "LT", "Global"];
-const MIXTOS_DATES = ["Inicio de Construcción", "Fin de Construcción", "Fecha firma de contrato"];
+const MIXTOS_DATES = ["Inicio de Inversión", "Fin de Construcción", "Fecha firma de contrato"];
 
 function validateMixtos({ headers, rows, placemarkNames = [] }) {
   const errors = [];

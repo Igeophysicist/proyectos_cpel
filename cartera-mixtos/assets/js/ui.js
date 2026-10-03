@@ -162,7 +162,7 @@
       ["bess", "Almacenamiento (BESS)"], ["horasAlmacenamiento", "Horas de almacenamiento"],
     ]},
     { section: "Programa", items: [
-      ["inicioConstruccion", "Inicio de construcción"], ["finConstruccion", "COD"], ["firmaContrato", "Firma de contrato"],
+      ["inicioInversion", "Inicio de inversión"], ["finConstruccion", "COD"], ["firmaContrato", "Firma de contrato"],
     ]},
     { section: "Financiero", items: [
       ["capex", "CAPEX (USD)"],
