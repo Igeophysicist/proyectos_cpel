@@ -115,3 +115,21 @@ test("Ordenar por (y su contrario) cambia el orden de las tarjetas y queda en el
   await expect(page.locator("#project-list .pcard__title").first()).toHaveText(mixtos[0].nombre);
   await expect(page).not.toHaveURL(/orden=/);
 });
+
+test("el grupo de cada tarjeta sale del avance de Parque (A ≥ 85, B ≥ 76, C < 76)", async ({ page }) => {
+  const { mixtos } = datos();
+  const grupo = (parque) => {
+    const n = parseFloat(String(parque).replace("%", ""));
+    if (!Number.isFinite(n)) return null;
+    return n >= 85 ? "A" : n >= 76 ? "B" : "C";
+  };
+  await page.goto("/cartera-mixtos/");
+  await cargado(page);
+  const tarjetas = page.locator("#project-list .pcard");
+  for (let i = 0; i < mixtos.length; i++) {
+    const esperado = grupo(mixtos[i].Parque);
+    const etiqueta = tarjetas.nth(i).locator(".badge");
+    if (esperado) await expect(etiqueta, mixtos[i].nombre).toHaveText(`Grupo ${esperado}`);
+    else await expect(etiqueta, mixtos[i].nombre).toHaveCount(0);
+  }
+});

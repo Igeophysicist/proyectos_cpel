@@ -59,7 +59,7 @@ test("Cartera: filas vacías se ignoran; Excel sin proyectos es error", () => {
 const MIXTOS_HEADERS = [
   "TÍTULO 1", "TÍTULO 2", "Socio", "Tecnología", "Ubicación", "Capacidad", "Almacenamiento (BESS)",
   "Horas de Almacenamiento", "Inicio de Inversión", "Fin de Construcción", "Fecha firma de contrato",
-  "CAPEX", "Parque", "LT", "Global", "Grupo de atención",
+  "CAPEX", "Parque", "LT", "Global",
 ];
 const mixRow = (extra = {}) => ({
   "TÍTULO 1": "SAN SIMÓN SOLAR", "TÍTULO 2": "SAN SIMÓN SOLAR", Parque: "94.00%", LT: "93.00%", Global: "93.80%",
@@ -72,10 +72,15 @@ test("Mixtos: datos correctos (con 'SIN DATO') pasan", () => {
   assert.deepEqual(mixtos([mixRow()]), { errors: [], warnings: [] });
 });
 
-test("Mixtos: grupo, porcentaje y fecha inválidos son errores", () => {
-  const { errors } = mixtos([mixRow({ "Grupo de atención": "D", Global: "150%", "Fin de Construcción": "diciembre 2028" })]);
-  assert.equal(errors.length, 3);
-  assert.ok(errors.some((e) => /Grupo de atención: "D" debe ser A, B o C/.test(e)));
+test("Mixtos: porcentaje y fecha inválidos son errores", () => {
+  const { errors } = mixtos([mixRow({ Global: "150%", "Fin de Construcción": "diciembre 2028" })]);
+  assert.equal(errors.length, 2);
+});
+
+test("Mixtos: la columna Grupo de atención ya no se pide ni se revisa (el grupo sale de Parque)", () => {
+  assert.deepEqual(mixtos([mixRow({ "Grupo de atención": "D" })]).errors, []);
+  const sinColumna = validateMixtos({ headers: MIXTOS_HEADERS, rows: [mixRow()], placemarkNames: ["SAN SIMON SOLAR"] });
+  assert.deepEqual(sinColumna.errors, []);
 });
 
 test("Mixtos: se vincula al KML por TÍTULO 2 o, si no, por TÍTULO 1", () => {

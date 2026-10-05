@@ -18,6 +18,7 @@ on:
       - "cartera-mixtos/data/**"
       - "scripts/**"
       - "assets/js/shared/text-utils.js"
+      - "cartera-mixtos/assets/js/grupo.js"
       - "package-lock.json"
       - ".github/workflows/datos.yml"
   pull_request:
@@ -26,6 +27,7 @@ on:
       - "cartera-mixtos/data/**"
       - "scripts/**"
       - "assets/js/shared/text-utils.js"
+      - "cartera-mixtos/assets/js/grupo.js"
       - "package-lock.json"
       - ".github/workflows/datos.yml"
   workflow_dispatch:

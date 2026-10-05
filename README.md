@@ -48,7 +48,6 @@ Qué se revisa (`scripts/data-rules.js`):
 | Fecha que no se puede leer | |
 | Proyecto repetido | |
 | Imagen que no existe o que no es JPG/PNG, p. ej. HEIC (Cartera) | |
-| Grupo de atención distinto de A, B o C (Mixtos) | |
 
 Las celdas vacías y los marcadores de dato pendiente ("SIN DATO",
 "N/A", "PENDIENTE", "POR DEFINIR", "-") no son errores.
