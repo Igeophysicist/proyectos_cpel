@@ -205,7 +205,7 @@
       ]
     },
     {
-      "excel": "2026-10-05T23:45:45.000Z",
+      "excel": "2026-10-05T23:53:07.000Z",
       "fecha": "2026-10-05",
       "cambios": [
         {
@@ -253,6 +253,18 @@
           },
           "ahora": {
             "parque": 68.5,
+            "grupo": "C"
+          }
+        },
+        {
+          "slug": "la-pasion",
+          "nombre": "LA PASIÓN",
+          "antes": {
+            "parque": 55,
+            "grupo": "C"
+          },
+          "ahora": {
+            "parque": 54,
             "grupo": "C"
           }
         }
