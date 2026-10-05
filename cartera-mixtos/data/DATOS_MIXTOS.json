@@ -1,6 +1,6 @@
 {
   "fuente": "DATOS_MIXTOS.xlsx",
-  "excelModificado": "2026-10-02T23:59:11.000Z",
+  "excelModificado": "2026-10-05T23:45:45.000Z",
   "proyectos": [
     {
       "NO.": "1",
@@ -263,9 +263,9 @@
       "Fin de Construcción": "30 de abril de 2029",
       "Fecha firma de contrato": "08 de julio de 2026",
       "CAPEX": "$211,345,624.30",
-      "Parque": "50.00%",
-      "LT": "32.50%",
-      "Global": "46.50%",
+      "Parque": "28.00%",
+      "LT": "16.00%",
+      "Global": "25.60%",
       "Grupo de atención": "C"
     },
     {
@@ -282,9 +282,9 @@
       "Fin de Construcción": "30 de abril de 2029",
       "Fecha firma de contrato": "08 de julio de 2026",
       "CAPEX": "$178,208,437.90",
-      "Parque": "73.00%",
-      "LT": "58.00%",
-      "Global": "70.00%",
+      "Parque": "55.50%",
+      "LT": "50.50%",
+      "Global": "54.50%",
       "Grupo de atención": "C"
     },
     {
@@ -302,8 +302,8 @@
       "Fecha firma de contrato": "08 de julio de 2026",
       "CAPEX": "$98,459,271.30",
       "Parque": "55.00%",
-      "LT": "44.00%",
-      "Global": "52.80%",
+      "LT": "53.00%",
+      "Global": "54.60%",
       "Grupo de atención": "C"
     },
     {
@@ -453,9 +453,9 @@
       "Fin de Construcción": "31 de diciembre de 2028",
       "Fecha firma de contrato": "03 de julio de 2026",
       "CAPEX": "$98,564,828.00",
-      "Parque": "72.50%",
-      "LT": "25.00%",
-      "Global": "63.00%",
+      "Parque": "72.00%",
+      "LT": "42.50%",
+      "Global": "66.10%",
       "Grupo de atención": "C"
     },
     {
@@ -472,9 +472,9 @@
       "Fin de Construcción": "31 de diciembre de 2028",
       "Fecha firma de contrato": "03 de julio de 2026",
       "CAPEX": "$99,932,858.00",
-      "Parque": "61.50%",
-      "LT": "48.00%",
-      "Global": "58.80%",
+      "Parque": "68.50%",
+      "LT": "54.00%",
+      "Global": "65.60%",
       "Grupo de atención": "C"
     },
     {

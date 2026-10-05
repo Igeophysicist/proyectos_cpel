@@ -203,6 +203,60 @@
           }
         }
       ]
+    },
+    {
+      "excel": "2026-10-05T23:45:45.000Z",
+      "fecha": "2026-10-05",
+      "cambios": [
+        {
+          "slug": "tikinmul",
+          "nombre": "TIKINMUL",
+          "antes": {
+            "parque": 50,
+            "grupo": "C"
+          },
+          "ahora": {
+            "parque": 28,
+            "grupo": "C"
+          }
+        },
+        {
+          "slug": "el-palmar",
+          "nombre": "EL PALMAR",
+          "antes": {
+            "parque": 73,
+            "grupo": "C"
+          },
+          "ahora": {
+            "parque": 55.5,
+            "grupo": "C"
+          }
+        },
+        {
+          "slug": "dalia-3-pv-castamay",
+          "nombre": "DALIA 3 PV (CASTAMAY)",
+          "antes": {
+            "parque": 72.5,
+            "grupo": "C"
+          },
+          "ahora": {
+            "parque": 72,
+            "grupo": "C"
+          }
+        },
+        {
+          "slug": "fresnillo-pv-atocha",
+          "nombre": "FRESNILLO (PV ATOCHA)",
+          "antes": {
+            "parque": 61.5,
+            "grupo": "C"
+          },
+          "ahora": {
+            "parque": 68.5,
+            "grupo": "C"
+          }
+        }
+      ]
     }
   ]
 }
