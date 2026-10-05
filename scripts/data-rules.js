@@ -111,8 +111,10 @@ const MIXTOS_REQUIRED = [
   "TÍTULO 1", "TÍTULO 2", "Socio", "Tecnología", "Ubicación", "Capacidad",
   "Almacenamiento (BESS)", "Horas de Almacenamiento",
   "Inicio de Inversión", "Fin de Construcción", "Fecha firma de contrato",
-  "CAPEX", "Parque", "LT", "Global", "Grupo de atención",
+  "CAPEX", "Parque", "LT", "Global",
 ];
+// "Grupo de atención" ya no se lee del Excel: sale del avance de Parque
+// (cartera-mixtos/assets/js/grupo.js). Si la columna sigue, se ignora.
 const MIXTOS_PERCENTS = ["Parque", "LT", "Global"];
 const MIXTOS_DATES = ["Inicio de Inversión", "Fin de Construcción", "Fecha firma de contrato"];
 
@@ -131,10 +133,6 @@ function validateMixtos({ headers, rows, placemarkNames = [] }) {
     names.push({ name, row });
     MIXTOS_PERCENTS.forEach((c) => checkPercent(r[c], `Fila ${row} (${name}), columna ${c}`, errors));
     MIXTOS_DATES.forEach((c) => checkDate(r[c], `Fila ${row} (${name}), columna ${c}`, errors));
-    const grupo = String(r["Grupo de atención"] || "").trim();
-    if (grupo && !["A", "B", "C"].includes(grupo)) {
-      errors.push(`Fila ${row} (${name}), columna Grupo de atención: "${grupo}" debe ser A, B o C.`);
-    }
     if (!geo.has(normalizeText(r["TÍTULO 2"])) && !geo.has(normalizeText(r["TÍTULO 1"]))) {
       warnings.push(`Fila ${row}: "${name}" no tiene ubicación en el KML; no aparecerá en el mapa.`);
     }

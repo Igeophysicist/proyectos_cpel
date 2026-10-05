@@ -47,14 +47,16 @@ test("snapshotCartera toma prog/real por proyecto (con % o vacío)", () => {
   assert.deepEqual(snap, { "ph-chicoasen-ii": { prog: 49.7, real: 49.7 }, nuevo: { prog: null, real: null } });
 });
 
-test("snapshotMixtos usa TÍTULO 2 o TÍTULO 1 y guarda el grupo", () => {
+test("snapshotMixtos usa TÍTULO 2 o TÍTULO 1 y el grupo sale de Parque (no de la columna)", () => {
   const snap = snapshotMixtos([
     { "TÍTULO 1": "X", "TÍTULO 2": "SAN SIMÓN SOLAR", Parque: "94.00%", LT: "93.00%", Global: "93.80%", "Grupo de atención": "b " },
     { "TÍTULO 1": "Solo título uno", "TÍTULO 2": "", Parque: "10%", LT: "", Global: "5%" },
+    { "TÍTULO 1": "Sin parque", Parque: "SIN DATO", LT: "", Global: "" },
   ]);
   assert.deepEqual(snap, {
-    "san-simon-solar": { parque: 94, lt: 93, global: 93.8, grupo: "B" },
-    "solo-titulo-uno": { parque: 10, lt: null, global: 5, grupo: null },
+    "san-simon-solar": { parque: 94, lt: 93, global: 93.8, grupo: "A" },
+    "solo-titulo-uno": { parque: 10, lt: null, global: 5, grupo: "C" },
+    "sin-parque": { parque: null, lt: null, global: null, grupo: null },
   });
 });
 

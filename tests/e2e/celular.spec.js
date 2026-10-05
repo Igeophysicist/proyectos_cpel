@@ -9,16 +9,24 @@ test.beforeEach(({ page }) => page.emulateMedia({ reducedMotion: "reduce" }));
 
 const mixtosCargado = (page) => expect(page.locator("#loader")).toHaveClass(/is-hidden/, { timeout: 20_000 });
 
+// Una sesión de eventos táctiles por página: cerrarla justo al soltar el
+// dedo puede descartar el desplazamiento que el navegador aún no aplica.
+const sesiones = new WeakMap();
+async function sesionTactil(page) {
+  if (!sesiones.has(page)) sesiones.set(page, await page.context().newCDPSession(page));
+  return sesiones.get(page);
+}
+
 /** Arrastra un dedo de (x, y1) a (x, y2) con eventos táctiles reales. */
 async function arrastrar(page, x, y1, y2) {
-  const cdp = await page.context().newCDPSession(page);
+  const cdp = await sesionTactil(page);
   await cdp.send("Input.dispatchTouchEvent", { type: "touchStart", touchPoints: [{ x, y: y1 }] });
   for (let i = 1; i <= 12; i++) {
     await cdp.send("Input.dispatchTouchEvent", { type: "touchMove", touchPoints: [{ x, y: y1 + ((y2 - y1) * i) / 12 }] });
     await page.waitForTimeout(16);
   }
   await cdp.send("Input.dispatchTouchEvent", { type: "touchEnd", touchPoints: [] });
-  await cdp.detach();
+  await page.waitForTimeout(300); // que el navegador termine el gesto
 }
 
 /** Arrastra hacia abajo desde el encabezado de la ventana. */
@@ -77,6 +85,9 @@ test("Cartera: el contenido de la ventana se desplaza y, ya arriba, deslizar hac
   await expect(page.locator("#projectName")).not.toHaveText("Cargando…");
   await page.locator(".actionbar__btn", { hasText: "Ficha técnica" }).click();
   await expect(page.locator("#sheetFicha")).toHaveClass(/is-open/);
+  // Que la ventana termine de acomodarse antes de medirla y tocarla (si no,
+  // el navegador a veces aún no desplaza su contenido con el dedo).
+  await page.waitForTimeout(500);
   const cuerpo = page.locator("#sheetFicha .sheet__body");
   const r = await cuerpo.boundingBox();
   const y = await page.evaluate(() => window.scrollY);

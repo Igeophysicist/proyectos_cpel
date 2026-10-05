@@ -214,7 +214,8 @@
           ltPct: parsePercent(raw["LT"]),
           global: raw["Global"] || "",
           globalPct: parsePercent(raw["Global"]),
-          grupo: raw["Grupo de atención"] || "",
+          // Grupo de atención según el avance de Parque (ver grupo.js).
+          grupo: global.AppGrupo.grupoPorParque(parsePercent(raw["Parque"])) || "",
           geo: primary
             ? { type: primary.type, latlngs: primary.latlngs, folderPath: primary.folderPath }
             : null,

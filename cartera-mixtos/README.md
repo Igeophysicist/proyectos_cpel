@@ -24,6 +24,7 @@ cartera-mixtos/
 │   ├── css/
 │   │   └── styles.css         sistema de diseño completo
 │   └── js/
+│       ├── grupo.js           grupo de atención según el avance de Parque
 │       ├── data.js            carga Excel+KML, normaliza, vincula
 │       ├── map.js             mapa Leaflet
 │       ├── charts.js          gráficos Chart.js
@@ -134,6 +135,23 @@ búsqueda (`q`), filtros (`tecnologia`, `estado`, `socio`, `grupo`, `cod`;
 se repiten si hay varios valores) y pestaña (`tab`), así que basta con
 copiar la dirección para compartir esa vista. Los valores que ya no
 existen en el Excel se ignoran al abrir el enlace.
+
+## Grupo de atención
+
+El grupo **ya no se captura en el Excel**: se calcula con el avance de
+**Parque** (`assets/js/grupo.js`):
+
+| Grupo | Parque |
+|---|---|
+| A | 85 % o más |
+| B | de 76 % a menos de 85 % |
+| C | menos de 76 % |
+
+Sin dato de Parque (vacío o "SIN DATO"), el proyecto no tiene grupo. La
+columna "Grupo de atención" del Excel, si sigue ahí, se ignora. El mismo
+cálculo lo usa la Action "Datos" para el historial y "Esta semana" del
+portal, así que un cambio de grupo aparece en cuanto Parque cruza un
+límite. Para cambiar los límites se edita `LIMITES` en `grupo.js`.
 
 ## Filtros
 

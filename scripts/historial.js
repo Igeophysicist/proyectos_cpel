@@ -40,6 +40,7 @@
  * proyecto se renombra en el Excel, su historial empieza de nuevo.
  */
 const { parseNumber, slugify } = require("../assets/js/shared/text-utils.js");
+const { grupoPorParque } = require("../cartera-mixtos/assets/js/grupo.js");
 
 const TIME_ZONE = "America/Mexico_City";
 const DIA_CORTE = 4; // jueves (0 = domingo)
@@ -103,14 +104,17 @@ function snapshotCartera(rows) {
   return out;
 }
 
-/** Avance y grupo de atención de cada proyecto de Mixtos: { slug: { parque, lt, global, grupo } }. */
+/**
+ * Avance y grupo de atención de cada proyecto de Mixtos: { slug: { parque,
+ * lt, global, grupo } }. El grupo sale del avance de Parque (grupo.js).
+ */
 function snapshotMixtos(rows) {
   const out = {};
   rows.forEach((r) => {
     const name = String(r["TÍTULO 2"] || r["TÍTULO 1"] || "").trim();
     if (!name) return;
-    const grupo = String(r["Grupo de atención"] || "").trim().toUpperCase() || null;
-    out[slugify(name)] = { parque: pct(r.Parque), lt: pct(r.LT), global: pct(r.Global), grupo };
+    const parque = pct(r.Parque);
+    out[slugify(name)] = { parque, lt: pct(r.LT), global: pct(r.Global), grupo: grupoPorParque(parque) };
   });
   return out;
 }
