@@ -150,6 +150,8 @@ function loginPage({ next = "/", error = "" } = {}, status = 401) {
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#234240">
+<!-- Solo tema claro: evita que el modo oscuro automático de Chrome/Samsung Internet en Android recoloree el sitio. -->
+<meta name="color-scheme" content="only light">
 <title>CPEL — Acceso</title>
 <link rel="icon" href="/assets/img/apple-touch-icon.png">
 <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
