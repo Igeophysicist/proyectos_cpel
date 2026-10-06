@@ -5,6 +5,9 @@
    ======================================================================= */
 
 :root{
+  /* Solo tema claro (ver <meta name="color-scheme">): el navegador no
+     oscurece el sitio por su cuenta ni sus controles (selects, inputs). */
+  color-scheme: only light;
   --teal-900:#1b332f;
   --teal-800:#234240;
   --teal-700:#2e534f;
