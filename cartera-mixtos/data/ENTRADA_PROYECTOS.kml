@@ -252,10 +252,20 @@
 			<styleUrl>#sh_placemark_circle_highlight7</styleUrl>
 		</Pair>
 	</StyleMap>
-	<StyleMap id="msn_placemark_circle3">
+	<StyleMap id="msn_placemark_circle32">
 		<Pair>
 			<key>normal</key>
 			<styleUrl>#sn_placemark_circle14</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_placemark_circle_highlight270</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_placemark_circle3">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_placemark_circle140</styleUrl>
 		</Pair>
 		<Pair>
 			<key>highlight</key>
@@ -368,7 +378,7 @@
 			<color>40ffffff</color>
 		</PolyStyle>
 	</Style>
-	<Style id="sh_placemark_circle_highlight00">
+	<Style id="sh_placemark_circle_highlight0">
 		<IconStyle>
 			<color>ffffaa00</color>
 			<scale>1.2</scale>
@@ -384,7 +394,7 @@
 			<color>40ffffff</color>
 		</PolyStyle>
 	</Style>
-	<Style id="sh_placemark_circle_highlight0">
+	<Style id="sh_placemark_circle_highlight00">
 		<IconStyle>
 			<color>ffffaa00</color>
 			<scale>1.2</scale>
@@ -720,6 +730,22 @@
 			<color>40ffffff</color>
 		</PolyStyle>
 	</Style>
+	<Style id="sh_placemark_circle_highlight270">
+		<IconStyle>
+			<color>ff005500</color>
+			<scale>1.2</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle_highlight.png</href>
+			</Icon>
+		</IconStyle>
+		<LineStyle>
+			<color>ff2dc0fb</color>
+			<width>6</width>
+		</LineStyle>
+		<PolyStyle>
+			<color>40ffffff</color>
+		</PolyStyle>
+	</Style>
 	<Style id="sh_placemark_circle_highlight28">
 		<IconStyle>
 			<color>ffffff55</color>
@@ -736,7 +762,7 @@
 			<color>40ffffff</color>
 		</PolyStyle>
 	</Style>
-	<Style id="sh_placemark_circle_highlight290">
+	<Style id="sh_placemark_circle_highlight29">
 		<IconStyle>
 			<color>ffff0000</color>
 			<scale>1.2</scale>
@@ -752,7 +778,7 @@
 			<color>40ffffff</color>
 		</PolyStyle>
 	</Style>
-	<Style id="sh_placemark_circle_highlight29">
+	<Style id="sh_placemark_circle_highlight290">
 		<IconStyle>
 			<color>ffff0000</color>
 			<scale>1.2</scale>
@@ -992,7 +1018,7 @@
 			<color>40ffffff</color>
 		</PolyStyle>
 	</Style>
-	<Style id="sn_placemark_circle120">
+	<Style id="sn_placemark_circle12">
 		<IconStyle>
 			<color>ffffaa00</color>
 			<scale>1.2</scale>
@@ -1008,7 +1034,7 @@
 			<color>40ffffff</color>
 		</PolyStyle>
 	</Style>
-	<Style id="sn_placemark_circle12">
+	<Style id="sn_placemark_circle120">
 		<IconStyle>
 			<color>ffffaa00</color>
 			<scale>1.2</scale>
@@ -1027,6 +1053,22 @@
 	<Style id="sn_placemark_circle13">
 		<IconStyle>
 			<color>ffffff55</color>
+			<scale>1.2</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png</href>
+			</Icon>
+		</IconStyle>
+		<LineStyle>
+			<color>ff2dc0fb</color>
+			<width>4</width>
+		</LineStyle>
+		<PolyStyle>
+			<color>40ffffff</color>
+		</PolyStyle>
+	</Style>
+	<Style id="sn_placemark_circle140">
+		<IconStyle>
+			<color>ff005500</color>
 			<scale>1.2</scale>
 			<Icon>
 				<href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png</href>
@@ -1474,20 +1516,14 @@
 	</Style>
 	<Folder>
 		<name>ENTRADA_PROYECTOS</name>
-		<visibility>0</visibility>
-		<open>1</open>
 		<Folder>
 			<name>CAB - QUERÉTARO</name>
-			<visibility>0</visibility>
 			<Folder>
 				<name>PROYECTOS</name>
-				<visibility>0</visibility>
 				<Folder>
 					<name>SAN PEDRO SOLAR</name>
-					<visibility>0</visibility>
 					<Placemark id="5E5889D6A8000006">
 						<name>SAN PEDRO SOLAR</name>
-						<visibility>0</visibility>
 						<LookAt>
 							<longitude>-100.3952985568098</longitude>
 							<latitude>20.40236351580372</latitude>
@@ -1505,10 +1541,8 @@
 				</Folder>
 				<Folder>
 					<name>SELKA POWER PLANT I</name>
-					<visibility>0</visibility>
 					<Placemark id="5E5889D6C9000274">
 						<name>SELKA POWER PLANT I</name>
-						<visibility>0</visibility>
 						<LookAt>
 							<longitude>-101.54879662995</longitude>
 							<latitude>20.85023294740001</latitude>
@@ -1527,10 +1561,8 @@
 				</Folder>
 				<Folder>
 					<name>FRESNILLO (PV ATOCHA)</name>
-					<visibility>0</visibility>
 					<Placemark id="5E5889D6CA000278">
 						<name>FRESNILLO (PV ATOCHA)</name>
-						<visibility>0</visibility>
 						<LookAt>
 							<longitude>-102.942799961933</longitude>
 							<latitude>23.24726661394801</latitude>
@@ -1551,16 +1583,12 @@
 		</Folder>
 		<Folder>
 			<name>CAG - VERACRUZ</name>
-			<visibility>0</visibility>
 			<Folder>
 				<name>PROYECTOS</name>
-				<visibility>0</visibility>
 				<Folder>
 					<name>PLANTA SOLAR CERRO COLORADO</name>
-					<visibility>0</visibility>
 					<Placemark id="5E5889D6CB0002C1">
 						<name>PLANTA SOLAR CERRO COLORADO</name>
-						<visibility>0</visibility>
 						<LookAt>
 							<longitude>-94.86971839252553</longitude>
 							<latitude>17.73342372641516</latitude>
@@ -1579,10 +1607,8 @@
 				</Folder>
 				<Folder>
 					<name>SOLAR ENERGÍA TRES HERMANOS</name>
-					<visibility>0</visibility>
 					<Placemark id="5E5889D6AF000121">
 						<name>SOLAR ENERGÍA TRES HERMANOS</name>
-						<visibility>0</visibility>
 						<LookAt>
 							<longitude>-97.95168499014625</longitude>
 							<latitude>19.34224445937553</latitude>
@@ -1603,16 +1629,12 @@
 		</Folder>
 		<Folder>
 			<name>CAMPECHE</name>
-			<visibility>0</visibility>
 			<Folder>
 				<name>PROYECTOS</name>
-				<visibility>0</visibility>
 				<Folder>
 					<name>TIKINMUL</name>
-					<visibility>0</visibility>
 					<Placemark id="5E5889D6A8000004">
 						<name>TIKINMUL</name>
-						<visibility>0</visibility>
 						<LookAt>
 							<longitude>-90.28755643777875</longitude>
 							<latitude>19.80463278480832</latitude>
@@ -1631,10 +1653,8 @@
 				</Folder>
 				<Folder>
 					<name>PLANTA SOLAR HAAB KIIN</name>
-					<visibility>0</visibility>
 					<Placemark id="5E5889D6C9000264">
 						<name>PLANTA SOLAR HAAB KIIN</name>
-						<visibility>0</visibility>
 						<LookAt>
 							<longitude>-89.81420686510995</longitude>
 							<latitude>20.94726607232601</latitude>
@@ -1653,10 +1673,8 @@
 				</Folder>
 				<Folder>
 					<name>DALIA 3 PV (CASTAMAY)</name>
-					<visibility>0</visibility>
 					<Placemark id="5E5889D6CB0002CA">
 						<name>DALIA 3 PV (CASTAMAY)</name>
-						<visibility>0</visibility>
 						<LookAt>
 							<longitude>-90.3299957730361</longitude>
 							<latitude>19.8511619069703</latitude>
@@ -1675,10 +1693,8 @@
 				</Folder>
 				<Folder>
 					<name>GLOBAL SOLAR 3 CAMPECHE</name>
-					<visibility>0</visibility>
 					<Placemark id="5E5889D6C900026C">
 						<name>GLOBAL SOLAR 3 CAMPECHE</name>
-						<visibility>0</visibility>
 						<LookAt>
 							<longitude>-91.01097741885992</longitude>
 							<latitude>18.64188289589717</latitude>
@@ -1697,10 +1713,8 @@
 				</Folder>
 				<Folder>
 					<name>PV SANDOM SOLAR</name>
-					<visibility>0</visibility>
 					<Placemark id="5E5889D6AF000111">
 						<name>PV SANDOM SOLAR</name>
-						<visibility>0</visibility>
 						<LookAt>
 							<longitude>-89.78514302844407</longitude>
 							<latitude>19.68442033146388</latitude>
@@ -1719,10 +1733,8 @@
 				</Folder>
 				<Folder>
 					<name>PV MOQUEL SOLAR</name>
-					<visibility>0</visibility>
 					<Placemark id="5E5889D6C9000270">
 						<name>PV MOQUEL SOLAR</name>
-						<visibility>0</visibility>
 						<LookAt>
 							<longitude>-90.68855670159202</longitude>
 							<latitude>19.30719983441586</latitude>
@@ -1741,10 +1753,8 @@
 				</Folder>
 				<Folder>
 					<name>LOS GIRASOLES</name>
-					<visibility>0</visibility>
 					<Placemark id="5E5889D6AE00010A">
 						<name>LOS GIRASOLES</name>
-						<visibility>0</visibility>
 						<LookAt>
 							<longitude>-88.77854222951312</longitude>
 							<latitude>19.81976698725521</latitude>
@@ -1763,10 +1773,8 @@
 				</Folder>
 				<Folder>
 					<name>PARQUE FV ENERGÍAS RENOVABLES DE MÉXICO TRES</name>
-					<visibility>0</visibility>
 					<Placemark id="5E5889D6CB0002CE">
 						<name>PARQUE FV ENERGÍAS RENOVABLES DE MÉXICO TRES</name>
-						<visibility>0</visibility>
 						<LookAt>
 							<longitude>-90.00341404208821</longitude>
 							<latitude>20.00819453771859</latitude>
@@ -1785,10 +1793,8 @@
 				</Folder>
 				<Folder>
 					<name>PARQUE FV ENERGÍAS RENOVABLES KIIN (TEKAX)</name>
-					<visibility>0</visibility>
 					<Placemark id="5E5889D6AF00010F">
 						<name>PARQUE FV ENERGÍAS RENOVABLES KIIN (TEKAX)</name>
-						<visibility>0</visibility>
 						<LookAt>
 							<longitude>-89.16640677761235</longitude>
 							<latitude>20.11381519629618</latitude>
@@ -1807,10 +1813,8 @@
 				</Folder>
 				<Folder>
 					<name>PARQUE FV ENERGÍAS RENOVABLES SAAS (PETO)</name>
-					<visibility>0</visibility>
 					<Placemark id="5E5889D6AF000116">
 						<name>PARQUE FV ENERGÍAS RENOVABLES SAAS (PETO)</name>
-						<visibility>0</visibility>
 						<LookAt>
 							<longitude>-88.81900983231587</longitude>
 							<latitude>19.91940217705888</latitude>
@@ -1831,16 +1835,12 @@
 		</Folder>
 		<Folder>
 			<name>HERMOSILLO</name>
-			<visibility>0</visibility>
 			<Folder>
 				<name>PROYECTOS</name>
-				<visibility>0</visibility>
 				<Folder>
 					<name>SOL DE SONORA - 70</name>
-					<visibility>0</visibility>
 					<Placemark id="5E5889D6AF000118">
 						<name>SOL DE SONORA - 70</name>
-						<visibility>0</visibility>
 						<LookAt>
 							<longitude>-101.9623853443848</longitude>
 							<latitude>23.00108644238144</latitude>
@@ -1859,10 +1859,8 @@
 				</Folder>
 				<Folder>
 					<name>LA POZA SOLAR</name>
-					<visibility>0</visibility>
 					<Placemark id="5E5889D6AF000124">
 						<name>LA POZA SOLAR</name>
-						<visibility>0</visibility>
 						<LookAt>
 							<longitude>-110.903254307698</longitude>
 							<latitude>28.8782309522346</latitude>
@@ -1881,10 +1879,8 @@
 				</Folder>
 				<Folder>
 					<name>SUNORA</name>
-					<visibility>0</visibility>
 					<Placemark id="5E5889D6AF000128">
 						<name>SUNORA</name>
-						<visibility>0</visibility>
 						<LookAt>
 							<longitude>-110.915777978445</longitude>
 							<latitude>28.89807295099154</latitude>
@@ -1903,10 +1899,8 @@
 				</Folder>
 				<Folder>
 					<name>CIMARRÓN SOLAR</name>
-					<visibility>0</visibility>
 					<Placemark id="5E5889D6CB0002C6">
 						<name>CIMARRÓN SOLAR</name>
-						<visibility>0</visibility>
 						<LookAt>
 							<longitude>-110.9205503077</longitude>
 							<latitude>28.91702881815002</latitude>
@@ -1925,10 +1919,8 @@
 				</Folder>
 				<Folder>
 					<name>DON HUMBERTO</name>
-					<visibility>0</visibility>
 					<Placemark id="5E5889D6C900024E">
 						<name>DON HUMBERTO</name>
-						<visibility>0</visibility>
 						<LookAt>
 							<longitude>-107.441502437008</longitude>
 							<latitude>24.5795880858686</latitude>
@@ -1949,16 +1941,12 @@
 		</Folder>
 		<Folder>
 			<name>REYNOSA</name>
-			<visibility>0</visibility>
 			<Folder>
 				<name>PROYECTOS</name>
-				<visibility>0</visibility>
 				<Folder>
 					<name>DELARO (2DA RONDA)</name>
-					<visibility>0</visibility>
 					<Placemark>
 						<name>DELARO (2DA RONDA)</name>
-						<visibility>0</visibility>
 						<LookAt>
 							<longitude>-98.54221343982613</longitude>
 							<latitude>25.75796387904889</latitude>
@@ -1977,10 +1965,8 @@
 				</Folder>
 				<Folder>
 					<name>SANTA GERTRUDIS</name>
-					<visibility>0</visibility>
 					<Placemark id="5E5889D6CA000292">
 						<name>SANTA GERTRUDIS</name>
-						<visibility>0</visibility>
 						<LookAt>
 							<longitude>-98.45288219327796</longitude>
 							<latitude>25.54055622563514</latitude>
@@ -1999,10 +1985,8 @@
 				</Folder>
 				<Folder>
 					<name>EL GUAJILLO</name>
-					<visibility>0</visibility>
 					<Placemark id="5E5889D6CA000281">
 						<name>EL GUAJILLO</name>
-						<visibility>0</visibility>
 						<LookAt>
 							<longitude>-98.54684337026983</longitude>
 							<latitude>25.75795162538993</latitude>
@@ -2020,10 +2004,8 @@
 				</Folder>
 				<Folder>
 					<name>MONTECRISTO</name>
-					<visibility>0</visibility>
 					<Placemark id="5E5889D6AE0000ED">
 						<name>MONTECRISTO</name>
-						<visibility>0</visibility>
 						<LookAt>
 							<longitude>-98.29230114420523</longitude>
 							<latitude>25.36497808914343</latitude>
@@ -2042,10 +2024,8 @@
 				</Folder>
 				<Folder>
 					<name>ENERGEO LOS MOLINOS</name>
-					<visibility>0</visibility>
 					<Placemark id="5E5889D6CA000285">
 						<name>ENERGEO LOS MOLINOS</name>
-						<visibility>0</visibility>
 						<LookAt>
 							<longitude>-97.51659535446464</longitude>
 							<latitude>25.68502218163847</latitude>
@@ -2064,10 +2044,8 @@
 				</Folder>
 				<Folder>
 					<name>SIERRA MADRE [EL CHORRO] (2DA RONDA)</name>
-					<visibility>0</visibility>
 					<Placemark id="5E5889D6CA000289">
 						<name>SIERRA MADRE [EL CHORRO] (2DA RONDA)</name>
-						<visibility>0</visibility>
 						<LookAt>
 							<longitude>-98.81574866712937</longitude>
 							<latitude>23.66230053255244</latitude>
@@ -2086,10 +2064,8 @@
 				</Folder>
 				<Folder>
 					<name>PARQUE FV ENERGÍAS RENOVABLES DE TAMAULIPAS</name>
-					<visibility>0</visibility>
 					<Placemark id="5E5889D6C9000268">
 						<name>PARQUE FV ENERGÍAS RENOVABLES DE TAMAULIPAS</name>
-						<visibility>0</visibility>
 						<LookAt>
 							<longitude>-97.94896091838196</longitude>
 							<latitude>22.50612798354155</latitude>
@@ -2110,16 +2086,12 @@
 		</Folder>
 		<Folder>
 			<name>PIEDRAS NEGRAS</name>
-			<visibility>0</visibility>
 			<Folder>
 				<name>PROYECTOS</name>
-				<visibility>0</visibility>
 				<Folder>
 					<name>CFV LAS GARZAS</name>
-					<visibility>0</visibility>
 					<Placemark id="5E5889D6AF00011C">
 						<name>CFV LAS GARZAS</name>
-						<visibility>0</visibility>
 						<Camera>
 							<longitude>-103.7018657724111</longitude>
 							<latitude>25.58493099585418</latitude>
@@ -2137,33 +2109,69 @@
 					</Placemark>
 				</Folder>
 				<Folder>
-					<name>CONCEPCIÓN MENDIZÁBAL MENDOZA FASE I, II &amp; III</name>
-					<visibility>0</visibility>
+					<name>CONCEPCIÓN MENDIZÁBAL MENDOZA FASE I</name>
 					<Placemark>
-						<name>CONCEPCIÓN MENDIZÁBAL MENDOZA FASE I, II &amp; III</name>
-						<visibility>0</visibility>
+						<name>CONCEPCIÓN MENDIZÁBAL MENDOZA FASE I</name>
 						<LookAt>
-							<longitude>-100.7130184398897</longitude>
-							<latitude>28.45857027300287</latitude>
+							<longitude>-100.7063442145488</longitude>
+							<latitude>28.46106781381983</latitude>
 							<altitude>0</altitude>
-							<heading>-0.004454782690494747</heading>
-							<tilt>0</tilt>
-							<range>16694.31793952658</range>
+							<heading>0.02618715842627296</heading>
+							<tilt>5.935468999892803</tilt>
+							<range>14841.14116273313</range>
+							<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+						</LookAt>
+						<styleUrl>#msn_placemark_circle32</styleUrl>
+						<Point>
+							<gx:drawOrder>1</gx:drawOrder>
+							<coordinates>-100.7248016713672,28.4428114984482,0</coordinates>
+						</Point>
+					</Placemark>
+				</Folder>
+				<Folder>
+					<name>CONCEPCIÓN MENDIZÁBAL MENDOZA FASE II</name>
+					<Placemark>
+						<name>CONCEPCIÓN MENDIZÁBAL MENDOZA FASE II</name>
+						<LookAt>
+							<longitude>-100.7063442145488</longitude>
+							<latitude>28.46106781381983</latitude>
+							<altitude>0</altitude>
+							<heading>0.02618715842627296</heading>
+							<tilt>5.935468999892803</tilt>
+							<range>14841.14116273313</range>
 							<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
 						</LookAt>
 						<styleUrl>#msn_placemark_circle3</styleUrl>
 						<Point>
 							<gx:drawOrder>1</gx:drawOrder>
-							<coordinates>-100.711788354193,28.46067659933055,0</coordinates>
+							<coordinates>-100.7110610644948,28.47793441012802,0</coordinates>
+						</Point>
+					</Placemark>
+				</Folder>
+				<Folder>
+					<name>CONCEPCIÓN MENDIZÁBAL MENDOZA FASE III</name>
+					<Placemark>
+						<name>CONCEPCIÓN MENDIZÁBAL MENDOZA FASE III</name>
+						<LookAt>
+							<longitude>-100.7063442145488</longitude>
+							<latitude>28.46106781381983</latitude>
+							<altitude>0</altitude>
+							<heading>0.02618715842627296</heading>
+							<tilt>5.935468999892803</tilt>
+							<range>14841.14116273313</range>
+							<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+						</LookAt>
+						<styleUrl>#msn_placemark_circle3</styleUrl>
+						<Point>
+							<gx:drawOrder>1</gx:drawOrder>
+							<coordinates>-100.7348390335219,28.45469028112676,0</coordinates>
 						</Point>
 					</Placemark>
 				</Folder>
 				<Folder>
 					<name>PROYECTO EÓLICO REGIÓN NORESTE (LA NORIA)</name>
-					<visibility>0</visibility>
 					<Placemark id="5E5889D6CC0002D7">
 						<name>PROYECTO EÓLICO REGIÓN NORESTE (LA NORIA)</name>
-						<visibility>0</visibility>
 						<LookAt>
 							<longitude>-100.9189252043777</longitude>
 							<latitude>27.95191358565392</latitude>
@@ -2182,10 +2190,8 @@
 				</Folder>
 				<Folder>
 					<name>VIENTO DE BELLA UNIÓN</name>
-					<visibility>0</visibility>
 					<Placemark id="5E5889D6AF00012B">
 						<name>VIENTO DE BELLA UNIÓN</name>
-						<visibility>0</visibility>
 						<LookAt>
 							<longitude>-100.7869942074818</longitude>
 							<latitude>25.29943007322733</latitude>
@@ -2204,10 +2210,8 @@
 				</Folder>
 				<Folder>
 					<name>ENERGÍA LIMPIA EL MEZQUITE</name>
-					<visibility>0</visibility>
 					<Placemark id="5E5889D6C9000249">
 						<name>ENERGÍA LIMPIA EL MEZQUITE</name>
-						<visibility>0</visibility>
 						<LookAt>
 							<longitude>-100.5192056759573</longitude>
 							<latitude>26.33368170446409</latitude>
@@ -2228,16 +2232,12 @@
 		</Folder>
 		<Folder>
 			<name>ROSARITO</name>
-			<visibility>0</visibility>
 			<Folder>
 				<name>PROYECTOS</name>
-				<visibility>0</visibility>
 				<Folder>
 					<name>LA PASIÓN</name>
-					<visibility>0</visibility>
 					<Placemark id="5E5889D6C9000251">
 						<name>LA PASIÓN</name>
-						<visibility>0</visibility>
 						<LookAt>
 							<longitude>-110.3346644722272</longitude>
 							<latitude>24.02230128203943</latitude>
@@ -2256,10 +2256,8 @@
 				</Folder>
 				<Folder>
 					<name>EL PALMAR</name>
-					<visibility>0</visibility>
 					<Placemark id="5E5889D6CA00027B">
 						<name>EL PALMAR</name>
-						<visibility>0</visibility>
 						<LookAt>
 							<longitude>-109.7625197984322</longitude>
 							<latitude>23.25634159248547</latitude>
@@ -2278,10 +2276,8 @@
 				</Folder>
 				<Folder>
 					<name>ÁLVARO OBREGÓN</name>
-					<visibility>0</visibility>
 					<Placemark id="5E5889D6CA000297">
 						<name>ÁLVARO OBREGÓN</name>
-						<visibility>0</visibility>
 						<LookAt>
 							<longitude>-110.170715862244</longitude>
 							<latitude>23.8651195211624</latitude>
@@ -2300,10 +2296,8 @@
 				</Folder>
 				<Folder>
 					<name>SOLITARIO</name>
-					<visibility>0</visibility>
 					<Placemark id="5E5889D6C9000254">
 						<name>SOLITARIO</name>
-						<visibility>0</visibility>
 						<LookAt>
 							<longitude>-114.8211154684435</longitude>
 							<latitude>32.35141386719384</latitude>
@@ -2322,10 +2316,8 @@
 				</Folder>
 				<Folder>
 					<name>SAN SIMÓN SOLAR</name>
-					<visibility>0</visibility>
 					<Placemark id="5E5889D6C900025C">
 						<name>SAN SIMÓN SOLAR</name>
-						<visibility>0</visibility>
 						<LookAt>
 							<longitude>-115.8684906506986</longitude>
 							<latitude>30.48816625609408</latitude>
@@ -2344,10 +2336,8 @@
 				</Folder>
 				<Folder>
 					<name>CENTRAL FOTOVOLTAICA QUASARA</name>
-					<visibility>0</visibility>
 					<Placemark id="5E5889D6C900025F">
 						<name>CENTRAL FOTOVOLTAICA QUASARA</name>
-						<visibility>0</visibility>
 						<LookAt>
 							<longitude>-115.5002237913278</longitude>
 							<latitude>32.52033987911885</latitude>
@@ -2366,7 +2356,7 @@
 				</Folder>
 			</Folder>
 		</Folder>
-		<atom:link rel="app" href="https://www.google.com/earth/about/versions/#earth-pro" title="Google Earth Pro 7.3.7.1155"></atom:link>
+		<atom:link rel="app" href="https://www.google.com/earth/about/versions/#earth-pro" title="Google Earth Pro 7.3.7.1327"></atom:link>
 	</Folder>
 </Document>
 </kml>

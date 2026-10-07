@@ -29,6 +29,7 @@ cartera-mixtos/
 │       ├── map.js             mapa Leaflet
 │       ├── charts.js          gráficos Chart.js
 │       ├── filters.js         estado y lógica de filtros
+│       ├── kpis.js            totales del Resumen (sin proyectos de 2da ronda)
 │       ├── ui.js              KPIs, tarjetas, panel de detalle
 │       ├── orden.js           "Ordenar por" del listado
 │       ├── url-state.js       vista actual <-> dirección (enlaces directos)
@@ -152,6 +153,14 @@ columna "Grupo de atención" del Excel, si sigue ahí, se ignora. El mismo
 cálculo lo usa la Action "Datos" para el historial y "Esta semana" del
 portal, así que un cambio de grupo aparece en cuanto Parque cruza un
 límite. Para cambiar los límites se edita `LIMITES` en `grupo.js`.
+
+## Resumen (indicadores)
+
+Los proyectos de **segunda ronda** (con "(2DA RONDA)" en el nombre) se
+muestran en el listado, el mapa y el conteo de proyectos, pero **no
+cuentan** en la capacidad total, el CAPEX total ni el avance global
+promedio (`assets/js/kpis.js`). Cuando alguno queda fuera, esos
+indicadores lo dicen ("sin 2da ronda").
 
 ## Filtros
 

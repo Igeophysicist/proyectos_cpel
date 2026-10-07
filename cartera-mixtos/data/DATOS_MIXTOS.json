@@ -574,18 +574,18 @@
     },
     {
       "NO.": "31",
-      "TÍTULO 1": "CONCEPCIÓN MENDIZÁBAL MENDOZA FASE I, II & III",
-      "TÍTULO 2": "CONCEPCIÓN MENDIZÁBAL MENDOZA FASE I, II & III",
+      "TÍTULO 1": "CONCEPCIÓN MENDIZÁBAL MENDOZA FASE I",
+      "TÍTULO 2": "CONCEPCIÓN MENDIZÁBAL MENDOZA FASE I",
       "Socio": "Atlas Renewable Energy",
       "Tecnología": "FV - Fotovoltaica",
       "Ubicación": "Nava, Coahuila",
-      "Capacidad": "858 MW",
-      "Almacenamiento (BESS)": "257.4 MW / 772.2 MWh",
+      "Capacidad": "339 MW",
+      "Almacenamiento (BESS)": "101.7 MW / 305.1 MWh",
       "Horas de Almacenamiento": "3.00",
       "Inicio de Inversión": "01 de abril de 2027",
       "Fin de Construcción": "01 de abril de 2029",
       "Fecha firma de contrato": "18 de septiembre de 2026",
-      "CAPEX": "$925,310,833.00",
+      "CAPEX": "$381,545,675.00",
       "Parque": "83.50%",
       "LT": "83.50%",
       "Global": "83.50%",
@@ -593,6 +593,44 @@
     },
     {
       "NO.": "32",
+      "TÍTULO 1": "CONCEPCIÓN MENDIZÁBAL MENDOZA FASE II",
+      "TÍTULO 2": "CONCEPCIÓN MENDIZÁBAL MENDOZA FASE II",
+      "Socio": "Atlas Renewable Energy",
+      "Tecnología": "FV - Fotovoltaica",
+      "Ubicación": "Nava, Coahuila",
+      "Capacidad": "180 MW",
+      "Almacenamiento (BESS)": "54 MW / 162 MWh",
+      "Horas de Almacenamiento": "3.00",
+      "Inicio de Inversión": "01 de abril de 2027",
+      "Fin de Construcción": "01 de abril de 2029",
+      "Fecha firma de contrato": "18 de septiembre de 2026",
+      "CAPEX": "$198,977,154.00",
+      "Parque": "83.50%",
+      "LT": "83.50%",
+      "Global": "83.50%",
+      "Grupo de atención": "B"
+    },
+    {
+      "NO.": "33",
+      "TÍTULO 1": "CONCEPCIÓN MENDIZÁBAL MENDOZA FASE III",
+      "TÍTULO 2": "CONCEPCIÓN MENDIZÁBAL MENDOZA FASE III",
+      "Socio": "Atlas Renewable Energy",
+      "Tecnología": "FV - Fotovoltaica",
+      "Ubicación": "Nava, Coahuila",
+      "Capacidad": "339 MW",
+      "Almacenamiento (BESS)": "101.7 MW / 305.1 MWh",
+      "Horas de Almacenamiento": "3.00",
+      "Inicio de Inversión": "01 de abril de 2027",
+      "Fin de Construcción": "01 de abril de 2029",
+      "Fecha firma de contrato": "18 de septiembre de 2026",
+      "CAPEX": "$376,737,492.00",
+      "Parque": "82.50%",
+      "LT": "82.50%",
+      "Global": "82.50%",
+      "Grupo de atención": "B"
+    },
+    {
+      "NO.": "34",
       "TÍTULO 1": "GLOBAL SOLAR 3 CAMPECHE",
       "TÍTULO 2": "GLOBAL SOLAR 3 CAMPECHE",
       "Socio": "Alten",
@@ -611,7 +649,7 @@
       "Grupo de atención": "B"
     },
     {
-      "NO.": "33",
+      "NO.": "35",
       "TÍTULO 1": "CFV LAS GARZAS",
       "TÍTULO 2": "CFV LAS GARZAS",
       "Socio": "MIP Freeman Energy",
@@ -630,7 +668,7 @@
       "Grupo de atención": "C"
     },
     {
-      "NO.": "34",
+      "NO.": "36",
       "TÍTULO 1": "CIMARRÓN SOLAR",
       "TÍTULO 2": "CIMARRÓN SOLAR",
       "Socio": "CFQB Energy",
@@ -649,7 +687,7 @@
       "Grupo de atención": "C"
     },
     {
-      "NO.": "35",
+      "NO.": "37",
       "TÍTULO 1": "SUNORA",
       "TÍTULO 2": "SUNORA",
       "Socio": "CFQB Energy",
@@ -668,7 +706,7 @@
       "Grupo de atención": "C"
     },
     {
-      "NO.": "36",
+      "NO.": "38",
       "TÍTULO 1": "LA POZA SOLAR",
       "TÍTULO 2": "LA POZA SOLAR",
       "Socio": "CFQB Energy",
@@ -687,7 +725,7 @@
       "Grupo de atención": "C"
     },
     {
-      "NO.": "37",
+      "NO.": "39",
       "TÍTULO 1": "SIERRA MADRE [EL CHORRO] (2DA RONDA)",
       "TÍTULO 2": "SIERRA MADRE [EL CHORRO] (2DA RONDA)",
       "Socio": "Terralia",
@@ -706,7 +744,7 @@
       "Grupo de atención": "C"
     },
     {
-      "NO.": "38",
+      "NO.": "40",
       "TÍTULO 1": "DELARO (2DA RONDA)",
       "TÍTULO 2": "DELARO (2DA RONDA)",
       "Socio": "Thermion",

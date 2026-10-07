@@ -133,3 +133,17 @@ test("el grupo de cada tarjeta sale del avance de Parque (A ≥ 85, B ≥ 76, C 
     else await expect(etiqueta, mixtos[i].nombre).toHaveCount(0);
   }
 });
+
+test("Resumen: capacidad, CAPEX y avance promedio no cuentan los proyectos de 2da ronda", async ({ page }) => {
+  const { parseNumber } = require("../../assets/js/shared/text-utils.js");
+  const cuentan = datos().mixtos.filter((r) => !/\(2DA RONDA\)/i.test(r.nombre));
+  const capacidad = cuentan.reduce((s, r) => s + (parseNumber(r.Capacidad) || 0), 0);
+  const globales = cuentan.map((r) => parseNumber(r.Global)).filter((v) => v !== null);
+  const promedio = globales.reduce((a, b) => a + b, 0) / globales.length;
+  await page.goto("/cartera-mixtos/");
+  await cargado(page);
+  const kpi = (etiqueta) => page.locator(".kpi", { hasText: etiqueta }).locator(".kpi__value");
+  await expect(kpi("Capacidad total")).toHaveText(`${new Intl.NumberFormat("es-MX", { maximumFractionDigits: 0 }).format(capacidad)} MW`);
+  await expect(kpi("Avance global promedio")).toHaveText(`${promedio.toFixed(1)}%`);
+  await expect(page.locator(".kpi", { hasText: "CAPEX total" })).toContainText("sin 2da ronda");
+});

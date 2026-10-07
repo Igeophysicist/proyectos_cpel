@@ -190,10 +190,22 @@
           "global": 63.6,
           "grupo": "C"
         },
-        "concepcion-mendizabal-mendoza-fase-i-ii-iii": {
+        "concepcion-mendizabal-mendoza-fase-i": {
           "parque": 74,
           "lt": 74,
           "global": 74,
+          "grupo": "C"
+        },
+        "concepcion-mendizabal-mendoza-fase-ii": {
+          "parque": 74,
+          "lt": 74.5,
+          "global": 74.1,
+          "grupo": "C"
+        },
+        "concepcion-mendizabal-mendoza-fase-iii": {
+          "parque": 72,
+          "lt": 72,
+          "global": 72,
           "grupo": "C"
         },
         "cfv-las-garzas": {
@@ -419,10 +431,22 @@
           "global": 76.6,
           "grupo": "A"
         },
-        "concepcion-mendizabal-mendoza-fase-i-ii-iii": {
+        "concepcion-mendizabal-mendoza-fase-i": {
           "parque": 83.5,
           "lt": 83.5,
           "global": 83.5,
+          "grupo": "B"
+        },
+        "concepcion-mendizabal-mendoza-fase-ii": {
+          "parque": 83.5,
+          "lt": 83.5,
+          "global": 83.5,
+          "grupo": "B"
+        },
+        "concepcion-mendizabal-mendoza-fase-iii": {
+          "parque": 82.5,
+          "lt": 82.5,
+          "global": 82.5,
           "grupo": "B"
         },
         "global-solar-3-campeche": {
@@ -654,10 +678,22 @@
           "global": 76.6,
           "grupo": "A"
         },
-        "concepcion-mendizabal-mendoza-fase-i-ii-iii": {
+        "concepcion-mendizabal-mendoza-fase-i": {
           "parque": 83.5,
           "lt": 83.5,
           "global": 83.5,
+          "grupo": "B"
+        },
+        "concepcion-mendizabal-mendoza-fase-ii": {
+          "parque": 83.5,
+          "lt": 83.5,
+          "global": 83.5,
+          "grupo": "B"
+        },
+        "concepcion-mendizabal-mendoza-fase-iii": {
+          "parque": 82.5,
+          "lt": 82.5,
+          "global": 82.5,
           "grupo": "B"
         },
         "global-solar-3-campeche": {
