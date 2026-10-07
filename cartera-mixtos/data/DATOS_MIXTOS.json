@@ -1,6 +1,6 @@
 {
   "fuente": "DATOS_MIXTOS.xlsx",
-  "excelModificado": "2026-10-07T18:28:05.000Z",
+  "excelModificado": "2026-10-07T20:54:34.000Z",
   "proyectos": [
     {
       "NO.": "1",
@@ -628,9 +628,9 @@
       "Fin de Construcción": "03 de julio de 2029",
       "Fecha firma de contrato": "SIN DATO",
       "CAPEX": "SINDATO",
-      "Parque": "58.00%",
-      "LT": "45.00%",
-      "Global": "55.40%"
+      "Parque": "46.00%",
+      "LT": "23.00%",
+      "Global": "41.40%"
     },
     {
       "NO.": "36",
@@ -700,9 +700,9 @@
       "Fin de Construcción": "01 de enero de 2030",
       "Fecha firma de contrato": "SIN DATO",
       "CAPEX": "SINDATO",
-      "Parque": "10.00%",
+      "Parque": "13.00%",
       "LT": "10.00%",
-      "Global": "10.00%"
+      "Global": "12.40%"
     },
     {
       "NO.": "40",

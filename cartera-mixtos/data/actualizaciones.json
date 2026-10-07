@@ -247,7 +247,7 @@
       ]
     },
     {
-      "excel": "2026-10-07T18:28:05.000Z",
+      "excel": "2026-10-07T20:54:34.000Z",
       "fecha": "2026-10-07",
       "cambios": [
         {
@@ -283,6 +283,30 @@
           },
           "ahora": {
             "parque": 41,
+            "grupo": "C"
+          }
+        },
+        {
+          "slug": "cfv-las-garzas",
+          "nombre": "CFV LAS GARZAS",
+          "antes": {
+            "parque": 58,
+            "grupo": "C"
+          },
+          "ahora": {
+            "parque": 46,
+            "grupo": "C"
+          }
+        },
+        {
+          "slug": "sierra-madre-el-chorro-2da-ronda",
+          "nombre": "SIERRA MADRE [EL CHORRO] (2DA RONDA)",
+          "antes": {
+            "parque": 10,
+            "grupo": "C"
+          },
+          "ahora": {
+            "parque": 13,
             "grupo": "C"
           }
         }

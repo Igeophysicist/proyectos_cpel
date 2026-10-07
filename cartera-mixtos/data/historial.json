@@ -496,7 +496,7 @@
     {
       "semana": "2026-10-04",
       "fecha": "2026-10-07",
-      "excel": "2026-10-07T18:28:05.000Z",
+      "excel": "2026-10-07T20:54:34.000Z",
       "proyectos": {
         "san-simon-solar": {
           "parque": 94,
@@ -703,9 +703,9 @@
           "grupo": "B"
         },
         "cfv-las-garzas": {
-          "parque": 58,
-          "lt": 45,
-          "global": 55.4,
+          "parque": 46,
+          "lt": 23,
+          "global": 41.4,
           "grupo": "C"
         },
         "cimarron-solar": {
@@ -727,9 +727,9 @@
           "grupo": "C"
         },
         "sierra-madre-el-chorro-2da-ronda": {
-          "parque": 10,
+          "parque": 13,
           "lt": 10,
-          "global": 10,
+          "global": 12.4,
           "grupo": "C"
         },
         "delaro-2da-ronda": {
