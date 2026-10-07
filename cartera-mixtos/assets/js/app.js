@@ -257,6 +257,11 @@
       //}
     } catch (err) {
       console.error(err);
+      // Copia vieja de la página con scripts nuevos (app instalada): recarga una vez.
+      if (window.PWA && window.PWA.recargarSiHayRed()) {
+        els.loaderText.textContent = "Actualizando…";
+        return;
+      }
       els.loaderText.textContent =
         "No se pudieron cargar los datos. Verifica que data/DATOS_MIXTOS.json y los KML estén publicados junto a este HTML. Detalle: " +
         err.message;

@@ -166,6 +166,12 @@ El sitio se puede instalar en el celular o la computadora como una app
   pero sin datos.
 - Las librerías de CDN se guardan porque su URL incluye la versión
   (cambiar de versión = cambiar la URL en el HTML).
+- **Versiones mezcladas:** si la app instalada abre la copia guardada
+  de una página (p. ej. sin red al despertar) y luego baja scripts más
+  nuevos, la página puede fallar al cargar. En ese caso se recarga sola
+  **una vez** para tomar la versión actual (`window.PWA.recargarSiHayRed`
+  en `pwa.js`); si vuelve a fallar, muestra su mensaje de error, sin
+  recargas sin fin.
 - **Salir** borra todo lo guardado y desactiva el Service Worker en ese
   dispositivo.
 - `VERSION` en `sw.js` solo se cambia si se modifica la lógica del
