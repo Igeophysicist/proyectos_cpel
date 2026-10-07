@@ -18,10 +18,9 @@
   function renderKPIs(elId, projects) {
     const total = projects.length;
     const geolocalizados = projects.filter((p) => p.geo).length;
-    const capacidadTotal = projects.reduce((sum, p) => sum + (p.capacidadNum || 0), 0);
-    const capexTotal = projects.reduce((sum, p) => sum + (p.capexNum || 0), 0);
-    const avances = projects.map((p) => p.globalPct).filter((v) => v !== null);
-    const avancePromedio = avances.length ? avances.reduce((a, b) => a + b, 0) / avances.length : null;
+    // Sin los proyectos de 2da ronda (ver kpis.js).
+    const { capacidad: capacidadTotal, capex: capexTotal, avancePromedio, excluidos } = global.AppKpis.totales(projects);
+    const sinRonda = excluidos ? " (sin 2da ronda)" : "";
     const enRiesgo = projects.filter((p) => p.grupo === "C").length;
 
     const cards = [
@@ -29,19 +28,19 @@
       {
         label: "Capacidad total",
         value: capacidadTotal ? `${fmtInt.format(capacidadTotal)} MW` : "—",
-        meta: "Suma de capacidad reportada",
+        meta: "Suma de capacidad reportada" + sinRonda,
         cls: "accent",
       },
       {
         label: "CAPEX total",
         value: capexTotal ? fmtMoney.format(capexTotal) : "—",
-        meta: "Suma de inversión reportada",
+        meta: "Suma de inversión reportada" + sinRonda,
         cls: "accent",
       },
       {
         label: "Avance global promedio",
         value: avancePromedio !== null ? `${avancePromedio.toFixed(1)}%` : "—",
-        meta: "Trámites y permisos",
+        meta: "Trámites y permisos" + sinRonda,
         cls: "",
       },
       {
