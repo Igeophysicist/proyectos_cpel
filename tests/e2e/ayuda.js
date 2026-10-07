@@ -37,9 +37,11 @@ const hoyMexico = () =>
   new Intl.DateTimeFormat("en-CA", { timeZone: "America/Mexico_City", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
 
 const test = base.test.extend({
-  page: async ({ page }, use) => {
+  // Errores que una prueba provoca a propósito (lista de expresiones regulares).
+  erroresEsperados: [[], { option: true }],
+  page: async ({ page, erroresEsperados }, use) => {
     const errores = [];
-    page.on("pageerror", (e) => errores.push(e.message));
+    page.on("pageerror", (e) => !erroresEsperados.some((re) => re.test(e.message)) && errores.push(e.message));
     await page.route(/arcgisonline\.com|tile\.openstreetmap\.org/, (r) => r.abort());
     await use(page);
     base.expect(errores, "errores de JavaScript en la página").toEqual([]);

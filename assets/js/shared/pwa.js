@@ -11,8 +11,45 @@
  * Al pulsar "Salir" se borra todo lo guardado en el dispositivo y se
  * desactiva el Service Worker antes de cerrar la sesión (se vuelve a
  * activar solo al entrar de nuevo con la contraseña).
+ *
+ * window.PWA.recargarSiHayRed(): si una página no pudo cargar, la recarga
+ * UNA vez (si hay conexión). Repara el caso de la app instalada que abre
+ * la copia guardada de la página (p. ej. sin red al despertar) y luego
+ * baja scripts más nuevos que esa copia: versiones mezcladas. Al recargar
+ * se pide la página actual. Si vuelve a fallar en menos de un minuto, ya
+ * no recarga (no hay bucles) y la página muestra su mensaje de error.
  */
 (function () {
+  const CLAVE = "pwa-recarga";
+  window.PWA = {
+    recargarSiHayRed() {
+      if (navigator.onLine === false) return false;
+      try {
+        const ultima = Number(sessionStorage.getItem(CLAVE)) || 0;
+        if (Date.now() - ultima < 60000) return false;
+        sessionStorage.setItem(CLAVE, String(Date.now()));
+      } catch {
+        return false; // sin sessionStorage no se puede evitar un bucle
+      }
+      window.location.reload();
+      return true;
+    },
+  };
+
+  // Lo mismo si un script del sitio falla mientras la página carga (p. ej.
+  // usa un archivo nuevo que la copia vieja de la página no incluye).
+  let cargando = true;
+  window.addEventListener("load", () => setTimeout(() => (cargando = false), 0));
+  window.addEventListener("error", (e) => {
+    if (!cargando || !(e.error instanceof TypeError || e.error instanceof ReferenceError)) return;
+    try {
+      if (new URL(e.filename).origin !== window.location.origin) return;
+    } catch {
+      return;
+    }
+    window.PWA.recargarSiHayRed();
+  });
+
   if (!("serviceWorker" in navigator)) return;
 
   const siteRoot = new URL("../../../", document.currentScript.src);
