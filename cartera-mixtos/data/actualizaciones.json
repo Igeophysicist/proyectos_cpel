@@ -245,6 +245,48 @@
           }
         }
       ]
+    },
+    {
+      "excel": "2026-10-07T18:28:05.000Z",
+      "fecha": "2026-10-07",
+      "cambios": [
+        {
+          "slug": "cimarron-solar",
+          "nombre": "CIMARRÓN SOLAR",
+          "antes": {
+            "parque": 32.5,
+            "grupo": "C"
+          },
+          "ahora": {
+            "parque": 35,
+            "grupo": "C"
+          }
+        },
+        {
+          "slug": "sunora",
+          "nombre": "SUNORA",
+          "antes": {
+            "parque": 49.5,
+            "grupo": "C"
+          },
+          "ahora": {
+            "parque": 35,
+            "grupo": "C"
+          }
+        },
+        {
+          "slug": "la-poza-solar",
+          "nombre": "LA POZA SOLAR",
+          "antes": {
+            "parque": 57.5,
+            "grupo": "C"
+          },
+          "ahora": {
+            "parque": 41,
+            "grupo": "C"
+          }
+        }
+      ]
     }
   ]
 }

@@ -1,6 +1,6 @@
 {
   "fuente": "DATOS_MIXTOS.xlsx",
-  "excelModificado": "2026-10-05T23:53:07.000Z",
+  "excelModificado": "2026-10-07T18:28:05.000Z",
   "proyectos": [
     {
       "NO.": "1",
@@ -18,8 +18,7 @@
       "CAPEX": "$93,931,093.40",
       "Parque": "94.00%",
       "LT": "93.00%",
-      "Global": "93.80%",
-      "Grupo de atención": "A"
+      "Global": "93.80%"
     },
     {
       "NO.": "2",
@@ -37,8 +36,7 @@
       "CAPEX": "$511,733,189.50",
       "Parque": "56.75%",
       "LT": "55.50%",
-      "Global": "56.50%",
-      "Grupo de atención": "C"
+      "Global": "56.50%"
     },
     {
       "NO.": "3",
@@ -56,8 +54,7 @@
       "CAPEX": "$268,429,155.50",
       "Parque": "73.00%",
       "LT": "55.50%",
-      "Global": "69.50%",
-      "Grupo de atención": "C"
+      "Global": "69.50%"
     },
     {
       "NO.": "4",
@@ -75,8 +72,7 @@
       "CAPEX": "$152,328,187.00",
       "Parque": "86.50%",
       "LT": "85.50%",
-      "Global": "86.30%",
-      "Grupo de atención": "A"
+      "Global": "86.30%"
     },
     {
       "NO.": "5",
@@ -94,8 +90,7 @@
       "CAPEX": "$60,278,577.80",
       "Parque": "76.00%",
       "LT": "51.50%",
-      "Global": "71.10%",
-      "Grupo de atención": "B"
+      "Global": "71.10%"
     },
     {
       "NO.": "6",
@@ -113,8 +108,7 @@
       "CAPEX": "$800,323,710.20",
       "Parque": "54.00%",
       "LT": "25.00%",
-      "Global": "48.20%",
-      "Grupo de atención": "C"
+      "Global": "48.20%"
     },
     {
       "NO.": "7",
@@ -132,8 +126,7 @@
       "CAPEX": "$764,221,135.00",
       "Parque": "54.00%",
       "LT": "25.00%",
-      "Global": "48.20%",
-      "Grupo de atención": "C"
+      "Global": "48.20%"
     },
     {
       "NO.": "8",
@@ -151,8 +144,7 @@
       "CAPEX": "$78,344,588.00",
       "Parque": "73.50%",
       "LT": "33.00%",
-      "Global": "65.40%",
-      "Grupo de atención": "C"
+      "Global": "65.40%"
     },
     {
       "NO.": "9",
@@ -170,8 +162,7 @@
       "CAPEX": "$119,934,283.00",
       "Parque": "66.00%",
       "LT": "66.00%",
-      "Global": "66.00%",
-      "Grupo de atención": "C"
+      "Global": "66.00%"
     },
     {
       "NO.": "10",
@@ -189,8 +180,7 @@
       "CAPEX": "$18,768,631.30",
       "Parque": "83.00%",
       "LT": "71.50%",
-      "Global": "80.70%",
-      "Grupo de atención": "B"
+      "Global": "80.70%"
     },
     {
       "NO.": "11",
@@ -208,8 +198,7 @@
       "CAPEX": "$158,930,216.20",
       "Parque": "74.00%",
       "LT": "69.50%",
-      "Global": "73.10%",
-      "Grupo de atención": "C"
+      "Global": "73.10%"
     },
     {
       "NO.": "12",
@@ -227,8 +216,7 @@
       "CAPEX": "$420,828,931.20",
       "Parque": "78.00%",
       "LT": "64.00%",
-      "Global": "75.20%",
-      "Grupo de atención": "B"
+      "Global": "75.20%"
     },
     {
       "NO.": "13",
@@ -246,8 +234,7 @@
       "CAPEX": "$165,352,298.20",
       "Parque": "18.00%",
       "LT": "25.00%",
-      "Global": "19.40%",
-      "Grupo de atención": "C"
+      "Global": "19.40%"
     },
     {
       "NO.": "14",
@@ -265,8 +252,7 @@
       "CAPEX": "$211,345,624.30",
       "Parque": "28.00%",
       "LT": "16.00%",
-      "Global": "25.60%",
-      "Grupo de atención": "C"
+      "Global": "25.60%"
     },
     {
       "NO.": "15",
@@ -284,8 +270,7 @@
       "CAPEX": "$178,208,437.90",
       "Parque": "55.50%",
       "LT": "50.50%",
-      "Global": "54.50%",
-      "Grupo de atención": "C"
+      "Global": "54.50%"
     },
     {
       "NO.": "16",
@@ -303,8 +288,7 @@
       "CAPEX": "$98,459,271.30",
       "Parque": "54.00%",
       "LT": "52.00%",
-      "Global": "53.60%",
-      "Grupo de atención": "C"
+      "Global": "53.60%"
     },
     {
       "NO.": "17",
@@ -322,8 +306,7 @@
       "CAPEX": "$90,724,532.90",
       "Parque": "90.50%",
       "LT": "85.50%",
-      "Global": "89.50%",
-      "Grupo de atención": "A"
+      "Global": "89.50%"
     },
     {
       "NO.": "18",
@@ -341,8 +324,7 @@
       "CAPEX": "$563,085,927.00",
       "Parque": "68.50%",
       "LT": "62.50%",
-      "Global": "67.30%",
-      "Grupo de atención": "C"
+      "Global": "67.30%"
     },
     {
       "NO.": "19",
@@ -360,8 +342,7 @@
       "CAPEX": "$111,538,383.00",
       "Parque": "79.00%",
       "LT": "78.00%",
-      "Global": "78.80%",
-      "Grupo de atención": "B"
+      "Global": "78.80%"
     },
     {
       "NO.": "20",
@@ -379,8 +360,7 @@
       "CAPEX": "$107,893,266.00",
       "Parque": "69.00%",
       "LT": "59.00%",
-      "Global": "67.00%",
-      "Grupo de atención": "C"
+      "Global": "67.00%"
     },
     {
       "NO.": "21",
@@ -398,8 +378,7 @@
       "CAPEX": "$85,999,233.00",
       "Parque": "69.00%",
       "LT": "68.00%",
-      "Global": "68.80%",
-      "Grupo de atención": "C"
+      "Global": "68.80%"
     },
     {
       "NO.": "22",
@@ -417,8 +396,7 @@
       "CAPEX": "$112,351,023.00",
       "Parque": "90.00%",
       "LT": "89.00%",
-      "Global": "89.80%",
-      "Grupo de atención": "A"
+      "Global": "89.80%"
     },
     {
       "NO.": "23",
@@ -436,8 +414,7 @@
       "CAPEX": "$114,611,715.90",
       "Parque": "57.50%",
       "LT": "62.00%",
-      "Global": "58.40%",
-      "Grupo de atención": "C"
+      "Global": "58.40%"
     },
     {
       "NO.": "24",
@@ -455,8 +432,7 @@
       "CAPEX": "$98,564,828.00",
       "Parque": "72.00%",
       "LT": "42.50%",
-      "Global": "66.10%",
-      "Grupo de atención": "C"
+      "Global": "66.10%"
     },
     {
       "NO.": "25",
@@ -474,8 +450,7 @@
       "CAPEX": "$99,932,858.00",
       "Parque": "68.50%",
       "LT": "54.00%",
-      "Global": "65.60%",
-      "Grupo de atención": "C"
+      "Global": "65.60%"
     },
     {
       "NO.": "26",
@@ -493,8 +468,7 @@
       "CAPEX": "$318,435,063.00",
       "Parque": "79.50%",
       "LT": "71.00%",
-      "Global": "77.80%",
-      "Grupo de atención": "B"
+      "Global": "77.80%"
     },
     {
       "NO.": "27",
@@ -512,8 +486,7 @@
       "CAPEX": "$889,889,834.80",
       "Parque": "54.00%",
       "LT": "25.00%",
-      "Global": "48.20%",
-      "Grupo de atención": "C"
+      "Global": "48.20%"
     },
     {
       "NO.": "28",
@@ -531,8 +504,7 @@
       "CAPEX": "$66,887,790.00",
       "Parque": "80.50%",
       "LT": "76.00%",
-      "Global": "79.60%",
-      "Grupo de atención": "B"
+      "Global": "79.60%"
     },
     {
       "NO.": "29",
@@ -550,8 +522,7 @@
       "CAPEX": "$86,086,705.70",
       "Parque": "77.00%",
       "LT": "57.65%",
-      "Global": "73.13%",
-      "Grupo de atención": "B"
+      "Global": "73.13%"
     },
     {
       "NO.": "30",
@@ -569,8 +540,7 @@
       "CAPEX": "$147,073,578.90",
       "Parque": "86.50%",
       "LT": "37.00%",
-      "Global": "76.60%",
-      "Grupo de atención": "A"
+      "Global": "76.60%"
     },
     {
       "NO.": "31",
@@ -588,8 +558,7 @@
       "CAPEX": "$381,545,675.00",
       "Parque": "83.50%",
       "LT": "83.50%",
-      "Global": "83.50%",
-      "Grupo de atención": "B"
+      "Global": "83.50%"
     },
     {
       "NO.": "32",
@@ -607,8 +576,7 @@
       "CAPEX": "$198,977,154.00",
       "Parque": "83.50%",
       "LT": "83.50%",
-      "Global": "83.50%",
-      "Grupo de atención": "B"
+      "Global": "83.50%"
     },
     {
       "NO.": "33",
@@ -626,8 +594,7 @@
       "CAPEX": "$376,737,492.00",
       "Parque": "82.50%",
       "LT": "82.50%",
-      "Global": "82.50%",
-      "Grupo de atención": "B"
+      "Global": "82.50%"
     },
     {
       "NO.": "34",
@@ -645,8 +612,7 @@
       "CAPEX": "SINDATO",
       "Parque": "81.50%",
       "LT": "69.00%",
-      "Global": "79.00%",
-      "Grupo de atención": "B"
+      "Global": "79.00%"
     },
     {
       "NO.": "35",
@@ -664,8 +630,7 @@
       "CAPEX": "SINDATO",
       "Parque": "58.00%",
       "LT": "45.00%",
-      "Global": "55.40%",
-      "Grupo de atención": "C"
+      "Global": "55.40%"
     },
     {
       "NO.": "36",
@@ -681,10 +646,9 @@
       "Fin de Construcción": "30 de abril de 2029",
       "Fecha firma de contrato": "SIN DATO",
       "CAPEX": "SINDATO",
-      "Parque": "32.50%",
-      "LT": "25.00%",
-      "Global": "31.00%",
-      "Grupo de atención": "C"
+      "Parque": "35.00%",
+      "LT": "32.50%",
+      "Global": "34.50%"
     },
     {
       "NO.": "37",
@@ -700,10 +664,9 @@
       "Fin de Construcción": "30 de abril de 2029",
       "Fecha firma de contrato": "SIN DATO",
       "CAPEX": "SINDATO",
-      "Parque": "49.50%",
-      "LT": "25.00%",
-      "Global": "44.60%",
-      "Grupo de atención": "C"
+      "Parque": "35.00%",
+      "LT": "32.50%",
+      "Global": "34.50%"
     },
     {
       "NO.": "38",
@@ -719,10 +682,9 @@
       "Fin de Construcción": "30 de abril de 2029",
       "Fecha firma de contrato": "SIN DATO",
       "CAPEX": "SINDATO",
-      "Parque": "57.50%",
-      "LT": "25.00%",
-      "Global": "51.00%",
-      "Grupo de atención": "C"
+      "Parque": "41.00%",
+      "LT": "38.50%",
+      "Global": "40.50%"
     },
     {
       "NO.": "39",
@@ -740,8 +702,7 @@
       "CAPEX": "SINDATO",
       "Parque": "10.00%",
       "LT": "10.00%",
-      "Global": "10.00%",
-      "Grupo de atención": "C"
+      "Global": "10.00%"
     },
     {
       "NO.": "40",
@@ -759,8 +720,7 @@
       "CAPEX": "SINDATO",
       "Parque": "79.50%",
       "LT": "75.00%",
-      "Global": "78.60%",
-      "Grupo de atención": "B"
+      "Global": "78.60%"
     }
   ]
 }

@@ -495,8 +495,8 @@
     },
     {
       "semana": "2026-10-04",
-      "fecha": "2026-10-05",
-      "excel": "2026-10-05T23:53:07.000Z",
+      "fecha": "2026-10-07",
+      "excel": "2026-10-07T18:28:05.000Z",
       "proyectos": {
         "san-simon-solar": {
           "parque": 94,
@@ -709,21 +709,21 @@
           "grupo": "C"
         },
         "cimarron-solar": {
-          "parque": 32.5,
-          "lt": 25,
-          "global": 31,
+          "parque": 35,
+          "lt": 32.5,
+          "global": 34.5,
           "grupo": "C"
         },
         "sunora": {
-          "parque": 49.5,
-          "lt": 25,
-          "global": 44.6,
+          "parque": 35,
+          "lt": 32.5,
+          "global": 34.5,
           "grupo": "C"
         },
         "la-poza-solar": {
-          "parque": 57.5,
-          "lt": 25,
-          "global": 51,
+          "parque": 41,
+          "lt": 38.5,
+          "global": 40.5,
           "grupo": "C"
         },
         "sierra-madre-el-chorro-2da-ronda": {
