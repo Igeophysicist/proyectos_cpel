@@ -2,22 +2,6 @@
 <kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
 <Document>
 	<name>AREAS_REFERENCIA.kml</name>
-	<Style id="style14">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style119">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
 	<Style id="style">
 		<LineStyle>
 			<color>ff0000ff</color>
@@ -42,847 +26,7 @@
 			<fill>0</fill>
 		</PolyStyle>
 	</Style>
-	<Style id="style2">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style3">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style4">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style81">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style120">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style80">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style5">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style6">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style79">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style7">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style8">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style121">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style77">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style9">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
 	<Style id="style10">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style11">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style12">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style76">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style13">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style78">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style15">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style75">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style122">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style123">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style16">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style17">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style18">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style19">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style20">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style21">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style74">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style22">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style23">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style24">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style73">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style124">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style125">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style25">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style26">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style72">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style126">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style27">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style28">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style71">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style29">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style70">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style127">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style69">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style68">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style30">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style31">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style32">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style33">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style34">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style67">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style66">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style35">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style36">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style128">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style37">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style65">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style38">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style39">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style64">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style63">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style40">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style41">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style42">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style61">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style43">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style44">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style45">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style46">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style47">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style48">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style49">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style50">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style51">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style52">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style62">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style53">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style54">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style55">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style56">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style57">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style58">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style59">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style60">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style82">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style83">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style84">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style85">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style86">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style87">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style88">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style89">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style90">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style91">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style92">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style93">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style94">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style95">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style96">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style97">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style98">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style99">
 		<LineStyle>
 			<color>ff0000ff</color>
 		</LineStyle>
@@ -970,6 +114,14 @@
 			<fill>0</fill>
 		</PolyStyle>
 	</Style>
+	<Style id="style11">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
 	<Style id="style110">
 		<LineStyle>
 			<color>ff0000ff</color>
@@ -1035,6 +187,854 @@
 		</PolyStyle>
 	</Style>
 	<Style id="style118">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style119">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style12">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style120">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style121">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style122">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style123">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style124">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style125">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style126">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style127">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style128">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style13">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style14">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style15">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style16">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style17">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style18">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style19">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style2">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style20">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style21">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style22">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style23">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style24">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style25">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style26">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style27">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style28">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style29">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style3">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style30">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style31">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style32">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style33">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style34">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style35">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style36">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style37">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style38">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style39">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style4">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style40">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style41">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style42">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style43">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style44">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style45">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style46">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style47">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style48">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style49">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style5">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style50">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style51">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style52">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style53">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style54">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style55">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style56">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style57">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style58">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style59">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style6">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style60">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style61">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style62">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style63">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style64">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style65">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style66">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style67">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style68">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style69">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style7">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style70">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style71">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style72">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style73">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style74">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style75">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style76">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style77">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style78">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style79">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style8">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style80">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style81">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style82">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style83">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style84">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style85">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style86">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style87">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style88">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style89">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style9">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style90">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style91">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style92">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style93">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style94">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style95">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style96">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style97">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style98">
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="style99">
 		<LineStyle>
 			<color>ff0000ff</color>
 		</LineStyle>
@@ -1694,8 +1694,10 @@
 	</StyleMap>
 	<Folder>
 		<name>POLIGONOS</name>
+		<visibility>0</visibility>
 		<Placemark id="CONCEPCIÓN_MENDIZÁBAL_MENDOZA_FASE_I__II___III__PO_2182891910192.1">
-			<name>CONCEPCIÓN MENDIZÁBAL MENDOZA FASE I, II &amp; III</name>
+			<name>CONCEPCIÓN MENDIZÁBAL MENDOZA FASE III</name>
+			<visibility>0</visibility>
 			<styleUrl>#stylemap_id4</styleUrl>
 			<ExtendedData>
 				<SchemaData schemaUrl="#CONCEPCIÓN_MENDIZÁBAL_MENDOZA_FASE_I__II___III__PO_2182891910192">
@@ -1719,7 +1721,8 @@
 			</MultiGeometry>
 		</Placemark>
 		<Placemark id="CONCEPCIÓN_MENDIZÁBAL_MENDOZA_FASE_I__II___III__PO_2182891910192.2">
-			<name>CONCEPCIÓN MENDIZÁBAL MENDOZA FASE I, II &amp; III</name>
+			<name>CONCEPCIÓN MENDIZÁBAL MENDOZA FASE III</name>
+			<visibility>0</visibility>
 			<styleUrl>#stylemap_id5</styleUrl>
 			<ExtendedData>
 				<SchemaData schemaUrl="#CONCEPCIÓN_MENDIZÁBAL_MENDOZA_FASE_I__II___III__PO_2182891910192">
@@ -1743,7 +1746,8 @@
 			</MultiGeometry>
 		</Placemark>
 		<Placemark id="CONCEPCIÓN_MENDIZÁBAL_MENDOZA_FASE_I__II___III__PO_2182891910192.3">
-			<name>CONCEPCIÓN MENDIZÁBAL MENDOZA FASE I, II &amp; III</name>
+			<name>CONCEPCIÓN MENDIZÁBAL MENDOZA FASE III</name>
+			<visibility>0</visibility>
 			<styleUrl>#stylemap_id6</styleUrl>
 			<ExtendedData>
 				<SchemaData schemaUrl="#CONCEPCIÓN_MENDIZÁBAL_MENDOZA_FASE_I__II___III__PO_2182891910192">
@@ -1767,7 +1771,8 @@
 			</MultiGeometry>
 		</Placemark>
 		<Placemark id="CONCEPCIÓN_MENDIZÁBAL_MENDOZA_FASE_I__II___III__PO_2182891910192.4">
-			<name>CONCEPCIÓN MENDIZÁBAL MENDOZA FASE I, II &amp; III</name>
+			<name>CONCEPCIÓN MENDIZÁBAL MENDOZA FASE III</name>
+			<visibility>0</visibility>
 			<styleUrl>#stylemap_id7</styleUrl>
 			<ExtendedData>
 				<SchemaData schemaUrl="#CONCEPCIÓN_MENDIZÁBAL_MENDOZA_FASE_I__II___III__PO_2182891910192">
@@ -1791,7 +1796,8 @@
 			</MultiGeometry>
 		</Placemark>
 		<Placemark id="CONCEPCIÓN_MENDIZÁBAL_MENDOZA_FASE_I__II___III__PO_2182891910192.5">
-			<name>CONCEPCIÓN MENDIZÁBAL MENDOZA FASE I, II &amp; III</name>
+			<name>CONCEPCIÓN MENDIZÁBAL MENDOZA FASE II</name>
+			<visibility>0</visibility>
 			<styleUrl>#stylemap_id8</styleUrl>
 			<ExtendedData>
 				<SchemaData schemaUrl="#CONCEPCIÓN_MENDIZÁBAL_MENDOZA_FASE_I__II___III__PO_2182891910192">
@@ -1815,7 +1821,8 @@
 			</MultiGeometry>
 		</Placemark>
 		<Placemark id="CONCEPCIÓN_MENDIZÁBAL_MENDOZA_FASE_I__II___III__PO_2182891910192.6">
-			<name>CONCEPCIÓN MENDIZÁBAL MENDOZA FASE I, II &amp; III</name>
+			<name>CONCEPCIÓN MENDIZÁBAL MENDOZA FASE II</name>
+			<visibility>0</visibility>
 			<styleUrl>#stylemap_id9</styleUrl>
 			<ExtendedData>
 				<SchemaData schemaUrl="#CONCEPCIÓN_MENDIZÁBAL_MENDOZA_FASE_I__II___III__PO_2182891910192">
@@ -1839,10 +1846,11 @@
 			</MultiGeometry>
 		</Placemark>
 		<Placemark id="CONCEPCIÓN_MENDIZÁBAL_MENDOZA_FASE_I__II___III__PO_2182891910192.7">
-			<name>CONCEPCIÓN MENDIZÁBAL MENDOZA FASE I, II &amp; III</name>
+			<name>CONCEPCIÓN MENDIZÁBAL MENDOZA FASE II</name>
+			<visibility>0</visibility>
 			<styleUrl>#stylemap_id10</styleUrl>
 			<ExtendedData>
-				<SchemaData schemaUrl="#CONCEPCIÓN_MENDIZÁBAL_MENDOZA_FASE_I__II___III__PO_2182891910192">
+				<SchemaData schemaUrl="AREAS_REFERENCIA.kml#CONCEPCIÓN_MENDIZÁBAL_MENDOZA_FASE_I__II___III__PO_2182891910192">
 					<SimpleData name="descriptio"><![CDATA[<div style="font-family:Arial, Helvetica, sans-serif; width:340px; color:#2a2622;">
 
   <div style="background:#335955; padding:10px 12px;">
@@ -1850,20 +1858,19 @@
     <s]]></SimpleData>
 				</SchemaData>
 			</ExtendedData>
-			<MultiGeometry>
-				<Polygon>
-					<outerBoundaryIs>
-						<LinearRing>
-							<coordinates>
-								-100.700519691236,28.4779690445767,0 -100.698390305708,28.4763461273748,0 -100.698054252047,28.47609052333,0 -100.697836045152,28.4759133854215,0 -100.701696287476,28.4718768916873,0 -100.704589937712,28.4738166026194,0 -100.703768534197,28.4746373481156,0 -100.703084276061,28.4753357983936,0 -100.700519691236,28.4779690445767,0 
-							</coordinates>
-						</LinearRing>
-					</outerBoundaryIs>
-				</Polygon>
-			</MultiGeometry>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-100.700519691236,28.4779690445767,0 -100.698390305708,28.4763461273748,0 -100.698054252047,28.47609052333,0 -100.697836045152,28.4759133854215,0 -100.701696287476,28.4718768916873,0 -100.704589937712,28.4738166026194,0 -100.703768534197,28.4746373481156,0 -100.703084276061,28.4753357983936,0 -100.700519691236,28.4779690445767,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
 		</Placemark>
 		<Placemark id="CONCEPCIÓN_MENDIZÁBAL_MENDOZA_FASE_I__II___III__PO_2182891910192.8">
-			<name>CONCEPCIÓN MENDIZÁBAL MENDOZA FASE I, II &amp; III</name>
+			<name>CONCEPCIÓN MENDIZÁBAL MENDOZA FASE I</name>
+			<visibility>0</visibility>
 			<styleUrl>#stylemap_id11</styleUrl>
 			<ExtendedData>
 				<SchemaData schemaUrl="#CONCEPCIÓN_MENDIZÁBAL_MENDOZA_FASE_I__II___III__PO_2182891910192">
@@ -1887,7 +1894,8 @@
 			</MultiGeometry>
 		</Placemark>
 		<Placemark id="CONCEPCIÓN_MENDIZÁBAL_MENDOZA_FASE_I__II___III__PO_2182891910192.9">
-			<name>CONCEPCIÓN MENDIZÁBAL MENDOZA FASE I, II &amp; III</name>
+			<name>CONCEPCIÓN MENDIZÁBAL MENDOZA FASE I</name>
+			<visibility>0</visibility>
 			<styleUrl>#stylemap_id12</styleUrl>
 			<ExtendedData>
 				<SchemaData schemaUrl="#CONCEPCIÓN_MENDIZÁBAL_MENDOZA_FASE_I__II___III__PO_2182891910192">
@@ -1911,7 +1919,8 @@
 			</MultiGeometry>
 		</Placemark>
 		<Placemark id="CONCEPCIÓN_MENDIZÁBAL_MENDOZA_FASE_I__II___III__PO_2182891910192.10">
-			<name>CONCEPCIÓN MENDIZÁBAL MENDOZA FASE I, II &amp; III</name>
+			<name>CONCEPCIÓN MENDIZÁBAL MENDOZA FASE I</name>
+			<visibility>0</visibility>
 			<styleUrl>#stylemap_id13</styleUrl>
 			<ExtendedData>
 				<SchemaData schemaUrl="#CONCEPCIÓN_MENDIZÁBAL_MENDOZA_FASE_I__II___III__PO_2182891910192">
@@ -1935,7 +1944,8 @@
 			</MultiGeometry>
 		</Placemark>
 		<Placemark id="CONCEPCIÓN_MENDIZÁBAL_MENDOZA_FASE_I__II___III__PO_2182891910192.11">
-			<name>CONCEPCIÓN MENDIZÁBAL MENDOZA FASE I, II &amp; III</name>
+			<name>CONCEPCIÓN MENDIZÁBAL MENDOZA FASE I</name>
+			<visibility>0</visibility>
 			<styleUrl>#stylemap_id14</styleUrl>
 			<ExtendedData>
 				<SchemaData schemaUrl="#CONCEPCIÓN_MENDIZÁBAL_MENDOZA_FASE_I__II___III__PO_2182891910192">
@@ -1959,7 +1969,8 @@
 			</MultiGeometry>
 		</Placemark>
 		<Placemark id="CONCEPCIÓN_MENDIZÁBAL_MENDOZA_FASE_I__II___III__PO_2182891910192.12">
-			<name>CONCEPCIÓN MENDIZÁBAL MENDOZA FASE I, II &amp; III</name>
+			<name>CONCEPCIÓN MENDIZÁBAL MENDOZA FASE I</name>
+			<visibility>0</visibility>
 			<styleUrl>#stylemap_id15</styleUrl>
 			<ExtendedData>
 				<SchemaData schemaUrl="#CONCEPCIÓN_MENDIZÁBAL_MENDOZA_FASE_I__II___III__PO_2182891910192">
@@ -1983,7 +1994,8 @@
 			</MultiGeometry>
 		</Placemark>
 		<Placemark id="CONCEPCIÓN_MENDIZÁBAL_MENDOZA_FASE_I__II___III__PO_2182891910192.13">
-			<name>CONCEPCIÓN MENDIZÁBAL MENDOZA FASE I, II &amp; III</name>
+			<name>CONCEPCIÓN MENDIZÁBAL MENDOZA FASE I</name>
+			<visibility>0</visibility>
 			<styleUrl>#stylemap_id16</styleUrl>
 			<ExtendedData>
 				<SchemaData schemaUrl="#CONCEPCIÓN_MENDIZÁBAL_MENDOZA_FASE_I__II___III__PO_2182891910192">
@@ -2007,7 +2019,8 @@
 			</MultiGeometry>
 		</Placemark>
 		<Placemark id="CONCEPCIÓN_MENDIZÁBAL_MENDOZA_FASE_I__II___III__PO_2182891910192.14">
-			<name>CONCEPCIÓN MENDIZÁBAL MENDOZA FASE I, II &amp; III</name>
+			<name>CONCEPCIÓN MENDIZÁBAL MENDOZA FASE I</name>
+			<visibility>0</visibility>
 			<styleUrl>#stylemap_id17</styleUrl>
 			<ExtendedData>
 				<SchemaData schemaUrl="#CONCEPCIÓN_MENDIZÁBAL_MENDOZA_FASE_I__II___III__PO_2182891910192">
@@ -2031,7 +2044,8 @@
 			</MultiGeometry>
 		</Placemark>
 		<Placemark id="CONCEPCIÓN_MENDIZÁBAL_MENDOZA_FASE_I__II___III__PO_2182891910192.15">
-			<name>CONCEPCIÓN MENDIZÁBAL MENDOZA FASE I, II &amp; III</name>
+			<name>CONCEPCIÓN MENDIZÁBAL MENDOZA FASE I</name>
+			<visibility>0</visibility>
 			<styleUrl>#stylemap_id18</styleUrl>
 			<ExtendedData>
 				<SchemaData schemaUrl="#CONCEPCIÓN_MENDIZÁBAL_MENDOZA_FASE_I__II___III__PO_2182891910192">
@@ -2055,7 +2069,8 @@
 			</MultiGeometry>
 		</Placemark>
 		<Placemark id="CONCEPCIÓN_MENDIZÁBAL_MENDOZA_FASE_I__II___III__PO_2182891910192.16">
-			<name>CONCEPCIÓN MENDIZÁBAL MENDOZA FASE I, II &amp; III</name>
+			<name>CONCEPCIÓN MENDIZÁBAL MENDOZA FASE I</name>
+			<visibility>0</visibility>
 			<styleUrl>#stylemap_id19</styleUrl>
 			<ExtendedData>
 				<SchemaData schemaUrl="#CONCEPCIÓN_MENDIZÁBAL_MENDOZA_FASE_I__II___III__PO_2182891910192">
@@ -2080,6 +2095,7 @@
 		</Placemark>
 		<Placemark id="ÁLVARO_OBREGÓN__POLÍGONOS__2182891909072.1">
 			<name>ÁLVARO OBREGÓN</name>
+			<visibility>0</visibility>
 			<styleUrl>#stylemap_id0</styleUrl>
 			<Polygon>
 				<outerBoundaryIs>
@@ -2093,6 +2109,7 @@
 		</Placemark>
 		<Placemark id="CENTRAL_FOTOVOLTAICA_QUASARA__POLÍGONOS__2182891909232.1">
 			<name>CENTRAL FOTOVOLTAICA QUASARA</name>
+			<visibility>0</visibility>
 			<styleUrl>#stylemap_id1</styleUrl>
 			<MultiGeometry>
 				<Polygon>
@@ -2108,6 +2125,7 @@
 		</Placemark>
 		<Placemark id="CFV_LAS_GARZAS___POLÍGONOS__2182891909712.1">
 			<name>CFV LAS GARZAS</name>
+			<visibility>0</visibility>
 			<styleUrl>#stylemap_id2</styleUrl>
 			<MultiGeometry>
 				<Polygon>
@@ -2123,6 +2141,7 @@
 		</Placemark>
 		<Placemark id="CIMARRÓN_SOLAR__POLÍGONOS__2182891909552.1">
 			<name>CIMARRÓN SOLAR</name>
+			<visibility>0</visibility>
 			<styleUrl>#stylemap_id3</styleUrl>
 			<MultiGeometry>
 				<Polygon>
@@ -2138,6 +2157,7 @@
 		</Placemark>
 		<Placemark id="DALIA_3_PV__CASTAMAY___POLÍGONOS__2182891910032.1">
 			<name>DALIA 3 PV (CASTAMAY)</name>
+			<visibility>0</visibility>
 			<styleUrl>#stylemap_id20</styleUrl>
 			<ExtendedData>
 				<SchemaData schemaUrl="#DALIA_3_PV__CASTAMAY___POLÍGONOS__2182891910032">
@@ -2162,6 +2182,7 @@
 		</Placemark>
 		<Placemark id="DELARO__2DA_RONDA____POLÍGONOS__2182891910512.1">
 			<name>DELARO (2DA RONDA)</name>
+			<visibility>0</visibility>
 			<styleUrl>#stylemap_id21</styleUrl>
 			<MultiGeometry>
 				<Polygon>
@@ -2177,6 +2198,7 @@
 		</Placemark>
 		<Placemark id="DON_HUMBERTO__POLÍGONOS__2182891910992.1">
 			<name>DON HUMBERTO</name>
+			<visibility>0</visibility>
 			<styleUrl>#stylemap_id22</styleUrl>
 			<MultiGeometry>
 				<Polygon>
@@ -2192,6 +2214,7 @@
 		</Placemark>
 		<Placemark id="DON_HUMBERTO__POLÍGONOS__2182891910992.2">
 			<name>DON HUMBERTO</name>
+			<visibility>0</visibility>
 			<styleUrl>#stylemap_id23</styleUrl>
 			<MultiGeometry>
 				<Polygon>
@@ -2207,6 +2230,7 @@
 		</Placemark>
 		<Placemark id="EL_GUAJILLO__POLÍGONOS__2182891910832.1">
 			<name>EL GUAJILLO</name>
+			<visibility>0</visibility>
 			<styleUrl>#stylemap_id24</styleUrl>
 			<MultiGeometry>
 				<Polygon>
@@ -2222,6 +2246,7 @@
 		</Placemark>
 		<Placemark id="EL_GUAJILLO__POLÍGONOS__2182891910832.2">
 			<name>EL GUAJILLO</name>
+			<visibility>0</visibility>
 			<styleUrl>#stylemap_id25</styleUrl>
 			<MultiGeometry>
 				<Polygon>
@@ -2237,6 +2262,7 @@
 		</Placemark>
 		<Placemark id="EL_PALMAR__POLÍGONOS__2182891911472.1">
 			<name>EL PALMAR</name>
+			<visibility>0</visibility>
 			<styleUrl>#stylemap_id26</styleUrl>
 			<MultiGeometry>
 				<Polygon>
@@ -2252,6 +2278,7 @@
 		</Placemark>
 		<Placemark id="ENERGEO_LOS_MOLINOS__POLÍGONOS__2182891911312.1">
 			<name>ENERGEO LOS MOLINOS</name>
+			<visibility>0</visibility>
 			<styleUrl>#stylemap_id27</styleUrl>
 			<MultiGeometry>
 				<Polygon>
@@ -2267,6 +2294,7 @@
 		</Placemark>
 		<Placemark id="ENERGEO_LOS_MOLINOS__POLÍGONOS__2182891911312.2">
 			<name>ENERGEO LOS MOLINOS</name>
+			<visibility>0</visibility>
 			<styleUrl>#stylemap_id28</styleUrl>
 			<MultiGeometry>
 				<Polygon>
@@ -2282,6 +2310,7 @@
 		</Placemark>
 		<Placemark id="ENERGÍA_LIMPIA_EL_MEZQUITE__POLÍGONOS__2182891911952.1">
 			<name>ENERGÍA LIMPIA EL MEZQUITE</name>
+			<visibility>0</visibility>
 			<styleUrl>#stylemap_id29</styleUrl>
 			<MultiGeometry>
 				<Polygon>
@@ -2297,6 +2326,7 @@
 		</Placemark>
 		<Placemark id="FRESNILLO__PV_ATOCHA___POLÍGONOS_2182891911792.1">
 			<name>FRESNILLO (PV ATOCHA)</name>
+			<visibility>0</visibility>
 			<styleUrl>#stylemap_id30</styleUrl>
 			<ExtendedData>
 				<SchemaData schemaUrl="#FRESNILLO__PV_ATOCHA___POLÍGONOS_2182891911792">
@@ -2321,6 +2351,7 @@
 		</Placemark>
 		<Placemark id="FRESNILLO__PV_ATOCHA___POLÍGONOS_2182891911792.2">
 			<name>FRESNILLO (PV ATOCHA)</name>
+			<visibility>0</visibility>
 			<styleUrl>#stylemap_id31</styleUrl>
 			<ExtendedData>
 				<SchemaData schemaUrl="#FRESNILLO__PV_ATOCHA___POLÍGONOS_2182891911792">
@@ -2345,6 +2376,7 @@
 		</Placemark>
 		<Placemark id="GLOBAL_SOLAR_3_CAMPECHE__POLÍGONOS__2182891912432.1">
 			<name>GLOBAL SOLAR 3 CAMPECHE</name>
+			<visibility>0</visibility>
 			<styleUrl>#stylemap_id32</styleUrl>
 			<MultiGeometry>
 				<Polygon>
@@ -2360,6 +2392,7 @@
 		</Placemark>
 		<Placemark id="LA_PASIÓN__POLÍGONOS__2182891912272.1">
 			<name>LA PASIÓN</name>
+			<visibility>0</visibility>
 			<styleUrl>#stylemap_id33</styleUrl>
 			<MultiGeometry>
 				<Polygon>
@@ -2375,6 +2408,7 @@
 		</Placemark>
 		<Placemark id="LA_POZA_SOLAR__POLÍGONOS__2182891912912.1">
 			<name>LA POZA SOLAR</name>
+			<visibility>0</visibility>
 			<styleUrl>#stylemap_id34</styleUrl>
 			<MultiGeometry>
 				<Polygon>
@@ -2390,6 +2424,7 @@
 		</Placemark>
 		<Placemark id="LOS_GIRASOLES__POLÍGONOS__2182891912752.1">
 			<name>LOS GIRASOLES</name>
+			<visibility>0</visibility>
 			<styleUrl>#stylemap_id35</styleUrl>
 			<MultiGeometry>
 				<Polygon>
@@ -2405,6 +2440,7 @@
 		</Placemark>
 		<Placemark id="MONTECRISTO__POLÍGONOS__2182891904112.1">
 			<name>MONTECRISTO</name>
+			<visibility>0</visibility>
 			<styleUrl>#stylemap_id36</styleUrl>
 			<ExtendedData>
 				<SchemaData schemaUrl="#MONTECRISTO__POLÍGONOS__2182891904112">
@@ -2425,6 +2461,7 @@
 		</Placemark>
 		<Placemark id="PARQUE_FV_ENERGÍAS_RENOVABLES_DE_MÉXICO_TRES__POLÍ_2182891913072.1">
 			<name>PARQUE FV ENERGÍAS RENOVABLES DE MÉXICO TRES</name>
+			<visibility>0</visibility>
 			<styleUrl>#stylemap_id37</styleUrl>
 			<ExtendedData>
 				<SchemaData schemaUrl="#PARQUE_FV_ENERGÍAS_RENOVABLES_DE_MÉXICO_TRES__POLÍ_2182891913072">
@@ -2445,6 +2482,7 @@
 		</Placemark>
 		<Placemark id="PARQUE_FV_ENERGÍAS_RENOVABLES_DE_TAMAULIPAS__POLÍG_2182891912592.1">
 			<name>PARQUE FV ENERGÍAS RENOVABLES DE TAMAULIPAS</name>
+			<visibility>0</visibility>
 			<styleUrl>#stylemap_id38</styleUrl>
 			<MultiGeometry>
 				<Polygon>
@@ -2460,6 +2498,7 @@
 		</Placemark>
 		<Placemark id="PARQUE_FV_ENERGÍAS_RENOVABLES_KIIN__TEKAX___POLÍGO_2182891912112.1">
 			<name>PARQUE FV ENERGÍAS RENOVABLES KIIN (TEKAX)</name>
+			<visibility>0</visibility>
 			<styleUrl>#stylemap_id39</styleUrl>
 			<MultiGeometry>
 				<Polygon>
@@ -2475,6 +2514,7 @@
 		</Placemark>
 		<Placemark id="PARQUE_FV_ENERGÍAS_RENOVABLES_KIIN__TEKAX___POLÍGO_2182891912112.2">
 			<name>PARQUE FV ENERGÍAS RENOVABLES KIIN (TEKAX)</name>
+			<visibility>0</visibility>
 			<styleUrl>#stylemap_id40</styleUrl>
 			<MultiGeometry>
 				<Polygon>
@@ -2490,6 +2530,7 @@
 		</Placemark>
 		<Placemark id="PARQUE_FV_ENERGÍAS_RENOVABLES_SAAS__PETO___POLÍGON_2182891911632.1">
 			<name>PARQUE FV ENERGÍAS RENOVABLES SAAS (PETO)</name>
+			<visibility>0</visibility>
 			<styleUrl>#stylemap_id41</styleUrl>
 			<MultiGeometry>
 				<Polygon>
@@ -2505,6 +2546,7 @@
 		</Placemark>
 		<Placemark id="PLANTA_SOLAR_CERRO_COLORADO__POLÍGONOS__2182891911152.1">
 			<name>PLANTA SOLAR CERRO COLORADO</name>
+			<visibility>0</visibility>
 			<styleUrl>#stylemap_id42</styleUrl>
 			<MultiGeometry>
 				<Polygon>
@@ -2520,6 +2562,7 @@
 		</Placemark>
 		<Placemark id="PLANTA_SOLAR_HAAB_KIIN__POLÍGONOS__2182891910672.1">
 			<name>PLANTA SOLAR HAAB KIIN</name>
+			<visibility>0</visibility>
 			<styleUrl>#stylemap_id43</styleUrl>
 			<MultiGeometry>
 				<Polygon>
@@ -2535,6 +2578,7 @@
 		</Placemark>
 		<Placemark id="PROYECTO_EÓLICO_REGIÓN_NORESTE__LA_NORIA____POLÍGO_2182891910352.1">
 			<name>PROYECTO EÓLICO REGIÓN NORESTE (LA NORIA)</name>
+			<visibility>0</visibility>
 			<styleUrl>#stylemap_id44</styleUrl>
 			<MultiGeometry>
 				<Polygon>
@@ -2550,6 +2594,7 @@
 		</Placemark>
 		<Placemark id="PROYECTO_EÓLICO_REGIÓN_NORESTE__LA_NORIA____POLÍGO_2182891910352.2">
 			<name>PROYECTO EÓLICO REGIÓN NORESTE (LA NORIA)</name>
+			<visibility>0</visibility>
 			<styleUrl>#stylemap_id45</styleUrl>
 			<MultiGeometry>
 				<Polygon>
@@ -2565,6 +2610,7 @@
 		</Placemark>
 		<Placemark id="PROYECTO_EÓLICO_REGIÓN_NORESTE__LA_NORIA____POLÍGO_2182891910352.3">
 			<name>PROYECTO EÓLICO REGIÓN NORESTE (LA NORIA)</name>
+			<visibility>0</visibility>
 			<styleUrl>#stylemap_id46</styleUrl>
 			<MultiGeometry>
 				<Polygon>
@@ -2580,6 +2626,7 @@
 		</Placemark>
 		<Placemark id="PROYECTO_EÓLICO_REGIÓN_NORESTE__LA_NORIA____POLÍGO_2182891910352.4">
 			<name>PROYECTO EÓLICO REGIÓN NORESTE (LA NORIA)</name>
+			<visibility>0</visibility>
 			<styleUrl>#stylemap_id47</styleUrl>
 			<MultiGeometry>
 				<Polygon>
@@ -2595,6 +2642,7 @@
 		</Placemark>
 		<Placemark id="PROYECTO_EÓLICO_REGIÓN_NORESTE__LA_NORIA____POLÍGO_2182891910352.5">
 			<name>PROYECTO EÓLICO REGIÓN NORESTE (LA NORIA)</name>
+			<visibility>0</visibility>
 			<styleUrl>#stylemap_id48</styleUrl>
 			<MultiGeometry>
 				<Polygon>
@@ -2610,6 +2658,7 @@
 		</Placemark>
 		<Placemark id="SAN_PEDRO_SOLAR__POLÍGONOS__2182891908912.1">
 			<name>SAN PEDRO SOLAR</name>
+			<visibility>0</visibility>
 			<styleUrl>#stylemap_id51</styleUrl>
 			<ExtendedData>
 				<SchemaData schemaUrl="#SAN_PEDRO_SOLAR__POLÍGONOS__2182891908912">
@@ -2634,6 +2683,7 @@
 		</Placemark>
 		<Placemark id="SAN_PEDRO_SOLAR__POLÍGONOS__2182891908912.2">
 			<name>SAN PEDRO SOLAR</name>
+			<visibility>0</visibility>
 			<styleUrl>#stylemap_id52</styleUrl>
 			<ExtendedData>
 				<SchemaData schemaUrl="#SAN_PEDRO_SOLAR__POLÍGONOS__2182891908912">
@@ -2658,6 +2708,7 @@
 		</Placemark>
 		<Placemark id="SAN_PEDRO_SOLAR__POLÍGONOS__2182891908912.3">
 			<name>SAN PEDRO SOLAR</name>
+			<visibility>0</visibility>
 			<styleUrl>#stylemap_id53</styleUrl>
 			<ExtendedData>
 				<SchemaData schemaUrl="AREAS_REFERENCIA.kml#SAN_PEDRO_SOLAR__POLÍGONOS__2182891908912">
@@ -2680,6 +2731,7 @@
 		</Placemark>
 		<Placemark id="SAN_PEDRO_SOLAR__POLÍGONOS__2182891908912.4">
 			<name>SAN PEDRO SOLAR</name>
+			<visibility>0</visibility>
 			<styleUrl>#stylemap_id54</styleUrl>
 			<ExtendedData>
 				<SchemaData schemaUrl="#SAN_PEDRO_SOLAR__POLÍGONOS__2182891908912">
@@ -2704,6 +2756,7 @@
 		</Placemark>
 		<Placemark id="PV_MOQUEL_SOLAR__POLÍGONOS__2182891909872.1">
 			<name>PV MOQUEL SOLAR</name>
+			<visibility>0</visibility>
 			<styleUrl>#stylemap_id49</styleUrl>
 			<MultiGeometry>
 				<Polygon>
@@ -2719,6 +2772,7 @@
 		</Placemark>
 		<Placemark id="PV_SANDOM_SOLAR__POLÍGONOS__2182891909392.1">
 			<name>PV SANDOM SOLAR</name>
+			<visibility>0</visibility>
 			<styleUrl>#stylemap_id50</styleUrl>
 			<MultiGeometry>
 				<Polygon>
@@ -2734,6 +2788,7 @@
 		</Placemark>
 		<Placemark id="SAN_SIMÓN_SOLAR__POLÍGONOS__2182891908592.1">
 			<name>SAN SIMÓN SOLAR</name>
+			<visibility>0</visibility>
 			<styleUrl>#stylemap_id55</styleUrl>
 			<MultiGeometry>
 				<Polygon>
@@ -2749,6 +2804,7 @@
 		</Placemark>
 		<Placemark id="SANTA_GERTRUDIS__POLÍGONOS__2182891908112.1">
 			<name>SANTA GERTRUDIS</name>
+			<visibility>0</visibility>
 			<styleUrl>#stylemap_id56</styleUrl>
 			<MultiGeometry>
 				<Polygon>
@@ -2764,6 +2820,7 @@
 		</Placemark>
 		<Placemark id="SELKA_POWER_PLANT_I__POLÍGONOS__2182891907632.1">
 			<name>SELKA POWER PLANT I</name>
+			<visibility>0</visibility>
 			<styleUrl>#stylemap_id57</styleUrl>
 			<ExtendedData>
 				<SchemaData schemaUrl="#SELKA_POWER_PLANT_I__POLÍGONOS__2182891907632">
@@ -2788,6 +2845,7 @@
 		</Placemark>
 		<Placemark id="SIERRA_MADRE__EL_CHORRO___2DA_RONDA____POLÍGONOS__2182891907152.1">
 			<name>SIERRA MADRE [EL CHORRO] (2DA RONDA)</name>
+			<visibility>0</visibility>
 			<styleUrl>#stylemap_id58</styleUrl>
 			<MultiGeometry>
 				<Polygon>
@@ -2803,6 +2861,7 @@
 		</Placemark>
 		<Placemark id="SOL_DE_SONORA___70__POLÍGONOS__2182891906832.1">
 			<name>SOL DE SONORA - 70</name>
+			<visibility>0</visibility>
 			<styleUrl>#stylemap_id59</styleUrl>
 			<MultiGeometry>
 				<Polygon>
@@ -2818,6 +2877,7 @@
 		</Placemark>
 		<Placemark id="SOLAR_ENERGÍA_TRES_HERMANOS__POLÍGONOS__2182891906352.1">
 			<name>SOLAR ENERGÍA TRES HERMANOS</name>
+			<visibility>0</visibility>
 			<styleUrl>#stylemap_id60</styleUrl>
 			<ExtendedData>
 				<SchemaData schemaUrl="#SOLAR_ENERGÍA_TRES_HERMANOS__POLÍGONOS__2182891906352">
@@ -2842,6 +2902,7 @@
 		</Placemark>
 		<Placemark id="SOLITARIO__POLÍGONOS__2182891906032.1">
 			<name>SOLITARIO</name>
+			<visibility>0</visibility>
 			<styleUrl>#stylemap_id61</styleUrl>
 			<MultiGeometry>
 				<Polygon>
@@ -2857,6 +2918,7 @@
 		</Placemark>
 		<Placemark id="SUNORA__POLÍGONOS__2182891905552.1">
 			<name>SUNORA</name>
+			<visibility>0</visibility>
 			<styleUrl>#stylemap_id62</styleUrl>
 			<MultiGeometry>
 				<Polygon>
@@ -2872,6 +2934,7 @@
 		</Placemark>
 		<Placemark id="TIKINMUL__POLÍGONOS__2182891905232.1">
 			<name>TIKINMUL</name>
+			<visibility>0</visibility>
 			<styleUrl>#stylemap_id63</styleUrl>
 			<MultiGeometry>
 				<Polygon>
@@ -2887,6 +2950,7 @@
 		</Placemark>
 		<Placemark id="VIENTO_DE_BELLA_UNIÓN__POLÍGONOS__2182891904592.1">
 			<name>VIENTO DE BELLA UNIÓN</name>
+			<visibility>0</visibility>
 			<styleUrl>#stylemap_id64</styleUrl>
 			<MultiGeometry>
 				<Polygon>

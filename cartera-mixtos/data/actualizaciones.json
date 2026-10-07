@@ -83,18 +83,6 @@
           }
         },
         {
-          "slug": "concepcion-mendizabal-mendoza-fase-i-ii-iii",
-          "nombre": "CONCEPCIÓN MENDIZÁBAL MENDOZA FASE I, II & III",
-          "antes": {
-            "parque": 74,
-            "grupo": "C"
-          },
-          "ahora": {
-            "parque": 81.5,
-            "grupo": "B"
-          }
-        },
-        {
           "slug": "global-solar-3-campeche",
           "nombre": "GLOBAL SOLAR 3 CAMPECHE",
           "antes": {
@@ -188,18 +176,6 @@
           "ahora": {
             "parque": 90,
             "grupo": "A"
-          }
-        },
-        {
-          "slug": "concepcion-mendizabal-mendoza-fase-i-ii-iii",
-          "nombre": "CONCEPCIÓN MENDIZÁBAL MENDOZA FASE I, II & III",
-          "antes": {
-            "parque": 81.5,
-            "grupo": "B"
-          },
-          "ahora": {
-            "parque": 83.5,
-            "grupo": "B"
           }
         }
       ]
