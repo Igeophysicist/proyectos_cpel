@@ -18,6 +18,8 @@ Sitio estático (HTML/CSS/JS sin build step) publicado en GitHub Pages.
 - `kml-parser.js`: parser KML mínimo (Point, LineString, Polygon).
 - `base-map.js`: mapa Leaflet con capas satelital/calles y aviso cuando
   no cargan las imágenes.
+- `regiones.js`: capa de referencia "Regiones" de ambos mapas (ver
+  abajo).
 - `dialog.js`: abre y cierra paneles emergentes (Escape, foco y
   `aria-hidden`).
 
@@ -104,6 +106,22 @@ revisa).
   Excel, su historial empieza de nuevo.
 - Para quitar un corte que quedó mal, se borra su bloque en
   `data/historial.json` (o pídeselo a quien mantenga el sitio).
+
+## Capa de referencia "Regiones" (mapas)
+
+Los mapas de Mixtos y Cartera CPEL tienen la casilla **Regiones** en el
+selector de capas (el de Satelital / Calles). Muestra los polígonos de
+regiones solo como referencia visual: cada región con su color, debajo
+de los proyectos, con su nombre al acercarse. Empieza apagada, cada
+dispositivo recuerda si la dejó encendida y el archivo se descarga solo
+al encenderla.
+
+- Original: `assets/capas/regiones.kmz` (~10 MB, demasiado para un
+  celular).
+- Lo que carga la página: `assets/capas/regiones.geojson` (< 1 MB),
+  generado con `npm run regiones` (simplifica los contornos a ~50 m).
+- Para cambiar las regiones: reemplaza el `.kmz`, corre
+  `npm run regiones` y sube los dos archivos.
 
 ## Esta semana (portal)
 

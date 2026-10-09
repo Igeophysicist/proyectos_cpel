@@ -236,6 +236,14 @@ a{color:inherit;}
 }
 .leaflet-tooltip.project-label::before{border-top-color:rgba(255,255,255,.95);}
 
+/* Nombres de la capa de referencia "Regiones" (shared/regiones.js) */
+.leaflet-tooltip.region-label{
+  background:transparent; border:0; box-shadow:none; padding:0;
+  color:#fff; font-size:11px; font-weight:700; font-style:italic; white-space:nowrap;
+  text-shadow:0 0 3px rgba(0,0,0,.9), 0 0 2px rgba(0,0,0,.9);
+}
+.leaflet-tooltip.region-label::before{display:none;}
+
 /* ---------- Lista de proyectos ---------- */
 .list-toolbar{display:flex; align-items:center; justify-content:space-between; gap:var(--space-2); margin-bottom:var(--space-3);}
 .list-toolbar__orden{display:flex; align-items:center; justify-content:flex-end; gap:6px; flex:1; min-width:0; font-size:12.5px; color:var(--ink-500); white-space:nowrap;}

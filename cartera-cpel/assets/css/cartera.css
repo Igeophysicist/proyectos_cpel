@@ -310,6 +310,14 @@ body{ padding-bottom: calc(var(--tabbar-h) + env(safe-area-inset-bottom, 0px)); 
 }
 .leaflet-tooltip.project-label::before{ border-top-color: rgba(255,255,255,.95); }
 
+/* Nombres de la capa de referencia "Regiones" (shared/regiones.js) */
+.leaflet-tooltip.region-label{
+  background:transparent; border:0; box-shadow:none; padding:0;
+  color:#fff; font-size:11px; font-weight:700; font-style:italic; white-space:nowrap;
+  text-shadow:0 0 3px rgba(0,0,0,.9), 0 0 2px rgba(0,0,0,.9);
+}
+.leaflet-tooltip.region-label::before{display:none;}
+
 /* ---------- Eventos importantes ---------- */
 .eventos-text{ font-size: 13px; color: var(--ink-700); line-height: 1.6; white-space: pre-line; text-align: justify;}
 

@@ -3,9 +3,11 @@
  * Crea un mapa Leaflet con la configuración común a ambos tableros:
  * zoom abajo a la derecha, dos capas base (satelital de Esri por
  * defecto y calles de OpenStreetMap) con su selector, y un aviso no
- * bloqueante cuando las imágenes del mapa no cargan.
+ * bloqueante cuando las imágenes del mapa no cargan. Si la página
+ * carga shared/regiones.js, el selector incluye además la capa de
+ * referencia "Regiones" (apagada al inicio).
  *
- * Expone: window.BaseMap.create(elementId, { tileWarningId }) -> L.Map
+ * Expone: window.BaseMap.create(elementId, { tileWarningId, etiquetasDesdeZoom }) -> L.Map
  * Cada tablero decide después la vista inicial (setView / fitBounds).
  */
 (function (global) {
@@ -25,10 +27,15 @@
 
     capaSatelital.addTo(map); // capa inicial
 
+    const capasExtra = {};
+    if (global.Regiones) {
+      capasExtra[global.Regiones.NOMBRE] = global.Regiones.capa(map, { etiquetasDesdeZoom: options.etiquetasDesdeZoom });
+    }
+
     L.control
       .layers(
         { Satelital: capaSatelital, Calles: capaCalles },
-        {},
+        capasExtra,
         { position: "bottomright", collapsed: true }
       )
       .addTo(map);

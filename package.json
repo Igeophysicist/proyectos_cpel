@@ -8,7 +8,8 @@
     "check": "npm run lint && npm test",
     "data": "node scripts/build-data.js",
     "data:check": "node scripts/build-data.js --check",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "regiones": "node scripts/regiones.js"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.0",
