@@ -2,6 +2,47 @@
 <kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
 <Document>
 	<name>AREAS_REFERENCIA.kml</name>
+	<atom:link rel="app" href="https://www.google.com/earth/about/versions/#earth-pro" title="Google Earth Pro 7.3.7.1327"></atom:link>
+	<StyleMap id="m_ylw-pushpin">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="s_ylw-pushpin">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="s_ylw-pushpin_hl">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
 	<Style id="style">
 		<LineStyle>
 			<color>ff0000ff</color>
@@ -75,14 +116,6 @@
 		</PolyStyle>
 	</Style>
 	<Style id="style105">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
-	<Style id="style106">
 		<LineStyle>
 			<color>ff0000ff</color>
 		</LineStyle>
@@ -770,14 +803,6 @@
 			<fill>0</fill>
 		</PolyStyle>
 	</Style>
-	<Style id="style69">
-		<LineStyle>
-			<color>ff0000ff</color>
-		</LineStyle>
-		<PolyStyle>
-			<fill>0</fill>
-		</PolyStyle>
-	</Style>
 	<Style id="style7">
 		<LineStyle>
 			<color>ff0000ff</color>
@@ -1312,16 +1337,6 @@
 			<styleUrl>#style72</styleUrl>
 		</Pair>
 	</StyleMap>
-	<StyleMap id="stylemap_id33">
-		<Pair>
-			<key>normal</key>
-			<styleUrl>#style106</styleUrl>
-		</Pair>
-		<Pair>
-			<key>highlight</key>
-			<styleUrl>#style69</styleUrl>
-		</Pair>
-	</StyleMap>
 	<StyleMap id="stylemap_id34">
 		<Pair>
 			<key>normal</key>
@@ -1694,10 +1709,8 @@
 	</StyleMap>
 	<Folder>
 		<name>POLIGONOS</name>
-		<visibility>0</visibility>
 		<Placemark id="CONCEPCIÓN_MENDIZÁBAL_MENDOZA_FASE_I__II___III__PO_2182891910192.1">
 			<name>CONCEPCIÓN MENDIZÁBAL MENDOZA FASE III</name>
-			<visibility>0</visibility>
 			<styleUrl>#stylemap_id4</styleUrl>
 			<ExtendedData>
 				<SchemaData schemaUrl="#CONCEPCIÓN_MENDIZÁBAL_MENDOZA_FASE_I__II___III__PO_2182891910192">
@@ -1722,7 +1735,6 @@
 		</Placemark>
 		<Placemark id="CONCEPCIÓN_MENDIZÁBAL_MENDOZA_FASE_I__II___III__PO_2182891910192.2">
 			<name>CONCEPCIÓN MENDIZÁBAL MENDOZA FASE III</name>
-			<visibility>0</visibility>
 			<styleUrl>#stylemap_id5</styleUrl>
 			<ExtendedData>
 				<SchemaData schemaUrl="#CONCEPCIÓN_MENDIZÁBAL_MENDOZA_FASE_I__II___III__PO_2182891910192">
@@ -1747,7 +1759,6 @@
 		</Placemark>
 		<Placemark id="CONCEPCIÓN_MENDIZÁBAL_MENDOZA_FASE_I__II___III__PO_2182891910192.3">
 			<name>CONCEPCIÓN MENDIZÁBAL MENDOZA FASE III</name>
-			<visibility>0</visibility>
 			<styleUrl>#stylemap_id6</styleUrl>
 			<ExtendedData>
 				<SchemaData schemaUrl="#CONCEPCIÓN_MENDIZÁBAL_MENDOZA_FASE_I__II___III__PO_2182891910192">
@@ -1772,7 +1783,6 @@
 		</Placemark>
 		<Placemark id="CONCEPCIÓN_MENDIZÁBAL_MENDOZA_FASE_I__II___III__PO_2182891910192.4">
 			<name>CONCEPCIÓN MENDIZÁBAL MENDOZA FASE III</name>
-			<visibility>0</visibility>
 			<styleUrl>#stylemap_id7</styleUrl>
 			<ExtendedData>
 				<SchemaData schemaUrl="#CONCEPCIÓN_MENDIZÁBAL_MENDOZA_FASE_I__II___III__PO_2182891910192">
@@ -1797,7 +1807,6 @@
 		</Placemark>
 		<Placemark id="CONCEPCIÓN_MENDIZÁBAL_MENDOZA_FASE_I__II___III__PO_2182891910192.5">
 			<name>CONCEPCIÓN MENDIZÁBAL MENDOZA FASE II</name>
-			<visibility>0</visibility>
 			<styleUrl>#stylemap_id8</styleUrl>
 			<ExtendedData>
 				<SchemaData schemaUrl="#CONCEPCIÓN_MENDIZÁBAL_MENDOZA_FASE_I__II___III__PO_2182891910192">
@@ -1822,7 +1831,6 @@
 		</Placemark>
 		<Placemark id="CONCEPCIÓN_MENDIZÁBAL_MENDOZA_FASE_I__II___III__PO_2182891910192.6">
 			<name>CONCEPCIÓN MENDIZÁBAL MENDOZA FASE II</name>
-			<visibility>0</visibility>
 			<styleUrl>#stylemap_id9</styleUrl>
 			<ExtendedData>
 				<SchemaData schemaUrl="#CONCEPCIÓN_MENDIZÁBAL_MENDOZA_FASE_I__II___III__PO_2182891910192">
@@ -1847,7 +1855,6 @@
 		</Placemark>
 		<Placemark id="CONCEPCIÓN_MENDIZÁBAL_MENDOZA_FASE_I__II___III__PO_2182891910192.7">
 			<name>CONCEPCIÓN MENDIZÁBAL MENDOZA FASE II</name>
-			<visibility>0</visibility>
 			<styleUrl>#stylemap_id10</styleUrl>
 			<ExtendedData>
 				<SchemaData schemaUrl="AREAS_REFERENCIA.kml#CONCEPCIÓN_MENDIZÁBAL_MENDOZA_FASE_I__II___III__PO_2182891910192">
@@ -1870,7 +1877,6 @@
 		</Placemark>
 		<Placemark id="CONCEPCIÓN_MENDIZÁBAL_MENDOZA_FASE_I__II___III__PO_2182891910192.8">
 			<name>CONCEPCIÓN MENDIZÁBAL MENDOZA FASE I</name>
-			<visibility>0</visibility>
 			<styleUrl>#stylemap_id11</styleUrl>
 			<ExtendedData>
 				<SchemaData schemaUrl="#CONCEPCIÓN_MENDIZÁBAL_MENDOZA_FASE_I__II___III__PO_2182891910192">
@@ -1895,7 +1901,6 @@
 		</Placemark>
 		<Placemark id="CONCEPCIÓN_MENDIZÁBAL_MENDOZA_FASE_I__II___III__PO_2182891910192.9">
 			<name>CONCEPCIÓN MENDIZÁBAL MENDOZA FASE I</name>
-			<visibility>0</visibility>
 			<styleUrl>#stylemap_id12</styleUrl>
 			<ExtendedData>
 				<SchemaData schemaUrl="#CONCEPCIÓN_MENDIZÁBAL_MENDOZA_FASE_I__II___III__PO_2182891910192">
@@ -1920,7 +1925,6 @@
 		</Placemark>
 		<Placemark id="CONCEPCIÓN_MENDIZÁBAL_MENDOZA_FASE_I__II___III__PO_2182891910192.10">
 			<name>CONCEPCIÓN MENDIZÁBAL MENDOZA FASE I</name>
-			<visibility>0</visibility>
 			<styleUrl>#stylemap_id13</styleUrl>
 			<ExtendedData>
 				<SchemaData schemaUrl="#CONCEPCIÓN_MENDIZÁBAL_MENDOZA_FASE_I__II___III__PO_2182891910192">
@@ -1945,7 +1949,6 @@
 		</Placemark>
 		<Placemark id="CONCEPCIÓN_MENDIZÁBAL_MENDOZA_FASE_I__II___III__PO_2182891910192.11">
 			<name>CONCEPCIÓN MENDIZÁBAL MENDOZA FASE I</name>
-			<visibility>0</visibility>
 			<styleUrl>#stylemap_id14</styleUrl>
 			<ExtendedData>
 				<SchemaData schemaUrl="#CONCEPCIÓN_MENDIZÁBAL_MENDOZA_FASE_I__II___III__PO_2182891910192">
@@ -1970,7 +1973,6 @@
 		</Placemark>
 		<Placemark id="CONCEPCIÓN_MENDIZÁBAL_MENDOZA_FASE_I__II___III__PO_2182891910192.12">
 			<name>CONCEPCIÓN MENDIZÁBAL MENDOZA FASE I</name>
-			<visibility>0</visibility>
 			<styleUrl>#stylemap_id15</styleUrl>
 			<ExtendedData>
 				<SchemaData schemaUrl="#CONCEPCIÓN_MENDIZÁBAL_MENDOZA_FASE_I__II___III__PO_2182891910192">
@@ -1995,7 +1997,6 @@
 		</Placemark>
 		<Placemark id="CONCEPCIÓN_MENDIZÁBAL_MENDOZA_FASE_I__II___III__PO_2182891910192.13">
 			<name>CONCEPCIÓN MENDIZÁBAL MENDOZA FASE I</name>
-			<visibility>0</visibility>
 			<styleUrl>#stylemap_id16</styleUrl>
 			<ExtendedData>
 				<SchemaData schemaUrl="#CONCEPCIÓN_MENDIZÁBAL_MENDOZA_FASE_I__II___III__PO_2182891910192">
@@ -2020,7 +2021,6 @@
 		</Placemark>
 		<Placemark id="CONCEPCIÓN_MENDIZÁBAL_MENDOZA_FASE_I__II___III__PO_2182891910192.14">
 			<name>CONCEPCIÓN MENDIZÁBAL MENDOZA FASE I</name>
-			<visibility>0</visibility>
 			<styleUrl>#stylemap_id17</styleUrl>
 			<ExtendedData>
 				<SchemaData schemaUrl="#CONCEPCIÓN_MENDIZÁBAL_MENDOZA_FASE_I__II___III__PO_2182891910192">
@@ -2045,7 +2045,6 @@
 		</Placemark>
 		<Placemark id="CONCEPCIÓN_MENDIZÁBAL_MENDOZA_FASE_I__II___III__PO_2182891910192.15">
 			<name>CONCEPCIÓN MENDIZÁBAL MENDOZA FASE I</name>
-			<visibility>0</visibility>
 			<styleUrl>#stylemap_id18</styleUrl>
 			<ExtendedData>
 				<SchemaData schemaUrl="#CONCEPCIÓN_MENDIZÁBAL_MENDOZA_FASE_I__II___III__PO_2182891910192">
@@ -2070,7 +2069,6 @@
 		</Placemark>
 		<Placemark id="CONCEPCIÓN_MENDIZÁBAL_MENDOZA_FASE_I__II___III__PO_2182891910192.16">
 			<name>CONCEPCIÓN MENDIZÁBAL MENDOZA FASE I</name>
-			<visibility>0</visibility>
 			<styleUrl>#stylemap_id19</styleUrl>
 			<ExtendedData>
 				<SchemaData schemaUrl="#CONCEPCIÓN_MENDIZÁBAL_MENDOZA_FASE_I__II___III__PO_2182891910192">
@@ -2095,7 +2093,6 @@
 		</Placemark>
 		<Placemark id="ÁLVARO_OBREGÓN__POLÍGONOS__2182891909072.1">
 			<name>ÁLVARO OBREGÓN</name>
-			<visibility>0</visibility>
 			<styleUrl>#stylemap_id0</styleUrl>
 			<Polygon>
 				<outerBoundaryIs>
@@ -2109,7 +2106,6 @@
 		</Placemark>
 		<Placemark id="CENTRAL_FOTOVOLTAICA_QUASARA__POLÍGONOS__2182891909232.1">
 			<name>CENTRAL FOTOVOLTAICA QUASARA</name>
-			<visibility>0</visibility>
 			<styleUrl>#stylemap_id1</styleUrl>
 			<MultiGeometry>
 				<Polygon>
@@ -2125,7 +2121,6 @@
 		</Placemark>
 		<Placemark id="CFV_LAS_GARZAS___POLÍGONOS__2182891909712.1">
 			<name>CFV LAS GARZAS</name>
-			<visibility>0</visibility>
 			<styleUrl>#stylemap_id2</styleUrl>
 			<MultiGeometry>
 				<Polygon>
@@ -2141,7 +2136,6 @@
 		</Placemark>
 		<Placemark id="CIMARRÓN_SOLAR__POLÍGONOS__2182891909552.1">
 			<name>CIMARRÓN SOLAR</name>
-			<visibility>0</visibility>
 			<styleUrl>#stylemap_id3</styleUrl>
 			<MultiGeometry>
 				<Polygon>
@@ -2157,7 +2151,6 @@
 		</Placemark>
 		<Placemark id="DALIA_3_PV__CASTAMAY___POLÍGONOS__2182891910032.1">
 			<name>DALIA 3 PV (CASTAMAY)</name>
-			<visibility>0</visibility>
 			<styleUrl>#stylemap_id20</styleUrl>
 			<ExtendedData>
 				<SchemaData schemaUrl="#DALIA_3_PV__CASTAMAY___POLÍGONOS__2182891910032">
@@ -2182,7 +2175,6 @@
 		</Placemark>
 		<Placemark id="DELARO__2DA_RONDA____POLÍGONOS__2182891910512.1">
 			<name>DELARO (2DA RONDA)</name>
-			<visibility>0</visibility>
 			<styleUrl>#stylemap_id21</styleUrl>
 			<MultiGeometry>
 				<Polygon>
@@ -2198,7 +2190,6 @@
 		</Placemark>
 		<Placemark id="DON_HUMBERTO__POLÍGONOS__2182891910992.1">
 			<name>DON HUMBERTO</name>
-			<visibility>0</visibility>
 			<styleUrl>#stylemap_id22</styleUrl>
 			<MultiGeometry>
 				<Polygon>
@@ -2214,7 +2205,6 @@
 		</Placemark>
 		<Placemark id="DON_HUMBERTO__POLÍGONOS__2182891910992.2">
 			<name>DON HUMBERTO</name>
-			<visibility>0</visibility>
 			<styleUrl>#stylemap_id23</styleUrl>
 			<MultiGeometry>
 				<Polygon>
@@ -2230,7 +2220,6 @@
 		</Placemark>
 		<Placemark id="EL_GUAJILLO__POLÍGONOS__2182891910832.1">
 			<name>EL GUAJILLO</name>
-			<visibility>0</visibility>
 			<styleUrl>#stylemap_id24</styleUrl>
 			<MultiGeometry>
 				<Polygon>
@@ -2246,7 +2235,6 @@
 		</Placemark>
 		<Placemark id="EL_GUAJILLO__POLÍGONOS__2182891910832.2">
 			<name>EL GUAJILLO</name>
-			<visibility>0</visibility>
 			<styleUrl>#stylemap_id25</styleUrl>
 			<MultiGeometry>
 				<Polygon>
@@ -2262,7 +2250,6 @@
 		</Placemark>
 		<Placemark id="EL_PALMAR__POLÍGONOS__2182891911472.1">
 			<name>EL PALMAR</name>
-			<visibility>0</visibility>
 			<styleUrl>#stylemap_id26</styleUrl>
 			<MultiGeometry>
 				<Polygon>
@@ -2278,7 +2265,6 @@
 		</Placemark>
 		<Placemark id="ENERGEO_LOS_MOLINOS__POLÍGONOS__2182891911312.1">
 			<name>ENERGEO LOS MOLINOS</name>
-			<visibility>0</visibility>
 			<styleUrl>#stylemap_id27</styleUrl>
 			<MultiGeometry>
 				<Polygon>
@@ -2294,7 +2280,6 @@
 		</Placemark>
 		<Placemark id="ENERGEO_LOS_MOLINOS__POLÍGONOS__2182891911312.2">
 			<name>ENERGEO LOS MOLINOS</name>
-			<visibility>0</visibility>
 			<styleUrl>#stylemap_id28</styleUrl>
 			<MultiGeometry>
 				<Polygon>
@@ -2310,7 +2295,6 @@
 		</Placemark>
 		<Placemark id="ENERGÍA_LIMPIA_EL_MEZQUITE__POLÍGONOS__2182891911952.1">
 			<name>ENERGÍA LIMPIA EL MEZQUITE</name>
-			<visibility>0</visibility>
 			<styleUrl>#stylemap_id29</styleUrl>
 			<MultiGeometry>
 				<Polygon>
@@ -2326,7 +2310,6 @@
 		</Placemark>
 		<Placemark id="FRESNILLO__PV_ATOCHA___POLÍGONOS_2182891911792.1">
 			<name>FRESNILLO (PV ATOCHA)</name>
-			<visibility>0</visibility>
 			<styleUrl>#stylemap_id30</styleUrl>
 			<ExtendedData>
 				<SchemaData schemaUrl="#FRESNILLO__PV_ATOCHA___POLÍGONOS_2182891911792">
@@ -2351,7 +2334,6 @@
 		</Placemark>
 		<Placemark id="FRESNILLO__PV_ATOCHA___POLÍGONOS_2182891911792.2">
 			<name>FRESNILLO (PV ATOCHA)</name>
-			<visibility>0</visibility>
 			<styleUrl>#stylemap_id31</styleUrl>
 			<ExtendedData>
 				<SchemaData schemaUrl="#FRESNILLO__PV_ATOCHA___POLÍGONOS_2182891911792">
@@ -2376,7 +2358,6 @@
 		</Placemark>
 		<Placemark id="GLOBAL_SOLAR_3_CAMPECHE__POLÍGONOS__2182891912432.1">
 			<name>GLOBAL SOLAR 3 CAMPECHE</name>
-			<visibility>0</visibility>
 			<styleUrl>#stylemap_id32</styleUrl>
 			<MultiGeometry>
 				<Polygon>
@@ -2390,25 +2371,8 @@
 				</Polygon>
 			</MultiGeometry>
 		</Placemark>
-		<Placemark id="LA_PASIÓN__POLÍGONOS__2182891912272.1">
-			<name>LA PASIÓN</name>
-			<visibility>0</visibility>
-			<styleUrl>#stylemap_id33</styleUrl>
-			<MultiGeometry>
-				<Polygon>
-					<outerBoundaryIs>
-						<LinearRing>
-							<coordinates>
-								-110.339155646562,24.0279132326689,0 -110.333754546465,24.0290835493051,0 -110.330418280551,24.0175337679147,0 -110.330572690256,24.013973867387,0 -110.339224954551,24.0140128562761,0 -110.339155646562,24.0279132326689,0 
-							</coordinates>
-						</LinearRing>
-					</outerBoundaryIs>
-				</Polygon>
-			</MultiGeometry>
-		</Placemark>
 		<Placemark id="LA_POZA_SOLAR__POLÍGONOS__2182891912912.1">
 			<name>LA POZA SOLAR</name>
-			<visibility>0</visibility>
 			<styleUrl>#stylemap_id34</styleUrl>
 			<MultiGeometry>
 				<Polygon>
@@ -2424,7 +2388,6 @@
 		</Placemark>
 		<Placemark id="LOS_GIRASOLES__POLÍGONOS__2182891912752.1">
 			<name>LOS GIRASOLES</name>
-			<visibility>0</visibility>
 			<styleUrl>#stylemap_id35</styleUrl>
 			<MultiGeometry>
 				<Polygon>
@@ -2440,7 +2403,6 @@
 		</Placemark>
 		<Placemark id="MONTECRISTO__POLÍGONOS__2182891904112.1">
 			<name>MONTECRISTO</name>
-			<visibility>0</visibility>
 			<styleUrl>#stylemap_id36</styleUrl>
 			<ExtendedData>
 				<SchemaData schemaUrl="#MONTECRISTO__POLÍGONOS__2182891904112">
@@ -2461,7 +2423,6 @@
 		</Placemark>
 		<Placemark id="PARQUE_FV_ENERGÍAS_RENOVABLES_DE_MÉXICO_TRES__POLÍ_2182891913072.1">
 			<name>PARQUE FV ENERGÍAS RENOVABLES DE MÉXICO TRES</name>
-			<visibility>0</visibility>
 			<styleUrl>#stylemap_id37</styleUrl>
 			<ExtendedData>
 				<SchemaData schemaUrl="#PARQUE_FV_ENERGÍAS_RENOVABLES_DE_MÉXICO_TRES__POLÍ_2182891913072">
@@ -2482,7 +2443,6 @@
 		</Placemark>
 		<Placemark id="PARQUE_FV_ENERGÍAS_RENOVABLES_DE_TAMAULIPAS__POLÍG_2182891912592.1">
 			<name>PARQUE FV ENERGÍAS RENOVABLES DE TAMAULIPAS</name>
-			<visibility>0</visibility>
 			<styleUrl>#stylemap_id38</styleUrl>
 			<MultiGeometry>
 				<Polygon>
@@ -2498,7 +2458,6 @@
 		</Placemark>
 		<Placemark id="PARQUE_FV_ENERGÍAS_RENOVABLES_KIIN__TEKAX___POLÍGO_2182891912112.1">
 			<name>PARQUE FV ENERGÍAS RENOVABLES KIIN (TEKAX)</name>
-			<visibility>0</visibility>
 			<styleUrl>#stylemap_id39</styleUrl>
 			<MultiGeometry>
 				<Polygon>
@@ -2514,7 +2473,6 @@
 		</Placemark>
 		<Placemark id="PARQUE_FV_ENERGÍAS_RENOVABLES_KIIN__TEKAX___POLÍGO_2182891912112.2">
 			<name>PARQUE FV ENERGÍAS RENOVABLES KIIN (TEKAX)</name>
-			<visibility>0</visibility>
 			<styleUrl>#stylemap_id40</styleUrl>
 			<MultiGeometry>
 				<Polygon>
@@ -2530,7 +2488,6 @@
 		</Placemark>
 		<Placemark id="PARQUE_FV_ENERGÍAS_RENOVABLES_SAAS__PETO___POLÍGON_2182891911632.1">
 			<name>PARQUE FV ENERGÍAS RENOVABLES SAAS (PETO)</name>
-			<visibility>0</visibility>
 			<styleUrl>#stylemap_id41</styleUrl>
 			<MultiGeometry>
 				<Polygon>
@@ -2546,7 +2503,6 @@
 		</Placemark>
 		<Placemark id="PLANTA_SOLAR_CERRO_COLORADO__POLÍGONOS__2182891911152.1">
 			<name>PLANTA SOLAR CERRO COLORADO</name>
-			<visibility>0</visibility>
 			<styleUrl>#stylemap_id42</styleUrl>
 			<MultiGeometry>
 				<Polygon>
@@ -2562,7 +2518,6 @@
 		</Placemark>
 		<Placemark id="PLANTA_SOLAR_HAAB_KIIN__POLÍGONOS__2182891910672.1">
 			<name>PLANTA SOLAR HAAB KIIN</name>
-			<visibility>0</visibility>
 			<styleUrl>#stylemap_id43</styleUrl>
 			<MultiGeometry>
 				<Polygon>
@@ -2578,7 +2533,6 @@
 		</Placemark>
 		<Placemark id="PROYECTO_EÓLICO_REGIÓN_NORESTE__LA_NORIA____POLÍGO_2182891910352.1">
 			<name>PROYECTO EÓLICO REGIÓN NORESTE (LA NORIA)</name>
-			<visibility>0</visibility>
 			<styleUrl>#stylemap_id44</styleUrl>
 			<MultiGeometry>
 				<Polygon>
@@ -2594,7 +2548,6 @@
 		</Placemark>
 		<Placemark id="PROYECTO_EÓLICO_REGIÓN_NORESTE__LA_NORIA____POLÍGO_2182891910352.2">
 			<name>PROYECTO EÓLICO REGIÓN NORESTE (LA NORIA)</name>
-			<visibility>0</visibility>
 			<styleUrl>#stylemap_id45</styleUrl>
 			<MultiGeometry>
 				<Polygon>
@@ -2610,7 +2563,6 @@
 		</Placemark>
 		<Placemark id="PROYECTO_EÓLICO_REGIÓN_NORESTE__LA_NORIA____POLÍGO_2182891910352.3">
 			<name>PROYECTO EÓLICO REGIÓN NORESTE (LA NORIA)</name>
-			<visibility>0</visibility>
 			<styleUrl>#stylemap_id46</styleUrl>
 			<MultiGeometry>
 				<Polygon>
@@ -2626,7 +2578,6 @@
 		</Placemark>
 		<Placemark id="PROYECTO_EÓLICO_REGIÓN_NORESTE__LA_NORIA____POLÍGO_2182891910352.4">
 			<name>PROYECTO EÓLICO REGIÓN NORESTE (LA NORIA)</name>
-			<visibility>0</visibility>
 			<styleUrl>#stylemap_id47</styleUrl>
 			<MultiGeometry>
 				<Polygon>
@@ -2642,7 +2593,6 @@
 		</Placemark>
 		<Placemark id="PROYECTO_EÓLICO_REGIÓN_NORESTE__LA_NORIA____POLÍGO_2182891910352.5">
 			<name>PROYECTO EÓLICO REGIÓN NORESTE (LA NORIA)</name>
-			<visibility>0</visibility>
 			<styleUrl>#stylemap_id48</styleUrl>
 			<MultiGeometry>
 				<Polygon>
@@ -2658,7 +2608,6 @@
 		</Placemark>
 		<Placemark id="SAN_PEDRO_SOLAR__POLÍGONOS__2182891908912.1">
 			<name>SAN PEDRO SOLAR</name>
-			<visibility>0</visibility>
 			<styleUrl>#stylemap_id51</styleUrl>
 			<ExtendedData>
 				<SchemaData schemaUrl="#SAN_PEDRO_SOLAR__POLÍGONOS__2182891908912">
@@ -2683,7 +2632,6 @@
 		</Placemark>
 		<Placemark id="SAN_PEDRO_SOLAR__POLÍGONOS__2182891908912.2">
 			<name>SAN PEDRO SOLAR</name>
-			<visibility>0</visibility>
 			<styleUrl>#stylemap_id52</styleUrl>
 			<ExtendedData>
 				<SchemaData schemaUrl="#SAN_PEDRO_SOLAR__POLÍGONOS__2182891908912">
@@ -2708,7 +2656,6 @@
 		</Placemark>
 		<Placemark id="SAN_PEDRO_SOLAR__POLÍGONOS__2182891908912.3">
 			<name>SAN PEDRO SOLAR</name>
-			<visibility>0</visibility>
 			<styleUrl>#stylemap_id53</styleUrl>
 			<ExtendedData>
 				<SchemaData schemaUrl="AREAS_REFERENCIA.kml#SAN_PEDRO_SOLAR__POLÍGONOS__2182891908912">
@@ -2731,7 +2678,6 @@
 		</Placemark>
 		<Placemark id="SAN_PEDRO_SOLAR__POLÍGONOS__2182891908912.4">
 			<name>SAN PEDRO SOLAR</name>
-			<visibility>0</visibility>
 			<styleUrl>#stylemap_id54</styleUrl>
 			<ExtendedData>
 				<SchemaData schemaUrl="#SAN_PEDRO_SOLAR__POLÍGONOS__2182891908912">
@@ -2756,7 +2702,6 @@
 		</Placemark>
 		<Placemark id="PV_MOQUEL_SOLAR__POLÍGONOS__2182891909872.1">
 			<name>PV MOQUEL SOLAR</name>
-			<visibility>0</visibility>
 			<styleUrl>#stylemap_id49</styleUrl>
 			<MultiGeometry>
 				<Polygon>
@@ -2772,7 +2717,6 @@
 		</Placemark>
 		<Placemark id="PV_SANDOM_SOLAR__POLÍGONOS__2182891909392.1">
 			<name>PV SANDOM SOLAR</name>
-			<visibility>0</visibility>
 			<styleUrl>#stylemap_id50</styleUrl>
 			<MultiGeometry>
 				<Polygon>
@@ -2788,7 +2732,6 @@
 		</Placemark>
 		<Placemark id="SAN_SIMÓN_SOLAR__POLÍGONOS__2182891908592.1">
 			<name>SAN SIMÓN SOLAR</name>
-			<visibility>0</visibility>
 			<styleUrl>#stylemap_id55</styleUrl>
 			<MultiGeometry>
 				<Polygon>
@@ -2804,7 +2747,6 @@
 		</Placemark>
 		<Placemark id="SANTA_GERTRUDIS__POLÍGONOS__2182891908112.1">
 			<name>SANTA GERTRUDIS</name>
-			<visibility>0</visibility>
 			<styleUrl>#stylemap_id56</styleUrl>
 			<MultiGeometry>
 				<Polygon>
@@ -2820,7 +2762,6 @@
 		</Placemark>
 		<Placemark id="SELKA_POWER_PLANT_I__POLÍGONOS__2182891907632.1">
 			<name>SELKA POWER PLANT I</name>
-			<visibility>0</visibility>
 			<styleUrl>#stylemap_id57</styleUrl>
 			<ExtendedData>
 				<SchemaData schemaUrl="#SELKA_POWER_PLANT_I__POLÍGONOS__2182891907632">
@@ -2845,7 +2786,6 @@
 		</Placemark>
 		<Placemark id="SIERRA_MADRE__EL_CHORRO___2DA_RONDA____POLÍGONOS__2182891907152.1">
 			<name>SIERRA MADRE [EL CHORRO] (2DA RONDA)</name>
-			<visibility>0</visibility>
 			<styleUrl>#stylemap_id58</styleUrl>
 			<MultiGeometry>
 				<Polygon>
@@ -2861,7 +2801,6 @@
 		</Placemark>
 		<Placemark id="SOL_DE_SONORA___70__POLÍGONOS__2182891906832.1">
 			<name>SOL DE SONORA - 70</name>
-			<visibility>0</visibility>
 			<styleUrl>#stylemap_id59</styleUrl>
 			<MultiGeometry>
 				<Polygon>
@@ -2877,7 +2816,6 @@
 		</Placemark>
 		<Placemark id="SOLAR_ENERGÍA_TRES_HERMANOS__POLÍGONOS__2182891906352.1">
 			<name>SOLAR ENERGÍA TRES HERMANOS</name>
-			<visibility>0</visibility>
 			<styleUrl>#stylemap_id60</styleUrl>
 			<ExtendedData>
 				<SchemaData schemaUrl="#SOLAR_ENERGÍA_TRES_HERMANOS__POLÍGONOS__2182891906352">
@@ -2902,7 +2840,6 @@
 		</Placemark>
 		<Placemark id="SOLITARIO__POLÍGONOS__2182891906032.1">
 			<name>SOLITARIO</name>
-			<visibility>0</visibility>
 			<styleUrl>#stylemap_id61</styleUrl>
 			<MultiGeometry>
 				<Polygon>
@@ -2918,7 +2855,6 @@
 		</Placemark>
 		<Placemark id="SUNORA__POLÍGONOS__2182891905552.1">
 			<name>SUNORA</name>
-			<visibility>0</visibility>
 			<styleUrl>#stylemap_id62</styleUrl>
 			<MultiGeometry>
 				<Polygon>
@@ -2934,7 +2870,6 @@
 		</Placemark>
 		<Placemark id="TIKINMUL__POLÍGONOS__2182891905232.1">
 			<name>TIKINMUL</name>
-			<visibility>0</visibility>
 			<styleUrl>#stylemap_id63</styleUrl>
 			<MultiGeometry>
 				<Polygon>
@@ -2950,7 +2885,6 @@
 		</Placemark>
 		<Placemark id="VIENTO_DE_BELLA_UNIÓN__POLÍGONOS__2182891904592.1">
 			<name>VIENTO DE BELLA UNIÓN</name>
-			<visibility>0</visibility>
 			<styleUrl>#stylemap_id64</styleUrl>
 			<MultiGeometry>
 				<Polygon>
@@ -2964,7 +2898,20 @@
 				</Polygon>
 			</MultiGeometry>
 		</Placemark>
-		<atom:link rel="app" href="https://www.google.com/earth/about/versions/#earth-pro" title="Google Earth Pro 7.3.7.1327"></atom:link>
+		<Placemark>
+			<name>LA PASIÓN</name>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Polygon>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-110.3388885418817,24.03456628759684,0 -110.3396603671907,24.03332595470405,0 -110.3386062832208,24.03141257982515,0 -110.3376162337991,24.02826654563552,0 -110.3428722299402,24.02709602830623,0 -110.3429695413726,24.02406873960222,0 -110.3460355090886,24.02341566993669,0 -110.3461047842091,24.0198750457713,0 -110.3438761645284,24.01431985347221,0 -110.3340195532604,24.01654697362175,0 -110.3339765010802,24.01366888719133,0 -110.3293009025767,24.01337119711078,0 -110.3307746454403,24.01669487613964,0 -110.3313351542902,24.0175079508692,0 -110.3334244732074,24.01723449506983,0 -110.3355596373773,24.01868198612094,0 -110.3386163009137,24.01879775241178,0 -110.3392572386931,24.02040991443794,0 -110.3388847163114,24.02126844960074,0 -110.3367790036929,24.02149845432049,0 -110.3352461253177,24.02180062214557,0 -110.3346511173234,24.02422487567096,0 -110.3353661317474,24.02474681681767,0 -110.3360472810593,24.02530163350385,0 -110.3378689301106,24.03174342891701,0 -110.3373922312756,24.03357573352677,0 -110.3388885418817,24.03456628759684,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
 	</Folder>
 </Document>
 </kml>
