@@ -495,8 +495,8 @@
     },
     {
       "semana": "2026-10-04",
-      "fecha": "2026-10-07",
-      "excel": "2026-10-07T20:54:34.000Z",
+      "fecha": "2026-10-09",
+      "excel": "2026-10-09T23:22:40.000Z",
       "proyectos": {
         "san-simon-solar": {
           "parque": 94,
@@ -529,15 +529,15 @@
           "grupo": "B"
         },
         "santa-gertrudis": {
-          "parque": 54,
+          "parque": 61.5,
           "lt": 25,
-          "global": 48.2,
+          "global": 54.2,
           "grupo": "C"
         },
         "el-guajillo": {
-          "parque": 54,
+          "parque": 61.5,
           "lt": 25,
-          "global": 48.2,
+          "global": 54.2,
           "grupo": "C"
         },
         "solar-energia-tres-hermanos": {
@@ -649,21 +649,21 @@
           "grupo": "C"
         },
         "energeo-los-molinos": {
-          "parque": 79.5,
-          "lt": 71,
-          "global": 77.8,
-          "grupo": "B"
+          "parque": 86,
+          "lt": 85,
+          "global": 85.8,
+          "grupo": "A"
         },
         "montecristo": {
-          "parque": 54,
-          "lt": 25,
-          "global": 48.2,
+          "parque": 59,
+          "lt": 26,
+          "global": 52.4,
           "grupo": "C"
         },
         "sol-de-sonora-70": {
-          "parque": 80.5,
-          "lt": 76,
-          "global": 79.6,
+          "parque": 82,
+          "lt": 82,
+          "global": 82,
           "grupo": "B"
         },
         "pv-moquel-solar": {
@@ -733,10 +733,10 @@
           "grupo": "C"
         },
         "delaro-2da-ronda": {
-          "parque": 79.5,
-          "lt": 75,
-          "global": 78.6,
-          "grupo": "B"
+          "parque": 87.5,
+          "lt": 87.5,
+          "global": 87.5,
+          "grupo": "A"
         }
       }
     }

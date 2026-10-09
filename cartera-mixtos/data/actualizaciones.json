@@ -311,6 +311,84 @@
           }
         }
       ]
+    },
+    {
+      "excel": "2026-10-09T23:22:40.000Z",
+      "fecha": "2026-10-09",
+      "cambios": [
+        {
+          "slug": "santa-gertrudis",
+          "nombre": "SANTA GERTRUDIS",
+          "antes": {
+            "parque": 54,
+            "grupo": "C"
+          },
+          "ahora": {
+            "parque": 61.5,
+            "grupo": "C"
+          }
+        },
+        {
+          "slug": "el-guajillo",
+          "nombre": "EL GUAJILLO",
+          "antes": {
+            "parque": 54,
+            "grupo": "C"
+          },
+          "ahora": {
+            "parque": 61.5,
+            "grupo": "C"
+          }
+        },
+        {
+          "slug": "energeo-los-molinos",
+          "nombre": "ENERGEO LOS MOLINOS",
+          "antes": {
+            "parque": 79.5,
+            "grupo": "B"
+          },
+          "ahora": {
+            "parque": 86,
+            "grupo": "A"
+          }
+        },
+        {
+          "slug": "montecristo",
+          "nombre": "MONTECRISTO",
+          "antes": {
+            "parque": 54,
+            "grupo": "C"
+          },
+          "ahora": {
+            "parque": 59,
+            "grupo": "C"
+          }
+        },
+        {
+          "slug": "sol-de-sonora-70",
+          "nombre": "SOL DE SONORA - 70",
+          "antes": {
+            "parque": 80.5,
+            "grupo": "B"
+          },
+          "ahora": {
+            "parque": 82,
+            "grupo": "B"
+          }
+        },
+        {
+          "slug": "delaro-2da-ronda",
+          "nombre": "DELARO (2DA RONDA)",
+          "antes": {
+            "parque": 79.5,
+            "grupo": "B"
+          },
+          "ahora": {
+            "parque": 87.5,
+            "grupo": "A"
+          }
+        }
+      ]
     }
   ]
 }

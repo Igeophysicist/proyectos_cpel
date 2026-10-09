@@ -1,6 +1,6 @@
 {
   "fuente": "DATOS_MIXTOS.xlsx",
-  "excelModificado": "2026-10-07T20:54:34.000Z",
+  "excelModificado": "2026-10-09T23:22:40.000Z",
   "proyectos": [
     {
       "NO.": "1",
@@ -18,7 +18,8 @@
       "CAPEX": "$93,931,093.40",
       "Parque": "94.00%",
       "LT": "93.00%",
-      "Global": "93.80%"
+      "Global": "93.80%",
+      "__EMPTY": ""
     },
     {
       "NO.": "2",
@@ -36,7 +37,8 @@
       "CAPEX": "$511,733,189.50",
       "Parque": "56.75%",
       "LT": "55.50%",
-      "Global": "56.50%"
+      "Global": "56.50%",
+      "__EMPTY": ""
     },
     {
       "NO.": "3",
@@ -54,7 +56,8 @@
       "CAPEX": "$268,429,155.50",
       "Parque": "73.00%",
       "LT": "55.50%",
-      "Global": "69.50%"
+      "Global": "69.50%",
+      "__EMPTY": ""
     },
     {
       "NO.": "4",
@@ -72,7 +75,8 @@
       "CAPEX": "$152,328,187.00",
       "Parque": "86.50%",
       "LT": "85.50%",
-      "Global": "86.30%"
+      "Global": "86.30%",
+      "__EMPTY": ""
     },
     {
       "NO.": "5",
@@ -90,7 +94,8 @@
       "CAPEX": "$60,278,577.80",
       "Parque": "76.00%",
       "LT": "51.50%",
-      "Global": "71.10%"
+      "Global": "71.10%",
+      "__EMPTY": ""
     },
     {
       "NO.": "6",
@@ -101,14 +106,15 @@
       "Ubicación": "Méndez, Tamaulipas",
       "Capacidad": "503 MW",
       "Almacenamiento (BESS)": "151 MW / 453 MWh",
-      "Horas de Almacenamiento": "3.26",
+      "Horas de Almacenamiento": "3.00",
       "Inicio de Inversión": "20 de diciembre de 2026",
       "Fin de Construcción": "01 de diciembre de 2028",
       "Fecha firma de contrato": "13 de julio de 2026",
       "CAPEX": "$800,323,710.20",
-      "Parque": "54.00%",
+      "Parque": "61.50%",
       "LT": "25.00%",
-      "Global": "48.20%"
+      "Global": "54.20%",
+      "__EMPTY": ""
     },
     {
       "NO.": "7",
@@ -119,14 +125,15 @@
       "Ubicación": "Reynosa, Tamaulipas",
       "Capacidad": "468 MW",
       "Almacenamiento (BESS)": "140.4 MW / 421.2 MWh",
-      "Horas de Almacenamiento": "3.26",
+      "Horas de Almacenamiento": "3.00",
       "Inicio de Inversión": "20 de diciembre de 2026",
       "Fin de Construcción": "01 de diciembre de 2028",
       "Fecha firma de contrato": "13 de julio de 2026",
       "CAPEX": "$764,221,135.00",
-      "Parque": "54.00%",
+      "Parque": "61.50%",
       "LT": "25.00%",
-      "Global": "48.20%"
+      "Global": "54.20%",
+      "__EMPTY": ""
     },
     {
       "NO.": "8",
@@ -144,7 +151,8 @@
       "CAPEX": "$78,344,588.00",
       "Parque": "73.50%",
       "LT": "33.00%",
-      "Global": "65.40%"
+      "Global": "65.40%",
+      "__EMPTY": ""
     },
     {
       "NO.": "9",
@@ -162,7 +170,8 @@
       "CAPEX": "$119,934,283.00",
       "Parque": "66.00%",
       "LT": "66.00%",
-      "Global": "66.00%"
+      "Global": "66.00%",
+      "__EMPTY": ""
     },
     {
       "NO.": "10",
@@ -180,7 +189,8 @@
       "CAPEX": "$18,768,631.30",
       "Parque": "83.00%",
       "LT": "71.50%",
-      "Global": "80.70%"
+      "Global": "80.70%",
+      "__EMPTY": ""
     },
     {
       "NO.": "11",
@@ -198,7 +208,8 @@
       "CAPEX": "$158,930,216.20",
       "Parque": "74.00%",
       "LT": "69.50%",
-      "Global": "73.10%"
+      "Global": "73.10%",
+      "__EMPTY": ""
     },
     {
       "NO.": "12",
@@ -216,7 +227,8 @@
       "CAPEX": "$420,828,931.20",
       "Parque": "78.00%",
       "LT": "64.00%",
-      "Global": "75.20%"
+      "Global": "75.20%",
+      "__EMPTY": ""
     },
     {
       "NO.": "13",
@@ -234,7 +246,8 @@
       "CAPEX": "$165,352,298.20",
       "Parque": "18.00%",
       "LT": "25.00%",
-      "Global": "19.40%"
+      "Global": "19.40%",
+      "__EMPTY": ""
     },
     {
       "NO.": "14",
@@ -252,7 +265,8 @@
       "CAPEX": "$211,345,624.30",
       "Parque": "28.00%",
       "LT": "16.00%",
-      "Global": "25.60%"
+      "Global": "25.60%",
+      "__EMPTY": ""
     },
     {
       "NO.": "15",
@@ -270,7 +284,8 @@
       "CAPEX": "$178,208,437.90",
       "Parque": "55.50%",
       "LT": "50.50%",
-      "Global": "54.50%"
+      "Global": "54.50%",
+      "__EMPTY": ""
     },
     {
       "NO.": "16",
@@ -288,7 +303,8 @@
       "CAPEX": "$98,459,271.30",
       "Parque": "54.00%",
       "LT": "52.00%",
-      "Global": "53.60%"
+      "Global": "53.60%",
+      "__EMPTY": ""
     },
     {
       "NO.": "17",
@@ -306,7 +322,8 @@
       "CAPEX": "$90,724,532.90",
       "Parque": "90.50%",
       "LT": "85.50%",
-      "Global": "89.50%"
+      "Global": "89.50%",
+      "__EMPTY": ""
     },
     {
       "NO.": "18",
@@ -324,7 +341,8 @@
       "CAPEX": "$563,085,927.00",
       "Parque": "68.50%",
       "LT": "62.50%",
-      "Global": "67.30%"
+      "Global": "67.30%",
+      "__EMPTY": ""
     },
     {
       "NO.": "19",
@@ -342,7 +360,8 @@
       "CAPEX": "$111,538,383.00",
       "Parque": "79.00%",
       "LT": "78.00%",
-      "Global": "78.80%"
+      "Global": "78.80%",
+      "__EMPTY": ""
     },
     {
       "NO.": "20",
@@ -360,7 +379,8 @@
       "CAPEX": "$107,893,266.00",
       "Parque": "69.00%",
       "LT": "59.00%",
-      "Global": "67.00%"
+      "Global": "67.00%",
+      "__EMPTY": ""
     },
     {
       "NO.": "21",
@@ -378,7 +398,8 @@
       "CAPEX": "$85,999,233.00",
       "Parque": "69.00%",
       "LT": "68.00%",
-      "Global": "68.80%"
+      "Global": "68.80%",
+      "__EMPTY": ""
     },
     {
       "NO.": "22",
@@ -396,7 +417,8 @@
       "CAPEX": "$112,351,023.00",
       "Parque": "90.00%",
       "LT": "89.00%",
-      "Global": "89.80%"
+      "Global": "89.80%",
+      "__EMPTY": ""
     },
     {
       "NO.": "23",
@@ -414,7 +436,8 @@
       "CAPEX": "$114,611,715.90",
       "Parque": "57.50%",
       "LT": "62.00%",
-      "Global": "58.40%"
+      "Global": "58.40%",
+      "__EMPTY": ""
     },
     {
       "NO.": "24",
@@ -432,7 +455,8 @@
       "CAPEX": "$98,564,828.00",
       "Parque": "72.00%",
       "LT": "42.50%",
-      "Global": "66.10%"
+      "Global": "66.10%",
+      "__EMPTY": ""
     },
     {
       "NO.": "25",
@@ -450,7 +474,8 @@
       "CAPEX": "$99,932,858.00",
       "Parque": "68.50%",
       "LT": "54.00%",
-      "Global": "65.60%"
+      "Global": "65.60%",
+      "__EMPTY": ""
     },
     {
       "NO.": "26",
@@ -461,14 +486,15 @@
       "Ubicación": "Matamoros, Tamaulipas",
       "Capacidad": "171 MW",
       "Almacenamiento (BESS)": "51.3 MW / 153.9 MWh",
-      "Horas de Almacenamiento": "3.26",
+      "Horas de Almacenamiento": "3.00",
       "Inicio de Inversión": "15 de diciembre de 2026",
       "Fin de Construcción": "01 de diciembre de 2028",
       "Fecha firma de contrato": "13 de julio de 2026",
       "CAPEX": "$318,435,063.00",
-      "Parque": "79.50%",
-      "LT": "71.00%",
-      "Global": "77.80%"
+      "Parque": "86.00%",
+      "LT": "85.00%",
+      "Global": "85.80%",
+      "__EMPTY": ""
     },
     {
       "NO.": "27",
@@ -479,14 +505,15 @@
       "Ubicación": "Méndez, Tamaulipas",
       "Capacidad": "510 MW",
       "Almacenamiento (BESS)": "153 MW / 459 MWh",
-      "Horas de Almacenamiento": "3.26",
+      "Horas de Almacenamiento": "3.00",
       "Inicio de Inversión": "20 de diciembre de 2026",
       "Fin de Construcción": "01 de diciembre de 2028",
       "Fecha firma de contrato": "13 de julio de 2026",
       "CAPEX": "$889,889,834.80",
-      "Parque": "54.00%",
-      "LT": "25.00%",
-      "Global": "48.20%"
+      "Parque": "59.00%",
+      "LT": "26.00%",
+      "Global": "52.40%",
+      "__EMPTY": ""
     },
     {
       "NO.": "28",
@@ -497,14 +524,15 @@
       "Ubicación": "Hermosillo, Sonora",
       "Capacidad": "70 MW",
       "Almacenamiento (BESS)": "22 MW / 66 MWh",
-      "Horas de Almacenamiento": "3.26",
+      "Horas de Almacenamiento": "3.00",
       "Inicio de Inversión": "01 de diciembre de 2026",
       "Fin de Construcción": "01 de abril de 2028",
       "Fecha firma de contrato": "13 de julio de 2026",
       "CAPEX": "$66,887,790.00",
-      "Parque": "80.50%",
-      "LT": "76.00%",
-      "Global": "79.60%"
+      "Parque": "82.00%",
+      "LT": "82.00%",
+      "Global": "82.00%",
+      "__EMPTY": ""
     },
     {
       "NO.": "29",
@@ -522,7 +550,8 @@
       "CAPEX": "$86,086,705.70",
       "Parque": "77.00%",
       "LT": "57.65%",
-      "Global": "73.13%"
+      "Global": "73.13%",
+      "__EMPTY": ""
     },
     {
       "NO.": "30",
@@ -540,7 +569,8 @@
       "CAPEX": "$147,073,578.90",
       "Parque": "86.50%",
       "LT": "37.00%",
-      "Global": "76.60%"
+      "Global": "76.60%",
+      "__EMPTY": ""
     },
     {
       "NO.": "31",
@@ -558,7 +588,8 @@
       "CAPEX": "$381,545,675.00",
       "Parque": "83.50%",
       "LT": "83.50%",
-      "Global": "83.50%"
+      "Global": "83.50%",
+      "__EMPTY": ""
     },
     {
       "NO.": "32",
@@ -576,7 +607,8 @@
       "CAPEX": "$198,977,154.00",
       "Parque": "83.50%",
       "LT": "83.50%",
-      "Global": "83.50%"
+      "Global": "83.50%",
+      "__EMPTY": ""
     },
     {
       "NO.": "33",
@@ -594,7 +626,8 @@
       "CAPEX": "$376,737,492.00",
       "Parque": "82.50%",
       "LT": "82.50%",
-      "Global": "82.50%"
+      "Global": "82.50%",
+      "__EMPTY": ""
     },
     {
       "NO.": "34",
@@ -609,10 +642,11 @@
       "Inicio de Inversión": "01 de enero de 2027",
       "Fin de Construcción": "01 de julio de 2028",
       "Fecha firma de contrato": "09 de julio de 2026",
-      "CAPEX": "SINDATO",
+      "CAPEX": "$161,106,071.70",
       "Parque": "81.50%",
       "LT": "69.00%",
-      "Global": "79.00%"
+      "Global": "79.00%",
+      "__EMPTY": ""
     },
     {
       "NO.": "35",
@@ -627,10 +661,11 @@
       "Inicio de Inversión": "31 de marzo de 2027",
       "Fin de Construcción": "03 de julio de 2029",
       "Fecha firma de contrato": "SIN DATO",
-      "CAPEX": "SINDATO",
+      "CAPEX": "SIN DATO",
       "Parque": "46.00%",
       "LT": "23.00%",
-      "Global": "41.40%"
+      "Global": "41.40%",
+      "__EMPTY": ""
     },
     {
       "NO.": "36",
@@ -645,10 +680,11 @@
       "Inicio de Inversión": "30 de abril de 2027",
       "Fin de Construcción": "30 de abril de 2029",
       "Fecha firma de contrato": "SIN DATO",
-      "CAPEX": "SINDATO",
+      "CAPEX": "SIN DATO",
       "Parque": "35.00%",
       "LT": "32.50%",
-      "Global": "34.50%"
+      "Global": "34.50%",
+      "__EMPTY": ""
     },
     {
       "NO.": "37",
@@ -663,10 +699,11 @@
       "Inicio de Inversión": "30 de abril de 2027",
       "Fin de Construcción": "30 de abril de 2029",
       "Fecha firma de contrato": "SIN DATO",
-      "CAPEX": "SINDATO",
+      "CAPEX": "SIN DATO",
       "Parque": "35.00%",
       "LT": "32.50%",
-      "Global": "34.50%"
+      "Global": "34.50%",
+      "__EMPTY": ""
     },
     {
       "NO.": "38",
@@ -681,28 +718,30 @@
       "Inicio de Inversión": "30 de abril de 2027",
       "Fin de Construcción": "30 de abril de 2029",
       "Fecha firma de contrato": "SIN DATO",
-      "CAPEX": "SINDATO",
+      "CAPEX": "SIN DATO",
       "Parque": "41.00%",
       "LT": "38.50%",
-      "Global": "40.50%"
+      "Global": "40.50%",
+      "__EMPTY": ""
     },
     {
       "NO.": "39",
       "TÍTULO 1": "SIERRA MADRE [EL CHORRO] (2DA RONDA)",
       "TÍTULO 2": "SIERRA MADRE [EL CHORRO] (2DA RONDA)",
-      "Socio": "Enhol & GEMEX",
+      "Socio": "Enhol & GEMEX [Terralia]",
       "Tecnología": "EO - Eólica",
       "Ubicación": "Villa de Casas y Güemes, Tamaulipas",
       "Capacidad": "580 MW (POR CONFIRMAR)",
       "Almacenamiento (BESS)": "174 MW / 522 MWh (POR CONFIRMAR)",
       "Horas de Almacenamiento": "3.00 (POR CONFIRMAR)",
       "Inicio de Inversión": "01 de enero de 2028",
-      "Fin de Construcción": "01 de enero de 2030",
+      "Fin de Construcción": "SIN DATO",
       "Fecha firma de contrato": "SIN DATO",
-      "CAPEX": "SINDATO",
+      "CAPEX": "SIN DATO",
       "Parque": "13.00%",
       "LT": "10.00%",
-      "Global": "12.40%"
+      "Global": "12.40%",
+      "__EMPTY": ""
     },
     {
       "NO.": "40",
@@ -712,15 +751,16 @@
       "Tecnología": "EO - Eólica",
       "Ubicación": "Reynosa, Tamaulipas",
       "Capacidad": "117 MW (POR CONFIRMAR)",
-      "Almacenamiento (BESS)": "35.1 MW / 105.2 MWh (POR CONFIRMAR)",
+      "Almacenamiento (BESS)": "35.1 MW / 105.3 MWh (POR CONFIRMAR)",
       "Horas de Almacenamiento": "3.00 (POR CONFIRMAR)",
       "Inicio de Inversión": "15 de diciembre de 2026",
-      "Fin de Construcción": "01 de diciembre de 2028",
+      "Fin de Construcción": "SIN DATO",
       "Fecha firma de contrato": "SIN DATO",
-      "CAPEX": "SINDATO",
-      "Parque": "79.50%",
-      "LT": "75.00%",
-      "Global": "78.60%"
+      "CAPEX": "SIN DATO",
+      "Parque": "87.50%",
+      "LT": "87.50%",
+      "Global": "87.50%",
+      "__EMPTY": ""
     }
   ]
 }
