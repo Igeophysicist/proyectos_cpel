@@ -13,6 +13,7 @@
   // al marcador. Súbelo (p. ej. 10) si quieres que los nombres aparezcan
   // solo con más zoom (menos abarrotado); bájalo (p. ej. 6) para que
   // aparezcan antes. Valores típicos de Leaflet: 0 (mundo) a ~18 (calle).
+  // También rige los nombres de la capa "Regiones" (shared/regiones.js).
   const LABEL_MIN_ZOOM = 8;
 
   // Caja que cubre aproximadamente todo México (suroeste y noreste).
@@ -39,7 +40,7 @@
   }
 
   function initMap(elementId) {
-    map = global.BaseMap.create(elementId, { tileWarningId: "map-tile-warning" }).fitBounds(MEXICO_BOUNDS);
+    map = global.BaseMap.create(elementId, { tileWarningId: "map-tile-warning", etiquetasDesdeZoom: LABEL_MIN_ZOOM }).fitBounds(MEXICO_BOUNDS);
     layerGroup = L.layerGroup().addTo(map);
 
     // Muestra/oculta los nombres de proyecto según el zoom actual cada
