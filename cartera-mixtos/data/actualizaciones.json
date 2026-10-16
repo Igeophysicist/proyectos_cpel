@@ -389,6 +389,48 @@
           }
         }
       ]
+    },
+    {
+      "excel": "2026-10-16T20:34:54.000Z",
+      "fecha": "2026-10-16",
+      "cambios": [
+        {
+          "slug": "concepcion-mendizabal-mendoza-fase-i",
+          "nombre": "CONCEPCIÓN MENDIZÁBAL MENDOZA FASE I",
+          "antes": {
+            "parque": 83.5,
+            "grupo": "B"
+          },
+          "ahora": {
+            "parque": 83.75,
+            "grupo": "B"
+          }
+        },
+        {
+          "slug": "concepcion-mendizabal-mendoza-fase-ii",
+          "nombre": "CONCEPCIÓN MENDIZÁBAL MENDOZA FASE II",
+          "antes": {
+            "parque": 83.5,
+            "grupo": "B"
+          },
+          "ahora": {
+            "parque": 83.75,
+            "grupo": "B"
+          }
+        },
+        {
+          "slug": "concepcion-mendizabal-mendoza-fase-iii",
+          "nombre": "CONCEPCIÓN MENDIZÁBAL MENDOZA FASE III",
+          "antes": {
+            "parque": 82.5,
+            "grupo": "B"
+          },
+          "ahora": {
+            "parque": 82.75,
+            "grupo": "B"
+          }
+        }
+      ]
     }
   ]
 }
