@@ -168,3 +168,22 @@ test("Prioritarios (columna PRIORI): el ranking solo los lista, por avance de Pa
     if (esPrio) await expect(tarjetas.nth(i)).toHaveClass(/pcard--prio/);
   }
 });
+
+test("Filtro de prioridad: Prioritario / No prioritario, también desde el enlace", async ({ page }) => {
+  const { mixtos } = datos();
+  const prio = mixtos.filter((r) => String(r.PRIORI).trim().toUpperCase() === "P").length;
+  await page.goto("/cartera-mixtos/");
+  await cargado(page);
+  await page.click("#filter-btn");
+  await page.locator("#filter-options .chip", { hasText: "★ Prioritario" }).click();
+  await page.click("#filter-apply");
+  await expect(page.locator("#project-list .pcard")).toHaveCount(prio);
+  await expect(page.locator("#project-list .pcard:not(.pcard--prio)")).toHaveCount(0);
+  await expect(page).toHaveURL(/prioridad=P(&|$)/);
+
+  await page.goto("/cartera-mixtos/?prioridad=NoP");
+  await cargado(page);
+  await expect(page.locator("#project-list .pcard")).toHaveCount(mixtos.length - prio);
+  await expect(page.locator("#project-list .pcard--prio")).toHaveCount(0);
+  await expect(page.locator("#ranking .ranking__name")).toHaveCount(0); // ningún prioritario entre los mostrados
+});

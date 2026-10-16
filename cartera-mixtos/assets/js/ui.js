@@ -194,19 +194,23 @@
   // ------------------------------------------------------------ Filtros
   function renderFilterOptions(elId, options, state, onToggle) {
     const LABELS = {
+      prioridad: "Prioridad",
       tecnologia: "Tecnología",
       estado: "Estado",
       socio: "Socio",
       grupo: "Grupo de atención",
       codAnio: "Año de COD",
     };
-    const GRUPO_LABELS = { A: "Grupo A", B: "Grupo B", C: "Grupo C" };
+    const VALUE_LABELS = {
+      grupo: { A: "Grupo A", B: "Grupo B", C: "Grupo C" },
+      prioridad: { P: "★ Prioritario", NoP: "No prioritario" },
+    };
 
     const groups = Object.keys(options).map((field) => {
       const chips = options[field]
         .map((value) => {
           const active = state[field].has(value);
-          const text = field === "grupo" ? GRUPO_LABELS[value] || value : value;
+          const text = (VALUE_LABELS[field] || {})[value] || value;
           return `<button class="chip ${active ? "is-active" : ""}" data-field="${esc(field)}" data-value="${esc(value)}" aria-pressed="${active}">${esc(text)}</button>`;
         })
         .join("");

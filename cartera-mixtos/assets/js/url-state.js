@@ -6,7 +6,7 @@
  *   ?proyecto=san-simon-solar          ficha de un proyecto abierta
  *   &q=solar                            texto de búsqueda
  *   &tecnologia=FV%20-%20Fotovoltaica   filtros (se repiten si hay varios)
- *   &estado=…&socio=…&grupo=A&cod=2029
+ *   &estado=…&socio=…&grupo=A&cod=2029&prioridad=P
  *   &tab=mapa                           pestaña (en celular)
  *   &orden=global                       orden del listado (ver orden.js)
  *
@@ -19,6 +19,7 @@
 (function (global) {
   // Campo de filtro en filters.js -> nombre del parámetro en la dirección.
   const FILTER_PARAMS = {
+    prioridad: "prioridad",
     tecnologia: "tecnologia",
     estado: "estado",
     socio: "socio",

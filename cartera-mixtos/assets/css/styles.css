@@ -469,7 +469,6 @@ html.dialogo-abierto{overflow:hidden;}
   :root{--tabbar-h:0px;}
   .tabbar{display:none;}
   .app{padding-bottom:0;}
-  .topbar__filterbtn{display:none;}
 
   .main{padding:var(--space-5); max-width:1500px;}
   .tabgroup{display:block !important; margin-bottom:var(--space-5);}
