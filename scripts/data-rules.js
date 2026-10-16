@@ -111,7 +111,7 @@ const MIXTOS_REQUIRED = [
   "TÍTULO 1", "TÍTULO 2", "Socio", "Tecnología", "Ubicación", "Capacidad",
   "Almacenamiento (BESS)", "Horas de Almacenamiento",
   "Inicio de Inversión", "Fin de Construcción", "Fecha firma de contrato",
-  "CAPEX", "Parque", "LT", "Global",
+  "CAPEX", "Parque", "LT", "Global", "PRIORI",
 ];
 // "Grupo de atención" ya no se lee del Excel: sale del avance de Parque
 // (cartera-mixtos/assets/js/grupo.js). Si la columna sigue, se ignora.
@@ -133,6 +133,9 @@ function validateMixtos({ headers, rows, placemarkNames = [] }) {
     names.push({ name, row });
     MIXTOS_PERCENTS.forEach((c) => checkPercent(r[c], `Fila ${row} (${name}), columna ${c}`, errors));
     MIXTOS_DATES.forEach((c) => checkDate(r[c], `Fila ${row} (${name}), columna ${c}`, errors));
+    if (headers.includes("PRIORI") && !/^(P|NoP)$/i.test(String(r["PRIORI"] ?? "").trim())) {
+      errors.push(`Fila ${row} (${name}), columna PRIORI: "${String(r["PRIORI"] ?? "").trim()}" no es válido; escribe "P" (prioritario) o "NoP".`);
+    }
     if (!geo.has(normalizeText(r["TÍTULO 2"])) && !geo.has(normalizeText(r["TÍTULO 1"]))) {
       warnings.push(`Fila ${row}: "${name}" no tiene ubicación en el KML; no aparecerá en el mapa.`);
     }

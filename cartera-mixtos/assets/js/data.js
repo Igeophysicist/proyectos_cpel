@@ -216,6 +216,9 @@
           globalPct: parsePercent(raw["Global"]),
           // Grupo de atención según el avance de Parque (ver grupo.js).
           grupo: global.AppGrupo.grupoPorParque(parsePercent(raw["Parque"])) || "",
+          // Columna PRIORI: "P" = prioritario (ranking del Resumen y tarjeta
+          // distinta), "NoP" = no prioritario.
+          prioritario: String(raw["PRIORI"] || "").trim().toUpperCase() === "P",
           geo: primary
             ? { type: primary.type, latlngs: primary.latlngs, folderPath: primary.folderPath }
             : null,

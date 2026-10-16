@@ -39,6 +39,10 @@
   --status-c:#b83b3b;
   --status-c-bg:#fbe9e9;
 
+  /* Proyectos prioritarios (columna PRIORI del Excel) */
+  --prio-bg:#eef5f3;
+  --prio-border:#b9d0ca;
+
   /* Escala */
   --radius-s:6px;
   --radius-m:10px;
@@ -262,6 +266,13 @@ a{color:inherit;}
   transition:transform .15s ease, box-shadow .15s ease;
 }
 .pcard:hover{transform:translateY(-2px); box-shadow:var(--shadow-float);}
+/* Prioritario: fondo verde azulado muy claro, franja a la izquierda y distintivo. */
+.pcard--prio{background:var(--prio-bg); border-color:var(--prio-border); box-shadow:inset 4px 0 0 var(--teal-700), var(--shadow-card);}
+.pcard--prio:hover{box-shadow:inset 4px 0 0 var(--teal-700), var(--shadow-float);}
+.prio-chip{
+  flex:none; font-size:11px; font-weight:700; border-radius:99px; padding:3px 10px;
+  white-space:nowrap; background:var(--teal-800); color:#fff;
+}
 /* Foco visible para quien navega con teclado (tarjetas y ranking son activables con Enter). */
 .ranking__btn:focus-visible, .map-popup__link:focus-visible{outline:2px solid var(--gold-500); outline-offset:2px;}
 /* El nombre del proyecto es el botón que abre la ficha; su ::after cubre
@@ -384,6 +395,7 @@ a{color:inherit;}
   background:rgba(255,255,255,.16); border:0; color:#fff; font-size:16px; cursor:pointer;
 }
 .detail__badge{display:inline-flex; font-size:11px; font-weight:700; border-radius:99px; padding:3px 10px; margin-bottom:8px;}
+.detail__badge--prio{background:#fff; color:var(--teal-800); margin-left:4px;}
 .detail__title{font-size:18px; font-weight:800; line-height:1.25; padding-right:34px;}
 .detail__sub{font-size:12.5px; color:#bcd0cb; margin-top:4px;}
 .detail__body{padding:var(--space-4); overflow-y:auto;}
@@ -457,7 +469,6 @@ html.dialogo-abierto{overflow:hidden;}
   :root{--tabbar-h:0px;}
   .tabbar{display:none;}
   .app{padding-bottom:0;}
-  .topbar__filterbtn{display:none;}
 
   .main{padding:var(--space-5); max-width:1500px;}
   .tabgroup{display:block !important; margin-bottom:var(--space-5);}

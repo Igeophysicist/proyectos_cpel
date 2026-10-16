@@ -59,12 +59,12 @@ test("Cartera: filas vacías se ignoran; Excel sin proyectos es error", () => {
 const MIXTOS_HEADERS = [
   "TÍTULO 1", "TÍTULO 2", "Socio", "Tecnología", "Ubicación", "Capacidad", "Almacenamiento (BESS)",
   "Horas de Almacenamiento", "Inicio de Inversión", "Fin de Construcción", "Fecha firma de contrato",
-  "CAPEX", "Parque", "LT", "Global",
+  "CAPEX", "Parque", "LT", "Global", "PRIORI",
 ];
 const mixRow = (extra = {}) => ({
   "TÍTULO 1": "SAN SIMÓN SOLAR", "TÍTULO 2": "SAN SIMÓN SOLAR", Parque: "94.00%", LT: "93.00%", Global: "93.80%",
   "Inicio de Inversión": "15 de noviembre de 2026", "Fin de Construcción": "01 de enero de 2029",
-  "Fecha firma de contrato": "SIN DATO", "Grupo de atención": "A", ...extra,
+  "Fecha firma de contrato": "SIN DATO", "Grupo de atención": "A", PRIORI: "P", ...extra,
 });
 const mixtos = (rows, names = ["SAN SIMON SOLAR"]) => validateMixtos({ headers: MIXTOS_HEADERS, rows, placemarkNames: names });
 
@@ -81,6 +81,14 @@ test("Mixtos: la columna Grupo de atención ya no se pide ni se revisa (el grupo
   assert.deepEqual(mixtos([mixRow({ "Grupo de atención": "D" })]).errors, []);
   const sinColumna = validateMixtos({ headers: MIXTOS_HEADERS, rows: [mixRow()], placemarkNames: ["SAN SIMON SOLAR"] });
   assert.deepEqual(sinColumna.errors, []);
+});
+
+test("Mixtos: PRIORI acepta P o NoP (sin importar mayúsculas); otro valor o vacío es error", () => {
+  assert.deepEqual(mixtos([mixRow({ PRIORI: "NoP" }), mixRow({ "TÍTULO 2": "OTRO", PRIORI: " p " })], ["SAN SIMON SOLAR", "OTRO"]).errors, []);
+  assert.match(mixtos([mixRow({ PRIORI: "Si" })]).errors[0], /PRIORI/);
+  assert.equal(mixtos([mixRow({ PRIORI: "" })]).errors.length, 1);
+  const sinColumna = validateMixtos({ headers: MIXTOS_HEADERS.filter((h) => h !== "PRIORI"), rows: [mixRow()], placemarkNames: ["SAN SIMON SOLAR"] });
+  assert.match(sinColumna.errors.join(" "), /PRIORI/);
 });
 
 test("Mixtos: se vincula al KML por TÍTULO 2 o, si no, por TÍTULO 1", () => {

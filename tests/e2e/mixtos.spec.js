@@ -147,3 +147,43 @@ test("Resumen: capacidad, CAPEX y avance promedio no cuentan los proyectos de 2d
   await expect(kpi("Avance global promedio")).toHaveText(`${promedio.toFixed(1)}%`);
   await expect(page.locator(".kpi", { hasText: "CAPEX total" })).toContainText("sin 2da ronda");
 });
+
+test("Prioritarios (columna PRIORI): el ranking solo los lista, por avance de Parque, y sus tarjetas se distinguen", async ({ page }) => {
+  const { mixtos } = datos();
+  const prio = mixtos.filter((r) => String(r.PRIORI).trim().toUpperCase() === "P");
+  expect(prio.length).toBeGreaterThan(0);
+  const orden = prio
+    .map((r) => ({ nombre: r.nombre, parque: parseFloat(String(r.Parque).replace("%", "")) }))
+    .filter((r) => Number.isFinite(r.parque))
+    .sort((a, b) => b.parque - a.parque);
+  await page.goto("/cartera-mixtos/");
+  await cargado(page);
+  await expect(page.locator("#ranking .ranking__name")).toHaveText(orden.map((r) => r.nombre));
+  await expect(page.locator("#ranking-hint")).toHaveText(`${orden.length} proyectos`);
+
+  const tarjetas = page.locator("#project-list .pcard");
+  for (let i = 0; i < mixtos.length; i++) {
+    const esPrio = prio.includes(mixtos[i]);
+    await expect(tarjetas.nth(i).locator(".prio-chip"), mixtos[i].nombre).toHaveCount(esPrio ? 1 : 0);
+    if (esPrio) await expect(tarjetas.nth(i)).toHaveClass(/pcard--prio/);
+  }
+});
+
+test("Filtro de prioridad: Prioritario / No prioritario, también desde el enlace", async ({ page }) => {
+  const { mixtos } = datos();
+  const prio = mixtos.filter((r) => String(r.PRIORI).trim().toUpperCase() === "P").length;
+  await page.goto("/cartera-mixtos/");
+  await cargado(page);
+  await page.click("#filter-btn");
+  await page.locator("#filter-options .chip", { hasText: "★ Prioritario" }).click();
+  await page.click("#filter-apply");
+  await expect(page.locator("#project-list .pcard")).toHaveCount(prio);
+  await expect(page.locator("#project-list .pcard:not(.pcard--prio)")).toHaveCount(0);
+  await expect(page).toHaveURL(/prioridad=P(&|$)/);
+
+  await page.goto("/cartera-mixtos/?prioridad=NoP");
+  await cargado(page);
+  await expect(page.locator("#project-list .pcard")).toHaveCount(mixtos.length - prio);
+  await expect(page.locator("#project-list .pcard--prio")).toHaveCount(0);
+  await expect(page.locator("#ranking .ranking__name")).toHaveCount(0); // ningún prioritario entre los mostrados
+});

@@ -9,6 +9,8 @@
 
   const state = {
     search: "",
+    // "P" (prioritario) o "NoP", de la columna PRIORI del Excel.
+    prioridad: new Set(),
     tecnologia: new Set(),
     grupo: new Set(),
     estado: new Set(),
@@ -29,6 +31,7 @@
   /** Determina qué grupos de filtro mostrar según los datos reales disponibles */
   function buildFilterOptions(projects) {
     const options = {};
+    const prioridad = ["P", "NoP"].filter((v) => projects.some((p) => (p.prioritario ? "P" : "NoP") === v));
     const tecnologia = uniqueValues(projects, "tecnologia");
     const estado = uniqueValues(projects, "estado");
     const socio = uniqueValues(projects, "socio");
@@ -36,6 +39,7 @@
     // Orden cronológico (no alfabético) para los años de COD.
     const codAnio = uniqueValues(projects, "codAnio").sort();
 
+    if (prioridad.length > 1) options.prioridad = prioridad;
     if (tecnologia.length > 1) options.tecnologia = tecnologia;
     if (estado.length > 1) options.estado = estado;
     if (socio.length > 1) options.socio = socio;
@@ -58,6 +62,7 @@
 
   function clearAll() {
     state.search = "";
+    state.prioridad.clear();
     state.tecnologia.clear();
     state.grupo.clear();
     state.estado.clear();
@@ -67,6 +72,7 @@
 
   function activeCount() {
     return (
+      state.prioridad.size +
       state.tecnologia.size +
       state.grupo.size +
       state.estado.size +
@@ -87,6 +93,7 @@
   function apply(projects) {
     return projects.filter((p) => {
       if (!matchesSearch(p)) return false;
+      if (state.prioridad.size && !state.prioridad.has(p.prioritario ? "P" : "NoP")) return false;
       if (state.tecnologia.size && !state.tecnologia.has(p.tecnologia)) return false;
       if (state.grupo.size && !state.grupo.has(p.grupo)) return false;
       if (state.estado.size && !state.estado.has(p.estado)) return false;
