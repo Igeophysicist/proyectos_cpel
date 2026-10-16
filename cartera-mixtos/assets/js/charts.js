@@ -8,10 +8,6 @@
   const GRUPO_INFO = global.AppData.GRUPO_INFO;
   const { esc } = global.TextUtils;
 
-  // Cuántos proyectos muestra el ranking de avance (el encabezado de la
-  // sección se actualiza solo con este número).
-  const RANKING_TOP_N = 13;
-
   // Registra el plugin que dibuja los valores directamente sobre el
   // gráfico (rueda y barras), para que sean visibles siempre y no solo
   // al tocar/hacer clic. Si el script del CDN no cargó por algún motivo,
@@ -116,16 +112,21 @@
     });
   }
 
+  /**
+   * Ranking de los proyectos prioritarios (columna PRIORI = "P") de los
+   * filtrados, de mayor a menor avance de Parque. Devuelve cuántos son.
+   */
   function renderRanking(listId, projects, onSelect) {
     const list = document.getElementById(listId);
-    const top = [...projects]
-      .filter((p) => p.parquePct !== null)
-      .sort((a, b) => b.parquePct - a.parquePct)
-      .slice(0, RANKING_TOP_N);
+    const top = projects
+      .filter((p) => p.prioritario && p.parquePct !== null)
+      .sort((a, b) => b.parquePct - a.parquePct);
 
     if (!top.length) {
-      list.innerHTML = `<li style="color:var(--ink-500); font-size:13px;">Sin datos de avance disponibles.</li>`;
-      return;
+      list.innerHTML = `<li style="color:var(--ink-500); font-size:13px;">Ningún proyecto prioritario con avance${
+        projects.some((p) => p.prioritario) ? "" : " entre los proyectos mostrados"
+      }.</li>`;
+      return 0;
     }
 
     list.innerHTML = top
@@ -147,7 +148,8 @@
     list.querySelectorAll(".ranking__btn").forEach((btn) => {
       btn.addEventListener("click", () => onSelect(btn.getAttribute("data-id")));
     });
+    return top.length;
   }
 
-  global.AppCharts = { renderGrupoChart, renderTecnologiaChart, renderRanking, RANKING_TOP_N };
+  global.AppCharts = { renderGrupoChart, renderTecnologiaChart, renderRanking };
 })(window);

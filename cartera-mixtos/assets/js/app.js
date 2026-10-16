@@ -49,7 +49,8 @@
     window.AppUI.renderKPIs("kpis", filtered);
     window.AppCharts.renderGrupoChart("chart-grupo", filtered);
     window.AppCharts.renderTecnologiaChart("chart-tecnologia", filtered);
-    window.AppCharts.renderRanking("ranking", filtered, openDetail);
+    const prioritarios = window.AppCharts.renderRanking("ranking", filtered, openDetail);
+    els.rankingHint.textContent = `${prioritarios} proyecto${prioritarios === 1 ? "" : "s"}`;
     window.AppUI.renderProjectList("project-list", "list-count", window.AppOrden.ordenar(filtered, orden), openDetail, openEvolucion);
     window.AppMap.renderProjects(filtered);
 
@@ -224,7 +225,6 @@
 
   async function bootstrap() {
     try {
-      els.rankingHint.textContent = `Top ${window.AppCharts.RANKING_TOP_N}`;
       window.AppMap.initMap("map");
       wireEvents();
 

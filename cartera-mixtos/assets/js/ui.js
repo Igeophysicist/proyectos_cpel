@@ -80,16 +80,19 @@
   const EVO_ICON = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 3v18h18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M7 15l4-4 3 3 6-7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
   const tieneEvolucion = (p) => global.AppEvolucion && global.AppEvolucion.tieneDatos(p);
 
+  const PRIO_CHIP = `<span class="prio-chip">★ Prioritario</span>`;
+
   function projectCardHtml(p) {
     const grupoInfo = GRUPO_INFO[p.grupo];
     return `
-      <div class="pcard ${p.geo ? "" : "pcard--nogeo"}" data-id="${esc(p.id)}">
+      <div class="pcard${p.prioritario ? " pcard--prio" : ""}${p.geo ? "" : " pcard--nogeo"}" data-id="${esc(p.id)}">
         <div class="pcard__top">
           <div>
             <h2 class="pcard__title"><button type="button" class="pcard__open" data-id="${esc(p.id)}">${esc(p.nombre)}</button></h2>
             <div class="pcard__sub">${esc([p.socio, p.ubicacion].filter(Boolean).join(" · "))}</div>
           </div>
           <div class="pcard__side">
+            ${p.prioritario ? PRIO_CHIP : ""}
             ${grupoInfo ? `<span class="badge badge--${grupoInfo.css}">${grupoInfo.label}</span>` : ""}
             ${tieneEvolucion(p) ? `<button type="button" class="evo-btn" data-evolucion="${esc(p.id)}" aria-label="Evolución por corte de ${esc(p.nombre)}">${EVO_ICON}Evolución</button>` : ""}
           </div>
@@ -172,6 +175,7 @@
       <div class="detail__head">
         <button class="detail__close" data-close-detail aria-label="Cerrar">&times;</button>
         ${grupoInfo ? `<span class="detail__badge badge--${grupoInfo.css}">${grupoInfo.label}</span>` : ""}
+        ${p.prioritario ? `<span class="detail__badge detail__badge--prio">★ Prioritario</span>` : ""}
         <div class="detail__title" id="detail-title">${esc(p.nombre)}</div>
         <div class="detail__sub">${esc([p.socio, p.ubicacion].filter(Boolean).join(" · "))}</div>
       </div>
