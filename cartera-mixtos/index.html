@@ -60,20 +60,22 @@
           <ul class="ranking" id="ranking"></ul>
         </section>
         
-        <div class="section-grid">
-          <section class="section">
-            <div class="section__head">
-              <h2 class="section__title">Distribución por grupo de atención</h2>
+        <!-- Una sola tarjeta: grupo de atención a la izquierda, tecnología a la derecha -->
+        <section class="section">
+          <div class="section__head">
+            <h2 class="section__title">Distribución de proyectos</h2>
+          </div>
+          <div class="chart-pair">
+            <div class="chart-pair__item">
+              <h3 class="chart-pair__title">Por grupo de atención</h3>
+              <div class="chart-wrap"><canvas id="chart-grupo"></canvas></div>
             </div>
-            <div class="chart-wrap"><canvas id="chart-grupo"></canvas></div>
-          </section>
-          <section class="section">
-            <div class="section__head">
-              <h2 class="section__title">Proyectos por tecnología</h2>
+            <div class="chart-pair__item">
+              <h3 class="chart-pair__title">Por tecnología</h3>
+              <div class="chart-wrap"><canvas id="chart-tecnologia"></canvas></div>
             </div>
-            <div class="chart-wrap"><canvas id="chart-tecnologia"></canvas></div>
-          </section>
-        </div>
+          </div>
+        </section>
 
         
         <div class="kpis" id="kpis"></div>

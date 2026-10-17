@@ -168,6 +168,11 @@ a{color:inherit;}
 .section__title{font-size:14.5px; font-weight:700; color:var(--teal-900);}
 .section__hint{font-size:12px; color:var(--ink-500);}
 .chart-wrap{position:relative; height:220px;}
+/* Dos gráficas en una tarjeta, lado a lado (también en celular). */
+.chart-pair{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:var(--space-3);}
+.chart-pair__item + .chart-pair__item{border-left:1px solid var(--border); padding-left:var(--space-3);}
+.chart-pair__title{font-size:12.5px; font-weight:700; color:var(--ink-700); text-align:center; margin:0 0 var(--space-2);}
+.chart-pair .chart-wrap{height:200px;}
 .chart-wrap.tall{height:270px;}
 
 /* Ranking */
