@@ -175,6 +175,7 @@
 
   function switchTab(name) {
     currentTab = name;
+    document.body.dataset.tab = name; // en celular, la pestaña Mapa oculta el pie de página (styles.css)
     document.querySelectorAll(".tabgroup").forEach((el) => el.classList.remove("is-active"));
     document.getElementById("group-" + name).classList.add("is-active");
     els.tabbarBtns.forEach((btn) => btn.classList.toggle("is-active", btn.dataset.tab === name));

@@ -475,6 +475,20 @@ html.dialogo-abierto{overflow:hidden;}
   font-size:12.5px; font-weight:700; cursor:pointer; flex:none;
 }
 .update-banner.is-hidden{ display:none; }
+/* ---------- Logos institucionales (pie de página) ---------- */
+.brand-footer{
+  display:flex; align-items:center; justify-content:center; gap:18px;
+  padding:var(--space-5) var(--space-4) var(--space-4); opacity:.85;
+}
+.brand-footer__logo{width:auto; display:block;}
+.brand-footer__logo--cfe{height:30px;}
+.brand-footer__logo--cpel{height:24px;}
+/* Celular, pestaña Mapa: el mapa ocupa la pantalla y los logos ya van
+   sobre la leyenda (en computadora se ven todas las secciones a la vez). */
+@media (max-width:899px){
+  body[data-tab="mapa"] .brand-footer{display:none;}
+}
+
 /* ---------- Escritorio ---------- */
 /* En escritorio no hay pestañas: las tres secciones se muestran en una
    sola página de scroll continuo (KPIs → analítica → mapa → listado). */

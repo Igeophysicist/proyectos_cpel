@@ -101,3 +101,14 @@ test("Cartera: el contenido de la ventana se desplaza y, ya arriba, deslizar hac
   await deslizarParaCerrar(page, "#sheetFicha .sheet__head");
   await expect(page.locator("#sheetFicha")).not.toHaveClass(/is-open/);
 });
+
+test("Mixtos: los logos van al final de Proyectos y Resumen, y en Mapa solo sobre la leyenda", async ({ page }) => {
+  await page.goto("/cartera-mixtos/");
+  await mixtosCargado(page);
+  await expect(page.locator(".brand-footer")).toBeVisible();
+  await page.click("[data-tab=mapa]");
+  await expect(page.locator(".brand-footer")).toBeHidden(); // no queda encima del mapa
+  await expect(page.locator(".map-logos")).toBeVisible();
+  await page.click("[data-tab=resumen]");
+  await expect(page.locator(".brand-footer")).toBeVisible();
+});
