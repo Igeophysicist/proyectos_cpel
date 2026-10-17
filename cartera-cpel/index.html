@@ -41,7 +41,11 @@
   <!-- Contenido de la hoja PDF: encabezado (solo en el PDF) + ficha (ver pdf.js) -->
   <div id="pdfRoot">
   <div class="print-head" aria-hidden="true">
-    <span>Cartera CPEL · Ficha de proyecto</span>
+    <span class="print-head__marca">
+      <img src="../assets/img/logo-cfe.png" alt="" class="print-head__logo print-head__logo--cfe">
+      <img src="../assets/img/logo-cpel.png" alt="" class="print-head__logo print-head__logo--cpel">
+      <span>Cartera CPEL · Ficha de proyecto</span>
+    </span>
     <span id="printDate"></span>
   </div>
 
@@ -167,6 +171,12 @@
 
   </main>
   </div>
+
+  <!-- Logos institucionales al final de la página (como en el portal) -->
+  <footer class="brand-footer">
+    <img src="../assets/img/logo-cfe.png" alt="CFE" class="brand-footer__logo brand-footer__logo--cfe">
+    <img src="../assets/img/logo-cpel.png" alt="CPEL" class="brand-footer__logo brand-footer__logo--cpel">
+  </footer>
 
   <!-- Barra inferior de acciones -->
   <nav class="actionbar">
