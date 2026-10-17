@@ -40,8 +40,8 @@
   --status-c-bg:#fbe9e9;
 
   /* Proyectos prioritarios (columna PRIORI del Excel) */
-  --prio-bg:#eef5f3;
-  --prio-border:#b9d0ca;
+  --prio-bg:#dfece8;
+  --prio-border:#8fb3aa;
 
   /* Escala */
   --radius-s:6px;
@@ -267,8 +267,8 @@ a{color:inherit;}
 }
 .pcard:hover{transform:translateY(-2px); box-shadow:var(--shadow-float);}
 /* Prioritario: fondo verde azulado muy claro, franja a la izquierda y distintivo. */
-.pcard--prio{background:var(--prio-bg); border-color:var(--prio-border); box-shadow:inset 4px 0 0 var(--teal-700), var(--shadow-card);}
-.pcard--prio:hover{box-shadow:inset 4px 0 0 var(--teal-700), var(--shadow-float);}
+.pcard--prio{background:var(--prio-bg); border-color:var(--prio-border); box-shadow:inset 5px 0 0 var(--teal-800), var(--shadow-card);}
+.pcard--prio:hover{box-shadow:inset 5px 0 0 var(--teal-800), var(--shadow-float);}
 .prio-chip{
   flex:none; font-size:11px; font-weight:700; border-radius:99px; padding:3px 10px;
   white-space:nowrap; background:var(--teal-800); color:#fff;
