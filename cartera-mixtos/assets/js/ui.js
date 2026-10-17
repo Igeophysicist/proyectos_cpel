@@ -28,13 +28,13 @@
       {
         label: "Capacidad total",
         value: capacidadTotal ? `${fmtInt.format(capacidadTotal)} MW` : "—",
-        meta: "Suma de capacidad reportada" + sinRonda,
+        meta: "Suma reportada" + sinRonda,
         cls: "accent",
       },
       {
         label: "CAPEX total",
         value: capexTotal ? fmtMoney.format(capexTotal) : "—",
-        meta: "Suma de inversión reportada" + sinRonda,
+        meta: "Suma reportada" + sinRonda,
         cls: "accent",
       },
       {
@@ -46,7 +46,7 @@
       {
         label: "Proyectos en Grupo C",
         value: fmtInt.format(enRiesgo),
-        meta: "",
+        meta: `Parque menor a ${global.AppGrupo.LIMITES.B}%`,
         cls: "risk",
       },
     ];
