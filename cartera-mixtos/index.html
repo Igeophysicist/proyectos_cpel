@@ -92,10 +92,17 @@
         <!-- Marco del mapa: la leyenda y los avisos van encima del mapa. -->
         <div class="map-frame">
           <div id="map"></div>
-          <div class="map-legend">
-            <span><span class="dot dot--a"></span>Grupo A</span>
-            <span><span class="dot dot--b"></span>Grupo B</span>
-            <span><span class="dot dot--c"></span>Grupo C</span>
+          <!-- Esquina inferior: logos institucionales (pequeños) sobre la leyenda -->
+          <div class="map-corner">
+            <div class="map-logos">
+              <img src="../assets/img/logo-cfe.png" alt="CFE" class="map-logos__img map-logos__img--cfe">
+              <img src="../assets/img/logo-cpel.png" alt="CPEL" class="map-logos__img map-logos__img--cpel">
+            </div>
+            <div class="map-legend">
+              <span><span class="dot dot--a"></span>Grupo A</span>
+              <span><span class="dot dot--b"></span>Grupo B</span>
+              <span><span class="dot dot--c"></span>Grupo C</span>
+            </div>
           </div>
           <div class="map-empty" id="map-empty" style="display:none;"></div>
           <div class="map-tile-warning" id="map-tile-warning" hidden>No se pudieron cargar las imágenes del mapa (revisa tu conexión). Los proyectos siguen visibles como puntos.</div>
@@ -114,12 +121,6 @@
         </div>
         <div class="project-list" id="project-list"></div>
       </div>
-
-      <!-- Logos institucionales al final de la página (como en el portal) -->
-      <footer class="brand-footer">
-        <img src="../assets/img/logo-cfe.png" alt="CFE" class="brand-footer__logo brand-footer__logo--cfe">
-        <img src="../assets/img/logo-cpel.png" alt="CPEL" class="brand-footer__logo brand-footer__logo--cpel">
-      </footer>
     </main>
   </div>
 

@@ -204,9 +204,22 @@ a{color:inherit;}
   bottom:calc(var(--tabbar-h) + env(safe-area-inset-bottom, 0px));
 }
 #map{position:absolute; inset:0;}
+.map-corner{
+  position:absolute; left:var(--space-3); bottom:var(--space-3); z-index:400;
+  display:flex; flex-direction:column; align-items:flex-start; gap:6px;
+}
+/* Logos CFE / CPEL: pequeños, en una pastilla blanca para que se lean
+   sobre la imagen satelital. */
+.map-logos{
+  display:flex; align-items:center; gap:8px; padding:4px 8px;
+  background:rgba(255,255,255,.9); border:1px solid var(--border); border-radius:var(--radius-m);
+  box-shadow:var(--shadow-card);
+}
+.map-logos__img{width:auto; display:block;}
+.map-logos__img--cfe{height:14px;}
+.map-logos__img--cpel{height:11px;}
 .map-legend{
-  position:absolute; left:var(--space-3); bottom:var(--space-3);
-  z-index:400; background:rgba(255,255,255,.95); border:1px solid var(--border);
+  background:rgba(255,255,255,.95); border:1px solid var(--border);
   border-radius:var(--radius-m); padding:8px 10px; font-size:11.5px; box-shadow:var(--shadow-card);
   display:flex; gap:10px;
 }
@@ -462,15 +475,6 @@ html.dialogo-abierto{overflow:hidden;}
   font-size:12.5px; font-weight:700; cursor:pointer; flex:none;
 }
 .update-banner.is-hidden{ display:none; }
-/* ---------- Logos institucionales (pie de página) ---------- */
-.brand-footer{
-  display:flex; align-items:center; justify-content:center; gap:18px;
-  padding:var(--space-5) var(--space-4) var(--space-4); opacity:.85;
-}
-.brand-footer__logo{width:auto; display:block;}
-.brand-footer__logo--cfe{height:30px;}
-.brand-footer__logo--cpel{height:24px;}
-
 /* ---------- Escritorio ---------- */
 /* En escritorio no hay pestañas: las tres secciones se muestran en una
    sola página de scroll continuo (KPIs → analítica → mapa → listado). */
