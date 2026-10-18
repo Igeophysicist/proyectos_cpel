@@ -119,6 +119,27 @@ a{color:inherit; text-decoration:none;}
 .semana-card{
   background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-l);
   padding:var(--space-4); box-shadow:var(--shadow-card);
+  position:relative; overflow:hidden;
+  animation:semana-brillo-borde 5s ease-in-out infinite;
+}
+/* Destello: una franja dorada clara cruza la tarjeta cada 5 s, y el borde
+   se ilumina en dorado al mismo tiempo. No tapa los clics (pointer-events)
+   y se apaga con "reducir movimiento". */
+.semana-card::after{
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background:linear-gradient(105deg, transparent 30%, rgba(214,166,64,.22) 45%, rgba(255,240,200,.55) 50%, rgba(214,166,64,.22) 55%, transparent 70%);
+  transform:translateX(-120%);
+  animation:semana-destello 5s ease-in-out infinite;
+}
+#semanaCartera.semana-card, #semanaCartera.semana-card::after{animation-delay:.6s;}
+@keyframes semana-destello{
+  0%{transform:translateX(-120%);}
+  28%, 100%{transform:translateX(120%);}
+}
+@keyframes semana-brillo-borde{
+  0%, 100%{border-color:var(--border); box-shadow:var(--shadow-card);}
+  14%{border-color:var(--gold-500); box-shadow:0 0 0 3px rgba(182,137,58,.18), var(--shadow-card);}
+  32%{border-color:var(--border); box-shadow:var(--shadow-card);}
 }
 .semana-card__head{margin-bottom:var(--space-2);}
 .semana-card__titulo{font-size:15px; font-weight:700; color:var(--teal-900);}
@@ -185,6 +206,12 @@ b.semana-item__nota{color:var(--ink-900);}
    las animaciones/transiciones de esta página) */
 @media (prefers-reduced-motion: reduce){
   *{ animation-duration:.01ms !important; transition-duration:.01ms !important; }
+}
+/* Con "reducir movimiento" el destello se quita del todo (si solo se
+   acortara, parpadearía sin parar). */
+@media (prefers-reduced-motion: reduce){
+  .semana-card, .semana-card::after{ animation:none !important; }
+  .semana-card::after{ display:none; }
 }
 
 .site-footer{

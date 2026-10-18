@@ -95,9 +95,8 @@ Proyectos: `name_BD` (nombre en esa hoja, solo de control) y las columnas
 ## Curva de avance (cortes semanales)
 
 - **Cartera CPEL:** botón **Curva de avance** (junto a Ficha técnica y
-  Plazos). **Mixtos:** botón **Evolución** en cada tarjeta del listado
-  (debajo de la etiqueta de grupo) y en la ficha; abre un panel con
-  Parque, LT y Global.
+  Plazos). **Mixtos:** botón **Evolución** en la ficha del proyecto (junto
+  a Ver en el mapa y Trámites); abre un panel con Parque, LT y Global.
 - **Un punto por semana.** La Action "Datos" guarda el avance en
   `data/historial.json` de cada tablero (`scripts/historial.js`) según
   la fecha de guardado del Excel (hora de México). Lo guardado después

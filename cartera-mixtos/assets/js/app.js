@@ -52,7 +52,7 @@
     const prioritarios = window.AppCharts.renderRanking("ranking", filtered, openDetail);
     els.rankingHint.textContent = `${prioritarios} proyecto${prioritarios === 1 ? "" : "s"}`;
     window.AppUI.renderTramitesResumen("tramites-resumen", "tramites-lista", "tramites-hint", filtered);
-    window.AppUI.renderProjectList("project-list", "list-count", window.AppOrden.ordenar(filtered, orden), openDetail, openEvolucion);
+    window.AppUI.renderProjectList("project-list", "list-count", window.AppOrden.ordenar(filtered, orden), openDetail);
     window.AppMap.renderProjects(filtered);
 
     const geoCount = filtered.filter((p) => p.geo).length;
@@ -135,7 +135,7 @@
     }
   }
 
-  /** Panel "Evolución por corte" (desde la tarjeta o desde la ficha). */
+  /** Panel "Evolución por corte" (desde el botón de la ficha). */
   function openEvolucion(projectId) {
     const project = projectsById.get(projectId);
     if (project) window.AppEvolucion.abrir(project);
