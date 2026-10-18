@@ -75,6 +75,10 @@
     });
   }
 
+  // "FV - Fotovoltaica" -> "FV" para el eje (la tarjeta es angosta); el
+  // nombre completo sale al tocar la barra.
+  const corto = (tecnologia) => String(tecnologia).split(" - ")[0].trim() || tecnologia;
+
   function renderTecnologiaChart(canvasId, projects) {
     destroy(canvasId);
     const counts = countBy(projects, (p) => p.tecnologia);
@@ -85,15 +89,15 @@
     instances[canvasId] = new Chart(ctx, {
       type: "bar",
       data: {
-        labels,
-        datasets: [{ data, backgroundColor: "#2e534f", borderRadius: 4, maxBarThickness: 26 }],
+        labels: labels.map(corto),
+        datasets: [{ data, backgroundColor: "#2e534f", borderRadius: 4, maxBarThickness: 34 }],
       },
       options: {
         maintainAspectRatio: false,
-        indexAxis: "y",
-        layout: { padding: { right: 22 } },
+        layout: { padding: { top: 18 } },
         plugins: {
           legend: { display: false },
+          tooltip: { callbacks: { title: (items) => labels[items[0].dataIndex] } },
           // Muestra el número al final de cada barra de forma permanente.
           datalabels: {
             anchor: "end",
@@ -105,8 +109,8 @@
           },
         },
         scales: {
-          x: { beginAtZero: true, ticks: { precision: 0 }, grid: { color: "#eef1f0" } },
-          y: { grid: { display: false } },
+          x: { grid: { display: false } },
+          y: { beginAtZero: true, ticks: { precision: 0 }, grid: { color: "#eef1f0" } },
         },
       },
     });

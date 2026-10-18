@@ -7,12 +7,9 @@
   const GRUPO_INFO = global.AppData.GRUPO_INFO;
   const { esc } = global.TextUtils;
   const fmtInt = new Intl.NumberFormat("es-MX", { maximumFractionDigits: 0 });
-  const fmtMoney = new Intl.NumberFormat("es-MX", {
-    style: "currency",
-    currency: "USD",
-    maximumFractionDigits: 1,
-    notation: "compact",
-  });
+  // CAPEX en millones de dólares, con comas en los miles: "8,112.9 M"
+  // (la moneda va en el título de la tarjeta).
+  const fmtMillones = new Intl.NumberFormat("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 });
 
   // ---------------------------------------------------------------- KPIs
   function renderKPIs(elId, projects) {
@@ -28,13 +25,13 @@
       {
         label: "Capacidad total",
         value: capacidadTotal ? `${fmtInt.format(capacidadTotal)} MW` : "—",
-        meta: "Suma de capacidad reportada" + sinRonda,
+        meta: "Suma reportada" + sinRonda,
         cls: "accent",
       },
       {
-        label: "CAPEX total",
-        value: capexTotal ? fmtMoney.format(capexTotal) : "—",
-        meta: "Suma de inversión reportada" + sinRonda,
+        label: "CAPEX total (USD)",
+        value: capexTotal ? `${fmtMillones.format(capexTotal / 1e6)} M` : "—",
+        meta: "Suma reportada" + sinRonda,
         cls: "accent",
       },
       {
@@ -46,7 +43,7 @@
       {
         label: "Proyectos en Grupo C",
         value: fmtInt.format(enRiesgo),
-        meta: "",
+        meta: `Parque menor a ${global.AppGrupo.LIMITES.B}%`,
         cls: "risk",
       },
     ];

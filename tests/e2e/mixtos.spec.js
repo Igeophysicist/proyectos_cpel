@@ -145,7 +145,12 @@ test("Resumen: capacidad, CAPEX y avance promedio no cuentan los proyectos de 2d
   const kpi = (etiqueta) => page.locator(".kpi", { hasText: etiqueta }).locator(".kpi__value");
   await expect(kpi("Capacidad total")).toHaveText(`${new Intl.NumberFormat("es-MX", { maximumFractionDigits: 0 }).format(capacidad)} MW`);
   await expect(kpi("Avance global promedio")).toHaveText(`${promedio.toFixed(1)}%`);
-  await expect(page.locator(".kpi", { hasText: "CAPEX total" })).toContainText("sin 2da ronda");
+  const capex = cuentan.reduce((s, r) => s + (parseNumber(r.CAPEX) || 0), 0);
+  const capexKpi = page.locator(".kpi", { hasText: "CAPEX total (USD)" });
+  await expect(capexKpi.locator(".kpi__value")).toHaveText(
+    `${new Intl.NumberFormat("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 }).format(capex / 1e6)} M`
+  );
+  await expect(capexKpi).toContainText("sin 2da ronda");
 });
 
 test("Prioritarios (columna PRIORI): el ranking solo los lista, por avance de Parque, y sus tarjetas se distinguen", async ({ page }) => {

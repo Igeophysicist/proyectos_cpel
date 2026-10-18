@@ -341,6 +341,15 @@ body{ padding-bottom: calc(var(--tabbar-h) + env(safe-area-inset-bottom, 0px)); 
   *{ animation-duration:.01ms !important; transition-duration:.01ms !important; }
 }
 
+/* ---------- Logos institucionales (pie de página) ---------- */
+.brand-footer{
+  display:flex; align-items:center; justify-content:center; gap:18px;
+  padding:var(--space-4); opacity:.85;
+}
+.brand-footer__logo{width:auto; display:block;}
+.brand-footer__logo--cfe{height:30px;}
+.brand-footer__logo--cpel{height:24px;}
+
 /* ---------- Ficha en PDF (botón "PDF" o Ctrl+P) ----------
    Una hoja carta vertical por proyecto: encabezado, avance, avances
    particulares, eventos, hitos, información general, ficha técnica y
@@ -354,16 +363,20 @@ body{ padding-bottom: calc(var(--tabbar-h) + env(safe-area-inset-bottom, 0px)); 
   /* Ancho carta; el alto lo ajusta pdf.js para que todo quepa en una hoja. */
   @page{ size: letter portrait; margin: 9mm; }
   *{ -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-  .topbar, .actionbar, .sheet{ display: none !important; }
+  .topbar, .actionbar, .sheet, .brand-footer{ display: none !important; }
 }
 body.modo-pdf{ background: #fff; padding: 0; font-size: 11px; }
 body.modo-pdf *, body.modo-pdf *::before, body.modo-pdf *::after{ animation: none !important; transition: none !important; }
 body.modo-pdf .cartera > *, body.modo-pdf .timeline li, body.modo-pdf .info-item, body.modo-pdf .hito, body.modo-pdf .particular{ opacity: 1 !important; }
-body.modo-pdf .topbar, body.modo-pdf .actionbar, body.modo-pdf .sheet__scrim, body.modo-pdf .sheet__close, body.modo-pdf #sheetCurva, body.modo-pdf .card:has(.map-wrap){ display: none !important; }
+body.modo-pdf .topbar, body.modo-pdf .actionbar, body.modo-pdf .brand-footer, body.modo-pdf .sheet__scrim, body.modo-pdf .sheet__close, body.modo-pdf #sheetCurva, body.modo-pdf .card:has(.map-wrap){ display: none !important; }
 body.modo-pdf .print-head{
-  display: flex; justify-content: space-between; font-size: 10px; font-weight: 700;
+  display: flex; justify-content: space-between; align-items: center; font-size: 10px; font-weight: 700;
   color: var(--ink-500); border-bottom: 1px solid var(--border); padding-bottom: 3px; margin-bottom: 6px;
 }
+body.modo-pdf .print-head__marca{ display: flex; align-items: center; gap: 8px; }
+body.modo-pdf .print-head__logo{ width: auto; display: block; }
+body.modo-pdf .print-head__logo--cfe{ height: 20px; }
+body.modo-pdf .print-head__logo--cpel{ height: 16px; }
 body.modo-pdf .cartera{
   /* minmax(0, 1fr): un texto largo no ensancha la columna (se parte en líneas). */
   display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 6px; padding: 0; max-width: none;
