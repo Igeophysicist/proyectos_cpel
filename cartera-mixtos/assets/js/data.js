@@ -219,6 +219,9 @@
           // Columna PRIORI: "P" = prioritario (ranking del Resumen y tarjeta
           // distinta), "NoP" = no prioritario.
           prioritario: String(raw["PRIORI"] || "").trim().toUpperCase() === "P",
+          // Desglose de trámites y permisos (ver tramites.js); null si el
+          // Excel no lo trae.
+          tramites: global.AppTramites ? global.AppTramites.desglose(raw) : null,
           geo: primary
             ? { type: primary.type, latlngs: primary.latlngs, folderPath: primary.folderPath }
             : null,

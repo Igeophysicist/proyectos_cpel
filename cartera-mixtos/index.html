@@ -59,6 +59,16 @@
           </div>
           <ul class="ranking" id="ranking"></ul>
         </section>
+
+        <!-- Avance promedio de cada trámite (ver charts.js → renderTramites) -->
+        <section class="section" id="tramites-resumen" hidden>
+          <div class="section__head">
+            <h2 class="section__title">Trámites más rezagados</h2>
+            <span class="section__hint" id="tramites-hint"></span>
+          </div>
+          <div class="tram-head" aria-hidden="true"><span></span><span>Parque</span><span>LT</span></div>
+          <ul class="tram-list" id="tramites-lista"></ul>
+        </section>
         
         <!-- Una sola tarjeta: grupo de atención a la izquierda, tecnología a la derecha -->
         <section class="section">
@@ -171,6 +181,12 @@
     <div class="detail__panel" id="detail-body" role="dialog" aria-modal="true" aria-labelledby="detail-title"></div>
   </div>
 
+  <!-- Panel: trámites y permisos de un proyecto (ver ui.js → abrirTramites) -->
+  <div class="detail detail--evolucion" id="tramites" aria-hidden="true">
+    <div class="detail__scrim" data-close-tramites></div>
+    <div class="detail__panel" id="tramites-body" role="dialog" aria-modal="true" aria-labelledby="tramites-title"></div>
+  </div>
+
   <!-- Panel: Evolución por corte de un proyecto (ver evolucion.js) -->
   <div class="detail detail--evolucion" id="evolucion" aria-hidden="true">
     <div class="detail__scrim" data-close-evolucion></div>
@@ -197,6 +213,7 @@
   <script src="../assets/js/shared/trend.js"></script>
   <script src="../assets/js/shared/progress-chart.js"></script>
   <script src="assets/js/grupo.js"></script>
+  <script src="assets/js/tramites.js"></script>
   <script src="assets/js/data.js"></script>
   <script src="assets/js/map.js"></script>
   <script src="assets/js/charts.js"></script>

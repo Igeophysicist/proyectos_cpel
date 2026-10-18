@@ -51,6 +51,7 @@
     window.AppCharts.renderTecnologiaChart("chart-tecnologia", filtered);
     const prioritarios = window.AppCharts.renderRanking("ranking", filtered, openDetail);
     els.rankingHint.textContent = `${prioritarios} proyecto${prioritarios === 1 ? "" : "s"}`;
+    window.AppUI.renderTramitesResumen("tramites-resumen", "tramites-lista", "tramites-hint", filtered);
     window.AppUI.renderProjectList("project-list", "list-count", window.AppOrden.ordenar(filtered, orden), openDetail, openEvolucion);
     window.AppMap.renderProjects(filtered);
 
@@ -121,6 +122,8 @@
 
     const evoBtn = els.detailBody.querySelector("[data-open-evolucion]");
     if (evoBtn) evoBtn.addEventListener("click", () => openEvolucion(projectId));
+    const tramBtn = els.detailBody.querySelector("[data-open-tramites]");
+    if (tramBtn) tramBtn.addEventListener("click", () => window.AppUI.abrirTramites(project));
 
     const mapBtn = els.detailBody.querySelector("[data-view-on-map]");
     if (mapBtn) {

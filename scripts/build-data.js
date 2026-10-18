@@ -106,7 +106,11 @@ function buildDataset(ds) {
   }
   const sheet = wb.Sheets[sheetName];
   const headers = (XLSX.utils.sheet_to_json(sheet, { header: 1, defval: "" })[0] || []).map(String);
-  const rows = XLSX.utils.sheet_to_json(sheet, options);
+  // Columnas sin encabezado (p. ej. celdas vacías con formato a la derecha
+  // de la tabla) no son datos: SheetJS las nombra "__EMPTY…" y se quitan.
+  const rows = XLSX.utils.sheet_to_json(sheet, options).map((r) =>
+    Object.fromEntries(Object.entries(r).filter(([k]) => !k.startsWith("__EMPTY")))
+  );
 
   const { errors, warnings } = ds.validate({
     headers,
