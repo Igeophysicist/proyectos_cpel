@@ -50,6 +50,7 @@ Qué se revisa (`scripts/data-rules.js`):
 | Fecha que no se puede leer | |
 | Proyecto repetido | |
 | Imagen que no existe o que no es JPG/PNG, p. ej. HEIC (Cartera) | |
+| Excel guardado **antes** que el ya publicado (copia vieja; para volver a esa versión a propósito, ábrela y guárdala de nuevo) | |
 
 Las celdas vacías y los marcadores de dato pendiente ("SIN DATO",
 "N/A", "PENDIENTE", "POR DEFINIR", "-") no son errores.

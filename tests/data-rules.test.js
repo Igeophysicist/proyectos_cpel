@@ -95,3 +95,13 @@ test("Mixtos: se vincula al KML por TÍTULO 2 o, si no, por TÍTULO 1", () => {
   assert.deepEqual(mixtos([mixRow({ "TÍTULO 2": "Otro nombre" })]).warnings, []);
   assert.equal(mixtos([mixRow()], []).warnings.length, 1);
 });
+
+test("Excel guardado antes que el publicado es error; igual, más nuevo o sin fecha, no", () => {
+  const { checkExcelAnterior } = require("../scripts/data-rules.js");
+  const publicado = "2026-10-16T20:34:54.000Z";
+  assert.match(checkExcelAnterior("2026-10-09T23:22:40.000Z", publicado), /ANTES que el que ya está publicado/);
+  assert.equal(checkExcelAnterior(publicado, publicado), null);
+  assert.equal(checkExcelAnterior("2026-10-23T18:00:00.000Z", publicado), null);
+  assert.equal(checkExcelAnterior(null, publicado), null);
+  assert.equal(checkExcelAnterior("2026-10-09T23:22:40.000Z", null), null);
+});

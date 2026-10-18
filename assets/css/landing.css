@@ -103,7 +103,7 @@ a{color:inherit; text-decoration:none;}
 .nav-card__arrow{flex:none; color:var(--ink-500);}
 .nav-card--soon{opacity:.7;}
 /* Íconos de acceso con los colores del logo CPEL: Mixtos (sol y viento)
-   en naranja solar, Cartera (gráfica de avance) en azul. */
+   en naranja solar, Cartera (presa hidroeléctrica) en azul. */
 .nav-card__icon--mixtos{background:linear-gradient(150deg, #f7b733, #d9690f); color:#fff; box-shadow:0 3px 10px rgba(217,105,15,.35);}
 .nav-card__icon--cartera{background:linear-gradient(150deg, #3fa0e0, #1d55a8); color:#fff; box-shadow:0 3px 10px rgba(29,85,168,.35);}
 .nav-card--soon .nav-card__icon{background:var(--surface-sunken); color:var(--ink-500);}
