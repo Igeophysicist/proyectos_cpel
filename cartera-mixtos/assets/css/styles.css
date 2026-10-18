@@ -419,7 +419,11 @@ a{color:inherit;}
 .detail__badge--prio{background:#fff; color:var(--teal-800); margin-left:4px;}
 .detail__title{font-size:18px; font-weight:800; line-height:1.25; padding-right:34px;}
 .detail__sub{font-size:12.5px; color:#bcd0cb; margin-top:4px;}
-.detail__body{padding:var(--space-4); overflow-y:auto;}
+.detail__body{padding:var(--space-4); overflow-y:auto; flex:1; min-height:0;}
+/* Celular: la ficha y el panel de Trámites siempre con la misma altura
+   (no toda la pantalla), así se sigue viendo arriba la lista de la que
+   se abrieron; el contenido se desplaza dentro. */
+#detail .detail__panel, #tramites .detail__panel{height:82vh; height:82dvh;}
 
 /* ---------- Ventanas: fondo quieto y "deslizar para cerrar" ----------
    Con una ventana abierta la página de atrás no se desplaza (dialog.js
@@ -538,6 +542,7 @@ html.dialogo-abierto{overflow:hidden;}
   .project-list{display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:var(--space-3);}
 
   .detail__panel{left:auto; right:0; top:0; max-height:none; width:440px; border-radius:0; animation:sheet-right .25s ease-out;}
+  #detail .detail__panel, #tramites .detail__panel{height:auto;}
   .filters__panel{left:auto; right:24px; bottom:auto; top:72px; width:340px; border-radius:var(--radius-l); max-height:calc(100vh - 100px); animation:sheet-right .25s ease-out;}
   .filters__scrim{background:rgba(17,24,22,.25);}
 }
