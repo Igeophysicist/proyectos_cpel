@@ -75,6 +75,7 @@
   }
 
   const EVO_ICON = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 3v18h18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M7 15l4-4 3 3 6-7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+  const TRAM_ICON = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 5h11M9 12h11M9 19h11" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M3.5 5l1.2 1.2L7 4M3.5 12l1.2 1.2L7 11M3.5 19l1.2 1.2L7 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
   const tieneEvolucion = (p) => global.AppEvolucion && global.AppEvolucion.tieneDatos(p);
 
   const PRIO_CHIP = `<span class="prio-chip">★ Prioritario</span>`;
@@ -122,7 +123,6 @@
       return `faltan ${Math.round(total * 10) / 10} pts: ` + lista.map((f) => `${esc(f.nombre)} ${Math.round(f.pts * 10) / 10}`).join(" · ");
     };
     return `
-      <div class="detail__section-title">Trámites y permisos</div>
       <div class="tram-head" aria-hidden="true"><span>Trámite (peso)</span><span>Parque</span><span>LT</span></div>
       <ul class="tram-list">${filasTramites(p.tramites)}</ul>
       <div class="tram-falta"><b>Parque</b> ${falta("parque")}</div>
@@ -212,6 +212,7 @@
     const acciones = [
       p.geo ? `<button class="detail__mapbtn" data-view-on-map="${esc(p.id)}">Ver en el mapa</button>` : "",
       tieneEvolucion(p) ? `<button class="detail__mapbtn" data-open-evolucion>${EVO_ICON}Evolución</button>` : "",
+      p.tramites ? `<button class="detail__mapbtn" data-open-tramites>${TRAM_ICON}Trámites</button>` : "",
     ].join("");
     const sections = DETAIL_FIELDS.map((sec) => {
       const fields = sec.items.map(([key, label]) => detailField(p, key, label)).filter(Boolean).join("");
@@ -234,7 +235,6 @@
           ${progressRow("Global", p.globalPct)}
         </div>
         ${acciones ? `<div class="detail__actions">${acciones}</div>` : ""}
-        ${seccionTramites(p)}
         ${sections}
       </div>`;
   }
@@ -308,5 +308,21 @@
     document.getElementById(hintId).textContent = `promedio de ${conDatos.length} proyecto${conDatos.length === 1 ? "" : "s"}`;
   }
 
-  global.AppUI = { renderKPIs, renderProjectList, renderDetail, renderFilterOptions, renderTramitesResumen, showToast };
+  /** Panel "Trámites" de un proyecto (se abre encima de la ficha). */
+  function abrirTramites(p) {
+    if (!p || !p.tramites) return;
+    document.getElementById("tramites-body").innerHTML = `
+      <div class="detail__head">
+        <button class="detail__close" data-close-tramites aria-label="Cerrar">&times;</button>
+        <div class="detail__title" id="tramites-title">Trámites</div>
+        <div class="detail__sub">${esc(p.nombre)}</div>
+      </div>
+      <div class="detail__body">${seccionTramites(p)}</div>`;
+    global.Dialog.open(document.getElementById("tramites"));
+  }
+  document.addEventListener("click", (e) => {
+    if (e.target.closest("[data-close-tramites]")) global.Dialog.close(document.getElementById("tramites"));
+  });
+
+  global.AppUI = { abrirTramites, renderKPIs, renderProjectList, renderDetail, renderFilterOptions, renderTramitesResumen, showToast };
 })(window);

@@ -122,6 +122,8 @@
 
     const evoBtn = els.detailBody.querySelector("[data-open-evolucion]");
     if (evoBtn) evoBtn.addEventListener("click", () => openEvolucion(projectId));
+    const tramBtn = els.detailBody.querySelector("[data-open-tramites]");
+    if (tramBtn) tramBtn.addEventListener("click", () => window.AppUI.abrirTramites(project));
 
     const mapBtn = els.detailBody.querySelector("[data-view-on-map]");
     if (mapBtn) {

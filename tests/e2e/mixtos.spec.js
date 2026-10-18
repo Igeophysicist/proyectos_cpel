@@ -193,15 +193,22 @@ test("Filtro de prioridad: Prioritario / No prioritario, también desde el enlac
   await expect(page.locator("#ranking .ranking__name")).toHaveCount(0); // ningún prioritario entre los mostrados
 });
 
-test("Trámites: la ficha muestra el desglose de los 10 trámites y el Resumen sus promedios", async ({ page }) => {
+test("Trámites: el botón de la ficha abre el desglose de los 10 trámites y el Resumen muestra sus promedios", async ({ page }) => {
   const p = datos().mixtos.find((r) => r.DI_P !== undefined && r.DI_P !== "");
   test.skip(!p, "el Excel no trae desglose de trámites");
   await page.goto(`/cartera-mixtos/?proyecto=${slugify(p.nombre)}`);
   await cargado(page);
-  const ficha = page.locator("#detail.is-open");
-  await expect(ficha.locator(".tram-row")).toHaveCount(10);
-  await expect(ficha.locator(".tram-row", { hasText: "MIA – DTU" })).toContainText(String(parseFloat(p.A_MIA_P)));
-  await expect(ficha.locator(".tram-falta").first()).toContainText("Parque");
+  // En la ficha solo está el botón; el desglose se abre en su panel.
+  await expect(page.locator("#detail.is-open .tram-row")).toHaveCount(0);
+  await page.click("#detail [data-open-tramites]");
+  const panel = page.locator("#tramites.is-open");
+  await expect(panel.locator("#tramites-title")).toHaveText("Trámites");
+  await expect(panel.locator(".tram-row")).toHaveCount(10);
+  await expect(panel.locator(".tram-row", { hasText: "MIA – DTU" })).toContainText(String(parseFloat(p.A_MIA_P)));
+  await expect(panel.locator(".tram-falta").first()).toContainText("Parque");
+  await page.keyboard.press("Escape");
+  await expect(panel).toHaveCount(0);
+  await expect(page.locator("#detail")).toHaveClass(/is-open/); // la ficha sigue abierta
   await expect(page.locator("#tramites-resumen")).toBeAttached();
   await expect(page.locator("#tramites-resumen")).not.toHaveAttribute("hidden", "");
   await expect(page.locator("#tramites-lista .tram-row")).toHaveCount(10);
