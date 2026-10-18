@@ -59,7 +59,7 @@ test("Cartera: filas vacías se ignoran; Excel sin proyectos es error", () => {
 const MIXTOS_HEADERS = [
   "TÍTULO 1", "TÍTULO 2", "Socio", "Tecnología", "Ubicación", "Capacidad", "Almacenamiento (BESS)",
   "Horas de Almacenamiento", "Inicio de Inversión", "Fin de Construcción", "Fecha firma de contrato",
-  "CAPEX", "Parque", "LT", "Global", "PRIORI",
+  "CAPEX", "Parque", "LT", "Global", "PRIORI", ...require("../cartera-mixtos/assets/js/tramites.js").COLUMNAS,
 ];
 const mixRow = (extra = {}) => ({
   "TÍTULO 1": "SAN SIMÓN SOLAR", "TÍTULO 2": "SAN SIMÓN SOLAR", Parque: "94.00%", LT: "93.00%", Global: "93.80%",
@@ -104,4 +104,15 @@ test("Excel guardado antes que el publicado es error; igual, más nuevo o sin fe
   assert.equal(checkExcelAnterior("2026-10-23T18:00:00.000Z", publicado), null);
   assert.equal(checkExcelAnterior(null, publicado), null);
   assert.equal(checkExcelAnterior("2026-10-09T23:22:40.000Z", null), null);
+});
+
+test("Mixtos: avisa si Parque/LT/Global no cuadran con la ponderación de los trámites", () => {
+  const { COLUMNAS } = require("../cartera-mixtos/assets/js/tramites.js");
+  const todo = (v) => Object.fromEntries(COLUMNAS.map((c) => [c, v]));
+  // Todo al 50 % -> Parque, LT y Global 50 %.
+  assert.deepEqual(mixtos([mixRow({ ...todo("50%"), Parque: "50%", LT: "50%", Global: "50%" })]).warnings, []);
+  const { warnings } = mixtos([mixRow({ ...todo("50%"), Parque: "60%", LT: "50%", Global: "52%" })]);
+  assert.equal(warnings.length, 2); // Parque y Global
+  assert.match(warnings[0], /Parque dice 60%, pero la ponderación de los trámites da 50.00%/);
+  assert.match(mixtos([mixRow({ ...todo("50%"), DI_P: "abc" })]).errors[0], /DI_P/);
 });

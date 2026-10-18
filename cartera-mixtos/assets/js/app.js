@@ -51,6 +51,7 @@
     window.AppCharts.renderTecnologiaChart("chart-tecnologia", filtered);
     const prioritarios = window.AppCharts.renderRanking("ranking", filtered, openDetail);
     els.rankingHint.textContent = `${prioritarios} proyecto${prioritarios === 1 ? "" : "s"}`;
+    window.AppUI.renderTramitesResumen("tramites-resumen", "tramites-lista", "tramites-hint", filtered);
     window.AppUI.renderProjectList("project-list", "list-count", window.AppOrden.ordenar(filtered, orden), openDetail, openEvolucion);
     window.AppMap.renderProjects(filtered);
 

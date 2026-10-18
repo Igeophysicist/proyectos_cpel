@@ -15,6 +15,7 @@
  * anteriores). AVISOS solo se reportan.
  */
 const { normalizeText, parseNumber, parseDate, slugify } = require("../assets/js/shared/text-utils.js");
+const Tramites = require("../cartera-mixtos/assets/js/tramites.js");
 
 const isEmpty = (v) => v === null || v === undefined || String(v).trim() === "";
 
@@ -112,7 +113,12 @@ const MIXTOS_REQUIRED = [
   "Almacenamiento (BESS)", "Horas de Almacenamiento",
   "Inicio de Inversión", "Fin de Construcción", "Fecha firma de contrato",
   "CAPEX", "Parque", "LT", "Global", "PRIORI",
+  // Desglose de trámites (cartera-mixtos/assets/js/tramites.js)
+  ...Tramites.COLUMNAS,
 ];
+// Diferencia (puntos) a partir de la cual Parque/LT/Global del Excel no
+// cuadran con la ponderación de los trámites.
+const TOLERANCIA_PONDERADO = 0.05;
 // "Grupo de atención" ya no se lee del Excel: sale del avance de Parque
 // (cartera-mixtos/assets/js/grupo.js). Si la columna sigue, se ignora.
 const MIXTOS_PERCENTS = ["Parque", "LT", "Global"];
@@ -135,6 +141,16 @@ function validateMixtos({ headers, rows, placemarkNames = [] }) {
     MIXTOS_DATES.forEach((c) => checkDate(r[c], `Fila ${row} (${name}), columna ${c}`, errors));
     if (headers.includes("PRIORI") && !/^(P|NoP)$/i.test(String(r["PRIORI"] ?? "").trim())) {
       errors.push(`Fila ${row} (${name}), columna PRIORI: "${String(r["PRIORI"] ?? "").trim()}" no es válido; escribe "P" (prioritario) o "NoP".`);
+    }
+    Tramites.COLUMNAS.forEach((c) => checkPercent(r[c], `Fila ${row} (${name}), columna ${c}`, errors));
+    const calculado = Tramites.ponderado(Tramites.desglose(r));
+    if (calculado) {
+      [["Parque", calculado.parque], ["LT", calculado.lt], ["Global", calculado.global]].forEach(([col, valor]) => {
+        const excel = parseNumber(r[col]);
+        if (excel !== null && Math.abs(excel - valor) > TOLERANCIA_PONDERADO) {
+          warnings.push(`Fila ${row} (${name}): ${col} dice ${r[col]}, pero la ponderación de los trámites da ${valor.toFixed(2)}%.`);
+        }
+      });
     }
     if (!geo.has(normalizeText(r["TÍTULO 2"])) && !geo.has(normalizeText(r["TÍTULO 1"]))) {
       warnings.push(`Fila ${row}: "${name}" no tiene ubicación en el KML; no aparecerá en el mapa.`);

@@ -75,6 +75,23 @@ revisar un Excel antes de subirlo: `npm install` y luego `npm run data`
 (valida, regenera y optimiza imágenes) o `npm run data:check` (solo
 revisa).
 
+### Trámites y permisos (Mixtos)
+
+La hoja "Proyectos" de `DATOS_MIXTOS.xlsx` trae, además, el desglose de
+trámites copiado de la hoja "Base de Datos" del Excel de Estado de
+Proyectos: `name_BD` (nombre en esa hoja, solo de control) y las columnas
+`DI_P` … `AFAC_LT` (avance de cada trámite en Parque y LT, con el signo %).
+
+- La ficha de cada proyecto muestra los 10 trámites con su peso y lo que
+  falta para llegar a 100 %; el Resumen, el avance promedio de cada
+  trámite ("Trámites más rezagados").
+- Los pesos están en `cartera-mixtos/assets/js/tramites.js` (iguales a la
+  fila 52 de "Base de Datos"): Derechos inmobiliarios 10 %, Estudios de
+  interconexión 10 %, MIA–DTU 20 %, ETJ 10 %, MISSE 20 %, Consulta indígena
+  10 %, INAH/PEMEX/CONAGUA/AFAC 5 % cada uno; Global = 80 % Parque + 20 % LT.
+- La Action "Datos" **avisa** si Parque, LT o Global de una fila no cuadran
+  con esa ponderación (diferencia mayor a 0.05 puntos).
+
 ## Curva de avance (cortes semanales)
 
 - **Cartera CPEL:** botón **Curva de avance** (junto a Ficha técnica y

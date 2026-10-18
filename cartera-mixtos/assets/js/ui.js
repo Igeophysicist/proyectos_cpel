@@ -79,6 +79,56 @@
 
   const PRIO_CHIP = `<span class="prio-chip">★ Prioritario</span>`;
 
+  // ------------------------------------------------ Trámites (ficha y Resumen)
+  const fmtPct = (v) => (v === null || v === undefined ? "—" : `${Math.round(v * 10) / 10}%`);
+  const estadoTramite = (v) => (v === null ? "" : v >= 100 ? "ok" : v <= 0 ? "cero" : "medio");
+
+  /** Barra pequeña de un avance (0–100) con su número. */
+  function miniBarra(v, etiqueta) {
+    const pct = v === null ? 0 : Math.max(0, Math.min(v, 100));
+    return `<span class="tram-bar tram-bar--${estadoTramite(v)}" title="${esc(etiqueta)}: ${fmtPct(v)}">
+        <span class="tram-bar__track"><span class="tram-bar__fill" style="--pct:${pct}%"></span></span>
+        <span class="tram-bar__val tabular">${fmtPct(v)}</span>
+      </span>`;
+  }
+
+  /**
+   * Filas de trámites agrupadas como en el Excel (Derechos inmobiliarios,
+   * Interconexión, Ambientales, Social, Dependencias). Los que cuentan
+   * igual para Parque y LT ocupan las dos columnas.
+   */
+  function filasTramites(items, { conPeso = true } = {}) {
+    let grupo = null;
+    return items
+      .map((t) => {
+        const encabezado = t.grupo !== grupo && t.grupo !== t.nombre ? `<li class="tram-grupo">${esc(t.grupo)}</li>` : "";
+        grupo = t.grupo;
+        const peso = conPeso ? `<span class="tram-peso">${t.peso}%</span>` : "";
+        const barras = t.compartido
+          ? `<span class="tram-ambos">${miniBarra(t.avParque, "Parque y LT")}</span>`
+          : `${miniBarra(t.avParque, "Parque")}${miniBarra(t.avLt, "LT")}`;
+        return `${encabezado}<li class="tram-row"><span class="tram-name">${esc(t.nombre)}${peso}</span>${barras}</li>`;
+      })
+      .join("");
+  }
+
+  function seccionTramites(p) {
+    const T = global.AppTramites;
+    if (!T || !p.tramites) return "";
+    const falta = (lado) => {
+      const lista = T.faltantes(p.tramites, lado).slice(0, 4);
+      if (!lista.length) return "completo";
+      const total = T.faltantes(p.tramites, lado).reduce((s, f) => s + f.pts, 0);
+      return `faltan ${Math.round(total * 10) / 10} pts: ` + lista.map((f) => `${esc(f.nombre)} ${Math.round(f.pts * 10) / 10}`).join(" · ");
+    };
+    return `
+      <div class="detail__section-title">Trámites y permisos</div>
+      <div class="tram-head" aria-hidden="true"><span>Trámite (peso)</span><span>Parque</span><span>LT</span></div>
+      <ul class="tram-list">${filasTramites(p.tramites)}</ul>
+      <div class="tram-falta"><b>Parque</b> ${falta("parque")}</div>
+      <div class="tram-falta"><b>LT</b> ${falta("lt")}</div>`;
+  }
+
   function projectCardHtml(p) {
     const grupoInfo = GRUPO_INFO[p.grupo];
     return `
@@ -184,6 +234,7 @@
           ${progressRow("Global", p.globalPct)}
         </div>
         ${acciones ? `<div class="detail__actions">${acciones}</div>` : ""}
+        ${seccionTramites(p)}
         ${sections}
       </div>`;
   }
@@ -234,5 +285,28 @@
     el._t = setTimeout(() => el.classList.remove("is-visible"), 4000);
   }
 
-  global.AppUI = { renderKPIs, renderProjectList, renderDetail, renderFilterOptions, showToast };
+  /**
+   * Resumen: avance promedio de cada trámite entre los proyectos mostrados,
+   * del más rezagado (más puntos ponderados pendientes) al más avanzado.
+   */
+  function renderTramitesResumen(sectionId, listId, hintId, projects) {
+    const T = global.AppTramites;
+    const section = document.getElementById(sectionId);
+    const conDatos = T ? projects.filter((p) => p.tramites) : [];
+    section.hidden = !conDatos.length;
+    if (!conDatos.length) return;
+    const pendiente = (t) => t.peso * (100 - (t.avParque ?? 100)) * T.PESO_GLOBAL.parque + t.peso * (100 - (t.avLt ?? 100)) * T.PESO_GLOBAL.lt;
+    const items = T.promedios(conDatos.map((p) => p.tramites)).sort((a, b) => pendiente(b) - pendiente(a));
+    document.getElementById(listId).innerHTML = items
+      .map((t) => {
+        const barras = t.compartido
+          ? `<span class="tram-ambos">${miniBarra(t.avParque, "Parque y LT")}</span>`
+          : `${miniBarra(t.avParque, "Parque")}${miniBarra(t.avLt, "LT")}`;
+        return `<li class="tram-row"><span class="tram-name">${esc(t.nombre)}<span class="tram-peso">${t.peso}%</span></span>${barras}</li>`;
+      })
+      .join("");
+    document.getElementById(hintId).textContent = `promedio de ${conDatos.length} proyecto${conDatos.length === 1 ? "" : "s"}`;
+  }
+
+  global.AppUI = { renderKPIs, renderProjectList, renderDetail, renderFilterOptions, renderTramitesResumen, showToast };
 })(window);
