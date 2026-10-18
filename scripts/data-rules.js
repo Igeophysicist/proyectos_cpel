@@ -146,4 +146,27 @@ function validateMixtos({ headers, rows, placemarkNames = [] }) {
   return { errors, warnings };
 }
 
-module.exports = { validateCartera, validateMixtos, MIXTOS_SHEET };
+// ------------------------------------------------- Excel más viejo
+const fechaMexico = (iso) =>
+  new Intl.DateTimeFormat("es-MX", {
+    timeZone: "America/Mexico_City", day: "numeric", month: "short", year: "numeric", hour: "numeric", minute: "2-digit",
+  }).format(new Date(iso));
+
+/**
+ * Error si el Excel subido se guardó ANTES que el que ya está publicado
+ * (fechas ISO de "excelModificado"): casi siempre es una copia vieja y
+ * publicarla regresaría los avances. Sin alguna de las dos fechas no se
+ * puede comparar y no hay error. Devuelve el mensaje o null.
+ */
+function checkExcelAnterior(subido, publicado) {
+  if (!subido || !publicado) return null;
+  if (new Date(subido).getTime() >= new Date(publicado).getTime()) return null;
+  return (
+    `El Excel subido se guardó el ${fechaMexico(subido)}, ANTES que el que ya está publicado ` +
+    `(${fechaMexico(publicado)}). ¿Es una copia vieja? No se publicó nada para no regresar los datos. ` +
+    "Descarga el Excel actual del repositorio, haz tus cambios ahí y súbelo de nuevo " +
+    "(si de verdad quieres volver a esa versión, ábrela y guárdala otra vez para que tenga la fecha de hoy)."
+  );
+}
+
+module.exports = { validateCartera, validateMixtos, checkExcelAnterior, MIXTOS_SHEET };

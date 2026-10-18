@@ -30,7 +30,7 @@
 const fs = require("fs");
 const path = require("path");
 const XLSX = require("xlsx");
-const { validateCartera, validateMixtos, MIXTOS_SHEET } = require("./data-rules.js");
+const { validateCartera, validateMixtos, checkExcelAnterior, MIXTOS_SHEET } = require("./data-rules.js");
 const { optimizarCarpeta } = require("./imagenes.js");
 const { snapshotCartera, snapshotMixtos, upsertCorte, cambiosMixtos, registrarActualizacion } = require("./historial.js");
 const { slugify } = require("../assets/js/shared/text-utils.js");
@@ -93,6 +93,8 @@ function placemarkNames(file) {
 
 const toJson = (data) => JSON.stringify(data, null, 2) + "\n";
 
+const readJson = (file) => (fs.existsSync(file) ? JSON.parse(fs.readFileSync(file, "utf8")) : null);
+
 /** Lee y valida el Excel de un tablero. */
 function buildDataset(ds) {
   const dir = path.join(ROOT, ds.dir);
@@ -119,6 +121,11 @@ function buildDataset(ds) {
     excelModificado: modified && !Number.isNaN(modified.getTime()) ? modified.toISOString() : null,
     proyectos: rows,
   };
+  // Un Excel guardado antes que el ya publicado es casi siempre una copia
+  // vieja: se bloquea para no regresar los avances (ver data-rules.js).
+  const publicado = readJson(path.join(dir, ds.json));
+  const anterior = checkExcelAnterior(data.excelModificado, publicado && publicado.excelModificado);
+  if (anterior) errors.push(anterior);
   // Corte semanal para la curva de avance (solo si el Excel trae su fecha de guardado).
   if (!data.excelModificado) warnings.push("El Excel no tiene fecha de guardado: no se registró el corte en la curva de avance.");
   return {
@@ -133,8 +140,6 @@ function buildDataset(ds) {
     nombres: ds.nombre ? Object.fromEntries(rows.map(ds.nombre).filter(Boolean).map((n) => [slugify(n), n])) : {},
   };
 }
-
-const readJson = (file) => (fs.existsSync(file) ? JSON.parse(fs.readFileSync(file, "utf8")) : null);
 
 /** Historial con el corte de este Excel agregado (o reemplazado en su semana). */
 function historialWithCorte(result) {
