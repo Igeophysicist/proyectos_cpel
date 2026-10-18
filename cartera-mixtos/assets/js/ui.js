@@ -141,7 +141,6 @@
           <div class="pcard__side">
             ${p.prioritario ? PRIO_CHIP : ""}
             ${grupoInfo ? `<span class="badge badge--${grupoInfo.css}">${grupoInfo.label}</span>` : ""}
-            ${tieneEvolucion(p) ? `<button type="button" class="evo-btn" data-evolucion="${esc(p.id)}" aria-label="Evolución por corte de ${esc(p.nombre)}">${EVO_ICON}Evolución</button>` : ""}
           </div>
         </div>
         <div class="pcard__meta">
@@ -158,7 +157,7 @@
       </div>`;
   }
 
-  function renderProjectList(elId, countElId, projects, onSelect, onEvolucion) {
+  function renderProjectList(elId, countElId, projects, onSelect) {
     const container = document.getElementById(elId);
     document.getElementById(countElId).textContent = `${projects.length} proyecto${
       projects.length === 1 ? "" : "s"
@@ -176,12 +175,9 @@
     container.innerHTML = projects.map(projectCardHtml).join("");
     // El nombre es el botón que abre la ficha; cubre toda la tarjeta (ver
     // .pcard__open::after en styles.css), así que se puede tocar en
-    // cualquier parte. "Evolución" es otro botón, encima, que abre su panel.
+    // cualquier parte. "Evolución" y "Trámites" están dentro de la ficha.
     container.querySelectorAll(".pcard__open").forEach((btn) => {
       btn.addEventListener("click", () => onSelect(btn.getAttribute("data-id")));
-    });
-    container.querySelectorAll("[data-evolucion]").forEach((btn) => {
-      btn.addEventListener("click", () => onEvolucion(btn.getAttribute("data-evolucion")));
     });
   }
 

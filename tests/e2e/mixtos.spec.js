@@ -41,23 +41,18 @@ test("el enlace directo abre la ficha con sus botones", async ({ page }) => {
   await expect(page.locator("#detail canvas")).toHaveCount(0); // la gráfica ya no va dentro de la ficha
 });
 
-test("Evolución: desde la tarjeta abre el panel sin abrir la ficha; desde la ficha, encima", async ({ page }) => {
+test("Evolución: ya no está en la tarjeta; desde la ficha abre su panel encima", async ({ page }) => {
   const p = proyectoConEvolucion();
   await page.goto("/cartera-mixtos/");
   await cargado(page);
+  await expect(page.locator("#project-list .evo-btn")).toHaveCount(0);
   const tarjeta = page.locator("#project-list .pcard", { hasText: p.nombre }).first();
-  await tarjeta.locator(".evo-btn").click();
-  await expect(page.locator("#evolucion")).toHaveClass(/is-open/);
-  await expect(page.locator("#detail")).not.toHaveClass(/is-open/);
-  await expect(page.locator("#evolucion .detail__sub")).toHaveText(p.nombre);
-  await expect.poll(() => page.evaluate(() => !!Chart.getChart(document.querySelector("#evolucion canvas")))).toBe(true);
-  await page.keyboard.press("Escape");
-  await expect(page.locator("#evolucion")).not.toHaveClass(/is-open/);
-
   await tarjeta.click();
   await expect(page.locator("#detail")).toHaveClass(/is-open/);
   await page.click("#detail [data-open-evolucion]");
   await expect(page.locator("#evolucion")).toHaveClass(/is-open/);
+  await expect(page.locator("#evolucion .detail__sub")).toHaveText(p.nombre);
+  await expect.poll(() => page.evaluate(() => !!Chart.getChart(document.querySelector("#evolucion canvas")))).toBe(true);
   await page.keyboard.press("Escape"); // cierra primero el panel de arriba
   await expect(page.locator("#evolucion")).not.toHaveClass(/is-open/);
   await expect(page.locator("#detail")).toHaveClass(/is-open/);
