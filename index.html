@@ -36,8 +36,8 @@
 
     <div class="nav-grid">
       <a class="nav-card" href="cartera-mixtos/index.html" style="--i:0">
-        <div class="nav-card__icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M9 20l-6-2.5V4.5L9 7l6-2.5 6 2.5v13l-6-2.5-6 2.5z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 7v13M15 4.5v13" stroke="currentColor" stroke-width="1.8"/></svg>
+        <div class="nav-card__icon nav-card__icon--mixtos" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><circle cx="6.5" cy="6.5" r="2.6" fill="currentColor"/><path d="M6.5 1.4v1.2M6.5 10.4v1.2M1.4 6.5h1.2M10.4 6.5h1.2M2.9 2.9l.85.85M9.25 9.25l.85.85M2.9 10.1l.85-.85M9.25 3.75l.85-.85" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M16 11.2V22.5M14 22.5h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M16 11.2L16.7 3.6c.05-.6-.75-.8-.95-.25L14.6 6.9M16 11.2l6.6 3.6c.5.3 1.05-.3.65-.75l-2.95-2.7M16 11.2l-6.9 3.3c-.55.25-.35 1.05.25 1l3.9-.35" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="16" cy="11.2" r="1.2" fill="currentColor"/></svg>
         </div>
         <div class="nav-card__body">
           <div class="nav-card__title">Mixtos</div>
@@ -47,8 +47,8 @@
       </a>
 
       <a class="nav-card" href="cartera-cpel/index.html" style="--i:1">
-        <div class="nav-card__icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M9 20l-6-2.5V4.5L9 7l6-2.5 6 2.5v13l-6-2.5-6 2.5z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 7v13M15 4.5v13" stroke="currentColor" stroke-width="1.8"/></svg>
+        <div class="nav-card__icon nav-card__icon--cartera" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M3 3v18h18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><rect x="6.5" y="13" width="3" height="5" rx=".8" fill="currentColor" opacity=".55"/><rect x="11.5" y="10" width="3" height="8" rx=".8" fill="currentColor" opacity=".55"/><rect x="16.5" y="7" width="3" height="11" rx=".8" fill="currentColor" opacity=".55"/><path d="M6 11.5l5-4 3.5 2.5L20.5 4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M17.2 4h3.3v3.3" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
         <div class="nav-card__body">
           <div class="nav-card__title">Cartera CPEL</div>
@@ -59,7 +59,10 @@
     </div>
   
     <section class="semana" id="semana" aria-labelledby="semanaTitulo" hidden>
-      <h2 class="section-title" id="semanaTitulo">ESTA SEMANA</h2>
+      <h2 class="section-title section-title--actualizaciones" id="semanaTitulo">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 12a8 8 0 01-13.7 5.6M4 12a8 8 0 0113.7-5.6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><path d="M18 3v3.8h-3.8M6 21v-3.8h3.8" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        ÚLTIMAS ACTUALIZACIONES
+      </h2>
       <div class="semana__tarjetas">
         <article class="semana-card" id="semanaMixtos" hidden></article>
         <article class="semana-card" id="semanaCartera" hidden></article>
