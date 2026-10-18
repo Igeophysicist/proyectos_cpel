@@ -7,12 +7,9 @@
   const GRUPO_INFO = global.AppData.GRUPO_INFO;
   const { esc } = global.TextUtils;
   const fmtInt = new Intl.NumberFormat("es-MX", { maximumFractionDigits: 0 });
-  const fmtMoney = new Intl.NumberFormat("es-MX", {
-    style: "currency",
-    currency: "USD",
-    maximumFractionDigits: 1,
-    notation: "compact",
-  });
+  // CAPEX en millones de dólares, con comas en los miles: "8,112.9 M"
+  // (la moneda va en el título de la tarjeta).
+  const fmtMillones = new Intl.NumberFormat("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 });
 
   // ---------------------------------------------------------------- KPIs
   function renderKPIs(elId, projects) {
@@ -32,8 +29,8 @@
         cls: "accent",
       },
       {
-        label: "CAPEX total",
-        value: capexTotal ? fmtMoney.format(capexTotal) : "—",
+        label: "CAPEX total (USD)",
+        value: capexTotal ? `${fmtMillones.format(capexTotal / 1e6)} M` : "—",
         meta: "Suma reportada" + sinRonda,
         cls: "accent",
       },
