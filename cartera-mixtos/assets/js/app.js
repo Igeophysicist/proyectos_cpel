@@ -32,7 +32,7 @@
     detail: document.getElementById("detail"),
     detailBody: document.getElementById("detail-body"),
     mapEmpty: document.getElementById("map-empty"),
-    tabbarBtns: Array.from(document.querySelectorAll(".tabbar__btn")),
+    tabbarBtns: Array.from(document.querySelectorAll(".tabbar__btn[data-tab]")),
     toast: document.getElementById("toast"),
     rankingHint: document.getElementById("ranking-hint"),
     dataDate: document.getElementById("data-date"),

@@ -14,7 +14,8 @@
  *     URLs llevan la versión (p. ej. leaflet@1.9.4), así que el archivo
  *     de esa URL nunca cambia; para actualizar una librería se cambia
  *     la URL en el HTML.
- *   - Datos (todo lo que esté en una carpeta /data/: Excel, KML, JSON):
+ *   - Datos (todo lo que esté en una carpeta /data/: Excel, KML, JSON)
+ *     y PDFs (la presentación de Mixtos, que pesa varios MB):
  *     NUNCA se guardan; siempre van directo a la red.
  *   - Imágenes de los mapas (Esri, OpenStreetMap) y pantalla de
  *     contraseña (/__login, /__logout): no se tocan.
@@ -116,7 +117,7 @@ self.addEventListener("fetch", (event) => {
   const url = new URL(request.url);
 
   if (url.origin === self.location.origin) {
-    if (url.pathname.includes("/data/") || /\/__(login|logout)$/.test(url.pathname)) return;
+    if (url.pathname.includes("/data/") || /\.pdf$/i.test(url.pathname) || /\/__(login|logout)$/.test(url.pathname)) return;
     event.respondWith(networkFirst(event));
     return;
   }
