@@ -80,7 +80,7 @@
 
   const PRIO_CHIP = `<span class="prio-chip">★ Prioritario</span>`;
 
-  // ------------------------------------------------ Trámites (ficha y Resumen)
+  // ---------------------------------------------- Trámites (panel de la ficha)
   const fmtPct = (v) => (v === null || v === undefined ? "—" : `${Math.round(v * 10) / 10}%`);
   const estadoTramite = (v) => (v === null ? "" : v >= 100 ? "ok" : v <= 0 ? "cero" : "medio");
 
@@ -281,28 +281,7 @@
     el._t = setTimeout(() => el.classList.remove("is-visible"), 4000);
   }
 
-  /**
-   * Resumen: avance promedio de cada trámite entre los proyectos mostrados,
-   * del más rezagado (más puntos ponderados pendientes) al más avanzado.
-   */
-  function renderTramitesResumen(sectionId, listId, hintId, projects) {
-    const T = global.AppTramites;
-    const section = document.getElementById(sectionId);
-    const conDatos = T ? projects.filter((p) => p.tramites) : [];
-    section.hidden = !conDatos.length;
-    if (!conDatos.length) return;
-    const pendiente = (t) => t.peso * (100 - (t.avParque ?? 100)) * T.PESO_GLOBAL.parque + t.peso * (100 - (t.avLt ?? 100)) * T.PESO_GLOBAL.lt;
-    const items = T.promedios(conDatos.map((p) => p.tramites)).sort((a, b) => pendiente(b) - pendiente(a));
-    document.getElementById(listId).innerHTML = items
-      .map((t) => {
-        const barras = t.compartido
-          ? `<span class="tram-ambos">${miniBarra(t.avParque, "Parque y LT")}</span>`
-          : `${miniBarra(t.avParque, "Parque")}${miniBarra(t.avLt, "LT")}`;
-        return `<li class="tram-row"><span class="tram-name">${esc(t.nombre)}<span class="tram-peso">${t.peso}%</span></span>${barras}</li>`;
-      })
-      .join("");
-    document.getElementById(hintId).textContent = `promedio de ${conDatos.length} proyecto${conDatos.length === 1 ? "" : "s"}`;
-  }
+
 
   /** Panel "Trámites" de un proyecto (se abre encima de la ficha). */
   function abrirTramites(p) {
@@ -320,5 +299,5 @@
     if (e.target.closest("[data-close-tramites]")) global.Dialog.close(document.getElementById("tramites"));
   });
 
-  global.AppUI = { abrirTramites, renderKPIs, renderProjectList, renderDetail, renderFilterOptions, renderTramitesResumen, showToast };
+  global.AppUI = { abrirTramites, renderKPIs, renderProjectList, renderDetail, renderFilterOptions, showToast };
 })(window);

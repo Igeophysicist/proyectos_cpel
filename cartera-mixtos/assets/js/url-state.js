@@ -59,7 +59,9 @@
       (state[field] ? Array.from(state[field]) : []).forEach((v) => params.append(param, v));
     });
     if (tab && tab !== TABS[0]) params.set("tab", tab);
-    if (orden && orden !== "excel") params.set("orden", orden);
+    // El orden de entrada (Global, ver orden.js) no se escribe en el enlace.
+    const porDefecto = (global.AppOrden && global.AppOrden.POR_DEFECTO) || "global";
+    if (orden && orden !== porDefecto) params.set("orden", orden);
     const query = params.toString();
     const url = global.location.pathname + (query ? "?" + query : "") + global.location.hash;
     global.history.replaceState(null, "", url);

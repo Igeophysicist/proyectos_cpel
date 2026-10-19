@@ -561,7 +561,9 @@ html.dialogo-abierto{overflow:hidden;}
 }
 
 @media (prefers-reduced-motion: reduce){
-  *{animation-duration:.01ms !important; transition-duration:.01ms !important;}
+  /* Sin retraso tampoco: las entradas escalonadas (indicadores, tarjetas)
+     quedaban invisibles unos instantes aunque duraran casi nada. */
+  *{animation-duration:.01ms !important; animation-delay:0s !important; transition-duration:.01ms !important;}
   /* El destello se quita del todo (acortado parpadearía sin parar). */
   /* Solo la entrada, igual de corta que en las demás tarjetas (con su
      duración normal, axe veía la tarjeta aún semitransparente). */

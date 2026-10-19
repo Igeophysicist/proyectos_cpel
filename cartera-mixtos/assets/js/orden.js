@@ -5,7 +5,10 @@
  * van al final, y los empates conservan el orden del Excel.
  *
  * Funciones puras (se prueban en tests/orden.test.js).
- * Expone: window.AppOrden.ORDENES, .ordenar(projects, clave), .valida(clave)
+ * Al entrar, el listado se ordena por avance Global de mayor a menor
+ * (POR_DEFECTO); "Default" es el orden de las filas del Excel.
+ *
+ * Expone: window.AppOrden.ORDENES, .POR_DEFECTO, .ordenar(projects, clave), .valida(clave)
  */
 (function (global) {
   const num = (v) => (Number.isFinite(v) ? v : null);
@@ -36,7 +39,8 @@
     capacidad_asc: { etiqueta: "Capacidad (menor a mayor)", valor: capacidad },
   };
 
-  const valida = (clave) => (Object.prototype.hasOwnProperty.call(ORDENES, clave) ? clave : "excel");
+  const POR_DEFECTO = "global";
+  const valida = (clave) => (Object.prototype.hasOwnProperty.call(ORDENES, clave) ? clave : POR_DEFECTO);
   const posicion = (p) => Number(p.id);
 
   /** Copia ordenada de projects según la clave (ver ORDENES). */
@@ -57,7 +61,7 @@
     });
   }
 
-  const api = { ORDENES, ordenar, valida };
+  const api = { ORDENES, POR_DEFECTO, ordenar, valida };
   if (typeof module !== "undefined" && module.exports) module.exports = api;
   else global.AppOrden = api;
 })(typeof window !== "undefined" ? window : globalThis);
