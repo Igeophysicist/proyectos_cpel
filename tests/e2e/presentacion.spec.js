@@ -12,6 +12,7 @@ test("el PDF no se descarga hasta abrir la presentación", async ({ page }) => {
 });
 
 test("la presentación se ve diapositiva por diapositiva y se puede descargar", async ({ page }) => {
+  test.setTimeout(90_000); // dibujar diapositivas (y redibujarlas con zoom) tarda en equipos lentos
   await page.goto("/cartera-mixtos/");
   await cargado(page);
   // En celular está en la barra de abajo; en computadora, en la superior.
@@ -28,7 +29,7 @@ test("la presentación se ve diapositiva por diapositiva y se puede descargar", 
     Object.defineProperty(window.visualViewport, "scale", { configurable: true, get: () => 2.5 });
     window.visualViewport.dispatchEvent(new Event("resize"));
   });
-  await expect.poll(ancho, { timeout: 15_000 }).toBeGreaterThan(antes * 1.5);
+  await expect.poll(ancho, { timeout: 30_000 }).toBeGreaterThan(antes * 1.5);
 
   const enlace = page.locator("#presentacion .pres__descargar");
   await expect(enlace).toHaveAttribute("download", /\.pdf$/);
