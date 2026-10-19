@@ -387,7 +387,7 @@ a{color:inherit;}
 .tabbar__pres{color:var(--teal-800);}
 .tabbar__pres-icono{
   position:relative; overflow:hidden; display:flex; align-items:center; justify-content:center;
-  width:40px; height:24px; border-radius:99px;
+  width:38px; height:20px; border-radius:99px;
   background:linear-gradient(160deg, #f4f6f5, #c9d0ce); border:1px solid #b7bfbd;
   box-shadow:0 1px 2px rgba(26,36,34,.15);
 }
