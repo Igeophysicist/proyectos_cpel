@@ -16,7 +16,7 @@
   let projectsById = new Map();
   let currentTab = "proyectos";
   let openProjectSlug = null; // ficha abierta (para la dirección)
-  let orden = "excel"; // "Ordenar por" del listado (ver orden.js)
+  let orden = window.AppOrden.POR_DEFECTO; // "Ordenar por" del listado (ver orden.js)
   const { slugify, formatDateShort } = window.TextUtils;
 
   const els = {
@@ -51,7 +51,6 @@
     window.AppCharts.renderTecnologiaChart("chart-tecnologia", filtered);
     const prioritarios = window.AppCharts.renderRanking("ranking", filtered, openDetail);
     els.rankingHint.textContent = `${prioritarios} proyecto${prioritarios === 1 ? "" : "s"}`;
-    window.AppUI.renderTramitesResumen("tramites-resumen", "tramites-lista", "tramites-hint", filtered);
     window.AppUI.renderProjectList("project-list", "list-count", window.AppOrden.ordenar(filtered, orden), openDetail);
     window.AppMap.renderProjects(filtered);
 

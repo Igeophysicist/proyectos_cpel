@@ -37,11 +37,14 @@ test("la primera opción es Default y cada criterio tiene su contrario", () => {
   assert.equal(claves.length, 13);
 });
 
-test("ordenar no modifica la lista original; claves desconocidas = orden del Excel", () => {
+test("ordenar no modifica la lista original; sin clave o desconocida = orden de entrada (Global)", () => {
+  const { POR_DEFECTO } = require("../cartera-mixtos/assets/js/orden.js");
   const copia = P.slice();
   ordenar(P, "global");
   assert.deepEqual(P, copia);
-  assert.equal(valida("nada"), "excel");
-  assert.equal(ids(ordenar(P, "nada")), "0,1,2,3");
+  assert.equal(POR_DEFECTO, "global");
+  assert.equal(valida("nada"), "global");
+  assert.equal(valida(null), "global");
+  assert.equal(ids(ordenar(P, "nada")), ids(ordenar(P, "global")));
   assert.ok(Object.keys(ORDENES).includes("excel"));
 });

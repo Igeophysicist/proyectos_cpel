@@ -93,21 +93,23 @@ test("Ordenar por (y su contrario) cambia el orden de las tarjetas y queda en el
   const conGlobal = mixtos.filter((r) => Number.isFinite(pct(r.Global)));
   const mayor = conGlobal.reduce((a, b) => (pct(b.Global) > pct(a.Global) ? b : a));
   const menor = conGlobal.reduce((a, b) => (pct(b.Global) < pct(a.Global) ? b : a));
+  // Al entrar: avance Global de mayor a menor (sin "orden" en el enlace).
   await page.goto("/cartera-mixtos/");
-  await cargado(page);
-  await expect(page.locator("#sort-select option:checked")).toHaveText("Default");
-  await page.selectOption("#sort-select", "global");
-  await expect(page.locator("#project-list .pcard__title").first()).toHaveText(mayor.nombre);
-  await expect(page).toHaveURL(/orden=global/);
-  await page.reload();
   await cargado(page);
   await expect(page.locator("#sort-select")).toHaveValue("global");
   await expect(page.locator("#project-list .pcard__title").first()).toHaveText(mayor.nombre);
+  await expect(page).not.toHaveURL(/orden=/);
   await page.selectOption("#sort-select", "global_asc");
   await expect(page.locator("#project-list .pcard__title").first()).toHaveText(menor.nombre);
   await expect(page).toHaveURL(/orden=global_asc/);
-  await page.selectOption("#sort-select", "excel");
+  await page.reload();
+  await cargado(page);
+  await expect(page.locator("#sort-select")).toHaveValue("global_asc");
+  await expect(page.locator("#project-list .pcard__title").first()).toHaveText(menor.nombre);
+  await page.selectOption("#sort-select", "excel"); // "Default": orden del Excel
   await expect(page.locator("#project-list .pcard__title").first()).toHaveText(mixtos[0].nombre);
+  await expect(page).toHaveURL(/orden=excel/);
+  await page.selectOption("#sort-select", "global");
   await expect(page).not.toHaveURL(/orden=/);
 });
 
@@ -118,7 +120,7 @@ test("el grupo de cada tarjeta sale del avance de Parque (A ≥ 85, B ≥ 76, C 
     if (!Number.isFinite(n)) return null;
     return n >= 85 ? "A" : n >= 76 ? "B" : "C";
   };
-  await page.goto("/cartera-mixtos/");
+  await page.goto("/cartera-mixtos/?orden=excel"); // tarjetas en el orden del Excel
   await cargado(page);
   const tarjetas = page.locator("#project-list .pcard");
   for (let i = 0; i < mixtos.length; i++) {
@@ -156,7 +158,7 @@ test("Prioritarios (columna PRIORI): el ranking solo los lista, por avance de Pa
     .map((r) => ({ nombre: r.nombre, parque: parseFloat(String(r.Parque).replace("%", "")) }))
     .filter((r) => Number.isFinite(r.parque))
     .sort((a, b) => b.parque - a.parque);
-  await page.goto("/cartera-mixtos/");
+  await page.goto("/cartera-mixtos/?orden=excel"); // tarjetas en el orden del Excel
   await cargado(page);
   await expect(page.locator("#ranking .ranking__name")).toHaveText(orden.map((r) => r.nombre));
   await expect(page.locator("#ranking-hint")).toHaveText(`${orden.length} proyectos`);
@@ -188,7 +190,7 @@ test("Filtro de prioridad: Prioritario / No prioritario, también desde el enlac
   await expect(page.locator("#ranking .ranking__name")).toHaveCount(0); // ningún prioritario entre los mostrados
 });
 
-test("Trámites: el botón de la ficha abre el desglose de los 10 trámites y el Resumen muestra sus promedios", async ({ page }) => {
+test("Trámites: el botón de la ficha abre el desglose de los 10 trámites", async ({ page }) => {
   const p = datos().mixtos.find((r) => r.DI_P !== undefined && r.DI_P !== "");
   test.skip(!p, "el Excel no trae desglose de trámites");
   await page.goto(`/cartera-mixtos/?proyecto=${slugify(p.nombre)}`);
@@ -204,7 +206,5 @@ test("Trámites: el botón de la ficha abre el desglose de los 10 trámites y el
   await page.keyboard.press("Escape");
   await expect(panel).toHaveCount(0);
   await expect(page.locator("#detail")).toHaveClass(/is-open/); // la ficha sigue abierta
-  await expect(page.locator("#tramites-resumen")).toBeAttached();
-  await expect(page.locator("#tramites-resumen")).not.toHaveAttribute("hidden", "");
-  await expect(page.locator("#tramites-lista .tram-row")).toHaveCount(10);
+  await expect(page.locator("#tramites-resumen")).toHaveCount(0); // ya no está en el Resumen
 });

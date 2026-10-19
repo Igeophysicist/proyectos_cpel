@@ -11,7 +11,7 @@
  * Estudios de interconexión y Consulta indígena tienen un solo valor que
  * cuenta igual para Parque y LT.
  *
- * Lo usan la página (data.js, ui.js, charts.js) y la Action "Datos"
+ * Lo usan la página (data.js, ui.js) y la Action "Datos"
  * (scripts/data-rules.js, que avisa si Parque/LT/Global del Excel no
  * cuadran con esta ponderación). Si cambian los pesos, se editan aquí.
  *
@@ -70,20 +70,8 @@
       .sort((a, b) => b.pts - a.pts);
   }
 
-  /** Avance promedio de cada trámite entre varios proyectos (con datos). */
-  function promedios(listaDeItems) {
-    const conDatos = listaDeItems.filter(Boolean);
-    if (!conDatos.length) return [];
-    return TRAMITES.map((t, i) => {
-      const prom = (campo) => {
-        const vals = conDatos.map((items) => items[i][campo]).filter((v) => v !== null);
-        return vals.length ? vals.reduce((a, b) => a + b, 0) / vals.length : null;
-      };
-      return { ...t, compartido: t.parque === t.lt, avParque: prom("avParque"), avLt: prom("avLt"), proyectos: conDatos.length };
-    });
-  }
 
-  const api = { TRAMITES, PESO_GLOBAL, COLUMNAS, pct, desglose, ponderado, faltantes, promedios };
+  const api = { TRAMITES, PESO_GLOBAL, COLUMNAS, pct, desglose, ponderado, faltantes };
   if (typeof module !== "undefined" && module.exports) module.exports = api;
   else global.AppTramites = api;
 })(typeof window !== "undefined" ? window : globalThis);
