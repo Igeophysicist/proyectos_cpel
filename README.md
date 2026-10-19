@@ -91,6 +91,19 @@ Proyectos: `name_BD` (nombre en esa hoja, solo de control) y las columnas
 - La Action "Datos" **avisa** si Parque, LT o Global de una fila no cuadran
   con esa ponderación (diferencia mayor a 0.05 puntos).
 
+### Presentación de seguimiento (Mixtos)
+
+El botón **Presentación** de la barra superior de Mixtos abre el PDF
+`cartera-mixtos/presentacion/presentacion.pdf` en una ventana, diapositiva
+por diapositiva, con el botón **Descargar PDF**.
+
+- **Para actualizarla:** subir el PDF nuevo a `cartera-mixtos/presentacion/`
+  con el nombre exacto `presentacion.pdf` (reemplaza al anterior). No pasa
+  por la Action "Datos" ni se revisa: se publica tal cual.
+- El PDF y el visor (PDF.js, desde jsDelivr) se descargan solo al abrir la
+  ventana, no con el resto de Mixtos. El modo app no guarda el PDF
+  (`sw.js`): verlo pide conexión; descargarlo lo deja en el dispositivo.
+
 ## Curva de avance (cortes semanales)
 
 - **Cartera CPEL:** botón **Curva de avance** (junto a Ficha técnica y

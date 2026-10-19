@@ -118,6 +118,14 @@ a{color:inherit;}
 .topbar__filterbtn .count{
   background:rgba(255,255,255,.25); border-radius:99px; padding:1px 6px; font-size:11px;
 }
+/* Presentación (PDF): solo el ícono en celular; con texto en computadora. */
+.topbar__presbtn{
+  flex:none; height:36px; min-width:36px; padding:0 9px;
+  background:rgba(255,255,255,.1); color:#fff; border:1px solid rgba(255,255,255,.16); border-radius:var(--radius-m);
+  font-size:13px; font-weight:600; display:flex; align-items:center; justify-content:center; gap:6px;
+  cursor:pointer;
+}
+.topbar__presbtn-txt{display:none;}
 
 /* ---------- Layout general ---------- */
 .app{min-height:100%; padding-bottom:calc(var(--tabbar-h) + env(safe-area-inset-bottom));}
@@ -438,6 +446,17 @@ a{color:inherit;}
    se abrieron; el contenido se desplaza dentro. */
 #detail .detail__panel, #tramites .detail__panel{height:82vh; height:82dvh;}
 
+/* Presentación: casi toda la pantalla, diapositivas una debajo de otra. */
+#presentacion .detail__panel{height:92vh; height:92dvh;}
+.detail--pres .detail__actions{margin-top:var(--space-3);}
+.pres__descargar{text-decoration:none;}
+.pres__body{background:var(--surface-sunken); padding:var(--space-3);}
+.pres__estado{margin:var(--space-5) 0; text-align:center; font-size:13.5px; color:var(--ink-500);}
+.pres__estado[hidden]{display:none;}
+.pres__paginas{display:flex; flex-direction:column; gap:var(--space-3); max-width:1100px; margin:0 auto;}
+.pres__hoja{width:100%; background:var(--surface); border-radius:6px; box-shadow:0 1px 3px rgba(17,24,22,.18); overflow:hidden;}
+.pres__hoja canvas{display:block; width:100%; height:100%;}
+
 /* ---------- Ventanas: fondo quieto y "deslizar para cerrar" ----------
    Con una ventana abierta la página de atrás no se desplaza (dialog.js
    pone la clase en <html>), y al llegar al final del contenido de la
@@ -556,6 +575,13 @@ html.dialogo-abierto{overflow:hidden;}
 
   .detail__panel{left:auto; right:0; top:0; max-height:none; width:440px; border-radius:0; animation:sheet-right .25s ease-out;}
   #detail .detail__panel, #tramites .detail__panel{height:auto;}
+  .topbar__presbtn{padding:0 var(--space-3);}
+  .topbar__presbtn-txt{display:inline;}
+  #presentacion .detail__panel{left:0; top:0; width:auto; height:auto;}
+  .detail--pres .detail__head{display:flex; align-items:center; gap:var(--space-4); padding-right:56px;}
+  .detail--pres .detail__head > div:not(.detail__actions){flex:none;}
+  .detail--pres .detail__actions{margin:0 0 0 auto;}
+  .pres__body{padding:var(--space-5);}
   .filters__panel{left:auto; right:24px; bottom:auto; top:72px; width:340px; border-radius:var(--radius-l); max-height:calc(100vh - 100px); animation:sheet-right .25s ease-out;}
   .filters__scrim{background:rgba(17,24,22,.25);}
 }
