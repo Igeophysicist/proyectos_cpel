@@ -118,14 +118,14 @@ a{color:inherit;}
 .topbar__filterbtn .count{
   background:rgba(255,255,255,.25); border-radius:99px; padding:1px 6px; font-size:11px;
 }
-/* Presentación (PDF): solo el ícono en celular; con texto en computadora. */
+/* Presentación (PDF) en computadora; en celular va en la barra de abajo. */
 .topbar__presbtn{
-  flex:none; height:36px; min-width:36px; padding:0 9px;
+  flex:none; height:36px; padding:0 var(--space-3);
   background:rgba(255,255,255,.1); color:#fff; border:1px solid rgba(255,255,255,.16); border-radius:var(--radius-m);
   font-size:13px; font-weight:600; display:flex; align-items:center; justify-content:center; gap:6px;
   cursor:pointer;
 }
-.topbar__presbtn-txt{display:none;}
+.topbar__presbtn{display:none;}
 
 /* ---------- Layout general ---------- */
 .app{min-height:100%; padding-bottom:calc(var(--tabbar-h) + env(safe-area-inset-bottom));}
@@ -299,14 +299,14 @@ a{color:inherit;}
 .pcard--prio{background:var(--prio-bg); border-color:var(--prio-border); box-shadow:inset 5px 0 0 var(--teal-800), var(--shadow-card);}
 .pcard--prio:hover{box-shadow:inset 5px 0 0 var(--teal-800), var(--shadow-float);}
 /* Destello de los prioritarios (como "Últimas actualizaciones" del portal):
-   cada 5 s una franja dorada clara cruza la tarjeta y el borde se ilumina.
+   cada 5 s una franja verde clara cruza la tarjeta y el borde se ilumina.
    Se anima la posición del fondo, así no hace falta recortar la tarjeta
    (el contorno de foco del teclado queda intacto). Las tarjetas se
    reparten en tres tiempos para que no destellen todas juntas. */
 .pcard--prio{animation:card-in .35s ease-out forwards, prio-borde 5s ease-in-out infinite;}
 .pcard--prio::before{
   content:""; position:absolute; inset:0; border-radius:inherit; pointer-events:none;
-  background:linear-gradient(105deg, transparent 40%, rgba(214,166,64,.2) 46%, rgba(255,240,200,.6) 50%, rgba(214,166,64,.2) 54%, transparent 60%) no-repeat;
+  background:linear-gradient(105deg, transparent 40%, rgba(60,150,115,.18) 46%, rgba(215,245,228,.7) 50%, rgba(60,150,115,.18) 54%, transparent 60%) no-repeat;
   background-size:250% 100%; background-position:150% 0;
   animation:prio-destello 5s ease-in-out infinite;
 }
@@ -318,7 +318,7 @@ a{color:inherit;}
 }
 @keyframes prio-borde{
   0%, 32%, 100%{border-color:var(--prio-border); box-shadow:inset 5px 0 0 var(--teal-800), var(--shadow-card);}
-  14%{border-color:var(--gold-500); box-shadow:inset 5px 0 0 var(--teal-800), 0 0 0 3px rgba(182,137,58,.22), var(--shadow-card);}
+  14%{border-color:#4f9a80; box-shadow:inset 5px 0 0 var(--teal-800), 0 0 0 3px rgba(60,150,115,.22), var(--shadow-card);}
 }
 .prio-chip{
   flex:none; font-size:11px; font-weight:700; border-radius:99px; padding:3px 10px;
@@ -382,6 +382,26 @@ a{color:inherit;}
 .tabbar__btn svg{opacity:.75;}
 .tabbar__btn.is-active{color:var(--teal-800);}
 .tabbar__btn.is-active svg{opacity:1;}
+/* Presentación: el ícono en una pastilla plateada con un destello gris
+   claro que la cruza cada 4 s, para distinguirla de las pestañas. */
+.tabbar__pres{color:var(--teal-800);}
+.tabbar__pres-icono{
+  position:relative; overflow:hidden; display:flex; align-items:center; justify-content:center;
+  width:40px; height:24px; border-radius:99px;
+  background:linear-gradient(160deg, #f4f6f5, #c9d0ce); border:1px solid #b7bfbd;
+  box-shadow:0 1px 2px rgba(26,36,34,.15);
+}
+.tabbar__pres svg{opacity:1;}
+.tabbar__pres-icono::after{
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background:linear-gradient(105deg, transparent 35%, rgba(255,255,255,.95) 50%, transparent 65%) no-repeat;
+  background-size:250% 100%; background-position:150% 0;
+  animation:pres-destello 4s ease-in-out infinite;
+}
+@keyframes pres-destello{
+  0%{background-position:150% 0;}
+  30%, 100%{background-position:-50% 0;}
+}
 
 /* ---------- Panel de filtros (bottom sheet / drawer) ---------- */
 .filters{
@@ -575,8 +595,7 @@ html.dialogo-abierto{overflow:hidden;}
 
   .detail__panel{left:auto; right:0; top:0; max-height:none; width:440px; border-radius:0; animation:sheet-right .25s ease-out;}
   #detail .detail__panel, #tramites .detail__panel{height:auto;}
-  .topbar__presbtn{padding:0 var(--space-3);}
-  .topbar__presbtn-txt{display:inline;}
+  .topbar__presbtn{display:flex;}
   #presentacion .detail__panel{left:0; top:0; width:auto; height:auto;}
   .detail--pres .detail__head{display:flex; align-items:center; gap:var(--space-4); padding-right:56px;}
   .detail--pres .detail__head > div:not(.detail__actions){flex:none;}
@@ -595,6 +614,7 @@ html.dialogo-abierto{overflow:hidden;}
      duración normal, axe veía la tarjeta aún semitransparente). */
   .pcard--prio{animation:card-in .01ms forwards !important;}
   .pcard--prio::before{display:none;}
+  .tabbar__pres-icono::after{display:none;}
 }
 
 /* Botón de regreso al portal (reemplaza el cuadro dorado de la marca) */
