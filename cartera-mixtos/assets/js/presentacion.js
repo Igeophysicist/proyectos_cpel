@@ -10,6 +10,11 @@
  * llenar la memoria del celular. Al hacer zoom con los dedos, las que se
  * ven se vuelven a dibujar con más resolución (no se pixelean).
  *
+ * "Descargar PDF": en celular abre el menú de compartir del teléfono
+ * (Guardar en Archivos, WhatsApp, correo…), como el PDF de Cartera CPEL;
+ * en iPhone el enlace solo abría el PDF en Safari. En computadora es una
+ * descarga normal.
+ *
  * Para actualizarla basta con subir el PDF nuevo con el mismo nombre.
  *
  * Requiere: shared/dialog.js
@@ -39,9 +44,12 @@
   const estado = $("presentacion-estado");
   const info = $("presentacion-info");
   const descargar = panel.querySelector(".pres__descargar");
+  const NOMBRE_ARCHIVO = descargar.getAttribute("download");
 
   let libPromise = null;
   let doc = null; // documento ya abierto (se reutiliza al volver a abrir)
+  let archivo = null; // el PDF listo para compartir (celular)
+  let preparando = null;
 
   function cargarScript({ src, integrity }) {
     return new Promise((resolve, reject) => {
@@ -220,14 +228,80 @@
     paginas.innerHTML = "";
   }
 
+  // ------------------------------------------------ descargar / compartir
+  const esCelular = () => global.matchMedia("(pointer: coarse)").matches;
+  function puedeCompartir() {
+    try {
+      const prueba = new File([""], "x.pdf", { type: "application/pdf" });
+      return esCelular() && !!navigator.canShare && navigator.canShare({ files: [prueba] });
+    } catch {
+      return false;
+    }
+  }
+
+  /**
+   * Arma el archivo en cuanto se abre la presentación: el teléfono solo
+   * deja compartir justo después de un toque, así que al tocar el botón
+   * el archivo ya tiene que estar listo.
+   */
+  function prepararArchivo() {
+    if (!preparando) {
+      const actual = doc;
+      preparando = actual
+        .getData()
+        .then((datos) => {
+          if (doc === actual) archivo = new File([datos], NOMBRE_ARCHIVO, { type: "application/pdf" });
+          return archivo;
+        })
+        .catch((err) => {
+          preparando = null;
+          throw err;
+        });
+    }
+    return preparando;
+  }
+
+  const etiqueta = (texto) => (descargar.querySelector("span").textContent = texto);
+
+  async function compartir(file) {
+    try {
+      await navigator.share({ files: [file], title: file.name });
+    } catch (err) {
+      if (err.name === "AbortError") return; // la persona cerró el menú
+      // Si el teléfono pide otro toque, el botón queda en "Compartir PDF".
+      if (err.name === "NotAllowedError") return etiqueta("Compartir PDF");
+      global.location.href = descargar.href; // último recurso: abrir el PDF
+    }
+  }
+
+  descargar.addEventListener("click", async (e) => {
+    if (!doc || !puedeCompartir()) return; // computadora: descarga normal
+    e.preventDefault();
+    etiqueta("Descargar PDF");
+    if (archivo) return compartir(archivo);
+    etiqueta("Preparando…");
+    try {
+      const file = await prepararArchivo();
+      etiqueta("Descargar PDF");
+      await compartir(file);
+    } catch {
+      etiqueta("Descargar PDF");
+      global.location.href = descargar.href;
+    }
+  });
+
   async function abrir() {
     global.Dialog.open(panel, { onClose: limpiar });
     estado.hidden = false;
     estado.textContent = "Cargando presentación…";
     try {
       descargar.hidden = false;
-      if (!doc) doc = await abrirDocumento();
+      if (!doc) {
+        archivo = preparando = null;
+        doc = await abrirDocumento();
+      }
       estado.hidden = true;
+      if (puedeCompartir()) prepararArchivo().catch(() => {}); // se reintenta al tocar
       await mostrar();
     } catch (err) {
       doc = null;
