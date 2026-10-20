@@ -44,3 +44,29 @@ test("la presentación se ve diapositiva por diapositiva y se puede descargar", 
   await page.click("#presentacion .detail__close");
   await expect(page.locator("#presentacion")).not.toHaveClass(/is-open/);
 });
+
+test("en celular, Descargar PDF abre el menú de compartir con el archivo", async ({ page }, info) => {
+  test.skip(info.project.name !== "celular", "solo en celular");
+  test.setTimeout(90_000);
+  // Menú de compartir simulado: guarda lo que se le pasa.
+  await page.addInitScript(() => {
+    window.__compartido = null;
+    navigator.canShare = () => true;
+    navigator.share = async (datos) => {
+      const f = datos.files[0];
+      window.__compartido = { nombre: f.name, tipo: f.type, bytes: f.size };
+    };
+  });
+  await page.goto("/cartera-mixtos/");
+  await cargado(page);
+  await page.locator("[data-open-presentacion]:visible").click();
+  await expect(page.locator("#presentacion .pres__hoja.is-lista").first()).toBeVisible({ timeout: 30_000 });
+  await page.click("#presentacion .pres__descargar");
+  await expect.poll(() => page.evaluate(() => window.__compartido), { timeout: 30_000 }).not.toBeNull();
+  const compartido = await page.evaluate(() => window.__compartido);
+  expect(compartido.nombre).toMatch(/\.pdf$/);
+  expect(compartido.tipo).toBe("application/pdf");
+  expect(compartido.bytes).toBeGreaterThan(100_000);
+  // No navegó al PDF: sigue en la ventana de la presentación.
+  await expect(page.locator("#presentacion.is-open")).toBeVisible();
+});
