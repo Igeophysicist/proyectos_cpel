@@ -1,6 +1,6 @@
 {
   "fuente": "DATOS_MIXTOS.xlsx",
-  "excelModificado": "2026-10-18T20:49:38.000Z",
+  "excelModificado": "2026-10-20T00:51:24.000Z",
   "proyectos": [
     {
       "NO.": "1",
@@ -1155,7 +1155,7 @@
       "Inicio de Inversión": "01 de abril de 2027",
       "Fin de Construcción": "01 de abril de 2029",
       "Fecha firma de contrato": "18 de septiembre de 2026",
-      "CAPEX": "$381,545,675.00",
+      "CAPEX": "VER FASE II",
       "Parque": "83.75%",
       "LT": "83.75%",
       "Global": "83.75%",
@@ -1193,7 +1193,7 @@
       "Inicio de Inversión": "01 de abril de 2027",
       "Fin de Construcción": "01 de abril de 2029",
       "Fecha firma de contrato": "18 de septiembre de 2026",
-      "CAPEX": "$198,977,154.00",
+      "CAPEX": "$925,310,833.00",
       "Parque": "83.75%",
       "LT": "83.75%",
       "Global": "83.75%",
@@ -1231,7 +1231,7 @@
       "Inicio de Inversión": "01 de abril de 2027",
       "Fin de Construcción": "01 de abril de 2029",
       "Fecha firma de contrato": "18 de septiembre de 2026",
-      "CAPEX": "$376,737,492.00",
+      "CAPEX": "VER FASE II",
       "Parque": "82.75%",
       "LT": "82.75%",
       "Global": "82.75%",
