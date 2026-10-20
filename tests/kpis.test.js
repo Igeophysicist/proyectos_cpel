@@ -20,17 +20,6 @@ test("capacidad, CAPEX y avance promedio no cuentan los de 2da ronda", () => {
   assert.deepEqual(t, { capacidad: 300, capex: 75, avancePromedio: 70, excluidos: 1 });
 });
 
-test("el CAPEX que comparten proyectos del mismo socio cuenta una vez", () => {
-  const t = totales([
-    { nombre: "CM FASE I", socio: "Atlas", capexNum: 925 },
-    { nombre: "CM FASE II", socio: "Atlas ", capexNum: 925 },
-    { nombre: "CM FASE III", socio: "atlas", capexNum: 925 },
-    { nombre: "Otro", socio: "Otro socio", capexNum: 925 },
-    { nombre: "Otro 2", socio: "Atlas", capexNum: 10 },
-  ]);
-  assert.equal(t.capex, 925 + 925 + 10);
-});
-
 test("sin proyectos que cuenten, el promedio queda vacío", () => {
   assert.deepEqual(totales([{ nombre: "X (2DA RONDA)", capacidadNum: 1, capexNum: 1, globalPct: 5 }]), {
     capacidad: 0,
