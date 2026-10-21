@@ -989,8 +989,8 @@
     },
     {
       "semana": "2026-10-18",
-      "fecha": "2026-10-19",
-      "excel": "2026-10-20T00:51:24.000Z",
+      "fecha": "2026-10-20",
+      "excel": "2026-10-21T00:04:59.000Z",
       "proyectos": {
         "san-simon-solar": {
           "parque": 94,
@@ -1011,9 +1011,9 @@
           "grupo": "C"
         },
         "alvaro-obregon": {
-          "parque": 86.5,
-          "lt": 85.5,
-          "global": 86.3,
+          "parque": 85.5,
+          "lt": 84.5,
+          "global": 85.3,
           "grupo": "A"
         },
         "pv-sandom-solar": {
@@ -1047,16 +1047,16 @@
           "grupo": "C"
         },
         "don-humberto": {
-          "parque": 83,
-          "lt": 71.5,
-          "global": 80.7,
-          "grupo": "B"
+          "parque": 85.5,
+          "lt": 74,
+          "global": 83.2,
+          "grupo": "A"
         },
         "planta-solar-haab-kiin": {
-          "parque": 74,
-          "lt": 69.5,
-          "global": 73.1,
-          "grupo": "C"
+          "parque": 76.5,
+          "lt": 72,
+          "global": 75.6,
+          "grupo": "B"
         },
         "planta-solar-cerro-colorado": {
           "parque": 78,
@@ -1131,10 +1131,10 @@
           "grupo": "C"
         },
         "dalia-3-pv-castamay": {
-          "parque": 72,
-          "lt": 42.5,
-          "global": 66.1,
-          "grupo": "C"
+          "parque": 83,
+          "lt": 53.5,
+          "global": 77.1,
+          "grupo": "B"
         },
         "fresnillo-pv-atocha": {
           "parque": 68.5,
