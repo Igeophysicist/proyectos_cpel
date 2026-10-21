@@ -79,6 +79,30 @@ test("todas las fichas cargan (cada proyecto del Excel)", async ({ page }) => {
   for (const [i, p] of cartera.entries()) {
     await page.selectOption("#projectSelect", { index: i });
     await expect(page.locator("#projectName")).toHaveText(p.nombre.trim());
-    await expect(page.locator("#hitosGrid")).not.toBeEmpty();
+    await expect(page.locator("#hitosCard")).not.toBeEmpty();
   }
+});
+
+test("Hitos de pago: anterior, actual y próximo; Ver todos abre la lista por contrato", async ({ page }) => {
+  const hitos = JSON.parse(require("fs").readFileSync(require("path").join(__dirname, "../../cartera-cpel/data/hitos.json"), "utf8"));
+  // Un proyecto con varios contratos (pestañas) y uno con uno solo.
+  const [slugVarios, varios] = Object.entries(hitos.proyectos).find(([, p]) => p.contratos.length > 1);
+  await page.goto(`/cartera-cpel/?proyecto=${slugVarios}`);
+  await listo(page);
+  const tarjeta = page.locator("#hitosCard");
+  await expect(tarjeta.locator(".hito3")).toHaveCount(3);
+  const total = varios.contratos.reduce((s, c) => s + c.hitos.length, 0);
+  await expect(tarjeta.locator(".hitos-res__top")).toContainText(`de ${total} hitos pagados`);
+  // Nunca montos.
+  await expect(tarjeta).not.toContainText("$");
+
+  await tarjeta.locator(".hitos-ver").click();
+  const ventana = page.locator("#sheetHitos");
+  await expect(ventana).toHaveClass(/is-open/);
+  await expect(ventana.locator(".htab")).toHaveCount(varios.contratos.length);
+  await expect(ventana.locator(".hl")).toHaveCount(varios.contratos[0].hitos.length);
+  await ventana.locator(".htab").nth(1).click();
+  await expect(ventana.locator(".htab").nth(1)).toHaveAttribute("aria-selected", "true");
+  await expect(ventana.locator(".hl")).toHaveCount(varios.contratos[1].hitos.length);
+  await expect(ventana).not.toContainText("$");
 });

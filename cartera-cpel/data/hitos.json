@@ -1,0 +1,1337 @@
+{
+  "fuente": "HITOS_CARTERA_CPEL.xlsx",
+  "excelModificado": "2026-10-21T01:10:57.000Z",
+  "proyectos": {
+    "cfv-puerto-penasco-secuencia-iii": {
+      "nombre": "CFV PUERTO PEÑASCO SECUENCIA III",
+      "contratos": [
+        {
+          "nombre": "",
+          "titulo": "",
+          "hitos": [
+            {
+              "num": "1",
+              "desc": "Entrega del Manual del Sistema de Gestión Ambiental, Manual de Gestión de la calidad y Manual de la Seguridad y Salud en el Trabajo en rev0. Entrega del Programa de ejecución desarrollado a detalle nivel 4, aprobados sin comentarios por la CFE.",
+              "pct": 5,
+              "programada": "2026-01-20",
+              "solicitud": "2026-01-26",
+              "pago": "2026-02-25",
+              "estatus": "pagado"
+            },
+            {
+              "num": "2",
+              "desc": "Entrega de Ingeniería Conceptual aprobada sin comentarios por la CFE (Arreglo General rev0; Unifilar de Planta rev0; Unifilar de Subestaciones Eléctricas rev0; Arquitectura de Control de Subestaciones Eléctricas rev0; Especificación técnica de Estudios de Geotecnia, Resistividad y Topografía de la Central Eléctrica rev0.)",
+              "pct": 5,
+              "programada": "2026-02-19",
+              "solicitud": "2026-02-19",
+              "pago": "2026-03-25",
+              "estatus": "pagado"
+            },
+            {
+              "num": "3",
+              "desc": "Conclusión de movilización a Sitio Terminada (vallado perimetral de las oficinas temporales y del área de almacén).",
+              "pct": 10,
+              "programada": "2026-02-04",
+              "solicitud": "2026-01-30",
+              "pago": "2026-02-25",
+              "estatus": "pagado"
+            },
+            {
+              "num": "4",
+              "desc": "Colocación de Órdenes de Compra de equipos electromecánicos del Parque Fotovoltaico (Sistema de Seguimiento, Módulos Fotovoltaicos y Centros de Transformación)",
+              "pct": 5,
+              "programada": "2026-03-21",
+              "solicitud": "2026-03-21",
+              "pago": "2026-04-27",
+              "estatus": "pagado"
+            },
+            {
+              "num": "6",
+              "desc": "Limpieza y nivelación del 50 % de área del polígono del Parque Fotovoltaico.",
+              "pct": 5,
+              "programada": "2026-05-20",
+              "solicitud": "2026-05-21",
+              "pago": "2026-06-25",
+              "estatus": "pagado"
+            },
+            {
+              "num": "8",
+              "desc": "Llegada a Sitio del 100% del Sistema de seguimiento (hincas y Trackers) y Equipos de acondicionamiento de potencia (Inversores)",
+              "pct": 8,
+              "programada": "2026-07-19",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "inconcluso"
+            },
+            {
+              "num": "5",
+              "desc": "Entrega de Ingeniería Civil de detalle rev0 aprobada sin comentarios por la CFE (Plataforma y Cimentaciones Mayores y Menores de Centro de Interconexión y SE Maniobras CFV Puerto Peñasco 400 kV)",
+              "pct": 5,
+              "programada": "2026-08-08",
+              "solicitud": "2026-08-08",
+              "pago": "2026-09-25",
+              "estatus": "pagado"
+            },
+            {
+              "num": "9",
+              "desc": "Limpieza y Nivelación al 100 % de área del polígono del Parque Fotovoltaico.",
+              "pct": 5,
+              "programada": "2026-08-08",
+              "solicitud": "2026-08-08",
+              "pago": "2026-09-25",
+              "estatus": "pagado"
+            },
+            {
+              "num": "7",
+              "desc": "Terminación de la Obra Civil de las Plataformas del Centro de Interconexión y SE Maniobras CFV Puerto Peñasco 400 kV.",
+              "pct": 5,
+              "programada": "2026-10-07",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pendiente"
+            },
+            {
+              "num": "11",
+              "desc": "Llegada a Sitio del 100% de los Módulos fotovoltaicos.",
+              "pct": 10,
+              "programada": "2026-11-13",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pendiente"
+            },
+            {
+              "num": "10",
+              "desc": "Llegada a Sitio del 100% del Sistema de Almacenamiento de Energía",
+              "pct": 5,
+              "programada": "2027-02-04",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pendiente"
+            },
+            {
+              "num": "12",
+              "desc": "Llegada a Sitio del 100% de los Equipos Principales y Auxiliares del Centro de Interconexión y SE Maniobras CFV Puerto Peñasco 400 kV.",
+              "pct": 6,
+              "programada": "2027-06-23",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pendiente"
+            },
+            {
+              "num": "13",
+              "desc": "Terminación del Montaje de la Obra Electromecánica del Centro de Interconexión y SE Maniobras CFV Puerto Peñasco 400 kV.",
+              "pct": 6,
+              "programada": "2027-07-23",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pendiente"
+            },
+            {
+              "num": "14",
+              "desc": "Terminación física de obra civil y electromecánica del Parque Fotovoltaico.",
+              "pct": 5,
+              "programada": "2027-08-18",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pendiente"
+            },
+            {
+              "num": "15",
+              "desc": "Terminación de Pruebas de Puesta en Servicio de la Central",
+              "pct": 5,
+              "programada": "2027-11-10",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pendiente"
+            },
+            {
+              "num": "16",
+              "desc": "Terminación de Pruebas de Puesta en Servicio de la Central",
+              "pct": 10,
+              "programada": "2027-12-20",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pendiente"
+            }
+          ]
+        }
+      ]
+    },
+    "cfv-puerto-penasco-secuencia-iv": {
+      "nombre": "CFV PUERTO PEÑASCO SECUENCIA IV",
+      "contratos": [
+        {
+          "nombre": "",
+          "titulo": "",
+          "hitos": [
+            {
+              "num": "1",
+              "desc": "Entrega del Manual del Sistema de Gestión Ambiental, Manual de Gestión de la calidad y Manual de la Seguridad y Salud en el Trabajo en rev0. Entrega del Programa de ejecución desarrollado a detalle nivel 4, aprobados sin comentarios por la CFE.",
+              "pct": 5,
+              "programada": "2026-04-24",
+              "solicitud": "2026-04-24",
+              "pago": "2026-05-26",
+              "estatus": "pagado"
+            },
+            {
+              "num": "2",
+              "desc": "Entrega de Ingeniería Conceptual aprobada sin comentarios por la CFE (Arreglo General rev0; Unifilar de Planta rev0; Unifilar de Subestaciones Eléctricas rev0; Arquitectura de Control de Subestaciones Eléctricas rev0; Especificación técnica de Estudios de Geotecnia, Resistividad y Topografía de la Central Eléctrica rev0.)",
+              "pct": 5,
+              "programada": "2026-05-14",
+              "solicitud": "2026-05-14",
+              "pago": "2026-06-25",
+              "estatus": "pagado"
+            },
+            {
+              "num": "3",
+              "desc": "Conclusión de movilización a Sitio Terminada (vallado perimetral de las oficinas temporales y del área de almacén).",
+              "pct": 10,
+              "programada": "2026-05-24",
+              "solicitud": "2026-05-24",
+              "pago": "2026-06-25",
+              "estatus": "pagado"
+            },
+            {
+              "num": "5",
+              "desc": "Entrega de Ingeniería Civil de detalle rev0 aprobada sin comentarios por la CFE (Plataforma y Cimentaciones Mayores y Menores de Centro de Interconexión, S.E. CFV Puerto Peñasco Ampliación y S.E. Cucapáh Bco. 3).",
+              "pct": 5,
+              "programada": "2026-07-23",
+              "solicitud": "2026-07-23",
+              "pago": "2026-08-25",
+              "estatus": "pagado"
+            },
+            {
+              "num": "4",
+              "desc": "Colocación de Órdenes de Compra de equipos electromecánicos del Parque Fotovoltaico (Sistema de Seguimiento, Módulos Fotovoltaicos y Centros de Transformación) y la entrega de los modelos dinámicos bajo el esquema de usuario.",
+              "pct": 5,
+              "programada": "2026-09-21",
+              "solicitud": "2026-09-21",
+              "pago": "",
+              "estatus": "transito"
+            },
+            {
+              "num": "6",
+              "desc": "Limpieza y nivelación del 50 % de área del polígono del Parque Fotovoltaico.",
+              "pct": 5,
+              "programada": "2027-02-18",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pendiente"
+            },
+            {
+              "num": "7",
+              "desc": "Terminación de la Obra Civil de las Plataformas del Centro de Interconexión, S.E. CFV Puerto Peñasco Ampliación y S.E. Cucapáh Bco. 3",
+              "pct": 5,
+              "programada": "2027-03-19",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pendiente"
+            },
+            {
+              "num": "8",
+              "desc": "Llegada a Sitio del 100% del Sistema de seguimiento (hincas y Trackers) y Equipos de acondicionamiento de potencia (Inversores)",
+              "pct": 8,
+              "programada": "2027-04-09",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pendiente"
+            },
+            {
+              "num": "9",
+              "desc": "Limpieza y Nivelación al 100 % de área del polígono del Parque Fotovoltaico.",
+              "pct": 5,
+              "programada": "2027-07-18",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pendiente"
+            },
+            {
+              "num": "10",
+              "desc": "Llegada a Sitio del 100% del Sistema de Almacenamiento de Energía.",
+              "pct": 5,
+              "programada": "2027-11-25",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pendiente"
+            },
+            {
+              "num": "11",
+              "desc": "Llegada a Sitio del 100% de los Módulos fotovoltaicos",
+              "pct": 10,
+              "programada": "2027-07-08",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pendiente"
+            },
+            {
+              "num": "12",
+              "desc": "Llegada a Sitio del 100% de los Equipos Principales y Auxiliares del Centro de Interconexión, S.E. CFV Puerto Peñasco Ampliación y S.E. Cucapáh Bco. 3",
+              "pct": 6,
+              "programada": "2027-10-27",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pendiente"
+            },
+            {
+              "num": "13",
+              "desc": "Terminación del Montaje de la Obra Electromecánica del Centro de Interconexión, S.E. CFV Puerto Peñasco Ampliación y S.E. Cucapáh Bco. 3",
+              "pct": 6,
+              "programada": "2027-11-26",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pendiente"
+            },
+            {
+              "num": "14",
+              "desc": "Terminación física de obra civil y electromecánica del Parque Fotovoltaico.",
+              "pct": 5,
+              "programada": "2027-12-15",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pendiente"
+            },
+            {
+              "num": "15",
+              "desc": "Terminación de Pruebas de Puesta en Servicio de la Central.",
+              "pct": 5,
+              "programada": "2028-02-23",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pendiente"
+            },
+            {
+              "num": "16",
+              "desc": "Fecha Programada de Aceptación de la Central.",
+              "pct": 10,
+              "programada": "2028-03-25",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pendiente"
+            }
+          ]
+        }
+      ]
+    },
+    "ph-chicoasen-ii": {
+      "nombre": "PH CHICOASÉN II",
+      "contratos": [
+        {
+          "nombre": "F/1320-004-2022",
+          "titulo": "Contrato F/1320-004-2022, Anexo 28 (Convenio Modificatorio No. 05)",
+          "hitos": [
+            {
+              "num": "1",
+              "desc": "Terminación de la excavación del canal",
+              "pct": 4,
+              "programada": "2023-12-01",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pagado"
+            },
+            {
+              "num": "2",
+              "desc": "Desvío del rio por el canal.",
+              "pct": 6,
+              "programada": "2024-03-04",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pagado"
+            },
+            {
+              "num": "3",
+              "desc": "Terminanción de excavación de las obras de contención y cauce a la elevación 188.00",
+              "pct": 7,
+              "programada": "2024-05-20",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pagado"
+            },
+            {
+              "num": "4",
+              "desc": "Terminación de las Obras de Desvío.",
+              "pct": 11.02,
+              "programada": "2025-01-17",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "parcial"
+            },
+            {
+              "num": "5",
+              "desc": "Terminación de la cimentación de las obras en el recinto",
+              "pct": 13,
+              "programada": "2026-09-01",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "parcial"
+            },
+            {
+              "num": "6",
+              "desc": "Terminación del montaje de la grúa viajera",
+              "pct": 9,
+              "programada": "2026-02-10",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "parcial"
+            },
+            {
+              "num": "7",
+              "desc": "Terminación concretos de empaque de Tubo de Aspiración Unidades 1, 2 y 3 (elev. 188.50).",
+              "pct": 13,
+              "programada": "2026-12-04",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "parcial"
+            },
+            {
+              "num": "8",
+              "desc": "Terminación de muros laterales, guías de compuerta y losa de operación en la Obra de Toma.",
+              "pct": 11.98,
+              "programada": "2027-03-29",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pendiente"
+            },
+            {
+              "num": "9",
+              "desc": "Terminación de la Obra de Contención y montaje electromecánico de la Obra de Toma",
+              "pct": 12,
+              "programada": "2027-08-27",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pendiente"
+            },
+            {
+              "num": "10",
+              "desc": "Terminación del Desfogue",
+              "pct": 2,
+              "programada": "2027-10-07",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pendiente"
+            },
+            {
+              "num": "11",
+              "desc": "Terminación de las obras para llenado del Embalse",
+              "pct": 3,
+              "programada": "2027-09-08",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pendiente"
+            },
+            {
+              "num": "12",
+              "desc": "Terminación de las pruebas de puesta en servicio de la Subestación SF6",
+              "pct": 5,
+              "programada": "2027-09-13",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pendiente"
+            },
+            {
+              "num": "13",
+              "desc": "Aceptación de la Unidad Primera.",
+              "pct": 0.75,
+              "programada": "2027-11-05",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pendiente"
+            },
+            {
+              "num": "14",
+              "desc": "Aceptación de la Unidad Segunda.",
+              "pct": 0.75,
+              "programada": "2027-12-02",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pendiente"
+            },
+            {
+              "num": "15",
+              "desc": "Aceptación de la Unidad Tercera.",
+              "pct": 0.75,
+              "programada": "2027-12-23",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pendiente"
+            },
+            {
+              "num": "16",
+              "desc": "Aceptación de la Central (Culminación del Proyecto.)",
+              "pct": 0.75,
+              "programada": "2027-12-25",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pendiente"
+            }
+          ]
+        },
+        {
+          "nombre": "F/1320/001/2022",
+          "titulo": "Contrato F/1320/001/2022, (Convenio Modificatorio No. 01)",
+          "hitos": [
+            {
+              "num": "1",
+              "desc": "Terminación de fabricación de barras del estator y polos del rotos (U1, U2(GRUPO 1)",
+              "pct": 10,
+              "programada": "2022-09-30",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pagado"
+            },
+            {
+              "num": "2",
+              "desc": "Terminación de fabricación de los 3 tubos de aspiración y laminado del estator (U1) (GRUPO 2)",
+              "pct": 10,
+              "programada": "2022-10-30",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pagado"
+            },
+            {
+              "num": "3",
+              "desc": "Terminación de fabricación Columna y Cono del Antedistribuidor (U1), Escotilla (U1), Anillo de descarga (U1), Flecha (U1 y U2), Chumacera guía y Sello de la flecha (U1), Servomotor (U1), Laminado del estator (U2), Nariz de Bulbo (U1), Anillo Magnético, Anillo colector (U1), Intercambiadores de calor (U1, U2) (GRUPO 3)",
+              "pct": 12,
+              "programada": "2023-03-24",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pagado"
+            },
+            {
+              "num": "4",
+              "desc": "Terminación de fabricación Columna y Cono del Antedistribuidor (U2, U3), Escotilla (U2, U3), Flecha (U3), Alabes Móviles (U1), Anillo de operación (U1), Chumacera guía (u2), Tapa externa (U1), Tapa interna (U1), Servomotor (U2), Laminado del estator (U3), barras del estator (U3), Nariz del Bulbo (U2), Polos del rotor (U3), anillo magnético (U2), Bastidor del Estator (U1), Chumacera combinada (U1), Intercambiadores de calor (U3) (GRUPO 4)",
+              "pct": 12,
+              "programada": "2023-06-24",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pagado"
+            },
+            {
+              "num": "5",
+              "desc": "Ingeniería – Validación por CFE",
+              "pct": 1.8,
+              "programada": "2023-06-30",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pagado"
+            },
+            {
+              "num": "6",
+              "desc": "Terminación de fabricación: Anillo de Descarga (U2), Alabes del Rodete y Cubo del Rodete (U1), Chumacera guía (U3), Sello de la flecha (U2, U3), Tapa interna/externa (U2), Álabes Móviles (U2, U3), Anillo de Operación (U2, U3), Servomotor (U3), Nariz del Bulbo (U3), Anillo magnético (U3), Bastidor del estator (U2, U3), Anillo colector (U2, U3), Chumacera combinada (U2), (GRUPO 5)",
+              "pct": 12,
+              "programada": "2023-10-22",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pagado"
+            },
+            {
+              "num": "7",
+              "desc": "Terminación de fabricación de Anillo de Descarga (U3), Alabes del rodete y Cubo del rodete (U2, U3), Tapa interna y externa (U3), Chumacera combinada (U3), Unidad Hidráulica y Tableros eléctricos del Regulador de Velocidad (U1) (GRUPO 6)",
+              "pct": 13.5,
+              "programada": "2024-02-03",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pagado"
+            },
+            {
+              "num": "8",
+              "desc": "Terminación de fabricación Unidad Hidráulica y Tableros eléctricos del regulador de Velocidad (U2, U3), Acumulador de aire y Sistema del Aire de Regulación del Regulador de Velocidad (U1, U2, U3), Sistema de protección contra incendio de generador (U1, U2, U3) (GRUPO 7)",
+              "pct": 9,
+              "programada": "2024-06-05",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pagado"
+            },
+            {
+              "num": "Adicional",
+              "desc": "Cuando de la entrega de las garantías bancarias actualizadas con el nuevo plazo del contrato",
+              "pct": null,
+              "programada": "2026-07-31",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pendiente"
+            },
+            {
+              "num": "9",
+              "desc": "Terminación de la Supervisión del montaje (U1)",
+              "pct": 2.5,
+              "programada": "2026-10-22",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pendiente"
+            },
+            {
+              "num": "10",
+              "desc": "Terminación de la Supervisión del montaje (U2)",
+              "pct": 2.5,
+              "programada": "2026-12-02",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pendiente"
+            },
+            {
+              "num": "11",
+              "desc": "Terminación de la Supervisión del montaje (U3)",
+              "pct": 2.5,
+              "programada": "2027-01-08",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pendiente"
+            },
+            {
+              "num": "12",
+              "desc": "Terminación de las Pruebas y Puesta en Servicio (U1)",
+              "pct": 3,
+              "programada": "2026-12-29",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pendiente"
+            },
+            {
+              "num": "13",
+              "desc": "Terminación de las Pruebas y Puesta en Servicio (U2)",
+              "pct": 3,
+              "programada": "2027-02-08",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pendiente"
+            },
+            {
+              "num": "14",
+              "desc": "Capacitación",
+              "pct": 1,
+              "programada": "2027-03-15",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pendiente"
+            },
+            {
+              "num": "15",
+              "desc": "Terminación de las Pruebas y Puesta en Servicio (U3)",
+              "pct": 3,
+              "programada": "2027-03-15",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pendiente"
+            },
+            {
+              "num": "16",
+              "desc": "Conclusión de las partes de repuesto después de las pruebas",
+              "pct": 2.2,
+              "programada": "2027-04-06",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pendiente"
+            }
+          ]
+        }
+      ]
+    },
+    "peh-santa-maria": {
+      "nombre": "PEH SANTA MARÍA",
+      "contratos": [
+        {
+          "nombre": "F/1320-004-2022",
+          "titulo": "Contrato F/1320-004-2022, Anexo 03 (Convenio Modificatorio No. 07)",
+          "hitos": [
+            {
+              "num": "1",
+              "desc": "Elaboración de Ingeniería de Detalle obra previas",
+              "pct": 0.5,
+              "programada": "2023-03-14",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pagado"
+            },
+            {
+              "num": "2",
+              "desc": "Elaboración de Ingeniería de Detalle Obras Civiles",
+              "pct": 0.5,
+              "programada": "2023-12-28",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pagado"
+            },
+            {
+              "num": "3",
+              "desc": "Elaboración de Ingeniería de Detalle Obras Electromecánicas",
+              "pct": 2,
+              "programada": "2024-02-03",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pagado"
+            },
+            {
+              "num": "4",
+              "desc": "Suministro de los equipos electromecánicos U1",
+              "pct": 20,
+              "programada": "2026-10-01",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "parcial"
+            },
+            {
+              "num": "5",
+              "desc": "Suministro de los equipos electromecánicos U2",
+              "pct": 20,
+              "programada": "2026-10-02",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "parcial"
+            },
+            {
+              "num": "6",
+              "desc": "Terminación de montaje de grúa viajera",
+              "pct": 6,
+              "programada": "2025-05-05",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pagado"
+            },
+            {
+              "num": "7",
+              "desc": "Montaje de los equipos electromecánicos U1",
+              "pct": 7,
+              "programada": "2026-10-17",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pendiente"
+            },
+            {
+              "num": "8",
+              "desc": "Montaje de los equipos electromecánicos U2",
+              "pct": 7,
+              "programada": "2026-10-17",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pendiente"
+            },
+            {
+              "num": "9",
+              "desc": "Terminación de Entrenamiento y Capacitación",
+              "pct": 3,
+              "programada": "2026-12-03",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pendiente"
+            },
+            {
+              "num": "10",
+              "desc": "Conexión de tubería a presión en Casa de Máquinas",
+              "pct": 6,
+              "programada": "2026-01-13",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pagado"
+            },
+            {
+              "num": "11",
+              "desc": "Puesta en marcha y pruebas Unidad 1",
+              "pct": 7,
+              "programada": "2026-12-03",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pendiente"
+            },
+            {
+              "num": "12",
+              "desc": "Puesta en marcha y pruebas Unidad 2",
+              "pct": 7,
+              "programada": "2026-10-18",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pendiente"
+            },
+            {
+              "num": "13",
+              "desc": "Entregables para Declaratoria de Entrada en Operación Comercial U1",
+              "pct": 0,
+              "programada": "2026-11-25",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pendiente"
+            },
+            {
+              "num": "14",
+              "desc": "Aceptación de la Unidad 1",
+              "pct": 7,
+              "programada": "2026-11-28",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pendiente"
+            },
+            {
+              "num": "15",
+              "desc": "Entregables para Declaratoria de Entrada en Operación Comercial U2",
+              "pct": 0,
+              "programada": "2026-11-12",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pendiente"
+            },
+            {
+              "num": "16",
+              "desc": "Aceptación de la Unidad 2",
+              "pct": 7,
+              "programada": "2026-11-14",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pendiente"
+            },
+            {
+              "num": "17",
+              "desc": "Culminación del Proyecto",
+              "pct": 0,
+              "programada": "2026-12-03",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pendiente"
+            }
+          ]
+        }
+      ]
+    },
+    "peh-amata": {
+      "nombre": "PEH AMATA",
+      "contratos": [
+        {
+          "nombre": "F/10670-021-2024",
+          "titulo": "Contrato F/10670-021-2024, Anexo 03",
+          "hitos": [
+            {
+              "num": "0",
+              "desc": "Fecha de inicio del Proyecto",
+              "pct": null,
+              "programada": "2024-02-19",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pagado"
+            },
+            {
+              "num": "1",
+              "desc": "Entrega de criterios de diseño de ingeniería de detalle del Turbogrupo y transformador de potencia",
+              "pct": 3,
+              "programada": "2024-05-20",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pagado",
+              "tipo": "Crítico"
+            },
+            {
+              "num": "2",
+              "desc": "Fincado de orden de compra de Equipos electromecánicos de conjunto Turbogenerador 1 y Turbogenerador 2 (Placa de acero de la Turbina y Orden de compra del Generador)",
+              "pct": 5,
+              "programada": "2024-05-27",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pagado"
+            },
+            {
+              "num": "3",
+              "desc": "Fincado de orden de compra de los PLC´s, Tableros, Doftware, Relevadores de protección y Sincronizador.",
+              "pct": 5,
+              "programada": "2024-06-28",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pagado"
+            },
+            {
+              "num": "4",
+              "desc": "Entrega de ingeniería de Detalle del Turbogrupo y Transformador de potencia.",
+              "pct": 4,
+              "programada": "2024-08-19",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pagado",
+              "tipo": "Crítico"
+            },
+            {
+              "num": "5",
+              "desc": "Contra reporte de avance de fabricación de cuando menos el 50% de la Turbina y 30% del Generador.",
+              "pct": 7,
+              "programada": "2025-02-03",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pagado"
+            },
+            {
+              "num": "6",
+              "desc": "Suministros en Obra de equipos de Subestación (Interruptor de potencia, apartarrayos, TC´s, TP´s y Cuchillas).",
+              "pct": 7,
+              "programada": "2025-03-14",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pendiente",
+              "tipo": "Crítico"
+            },
+            {
+              "num": "7",
+              "desc": "Culminación de fabricación de equipos principales (Turbina, Generador) y pruebas de fábrica satisfactoria. U1 y U2.",
+              "pct": 10,
+              "programada": "2025-05-26",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pendiente",
+              "tipo": "Crítico"
+            },
+            {
+              "num": "8",
+              "desc": "Entrega en sitio del Sistema de Control, Sistema de Protección Control y Medición.",
+              "pct": 10,
+              "programada": "2025-06-26",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pendiente",
+              "tipo": "Crítico"
+            },
+            {
+              "num": "9",
+              "desc": "Entrega en sitio de equipos principales en obra. (Turbina, Generador y Transformador Principal) U1 y U2",
+              "pct": 10,
+              "programada": "2025-08-12",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pendiente",
+              "tipo": "Crítico"
+            },
+            {
+              "num": "10",
+              "desc": "Aprobación de ingeniería de Detalle del Sistema de Control, Sistema de Protecciones Control y Medición, Regulador de Velocidad, Sistema de Excitación, Tableros AC/DC baja tensión y Tablero de Media Tensión.",
+              "pct": 6,
+              "programada": "2025-10-23",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pendiente",
+              "tipo": "Crítico"
+            },
+            {
+              "num": "11",
+              "desc": "Finalización de Montajes de Turbogeneradores de la Unidad No. 1 y No.2.",
+              "pct": 12,
+              "programada": "2025-10-27",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pendiente",
+              "tipo": "Crítico Penalizable"
+            },
+            {
+              "num": "12",
+              "desc": "Culminación de la Puesta en Marcha y Pruebas de la Unidad No. 1 y No. 2",
+              "pct": 12,
+              "programada": "2025-11-20",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pendiente",
+              "tipo": "Crítico Penalizable"
+            },
+            {
+              "num": "13",
+              "desc": "Aceptación de la Unidad No. 1 y No. 2",
+              "pct": 6,
+              "programada": "2025-12-08",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pendiente",
+              "tipo": "Crítico Penalizable"
+            },
+            {
+              "num": "14",
+              "desc": "Culminación del Proyecto",
+              "pct": 3,
+              "programada": "2025-12-29",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pendiente",
+              "tipo": "Crítico"
+            }
+          ]
+        }
+      ]
+    },
+    "peh-picachos": {
+      "nombre": "PEH PICACHOS",
+      "contratos": [
+        {
+          "nombre": "AHYG",
+          "titulo": "AHYG Contrato FIEL/10670-025/2024, Anexo 2G",
+          "hitos": [
+            {
+              "num": "1",
+              "desc": "Entrega total de los bienes (A, B, C, D, E, F, G, H, I, J, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, AA, AB, AF, AH, AI, AJ), en sitio [1]",
+              "pct": 70,
+              "programada": "2024-11-28",
+              "solicitud": "",
+              "pago": "2025-11-20",
+              "estatus": "pagado"
+            },
+            {
+              "num": "2",
+              "desc": "Entrega total de los servicios (K, AC, AD, AE, AG, AK), en sitio [2]",
+              "pct": 30,
+              "programada": "2025-01-28",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pendiente"
+            }
+          ]
+        },
+        {
+          "nombre": "SUMRI",
+          "titulo": "SUMRI Contrato FIEL/10670-031/2024, Anexo 2G",
+          "hitos": [
+            {
+              "num": "1",
+              "desc": "Entrega total de los bienes",
+              "pct": 70,
+              "programada": "2025-04-24",
+              "solicitud": "",
+              "pago": "2025-06-04",
+              "estatus": "pagado"
+            },
+            {
+              "num": "2",
+              "desc": "Finalización de los servicios (montaje y puesta en servicio de equipos).",
+              "pct": 30,
+              "programada": "2025-05-23",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pendiente"
+            }
+          ]
+        },
+        {
+          "nombre": "COREY",
+          "titulo": "COREY Contrato FIEL/10670-032/2024, Anexo 2G",
+          "hitos": [
+            {
+              "num": "1",
+              "desc": "Entrega total de los bienes",
+              "pct": 70,
+              "programada": "2025-04-24",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pendiente"
+            },
+            {
+              "num": "2",
+              "desc": "Finalización de los servicios (montaje y puesta en servicio de equipos)",
+              "pct": 30,
+              "programada": "2025-05-23",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pendiente"
+            }
+          ]
+        },
+        {
+          "nombre": "PID",
+          "titulo": "PID Contrato FIEL/10670-024/2024, Anexo 2G",
+          "hitos": [
+            {
+              "num": "1",
+              "desc": "Entrega total de los bienes (A), en sitio [2]",
+              "pct": 70,
+              "programada": "2024-09-28",
+              "solicitud": "",
+              "pago": "2025-11-07",
+              "estatus": "pagado"
+            },
+            {
+              "num": "2",
+              "desc": "Entrega total de los servicios (B y C), en sitio [3]",
+              "pct": 30,
+              "programada": "2024-10-28",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pendiente"
+            }
+          ]
+        },
+        {
+          "nombre": "SIEMES",
+          "titulo": "SIEMES Contrato F/10670-018/2023, Anexo 03 (Convenio Modificatorio 1)",
+          "hitos": [
+            {
+              "num": "1",
+              "desc": "Fincado de Orden de Compra de equipos electromecánicos de conjunto Turbogenerador 1 y Turbogenerador 2 y Presentación de planos de cimentaciones de conjunto Turbogenerador 1 y Turbogenerador 2",
+              "pct": 1,
+              "programada": "2023-10-31",
+              "solicitud": "",
+              "pago": "2024-03-05",
+              "estatus": "pagado"
+            },
+            {
+              "num": "2",
+              "desc": "Entrega y aprobación de criterios de diseño del Proyecto",
+              "pct": 1,
+              "programada": "2023-12-19",
+              "solicitud": "",
+              "pago": "2024-03-05",
+              "estatus": "pagado"
+            },
+            {
+              "num": "3",
+              "desc": "Presentación y aprobación de ingeniería conceptual del Sistema de Control, Sistema de Protecciones Control y Medición, y Transformadores Principales.",
+              "pct": 1,
+              "programada": "2024-01-09",
+              "solicitud": "",
+              "pago": "2024-03-08",
+              "estatus": "pagado"
+            },
+            {
+              "num": "4",
+              "desc": "Fincado de Orden de Compra Sistema de Control, Sistema de Protecciones Control y Medición y Transformadores Principales.",
+              "pct": 9,
+              "programada": "2024-01-23",
+              "solicitud": "",
+              "pago": "2024-04-02",
+              "estatus": "pagado"
+            },
+            {
+              "num": "5",
+              "desc": "Presentación de planos de ingeniería de fabricación de Turbogeneradores 1 y 2, Sistema de Control, Sistema de Protecciones Control y Medición y Transformadores Principales.",
+              "pct": 15,
+              "programada": "2024-02-23",
+              "solicitud": "",
+              "pago": "2024-09-18",
+              "estatus": "pagado"
+            },
+            {
+              "num": "6",
+              "desc": "Contra reporte de avance de fabricación de cuando menos el 50% de los equipos principales (Turbina, generador y transformador principal), certificado por una tercería (Bureau Veritas, Tüv, KPMG, etc.) y en su defecto y así lo decide CFE, corroborado por el LAPEM a cuenta y costo de la CFE.",
+              "pct": 15,
+              "programada": "2024-05-14",
+              "solicitud": "",
+              "pago": "2025-09-25",
+              "estatus": "pagado"
+            },
+            {
+              "num": "7",
+              "desc": "Presentación de documentación de aviso de embarque de Sistema de Protecciones Control y Medición, y Transformadores Principales.",
+              "pct": 10,
+              "programada": "2024-08-09",
+              "solicitud": "",
+              "pago": "2026-01-16",
+              "estatus": "pagado"
+            },
+            {
+              "num": "8",
+              "desc": "Finalización de montaje de Sistema de Control, Sistema de Protecciones, Control y Medición, y Transformadores Principales.",
+              "pct": 10,
+              "programada": "2025-10-08",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "sin"
+            },
+            {
+              "num": "9",
+              "desc": "Presentación de documentación de aviso de embarque de Turbogeneradores 1 y 2.",
+              "pct": 10,
+              "programada": "2024-10-18",
+              "solicitud": "",
+              "pago": "2025-10-08",
+              "estatus": "pagado"
+            },
+            {
+              "num": "10",
+              "desc": "Finalización de montaje de Turbogeneradores de la Unidad No. 1 y Unidad No. 2, y Terminación de cursos de capacitación.",
+              "pct": 10,
+              "programada": "2026-02-17",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pendiente"
+            },
+            {
+              "num": "11",
+              "desc": "Puesta en marcha y pruebas de la Unidad No. 1 y Unidad No. 2",
+              "pct": 10,
+              "programada": "2026-03-29",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pendiente"
+            },
+            {
+              "num": "12",
+              "desc": "Aceptación de la Unidad No. 1 y Unidad No. 2. Culminación del proyecto.",
+              "pct": 8,
+              "programada": "2026-04-18",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pendiente"
+            }
+          ]
+        },
+        {
+          "nombre": "NOVA SIGTRONIC",
+          "titulo": "NOVA SIGTRONIC Contrato FIEL/10670-026/2024, Anexo 2G",
+          "hitos": [
+            {
+              "num": "1",
+              "desc": "Entrega total de los bienes (A, B, C, D, E, F, G, H, I, J, K, L), en sitio [1]",
+              "pct": 70,
+              "programada": "2024-11-28",
+              "solicitud": "",
+              "pago": "2024-12-10",
+              "estatus": "pagado"
+            },
+            {
+              "num": "2",
+              "desc": "Entrega total de los servicios (M, N), en sitio [2]",
+              "pct": 30,
+              "programada": "2025-01-03",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pendiente"
+            }
+          ]
+        },
+        {
+          "nombre": "COSEGO",
+          "titulo": "COSEGO Contrato FIEL/10670-030/2024, Anexo 03",
+          "hitos": [
+            {
+              "num": "1",
+              "desc": "Aprobación de ingeniería de detalle de: -Sistema contra incendio. -Sistema de aire de servicio -Sistema de aire acondicionado -Sistema de agua de servicio -Sistema de ventilación -Sistema de alumbrado para Centrales Hidroeléctricas -Sistema de medición de niveles -Charolas para cables conductores de fuerza y control -La transición subterránea aérea en media tensión y baja tensión -Cables de potencia monopolares de 5 a 35 kV -Cables monoconductores con aislamiento -Cables control",
+              "pct": 5,
+              "programada": "2024-08-19",
+              "solicitud": "",
+              "pago": "2025-06-30",
+              "estatus": "pagado"
+            },
+            {
+              "num": "2",
+              "desc": "Suministro de: -Sistema contra incendio -Sistema de aire de servicio -Sistema de aire acondicionado -Sistema de agua de servicio -Sistema de ventilación -Sistema de alumbrado para Centrales Hidroeléctricas -Sistema de medición de niveles",
+              "pct": 7.5,
+              "programada": "2024-10-21",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pendiente"
+            },
+            {
+              "num": "3",
+              "desc": "Suministro de: -Charolas para cables conductores de fuerza y control -La transición subterránea aérea en media tensión y baja tensión -Cables de potencia monopolares de 5 a 35 kV -Cables monoconductores con aislamiento -Cables control",
+              "pct": 7.5,
+              "programada": "2024-11-19",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pendiente"
+            },
+            {
+              "num": "4",
+              "desc": "Instalación y Puesta en Servicio de: -Sistema de aire de servicio -Sistema de aire acondicionado",
+              "pct": 5,
+              "programada": "2024-11-18",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pendiente"
+            },
+            {
+              "num": "5",
+              "desc": "Instalación y Puesta en Servicio de Sistemas para Unidad 1 de: -Charolas para cables conductores de fuerza y control -La transición subterránea aérea en media tensión y baja tensión -Cables de potencia monopolares de 5 a 35 kV -Cables monoconductores con aislamiento -Cables control",
+              "pct": 5,
+              "programada": "2024-12-04",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pendiente"
+            },
+            {
+              "num": "6",
+              "desc": "Instalación y Puesta en Servicio de Sistema para Unidad 2 de: -Charolas para cables conductores de fuerza y control -La transición subterránea aérea en media tensión y baja tensión -Cables de potencia monopolares de 5 a 35 kV -Cables monoconductores con aislamiento -Cables control",
+              "pct": 10,
+              "programada": "2025-01-06",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pendiente"
+            },
+            {
+              "num": "7",
+              "desc": "Instalación y Puesta en Servicio de: -Sistema de agua de servicio -Sistema de ventilación -Sistema de alumbrado para Centrales Hidroeléctricas",
+              "pct": 10,
+              "programada": "2025-01-06",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pendiente"
+            },
+            {
+              "num": "8",
+              "desc": "Instalación y Puesta en Servicio de: -Sistema contra incendio -Sistema de medición de niveles",
+              "pct": 10,
+              "programada": "2025-03-05",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pendiente"
+            },
+            {
+              "num": "9",
+              "desc": "Capacitación del sistema contra incendio",
+              "pct": 10,
+              "programada": "2025-05-06",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pendiente"
+            },
+            {
+              "num": "10",
+              "desc": "Culminación de Proyecto",
+              "pct": 10,
+              "programada": "2025-05-10",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pendiente"
+            }
+          ]
+        },
+        {
+          "nombre": "ROAGO",
+          "titulo": "ROAGO Contrato FIEL/10670-023/2024, Anexo 03",
+          "hitos": [
+            {
+              "num": "1",
+              "desc": "Fincado de Órdenes de Compra [1]",
+              "pct": 15,
+              "programada": "2024-04-15",
+              "solicitud": "",
+              "pago": "2024-05-13",
+              "estatus": "pagado"
+            },
+            {
+              "num": "2",
+              "desc": "Suministro de Materiales en sitio de la Obra",
+              "pct": 25,
+              "programada": "2024-06-24",
+              "solicitud": "",
+              "pago": "2024-06-24",
+              "estatus": "pagado"
+            },
+            {
+              "num": "3",
+              "desc": "Avance de Obra Electromecánica al 80% [2]",
+              "pct": 40,
+              "programada": "2024-08-30",
+              "solicitud": "",
+              "pago": "2024-09-20",
+              "estatus": "pagado"
+            },
+            {
+              "num": "4",
+              "desc": "Terminación de las obras [3]",
+              "pct": 10,
+              "programada": "2024-10-14",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pendiente"
+            },
+            {
+              "num": "5",
+              "desc": "Aceptación Provisional [4]",
+              "pct": 10,
+              "programada": "2024-10-29",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pendiente"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -26,6 +26,9 @@
  * Además registra el CORTE SEMANAL en data/historial.json de cada tablero
  * (curva de avance; ver scripts/historial.js): un punto por semana
  * (Cartera: jueves 8:00 a jueves 8:00; Mixtos: lunes a domingo).
+ *
+ * HITOS DE PAGO de Cartera CPEL: cartera-cpel/data/HITOS_CARTERA_CPEL.xlsx
+ * -> data/hitos.json (ver scripts/hitos.js). Sin montos: el sitio es público.
  */
 const fs = require("fs");
 const path = require("path");
@@ -34,6 +37,7 @@ const { validateCartera, validateMixtos, checkExcelAnterior, MIXTOS_SHEET } = re
 const { optimizarCarpeta } = require("./imagenes.js");
 const { snapshotCartera, snapshotMixtos, upsertCorte, cambiosMixtos, registrarActualizacion } = require("./historial.js");
 const { slugify } = require("../assets/js/shared/text-utils.js");
+const { leerHitos } = require("./hitos.js");
 
 const ROOT = path.resolve(__dirname, "..");
 
@@ -69,6 +73,14 @@ const DATASETS = [
     validate: validateMixtos,
   },
 ];
+
+// Hitos de pago de Cartera CPEL (un Excel aparte, una hoja por proyecto).
+const HITOS = {
+  label: "Hitos de Cartera CPEL",
+  dir: "cartera-cpel",
+  excel: "data/HITOS_CARTERA_CPEL.xlsx",
+  json: "data/hitos.json",
+};
 
 function decodeXml(s) {
   return s
@@ -108,8 +120,10 @@ function buildDataset(ds) {
   const headers = (XLSX.utils.sheet_to_json(sheet, { header: 1, defval: "" })[0] || []).map(String);
   // Columnas sin encabezado (p. ej. celdas vacías con formato a la derecha
   // de la tabla) no son datos: SheetJS las nombra "__EMPTY…" y se quitan.
+  // Tampoco se publican las columnas viejas de hitos de Cartera (hitoN_*:
+  // traían montos); ahora los hitos salen de HITOS_CARTERA_CPEL.xlsx.
   const rows = XLSX.utils.sheet_to_json(sheet, options).map((r) =>
-    Object.fromEntries(Object.entries(r).filter(([k]) => !k.startsWith("__EMPTY")))
+    Object.fromEntries(Object.entries(r).filter(([k]) => !k.startsWith("__EMPTY") && !/^hito\d+_/.test(k)))
   );
 
   const { errors, warnings } = ds.validate({
@@ -142,6 +156,29 @@ function buildDataset(ds) {
     historialPath: path.join(dir, ds.historial),
     actualizacionesPath: ds.actualizaciones ? path.join(dir, ds.actualizaciones) : null,
     nombres: ds.nombre ? Object.fromEntries(rows.map(ds.nombre).filter(Boolean).map((n) => [slugify(n), n])) : {},
+  };
+}
+
+/** Lee y valida el Excel de hitos contra los proyectos de Cartera. */
+function buildHitos(nombresCartera) {
+  const dir = path.join(ROOT, HITOS.dir);
+  const excelPath = path.join(dir, HITOS.excel);
+  if (!fs.existsSync(excelPath)) return { errors: [`No existe ${HITOS.excel}.`], warnings: [] };
+  const wb = XLSX.read(fs.readFileSync(excelPath), { type: "buffer" });
+  const { errors, warnings, proyectos } = leerHitos(wb, XLSX, nombresCartera);
+  nombresCartera
+    .filter((n) => !proyectos[slugify(n)])
+    .forEach((n) => warnings.push(`"${n}" no tiene hoja de hitos; su ficha dirá que no hay hitos registrados.`));
+  const modified = wb.Props && wb.Props.ModifiedDate ? new Date(wb.Props.ModifiedDate) : null;
+  const excelModificado = modified && !Number.isNaN(modified.getTime()) ? modified.toISOString() : null;
+  const publicado = readJson(path.join(dir, HITOS.json));
+  const anterior = checkExcelAnterior(excelModificado, publicado && publicado.excelModificado);
+  if (anterior) errors.push(anterior);
+  return {
+    errors,
+    warnings,
+    json: toJson({ fuente: path.basename(HITOS.excel), excelModificado, proyectos }),
+    jsonPath: path.join(dir, HITOS.json),
   };
 }
 
@@ -210,6 +247,9 @@ async function main() {
   const summary = ["## Validación de datos", ""];
   await imagenes(check, summary);
   const results = DATASETS.map((ds) => ({ ds, ...buildDataset(ds) }));
+  const cartera = results.find((r) => r.ds.dir === HITOS.dir);
+  const nombresCartera = cartera && cartera.json ? JSON.parse(cartera.json).proyectos.map((p) => String(p.nombre || "").trim()).filter(Boolean) : [];
+  results.push({ ds: HITOS, ...buildHitos(nombresCartera) });
   results.forEach((r) => report(r.ds, r, summary));
 
   const failed = results.some((r) => r.errors.length);
@@ -223,7 +263,7 @@ async function main() {
       [r.jsonPath, r.json],
       // Antes que el historial: compara contra el último corte guardado.
       ...(r.actualizacionesPath ? [[r.actualizacionesPath, toJson(actualizacionesWithExcel(r))]] : []),
-      [r.historialPath, toJson(historialWithCorte(r))],
+      ...(r.historialPath ? [[r.historialPath, toJson(historialWithCorte(r))]] : []),
     ]);
     outputs.forEach(([file, content]) => {
       const current = fs.existsSync(file) ? fs.readFileSync(file, "utf8") : null;
@@ -252,4 +292,4 @@ if (require.main === module) {
   });
 }
 
-module.exports = { DATASETS, buildDataset, toJson, ROOT };
+module.exports = { DATASETS, HITOS, buildDataset, buildHitos, toJson, ROOT };
