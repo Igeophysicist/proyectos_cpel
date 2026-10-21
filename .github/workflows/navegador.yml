@@ -24,7 +24,10 @@ concurrency:
 
 jobs:
   e2e:
-    runs-on: ubuntu-latest
+    # Versión fija: Playwright 1.56 no sabe instalar Chromium en Ubuntu
+    # 26.04 (lo que GitHub da hoy como ubuntu-latest). Al actualizar
+    # Playwright se puede volver a ubuntu-latest.
+    runs-on: ubuntu-24.04
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
