@@ -56,7 +56,36 @@ test("varios contratos: se juntan y cada hito lleva su contrato; % pagado por co
   assert.match(html, /data-contrato="1"[^>]*>SIEMES|aria-selected="true" data-contrato="1">SIEMES/);
 });
 
-test("todo pagado o sin datos: mensajes claros y nunca montos", () => {
+test("descripciones: saltos de línea, guiones, listas con ; o comas y oraciones", () => {
+  assert.deepEqual(H.bloques("Suministro de:\n-Sistema contra incendio\n-Sistema de aire"), [
+    { p: "Suministro de:" },
+    { lista: ["Sistema contra incendio", "Sistema de aire"] },
+  ]);
+  assert.deepEqual(H.bloques("Suministro de: -Uno -Dos -Tres"), [{ p: "Suministro de:" }, { lista: ["Uno", "Dos", "Tres"] }]);
+  assert.deepEqual(H.bloques("Ingeniería aprobada (Arreglo rev0; Unifilar rev0; Geotecnia rev0.)"), [
+    { p: "Ingeniería aprobada" },
+    { lista: ["Arreglo rev0", "Unifilar rev0", "Geotecnia rev0"] },
+  ]);
+  assert.deepEqual(H.bloques("Terminación de fabricación Columna (U1), Escotilla (U1), Anillo (U1), Flecha (U1 y U2), Sello (U1), Servomotor (U1), Laminado (U2) (GRUPO 3)"), [
+    { p: "Terminación de fabricación (GRUPO 3):" },
+    { lista: ["Columna (U1)", "Escotilla (U1)", "Anillo (U1)", "Flecha (U1 y U2)", "Sello (U1)", "Servomotor (U1)", "Laminado (U2)"] },
+  ]);
+  assert.deepEqual(H.bloques("Entrega de manuales en rev0. Entrega del Programa de ejecución aprobado por la CFE."), [
+    { p: "Entrega de manuales en rev0." },
+    { p: "Entrega del Programa de ejecución aprobado por la CFE." },
+  ]);
+  // Abreviaturas y pedazos cortos no se cortan.
+  assert.equal(H.bloques("Llegada a Sitio de la S.E. CFV Puerto Peñasco y S.E. Cucapáh Bco. 3").length, 1);
+  assert.equal(H.bloques("Pruebas de fábrica satisfactorias. U1 y U2.").length, 1);
+});
+
+test("monto con su moneda", () => {
+  assert.equal(H.monto({ monto: 14700350, moneda: "USD" }), "$14,700,350.00 USD");
+  assert.equal(H.monto({ monto: 1446688.69, moneda: "MXN" }), "$1,446,688.69 MXN");
+  assert.equal(H.monto({}), "");
+});
+
+test("todo pagado o sin datos: mensajes claros", () => {
   const todo = { contratos: [{ nombre: "", hitos: [hito(1, "2025-01-01", "pagado")] }] };
   assert.match(H.tarjeta(todo, HOY), /Todos los hitos están pagados/);
   assert.match(H.tarjeta(undefined, HOY), /Sin hitos registrados/);

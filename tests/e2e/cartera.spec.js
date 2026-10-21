@@ -93,8 +93,8 @@ test("Hitos de pago: anterior, actual y próximo; Ver todos abre la lista por co
   await expect(tarjeta.locator(".hito3")).toHaveCount(3);
   const total = varios.contratos.reduce((s, c) => s + c.hitos.length, 0);
   await expect(tarjeta.locator(".hitos-res__top")).toContainText(`de ${total} hitos pagados`);
-  // Nunca montos.
-  await expect(tarjeta).not.toContainText("$");
+  // Monto a pagar de cada hito.
+  await expect(tarjeta.locator(".hito3__monto").first()).toContainText(/\$[\d,]+\.\d{2} (USD|MXN)/);
 
   await tarjeta.locator(".hitos-ver").click();
   const ventana = page.locator("#sheetHitos");
@@ -104,5 +104,8 @@ test("Hitos de pago: anterior, actual y próximo; Ver todos abre la lista por co
   await ventana.locator(".htab").nth(1).click();
   await expect(ventana.locator(".htab").nth(1)).toHaveAttribute("aria-selected", "true");
   await expect(ventana.locator(".hl")).toHaveCount(varios.contratos[1].hitos.length);
-  await expect(ventana).not.toContainText("$");
+  await expect(ventana.locator(".hl__monto").first()).toContainText(/\$[\d,]+\.\d{2} (USD|MXN)/);
+  // Altura fija en celular: se sigue viendo un poco de la ficha detrás.
+  const alto = await ventana.locator(".sheet__panel").evaluate((el) => el.getBoundingClientRect().height / window.innerHeight);
+  if (page.viewportSize().width < 900) expect(alto).toBeLessThan(0.9);
 });

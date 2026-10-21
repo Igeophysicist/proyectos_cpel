@@ -18,14 +18,15 @@
  *   - Las columnas se reconocen por su encabezado, en cualquier orden:
  *     descripción, valor sobre el precio (%), fecha programada (o del
  *     evento crítico), fecha de solicitud de pago, fecha de pago,
- *     estatus y, si está, tipo de evento.
- *   - Los MONTOS no se publican: el sitio es público. Si el Excel trae
- *     columnas de montos o importes, se avisa para quitarlas del archivo.
+ *     estatus, monto a pagar (USD o MXN, según el encabezado) y, si
+ *     está, tipo de evento. Si hay "Importe modificado" (convenio
+ *     modificatorio), ese es el monto del hito.
+ *   - Los saltos de línea de la descripción se conservan (listas).
  *
  * Errores (no se publica nada): hoja que no corresponde a un proyecto,
  * tabla sin columna de estatus o de fecha programada, fecha ilegible.
  * Avisos: hito sin estatus, estatus desconocido, % de un contrato que no
- * suma 100, columnas de montos.
+ * suma 100.
  */
 const { normalizeText, parseNumber, parseDate, slugify } = require("../assets/js/shared/text-utils.js");
 
@@ -83,7 +84,22 @@ function pctCelda(cell) {
   return parseNumber(cell.v);
 }
 
-const textoCelda = (cell) => (cell && !vacio(cell.w ?? cell.v) ? String(cell.w ?? cell.v).replace(/\s+/g, " ").trim() : "");
+/** Texto de la celda; conserva los saltos de línea (listas de la descripción). */
+const textoCelda = (cell) =>
+  cell && !vacio(cell.w ?? cell.v)
+    ? String(cell.w ?? cell.v)
+        .split(/\r?\n/)
+        .map((l) => l.replace(/\s+/g, " ").trim())
+        .filter(Boolean)
+        .join("\n")
+    : "";
+
+/** Celda de monto -> número; null si vacía, "$ -" o 0. */
+function montoCelda(cell) {
+  if (!cell || vacio(cell.v)) return null;
+  const n = cell.t === "n" ? cell.v : parseNumber(cell.v);
+  return n ? Math.round(n * 100) / 100 : null;
+}
 
 /** Proyecto de Cartera que corresponde a una hoja, o null. */
 function proyectoDeHoja(hoja, nombres) {
@@ -101,7 +117,6 @@ function proyectoDeHoja(hoja, nombres) {
 /** Qué columna es cada dato, a partir de la fila de encabezados. */
 function columnas(encabezados) {
   const col = {};
-  const montos = [];
   encabezados.forEach((h, c) => {
     const t = normalizeText(h);
     if (!t) return;
@@ -113,9 +128,12 @@ function columnas(encabezados) {
     else if (/^FECHA DE PAGO$/.test(t)) col.pago ??= c;
     else if (/^ESTATUS|^STATUS/.test(t)) col.estatus ??= c;
     else if (/TIPO DE EVENTO/.test(t)) col.tipo ??= c;
-    else if (/MONTO|IMPORTE/.test(t)) montos.push(String(h).trim());
+    else if (/^MONTO A PAGAR/.test(t) && col.monto === undefined) {
+      col.monto = c;
+      col.moneda = /MXN/.test(t) ? "MXN" : "USD";
+    } else if (/^IMPORTE MODIFICADO/.test(t)) col.montoModificado ??= c;
   });
-  return { col, montos };
+  return { col };
 }
 
 /** Nombre corto del contrato para las pestañas: "AHYG" o "F/1320-004-2022". */
@@ -164,7 +182,6 @@ function leerHitos(wb, XLSX, nombres) {
 
     let tabla = null;
     const tablas = [];
-    const montosHoja = new Set();
     for (let r = rango.s.r; r <= rango.e.r; r++) {
       const fila = filaTexto(r);
       const primera = fila.find((v) => v) || "";
@@ -172,11 +189,10 @@ function leerHitos(wb, XLSX, nombres) {
         // Nueva tabla: el título es la fila anterior si dice "Contrato".
         const previa = r > rango.s.r ? filaTexto(r - 1).filter(Boolean) : [];
         const titulo = previa.length === 1 && /contrato/i.test(previa[0]) ? previa[0] : "";
-        const { col, montos } = columnas(fila);
+        const { col } = columnas(fila);
         const donde = `Hoja "${hoja}", fila ${r + 1}`;
         if (col.estatus === undefined) errors.push(`${donde}: la tabla no tiene columna "Estatus".`);
         if (col.programada === undefined) errors.push(`${donde}: la tabla no tiene columna de fecha programada.`);
-        montos.forEach((m) => montosHoja.add(m));
         tabla = { titulo, col, hitos: [], fila: r + 1 };
         tablas.push(tabla);
         continue;
@@ -196,6 +212,8 @@ function leerHitos(wb, XLSX, nombres) {
       const estatus = estatusDe(estatusTexto);
       if (estatus === "sin") warnings.push(`${donde}: no tiene estatus.`);
       if (estatus === "otro") warnings.push(`${donde}: estatus "${estatusTexto}" desconocido (se muestra tal cual).`);
+      const montoDe = (k) => (tabla.col[k] === undefined ? null : montoCelda(celda(r, tabla.col[k])));
+      const monto = montoDe("montoModificado") ?? montoDe("monto");
       tabla.hitos.push({
         num,
         desc,
@@ -204,16 +222,10 @@ function leerHitos(wb, XLSX, nombres) {
         solicitud: fecha("solicitud"),
         pago: fecha("pago"),
         estatus,
+        ...(monto ? { monto, moneda: tabla.col.moneda || "USD" } : {}),
         ...(estatus === "otro" ? { estatusTexto } : {}),
         ...(tabla.col.tipo !== undefined && fila[tabla.col.tipo] ? { tipo: fila[tabla.col.tipo] } : {}),
       });
-    }
-
-    if (montosHoja.size) {
-      warnings.push(
-        `Hoja "${hoja}": tiene columnas de montos (${[...montosHoja].join(", ")}). El sitio no las muestra, ` +
-          "pero el Excel del repositorio es público: bórralas del archivo."
-      );
     }
 
     const slug = slugify(proyecto);

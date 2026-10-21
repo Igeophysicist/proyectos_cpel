@@ -178,6 +178,7 @@ body{ padding-bottom: calc(var(--tabbar-h) + env(safe-area-inset-bottom, 0px)); 
   margin: 4px 0; font-size: 12px; line-height: 1.35; color: var(--ink-700);
   display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
 }
+.hito3__monto{ margin: 0 0 3px; font-size: 13px; font-weight: 800; color: var(--teal-900); font-variant-numeric: tabular-nums; }
 .hito3__fecha{ display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; font-size: 11.5px; font-weight: 700; color: var(--gold-700); }
 .hito3__mas{ margin-top: 4px; font-size: 11px; color: #b83b3b; font-weight: 600; }
 .hito3--vacio .hito3__vacio{ margin: 2px 0 0; font-size: 12px; color: var(--ink-500); }
@@ -224,8 +225,12 @@ body{ padding-bottom: calc(var(--tabbar-h) + env(safe-area-inset-bottom, 0px)); 
 .hl--transito::before{ border-color: #2b5797; }
 .hl__head{ display: flex; flex-wrap: wrap; align-items: center; gap: 4px 6px; }
 .hl__num{ font-size: 13px; font-weight: 800; color: var(--teal-900); }
-.hl__desc{ margin: 3px 0; font-size: 12.5px; line-height: 1.4; color: var(--ink-700); }
-.hl__meta{ display: flex; flex-wrap: wrap; gap: 2px 10px; font-size: 11.5px; color: var(--ink-500); }
+.hl__desc{ margin: 3px 0 4px; font-size: 12.5px; line-height: 1.4; color: var(--ink-700); }
+.hl__desc p{ margin: 0 0 4px; }
+.hl__desc ul{ margin: 0 0 4px; padding-left: 18px; list-style: disc; }
+.hl__desc li{ margin: 1px 0; }
+.hl__meta{ display: flex; flex-wrap: wrap; gap: 2px 10px; font-size: 11.5px; font-weight: 700; color: var(--ink-700); }
+.hl__meta .hl__monto{ flex-basis: 100%; font-size: 13px; font-weight: 800; color: var(--teal-900); font-variant-numeric: tabular-nums; }
 
 /* ---------- Información general ---------- */
 .info-list{ display: flex; flex-direction: column; gap: var(--space-3); }
@@ -300,9 +305,12 @@ body{ padding-bottom: calc(var(--tabbar-h) + env(safe-area-inset-bottom, 0px)); 
   background: rgba(255,255,255,.16); border: 0; color: #fff; cursor: pointer;
   display: flex; align-items: center; justify-content: center;
 }
-.sheet__body{ padding: var(--space-4); overflow-y: auto; padding-bottom: calc(var(--space-4) + env(safe-area-inset-bottom, 0px)); }
+.sheet__body{ flex: 1; min-height: 0; padding: var(--space-4); overflow-y: auto; padding-bottom: calc(var(--space-4) + env(safe-area-inset-bottom, 0px)); }
 /* Asa: en celular la ventana se cierra deslizándola hacia abajo (dialog.js). */
 @media (max-width: 899px){
+  /* Todas las ventanas con la misma altura (no toda la pantalla): arriba
+     se sigue viendo la ficha de la que se abrieron. */
+  .sheet__panel{ height: 82vh; height: 82dvh; }
   .sheet__panel::before{ content:""; position:absolute; z-index:5; top:6px; left:50%; width:38px; height:4px; margin-left:-19px; border-radius:2px; background:rgba(150,160,157,.75); pointer-events:none; }
 }
 

@@ -44,7 +44,7 @@ test("nombre corto del contrato y estatus", () => {
   assert.equal(estatusDe("CANCELADO"), "otro");
 });
 
-test("lee varias tablas por hoja, sin montos, y fechas numéricas o en texto", () => {
+test("lee varias tablas por hoja, montos y fechas numéricas o en texto", () => {
   const encabezado = ["No. Hito", "Descripción de Hito de Pago", "Valor sobre el Precio Alzado del Contrato", "Fecha programada de cumplimiento", "Monto a pagar USD", "Fecha de solicitud de pago", "Fecha de pago", "Estatus"];
   const wb = libro({
     PICACHOS_9: [
@@ -66,14 +66,14 @@ test("lee varias tablas por hoja, sin montos, y fechas numéricas o en texto", (
   assert.deepEqual(p.contratos.map((c) => c.nombre), ["AHYG", "SUMRI"]);
   assert.deepEqual(p.contratos[0].hitos[0], {
     num: "1", desc: "Entrega de bienes", pct: 70, programada: "2024-11-28", solicitud: "", pago: "2025-11-20", estatus: "pagado",
+    monto: 1000, moneda: "USD",
   });
   assert.equal(p.contratos[0].hitos[1].programada, "2025-01-28");
   assert.equal(p.contratos[1].hitos[0].programada, "2026-09-01");
   assert.equal(p.contratos[1].hitos[0].estatus, "transito");
   assert.equal(p.contratos[1].hitos[1].programada, "2026-12-01");
-  // Ningún monto llega a los datos publicados.
-  assert.doesNotMatch(JSON.stringify(proyectos), /1000|2000|3000/);
-  assert.equal(warnings.filter((w) => /montos/.test(w)).length, 1);
+  // La fila "Total" no es un hito.
+  assert.equal(p.contratos[0].hitos.length, 2);
   assert.ok(warnings.some((w) => /hito 2\): no tiene estatus/.test(w)));
 });
 
@@ -92,4 +92,28 @@ test("errores: hoja sin proyecto, sin estatus y fecha ilegible; aviso si el % no
   assert.ok(errors.some((e) => /PPSIII.*no tiene columna "Estatus"/.test(e)));
   assert.ok(warnings.some((w) => /AMATA.*suman 50 %/.test(w)));
   assert.equal(proyectos["peh-amata"].contratos[0].hitos[0].tipo, "Crítico");
+});
+
+test("monto: el importe modificado manda; moneda del encabezado; saltos de línea se conservan", () => {
+  const wb = libro({
+    CHICOASEN_II_2: [
+      ["Contrato F/1320/001/2022, (Convenio Modificatorio No. 01)"],
+      ["No. Hito", "Descripción de Hito de Pago", "Fecha programada de pago", "Porcentaje total de Hito GE", "Monto a pagar USD", "Importe Adicional", "Importe Modificado", "Estatus"],
+      [8, "Unidad hidráulica", fechaExcel("2024-06-05"), 0.09, 3285000, "", "", "PAGADO"],
+      [9, "Supervisión (U1)", fechaExcel("2026-10-22"), 0.025, 912500, 347688, 1260188, "PENDIENTE"],
+    ],
+    PICACHOS_9: [
+      ["ROAGO Contrato FIEL/10670-023/2024, Anexo 03"],
+      ["No. Hito", "Descripción de Hito de Pago", "Valor sobre el Precio Alzado del Contrato", "Fecha programada de cumplimiento", "Monto a pagar MXN", "Estatus"],
+      [1, "Suministro de:\r\n-Sistema contra incendio\r\n-Sistema de aire", 1, fechaExcel("2024-04-15"), " $ - ", "PAGADO"],
+    ],
+  });
+  const { proyectos } = leerHitos(wb, XLSX, NOMBRES);
+  const ge = proyectos["ph-chicoasen-ii"].contratos[0].hitos;
+  assert.equal(ge[0].monto, 3285000);
+  assert.equal(ge[1].monto, 1260188);
+  assert.equal(ge[1].moneda, "USD");
+  const roago = proyectos["peh-picachos"].contratos[0].hitos[0];
+  assert.equal(roago.desc, "Suministro de:\n-Sistema contra incendio\n-Sistema de aire");
+  assert.equal(roago.monto, undefined); // "$ -" = sin monto
 });

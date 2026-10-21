@@ -41,7 +41,7 @@ del Excel al sitio" en el README de la raíz).
 | `imagen` | Ruta de la imagen, p. ej. `data/CARTERA-CPEL/AMATA.jpg` (JPG o PNG). Se puede subir pesada: la Action "Datos" la reduce a 1200 px y le quita los metadatos (ver "Imágenes de Cartera CPEL" en el README de la raíz). |
 | `avanceProg`, `avanceReal` | Avance general (número o `"30.5%"`). |
 | `prog<X>`, `real<X>` | Avances particulares (`Ing`, `Sum`, `Cons`, `Pps`). Ver `PARTICULARES` en `cartera.js`. |
-| `hitoN_*` | Ya no se usan (traían montos y no se publican): los hitos salen de `HITOS_CARTERA_CPEL.xlsx` (abajo). Se pueden borrar del Excel. |
+| `hitoN_*` | Ya no se usan: los hitos salen de `HITOS_CARTERA_CPEL.xlsx` (abajo). Se pueden borrar del Excel. |
 | `eventos_importantes` | Texto libre. |
 | `desarrollador`, `inversion`, `fuenteRecursos` | Información general. |
 | `plazo_*` | Ventana "Plazos". Las fechas (`dd/mm/aaaa`) que ya pasaron se marcan en la línea de tiempo. |
@@ -56,9 +56,10 @@ Cada tabla empieza en la fila "No. Hito…"; si arriba hay una fila "…
 Contrato …", es el nombre del contrato (Picachos tiene varias tablas en
 una hoja). Se leen las columnas de descripción, valor sobre el precio
 (%), fecha programada (o del evento crítico), fecha de solicitud, fecha
-de pago, estatus y tipo de evento. **Los montos no se publican**: si el
-Excel trae columnas de montos o importes, la Action avisa para quitarlas
-(el archivo del repositorio es público).
+de pago, estatus, monto a pagar (USD o MXN según el encabezado; si hay
+"Importe modificado", ese) y tipo de evento. Los saltos de línea de la
+descripción se respetan, y en la página las descripciones largas se
+separan en párrafos y listas.
 
 Estatus: `PAGADO`, `PAGADO PARCIALMENTE`, `EN TRÁNSITO DE PAGO`,
 `PENDIENTE`, `HITO INCONCLUSO`. La ficha muestra cuántos van pagados y

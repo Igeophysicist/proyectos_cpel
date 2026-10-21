@@ -1,6 +1,6 @@
 {
   "fuente": "HITOS_CARTERA_CPEL.xlsx",
-  "excelModificado": "2026-10-21T01:10:57.000Z",
+  "excelModificado": "2026-10-21T15:17:00.000Z",
   "proyectos": {
     "cfv-puerto-penasco-secuencia-iii": {
       "nombre": "CFV PUERTO PEÑASCO SECUENCIA III",
@@ -16,7 +16,9 @@
               "programada": "2026-01-20",
               "solicitud": "2026-01-26",
               "pago": "2026-02-25",
-              "estatus": "pagado"
+              "estatus": "pagado",
+              "monto": 14700350,
+              "moneda": "USD"
             },
             {
               "num": "2",
@@ -25,7 +27,9 @@
               "programada": "2026-02-19",
               "solicitud": "2026-02-19",
               "pago": "2026-03-25",
-              "estatus": "pagado"
+              "estatus": "pagado",
+              "monto": 14700350,
+              "moneda": "USD"
             },
             {
               "num": "3",
@@ -34,7 +38,9 @@
               "programada": "2026-02-04",
               "solicitud": "2026-01-30",
               "pago": "2026-02-25",
-              "estatus": "pagado"
+              "estatus": "pagado",
+              "monto": 29400700,
+              "moneda": "USD"
             },
             {
               "num": "4",
@@ -43,7 +49,9 @@
               "programada": "2026-03-21",
               "solicitud": "2026-03-21",
               "pago": "2026-04-27",
-              "estatus": "pagado"
+              "estatus": "pagado",
+              "monto": 14700350,
+              "moneda": "USD"
             },
             {
               "num": "6",
@@ -52,7 +60,9 @@
               "programada": "2026-05-20",
               "solicitud": "2026-05-21",
               "pago": "2026-06-25",
-              "estatus": "pagado"
+              "estatus": "pagado",
+              "monto": 14700350,
+              "moneda": "USD"
             },
             {
               "num": "8",
@@ -61,7 +71,9 @@
               "programada": "2026-07-19",
               "solicitud": "",
               "pago": "",
-              "estatus": "inconcluso"
+              "estatus": "inconcluso",
+              "monto": 23520560,
+              "moneda": "USD"
             },
             {
               "num": "5",
@@ -70,7 +82,9 @@
               "programada": "2026-08-08",
               "solicitud": "2026-08-08",
               "pago": "2026-09-25",
-              "estatus": "pagado"
+              "estatus": "pagado",
+              "monto": 14700350,
+              "moneda": "USD"
             },
             {
               "num": "9",
@@ -79,16 +93,20 @@
               "programada": "2026-08-08",
               "solicitud": "2026-08-08",
               "pago": "2026-09-25",
-              "estatus": "pagado"
+              "estatus": "pagado",
+              "monto": 14700350,
+              "moneda": "USD"
             },
             {
               "num": "7",
               "desc": "Terminación de la Obra Civil de las Plataformas del Centro de Interconexión y SE Maniobras CFV Puerto Peñasco 400 kV.",
               "pct": 5,
               "programada": "2026-10-07",
-              "solicitud": "",
+              "solicitud": "2026-10-07",
               "pago": "",
-              "estatus": "pendiente"
+              "estatus": "transito",
+              "monto": 14700350,
+              "moneda": "USD"
             },
             {
               "num": "11",
@@ -97,7 +115,9 @@
               "programada": "2026-11-13",
               "solicitud": "",
               "pago": "",
-              "estatus": "pendiente"
+              "estatus": "pendiente",
+              "monto": 29400700,
+              "moneda": "USD"
             },
             {
               "num": "10",
@@ -106,7 +126,9 @@
               "programada": "2027-02-04",
               "solicitud": "",
               "pago": "",
-              "estatus": "pendiente"
+              "estatus": "pendiente",
+              "monto": 14700350,
+              "moneda": "USD"
             },
             {
               "num": "12",
@@ -115,7 +137,9 @@
               "programada": "2027-06-23",
               "solicitud": "",
               "pago": "",
-              "estatus": "pendiente"
+              "estatus": "pendiente",
+              "monto": 17640420,
+              "moneda": "USD"
             },
             {
               "num": "13",
@@ -124,7 +148,9 @@
               "programada": "2027-07-23",
               "solicitud": "",
               "pago": "",
-              "estatus": "pendiente"
+              "estatus": "pendiente",
+              "monto": 17640420,
+              "moneda": "USD"
             },
             {
               "num": "14",
@@ -133,7 +159,9 @@
               "programada": "2027-08-18",
               "solicitud": "",
               "pago": "",
-              "estatus": "pendiente"
+              "estatus": "pendiente",
+              "monto": 14700350,
+              "moneda": "USD"
             },
             {
               "num": "15",
@@ -142,7 +170,9 @@
               "programada": "2027-11-10",
               "solicitud": "",
               "pago": "",
-              "estatus": "pendiente"
+              "estatus": "pendiente",
+              "monto": 14700350,
+              "moneda": "USD"
             },
             {
               "num": "16",
@@ -151,7 +181,9 @@
               "programada": "2027-12-20",
               "solicitud": "",
               "pago": "",
-              "estatus": "pendiente"
+              "estatus": "pendiente",
+              "monto": 29400700,
+              "moneda": "USD"
             }
           ]
         }
@@ -171,7 +203,9 @@
               "programada": "2026-04-24",
               "solicitud": "2026-04-24",
               "pago": "2026-05-26",
-              "estatus": "pagado"
+              "estatus": "pagado",
+              "monto": 17200000,
+              "moneda": "USD"
             },
             {
               "num": "2",
@@ -180,7 +214,9 @@
               "programada": "2026-05-14",
               "solicitud": "2026-05-14",
               "pago": "2026-06-25",
-              "estatus": "pagado"
+              "estatus": "pagado",
+              "monto": 17200000,
+              "moneda": "USD"
             },
             {
               "num": "3",
@@ -189,7 +225,9 @@
               "programada": "2026-05-24",
               "solicitud": "2026-05-24",
               "pago": "2026-06-25",
-              "estatus": "pagado"
+              "estatus": "pagado",
+              "monto": 34400000,
+              "moneda": "USD"
             },
             {
               "num": "5",
@@ -198,7 +236,9 @@
               "programada": "2026-07-23",
               "solicitud": "2026-07-23",
               "pago": "2026-08-25",
-              "estatus": "pagado"
+              "estatus": "pagado",
+              "monto": 17200000,
+              "moneda": "USD"
             },
             {
               "num": "4",
@@ -207,7 +247,9 @@
               "programada": "2026-09-21",
               "solicitud": "2026-09-21",
               "pago": "",
-              "estatus": "transito"
+              "estatus": "transito",
+              "monto": 17200000,
+              "moneda": "USD"
             },
             {
               "num": "6",
@@ -216,7 +258,9 @@
               "programada": "2027-02-18",
               "solicitud": "",
               "pago": "",
-              "estatus": "pendiente"
+              "estatus": "pendiente",
+              "monto": 17200000,
+              "moneda": "USD"
             },
             {
               "num": "7",
@@ -225,7 +269,9 @@
               "programada": "2027-03-19",
               "solicitud": "",
               "pago": "",
-              "estatus": "pendiente"
+              "estatus": "pendiente",
+              "monto": 17200000,
+              "moneda": "USD"
             },
             {
               "num": "8",
@@ -234,7 +280,9 @@
               "programada": "2027-04-09",
               "solicitud": "",
               "pago": "",
-              "estatus": "pendiente"
+              "estatus": "pendiente",
+              "monto": 27520000,
+              "moneda": "USD"
             },
             {
               "num": "9",
@@ -243,7 +291,9 @@
               "programada": "2027-07-18",
               "solicitud": "",
               "pago": "",
-              "estatus": "pendiente"
+              "estatus": "pendiente",
+              "monto": 17200000,
+              "moneda": "USD"
             },
             {
               "num": "10",
@@ -252,7 +302,9 @@
               "programada": "2027-11-25",
               "solicitud": "",
               "pago": "",
-              "estatus": "pendiente"
+              "estatus": "pendiente",
+              "monto": 17200000,
+              "moneda": "USD"
             },
             {
               "num": "11",
@@ -261,7 +313,9 @@
               "programada": "2027-07-08",
               "solicitud": "",
               "pago": "",
-              "estatus": "pendiente"
+              "estatus": "pendiente",
+              "monto": 34400000,
+              "moneda": "USD"
             },
             {
               "num": "12",
@@ -270,7 +324,9 @@
               "programada": "2027-10-27",
               "solicitud": "",
               "pago": "",
-              "estatus": "pendiente"
+              "estatus": "pendiente",
+              "monto": 20640000,
+              "moneda": "USD"
             },
             {
               "num": "13",
@@ -279,7 +335,9 @@
               "programada": "2027-11-26",
               "solicitud": "",
               "pago": "",
-              "estatus": "pendiente"
+              "estatus": "pendiente",
+              "monto": 20640000,
+              "moneda": "USD"
             },
             {
               "num": "14",
@@ -288,7 +346,9 @@
               "programada": "2027-12-15",
               "solicitud": "",
               "pago": "",
-              "estatus": "pendiente"
+              "estatus": "pendiente",
+              "monto": 17200000,
+              "moneda": "USD"
             },
             {
               "num": "15",
@@ -297,7 +357,9 @@
               "programada": "2028-02-23",
               "solicitud": "",
               "pago": "",
-              "estatus": "pendiente"
+              "estatus": "pendiente",
+              "monto": 17200000,
+              "moneda": "USD"
             },
             {
               "num": "16",
@@ -306,7 +368,9 @@
               "programada": "2028-03-25",
               "solicitud": "",
               "pago": "",
-              "estatus": "pendiente"
+              "estatus": "pendiente",
+              "monto": 34400000,
+              "moneda": "USD"
             }
           ]
         }
@@ -326,7 +390,9 @@
               "programada": "2023-12-01",
               "solicitud": "",
               "pago": "",
-              "estatus": "pagado"
+              "estatus": "pagado",
+              "monto": 13724640.17,
+              "moneda": "USD"
             },
             {
               "num": "2",
@@ -335,7 +401,9 @@
               "programada": "2024-03-04",
               "solicitud": "",
               "pago": "",
-              "estatus": "pagado"
+              "estatus": "pagado",
+              "monto": 20586960.25,
+              "moneda": "USD"
             },
             {
               "num": "3",
@@ -344,7 +412,9 @@
               "programada": "2024-05-20",
               "solicitud": "",
               "pago": "",
-              "estatus": "pagado"
+              "estatus": "pagado",
+              "monto": 24018120.29,
+              "moneda": "USD"
             },
             {
               "num": "4",
@@ -353,7 +423,9 @@
               "programada": "2025-01-17",
               "solicitud": "",
               "pago": "",
-              "estatus": "parcial"
+              "estatus": "parcial",
+              "monto": 37811383.66,
+              "moneda": "USD"
             },
             {
               "num": "5",
@@ -362,7 +434,9 @@
               "programada": "2026-09-01",
               "solicitud": "",
               "pago": "",
-              "estatus": "parcial"
+              "estatus": "parcial",
+              "monto": 44605080.55,
+              "moneda": "USD"
             },
             {
               "num": "6",
@@ -371,7 +445,9 @@
               "programada": "2026-02-10",
               "solicitud": "",
               "pago": "",
-              "estatus": "parcial"
+              "estatus": "parcial",
+              "monto": 30880440.38,
+              "moneda": "USD"
             },
             {
               "num": "7",
@@ -380,7 +456,9 @@
               "programada": "2026-12-04",
               "solicitud": "",
               "pago": "",
-              "estatus": "parcial"
+              "estatus": "parcial",
+              "monto": 44605080.55,
+              "moneda": "USD"
             },
             {
               "num": "8",
@@ -389,7 +467,9 @@
               "programada": "2027-03-29",
               "solicitud": "",
               "pago": "",
-              "estatus": "pendiente"
+              "estatus": "pendiente",
+              "monto": 41105297.3,
+              "moneda": "USD"
             },
             {
               "num": "9",
@@ -398,7 +478,9 @@
               "programada": "2027-08-27",
               "solicitud": "",
               "pago": "",
-              "estatus": "pendiente"
+              "estatus": "pendiente",
+              "monto": 41173920.51,
+              "moneda": "USD"
             },
             {
               "num": "10",
@@ -407,7 +489,9 @@
               "programada": "2027-10-07",
               "solicitud": "",
               "pago": "",
-              "estatus": "pendiente"
+              "estatus": "pendiente",
+              "monto": 6862320.08,
+              "moneda": "USD"
             },
             {
               "num": "11",
@@ -416,7 +500,9 @@
               "programada": "2027-09-08",
               "solicitud": "",
               "pago": "",
-              "estatus": "pendiente"
+              "estatus": "pendiente",
+              "monto": 10293480.13,
+              "moneda": "USD"
             },
             {
               "num": "12",
@@ -425,7 +511,9 @@
               "programada": "2027-09-13",
               "solicitud": "",
               "pago": "",
-              "estatus": "pendiente"
+              "estatus": "pendiente",
+              "monto": 17155800.21,
+              "moneda": "USD"
             },
             {
               "num": "13",
@@ -434,7 +522,9 @@
               "programada": "2027-11-05",
               "solicitud": "",
               "pago": "",
-              "estatus": "pendiente"
+              "estatus": "pendiente",
+              "monto": 2573370.03,
+              "moneda": "USD"
             },
             {
               "num": "14",
@@ -443,7 +533,9 @@
               "programada": "2027-12-02",
               "solicitud": "",
               "pago": "",
-              "estatus": "pendiente"
+              "estatus": "pendiente",
+              "monto": 2573370.03,
+              "moneda": "USD"
             },
             {
               "num": "15",
@@ -452,7 +544,9 @@
               "programada": "2027-12-23",
               "solicitud": "",
               "pago": "",
-              "estatus": "pendiente"
+              "estatus": "pendiente",
+              "monto": 2573370.03,
+              "moneda": "USD"
             },
             {
               "num": "16",
@@ -461,7 +555,9 @@
               "programada": "2027-12-25",
               "solicitud": "",
               "pago": "",
-              "estatus": "pendiente"
+              "estatus": "pendiente",
+              "monto": 2573370.03,
+              "moneda": "USD"
             }
           ]
         },
@@ -476,7 +572,9 @@
               "programada": "2022-09-30",
               "solicitud": "",
               "pago": "",
-              "estatus": "pagado"
+              "estatus": "pagado",
+              "monto": 3650000,
+              "moneda": "USD"
             },
             {
               "num": "2",
@@ -485,7 +583,9 @@
               "programada": "2022-10-30",
               "solicitud": "",
               "pago": "",
-              "estatus": "pagado"
+              "estatus": "pagado",
+              "monto": 3650000,
+              "moneda": "USD"
             },
             {
               "num": "3",
@@ -494,7 +594,9 @@
               "programada": "2023-03-24",
               "solicitud": "",
               "pago": "",
-              "estatus": "pagado"
+              "estatus": "pagado",
+              "monto": 4380000,
+              "moneda": "USD"
             },
             {
               "num": "4",
@@ -503,7 +605,9 @@
               "programada": "2023-06-24",
               "solicitud": "",
               "pago": "",
-              "estatus": "pagado"
+              "estatus": "pagado",
+              "monto": 4380000,
+              "moneda": "USD"
             },
             {
               "num": "5",
@@ -512,7 +616,9 @@
               "programada": "2023-06-30",
               "solicitud": "",
               "pago": "",
-              "estatus": "pagado"
+              "estatus": "pagado",
+              "monto": 657000,
+              "moneda": "USD"
             },
             {
               "num": "6",
@@ -521,7 +627,9 @@
               "programada": "2023-10-22",
               "solicitud": "",
               "pago": "",
-              "estatus": "pagado"
+              "estatus": "pagado",
+              "monto": 4380000,
+              "moneda": "USD"
             },
             {
               "num": "7",
@@ -530,7 +638,9 @@
               "programada": "2024-02-03",
               "solicitud": "",
               "pago": "",
-              "estatus": "pagado"
+              "estatus": "pagado",
+              "monto": 4927500,
+              "moneda": "USD"
             },
             {
               "num": "8",
@@ -539,7 +649,9 @@
               "programada": "2024-06-05",
               "solicitud": "",
               "pago": "",
-              "estatus": "pagado"
+              "estatus": "pagado",
+              "monto": 3285000,
+              "moneda": "USD"
             },
             {
               "num": "Adicional",
@@ -548,7 +660,9 @@
               "programada": "2026-07-31",
               "solicitud": "",
               "pago": "",
-              "estatus": "pendiente"
+              "estatus": "pendiente",
+              "monto": 1738440,
+              "moneda": "USD"
             },
             {
               "num": "9",
@@ -557,7 +671,9 @@
               "programada": "2026-10-22",
               "solicitud": "",
               "pago": "",
-              "estatus": "pendiente"
+              "estatus": "pendiente",
+              "monto": 1260188,
+              "moneda": "USD"
             },
             {
               "num": "10",
@@ -566,7 +682,9 @@
               "programada": "2026-12-02",
               "solicitud": "",
               "pago": "",
-              "estatus": "pendiente"
+              "estatus": "pendiente",
+              "monto": 1260188,
+              "moneda": "USD"
             },
             {
               "num": "11",
@@ -575,7 +693,9 @@
               "programada": "2027-01-08",
               "solicitud": "",
               "pago": "",
-              "estatus": "pendiente"
+              "estatus": "pendiente",
+              "monto": 1260188,
+              "moneda": "USD"
             },
             {
               "num": "12",
@@ -584,7 +704,9 @@
               "programada": "2026-12-29",
               "solicitud": "",
               "pago": "",
-              "estatus": "pendiente"
+              "estatus": "pendiente",
+              "monto": 1268844,
+              "moneda": "USD"
             },
             {
               "num": "13",
@@ -593,7 +715,9 @@
               "programada": "2027-02-08",
               "solicitud": "",
               "pago": "",
-              "estatus": "pendiente"
+              "estatus": "pendiente",
+              "monto": 1268844,
+              "moneda": "USD"
             },
             {
               "num": "14",
@@ -602,7 +726,9 @@
               "programada": "2027-03-15",
               "solicitud": "",
               "pago": "",
-              "estatus": "pendiente"
+              "estatus": "pendiente",
+              "monto": 538844,
+              "moneda": "USD"
             },
             {
               "num": "15",
@@ -611,7 +737,9 @@
               "programada": "2027-03-15",
               "solicitud": "",
               "pago": "",
-              "estatus": "pendiente"
+              "estatus": "pendiente",
+              "monto": 1268844,
+              "moneda": "USD"
             },
             {
               "num": "16",
@@ -620,7 +748,9 @@
               "programada": "2027-04-06",
               "solicitud": "",
               "pago": "",
-              "estatus": "pendiente"
+              "estatus": "pendiente",
+              "monto": 803000,
+              "moneda": "USD"
             }
           ]
         }
@@ -640,7 +770,9 @@
               "programada": "2023-03-14",
               "solicitud": "",
               "pago": "",
-              "estatus": "pagado"
+              "estatus": "pagado",
+              "monto": 382742.22,
+              "moneda": "USD"
             },
             {
               "num": "2",
@@ -649,7 +781,9 @@
               "programada": "2023-12-28",
               "solicitud": "",
               "pago": "",
-              "estatus": "pagado"
+              "estatus": "pagado",
+              "monto": 382742.22,
+              "moneda": "USD"
             },
             {
               "num": "3",
@@ -658,7 +792,9 @@
               "programada": "2024-02-03",
               "solicitud": "",
               "pago": "",
-              "estatus": "pagado"
+              "estatus": "pagado",
+              "monto": 1530968.87,
+              "moneda": "USD"
             },
             {
               "num": "4",
@@ -667,7 +803,9 @@
               "programada": "2026-10-01",
               "solicitud": "",
               "pago": "",
-              "estatus": "parcial"
+              "estatus": "parcial",
+              "monto": 15309688.73,
+              "moneda": "USD"
             },
             {
               "num": "5",
@@ -676,7 +814,9 @@
               "programada": "2026-10-02",
               "solicitud": "",
               "pago": "",
-              "estatus": "parcial"
+              "estatus": "parcial",
+              "monto": 15309688.73,
+              "moneda": "USD"
             },
             {
               "num": "6",
@@ -685,7 +825,9 @@
               "programada": "2025-05-05",
               "solicitud": "",
               "pago": "",
-              "estatus": "pagado"
+              "estatus": "pagado",
+              "monto": 4592906.62,
+              "moneda": "USD"
             },
             {
               "num": "7",
@@ -694,7 +836,9 @@
               "programada": "2026-10-17",
               "solicitud": "",
               "pago": "",
-              "estatus": "pendiente"
+              "estatus": "pendiente",
+              "monto": 5358391.06,
+              "moneda": "USD"
             },
             {
               "num": "8",
@@ -703,7 +847,9 @@
               "programada": "2026-10-17",
               "solicitud": "",
               "pago": "",
-              "estatus": "pendiente"
+              "estatus": "pendiente",
+              "monto": 5358391.06,
+              "moneda": "USD"
             },
             {
               "num": "9",
@@ -712,7 +858,9 @@
               "programada": "2026-12-03",
               "solicitud": "",
               "pago": "",
-              "estatus": "pendiente"
+              "estatus": "pendiente",
+              "monto": 2296453.31,
+              "moneda": "USD"
             },
             {
               "num": "10",
@@ -721,7 +869,9 @@
               "programada": "2026-01-13",
               "solicitud": "",
               "pago": "",
-              "estatus": "pagado"
+              "estatus": "pagado",
+              "monto": 4592906.62,
+              "moneda": "USD"
             },
             {
               "num": "11",
@@ -730,7 +880,9 @@
               "programada": "2026-12-03",
               "solicitud": "",
               "pago": "",
-              "estatus": "pendiente"
+              "estatus": "pendiente",
+              "monto": 5358391.06,
+              "moneda": "USD"
             },
             {
               "num": "12",
@@ -739,7 +891,9 @@
               "programada": "2026-10-18",
               "solicitud": "",
               "pago": "",
-              "estatus": "pendiente"
+              "estatus": "pendiente",
+              "monto": 5358391.06,
+              "moneda": "USD"
             },
             {
               "num": "13",
@@ -757,7 +911,9 @@
               "programada": "2026-11-28",
               "solicitud": "",
               "pago": "",
-              "estatus": "pendiente"
+              "estatus": "pendiente",
+              "monto": 5358391.06,
+              "moneda": "USD"
             },
             {
               "num": "15",
@@ -775,7 +931,9 @@
               "programada": "2026-11-14",
               "solicitud": "",
               "pago": "",
-              "estatus": "pendiente"
+              "estatus": "pendiente",
+              "monto": 5358391.06,
+              "moneda": "USD"
             },
             {
               "num": "17",
@@ -814,6 +972,8 @@
               "solicitud": "",
               "pago": "",
               "estatus": "pagado",
+              "monto": 747627.05,
+              "moneda": "USD",
               "tipo": "Crítico"
             },
             {
@@ -823,7 +983,9 @@
               "programada": "2024-05-27",
               "solicitud": "",
               "pago": "",
-              "estatus": "pagado"
+              "estatus": "pagado",
+              "monto": 1246045.09,
+              "moneda": "USD"
             },
             {
               "num": "3",
@@ -832,7 +994,9 @@
               "programada": "2024-06-28",
               "solicitud": "",
               "pago": "",
-              "estatus": "pagado"
+              "estatus": "pagado",
+              "monto": 1246045.09,
+              "moneda": "USD"
             },
             {
               "num": "4",
@@ -842,6 +1006,8 @@
               "solicitud": "",
               "pago": "",
               "estatus": "pagado",
+              "monto": 996836.07,
+              "moneda": "USD",
               "tipo": "Crítico"
             },
             {
@@ -851,7 +1017,9 @@
               "programada": "2025-02-03",
               "solicitud": "",
               "pago": "",
-              "estatus": "pagado"
+              "estatus": "pagado",
+              "monto": 1744463.12,
+              "moneda": "USD"
             },
             {
               "num": "6",
@@ -861,6 +1029,8 @@
               "solicitud": "",
               "pago": "",
               "estatus": "pendiente",
+              "monto": 1744463.12,
+              "moneda": "USD",
               "tipo": "Crítico"
             },
             {
@@ -871,6 +1041,8 @@
               "solicitud": "",
               "pago": "",
               "estatus": "pendiente",
+              "monto": 2492090.17,
+              "moneda": "USD",
               "tipo": "Crítico"
             },
             {
@@ -881,6 +1053,8 @@
               "solicitud": "",
               "pago": "",
               "estatus": "pendiente",
+              "monto": 2492090.17,
+              "moneda": "USD",
               "tipo": "Crítico"
             },
             {
@@ -891,6 +1065,8 @@
               "solicitud": "",
               "pago": "",
               "estatus": "pendiente",
+              "monto": 2492090.17,
+              "moneda": "USD",
               "tipo": "Crítico"
             },
             {
@@ -901,6 +1077,8 @@
               "solicitud": "",
               "pago": "",
               "estatus": "pendiente",
+              "monto": 1495254.1,
+              "moneda": "USD",
               "tipo": "Crítico"
             },
             {
@@ -911,6 +1089,8 @@
               "solicitud": "",
               "pago": "",
               "estatus": "pendiente",
+              "monto": 2990508.21,
+              "moneda": "USD",
               "tipo": "Crítico Penalizable"
             },
             {
@@ -921,6 +1101,8 @@
               "solicitud": "",
               "pago": "",
               "estatus": "pendiente",
+              "monto": 2990508.21,
+              "moneda": "USD",
               "tipo": "Crítico Penalizable"
             },
             {
@@ -931,6 +1113,8 @@
               "solicitud": "",
               "pago": "",
               "estatus": "pendiente",
+              "monto": 1495254.1,
+              "moneda": "USD",
               "tipo": "Crítico Penalizable"
             },
             {
@@ -941,6 +1125,8 @@
               "solicitud": "",
               "pago": "",
               "estatus": "pendiente",
+              "monto": 747627.05,
+              "moneda": "USD",
               "tipo": "Crítico"
             }
           ]
@@ -961,7 +1147,9 @@
               "programada": "2024-11-28",
               "solicitud": "",
               "pago": "2025-11-20",
-              "estatus": "pagado"
+              "estatus": "pagado",
+              "monto": 40237523.26,
+              "moneda": "MXN"
             },
             {
               "num": "2",
@@ -970,7 +1158,9 @@
               "programada": "2025-01-28",
               "solicitud": "",
               "pago": "",
-              "estatus": "pendiente"
+              "estatus": "pendiente",
+              "monto": 17244652.82,
+              "moneda": "MXN"
             }
           ]
         },
@@ -985,7 +1175,9 @@
               "programada": "2025-04-24",
               "solicitud": "",
               "pago": "2025-06-04",
-              "estatus": "pagado"
+              "estatus": "pagado",
+              "monto": 3375606.94,
+              "moneda": "MXN"
             },
             {
               "num": "2",
@@ -994,7 +1186,9 @@
               "programada": "2025-05-23",
               "solicitud": "",
               "pago": "",
-              "estatus": "pendiente"
+              "estatus": "pendiente",
+              "monto": 1446688.69,
+              "moneda": "MXN"
             }
           ]
         },
@@ -1009,7 +1203,9 @@
               "programada": "2025-04-24",
               "solicitud": "",
               "pago": "",
-              "estatus": "pendiente"
+              "estatus": "pendiente",
+              "monto": 3873591.61,
+              "moneda": "MXN"
             },
             {
               "num": "2",
@@ -1018,7 +1214,9 @@
               "programada": "2025-05-23",
               "solicitud": "",
               "pago": "",
-              "estatus": "pendiente"
+              "estatus": "pendiente",
+              "monto": 1660110.69,
+              "moneda": "MXN"
             }
           ]
         },
@@ -1033,7 +1231,9 @@
               "programada": "2024-09-28",
               "solicitud": "",
               "pago": "2025-11-07",
-              "estatus": "pagado"
+              "estatus": "pagado",
+              "monto": 1950007.5,
+              "moneda": "MXN"
             },
             {
               "num": "2",
@@ -1042,7 +1242,9 @@
               "programada": "2024-10-28",
               "solicitud": "",
               "pago": "",
-              "estatus": "pendiente"
+              "estatus": "pendiente",
+              "monto": 835717.5,
+              "moneda": "MXN"
             }
           ]
         },
@@ -1057,7 +1259,9 @@
               "programada": "2023-10-31",
               "solicitud": "",
               "pago": "2024-03-05",
-              "estatus": "pagado"
+              "estatus": "pagado",
+              "monto": 169987.8,
+              "moneda": "USD"
             },
             {
               "num": "2",
@@ -1066,7 +1270,9 @@
               "programada": "2023-12-19",
               "solicitud": "",
               "pago": "2024-03-05",
-              "estatus": "pagado"
+              "estatus": "pagado",
+              "monto": 169987.8,
+              "moneda": "USD"
             },
             {
               "num": "3",
@@ -1075,7 +1281,9 @@
               "programada": "2024-01-09",
               "solicitud": "",
               "pago": "2024-03-08",
-              "estatus": "pagado"
+              "estatus": "pagado",
+              "monto": 169987.8,
+              "moneda": "USD"
             },
             {
               "num": "4",
@@ -1084,7 +1292,9 @@
               "programada": "2024-01-23",
               "solicitud": "",
               "pago": "2024-04-02",
-              "estatus": "pagado"
+              "estatus": "pagado",
+              "monto": 1529890.2,
+              "moneda": "USD"
             },
             {
               "num": "5",
@@ -1093,7 +1303,9 @@
               "programada": "2024-02-23",
               "solicitud": "",
               "pago": "2024-09-18",
-              "estatus": "pagado"
+              "estatus": "pagado",
+              "monto": 2549817,
+              "moneda": "USD"
             },
             {
               "num": "6",
@@ -1102,7 +1314,9 @@
               "programada": "2024-05-14",
               "solicitud": "",
               "pago": "2025-09-25",
-              "estatus": "pagado"
+              "estatus": "pagado",
+              "monto": 2549817,
+              "moneda": "USD"
             },
             {
               "num": "7",
@@ -1111,7 +1325,9 @@
               "programada": "2024-08-09",
               "solicitud": "",
               "pago": "2026-01-16",
-              "estatus": "pagado"
+              "estatus": "pagado",
+              "monto": 1699878,
+              "moneda": "USD"
             },
             {
               "num": "8",
@@ -1120,7 +1336,9 @@
               "programada": "2025-10-08",
               "solicitud": "",
               "pago": "",
-              "estatus": "sin"
+              "estatus": "pendiente",
+              "monto": 1699878,
+              "moneda": "USD"
             },
             {
               "num": "9",
@@ -1129,7 +1347,9 @@
               "programada": "2024-10-18",
               "solicitud": "",
               "pago": "2025-10-08",
-              "estatus": "pagado"
+              "estatus": "pagado",
+              "monto": 1699878,
+              "moneda": "USD"
             },
             {
               "num": "10",
@@ -1138,7 +1358,9 @@
               "programada": "2026-02-17",
               "solicitud": "",
               "pago": "",
-              "estatus": "pendiente"
+              "estatus": "pendiente",
+              "monto": 1699878,
+              "moneda": "USD"
             },
             {
               "num": "11",
@@ -1147,7 +1369,9 @@
               "programada": "2026-03-29",
               "solicitud": "",
               "pago": "",
-              "estatus": "pendiente"
+              "estatus": "pendiente",
+              "monto": 1699878,
+              "moneda": "USD"
             },
             {
               "num": "12",
@@ -1156,7 +1380,9 @@
               "programada": "2026-04-18",
               "solicitud": "",
               "pago": "",
-              "estatus": "pendiente"
+              "estatus": "pendiente",
+              "monto": 1359902.4,
+              "moneda": "USD"
             }
           ]
         },
@@ -1171,7 +1397,9 @@
               "programada": "2024-11-28",
               "solicitud": "",
               "pago": "2024-12-10",
-              "estatus": "pagado"
+              "estatus": "pagado",
+              "monto": 695579.07,
+              "moneda": "USD"
             },
             {
               "num": "2",
@@ -1180,7 +1408,9 @@
               "programada": "2025-01-03",
               "solicitud": "",
               "pago": "",
-              "estatus": "pendiente"
+              "estatus": "pendiente",
+              "monto": 298105.32,
+              "moneda": "USD"
             }
           ]
         },
@@ -1190,75 +1420,91 @@
           "hitos": [
             {
               "num": "1",
-              "desc": "Aprobación de ingeniería de detalle de: -Sistema contra incendio. -Sistema de aire de servicio -Sistema de aire acondicionado -Sistema de agua de servicio -Sistema de ventilación -Sistema de alumbrado para Centrales Hidroeléctricas -Sistema de medición de niveles -Charolas para cables conductores de fuerza y control -La transición subterránea aérea en media tensión y baja tensión -Cables de potencia monopolares de 5 a 35 kV -Cables monoconductores con aislamiento -Cables control",
+              "desc": "Aprobación de ingeniería de detalle de:\n-Sistema contra incendio.\n-Sistema de aire de servicio\n-Sistema de aire acondicionado\n-Sistema de agua de servicio\n-Sistema de ventilación\n-Sistema de alumbrado para Centrales Hidroeléctricas\n-Sistema de medición de niveles\n-Charolas para cables conductores de fuerza y control\n-La transición subterránea aérea en media tensión y baja tensión\n-Cables de potencia monopolares de 5 a 35 kV\n-Cables monoconductores con aislamiento\n-Cables control",
               "pct": 5,
               "programada": "2024-08-19",
               "solicitud": "",
               "pago": "2025-06-30",
-              "estatus": "pagado"
+              "estatus": "pagado",
+              "monto": 162779.39,
+              "moneda": "USD"
             },
             {
               "num": "2",
-              "desc": "Suministro de: -Sistema contra incendio -Sistema de aire de servicio -Sistema de aire acondicionado -Sistema de agua de servicio -Sistema de ventilación -Sistema de alumbrado para Centrales Hidroeléctricas -Sistema de medición de niveles",
+              "desc": "Suministro de:\n-Sistema contra incendio\n-Sistema de aire de servicio\n-Sistema de aire acondicionado\n-Sistema de agua de servicio\n-Sistema de ventilación\n-Sistema de alumbrado para Centrales Hidroeléctricas\n-Sistema de medición de niveles",
               "pct": 7.5,
               "programada": "2024-10-21",
               "solicitud": "",
               "pago": "",
-              "estatus": "pendiente"
+              "estatus": "pendiente",
+              "monto": 244169.08,
+              "moneda": "USD"
             },
             {
               "num": "3",
-              "desc": "Suministro de: -Charolas para cables conductores de fuerza y control -La transición subterránea aérea en media tensión y baja tensión -Cables de potencia monopolares de 5 a 35 kV -Cables monoconductores con aislamiento -Cables control",
+              "desc": "Suministro de:\n-Charolas para cables conductores de fuerza y control\n-La transición subterránea aérea en media tensión y baja tensión\n-Cables de potencia monopolares de 5 a 35 kV\n-Cables monoconductores con aislamiento\n-Cables control",
               "pct": 7.5,
               "programada": "2024-11-19",
               "solicitud": "",
               "pago": "",
-              "estatus": "pendiente"
+              "estatus": "pendiente",
+              "monto": 244169.08,
+              "moneda": "USD"
             },
             {
               "num": "4",
-              "desc": "Instalación y Puesta en Servicio de: -Sistema de aire de servicio -Sistema de aire acondicionado",
+              "desc": "Instalación y Puesta en Servicio de:\n-Sistema de aire de servicio\n-Sistema de aire acondicionado",
               "pct": 5,
               "programada": "2024-11-18",
               "solicitud": "",
               "pago": "",
-              "estatus": "pendiente"
+              "estatus": "pendiente",
+              "monto": 162779.39,
+              "moneda": "USD"
             },
             {
               "num": "5",
-              "desc": "Instalación y Puesta en Servicio de Sistemas para Unidad 1 de: -Charolas para cables conductores de fuerza y control -La transición subterránea aérea en media tensión y baja tensión -Cables de potencia monopolares de 5 a 35 kV -Cables monoconductores con aislamiento -Cables control",
+              "desc": "Instalación y Puesta en Servicio de Sistemas para Unidad 1 de:\n-Charolas para cables conductores de fuerza y control\n-La transición subterránea aérea en media tensión y baja tensión\n-Cables de potencia monopolares de 5 a 35 kV\n-Cables monoconductores con aislamiento\n-Cables control",
               "pct": 5,
               "programada": "2024-12-04",
               "solicitud": "",
               "pago": "",
-              "estatus": "pendiente"
+              "estatus": "pendiente",
+              "monto": 162779.39,
+              "moneda": "USD"
             },
             {
               "num": "6",
-              "desc": "Instalación y Puesta en Servicio de Sistema para Unidad 2 de: -Charolas para cables conductores de fuerza y control -La transición subterránea aérea en media tensión y baja tensión -Cables de potencia monopolares de 5 a 35 kV -Cables monoconductores con aislamiento -Cables control",
+              "desc": "Instalación y Puesta en Servicio de Sistema para Unidad 2 de:\n-Charolas para cables conductores de fuerza y control\n-La transición subterránea aérea en media tensión y baja tensión\n-Cables de potencia monopolares de 5 a 35 kV\n-Cables monoconductores con aislamiento\n-Cables control",
               "pct": 10,
               "programada": "2025-01-06",
               "solicitud": "",
               "pago": "",
-              "estatus": "pendiente"
+              "estatus": "pendiente",
+              "monto": 325558.77,
+              "moneda": "USD"
             },
             {
               "num": "7",
-              "desc": "Instalación y Puesta en Servicio de: -Sistema de agua de servicio -Sistema de ventilación -Sistema de alumbrado para Centrales Hidroeléctricas",
+              "desc": "Instalación y Puesta en Servicio de:\n-Sistema de agua de servicio\n-Sistema de ventilación\n-Sistema de alumbrado para Centrales Hidroeléctricas",
               "pct": 10,
               "programada": "2025-01-06",
               "solicitud": "",
               "pago": "",
-              "estatus": "pendiente"
+              "estatus": "pendiente",
+              "monto": 325558.77,
+              "moneda": "USD"
             },
             {
               "num": "8",
-              "desc": "Instalación y Puesta en Servicio de: -Sistema contra incendio -Sistema de medición de niveles",
+              "desc": "Instalación y Puesta en Servicio de:\n-Sistema contra incendio\n-Sistema de medición de niveles",
               "pct": 10,
               "programada": "2025-03-05",
               "solicitud": "",
               "pago": "",
-              "estatus": "pendiente"
+              "estatus": "pendiente",
+              "monto": 325558.77,
+              "moneda": "USD"
             },
             {
               "num": "9",
@@ -1267,7 +1513,9 @@
               "programada": "2025-05-06",
               "solicitud": "",
               "pago": "",
-              "estatus": "pendiente"
+              "estatus": "pendiente",
+              "monto": 325558.77,
+              "moneda": "USD"
             },
             {
               "num": "10",
@@ -1276,7 +1524,9 @@
               "programada": "2025-05-10",
               "solicitud": "",
               "pago": "",
-              "estatus": "pendiente"
+              "estatus": "pendiente",
+              "monto": 325558.77,
+              "moneda": "USD"
             }
           ]
         },
@@ -1291,7 +1541,9 @@
               "programada": "2024-04-15",
               "solicitud": "",
               "pago": "2024-05-13",
-              "estatus": "pagado"
+              "estatus": "pagado",
+              "monto": 6307915.5,
+              "moneda": "MXN"
             },
             {
               "num": "2",
@@ -1300,7 +1552,9 @@
               "programada": "2024-06-24",
               "solicitud": "",
               "pago": "2024-06-24",
-              "estatus": "pagado"
+              "estatus": "pagado",
+              "monto": 10513192.49,
+              "moneda": "MXN"
             },
             {
               "num": "3",
@@ -1309,7 +1563,9 @@
               "programada": "2024-08-30",
               "solicitud": "",
               "pago": "2024-09-20",
-              "estatus": "pagado"
+              "estatus": "pagado",
+              "monto": 16821107.99,
+              "moneda": "MXN"
             },
             {
               "num": "4",
@@ -1318,7 +1574,9 @@
               "programada": "2024-10-14",
               "solicitud": "",
               "pago": "",
-              "estatus": "pendiente"
+              "estatus": "pendiente",
+              "monto": 4205277,
+              "moneda": "MXN"
             },
             {
               "num": "5",
@@ -1327,7 +1585,9 @@
               "programada": "2024-10-29",
               "solicitud": "",
               "pago": "",
-              "estatus": "pendiente"
+              "estatus": "pendiente",
+              "monto": 4205277,
+              "moneda": "MXN"
             }
           ]
         }
