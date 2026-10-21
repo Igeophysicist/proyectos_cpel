@@ -431,6 +431,60 @@
           }
         }
       ]
+    },
+    {
+      "excel": "2026-10-21T00:04:59.000Z",
+      "fecha": "2026-10-20",
+      "cambios": [
+        {
+          "slug": "alvaro-obregon",
+          "nombre": "ÁLVARO OBREGÓN",
+          "antes": {
+            "parque": 86.5,
+            "grupo": "A"
+          },
+          "ahora": {
+            "parque": 85.5,
+            "grupo": "A"
+          }
+        },
+        {
+          "slug": "don-humberto",
+          "nombre": "DON HUMBERTO",
+          "antes": {
+            "parque": 83,
+            "grupo": "B"
+          },
+          "ahora": {
+            "parque": 85.5,
+            "grupo": "A"
+          }
+        },
+        {
+          "slug": "planta-solar-haab-kiin",
+          "nombre": "PLANTA SOLAR HAAB KIIN",
+          "antes": {
+            "parque": 74,
+            "grupo": "C"
+          },
+          "ahora": {
+            "parque": 76.5,
+            "grupo": "B"
+          }
+        },
+        {
+          "slug": "dalia-3-pv-castamay",
+          "nombre": "DALIA 3 PV (CASTAMAY)",
+          "antes": {
+            "parque": 72,
+            "grupo": "C"
+          },
+          "ahora": {
+            "parque": 83,
+            "grupo": "B"
+          }
+        }
+      ]
     }
   ]
 }
