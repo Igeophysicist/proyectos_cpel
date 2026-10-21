@@ -74,7 +74,7 @@ function validateCartera({ headers, rows, placemarkNames = [], fileExists = () =
   const warnings = [];
   checkHeaders(headers, CARTERA_REQUIRED, errors);
 
-  const dateCols = headers.filter((h) => /^plazo_.*_fecha$|^plazo_firmado$|^hito\d+_fecha$/.test(h));
+  const dateCols = headers.filter((h) => /^plazo_.*_fecha$|^plazo_firmado$/.test(h));
   const geo = new Set(placemarkNames.map(normalizeText));
   const names = [];
 

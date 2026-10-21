@@ -107,13 +107,13 @@
       <div class="eventos-text" id="eventosVal">Sin eventos registrados para este proyecto.</div>
     </section>
 
-    <!-- Hitos (se generan desde cartera.js) -->
+    <!-- Hitos de pago (se generan desde hitos.js con data/hitos.json) -->
     <section class="card card--hitos">
       <h2 class="card__title">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 21V4M5 4h11l-2 4 2 4H5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        Seguimiento de Hitos
+        Hitos de pago
       </h2>
-      <div class="hitos" id="hitosGrid"></div>
+      <div id="hitosCard"></div>
     </section>
 
     <!-- Información general -->
@@ -208,7 +208,7 @@
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
         </button>
       </div>
-      <div class="sheet__body" id="fichaBody"></div>
+      <div class="sheet__body" id="fichaBody" tabindex="0" aria-label="Ficha técnica del proyecto"></div>
     </div>
   </div>
 
@@ -226,11 +226,30 @@
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
         </button>
       </div>
-      <div class="sheet__body" id="plazosBody"></div>
+      <div class="sheet__body" id="plazosBody" tabindex="0" aria-label="Plazos del proyecto"></div>
     </div>
   </div>
 
   <!-- Ventana: Curva de avance (se llena desde curva.js con data/historial.json) -->
+  <!-- Ventana: todos los hitos de pago (ver hitos.js) -->
+  <div class="sheet" id="sheetHitos" aria-hidden="true">
+    <div class="sheet__scrim" data-close-sheet></div>
+    <div class="sheet__panel" role="dialog" aria-modal="true" aria-labelledby="sheetHitosTitle">
+      <div class="sheet__head">
+        <div class="sheet__title" id="sheetHitosTitle">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 21V4M5 4h11l-2 4 2 4H5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Hitos de pago
+        </div>
+        <div class="sheet__sub" data-project-name></div>
+        <button class="sheet__close" data-close-sheet aria-label="Cerrar">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+      <!-- tabindex: la lista se desplaza y, sin pestañas, no tiene nada enfocable -->
+      <div class="sheet__body" id="hitosBody" tabindex="0" aria-label="Lista de hitos de pago"></div>
+    </div>
+  </div>
+
   <div class="sheet" id="sheetCurva" aria-hidden="true">
     <div class="sheet__scrim" data-close-sheet></div>
     <div class="sheet__panel" role="dialog" aria-modal="true" aria-labelledby="sheetCurvaTitle">
@@ -244,7 +263,7 @@
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
         </button>
       </div>
-      <div class="sheet__body" id="curvaBody"></div>
+      <div class="sheet__body" id="curvaBody" tabindex="0" aria-label="Curva de avance del proyecto"></div>
     </div>
   </div>
 
@@ -261,6 +280,7 @@
   <script src="assets/js/map.js"></script>
   <script src="assets/js/curva.js"></script>
   <script src="assets/js/pdf.js"></script>
+  <script src="assets/js/hitos.js"></script>
   <script src="assets/js/cartera.js"></script>
 </body>
 </html>

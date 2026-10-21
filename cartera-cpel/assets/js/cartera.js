@@ -27,9 +27,8 @@
  * Para agregar/quitar campos de los Avances particulares, edita la
  * lista PARTICULARES: cada entrada es [columna del Excel, etiqueta].
  *
- * HITOS: se muestran tantos hitos como columnas "hitoN_..." tenga el
- * Excel (hito1_num, hito1_titulo, hito1_fecha, hito1_desc, hito2_...).
- * Para agregar un quinto hito basta con agregar las columnas hito5_*.
+ * HITOS DE PAGO: salen de data/hitos.json (Excel aparte,
+ * data/HITOS_CARTERA_CPEL.xlsx); ver hitos.js.
  *
  * ENLACE DIRECTO: la dirección lleva el proyecto seleccionado
  * (?proyecto=ph-chicoasen-ii, a partir de la columna "nombre"), así que
@@ -42,11 +41,13 @@
  * CURVA DE AVANCE: el tercer botón de la barra inferior abre la curva del
  * proyecto (ver curva.js y data/historial.json).
  *
- * Requiere: shared/text-utils.js, shared/dialog.js, map.js y curva.js.
+ * Requiere: shared/text-utils.js, shared/dialog.js, map.js, curva.js e hitos.js.
  */
 (function () {
   // Generado desde data/datos_proyectos.xlsx por scripts/build-data.js.
   const DATA_FILE_PATH = "data/datos_proyectos.json";
+  // Generado desde data/HITOS_CARTERA_CPEL.xlsx (sin montos).
+  const HITOS_FILE_PATH = "data/hitos.json";
 
   // Avances particulares: [sufijo de columna, etiqueta]. Lee prog<Sufijo> y real<Sufijo>.
   const PARTICULARES = [
@@ -156,7 +157,8 @@
   const { esc, parseNumber, parseDate, isPastOrToday, slugify, formatDateShort } = window.TextUtils;
 
   let proyectos = [];
-  let totalHitos = 0;
+  let hitos = {}; // por proyecto (slug del nombre), de hitos.json
+  let contratoHitos = 0; // pestaña abierta en "Ver todos los hitos"
   let actual = null; // proyecto mostrado (para la curva de avance)
   const $ = (id) => document.getElementById(id);
 
@@ -188,16 +190,14 @@
     $(valId).textContent = v + "%";
   }
 
-  /** Mayor N de las columnas "hitoN_..." presentes en el Excel. */
-  function contarHitos(filas) {
-    let max = 0;
-    filas.forEach((fila) => {
-      Object.keys(fila).forEach((col) => {
-        const m = col.match(/^hito(\d+)_/);
-        if (m) max = Math.max(max, Number(m[1]));
-      });
-    });
-    return max;
+  /** Hitos de pago (si no cargan, la ficha dice que no hay y el resto sigue igual). */
+  async function cargarHitos() {
+    try {
+      const res = await fetch(HITOS_FILE_PATH, { cache: "no-store" });
+      if (res.ok) hitos = (await res.json()).proyectos || {};
+    } catch (err) {
+      console.error(err);
+    }
   }
 
   // ------------------------------------------------------------- carga
@@ -205,6 +205,7 @@
     // El KML y el historial no dependen de los datos: se piden en paralelo.
     const kmlListo = window.CarteraMap ? window.CarteraMap.cargarKML() : Promise.resolve(false);
     if (window.CarteraCurva) window.CarteraCurva.cargar();
+    const hitosListos = cargarHitos();
     try {
       const res = await fetch(DATA_FILE_PATH, { cache: "no-store" });
       if (!res.ok) throw new Error(`No se pudo cargar ${DATA_FILE_PATH} (HTTP ${res.status})`);
@@ -212,10 +213,9 @@
       proyectos = (datos.proyectos || []).filter((p) => String(p.nombre || "").trim() !== ""); // descarta filas vacías
 
       if (!proyectos.length) throw new Error("El Excel no tiene proyectos.");
-      totalHitos = contarHitos(proyectos);
       mostrarFechaDatos(datos.excelModificado ? new Date(datos.excelModificado) : null);
       poblarSelector();
-      await kmlListo;
+      await Promise.all([kmlListo, hitosListos]);
       seleccionar(indiceDesdeUrl());
     } catch (err) {
       console.error(err);
@@ -307,26 +307,9 @@
         </div>`;
     }).join("");
 
-    // Hitos (tantos como columnas hitoN_* tenga el Excel)
-    const hitos = [];
-    for (let i = 1; i <= totalHitos; i++) {
-      const num = String(p[`hito${i}_num`] ?? "").trim();
-      const titulo = String(p[`hito${i}_titulo`] ?? "").trim();
-      const encabezado = num ? `Hito ${num}` : titulo || `Hito ${i}`;
-      hitos.push(`
-        <div class="hito">
-          <div class="hito__num">${esc(encabezado)}</div>
-          <div class="hito__nom"> ${esc(titulo)}</div>
-          <div class="hito__date">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="16" rx="2" stroke="currentColor" stroke-width="2.4"/><path d="M3 10h18" stroke="currentColor" stroke-width="2.4"/></svg>
-            ${esc(texto(p[`hito${i}_fecha`], "--/--/----"))}
-          </div>
-          <div class="hito__desc">${esc(texto(p[`hito${i}_desc`], ""))}</div>
-        </div>`);
-    }
-    $("hitosGrid").innerHTML = hitos.length
-      ? hitos.join("")
-      : `<div class="state-msg">El Excel no tiene columnas de hitos.</div>`;
+    // Hitos de pago: anterior, actual y próximo (ver hitos.js)
+    contratoHitos = 0;
+    mostrarHitos(p);
 
     // Información general
     $("devVal").textContent = texto(p.desarrollador);
@@ -377,6 +360,14 @@
       </ul>`;
   }
 
+  function mostrarHitos(p) {
+    const H = window.CarteraHitos;
+    const hoy = H.hoyMexico();
+    const datos = hitos[slugify(p.nombre)];
+    $("hitosCard").innerHTML = H.tarjeta(datos, hoy);
+    $("hitosBody").innerHTML = H.ventana(datos, hoy, contratoHitos);
+  }
+
   // ----------------------------------------------------------- ventanas
   function abrir(id) {
     window.Dialog.open($(id));
@@ -397,11 +388,18 @@
     // Botón "PDF" (ver pdf.js).
     if (window.CarteraPdf) window.CarteraPdf.init({ nombre: () => (actual ? actual.nombre : "") });
 
-    document.querySelectorAll("[data-open-sheet]").forEach((btn) =>
-      btn.addEventListener("click", () => abrir(btn.dataset.openSheet))
-    );
+    // Delegado: "Ver todos los hitos" se vuelve a pintar con cada proyecto.
     document.addEventListener("click", (e) => {
-      if (e.target.closest("[data-close-sheet]")) cerrarTodas();
+      const abre = e.target.closest("[data-open-sheet]");
+      if (abre) return abrir(abre.dataset.openSheet);
+      if (e.target.closest("[data-close-sheet]")) return cerrarTodas();
+      const pestana = e.target.closest("[data-contrato]");
+      if (pestana && actual) {
+        contratoHitos = Number(pestana.dataset.contrato);
+        mostrarHitos(actual);
+        const activa = $("hitosBody").querySelector(`[data-contrato="${contratoHitos}"]`);
+        if (activa) activa.focus();
+      }
     });
 
     if (window.CarteraMap) window.CarteraMap.initMap("mapaProyecto");

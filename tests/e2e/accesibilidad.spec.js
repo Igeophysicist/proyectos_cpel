@@ -54,6 +54,9 @@ test("Cartera y sus ventanas sin problemas de accesibilidad", async ({ page }) =
     await page.keyboard.press("Escape");
     await expect(page.locator(ventana)).not.toHaveClass(/is-open/);
   }
+  await page.locator("#hitosCard .hitos-ver").click();
+  await expect(page.locator("#sheetHitos")).toHaveClass(/is-open/);
+  await revisar(page, "cartera: hitos de pago");
 });
 
 test("Mixtos y sus ventanas sin problemas de accesibilidad", async ({ page, isMobile }) => {

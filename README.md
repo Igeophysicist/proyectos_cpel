@@ -27,7 +27,8 @@ Sitio estático (HTML/CSS/JS sin build step) publicado en GitHub Pages.
 
 Los datos se siguen editando en los **Excel** de cada tablero
 (`cartera-cpel/data/datos_proyectos.xlsx`,
-`cartera-mixtos/data/DATOS_MIXTOS.xlsx`). Las páginas no leen el Excel:
+`cartera-cpel/data/HITOS_CARTERA_CPEL.xlsx` (hitos de pago, ver
+`cartera-cpel/README.md`), `cartera-mixtos/data/DATOS_MIXTOS.xlsx`). Las páginas no leen el Excel:
 leen un **JSON** que se genera y **valida** automáticamente.
 
 1. Subes el Excel (o un KML) a GitHub, como siempre.
