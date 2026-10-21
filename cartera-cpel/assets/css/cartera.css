@@ -169,7 +169,20 @@ body{ padding-bottom: calc(var(--tabbar-h) + env(safe-area-inset-bottom, 0px)); 
   opacity: 0; animation: card-in .35s ease-out forwards;
 }
 .hito3:nth-child(2){ animation-delay: .07s; } .hito3:nth-child(3){ animation-delay: .14s; }
-.hito3--actual{ border-color: var(--gold-500); box-shadow: inset 3px 0 0 var(--gold-500); }
+.hito3--actual{ position: relative; border-color: var(--gold-500); box-shadow: inset 3px 0 0 var(--gold-500); }
+/* Destello del hito actual (como los prioritarios de Mixtos): cada 5 s
+   una franja dorada clara lo cruza. Se anima la posición del fondo del
+   ::before, así no hace falta recortar la tarjeta. */
+.hito3--actual::before{
+  content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+  background: linear-gradient(105deg, transparent 40%, rgba(214,166,64,.18) 46%, rgba(255,240,200,.6) 50%, rgba(214,166,64,.18) 54%, transparent 60%) no-repeat;
+  background-size: 250% 100%; background-position: 150% 0;
+  animation: hito-destello 5s ease-in-out .6s infinite;
+}
+@keyframes hito-destello{
+  0%{ background-position: 150% 0; }
+  28%, 100%{ background-position: -50% 0; }
+}
 .hito3__etq{ font-size: 10.5px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; color: var(--ink-500); padding-top: 2px; }
 .hito3--actual .hito3__etq{ color: var(--gold-700); }
 .hito3__head{ display: flex; flex-wrap: wrap; align-items: center; gap: 5px 6px; }
@@ -178,7 +191,7 @@ body{ padding-bottom: calc(var(--tabbar-h) + env(safe-area-inset-bottom, 0px)); 
   margin: 4px 0; font-size: 12px; line-height: 1.35; color: var(--ink-700);
   display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
 }
-.hito3__monto{ margin: 0 0 3px; font-size: 13px; font-weight: 800; color: var(--teal-900); font-variant-numeric: tabular-nums; }
+.hito3__monto{ margin: 0 0 3px; font-size: 12.5px; color: var(--ink-900); font-variant-numeric: tabular-nums; }
 .hito3__fecha{ display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; font-size: 11.5px; font-weight: 700; color: var(--gold-700); }
 .hito3__mas{ margin-top: 4px; font-size: 11px; color: #b83b3b; font-weight: 600; }
 .hito3--vacio .hito3__vacio{ margin: 2px 0 0; font-size: 12px; color: var(--ink-500); }
@@ -229,8 +242,8 @@ body{ padding-bottom: calc(var(--tabbar-h) + env(safe-area-inset-bottom, 0px)); 
 .hl__desc p{ margin: 0 0 4px; }
 .hl__desc ul{ margin: 0 0 4px; padding-left: 18px; list-style: disc; }
 .hl__desc li{ margin: 1px 0; }
-.hl__meta{ display: flex; flex-wrap: wrap; gap: 2px 10px; font-size: 11.5px; font-weight: 700; color: var(--ink-700); }
-.hl__meta .hl__monto{ flex-basis: 100%; font-size: 13px; font-weight: 800; color: var(--teal-900); font-variant-numeric: tabular-nums; }
+.hl__meta{ display: flex; flex-wrap: wrap; gap: 2px 10px; font-size: 11.5px; color: var(--ink-500); }
+.hl__meta .hl__monto{ flex-basis: 100%; font-size: 12.5px; color: var(--ink-900); font-variant-numeric: tabular-nums; }
 
 /* ---------- Información general ---------- */
 .info-list{ display: flex; flex-direction: column; gap: var(--space-3); }
@@ -406,6 +419,7 @@ body{ padding-bottom: calc(var(--tabbar-h) + env(safe-area-inset-bottom, 0px)); 
 @media (prefers-reduced-motion: reduce){
   *{ animation-duration:.01ms !important; transition-duration:.01ms !important; }
   .hito3{ animation-delay: 0s !important; }
+  .hito3--actual::before{ display: none; }
 }
 
 /* ---------- Logos institucionales (pie de página) ---------- */
@@ -463,6 +477,7 @@ body.modo-pdf .particular-grid, body.modo-pdf .hitos-tres{ gap: 5px; }
 body.modo-pdf .particular, body.modo-pdf .hito3{ padding: 5px 7px; }
 body.modo-pdf .hitos-tres{ grid-template-columns: repeat(3, minmax(0, 1fr)); }
 body.modo-pdf .hito3{ grid-template-columns: minmax(0, 1fr); gap: 2px; }
+body.modo-pdf .hito3--actual::before{ display: none; }
 body.modo-pdf .hito3__desc{ font-size: 9.5px; line-height: 1.3; }
 body.modo-pdf .hito3__fecha{ font-size: 10px; }
 body.modo-pdf .hitos-bar{ margin: 4px 0 6px; height: 6px; }

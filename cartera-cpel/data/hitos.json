@@ -1,6 +1,6 @@
 {
   "fuente": "HITOS_CARTERA_CPEL.xlsx",
-  "excelModificado": "2026-10-21T15:17:00.000Z",
+  "excelModificado": "2026-10-21T16:10:00.000Z",
   "proyectos": {
     "cfv-puerto-penasco-secuencia-iii": {
       "nombre": "CFV PUERTO PEÑASCO SECUENCIA III",
@@ -1418,6 +1418,17 @@
           "nombre": "COSEGO",
           "titulo": "COSEGO Contrato FIEL/10670-030/2024, Anexo 03",
           "hitos": [
+            {
+              "num": "0",
+              "desc": "Inicio de Obra",
+              "pct": 20,
+              "programada": "2024-08-19",
+              "solicitud": "",
+              "pago": "",
+              "estatus": "pagado",
+              "monto": 651117.55,
+              "moneda": "USD"
+            },
             {
               "num": "1",
               "desc": "Aprobación de ingeniería de detalle de:\n-Sistema contra incendio.\n-Sistema de aire de servicio\n-Sistema de aire acondicionado\n-Sistema de agua de servicio\n-Sistema de ventilación\n-Sistema de alumbrado para Centrales Hidroeléctricas\n-Sistema de medición de niveles\n-Charolas para cables conductores de fuerza y control\n-La transición subterránea aérea en media tensión y baja tensión\n-Cables de potencia monopolares de 5 a 35 kV\n-Cables monoconductores con aislamiento\n-Cables control",
