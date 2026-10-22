@@ -34,7 +34,12 @@ test("las tarjetas muestran la información del Excel", async ({ page }) => {
   await expect(page.locator(".rta-just li").first()).toBeVisible();
   // Avance general (con la nota total) y avances particulares
   await expect(page.locator("#generalBody .progress-row--real")).toContainText(`${p.avance.general.real}%`);
-  if (p.avance.general.nota) await expect(page.locator("#generalBody .av-nota")).toBeVisible();
+  if (p.avance.general.nota) {
+    // La nota total va plegada: se abre al tocarla.
+    await expect(page.locator(".av-notas-gen__texto")).toBeHidden();
+    await page.locator(".av-notas-gen summary").click();
+    await expect(page.locator(".av-notas-gen__texto")).toBeVisible();
+  }
   if (p.avance.programadoPendiente) await expect(page.locator(".av-pendiente")).toBeVisible();
   await expect(page.locator("#particularGrid .particular--btn")).toHaveCount(p.avance.grupos.length);
   // Orden: presentación, avances, descripción, RTA y mapa
@@ -85,6 +90,7 @@ test("PDF en computadora: la hoja lleva la ficha técnica y la justificación ab
   await expect(page.locator("body")).toHaveClass(/modo-pdf/);
   await expect(page.locator("#printFicha .spec")).toBeVisible();
   await expect(page.locator(".rta-mas")).toHaveAttribute("open", "");
+  await expect(page.locator(".av-notas-gen")).toHaveAttribute("open", "");
   await page.evaluate(() => window.dispatchEvent(new Event("afterprint")));
 });
 

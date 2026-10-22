@@ -63,6 +63,7 @@ test("Cartera Anteproyectos y sus ventanas sin problemas de accesibilidad", asyn
   await page.goto("/cartera-anteproyectos/");
   await expect(page.locator("#projectName")).not.toHaveText("Cargando…");
   await page.locator(".rta-mas summary").click();
+  await page.locator(".av-notas-gen summary").click();
   await revisar(page, "anteproyectos");
   for (const [boton, ventana] of [
     ["Ficha técnica", "#sheetFicha"],

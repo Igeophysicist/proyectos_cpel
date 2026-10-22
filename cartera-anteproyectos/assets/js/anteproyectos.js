@@ -101,7 +101,11 @@
         ${fila("real", "Real", general.real)}
       </div>
       ${pie}
-      ${general.nota ? notaHtml(general.nota, "Notas") : ""}`;
+      ${
+        general.nota
+          ? `<details class="av-notas-gen"><summary>Notas</summary><div class="av-notas-gen__texto">${textoHtml(general.nota)}</div></details>`
+          : ""
+      }`;
   }
 
   /** Nota del Excel, en rojo para que destaque. */

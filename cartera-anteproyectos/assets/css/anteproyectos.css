@@ -56,6 +56,22 @@
 .av-nota li::marker{ color: #b83b3b; }
 .av-nota__titulo{ font-size: 11px; font-weight: 800; color: #9a2c2c; text-transform: uppercase; letter-spacing: .03em; margin-bottom: 4px; }
 
+/* Nota total del Avance General: plegable, en tonos dorados */
+.av-notas-gen{
+  margin-top: 10px; border: 1px solid #e5cf9e; border-left: 4px solid var(--gold-500);
+  border-radius: var(--radius-m); background: #f8efdc; color: #4d3a10;
+}
+.av-notas-gen summary{
+  cursor: pointer; padding: 8px 10px; font-size: 11.5px; font-weight: 800; letter-spacing: .03em;
+  text-transform: uppercase; color: #6b5119;
+}
+.av-notas-gen summary::marker{ color: var(--gold-700); }
+.av-notas-gen__texto{ padding: 0 10px 8px; font-size: 12px; line-height: 1.45; }
+.av-notas-gen__texto p{ margin: 0 0 4px; } .av-notas-gen__texto p:last-child{ margin: 0; }
+.av-notas-gen__texto ul, .av-notas-gen__texto ol{ margin: 0; padding-left: 18px; }
+.av-notas-gen__texto li{ margin: 2px 0; }
+.av-notas-gen__texto li::marker{ color: var(--gold-700); }
+
 /* Avances particulares: cada tarjeta abre sus avances ponderados */
 .particular--btn{
   display: block; width: 100%; text-align: left; cursor: pointer;
