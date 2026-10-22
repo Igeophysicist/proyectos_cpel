@@ -1,0 +1,266 @@
+{
+  "fuente": "datos_anteproyectos.xlsx",
+  "excelModificado": "2026-10-22T18:06:52.000Z",
+  "proyectos": [
+    {
+      "no": "1",
+      "nombre": "PFV Isla Cayacal (Petacalco)",
+      "tecnologia": "Fotovoltaico",
+      "tipo": "FOTOV",
+      "ubicacion": "Lázaro Cárdenas, Michoacán",
+      "imagen": "",
+      "descripcion": "El Proyecto Fotovoltaico aprovecha una superficie perteneciente a la Central Termoeléctrica Plutarco Elías Calles (C.T. Petacalco) con la instalación de módulos fotovoltaicos para la generación de energía eléctrica.\n\nEl proyecto respaldará el crecimiento logístico-portuario de Lázaro Cárdenas, donde destacan el desarrollo de la Isla de La Palma y la ampliación de recintos fiscalizados y terminales portuarias. Esta infraestructura detonará demanda eléctrica para patios, grúas, almacenamiento, refrigeración, bombeo, telecomunicaciones, seguridad, logística ferroviaria y operación portuaria continua. Las obras consideradas en el proyecto son:\n\n1. Parque Fotovoltaico\n2. Líneas de Media Tensión\n3. Centros de Transformación (Transformadores e inversores)\n4. Sistema de Almacenamiento de Energía\n5. Subestación elevadora\n6. Línea de Transmisión\n7. Interconexión",
+      "rta": {
+        "titulo": "Red de Transmisión Propuesta (RTA)",
+        "secciones": [
+          {
+            "tipo": "especificaciones",
+            "titulo": "Especificaciones del sistema",
+            "campos": [
+              {
+                "campo": "Nivel de Tensión [kV]",
+                "valor": "115"
+              },
+              {
+                "campo": "Capacidad de Evacuación [MVA]",
+                "valor": "16.3"
+              },
+              {
+                "campo": "Tipo de Conductor",
+                "valor": "ACSR / ACSS"
+              },
+              {
+                "campo": "Longitud de Línea [km]",
+                "valor": "0.2"
+              },
+              {
+                "campo": "Configuración",
+                "valor": "1 Circuito"
+              },
+              {
+                "campo": "Tecnología de Datos",
+                "valor": "Cable OPGW"
+              }
+            ]
+          },
+          {
+            "tipo": "justificacion",
+            "titulo": "Justificación de la ruta",
+            "campos": [
+              {
+                "campo": "Optimización de Longitud",
+                "valor": "Minimización del trazado para reducir pérdidas técnicas y costos de inversión en conductor"
+              },
+              {
+                "campo": "Criterio Socio-Ambiental",
+                "valor": "Alejamiento de zonas de alta densidad poblacional y áreas protegidas de biodiversidad"
+              },
+              {
+                "campo": "Franjas de Servidumbre",
+                "valor": "Aprovechamiento de infraestructuras existentes para agilizar gestiones prediales y permisos"
+              }
+            ]
+          },
+          {
+            "tipo": "componentes",
+            "titulo": "Componentes",
+            "columnas": [
+              "COMPONENTE",
+              "DESCRIPCIÓN TÉCNICA",
+              "CANTIDAD"
+            ],
+            "filas": [
+              [
+                "Torres / Estructuras",
+                "Celosía metálica, altura 24-27 m",
+                "2 Unid."
+              ],
+              [
+                "S/E Elevadora",
+                "115/34 kV, Transformador ppal.",
+                "1 Unid."
+              ],
+              [
+                "S/E Interconexión",
+                "Ampliación de bahía en POI",
+                "1 Bahía"
+              ],
+              [
+                "Protecciones",
+                "Relés de distancia y diferencial",
+                "[X] Equip."
+              ]
+            ]
+          },
+          {
+            "tipo": "poi",
+            "titulo": "Punto de Interconexión (POI)",
+            "campos": [
+              {
+                "campo": "SE Eléctrica",
+                "valor": "Subestación Lázaro Cárdenas Potencia"
+              },
+              {
+                "campo": "Descripción",
+                "valor": "Conexión en el nodo 01LCP-230 de la SE Lázaro Cárdenas Potencia del sistema de transmisión nacional/regional."
+              },
+              {
+                "campo": "Confiabilidad",
+                "valor": "Alta Confiabilidad"
+              }
+            ]
+          }
+        ]
+      },
+      "ficha": [
+        {
+          "campo": "Potencia Pico [MWcd]",
+          "valor": "19.7"
+        },
+        {
+          "campo": "Potencia Neta Garantizada (POI) [Mwca]",
+          "valor": "16.3"
+        },
+        {
+          "campo": "Factor de Planta [%]",
+          "valor": "21"
+        },
+        {
+          "campo": "Generación Media Anual [GWh]",
+          "valor": "36.6"
+        },
+        {
+          "campo": "Irradiación Horizontal (NASA Power) [ kWh/m2,día]",
+          "valor": "5.8"
+        },
+        {
+          "campo": "Capacidad del módulo [Wp]",
+          "valor": "650"
+        },
+        {
+          "campo": "Eficiencia del Modulo [%]",
+          "valor": "24.06"
+        },
+        {
+          "campo": "Número de módulos [#]",
+          "valor": "30,380"
+        },
+        {
+          "campo": "Capacidad del inversor [Mwca]",
+          "valor": "1"
+        },
+        {
+          "campo": "Nodo de interconexión",
+          "valor": "SE Lázaro Cárdenas Potencia"
+        },
+        {
+          "campo": "Sistema de Almacenamiento de Energía [% - MWca – hr)]",
+          "valor": "30– 5.16 – 3"
+        },
+        {
+          "campo": "Estructura",
+          "valor": "Fija"
+        },
+        {
+          "campo": "CAPEX [MUSD]",
+          "valor": "50.0"
+        },
+        {
+          "campo": "OPEX [MUSD/Año]",
+          "valor": "0.40"
+        }
+      ],
+      "avance": {
+        "general": {
+          "clave": "general",
+          "titulo": "General",
+          "real": 58,
+          "prog": 0,
+          "nota": "• Los resultados obtenidos a la fecha muestran un sobrecosto aproximado del 20%, debido al movimiento de tierras necesario para la disposición de los paneles fotovoltaicos.\n• Se preparó presentación ejecutiva de la reconfiguración del proyecto considerando las condiciones del sitio Cayacal con depósitos de ceniza. Está en proceso el informe respectivo.\n• Se plantea 2da visita con personal del área ambiental."
+        },
+        "grupos": [
+          {
+            "clave": "1",
+            "titulo": "Certidumbre Ambiental, Social, Tenencia de la tierra",
+            "real": 56,
+            "prog": 0,
+            "items": [
+              {
+                "clave": "1.1",
+                "titulo": "Tenencia de la Tierra",
+                "real": 50,
+                "prog": 0
+              },
+              {
+                "clave": "1.2",
+                "titulo": "Certidumbre socio-ambiental",
+                "real": 65,
+                "prog": 0,
+                "nota": "Se requiere reunión con la ASIPONA para verificar aspectos ambientales y sociales"
+              },
+              {
+                "clave": "1.3",
+                "titulo": "Visita multidisciplinaria",
+                "real": 50,
+                "prog": 0
+              }
+            ]
+          },
+          {
+            "clave": "2",
+            "titulo": "Desarrollo de Ingeniería (Anteproyecto)",
+            "real": 60,
+            "prog": 0,
+            "items": [
+              {
+                "clave": "2.1",
+                "titulo": "Viabilidad del PFV por presencia del Banco de Cenizas",
+                "real": 90,
+                "prog": 0
+              },
+              {
+                "clave": "2.2",
+                "titulo": "Análisis preliminar de la Potencia",
+                "real": 100,
+                "prog": 0,
+                "nota": "Se ha definido una potencia preliminar de 16 Mwac"
+              },
+              {
+                "clave": "2.3",
+                "titulo": "Análisis del impacto de los huracanes",
+                "real": 100,
+                "prog": 0
+              },
+              {
+                "clave": "2.4",
+                "titulo": "Planteamiento Conceptual del Proyecto",
+                "real": 40,
+                "prog": 0,
+                "nota": "Se estudiaron 5 alternativas. En proceso informe."
+              },
+              {
+                "clave": "2.5",
+                "titulo": "Obras Complementarias Permanentes y Temporales",
+                "real": 15,
+                "prog": 0
+              },
+              {
+                "clave": "2.6",
+                "titulo": "Interconexión",
+                "real": 30,
+                "prog": 0
+              },
+              {
+                "clave": "2.7",
+                "titulo": "Informe de Dictamen",
+                "real": 50,
+                "prog": 0
+              }
+            ]
+          }
+        ],
+        "programadoPendiente": true
+      }
+    }
+  ]
+}

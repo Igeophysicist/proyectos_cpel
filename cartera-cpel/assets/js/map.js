@@ -4,18 +4,26 @@
  * en el selector, el mapa centra y resalta su ubicación (tomada del
  * archivo data/CARTERA-CPEL.kml, vinculado por nombre con el Excel).
  *
+ * También lo usa Cartera Anteproyectos, con su propio KML (configurar()).
+ *
  * Requiere: shared/text-utils.js, shared/kml-parser.js y
  * shared/base-map.js cargados antes de este archivo.
  */
 (function (global) {
-  const KML_FILE_PATH = "data/CARTERA-CPEL.kml";
+  let KML_FILE_PATH = "data/CARTERA-CPEL.kml";
   // KML adicional de polígonos "fijos" por proyecto (p. ej. las secuencias
   // de un parque grande). No se vincula por nombre exacto (los Placemark
   // de este KML se llaman "POLÍGONO SEC III", no el nombre completo del
   // proyecto), sino por el número romano al final de ambos nombres — ver
   // buscarPoligonosSecuencia() más abajo. Para agregar más, solo súmalos
   // a este KML con el mismo patrón "... SEC <número romano>".
-  const SECUENCIAS_KML_FILE_PATH = "data/CARTERA-CPEL-POLIGONOS.kml";
+  let SECUENCIAS_KML_FILE_PATH = "data/CARTERA-CPEL-POLIGONOS.kml";
+
+  /** Otro KML (y, si se quiere, sin KML de secuencias: secuencias = null). */
+  function configurar({ kml, secuencias } = {}) {
+    if (kml) KML_FILE_PATH = kml;
+    if (secuencias !== undefined) SECUENCIAS_KML_FILE_PATH = secuencias;
+  }
 
   const { normalizeText, parseNumber, esc } = global.TextUtils;
 
@@ -80,7 +88,7 @@
     // despliegues anteriores): si falla, solo no se dibujan esos polígonos.
     const [principal, secuencias] = await Promise.allSettled([
       fetchKML(KML_FILE_PATH),
-      fetchKML(SECUENCIAS_KML_FILE_PATH),
+      SECUENCIAS_KML_FILE_PATH ? fetchKML(SECUENCIAS_KML_FILE_PATH) : Promise.resolve([]),
     ]);
 
     if (secuencias.status === "fulfilled") {
@@ -183,5 +191,5 @@
     }
   }
 
-  global.CarteraMap = { initMap, cargarKML, mostrarProyecto };
+  global.CarteraMap = { configurar, initMap, cargarKML, mostrarProyecto };
 })(window);

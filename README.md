@@ -7,6 +7,7 @@ Sitio estático (HTML/CSS/JS sin build step) publicado en GitHub Pages.
 | `index.html` | Portal: accesos, sección "Esta semana" y colaboradores (`data/colaboradores.json`). |
 | `cartera-mixtos/` | Panel de proyectos mixtos: listado, filtros, mapa y resumen. Ver su [README](cartera-mixtos/README.md). |
 | `cartera-cpel/` | Ficha por proyecto de la cartera CPEL. Ver su [README](cartera-cpel/README.md). |
+| `cartera-anteproyectos/` | Ficha por anteproyecto (mismo diseño que Cartera CPEL). Ver su [README](cartera-anteproyectos/README.md). |
 | `assets/js/shared/` | Módulos compartidos por las tres páginas (ver abajo). |
 
 ## Módulos compartidos (`assets/js/shared/`)
@@ -28,7 +29,8 @@ Sitio estático (HTML/CSS/JS sin build step) publicado en GitHub Pages.
 Los datos se siguen editando en los **Excel** de cada tablero
 (`cartera-cpel/data/datos_proyectos.xlsx`,
 `cartera-cpel/data/HITOS_CARTERA_CPEL.xlsx` (hitos de pago, ver
-`cartera-cpel/README.md`), `cartera-mixtos/data/DATOS_MIXTOS.xlsx`). Las páginas no leen el Excel:
+`cartera-cpel/README.md`), `cartera-mixtos/data/DATOS_MIXTOS.xlsx`,
+`cartera-anteproyectos/data/datos_anteproyectos.xlsx`). Las páginas no leen el Excel:
 leen un **JSON** que se genera y **valida** automáticamente.
 
 1. Subes el Excel (o un KML) a GitHub, como siempre.

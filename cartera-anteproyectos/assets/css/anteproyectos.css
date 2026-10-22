@@ -1,0 +1,83 @@
+/* =======================================================================
+   Cartera Anteproyectos — lo propio de esta página. El resto (barra
+   superior, tarjetas, barras, ventanas, PDF) viene de
+   ../cartera-cpel/assets/css/cartera.css, para que se vea igual.
+   ======================================================================= */
+
+/* ---------- Texto (descripción y notas) ---------- */
+.ante-texto{ font-size: 13px; color: var(--ink-700); line-height: 1.6; text-align: justify; }
+.ante-texto p{ margin: 0 0 8px; }
+.ante-texto p:last-child{ margin-bottom: 0; }
+.ante-texto ol, .ante-texto ul{ margin: 0 0 8px; padding-left: 22px; text-align: left; }
+.ante-texto li{ margin: 2px 0; }
+.ante-extras{ margin-top: var(--space-4); }
+
+/* ---------- RTA ---------- */
+.rta__sub{ margin: var(--space-4) 0 var(--space-2); font-size: 12px; font-weight: 800; letter-spacing: .03em; text-transform: uppercase; color: var(--gold-700); }
+.rta__sub:first-child{ margin-top: 0; }
+/* Especificaciones: cifra grande y su nombre debajo */
+.rta-specs{ display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.rta-spec{ background: var(--surface-sunken); border-radius: var(--radius-m); padding: 8px 10px; }
+.rta-spec__valor{ font-size: 16px; font-weight: 800; color: var(--teal-900); line-height: 1.2; overflow-wrap: anywhere; }
+.rta-spec__valor small{ font-size: 11.5px; font-weight: 700; color: var(--ink-500); }
+.rta-spec__campo{ font-size: 11px; color: var(--ink-500); margin-top: 2px; }
+/* Punto de interconexión: recuadro destacado */
+.rta-poi{ border: 1px solid var(--border); border-left: 4px solid var(--teal-700); border-radius: var(--radius-m); padding: 10px 12px; background: var(--teal-100); }
+.rta-poi__se{ font-size: 15px; font-weight: 800; color: var(--teal-900); }
+.rta-poi__campo{ font-size: 11px; color: var(--ink-500); }
+.rta-poi__desc{ margin: 6px 0 0; font-size: 12.5px; line-height: 1.45; color: var(--ink-700); }
+.rta-poi__chip{ display: inline-flex; margin-top: 8px; font-size: 11px; font-weight: 700; border-radius: 99px; padding: 3px 10px; background: #e4f3ec; color: #1e6b48; }
+/* Componentes: tabla compacta */
+.rta-comp{ overflow-x: auto; border: 1px solid var(--border); border-radius: var(--radius-m); }
+.rta-comp table{ width: 100%; border-collapse: collapse; font-size: 12px; }
+.rta-comp th{ text-align: left; font-size: 11px; font-weight: 700; color: var(--ink-500); background: var(--surface-sunken); padding: 6px 8px; }
+.rta-comp td{ padding: 6px 8px; border-top: 1px solid var(--border); color: var(--ink-700); vertical-align: top; }
+.rta-comp td:first-child{ font-weight: 700; color: var(--teal-900); }
+.rta-comp td:last-child{ white-space: nowrap; }
+/* Justificación (plegable) */
+.rta-mas{ margin-top: var(--space-4); border: 1px solid var(--border); border-radius: var(--radius-m); }
+.rta-mas summary{ cursor: pointer; padding: 10px 12px; font-size: 13px; font-weight: 700; color: var(--teal-800); }
+.rta-just{ list-style: none; margin: 0; padding: 0 12px 10px; display: flex; flex-direction: column; gap: 8px; }
+.rta-just li{ display: flex; flex-direction: column; gap: 1px; font-size: 12.5px; line-height: 1.4; color: var(--ink-700); padding-left: 14px; position: relative; }
+.rta-just li::before{ content: ""; position: absolute; left: 0; top: 6px; width: 7px; height: 7px; border-radius: 50%; background: var(--gold-500); }
+.rta-just b{ color: var(--teal-900); }
+
+/* ---------- Avance ---------- */
+.av-pendiente{ margin: 8px 0 0; font-size: 12px; color: var(--ink-500); font-style: italic; }
+.av-nota{ margin-top: 10px; font-size: 12px; line-height: 1.45; color: var(--ink-700); background: var(--surface-sunken); border-radius: var(--radius-m); padding: 8px 10px; }
+.av-nota p{ margin: 0 0 4px; } .av-nota p:last-child{ margin: 0; }
+.av-nota ul, .av-nota ol{ margin: 0; padding-left: 18px; }
+.av-nota li{ margin: 2px 0; }
+.av-nota__titulo{ font-size: 11px; font-weight: 800; color: #6b5119; text-transform: uppercase; letter-spacing: .03em; margin-bottom: 4px; }
+.av-nota--item{ margin-top: 5px; padding: 6px 8px; font-size: 11.5px; }
+.av-grupos{ display: grid; gap: 10px; margin-top: var(--space-4); }
+.av-grupo{ border: 1px solid var(--border); border-radius: var(--radius-m); padding: 10px; }
+.av-grupo__head{ display: flex; align-items: flex-start; gap: 8px; margin-bottom: 6px; }
+.av-grupo__num{ flex: none; width: 22px; height: 22px; border-radius: 50%; background: var(--teal-800); color: #fff; font-size: 11.5px; font-weight: 800; display: flex; align-items: center; justify-content: center; }
+.av-grupo__titulo{ flex: 1; font-size: 13px; font-weight: 800; color: var(--teal-900); line-height: 1.3; }
+.av-grupo__pct{ font-size: 14px; font-weight: 800; color: var(--teal-900); font-variant-numeric: tabular-nums; }
+.av-items{ list-style: none; margin: 10px 0 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.av-item__head{ display: flex; justify-content: space-between; gap: 8px; font-size: 12px; color: var(--ink-700); margin-bottom: 3px; line-height: 1.3; }
+.av-item__head b{ color: var(--teal-900); }
+.av-item__pct{ flex: none; font-weight: 700; color: var(--ink-900); font-variant-numeric: tabular-nums; }
+.av-item__prog{ display: flex; align-items: center; gap: 6px; margin-top: 3px; font-size: 10.5px; color: #6b5119; }
+.av-item__prog .bar{ flex: 1; }
+
+/* ---------- Pantallas amplias ---------- */
+@media (min-width: 900px){
+  .ante{ grid-auto-flow: row dense; }
+  .ante .card--rta, .ante .card--avance{ grid-column: 1 / -1; }
+  .ante .card--mapa{ grid-column: 2; }
+  .rta-specs{ grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .av-grupos{ grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
+}
+
+/* ---------- PDF ---------- */
+body.modo-pdf .ante .card--rta, body.modo-pdf .ante .card--avance, body.modo-pdf .ante .card--desc{ grid-column: 1 / -1; }
+body.modo-pdf .ante-texto{ font-size: 10px; line-height: 1.4; }
+body.modo-pdf .rta-specs{ grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px; }
+body.modo-pdf .rta-spec{ padding: 4px 6px; }
+body.modo-pdf .rta-spec__valor{ font-size: 12px; }
+body.modo-pdf .rta-mas{ display: block; }
+body.modo-pdf .av-grupos{ grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 5px; }
+body.modo-pdf .av-nota{ font-size: 9.5px; }

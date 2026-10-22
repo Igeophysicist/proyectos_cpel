@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="theme-color" content="#234240">
+<!-- Solo tema claro: evita que el modo oscuro automático de Chrome/Samsung Internet en Android recoloree el sitio. -->
+<meta name="color-scheme" content="only light">
+<link rel="manifest" href="../manifest.json">
+<link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png">
+<link rel="icon" href="../assets/img/apple-touch-icon.png">
+<title>Cartera Anteproyectos</title>
+
+<!-- Mismo diseño que Cartera CPEL (sus estilos) + lo propio de esta página -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha384-sHL9NAb7lN7rfvG5lfHpm643Xkcjzp4jFvuavGOndn6pjVqS6ny56CAt3nsEVT4H" crossorigin="anonymous" />
+<link rel="stylesheet" href="../assets/css/landing.css" />
+<link rel="stylesheet" href="../cartera-cpel/assets/css/cartera.css" />
+<link rel="stylesheet" href="assets/css/anteproyectos.css" />
+</head>
+<body>
+
+  <header class="topbar">
+    <a class="topbar__back" href="../index.html" aria-label="Volver al portal">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+    <div class="topbar__select-wrap">
+      <select id="projectSelect" class="topbar__select" aria-label="Seleccionar anteproyecto">
+        <option>Cargando anteproyectos…</option>
+      </select>
+      <svg class="topbar__select-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <!-- Ficha en PDF (pdf.js de Cartera CPEL) -->
+    <button class="topbar__print" id="printBtn" type="button" aria-label="Imprimir o guardar como PDF" title="Imprimir o guardar como PDF">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 9V3h10v6M7 18H5a2 2 0 01-2-2v-5a2 2 0 012-2h14a2 2 0 012 2v5a2 2 0 01-2 2h-2" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M7 14h10v7H7z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+      <span>PDF</span>
+    </button>
+  </header>
+
+  <div id="pdfRoot">
+  <div class="print-head" aria-hidden="true">
+    <span class="print-head__marca">
+      <img src="../assets/img/logo-cfe.png" alt="" class="print-head__logo print-head__logo--cfe">
+      <img src="../assets/img/logo-cpel.png" alt="" class="print-head__logo print-head__logo--cpel">
+      <span>Cartera Anteproyectos · Ficha de anteproyecto</span>
+    </span>
+    <span id="printDate"></span>
+  </div>
+
+  <main class="cartera ante" id="cartera">
+
+    <!-- 1. Presentación (hoja PRES) -->
+    <section class="hero-card">
+      <img id="projectImg" alt="">
+      <div class="hero-card__overlay">
+        <span class="hero-card__tag" id="projectTech" hidden></span>
+        <h1 class="hero-card__name" id="projectName">Cargando…</h1>
+        <div class="hero-card__loc">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0112 2.5a7 7 0 017 7C19 14.8 12 21 12 21z" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="9.5" r="2.5" stroke="currentColor" stroke-width="2"/></svg>
+          <span id="projectLocation">—</span>
+        </div>
+        <div class="hero-card__date" id="dataDate" hidden></div>
+      </div>
+    </section>
+
+    <!-- 2. Descripción técnica (hoja DESC) -->
+    <section class="card card--desc">
+      <h2 class="card__title">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M14 3H6a1 1 0 00-1 1v16a1 1 0 001 1h12a1 1 0 001-1V8l-5-5z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M14 3v5h5M9 13h6M9 17h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        Descripción técnica
+      </h2>
+      <div class="ante-texto" id="descVal"></div>
+      <div class="info-list ante-extras" id="extrasVal" hidden></div>
+    </section>
+
+    <!-- 3. Red de Transmisión Propuesta (hoja RTA) -->
+    <section class="card card--rta">
+      <h2 class="card__title">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2l-4 20M12 2l4 20M7 7h10M6 12h12M5 17h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span id="rtaTitle">Red de Transmisión Propuesta (RTA)</span>
+      </h2>
+      <div id="rtaBody"></div>
+    </section>
+
+    <!-- 5. Avance (hoja AVAN_<tipo>) -->
+    <section class="card card--avance">
+      <h2 class="card__title">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M3 17l6-6 4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 7h6v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Avance del anteproyecto
+      </h2>
+      <div id="avanceBody"></div>
+    </section>
+
+    <!-- Solo en el PDF: copia de la Ficha técnica (ver pdf.js) -->
+    <section class="card print-only print-ficha">
+      <h2 class="card__title">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M14 3H6a1 1 0 00-1 1v16a1 1 0 001 1h12a1 1 0 001-1V8l-5-5z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M14 3v5h5" stroke="currentColor" stroke-width="2"/></svg>
+        Ficha técnica
+      </h2>
+      <div id="printFicha"></div>
+    </section>
+
+    <!-- Ubicación (punto del KML, map.js de Cartera CPEL) -->
+    <section class="card card--mapa">
+      <h2 class="card__title">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0112 2.5a7 7 0 017 7C19 14.8 12 21 12 21z" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="9.5" r="2.5" stroke="currentColor" stroke-width="2"/></svg>
+        Ubicación
+      </h2>
+      <div class="map-wrap">
+        <div id="mapaProyecto"></div>
+        <div class="map-empty" id="mapEmpty" hidden></div>
+        <div class="map-tile-warning" id="mapTileWarning" hidden>No se pudieron cargar las imágenes del mapa (revisa tu conexión). El punto del proyecto sigue visible.</div>
+      </div>
+    </section>
+
+  </main>
+  </div>
+
+  <footer class="brand-footer">
+    <img src="../assets/img/logo-cfe.png" alt="CFE" class="brand-footer__logo brand-footer__logo--cfe">
+    <img src="../assets/img/logo-cpel.png" alt="CPEL" class="brand-footer__logo brand-footer__logo--cpel">
+  </footer>
+
+  <!-- Barra inferior: 4. Ficha técnica (hoja FICHA_<tipo>) y Curva de avance -->
+  <nav class="actionbar">
+    <button class="actionbar__btn" data-open-sheet="sheetFicha">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M14 3H6a1 1 0 00-1 1v16a1 1 0 001 1h12a1 1 0 001-1V8l-5-5z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M14 3v5h5M9 13h6M9 17h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      Ficha técnica
+    </button>
+    <button class="actionbar__btn" data-open-sheet="sheetCurva">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M3 3v18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M7 15l4-4 3 3 6-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Curva de avance
+    </button>
+  </nav>
+
+  <!-- Ventana: Ficha técnica -->
+  <div class="sheet" id="sheetFicha" aria-hidden="true">
+    <div class="sheet__scrim" data-close-sheet></div>
+    <div class="sheet__panel" role="dialog" aria-modal="true" aria-labelledby="sheetFichaTitle">
+      <div class="sheet__head">
+        <div class="sheet__title" id="sheetFichaTitle">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M14 3H6a1 1 0 00-1 1v16a1 1 0 001 1h12a1 1 0 001-1V8l-5-5z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M14 3v5h5" stroke="currentColor" stroke-width="2"/></svg>
+          Ficha técnica
+        </div>
+        <div class="sheet__sub" data-project-name></div>
+        <button class="sheet__close" data-close-sheet aria-label="Cerrar">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+      <div class="sheet__body" id="fichaBody" tabindex="0" aria-label="Ficha técnica del anteproyecto"></div>
+    </div>
+  </div>
+
+  <!-- Ventana: Curva de avance (curva.js de Cartera CPEL con data/historial.json) -->
+  <div class="sheet" id="sheetCurva" aria-hidden="true">
+    <div class="sheet__scrim" data-close-sheet></div>
+    <div class="sheet__panel" role="dialog" aria-modal="true" aria-labelledby="sheetCurvaTitle">
+      <div class="sheet__head">
+        <div class="sheet__title" id="sheetCurvaTitle">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M3 3v18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M7 15l4-4 3 3 6-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Curva de avance
+        </div>
+        <div class="sheet__sub" data-project-name></div>
+        <button class="sheet__close" data-close-sheet aria-label="Cerrar">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+      <div class="sheet__body" id="curvaBody" tabindex="0" aria-label="Curva de avance del anteproyecto"></div>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+          integrity="sha384-cxOPjt7s7Iz04uaHJceBmS+qpjv2JkIHNVcuOrM+YHwZOmJGBXI00mdUXEq65HTH" crossorigin="anonymous"></script>
+  <script src="../assets/js/shared/text-utils.js"></script>
+  <script src="../assets/js/shared/trend.js"></script>
+  <script src="../assets/js/shared/progress-chart.js"></script>
+  <script src="../assets/js/shared/dialog.js"></script>
+  <script src="../assets/js/shared/pwa.js"></script>
+  <script src="../assets/js/shared/kml-parser.js"></script>
+  <script src="../assets/js/shared/regiones.js"></script>
+  <script src="../assets/js/shared/base-map.js"></script>
+  <script src="../cartera-cpel/assets/js/map.js"></script>
+  <script src="../cartera-cpel/assets/js/curva.js"></script>
+  <script src="../cartera-cpel/assets/js/pdf.js"></script>
+  <script src="assets/js/anteproyectos.js"></script>
+</body>
+</html>

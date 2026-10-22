@@ -28,7 +28,11 @@
  * (Cartera: jueves 8:00 a jueves 8:00; Mixtos: lunes a domingo).
  *
  * HITOS DE PAGO de Cartera CPEL: cartera-cpel/data/HITOS_CARTERA_CPEL.xlsx
- * -> data/hitos.json (ver scripts/hitos.js). Sin montos: el sitio es público.
+ * -> data/hitos.json (ver scripts/hitos.js).
+ *
+ * CARTERA ANTEPROYECTOS: cartera-anteproyectos/data/datos_anteproyectos.xlsx
+ * (varias hojas, ver scripts/anteproyectos.js) -> data/anteproyectos.json,
+ * con su corte semanal (jueves, como Cartera CPEL) para la curva de avance.
  */
 const fs = require("fs");
 const path = require("path");
@@ -38,6 +42,7 @@ const { optimizarCarpeta } = require("./imagenes.js");
 const { snapshotCartera, snapshotMixtos, upsertCorte, cambiosMixtos, registrarActualizacion } = require("./historial.js");
 const { slugify } = require("../assets/js/shared/text-utils.js");
 const { leerHitos } = require("./hitos.js");
+const { leerAnteproyectos, snapshotAnteproyectos } = require("./anteproyectos.js");
 
 const ROOT = path.resolve(__dirname, "..");
 
@@ -80,6 +85,18 @@ const HITOS = {
   dir: "cartera-cpel",
   excel: "data/HITOS_CARTERA_CPEL.xlsx",
   json: "data/hitos.json",
+};
+
+// Cartera Anteproyectos (un Excel con varias hojas; ver scripts/anteproyectos.js).
+const ANTEPROYECTOS = {
+  label: "Cartera Anteproyectos",
+  dir: "cartera-anteproyectos",
+  excel: "data/datos_anteproyectos.xlsx",
+  json: "data/anteproyectos.json",
+  historial: "data/historial.json",
+  regla: "jueves",
+  kml: ["data/ANTEPROYECTOS.kml"],
+  imagenes: "data/IMAGENES",
 };
 
 function decodeXml(s) {
@@ -182,6 +199,34 @@ function buildHitos(nombresCartera) {
   };
 }
 
+/** Lee y valida el Excel de Cartera Anteproyectos. */
+function buildAnteproyectos() {
+  const ds = ANTEPROYECTOS;
+  const dir = path.join(ROOT, ds.dir);
+  const excelPath = path.join(dir, ds.excel);
+  if (!fs.existsSync(excelPath)) return { errors: [`No existe ${ds.excel}.`], warnings: [] };
+  const wb = XLSX.read(fs.readFileSync(excelPath), { type: "buffer" });
+  const { errors, warnings, proyectos } = leerAnteproyectos(wb, XLSX, {
+    kml: ds.kml.flatMap((k) => placemarkNames(path.join(dir, k))),
+    existe: (rel) => fs.existsSync(path.join(dir, rel)),
+  });
+  const modified = wb.Props && wb.Props.ModifiedDate ? new Date(wb.Props.ModifiedDate) : null;
+  const excelModificado = modified && !Number.isNaN(modified.getTime()) ? modified.toISOString() : null;
+  const publicado = readJson(path.join(dir, ds.json));
+  const anterior = checkExcelAnterior(excelModificado, publicado && publicado.excelModificado);
+  if (anterior) errors.push(anterior);
+  if (!excelModificado) warnings.push("El Excel no tiene fecha de guardado: no se registró el corte en la curva de avance.");
+  return {
+    errors,
+    warnings,
+    json: toJson({ fuente: path.basename(ds.excel), excelModificado, proyectos }),
+    jsonPath: path.join(dir, ds.json),
+    corte: excelModificado ? { excel: excelModificado, proyectos: snapshotAnteproyectos(proyectos) } : null,
+    regla: ds.regla,
+    historialPath: path.join(dir, ds.historial),
+  };
+}
+
 /** Historial con el corte de este Excel agregado (o reemplazado en su semana). */
 function historialWithCorte(result) {
   const current = readJson(result.historialPath);
@@ -227,7 +272,7 @@ function report(ds, { errors, warnings }, summary) {
 /** Optimiza (o, con --check, solo lista) las imágenes de cada tablero que las tenga. */
 async function imagenes(check, summary) {
   const kb = (n) => `${Math.round(n / 1024)} KB`;
-  for (const ds of DATASETS.filter((d) => d.imagenes)) {
+  for (const ds of [...DATASETS, ANTEPROYECTOS].filter((d) => d.imagenes)) {
     const cambios = await optimizarCarpeta(path.join(ROOT, ds.dir, ds.imagenes), { dryRun: check });
     if (cambios.length) summary.push(`### 🖼️ Imágenes — \`${ds.dir}/${ds.imagenes}\``);
     cambios.forEach((c) => {
@@ -250,6 +295,7 @@ async function main() {
   const cartera = results.find((r) => r.ds.dir === HITOS.dir);
   const nombresCartera = cartera && cartera.json ? JSON.parse(cartera.json).proyectos.map((p) => String(p.nombre || "").trim()).filter(Boolean) : [];
   results.push({ ds: HITOS, ...buildHitos(nombresCartera) });
+  results.push({ ds: ANTEPROYECTOS, ...buildAnteproyectos() });
   results.forEach((r) => report(r.ds, r, summary));
 
   const failed = results.some((r) => r.errors.length);
@@ -292,4 +338,4 @@ if (require.main === module) {
   });
 }
 
-module.exports = { DATASETS, HITOS, buildDataset, buildHitos, toJson, ROOT };
+module.exports = { DATASETS, HITOS, ANTEPROYECTOS, buildDataset, buildHitos, buildAnteproyectos, toJson, ROOT };
