@@ -74,6 +74,9 @@ test("Cartera Anteproyectos y sus ventanas sin problemas de accesibilidad", asyn
     await page.keyboard.press("Escape");
     await expect(page.locator(ventana)).not.toHaveClass(/is-open/);
   }
+  await page.locator("#particularGrid .particular--btn").first().click();
+  await expect(page.locator("#sheetPonderado")).toHaveClass(/is-open/);
+  await revisar(page, "anteproyectos: avances ponderados");
 });
 
 test("Mixtos y sus ventanas sin problemas de accesibilidad", async ({ page, isMobile }) => {

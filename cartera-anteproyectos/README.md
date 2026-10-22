@@ -13,6 +13,8 @@ sus estilos, el mapa, la curva de avance y el PDF de `../cartera-cpel/`).
 ## El Excel
 
 Cinco tipos de hoja; los proyectos se relacionan entre hojas por el **No.**
+En pantalla el orden es: presentación, avance general y particulares,
+descripción técnica, RTA y mapa.
 Las columnas pueden aumentar o disminuir: la página muestra lo que haya.
 
 | Hoja | Tarjeta | Cómo se lee |
@@ -21,7 +23,7 @@ Las columnas pueden aumentar o disminuir: la página muestra lo que haya.
 | `DESC` | 2. Descripción técnica | No., Proyecto, Descripción. Las líneas en blanco separan párrafos; "1. …" y "•" hacen listas. |
 | `RTA` | 3. Red de Transmisión Propuesta | Fila de grupos (Especificaciones del sistema, Justificación de la ruta, Componentes, Punto de Interconexión) y fila de encabezados; debajo, las filas de cada proyecto (su No. combinado o solo en su primera fila). Cada componente, una fila. |
 | `FICHA_<TIPO>` | 4. Ficha técnica (botón) | No., Proyecto y una columna por dato. |
-| `AVAN_<TIPO>` | 5. Avance | No., Proyecto, Tipo de avance (Real / Programado), GENERAL, "1. …", "1.1 …"… y notas ("NOTA TOTAL", "NOTA (1.2)"). Se muestran tal cual, sin recalcular. Mientras el programado esté en ceros solo se muestra el Real. |
+| `AVAN_<TIPO>` | 5. Avance | No., Proyecto, Tipo de avance (Real / Programado), GENERAL, "1. …", "1.1 …"… y notas ("NOTA TOTAL", "NOTA (1.2)"). Se muestran tal cual, sin recalcular, en dos tarjetas: **Avance General** (con la NOTA TOTAL) y **Avances particulares** ("1. …", "2. …"; al tocarlos se abren sus avances ponderados "1.1 …" con sus notas, en rojo). Mientras el programado esté en ceros se muestra "pendiente". |
 | `TIPOS` (opcional) | — | Tecnología \| Sufijo, para tecnologías nuevas. |
 
 `<TIPO>` sale de la tecnología: Fotovoltaico → `FOTOV`, Termosolar →

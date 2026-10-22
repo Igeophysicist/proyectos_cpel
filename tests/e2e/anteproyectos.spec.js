@@ -32,17 +32,32 @@ test("las tarjetas muestran la información del Excel", async ({ page }) => {
   await expect(page.locator(".rta-comp tbody tr")).toHaveCount(secciones.componentes.filas.length);
   await page.locator(".rta-mas summary").click();
   await expect(page.locator(".rta-just li").first()).toBeVisible();
-  // Avance: general y un bloque por grupo, con sus sub-avances
-  await expect(page.locator(".av-general .progress-row--real")).toContainText(`${p.avance.general.real}%`);
-  await expect(page.locator(".av-grupo")).toHaveCount(p.avance.grupos.length);
-  await expect(page.locator(".av-item")).toHaveCount(p.avance.grupos.reduce((s, g) => s + g.items.length, 0));
-  if (p.avance.programadoPendiente) {
-    await expect(page.locator(".av-pendiente")).toBeVisible();
-    await expect(page.locator(".progress-row--prog")).toHaveCount(0);
-  }
+  // Avance general (con la nota total) y avances particulares
+  await expect(page.locator("#generalBody .progress-row--real")).toContainText(`${p.avance.general.real}%`);
+  if (p.avance.general.nota) await expect(page.locator("#generalBody .av-nota")).toBeVisible();
+  if (p.avance.programadoPendiente) await expect(page.locator(".av-pendiente")).toBeVisible();
+  await expect(page.locator("#particularGrid .particular--btn")).toHaveCount(p.avance.grupos.length);
+  // Orden: presentación, avances, descripción, RTA y mapa
+  const orden = await page.locator("#cartera > section:not(.print-only)").evaluateAll((els) => els.map((e) => e.className));
+  expect(orden.map((c) => c.match(/hero-card|card--\w+/)[0])).toEqual(["hero-card", "card--general", "card--particulares", "card--desc", "card--rta", "card--mapa"]);
   // Mapa: el punto del KML
   await expect(page.locator("#mapEmpty")).toBeHidden();
   await expect(page.locator(".leaflet-interactive").first()).toBeVisible();
+});
+
+test("cada avance particular abre sus avances ponderados con sus notas", async ({ page }) => {
+  const p = datos().proyectos[0];
+  await page.goto(`/cartera-anteproyectos/?proyecto=${slugify(p.nombre)}`);
+  await listo(page);
+  for (const [i, g] of p.avance.grupos.entries()) {
+    await page.locator("#particularGrid .particular--btn").nth(i).click();
+    await expect(page.locator("#sheetPonderado")).toHaveClass(/is-open/);
+    await expect(page.locator("#ponderadoTitulo")).toHaveText(`${g.clave}. ${g.titulo}`);
+    await expect(page.locator("#ponderadoBody .pond")).toHaveCount(g.items.length);
+    await expect(page.locator("#ponderadoBody .pond .av-nota")).toHaveCount(g.items.filter((x) => x.nota).length);
+    await page.keyboard.press("Escape");
+    await expect(page.locator("#sheetPonderado")).not.toHaveClass(/is-open/);
+  }
 });
 
 test("Ficha técnica y Curva de avance abren con contenido", async ({ page }) => {

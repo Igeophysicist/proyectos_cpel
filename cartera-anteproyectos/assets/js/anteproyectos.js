@@ -7,7 +7,11 @@
  *
  * Tarjetas: 1) Presentación (PRES), 2) Descripción técnica (DESC),
  * 3) Red de Transmisión Propuesta (RTA), 4) Ficha técnica (FICHA_<tipo>,
- * en la ventana del botón) y 5) Avance (AVAN_<tipo>). Los campos de cada
+ * en la ventana del botón) y 5) Avance (AVAN_<tipo>), en dos tarjetas:
+ * Avance General (con la NOTA TOTAL) y Avances particulares ("1. …",
+ * "2. …"), que abren una ventana con sus avances ponderados ("1.1 …").
+ * En pantalla el orden es: presentación, avances, descripción, RTA y
+ * mapa. Los campos de cada
  * hoja se pintan tal como vienen: si el Excel agrega o quita columnas, la
  * página cambia sola.
  *
@@ -75,60 +79,92 @@
   const ancho = (v) => Math.max(0, Math.min(Number(v) || 0, 100));
 
   // ------------------------------------------------------------ avance
-  function barra(valor, clase) {
-    return `<div class="bar bar--mini"><span class="bar__fill ${clase}" style="width:${ancho(valor)}%"></span></div>`;
-  }
-
-  function avanceHtml(avance) {
+  /** Avance general: Real, Programado (o "pendiente") y la NOTA TOTAL. */
+  function generalHtml(avance) {
     if (!avance || !avance.general) return `<div class="state-msg">Sin avance registrado para este anteproyecto.</div>`;
-    const { general, grupos, programadoPendiente } = avance;
-    const conProg = !programadoPendiente;
-    const filaGeneral = (lado, etiqueta, valor) => `
+    const { general, programadoPendiente } = avance;
+    const fila = (lado, etiqueta, valor) => `
       <div class="progress-row progress-row--${lado}">
         <div class="progress-row__info"><span>${etiqueta}</span><span>${pctTxt(valor)}</span></div>
         <div class="bar"><span class="bar__fill bar__fill--${lado}" style="width:${ancho(valor)}%"></span></div>
       </div>`;
-    let variacion = "";
-    if (conProg && general.real !== null && general.prog !== null) {
+    let pie = `<p class="av-pendiente">Programado: pendiente de captura.</p>`;
+    if (!programadoPendiente && general.real !== null && general.prog !== null) {
       const d = Math.round((general.real - general.prog) * 10) / 10;
-      variacion = `<div class="variance ${d >= 0 ? "variance--ok" : "variance--late"}">${
+      pie = `<div class="variance ${d >= 0 ? "variance--ok" : "variance--late"}">${
         d > 0 ? `Adelantado ${d} pts respecto al programa` : d < 0 ? `Atraso de ${Math.abs(d)} pts respecto al programa` : "Al día respecto al programa"
       }</div>`;
     }
-    const item = (x) => `
-      <li class="av-item">
-        <div class="av-item__head"><span class="av-item__titulo"><b>${esc(x.clave)}</b> ${esc(x.titulo)}</span><span class="av-item__pct">${pctTxt(x.real)}</span></div>
-        ${barra(x.real, "bar__fill--real")}
-        ${conProg ? `<div class="av-item__prog">${barra(x.prog, "bar__fill--prog")}<span>Prog. ${pctTxt(x.prog)}</span></div>` : ""}
-        ${x.nota ? `<div class="av-nota av-nota--item">${textoHtml(x.nota)}</div>` : ""}
-      </li>`;
     return `
-      <div class="av-general">
-        <div class="progress-stack">
-          ${filaGeneral("real", "Real", general.real)}
-          ${conProg ? filaGeneral("prog", "Programado", general.prog) : ""}
-        </div>
-        ${conProg ? variacion : `<p class="av-pendiente">Programado: pendiente de captura.</p>`}
-        ${general.nota ? `<div class="av-nota"><div class="av-nota__titulo">Notas</div>${textoHtml(general.nota)}</div>` : ""}
+      <div class="progress-stack">
+        ${fila("prog", "Programado", programadoPendiente ? null : general.prog)}
+        ${fila("real", "Real", general.real)}
       </div>
-      <div class="av-grupos">
-        ${grupos
-          .map(
-            (g) => `
-          <div class="av-grupo">
-            <div class="av-grupo__head">
-              <span class="av-grupo__num">${esc(g.clave)}</span>
-              <span class="av-grupo__titulo">${esc(g.titulo)}</span>
-              <span class="av-grupo__pct">${pctTxt(g.real)}</span>
-            </div>
-            <div class="bar"><span class="bar__fill bar__fill--real" style="width:${ancho(g.real)}%"></span></div>
-            ${conProg ? `<div class="av-item__prog">${barra(g.prog, "bar__fill--prog")}<span>Prog. ${pctTxt(g.prog)}</span></div>` : ""}
-            ${g.nota ? `<div class="av-nota av-nota--item">${textoHtml(g.nota)}</div>` : ""}
-            ${g.items.length ? `<ul class="av-items">${g.items.map(item).join("")}</ul>` : ""}
-          </div>`
-          )
-          .join("")}
+      ${pie}
+      ${general.nota ? notaHtml(general.nota, "Notas") : ""}`;
+  }
+
+  /** Nota del Excel, en rojo para que destaque. */
+  const notaHtml = (texto, titulo = "") =>
+    `<div class="av-nota">${titulo ? `<div class="av-nota__titulo">${esc(titulo)}</div>` : ""}${textoHtml(texto)}</div>`;
+
+  /** Fila P / R como las de Avances particulares de Cartera CPEL. */
+  function miniFilas(x, pendiente) {
+    const fila = (lado, letra, v) => `
+      <div class="mini-row">
+        <span class="mini-row__tag mini-row__tag--${lado}">${letra}</span>
+        <div class="bar bar--mini"><span class="bar__fill bar__fill--${lado}" style="width:${ancho(v)}%"></span></div>
+        <span class="mini-row__val">${v === null || v === undefined ? "—" : pctTxt(v)}</span>
       </div>`;
+    return fila("prog", "P", pendiente ? null : x.prog) + fila("real", "R", x.real);
+  }
+
+  /** Avances particulares ("1. …", "2. …"): un botón por cada uno. */
+  function particularesHtml(avance) {
+    if (!avance || !avance.grupos.length) return `<div class="state-msg">Sin avances particulares.</div>`;
+    return avance.grupos
+      .map(
+        (g, i) => `
+        <button type="button" class="particular particular--btn" data-grupo="${i}" aria-label="${esc(`${g.clave}. ${g.titulo}: ver avances ponderados`)}">
+          <span class="particular__title"><b>${esc(g.clave)}.</b> ${esc(g.titulo)}</span>
+          ${miniFilas(g, avance.programadoPendiente)}
+          <span class="particular__mas">${g.items.length ? `Ver ${g.items.length} avance${g.items.length === 1 ? "" : "s"} ponderado${g.items.length === 1 ? "" : "s"}` : "Ver detalle"}${
+            g.items.some((x) => x.nota) || g.nota ? ' <span class="particular__nota">con notas</span>' : ""
+          }</span>
+        </button>`
+      )
+      .join("");
+  }
+
+  /** Ventana con los avances ponderados de un avance particular. */
+  function ponderadosHtml(g, pendiente) {
+    return `
+      <div class="pond-resumen">
+        ${miniFilas(g, pendiente)}
+        ${g.nota ? notaHtml(g.nota) : ""}
+      </div>
+      ${
+        g.items.length
+          ? `<ul class="pond-lista">${g.items
+              .map(
+                (x) => `
+            <li class="pond">
+              <div class="pond__titulo"><b>${esc(x.clave)}</b> ${esc(x.titulo)}</div>
+              ${miniFilas(x, pendiente)}
+              ${x.nota ? notaHtml(x.nota, "Nota") : ""}
+            </li>`
+              )
+              .join("")}</ul>`
+          : `<div class="state-msg">Este avance no tiene avances ponderados.</div>`
+      }`;
+  }
+
+  function abrirPonderados(i) {
+    const g = actual && actual.avance && actual.avance.grupos[i];
+    if (!g) return;
+    $("ponderadoTitulo").textContent = `${g.clave}. ${g.titulo}`;
+    $("ponderadoBody").innerHTML = ponderadosHtml(g, actual.avance.programadoPendiente);
+    window.Dialog.open($("sheetPonderado"));
   }
 
   // --------------------------------------------------------------- RTA
@@ -250,7 +286,8 @@
 
     $("rtaTitle").textContent = (p.rta && p.rta.titulo) || "Red de Transmisión Propuesta (RTA)";
     $("rtaBody").innerHTML = rtaHtml(p.rta);
-    $("avanceBody").innerHTML = avanceHtml(p.avance);
+    $("generalBody").innerHTML = generalHtml(p.avance);
+    $("particularGrid").innerHTML = particularesHtml(p.avance);
     $("fichaBody").innerHTML = fichaHtml(p);
 
     // Color del punto: verde si va al día o sin programa (ver map.js de Cartera CPEL).
@@ -282,7 +319,9 @@
         if (abre.dataset.openSheet === "sheetCurva" && actual) window.CarteraCurva.mostrar(actual);
         return;
       }
-      if (e.target.closest("[data-close-sheet]")) cerrarTodas();
+      if (e.target.closest("[data-close-sheet]")) return cerrarTodas();
+      const grupo = e.target.closest("[data-grupo]");
+      if (grupo) abrirPonderados(Number(grupo.dataset.grupo));
     });
     window.CarteraMap.initMap("mapaProyecto");
     cargar();

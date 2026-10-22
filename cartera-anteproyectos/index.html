@@ -65,7 +65,30 @@
       </div>
     </section>
 
-    <!-- 2. Descripción técnica (hoja DESC) -->
+    <!-- 2a. Avance general (hoja AVAN_<tipo>: GENERAL y NOTA TOTAL) -->
+    <section class="card card--general">
+      <h2 class="card__title">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M3 17l6-6 4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 7h6v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Avance General
+      </h2>
+      <div id="generalBody"></div>
+    </section>
+
+    <!-- 2b. Avances particulares ("1. …", "2. …"); cada uno abre sus avances ponderados -->
+    <section class="card card--particulares">
+      <h2 class="card__title">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        Avances particulares
+      </h2>
+      <div class="legend">
+        <span><i class="l-prog"></i>Programado</span>
+        <span><i class="l-real"></i>Real</span>
+      </div>
+      <div class="particular-grid" id="particularGrid"></div>
+      <p class="ante-ayuda">Toca un avance para ver sus avances ponderados.</p>
+    </section>
+
+    <!-- 3. Descripción técnica (hoja DESC) -->
     <section class="card card--desc">
       <h2 class="card__title">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M14 3H6a1 1 0 00-1 1v16a1 1 0 001 1h12a1 1 0 001-1V8l-5-5z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M14 3v5h5M9 13h6M9 17h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
@@ -75,22 +98,13 @@
       <div class="info-list ante-extras" id="extrasVal" hidden></div>
     </section>
 
-    <!-- 3. Red de Transmisión Propuesta (hoja RTA) -->
+    <!-- 4. Red de Transmisión Propuesta (hoja RTA) -->
     <section class="card card--rta">
       <h2 class="card__title">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2l-4 20M12 2l4 20M7 7h10M6 12h12M5 17h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         <span id="rtaTitle">Red de Transmisión Propuesta (RTA)</span>
       </h2>
       <div id="rtaBody"></div>
-    </section>
-
-    <!-- 5. Avance (hoja AVAN_<tipo>) -->
-    <section class="card card--avance">
-      <h2 class="card__title">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M3 17l6-6 4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 7h6v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        Avance del anteproyecto
-      </h2>
-      <div id="avanceBody"></div>
     </section>
 
     <!-- Solo en el PDF: copia de la Ficha técnica (ver pdf.js) -->
@@ -123,7 +137,7 @@
     <img src="../assets/img/logo-cpel.png" alt="CPEL" class="brand-footer__logo brand-footer__logo--cpel">
   </footer>
 
-  <!-- Barra inferior: 4. Ficha técnica (hoja FICHA_<tipo>) y Curva de avance -->
+  <!-- Barra inferior: Ficha técnica (hoja FICHA_<tipo>) y Curva de avance -->
   <nav class="actionbar">
     <button class="actionbar__btn" data-open-sheet="sheetFicha">
       <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M14 3H6a1 1 0 00-1 1v16a1 1 0 001 1h12a1 1 0 001-1V8l-5-5z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M14 3v5h5M9 13h6M9 17h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
@@ -150,6 +164,24 @@
         </button>
       </div>
       <div class="sheet__body" id="fichaBody" tabindex="0" aria-label="Ficha técnica del anteproyecto"></div>
+    </div>
+  </div>
+
+  <!-- Ventana: avances ponderados de un avance particular -->
+  <div class="sheet" id="sheetPonderado" aria-hidden="true">
+    <div class="sheet__scrim" data-close-sheet></div>
+    <div class="sheet__panel" role="dialog" aria-modal="true" aria-labelledby="sheetPonderadoTitle">
+      <div class="sheet__head">
+        <div class="sheet__title" id="sheetPonderadoTitle">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <span id="ponderadoTitulo">Avances ponderados</span>
+        </div>
+        <div class="sheet__sub" data-project-name></div>
+        <button class="sheet__close" data-close-sheet aria-label="Cerrar">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+      <div class="sheet__body" id="ponderadoBody" tabindex="0" aria-label="Avances ponderados"></div>
     </div>
   </div>
 

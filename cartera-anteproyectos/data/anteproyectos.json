@@ -1,6 +1,6 @@
 {
   "fuente": "datos_anteproyectos.xlsx",
-  "excelModificado": "2026-10-22T18:06:52.000Z",
+  "excelModificado": "2026-10-22T19:24:17.000Z",
   "proyectos": [
     {
       "no": "1",
@@ -8,7 +8,7 @@
       "tecnologia": "Fotovoltaico",
       "tipo": "FOTOV",
       "ubicacion": "Lázaro Cárdenas, Michoacán",
-      "imagen": "",
+      "imagen": "data/IMAGENES/ISLA-CAYACAL.jpg",
       "descripcion": "El Proyecto Fotovoltaico aprovecha una superficie perteneciente a la Central Termoeléctrica Plutarco Elías Calles (C.T. Petacalco) con la instalación de módulos fotovoltaicos para la generación de energía eléctrica.\n\nEl proyecto respaldará el crecimiento logístico-portuario de Lázaro Cárdenas, donde destacan el desarrollo de la Isla de La Palma y la ampliación de recintos fiscalizados y terminales portuarias. Esta infraestructura detonará demanda eléctrica para patios, grúas, almacenamiento, refrigeración, bombeo, telecomunicaciones, seguridad, logística ferroviaria y operación portuaria continua. Las obras consideradas en el proyecto son:\n\n1. Parque Fotovoltaico\n2. Líneas de Media Tensión\n3. Centros de Transformación (Transformadores e inversores)\n4. Sistema de Almacenamiento de Energía\n5. Subestación elevadora\n6. Línea de Transmisión\n7. Interconexión",
       "rta": {
         "titulo": "Red de Transmisión Propuesta (RTA)",
