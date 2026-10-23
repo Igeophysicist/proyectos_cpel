@@ -18,8 +18,10 @@
  * librerías del archivo (html2canvas + jsPDF, ~560 KB) se descargan solo
  * la primera vez que se genera un PDF en el celular.
  *
+ * También lo usa Cartera Anteproyectos (sin Plazos; prefijo propio del archivo).
+ *
  * Requiere: shared/text-utils.js.
- * Expone: window.CarteraPdf.init({ nombre: () => "nombre del proyecto" })
+ * Expone: window.CarteraPdf.init({ nombre: () => "nombre del proyecto", prefijo: "Cartera" })
  */
 (function (global) {
   const LIBS = [
@@ -43,6 +45,7 @@
   const { slugify } = global.TextUtils;
 
   let nombreProyecto = () => "";
+  let prefijo = "Cartera"; // inicio del nombre del archivo
   let libsPromise = null;
   let pendiente = null; // archivo listo para compartir si el teléfono pidió otro toque
 
@@ -50,7 +53,7 @@
   /** Copia Ficha técnica y Plazos a la hoja y pone la fecha. */
   function preparar() {
     $("printFicha").innerHTML = $("fichaBody").innerHTML;
-    $("printPlazos").innerHTML = $("plazosBody").innerHTML;
+    if ($("printPlazos")) $("printPlazos").innerHTML = $("plazosBody").innerHTML;
     $("printDate").textContent =
       "Impreso el " + new Date().toLocaleDateString("es-MX", { day: "numeric", month: "long", year: "numeric" });
   }
@@ -138,7 +141,7 @@
     const pdf = new global.jspdf.jsPDF({ unit: "pt", format: [PAGE.w, altoHoja], orientation: "portrait" });
     pdf.addImage(canvas.toDataURL("image/jpeg", 0.92), "JPEG", PAGE.margin, PAGE.margin, anchoPt, altoPt);
 
-    const nombre = `Cartera_${slugify(nombreProyecto()) || "proyecto"}_${hoy()}.pdf`;
+    const nombre = `${prefijo}_${slugify(nombreProyecto()) || "proyecto"}_${hoy()}.pdf`;
     return new File([pdf.output("blob")], nombre, { type: "application/pdf" });
   }
 
@@ -187,7 +190,7 @@
       pendiente = null;
       etiqueta("PDF");
       // Si cambió de proyecto mientras tanto, se genera de nuevo.
-      if (file.name.startsWith(`Cartera_${slugify(nombreProyecto())}_`)) return entregar(file);
+      if (file.name.startsWith(`${prefijo}_${slugify(nombreProyecto())}_`)) return entregar(file);
     }
     if (!esCelular()) return imprimir();
 
@@ -207,8 +210,9 @@
     }
   }
 
-  function init({ nombre }) {
+  function init({ nombre, prefijo: p }) {
     nombreProyecto = nombre;
+    if (p) prefijo = p;
     $("printBtn").addEventListener("click", alTocar);
     // Impresión del navegador (botón en computadora o Ctrl+P).
     global.addEventListener("beforeprint", () => {

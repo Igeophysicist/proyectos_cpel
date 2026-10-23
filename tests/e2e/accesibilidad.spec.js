@@ -59,6 +59,27 @@ test("Cartera y sus ventanas sin problemas de accesibilidad", async ({ page }) =
   await revisar(page, "cartera: hitos de pago");
 });
 
+test("Cartera Anteproyectos y sus ventanas sin problemas de accesibilidad", async ({ page }) => {
+  await page.goto("/cartera-anteproyectos/");
+  await expect(page.locator("#projectName")).not.toHaveText("Cargando…");
+  await page.locator(".rta-mas summary").click();
+  await page.locator(".av-notas-gen summary").click();
+  await revisar(page, "anteproyectos");
+  for (const [boton, ventana] of [
+    ["Ficha técnica", "#sheetFicha"],
+    ["Curva de avance", "#sheetCurva"],
+  ]) {
+    await page.locator(".actionbar__btn", { hasText: boton }).click();
+    await expect(page.locator(ventana)).toHaveClass(/is-open/);
+    await revisar(page, "anteproyectos: " + boton);
+    await page.keyboard.press("Escape");
+    await expect(page.locator(ventana)).not.toHaveClass(/is-open/);
+  }
+  await page.locator("#particularGrid .particular--btn").first().click();
+  await expect(page.locator("#sheetPonderado")).toHaveClass(/is-open/);
+  await revisar(page, "anteproyectos: avances ponderados");
+});
+
 test("Mixtos y sus ventanas sin problemas de accesibilidad", async ({ page, isMobile }) => {
   await page.goto("/cartera-mixtos/");
   await mixtosCargado(page);

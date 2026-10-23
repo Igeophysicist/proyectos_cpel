@@ -15,7 +15,7 @@ const path = require("path");
 const { spawn } = require("child_process");
 
 const ROOT = path.resolve(__dirname, "../..");
-const SITIO = ["index.html", "manifest.json", "sw.js", "assets", "data", "functions", "cartera-cpel", "cartera-mixtos"];
+const SITIO = ["index.html", "manifest.json", "sw.js", "assets", "data", "functions", "cartera-cpel", "cartera-mixtos", "cartera-anteproyectos"];
 const PORT = process.env.PORT || "8788";
 const PASSWORD = process.env.E2E_PASSWORD || "contraseña de prueba e2e";
 
