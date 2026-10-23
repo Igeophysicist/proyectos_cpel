@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
 <Document>
-	<name>kml_anteproyectos.kml</name>
+	<name>ANTEPROYECTOS.kml</name>
 	<StyleMap id="m_ylw-pushpin">
 		<Pair>
 			<key>normal</key>
@@ -12,6 +12,16 @@
 			<styleUrl>#s_ylw-pushpin_hl</styleUrl>
 		</Pair>
 	</StyleMap>
+	<StyleMap id="msn_placemark_circle">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_placemark_circle</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_placemark_circle_highlight</styleUrl>
+		</Pair>
+	</StyleMap>
 	<Style id="s_ylw-pushpin">
 		<IconStyle>
 			<scale>1.2</scale>
@@ -19,8 +29,6 @@
 				<href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png</href>
 			</Icon>
 		</IconStyle>
-		<ListStyle>
-		</ListStyle>
 	</Style>
 	<Style id="s_ylw-pushpin_hl">
 		<IconStyle>
@@ -29,6 +37,28 @@
 				<href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle_highlight.png</href>
 			</Icon>
 		</IconStyle>
+	</Style>
+	<Style id="sh_placemark_circle_highlight">
+		<IconStyle>
+			<scale>1.2</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle_highlight.png</href>
+			</Icon>
+		</IconStyle>
+		<BalloonStyle>
+		</BalloonStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
+	<Style id="sn_placemark_circle">
+		<IconStyle>
+			<scale>1.2</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png</href>
+			</Icon>
+		</IconStyle>
+		<BalloonStyle>
+		</BalloonStyle>
 		<ListStyle>
 		</ListStyle>
 	</Style>
@@ -37,7 +67,6 @@
 		<open>1</open>
 		<Folder>
 			<name>Fotovoltaico</name>
-			<open>1</open>
 			<Placemark>
 				<name>PFV Isla Cayacal (Petacalco)</name>
 				<LookAt>
@@ -53,6 +82,27 @@
 				<Point>
 					<gx:drawOrder>1</gx:drawOrder>
 					<coordinates>-102.1436048077433,17.93696571228943,0</coordinates>
+				</Point>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>Equipamiento Hidroeléctrico</name>
+			<open>1</open>
+			<Placemark>
+				<name>TECATE</name>
+				<LookAt>
+					<longitude>-116.511552284014</longitude>
+					<latitude>31.77984990189137</latitude>
+					<altitude>0</altitude>
+					<heading>-6.644099100535286</heading>
+					<tilt>0</tilt>
+					<range>82689.7645985697</range>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#msn_placemark_circle</styleUrl>
+				<Point>
+					<gx:drawOrder>1</gx:drawOrder>
+					<coordinates>-116.6705468856285,32.47845843800717,0</coordinates>
 				</Point>
 			</Placemark>
 		</Folder>
