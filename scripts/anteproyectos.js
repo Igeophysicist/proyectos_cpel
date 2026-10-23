@@ -7,8 +7,9 @@
  * abierto con SheetJS) y se prueban en tests/anteproyectos.test.js.
  *
  * HOJAS (los campos pueden aumentar o disminuir sin tocar el código):
- *   PRES   Presentación: No., Proyecto, Tecnología, Ubicación, Imagen
- *          (columnas extra se muestran como datos adicionales).
+ *   PRES   Presentación: No., Proyecto, Tecnología, Ubicación, Imagen y
+ *          Nivel de estudio (va sobre la foto); columnas extra se muestran
+ *          como datos adicionales.
  *   DESC   Descripción técnica: No., Proyecto, Descripción (texto).
  *   RTA    Red de Transmisión Propuesta: fila de grupos ("Especificaciones
  *          del sistema", "Justificación de la ruta", "Componentes", "Punto
@@ -285,6 +286,7 @@ function leerAnteproyectos(wb, XLSX, { kml = [], existe = () => true } = {}) {
   const cTec = col(/^TECNOLOGIA|^TIPO/);
   const cUbi = col(/^UBICACION/);
   const cImg = col(/^IMAGEN|^FOTO/);
+  const cNivel = col(/^NIVEL/); // "Nivel de estudio": va sobre la foto
   [
     [cNo, "No."],
     [cNombre, "Proyecto"],
@@ -347,7 +349,7 @@ function leerAnteproyectos(wb, XLSX, { kml = [], existe = () => true } = {}) {
     }
     const extras = encPres
       .map((campo, c) => ({ campo, valor: fila[c] || "" }))
-      .filter((x, c) => ![cNo, cNombre, cTec, cUbi, cImg].includes(c) && x.campo && x.valor);
+      .filter((x, c) => ![cNo, cNombre, cTec, cUbi, cImg, cNivel].includes(c) && x.campo && x.valor);
 
     const ficha = fichas[tipo][clave] || null;
     const avance = avances[tipo][clave] || null;
@@ -364,6 +366,7 @@ function leerAnteproyectos(wb, XLSX, { kml = [], existe = () => true } = {}) {
       tecnologia,
       tipo,
       ubicacion: cUbi >= 0 ? fila[cUbi] : "",
+      ...(cNivel >= 0 && fila[cNivel] ? { nivel: fila[cNivel] } : {}),
       imagen,
       ...(extras.length ? { extras } : {}),
       descripcion: descripciones[clave] || "",

@@ -4,6 +4,16 @@
    ../cartera-cpel/assets/css/cartera.css, para que se vea igual.
    ======================================================================= */
 
+/* ---------- Nivel de estudio sobre la foto (esquina inferior derecha) ---------- */
+.hero-card__nivel{
+  position: absolute; z-index: 1; right: var(--space-4); bottom: var(--space-4);
+  font-size: 11px; font-weight: 700; letter-spacing: .3px; color: var(--teal-900);
+  background: rgba(255,255,255,.92); border-radius: 99px; padding: 3px 10px;
+  box-shadow: 0 1px 4px rgba(0,0,0,.2);
+}
+/* El texto del encabezado deja libre esa esquina */
+.ante .hero-card__overlay{ padding-right: 130px; }
+
 /* ---------- Texto (descripción y notas) ---------- */
 .ante-texto{ font-size: 13px; color: var(--ink-700); line-height: 1.6; text-align: justify; }
 .ante-texto p{ margin: 0 0 8px; }

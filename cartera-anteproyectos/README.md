@@ -19,9 +19,9 @@ Las columnas pueden aumentar o disminuir: la página muestra lo que haya.
 
 | Hoja | Tarjeta | Cómo se lee |
 |---|---|---|
-| `PRES` | 1. Presentación | No., Proyecto, Tecnología, Ubicación, Imagen (ruta, p. ej. `data/IMAGENES/cayacal.jpg`). Columnas extra se muestran bajo la descripción. |
+| `PRES` | 1. Presentación | No., Proyecto, Tecnología, Ubicación, Imagen (ruta, p. ej. `data/IMAGENES/cayacal.jpg`) y Nivel de estudio (etiqueta en la esquina inferior derecha de la foto). Columnas extra se muestran bajo la descripción. |
 | `DESC` | 2. Descripción técnica | No., Proyecto, Descripción. Las líneas en blanco separan párrafos; "1. …" y "•" hacen listas. |
-| `RTA` | 3. Red de Transmisión Propuesta | Fila de grupos (Especificaciones del sistema, Justificación de la ruta, Componentes, Punto de Interconexión) y fila de encabezados; debajo, las filas de cada proyecto (su No. combinado o solo en su primera fila). Cada componente, una fila. |
+| `RTA` | 3. Red de Transmisión Propuesta | Fila de grupos ("Identificadores", Especificaciones del sistema, Justificación de la ruta, Componentes, Punto de Interconexión) y debajo la fila de encabezados con No. y Proyecto; luego las filas de cada proyecto (su No. combinado o solo en su primera fila). Cada componente, una fila. |
 | `FICHA_<TIPO>` | 4. Ficha técnica (botón) | No., Proyecto y una columna por dato. |
 | `AVAN_<TIPO>` | 5. Avance | No., Proyecto, Tipo de avance (Real / Programado), GENERAL, "1. …", "1.1 …"… y notas ("NOTA TOTAL", "NOTA (1.2)"). Se muestran tal cual, sin recalcular, en dos tarjetas: **Avance General** (con la NOTA TOTAL) y **Avances particulares** ("1. …", "2. …"; al tocarlos se abren sus avances ponderados "1.1 …" con sus notas, en rojo). Mientras el programado esté en ceros se muestra "pendiente". |
 | `TIPOS` (opcional) | — | Tecnología \| Sufijo, para tecnologías nuevas. |

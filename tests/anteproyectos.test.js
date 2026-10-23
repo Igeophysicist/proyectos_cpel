@@ -16,7 +16,7 @@ function libro(hojas) {
 }
 
 const BASE = {
-  PRES: { filas: [["No.", "Proyecto", "Tecnología", "Ubicación", "Imagen", "Capacidad"], [1, "PFV Uno", "Fotovoltaico", "Sonora", "", "20 MW"], [2, "EO Dos", "Eólico", "Oaxaca", "data/IMAGENES/dos.jpg"]] },
+  PRES: { filas: [["No.", "Proyecto", "Tecnología", "Ubicación", "Imagen", "Capacidad", "Nivel de estudio"], [1, "PFV Uno", "Fotovoltaico", "Sonora", "", "20 MW", "Prefactibilidad"], [2, "EO Dos", "Eólico", "Oaxaca", "data/IMAGENES/dos.jpg"]] },
   DESC: { filas: [["No.", "Proyecto", "Descripción"], [1, "PFV Uno", "Párrafo uno.\r\n\r\n1. Obra A\r\n2. Obra B"]] },
   RTA: {
     filas: [
@@ -65,6 +65,7 @@ test("lee las 5 hojas de cada proyecto según su tecnología", () => {
   const [uno, dos] = proyectos;
   assert.equal(uno.tipo, "FOTOV");
   assert.deepEqual(uno.extras, [{ campo: "Capacidad", valor: "20 MW" }]);
+  assert.equal(uno.nivel, "Prefactibilidad");
   assert.equal(uno.descripcion, "Párrafo uno.\n\n1. Obra A\n2. Obra B");
   assert.deepEqual(uno.ficha, [{ campo: "Potencia [MW]", valor: "19.7" }, { campo: "Estructura", valor: "Fija" }]);
 

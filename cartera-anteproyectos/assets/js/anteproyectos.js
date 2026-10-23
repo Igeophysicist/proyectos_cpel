@@ -279,6 +279,8 @@
     $("projectLocation").textContent = p.ubicacion || "Sin ubicación";
     $("projectTech").textContent = p.tecnologia || "";
     $("projectTech").hidden = !p.tecnologia;
+    $("projectNivel").textContent = p.nivel || "";
+    $("projectNivel").hidden = !p.nivel;
     document.querySelectorAll("[data-project-name]").forEach((el) => (el.textContent = p.nombre));
 
     $("descVal").innerHTML = textoHtml(p.descripcion) || `<p class="state-msg">Sin descripción para este anteproyecto.</p>`;
