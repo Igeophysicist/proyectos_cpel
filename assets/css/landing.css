@@ -73,6 +73,38 @@ a{color:inherit; text-decoration:none;}
 .topbar__logout:hover{background:rgba(238,243,241,.12);}
 .topbar__logout[hidden]{display:none;}
 
+/* Fecha, hora y clima de la CDMX (clima-cdmx.js) */
+.cdmx{
+  margin-left:auto; display:flex; flex-direction:column; align-items:flex-end; gap:1px;
+  line-height:1.2; white-space:nowrap; font-variant-numeric:tabular-nums;
+}
+.cdmx[hidden], .cdmx__clima[hidden]{display:none;}
+.cdmx + .topbar__logout{margin-left:0;}
+.cdmx__fila{display:flex; align-items:center; gap:8px;}
+.cdmx__hora{font-size:14px; font-weight:700;}
+.cdmx__clima{display:inline-flex; align-items:center; gap:4px; font-size:13px; font-weight:600;}
+.cdmx__clima svg{color:#e3c07a; flex:none;}
+.cdmx__desc{font-weight:500; color:rgba(238,243,241,.85);}
+.cdmx__fila--sub{font-size:11.5px; color:rgba(238,243,241,.85); text-transform:capitalize;}
+.cdmx__lugar{font-weight:700; letter-spacing:.04em; color:#e3c07a; text-transform:none;}
+@media (max-width:560px){
+  .cdmx__desc{display:none;}
+}
+/* Celular: todo cabe en una sola barra, también con "Salir" */
+@media (max-width:440px){
+  .topbar{gap:8px; padding:0 12px;}
+  .topbar__mark{width:24px; height:24px; border-radius:6px;}
+  .topbar__title{font-size:14px;}
+  .topbar .brand-strip_t__logo--cpel{height:20px;}
+  .topbar__logout{padding:5px 8px; font-size:12px;}
+  .cdmx__hora{font-size:13px;}
+  .cdmx__clima{font-size:12px; gap:3px;}
+  .cdmx__fila{gap:6px;}
+}
+@media (max-width:370px){
+  .topbar .brand-strip_t{display:none;}
+}
+
 .main{max-width:760px; margin:0 auto; padding:var(--space-5) var(--space-4) var(--space-6);}
 
 .hero{position:relative; margin-bottom:var(--space-5); overflow:hidden;}
