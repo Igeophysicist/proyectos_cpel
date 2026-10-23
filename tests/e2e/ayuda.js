@@ -43,6 +43,10 @@ const test = base.test.extend({
     const errores = [];
     page.on("pageerror", (e) => !erroresEsperados.some((re) => re.test(e.message)) && errores.push(e.message));
     await page.route(/arcgisonline\.com|tile\.openstreetmap\.org/, (r) => r.abort());
+    // Clima de la CDMX en el portal: respuesta fija, sin salir a internet.
+    await page.route(/api\.open-meteo\.com/, (r) =>
+      r.fulfill({ json: { current: { temperature_2m: 21.6, weather_code: 2, is_day: 1 } } })
+    );
     await use(page);
     base.expect(errores, "errores de JavaScript en la página").toEqual([]);
   },

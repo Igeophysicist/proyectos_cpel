@@ -29,6 +29,22 @@ test("un proyecto de Esta semana abre su ficha en Mixtos", async ({ page }) => {
   await expect(page.locator("#detail.is-open #detail-title")).toHaveText(nombre);
 });
 
+test("la barra superior muestra fecha, hora y clima de la CDMX", async ({ page }) => {
+  await page.goto("/");
+  await expect(page.locator("#cdmx")).toBeVisible();
+  await expect(page.locator("#cdmxHora")).toHaveText(/^\d{1,2}:\d{2}\s?[ap]\.\s?m\.$/);
+  await expect(page.locator("#cdmxFecha")).not.toBeEmpty();
+  await expect(page.locator("#cdmxClima")).toContainText("22°C");
+  await expect(page.locator("#cdmxClima")).toHaveAttribute("title", /Parcialmente nublado/);
+});
+
+test("sin clima, la fecha y la hora se siguen viendo", async ({ page }) => {
+  await page.route(/api\.open-meteo\.com/, (r) => r.abort());
+  await page.goto("/");
+  await expect(page.locator("#cdmxHora")).not.toBeEmpty();
+  await expect(page.locator("#cdmxClima")).toBeHidden();
+});
+
 test("colaboradores se abren desde el pie de página", async ({ page }) => {
   await page.goto("/");
   await page.click("#siteFooter");

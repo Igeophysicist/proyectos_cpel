@@ -23,6 +23,16 @@
     <div class="brand-strip_t">
       <img src="assets/img/logo-cpel.png" alt="CPEL" class="brand-strip_t__logo brand-strip_t__logo--cpel">
     </div>
+    <!-- Fecha, hora y clima de la CDMX (clima-cdmx.js) -->
+    <div class="cdmx" id="cdmx" hidden>
+      <div class="cdmx__fila">
+        <time class="cdmx__hora" id="cdmxHora"></time>
+        <span class="cdmx__clima" id="cdmxClima" hidden></span>
+      </div>
+      <div class="cdmx__fila cdmx__fila--sub">
+        <span id="cdmxFecha"></span><span class="cdmx__lugar">CDMX</span>
+      </div>
+    </div>
     <!-- Solo se muestra cuando el sitio está protegido con contraseña en
          Cloudflare Pages (ver functions/_middleware.js y landing.js). -->
     <a class="topbar__logout" id="logoutLink" href="/__logout" hidden>Salir</a>
@@ -115,6 +125,7 @@
   <script src="assets/js/shared/dialog.js"></script>
   <script src="assets/js/shared/pwa.js"></script>
   <script src="assets/js/landing.js"></script>
+  <script src="assets/js/clima-cdmx.js"></script>
   <script src="assets/js/semana-resumen.js"></script>
   <script src="assets/js/semana-portal.js"></script>
 </body>
