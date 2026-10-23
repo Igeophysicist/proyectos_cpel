@@ -1,6 +1,6 @@
 {
   "fuente": "datos_proyectos.xlsx",
-  "excelModificado": "2026-10-23T16:15:59.000Z",
+  "excelModificado": "2026-10-23T16:25:54.000Z",
   "proyectos": [
     {
       "id": 1,
@@ -273,7 +273,7 @@
       "tecnologia": "Hidroeléctrica",
       "ubicacion": "Chicoasén, Chiapas",
       "imagen": "data/CARTERA-CPEL/CHICOASEN.jpg",
-      "avanceProg": 46.19,
+      "avanceProg": 46.14,
       "avanceReal": 44.56,
       "progIng": 79.56,
       "realIng": 59.42,
