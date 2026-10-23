@@ -7,7 +7,7 @@ Sitio estático (HTML/CSS/JS sin build step) publicado en GitHub Pages.
 | `index.html` | Portal: accesos, sección "Esta semana" y colaboradores (`data/colaboradores.json`). |
 | `cartera-mixtos/` | Panel de proyectos mixtos: listado, filtros, mapa y resumen. Ver su [README](cartera-mixtos/README.md). |
 | `cartera-cpel/` | Ficha por proyecto de la cartera CPEL. Ver su [README](cartera-cpel/README.md). |
-| `cartera-anteproyectos/` | Ficha por anteproyecto (mismo diseño que Cartera CPEL). Ver su [README](cartera-anteproyectos/README.md). |
+| `cartera-anteproyectos/` | Ficha por anteproyecto (mismo diseño que Cartera CPEL). Su acceso en el portal está oculto hasta liberarla (`<template id="accesoAnteproyectos">` en `index.html`). Ver su [README](cartera-anteproyectos/README.md). |
 | `assets/js/shared/` | Módulos compartidos por las tres páginas (ver abajo). |
 
 ## Módulos compartidos (`assets/js/shared/`)

@@ -57,6 +57,10 @@
         <svg class="nav-card__arrow" width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
 
+      <!-- OCULTO hasta liberar Cartera Anteproyectos (la página ya funciona en
+           /cartera-anteproyectos/). Para mostrar la tarjeta, quita el
+           <template> que la envuelve. -->
+      <template id="accesoAnteproyectos">
       <a class="nav-card" href="cartera-anteproyectos/index.html" style="--i:2">
         <!-- Plano con escuadra: proyectos aún en anteproyecto -->
         <div class="nav-card__icon nav-card__icon--anteproyectos" aria-hidden="true">
@@ -68,6 +72,7 @@
         </div>
         <svg class="nav-card__arrow" width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
+      </template>
     </div>
   
     <section class="semana" id="semana" aria-labelledby="semanaTitulo" hidden>

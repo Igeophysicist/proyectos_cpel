@@ -6,10 +6,13 @@ const { test, expect, slugify } = require("./ayuda.js");
 const datos = () => JSON.parse(fs.readFileSync(path.join(__dirname, "../../cartera-anteproyectos/data/anteproyectos.json"), "utf8"));
 const listo = (page) => expect(page.locator("#projectName")).not.toHaveText("Cargando…");
 
-test("el portal enlaza la página y el selector tiene todos los anteproyectos", async ({ page }) => {
+test("el portal aún no muestra el acceso; la página abre por su dirección", async ({ page }) => {
   const { proyectos } = datos();
   await page.goto("/");
-  await page.locator(".nav-card", { hasText: "Cartera Anteproyectos" }).click();
+  await expect(page.locator(".nav-card").first()).toBeVisible();
+  // Oculto hasta liberarla (index.html: <template id="accesoAnteproyectos">).
+  await expect(page.locator(".nav-card", { hasText: "Cartera Anteproyectos" })).toHaveCount(0);
+  await page.goto("/cartera-anteproyectos/");
   await listo(page);
   await expect(page.locator("#projectSelect option")).toHaveCount(proyectos.length);
   await expect(page.locator("#projectName")).toHaveText(proyectos[0].nombre);
