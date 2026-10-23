@@ -7,12 +7,14 @@
  * abierto con SheetJS) y se prueban en tests/anteproyectos.test.js.
  *
  * HOJAS (los campos pueden aumentar o disminuir sin tocar el código):
- *   PRES   Presentación: No., Proyecto, Tecnología, Ubicación, Imagen
- *          (columnas extra se muestran como datos adicionales).
+ *   PRES   Presentación: No., Proyecto, Tecnología, Ubicación, Imagen y
+ *          Nivel de estudio (va sobre la foto); columnas extra se muestran
+ *          como datos adicionales.
  *   DESC   Descripción técnica: No., Proyecto, Descripción (texto).
  *   RTA    Red de Transmisión Propuesta: fila de grupos ("Especificaciones
  *          del sistema", "Justificación de la ruta", "Componentes", "Punto
- *          de Interconexión (POI)"...), fila de encabezados y, debajo, las
+ *          de Interconexión (POI)"...), fila de encabezados (con "No." y
+ *          "Proyecto", o con "No." en la fila de grupos) y, debajo, las
  *          filas de cada proyecto. Una fila pertenece al proyecto cuyo No.
  *          la cubre (celda combinada o escrita solo en su primera fila).
  *          Los componentes ocupan una fila cada uno.
@@ -200,13 +202,20 @@ function leerRta(t, errors) {
     errors.push('Hoja "RTA": no se encontró la fila de encabezados (la que empieza con "No.").');
     return { titulo: "", porNo: {} };
   }
-  const titulo = encabezado((t.filas.slice(0, filaNo).flat().find((v) => !vacio(v))) || "");
-  const filaEnc = filaNo + 1;
   const ancho = Math.max(...t.filas.map((f) => (f || []).length));
+  // Dos acomodos válidos:
+  //  a) "No." en la fila de grupos y los encabezados debajo;
+  //  b) grupos en una fila ("Identificadores", "Especificaciones del
+  //     sistema"...) y debajo "No.", "Proyecto" y los encabezados.
+  const conDatos = (r) => (t.filas[r] || []).slice(2).filter((v) => !vacio(v)).length;
+  const gruposArriba = filaNo > 0 && conDatos(filaNo - 1) > 0 && conDatos(filaNo) >= 3;
+  const filaGrupos = gruposArriba ? filaNo - 1 : filaNo;
+  const filaEnc = gruposArriba ? filaNo : filaNo + 1;
+  const titulo = encabezado((t.filas.slice(0, filaGrupos).flat().find((v) => !vacio(v))) || "");
   // Grupo de cada columna (celdas combinadas en la fila de grupos).
   const grupos = [];
   for (let c = 2; c < ancho; c++) {
-    const g = encabezado(t.valor(filaNo, c));
+    const g = encabezado(t.valor(filaGrupos, c));
     const h = encabezado((t.filas[filaEnc] || [])[c]);
     if (!g && !h) continue;
     const ultimo = grupos[grupos.length - 1];
@@ -277,6 +286,7 @@ function leerAnteproyectos(wb, XLSX, { kml = [], existe = () => true } = {}) {
   const cTec = col(/^TECNOLOGIA|^TIPO/);
   const cUbi = col(/^UBICACION/);
   const cImg = col(/^IMAGEN|^FOTO/);
+  const cNivel = col(/^NIVEL/); // "Nivel de estudio": va sobre la foto
   [
     [cNo, "No."],
     [cNombre, "Proyecto"],
@@ -339,7 +349,7 @@ function leerAnteproyectos(wb, XLSX, { kml = [], existe = () => true } = {}) {
     }
     const extras = encPres
       .map((campo, c) => ({ campo, valor: fila[c] || "" }))
-      .filter((x, c) => ![cNo, cNombre, cTec, cUbi, cImg].includes(c) && x.campo && x.valor);
+      .filter((x, c) => ![cNo, cNombre, cTec, cUbi, cImg, cNivel].includes(c) && x.campo && x.valor);
 
     const ficha = fichas[tipo][clave] || null;
     const avance = avances[tipo][clave] || null;
@@ -356,6 +366,7 @@ function leerAnteproyectos(wb, XLSX, { kml = [], existe = () => true } = {}) {
       tecnologia,
       tipo,
       ubicacion: cUbi >= 0 ? fila[cUbi] : "",
+      ...(cNivel >= 0 && fila[cNivel] ? { nivel: fila[cNivel] } : {}),
       imagen,
       ...(extras.length ? { extras } : {}),
       descripcion: descripciones[clave] || "",

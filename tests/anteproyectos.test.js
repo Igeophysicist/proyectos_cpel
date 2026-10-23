@@ -16,7 +16,7 @@ function libro(hojas) {
 }
 
 const BASE = {
-  PRES: { filas: [["No.", "Proyecto", "Tecnología", "Ubicación", "Imagen", "Capacidad"], [1, "PFV Uno", "Fotovoltaico", "Sonora", "", "20 MW"], [2, "EO Dos", "Eólico", "Oaxaca", "data/IMAGENES/dos.jpg"]] },
+  PRES: { filas: [["No.", "Proyecto", "Tecnología", "Ubicación", "Imagen", "Capacidad", "Nivel de estudio"], [1, "PFV Uno", "Fotovoltaico", "Sonora", "", "20 MW", "Prefactibilidad"], [2, "EO Dos", "Eólico", "Oaxaca", "data/IMAGENES/dos.jpg"]] },
   DESC: { filas: [["No.", "Proyecto", "Descripción"], [1, "PFV Uno", "Párrafo uno.\r\n\r\n1. Obra A\r\n2. Obra B"]] },
   RTA: {
     filas: [
@@ -65,6 +65,7 @@ test("lee las 5 hojas de cada proyecto según su tecnología", () => {
   const [uno, dos] = proyectos;
   assert.equal(uno.tipo, "FOTOV");
   assert.deepEqual(uno.extras, [{ campo: "Capacidad", valor: "20 MW" }]);
+  assert.equal(uno.nivel, "Prefactibilidad");
   assert.equal(uno.descripcion, "Párrafo uno.\n\n1. Obra A\n2. Obra B");
   assert.deepEqual(uno.ficha, [{ campo: "Potencia [MW]", valor: "19.7" }, { campo: "Estructura", valor: "Fija" }]);
 
@@ -89,6 +90,30 @@ test("lee las 5 hojas de cada proyecto según su tecnología", () => {
   assert.ok(warnings.some((w) => /EO Dos: no tiene ubicación en el KML/.test(w)));
   assert.ok(warnings.some((w) => /no existe la imagen/.test(w)));
   assert.ok(warnings.some((w) => /EO Dos: no tiene fila en la hoja "DESC"/.test(w)));
+});
+
+test("RTA con fila de grupos arriba y No./Proyecto en la fila de encabezados", () => {
+  const hojas = {
+    ...BASE,
+    RTA: {
+      filas: [
+        ["Red de Transmisión Propuesta (RTA)"],
+        ["Identificadores", "", "Especificaciones del sistema", "", "Componetes", "", "Punto de Interconexión (POI)"],
+        ["No.", "Proyecto", "Nivel de Tensión [kV]", "Longitud [km]", "COMPONENTE", "CANTIDAD", "SE Eléctrica"],
+        [1, "PFV Uno", 115, 0.2, "Torres", "2 Unid.", "SE Norte"],
+        ["", "", "", "", "Protecciones", "1 Equip.", ""],
+        [2, "EO Dos", 230, 5, "Torres", "28 Unid.", "SE Sur"],
+      ],
+      merges: ["A1:G1", "A2:B2", "C2:D2", "E2:F2", "A4:A5", "B4:B5"],
+    },
+  };
+  const { errors, proyectos } = leerAnteproyectos(libro(hojas), XLSX);
+  assert.deepEqual(errors, []);
+  const [uno, dos] = proyectos.map((p) => Object.fromEntries(p.rta.secciones.map((s) => [s.tipo, s])));
+  assert.deepEqual(uno.especificaciones.campos.map((c) => c.valor), ["115", "0.2"]);
+  assert.deepEqual(uno.componentes.filas, [["Torres", "2 Unid."], ["Protecciones", "1 Equip."]]);
+  assert.equal(dos.poi.campos[0].valor, "SE Sur");
+  assert.equal(proyectos[0].rta.titulo, "Red de Transmisión Propuesta (RTA)");
 });
 
 test("errores: tecnología desconocida, porcentaje inválido y proyecto repetido", () => {

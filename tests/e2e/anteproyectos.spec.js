@@ -25,6 +25,7 @@ test("las tarjetas muestran la información del Excel", async ({ page }) => {
   await listo(page);
   await expect(page.locator("#projectTech")).toHaveText(p.tecnologia);
   await expect(page.locator("#projectLocation")).toHaveText(p.ubicacion);
+  if (p.nivel) await expect(page.locator("#projectNivel")).toHaveText(p.nivel);
   // Descripción: párrafos y lista numerada
   await expect(page.locator("#descVal p").first()).toBeVisible();
   if (/\n\d+\.\s/.test(p.descripcion)) await expect(page.locator("#descVal ol li").first()).toBeVisible();

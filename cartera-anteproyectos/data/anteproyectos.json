@@ -1,6 +1,6 @@
 {
   "fuente": "datos_anteproyectos.xlsx",
-  "excelModificado": "2026-10-22T19:24:17.000Z",
+  "excelModificado": "2026-10-23T19:22:32.000Z",
   "proyectos": [
     {
       "no": "1",
@@ -8,6 +8,7 @@
       "tecnologia": "Fotovoltaico",
       "tipo": "FOTOV",
       "ubicacion": "Lázaro Cárdenas, Michoacán",
+      "nivel": "Prefactibilidad",
       "imagen": "data/IMAGENES/ISLA-CAYACAL.jpg",
       "descripcion": "El Proyecto Fotovoltaico aprovecha una superficie perteneciente a la Central Termoeléctrica Plutarco Elías Calles (C.T. Petacalco) con la instalación de módulos fotovoltaicos para la generación de energía eléctrica.\n\nEl proyecto respaldará el crecimiento logístico-portuario de Lázaro Cárdenas, donde destacan el desarrollo de la Isla de La Palma y la ampliación de recintos fiscalizados y terminales portuarias. Esta infraestructura detonará demanda eléctrica para patios, grúas, almacenamiento, refrigeración, bombeo, telecomunicaciones, seguridad, logística ferroviaria y operación portuaria continua. Las obras consideradas en el proyecto son:\n\n1. Parque Fotovoltaico\n2. Líneas de Media Tensión\n3. Centros de Transformación (Transformadores e inversores)\n4. Sistema de Almacenamiento de Energía\n5. Subestación elevadora\n6. Línea de Transmisión\n7. Interconexión",
       "rta": {
@@ -102,7 +103,7 @@
               },
               {
                 "campo": "Descripción",
-                "valor": "Conexión en el nodo 01LCP-230 de la SE Lázaro Cárdenas Potencia del sistema de transmisión nacional/regional."
+                "valor": "Conexión en el nodo 01LCP-230 de la SE Lázaro Cárdenas Potencia del sistema de transmisión nacional/regional"
               },
               {
                 "campo": "Confiabilidad",
@@ -174,34 +175,311 @@
         "general": {
           "clave": "general",
           "titulo": "General",
-          "real": 58,
-          "prog": 0,
-          "nota": "• Los resultados obtenidos a la fecha muestran un sobrecosto aproximado del 20%, debido al movimiento de tierras necesario para la disposición de los paneles fotovoltaicos.\n• Se preparó presentación ejecutiva de la reconfiguración del proyecto considerando las condiciones del sitio Cayacal con depósitos de ceniza. Está en proceso el informe respectivo.\n• Se plantea 2da visita con personal del área ambiental."
+          "real": 59,
+          "prog": 87,
+          "nota": "• Se estudian cuatro alternativas con diferentes soluciones para la conformación del predio considerando los depósitos de ceniza. Está en proceso el informe respectivo.\n• Se coordinará 2da visita técnica (diciembre 2026) en conjunto con la ASIPONA (Administración del Sistema Portuario Nacional), a fin de validar las condiciones y consideraciones ambientales y sociales en la zona del proyecto."
         },
         "grupos": [
           {
             "clave": "1",
             "titulo": "Certidumbre Ambiental, Social, Tenencia de la tierra",
-            "real": 56,
-            "prog": 0,
+            "real": 55,
+            "prog": 100,
             "items": [
               {
                 "clave": "1.1",
                 "titulo": "Tenencia de la Tierra",
                 "real": 50,
-                "prog": 0
+                "prog": 100
               },
               {
                 "clave": "1.2",
                 "titulo": "Certidumbre socio-ambiental",
                 "real": 65,
-                "prog": 0,
+                "prog": 100,
                 "nota": "Se requiere reunión con la ASIPONA para verificar aspectos ambientales y sociales"
               },
               {
                 "clave": "1.3",
                 "titulo": "Visita multidisciplinaria",
                 "real": 50,
+                "prog": 100
+              }
+            ]
+          },
+          {
+            "clave": "2",
+            "titulo": "Desarrollo de Ingeniería (Anteproyecto)",
+            "real": 64,
+            "prog": 75,
+            "items": [
+              {
+                "clave": "2.1",
+                "titulo": "Viabilidad del PFV por presencia del Banco de Cenizas",
+                "real": 92,
+                "prog": 100
+              },
+              {
+                "clave": "2.2",
+                "titulo": "Análisis preliminar de la Potencia",
+                "real": 100,
+                "prog": 100,
+                "nota": "Se ha definido una potencia preliminar de 16 Mwac"
+              },
+              {
+                "clave": "2.3",
+                "titulo": "Análisis del impacto de los huracanes",
+                "real": 100,
+                "prog": 100
+              },
+              {
+                "clave": "2.4",
+                "titulo": "Planteamiento Conceptual del Proyecto",
+                "real": 60,
+                "prog": 58
+              },
+              {
+                "clave": "2.5",
+                "titulo": "Obras Complementarias Permanentes y Temporales",
+                "real": 15,
+                "prog": 58
+              },
+              {
+                "clave": "2.6",
+                "titulo": "Interconexión",
+                "real": 30,
+                "prog": 58
+              },
+              {
+                "clave": "2.7",
+                "titulo": "Informe de Dictamen",
+                "real": 50,
+                "prog": 50
+              }
+            ]
+          }
+        ],
+        "programadoPendiente": false
+      }
+    },
+    {
+      "no": "2",
+      "nombre": "PEH Tecate",
+      "tecnologia": "Equipamiento Hidroeléctrico",
+      "tipo": "EQUIHIDRO",
+      "ubicacion": "Tecate, Baja California",
+      "nivel": "Prefactibilidad",
+      "imagen": "data/IMAGENES/TECATE.jpg",
+      "descripcion": "El Proyecto de Equipamiento Hidroeléctrico aprovecha las descargas del Acueducto Río Colorado – Tijuana mediante la incorporación de una derivación que conecta con un tanque puesta a presión y que mediante una tubería a presión conecta con la casa de máquinas que se ubica en un afluente innominado para aprovechar una carga bruta de 580 m para generar energía eléctrica y, posteriormente, descargar en la Presa El Carrizo.\n\nEl diseño del equipamiento considera las condiciones actuales de operación del Acueducto con una operación continua que abastece de agua a la ciudad de Tijuana, Baja California, aportando energía al Sistema Eléctrico Tijuana – Ensenada. Las obras consideradas en el proyecto son:\n\n1. Tubería a presión\n2. Tanque puesta a presión\n3. Casa de Máquinas\n4. Subestación elevadora\n5. Interconexión",
+      "rta": {
+        "titulo": "Red de Transmisión Propuesta (RTA)",
+        "secciones": [
+          {
+            "tipo": "especificaciones",
+            "titulo": "Especificaciones del sistema",
+            "campos": [
+              {
+                "campo": "Nivel de Tensión [kV]",
+                "valor": "115"
+              },
+              {
+                "campo": "Capacidad de Evacuación [MVA]",
+                "valor": "19"
+              },
+              {
+                "campo": "Tipo de Conductor",
+                "valor": "ACSR / ACSS"
+              },
+              {
+                "campo": "Longitud de Línea [km]",
+                "valor": "11"
+              },
+              {
+                "campo": "Configuración",
+                "valor": "1 Circuito"
+              },
+              {
+                "campo": "Tecnología de Datos",
+                "valor": "Cable OPGW"
+              }
+            ]
+          },
+          {
+            "tipo": "justificacion",
+            "titulo": "Justificación de la ruta",
+            "campos": [
+              {
+                "campo": "Optimización de Longitud",
+                "valor": "Minimización del trazado para reducir pérdidas técnicas y costos de inversión en conductor y contar con capacidad Enel NODO"
+              },
+              {
+                "campo": "Criterio Socio-Ambiental",
+                "valor": "Alejamiento de zonas de alta densidad poblacional y áreas protegidas de biodiversidad"
+              },
+              {
+                "campo": "Franjas de Servidumbre",
+                "valor": "Aprovechamiento de infraestructuras existentes para agilizar gestiones prediales y permisos"
+              }
+            ]
+          },
+          {
+            "tipo": "componentes",
+            "titulo": "Componentes",
+            "columnas": [
+              "COMPONENTE",
+              "DESCRIPCIÓN TÉCNICA",
+              "CANTIDAD"
+            ],
+            "filas": [
+              [
+                "Torres / Estructuras",
+                "Celosía metálica, altura 30-35 m",
+                "28 Unid."
+              ],
+              [
+                "S/E Elevadora",
+                "115/34 kV, Transformador ppal.",
+                "1 Unid."
+              ],
+              [
+                "S/E Interconexión",
+                "Ampliación de bahía en POI",
+                "1 Bahía"
+              ],
+              [
+                "Protecciones",
+                "Relés de distancia y diferencial",
+                "[X] Equip."
+              ]
+            ]
+          },
+          {
+            "tipo": "poi",
+            "titulo": "Punto de Interconexión (POI)",
+            "campos": [
+              {
+                "campo": "SE Eléctrica",
+                "valor": "Subestación La Herradura"
+              },
+              {
+                "campo": "Descripción",
+                "valor": "Conexión en el nodo 07-HRA-69 del sistema de transmisión nacional/regional."
+              },
+              {
+                "campo": "Confiabilidad",
+                "valor": "Alta Confiabilidad"
+              }
+            ]
+          }
+        ]
+      },
+      "ficha": [
+        {
+          "campo": "Potencia Instalada [MW]",
+          "valor": "19.4"
+        },
+        {
+          "campo": "Generación media anual [GWh]",
+          "valor": "170"
+        },
+        {
+          "campo": "Factor de Planta [%]",
+          "valor": "100"
+        },
+        {
+          "campo": "Número de turbinas [#]",
+          "valor": "2"
+        },
+        {
+          "campo": "Tipo de turbina",
+          "valor": "Pelton"
+        },
+        {
+          "campo": "Consumo específico [m3/kWh]",
+          "valor": "0.74"
+        },
+        {
+          "campo": "Gasto de diseño [m3/s]",
+          "valor": "4"
+        },
+        {
+          "campo": "Carga bruta [m]",
+          "valor": "580"
+        },
+        {
+          "campo": "Volumen Útil",
+          "valor": "NA"
+        },
+        {
+          "campo": "Nodo de Interconexión",
+          "valor": "S.E. La Herradura"
+        },
+        {
+          "campo": "CAPEX [MUSD]",
+          "valor": "54.5"
+        },
+        {
+          "campo": "OPEX [MUSD/Año]",
+          "valor": "4.6"
+        }
+      ],
+      "avance": {
+        "general": {
+          "clave": "general",
+          "titulo": "General",
+          "real": 33,
+          "prog": 47,
+          "nota": "• El 18 de septiembre la Secretaría para el Manejo, Saneamiento y Protección del Agua (SEPROA) entregó a la CPEL información técnica del acueducto. Esta información muestra incertidumbre en la disponibilidad del agua a largo plazo para el aprovechamiento del proyecto.\n• Se gestionará visita técnica en noviembre, se llevará a cabo posterior a la presentación del proyecto a la SEPROA (Secretaría para el Manejo, Saneamiento y Protección del Agua de Baja California)."
+        },
+        "grupos": [
+          {
+            "clave": "1",
+            "titulo": "Certidumbre Social, Ambiental, Tenencia de la tierra e Hídrica",
+            "real": 31,
+            "prog": 61,
+            "items": [
+              {
+                "clave": "1.1",
+                "titulo": "Análisis de la disponibilidad y factibilidad del uso del recurso hídrico.",
+                "real": 50,
+                "prog": 75,
+                "nota": "• La disponibilidad no es la prevista inicialmente"
+              },
+              {
+                "clave": "1.2",
+                "titulo": "Gestión con la CEA de BC y la CONAGUA entorno a la concesión de agua.",
+                "real": 50,
+                "prog": 63
+              },
+              {
+                "clave": "1.3",
+                "titulo": "Tenencia de la tierra",
+                "real": 20,
+                "prog": 75,
+                "nota": "• Se recabó en catastro municipal plano general de propietarios"
+              },
+              {
+                "clave": "1.4",
+                "titulo": "Diagnóstico social preliminar.",
+                "real": 30,
+                "prog": 69
+              },
+              {
+                "clave": "1.5",
+                "titulo": "Diagnóstico ambiental preliminar.",
+                "real": 50,
+                "prog": 69
+              },
+              {
+                "clave": "1.6",
+                "titulo": "Diagnóstico arqueológico preliminar.",
+                "real": 20,
+                "prog": 75
+              },
+              {
+                "clave": "1.7",
+                "titulo": "Análisis FODA.",
+                "real": 0,
                 "prog": 0
               }
             ]
@@ -209,57 +487,49 @@
           {
             "clave": "2",
             "titulo": "Desarrollo de Ingeniería (Anteproyecto)",
-            "real": 60,
-            "prog": 0,
+            "real": 34,
+            "prog": 33,
             "items": [
               {
                 "clave": "2.1",
-                "titulo": "Viabilidad del PFV por presencia del Banco de Cenizas",
-                "real": 90,
-                "prog": 0
+                "titulo": "Visita técnica al sitio del proyecto.",
+                "real": 30,
+                "prog": 17
               },
               {
                 "clave": "2.2",
-                "titulo": "Análisis preliminar de la Potencia",
-                "real": 100,
-                "prog": 0,
-                "nota": "Se ha definido una potencia preliminar de 16 Mwac"
+                "titulo": "Levantamiento topográfico LiDAR con Dron.",
+                "real": 0,
+                "prog": 0
               },
               {
                 "clave": "2.3",
-                "titulo": "Análisis del impacto de los huracanes",
-                "real": 100,
-                "prog": 0
+                "titulo": "Análisis de la operación del Acueducto y Estudio hidrológico.",
+                "real": 70,
+                "prog": 75
               },
               {
                 "clave": "2.4",
-                "titulo": "Planteamiento Conceptual del Proyecto",
-                "real": 40,
-                "prog": 0,
-                "nota": "Se estudiaron 5 alternativas. En proceso informe."
+                "titulo": "Planteamiento de obras principales (toma, conducción a presión, casa de máquinas)",
+                "real": 65,
+                "prog": 63
               },
               {
                 "clave": "2.5",
-                "titulo": "Obras Complementarias Permanentes y Temporales",
-                "real": 15,
-                "prog": 0
+                "titulo": "Obras complementarias requeridas.",
+                "real": 20,
+                "prog": 44
               },
               {
                 "clave": "2.6",
-                "titulo": "Interconexión",
-                "real": 30,
-                "prog": 0
-              },
-              {
-                "clave": "2.7",
-                "titulo": "Informe de Dictamen",
-                "real": 50,
+                "titulo": "Estimación preliminar de CAPEX , OPEX y programa de obra.",
+                "real": 20,
                 "prog": 0
               }
             ]
           }
         ],
-        "programadoPendiente": true
+        "programadoPendiente": false
       }
     }
   ]
