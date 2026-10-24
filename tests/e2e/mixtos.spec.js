@@ -141,7 +141,7 @@ test("Resumen: capacidad, CAPEX y avance promedio no cuentan los proyectos de 2d
   await cargado(page);
   const kpi = (etiqueta) => page.locator(".kpi", { hasText: etiqueta }).locator(".kpi__value");
   await expect(kpi("Capacidad total")).toHaveText(`${new Intl.NumberFormat("es-MX", { maximumFractionDigits: 0 }).format(capacidad)} MW`);
-  await expect(kpi("Avance global promedio")).toHaveText(`${promedio.toFixed(1)}%`);
+  await expect(kpi("Avance global promedio")).toHaveText(`${promedio.toFixed(2)}%`);
   const capex = cuentan.reduce((s, r) => s + (parseNumber(r.CAPEX) || 0), 0);
   const capexKpi = page.locator(".kpi", { hasText: "CAPEX total (USD)" });
   await expect(capexKpi.locator(".kpi__value")).toHaveText(
@@ -207,4 +207,35 @@ test("Trámites: el botón de la ficha abre el desglose de los 10 trámites", as
   await expect(panel).toHaveCount(0);
   await expect(page.locator("#detail")).toHaveClass(/is-open/); // la ficha sigue abierta
   await expect(page.locator("#tramites-resumen")).toHaveCount(0); // ya no está en el Resumen
+});
+
+test("mientras cargan los datos se ven tarjetas de relleno, no una pantalla completa", async ({ page }) => {
+  let soltar;
+  const espera = new Promise((r) => (soltar = r));
+  await page.route(/DATOS_MIXTOS\.json/, async (route) => {
+    await espera;
+    await route.continue();
+  });
+  await page.goto("/cartera-mixtos/");
+  await expect(page.locator("#project-list .pcard--esqueleto").first()).toBeVisible();
+  await expect(page.locator(".topbar")).toBeVisible(); // la página no queda tapada
+  soltar();
+  await cargado(page);
+  await expect(page.locator("#project-list .pcard--esqueleto")).toHaveCount(0);
+  await expect(page.locator("#project-list .pcard").first()).toBeVisible();
+});
+
+test("la barra de Parque de cada tarjeta lleva el color de su grupo", async ({ page }) => {
+  await page.goto("/cartera-mixtos/");
+  await cargado(page);
+  const tarjetas = page.locator("#project-list .pcard");
+  const n = await tarjetas.count();
+  for (let i = 0; i < n; i++) {
+    const t = tarjetas.nth(i);
+    const grupo = await t.locator(".badge").last().textContent().catch(() => null);
+    const letra = grupo && /Grupo ([ABC])/.exec(grupo);
+    if (!letra) continue;
+    await expect(t.locator(".pbar").first().locator(".pbar__fill")).toHaveClass(new RegExp(`pbar__fill--${letra[1].toLowerCase()}`));
+    await expect(t.locator(".pbar").nth(1).locator(".pbar__fill")).not.toHaveClass(/pbar__fill--/);
+  }
 });

@@ -64,7 +64,6 @@
       .filter((p) => Number.isFinite(p.v));
   }
 
-  const fmt1 = (n) => n.toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 });
   const fmt2 = (n) => n.toLocaleString("es-MX", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
   function resumen({ real, fit, operacion }) {
@@ -98,7 +97,7 @@
     else items.push("Al ritmo actual no hay fecha estimada para llegar a 100%.");
     if (operacion && !isPastOrToday(operacion)) {
       items.push(
-        `En la fecha de operación (${PC.fmtFull(operacion.getTime())}) llevaría <b>${fmt1(valueAt(fit, operacion.getTime()))}%</b> al ritmo actual.`
+        `En la fecha de operación (${PC.fmtFull(operacion.getTime())}) llevaría <b>${fmt2(valueAt(fit, operacion.getTime()))}%</b> al ritmo actual.`
       );
     }
     return items;

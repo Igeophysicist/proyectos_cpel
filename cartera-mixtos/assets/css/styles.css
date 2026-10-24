@@ -354,9 +354,12 @@ a{color:inherit;}
 .pbar__label{width:52px; flex:none;}
 .pbar__track{flex:1; height:6px; border-radius:99px; background:var(--surface-sunken); overflow:hidden;}
 .pbar__fill{display:block; height:100%; background:var(--teal-700); width:var(--pct,0%); animation:bar-grow .7s ease-out;}
+.pbar__fill--a{background:var(--status-a);} .pbar__fill--b{background:var(--status-b);} .pbar__fill--c{background:var(--status-c);}
 .pbar__val{width:36px; text-align:right; flex:none; font-weight:700; color:var(--ink-700);}
 .pcard--nogeo{opacity:.9;}
 .geo-flag{font-size:11px; color:var(--ink-500); display:flex; align-items:center; gap:4px; margin-top:6px;}
+/* Lo que falta en el Excel ("Sin dato", "por confirmar"): en gris, sin competir con los datos */
+.dato-falta{color:var(--ink-500); font-weight:400; font-style:italic;}
 
 .empty-state{
   text-align:center; padding:var(--space-6) var(--space-4); color:var(--ink-500);
@@ -528,8 +531,13 @@ html.dialogo-abierto{overflow:hidden;}
 .evolucion__nota{font-size:11.5px; color:var(--ink-500); line-height:1.45; margin:var(--space-3) 0 0;}
 
 /* ---------- Loader / errores ---------- */
-.loader{
-  position:fixed; inset:0; z-index:1200; background:var(--teal-900); color:#fff;
+/* Mientras carga: solo para lectores de pantalla (la lista muestra tarjetas de relleno). */
+.loader{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap;}
+.loader .loader__spin{display:none;}
+/* Si los datos no cargan: pantalla completa con el error. */
+.loader.is-error{
+  position:fixed; inset:0; z-index:1200; width:auto; height:auto; clip:auto; white-space:normal;
+  padding:var(--space-4); text-align:center; background:var(--teal-900); color:#fff;
   display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px;
 }
 .loader.is-hidden{display:none;}
@@ -539,6 +547,20 @@ html.dialogo-abierto{overflow:hidden;}
 }
 @keyframes spin{to{transform:rotate(360deg);}}
 .loader__text{font-size:13px; color:#cfe0db;}
+
+/* Tarjetas de relleno mientras cargan los datos (mismo tamaño que las reales) */
+.pcard--esqueleto{display:flex; flex-direction:column; gap:10px; cursor:default; opacity:1; animation:none;}
+.pcard--esqueleto:hover{transform:none; box-shadow:var(--shadow-card);}
+.esq{
+  display:block; height:10px; border-radius:99px;
+  background:linear-gradient(90deg, var(--surface-sunken) 30%, #f7f9f8 50%, var(--surface-sunken) 70%) 0 0 / 300% 100%;
+  animation:esq-brillo 1.4s ease-in-out infinite;
+}
+.esq--titulo{height:14px; width:62%;}
+.esq--sub{width:45%;}
+.esq--meta{width:70%; margin-bottom:4px;}
+.esq--barra{height:6px;}
+@keyframes esq-brillo{from{background-position:100% 0;} to{background-position:0 0;}}
 .toast{
   position:fixed; left:var(--space-4); right:var(--space-4); bottom:calc(var(--tabbar-h) + var(--space-3));
   z-index:1100; background:var(--ink-900); color:#fff; padding:12px 14px; border-radius:var(--radius-m);
@@ -606,6 +628,7 @@ html.dialogo-abierto{overflow:hidden;}
 }
 
 @media (prefers-reduced-motion: reduce){
+  .esq{animation:none;}
   /* Sin retraso tampoco: las entradas escalonadas (indicadores, tarjetas)
      quedaban invisibles unos instantes aunque duraran casi nada. */
   *{animation-duration:.01ms !important; animation-delay:0s !important; transition-duration:.01ms !important;}

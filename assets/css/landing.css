@@ -65,11 +65,12 @@ a{color:inherit; text-decoration:none;}
   display:flex; align-items:center; gap:var(--space-3);
   padding:0 var(--space-4);
 }
-.topbar__mark{
-  width:28px; height:28px; border-radius:7px; flex:none;
-  background:linear-gradient(155deg, var(--gold-500), var(--gold-700));
+/* El logo CPEL es la marca de la barra; una línea fina lo separa del título. */
+.topbar .brand-strip_t{opacity:1; flex:none;}
+.topbar__title{
+  font-size:15px; font-weight:700; letter-spacing:.1px;
+  padding-left:var(--space-3); border-left:1px solid rgba(238,243,241,.3); line-height:22px;
 }
-.topbar__title{font-size:15px; font-weight:700; letter-spacing:.1px;}
 .topbar__logout{
   margin-left:auto; font-size:13px; font-weight:700; color:var(--ink-on-dark);
   padding:6px 12px; border:1px solid rgba(238,243,241,.35); border-radius:var(--radius-s);
@@ -97,16 +98,16 @@ a{color:inherit; text-decoration:none;}
 /* Celular: todo cabe en una sola barra, también con "Salir" */
 @media (max-width:440px){
   .topbar{gap:8px; padding:0 12px;}
-  .topbar__mark{width:24px; height:24px; border-radius:6px;}
-  .topbar__title{font-size:14px;}
+  .topbar__title{font-size:14px; padding-left:8px;}
   .topbar .brand-strip_t__logo--cpel{height:20px;}
   .topbar__logout{padding:5px 8px; font-size:12px;}
   .cdmx__hora{font-size:13px;}
   .cdmx__clima{font-size:12px; gap:3px;}
   .cdmx__fila{gap:6px;}
 }
-@media (max-width:370px){
+@media (max-width:340px){
   .topbar .brand-strip_t{display:none;}
+  .topbar__title{border-left:0; padding-left:0;}
 }
 
 .main{max-width:760px; margin:0 auto; padding:var(--space-5) var(--space-4) var(--space-6);}

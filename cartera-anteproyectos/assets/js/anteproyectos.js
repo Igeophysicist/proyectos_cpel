@@ -28,7 +28,7 @@
   const DATA_FILE_PATH = "data/anteproyectos.json";
   const KML_FILE_PATH = "data/ANTEPROYECTOS.kml";
 
-  const { esc, slugify, formatDateShort, normalizeText } = window.TextUtils;
+  const { esc, slugify, formatDateShort, normalizeText, formatPct, formatPts } = window.TextUtils;
   const $ = (id) => document.getElementById(id);
 
   let proyectos = [];
@@ -75,7 +75,7 @@
   /** "DESCRIPCIÓN TÉCNICA" -> "Descripción técnica" (encabezados en mayúsculas). */
   const oracion = (t) => (t && t === t.toUpperCase() ? t.charAt(0) + t.slice(1).toLowerCase() : t);
 
-  const pctTxt = (v) => (v === null || v === undefined ? "—" : `${Math.round(v * 10) / 10}%`);
+  const pctTxt = formatPct;
   const ancho = (v) => Math.max(0, Math.min(Number(v) || 0, 100));
 
   // ------------------------------------------------------------ avance
@@ -90,9 +90,9 @@
       </div>`;
     let pie = `<p class="av-pendiente">Programado: pendiente de captura.</p>`;
     if (!programadoPendiente && general.real !== null && general.prog !== null) {
-      const d = Math.round((general.real - general.prog) * 10) / 10;
+      const d = Math.round((general.real - general.prog) * 100) / 100;
       pie = `<div class="variance ${d >= 0 ? "variance--ok" : "variance--late"}">${
-        d > 0 ? `Adelantado ${d} pts respecto al programa` : d < 0 ? `Atraso de ${Math.abs(d)} pts respecto al programa` : "Al día respecto al programa"
+        d > 0 ? `Adelantado ${formatPts(d)} pts respecto al programa` : d < 0 ? `Atraso de ${formatPts(d)} pts respecto al programa` : "Al día respecto al programa"
       }</div>`;
     }
     return `
