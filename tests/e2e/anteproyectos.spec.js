@@ -37,7 +37,7 @@ test("las tarjetas muestran la información del Excel", async ({ page }) => {
   await page.locator(".rta-mas summary").click();
   await expect(page.locator(".rta-just li").first()).toBeVisible();
   // Avance general (con la nota total) y avances particulares
-  await expect(page.locator("#generalBody .progress-row--real")).toContainText(`${p.avance.general.real.toFixed(2)}%`);
+  await expect(page.locator("#generalBody .avg__valor")).toHaveText(`${p.avance.general.real.toFixed(2)}%`);
   if (p.avance.general.nota) {
     // La nota total va plegada: se abre al tocarla.
     await expect(page.locator(".av-notas-gen__texto")).toBeHidden();
