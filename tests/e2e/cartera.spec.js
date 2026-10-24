@@ -109,3 +109,24 @@ test("Hitos de pago: anterior, actual y próximo; Ver todos abre la lista por co
   const alto = await ventana.locator(".sheet__panel").evaluate((el) => el.getBoundingClientRect().height / window.innerHeight);
   if (page.viewportSize().width < 900) expect(alto).toBeLessThan(0.9);
 });
+
+test("Avance General: Programado y Real, semáforo y cambio desde el corte anterior", async ({ page }) => {
+  const { cartera, carteraHistorial } = datos();
+  globalThis.TextUtils = require("../../assets/js/shared/text-utils.js");
+  const A = require("../../cartera-cpel/assets/js/avance.js");
+  const p = cartera[0];
+  const n = (v) => Math.round(parseFloat(String(v).replace("%", "")) * 100) / 100;
+  const real = n(p.avanceReal);
+  const prog = n(p.avanceProg);
+  await page.goto(`/cartera-cpel/?proyecto=${slugify(p.nombre)}`);
+  await listo(page);
+  const general = page.locator("#generalBody");
+  await expect(general.locator(".progress-row--real .progress-row__info > span").last()).toHaveText(`${real.toFixed(2)}%`);
+  await expect(general.locator(".progress-row--prog .progress-row__info > span").last()).toHaveText(`${prog.toFixed(2)}%`);
+  const sem = A.semaforo(Math.round((real - prog) * 100) / 100);
+  await expect(general.locator(".variance")).toHaveClass(new RegExp(`variance--${sem}`));
+  const cambio = A.cambioSemanal(carteraHistorial, slugify(p.nombre));
+  if (cambio) await expect(general.locator(".avg__semana")).toContainText(`${Math.abs(cambio.diff).toFixed(2)} desde el`);
+  // Avances particulares: P y R por área
+  await expect(page.locator("#particularGrid .particular .mini-row")).toHaveCount(8);
+});

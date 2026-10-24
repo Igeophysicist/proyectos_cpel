@@ -113,24 +113,32 @@ body{ padding-bottom: calc(var(--tabbar-h) + env(safe-area-inset-bottom, 0px)); 
 .legend .l-prog{ background: var(--prog-color); }
 .legend .l-real{ background: var(--real-color); }
 
-.progress-stack{ display: flex; flex-direction: column; gap: var(--space-3); }
+.progress-stack{ display: flex; flex-direction: column; gap: 8px; }
 .progress-row__info{
   display: flex; justify-content: space-between;
-  font-size: 13px; font-weight: 700; margin-bottom: 5px;
+  font-size: 12.5px; font-weight: 700; margin-bottom: 3px;
 }
 .progress-row--prog .progress-row__info{ color: var(--prog-color); }
 .progress-row--real .progress-row__info{ color: var(--real-color); }
-.bar{ height: 10px; background: var(--surface-sunken); border-radius: 99px; overflow: hidden; }
+.bar{ display: block; height: 8px; background: var(--surface-sunken); border-radius: 99px; overflow: hidden; }
 .bar--mini{ height: 6px; flex: 1; background: rgba(26,36,34,.1); } /* fondo visible sobre las tarjetas grises */
 .bar__fill{ display: block; height: 100%; border-radius: 99px; width: 0; transition: width .6s cubic-bezier(.4,0,.2,1); }
 .bar__fill--prog{ background: var(--prog-color); }
 .bar__fill--real{ background: var(--real-color); }
 .variance{
-  margin-top: var(--space-3); font-size: 12px; font-weight: 700;
-  display: inline-flex; align-items: center; gap: 6px; border-radius: 99px; padding: 3px 10px;
+  margin-top: 10px; font-size: 11.5px; font-weight: 700;
+  display: inline-flex; align-items: center; gap: 6px; border-radius: 99px; padding: 2px 10px;
 }
+/* Semáforo (avance.js): al día o adelantado, atraso leve, atraso mayor */
 .variance--ok{ background: var(--status-a-bg, #e4f3ec); color: #1e7a52; }
-.variance--late{ background: var(--status-c-bg, #fbe9e9); color: #b83b3b; }
+.variance--leve{ background: #fbf0d9; color: #7f5a14; }
+.variance--grave{ background: var(--status-c-bg, #fbe9e9); color: #b83b3b; }
+
+/* Cambio del Real desde el corte anterior, junto a "Real" (avance.js) */
+.avg__semana{ margin-left: 6px; font-size: 11.5px; font-weight: 700; }
+.avg__semana--sube{ color: #1e7a52; }
+.avg__semana--baja{ color: #b83b3b; }
+.avg__semana--igual{ color: var(--ink-500); }
 
 /* ---------- Avances particulares ---------- */
 .particular-grid{ display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
@@ -472,6 +480,7 @@ body.modo-pdf .card--hitos, body.modo-pdf .card:has(#eventosVal){ grid-column: 1
 body.modo-pdf .progress-stack{ gap: 5px; }
 body.modo-pdf .bar{ height: 7px; }
 body.modo-pdf .variance{ margin-top: 5px; padding: 3px 8px; font-size: 10.5px; }
+body.modo-pdf .avg__semana{ font-size: 10px; }
 body.modo-pdf .legend{ margin-bottom: 4px; font-size: 10px; }
 body.modo-pdf .particular-grid, body.modo-pdf .hitos-tres{ gap: 5px; }
 body.modo-pdf .particular, body.modo-pdf .hito3{ padding: 5px 7px; }

@@ -28,7 +28,7 @@
   const DATA_FILE_PATH = "data/anteproyectos.json";
   const KML_FILE_PATH = "data/ANTEPROYECTOS.kml";
 
-  const { esc, slugify, formatDateShort, normalizeText, formatPct, formatPts } = window.TextUtils;
+  const { esc, slugify, formatDateShort, normalizeText } = window.TextUtils;
   const $ = (id) => document.getElementById(id);
 
   let proyectos = [];
@@ -75,32 +75,18 @@
   /** "DESCRIPCIÓN TÉCNICA" -> "Descripción técnica" (encabezados en mayúsculas). */
   const oracion = (t) => (t && t === t.toUpperCase() ? t.charAt(0) + t.slice(1).toLowerCase() : t);
 
-  const pctTxt = formatPct;
-  const ancho = (v) => Math.max(0, Math.min(Number(v) || 0, 100));
-
   // ------------------------------------------------------------ avance
-  /** Avance general: Real, Programado (o "pendiente") y la NOTA TOTAL. */
+  // Barra de Real con la marca del Programado y semáforo (ver
+  // ../cartera-cpel/assets/js/avance.js, el mismo de Cartera CPEL).
+  const A = window.CarteraAvance;
+
+  /** Avance general: Real, Programado (o "pendiente"), semáforo y la NOTA TOTAL. */
   function generalHtml(avance) {
     if (!avance || !avance.general) return `<div class="state-msg">Sin avance registrado para este anteproyecto.</div>`;
     const { general, programadoPendiente } = avance;
-    const fila = (lado, etiqueta, valor) => `
-      <div class="progress-row progress-row--${lado}">
-        <div class="progress-row__info"><span>${etiqueta}</span><span>${pctTxt(valor)}</span></div>
-        <div class="bar"><span class="bar__fill bar__fill--${lado}" style="width:${ancho(valor)}%"></span></div>
-      </div>`;
-    let pie = `<p class="av-pendiente">Programado: pendiente de captura.</p>`;
-    if (!programadoPendiente && general.real !== null && general.prog !== null) {
-      const d = Math.round((general.real - general.prog) * 100) / 100;
-      pie = `<div class="variance ${d >= 0 ? "variance--ok" : "variance--late"}">${
-        d > 0 ? `Adelantado ${formatPts(d)} pts respecto al programa` : d < 0 ? `Atraso de ${formatPts(d)} pts respecto al programa` : "Al día respecto al programa"
-      }</div>`;
-    }
     return `
-      <div class="progress-stack">
-        ${fila("prog", "Programado", programadoPendiente ? null : general.prog)}
-        ${fila("real", "Real", general.real)}
-      </div>
-      ${pie}
+      ${A.generalHtml(general.real, general.prog, { pendiente: programadoPendiente })}
+      ${programadoPendiente ? `<p class="av-pendiente">Programado: pendiente de captura.</p>` : ""}
       ${
         general.nota
           ? `<details class="av-notas-gen"><summary>Notas</summary><div class="av-notas-gen__texto">${textoHtml(general.nota)}</div></details>`
@@ -112,16 +98,8 @@
   const notaHtml = (texto, titulo = "") =>
     `<div class="av-nota">${titulo ? `<div class="av-nota__titulo">${esc(titulo)}</div>` : ""}${textoHtml(texto)}</div>`;
 
-  /** Fila P / R como las de Avances particulares de Cartera CPEL. */
-  function miniFilas(x, pendiente) {
-    const fila = (lado, letra, v) => `
-      <div class="mini-row">
-        <span class="mini-row__tag mini-row__tag--${lado}">${letra}</span>
-        <div class="bar bar--mini"><span class="bar__fill bar__fill--${lado}" style="width:${ancho(v)}%"></span></div>
-        <span class="mini-row__val">${v === null || v === undefined ? "—" : pctTxt(v)}</span>
-      </div>`;
-    return fila("prog", "P", pendiente ? null : x.prog) + fila("real", "R", x.real);
-  }
+  /** Real y Programado de un avance, como en Avances particulares de Cartera CPEL. */
+  const miniFilas = (x, pendiente) => A.miniHtml(x.real, x.prog, { pendiente });
 
   /** Avances particulares ("1. …", "2. …"): un botón por cada uno. */
   function particularesHtml(avance) {
@@ -293,6 +271,7 @@
     $("rtaTitle").textContent = (p.rta && p.rta.titulo) || "Red de Transmisión Propuesta (RTA)";
     $("rtaBody").innerHTML = rtaHtml(p.rta);
     $("generalBody").innerHTML = generalHtml(p.avance);
+    A.pintarSemana($("generalBody"), window.CarteraCurva.cargar(), slugify(p.nombre), () => actual === p);
     $("particularGrid").innerHTML = particularesHtml(p.avance);
     $("fichaBody").innerHTML = fichaHtml(p);
 

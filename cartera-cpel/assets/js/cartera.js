@@ -154,7 +154,7 @@
     ["plazo_operacion_fecha", "Operación"],
   ];
 
-  const { esc, parseNumber, parseDate, isPastOrToday, slugify, formatDateShort, formatPct, formatPts } = window.TextUtils;
+  const { esc, parseNumber, parseDate, isPastOrToday, slugify, formatDateShort } = window.TextUtils;
 
   let proyectos = [];
   let hitos = {}; // por proyecto (slug del nombre), de hitos.json
@@ -177,17 +177,6 @@
   function pct(value) {
     const n = parseNumber(value);
     return n === null ? 0 : Math.round(n * 100) / 100;
-  }
-
-  /** Ancho de barra acotado a 0–100%. */
-  function ancho(v) {
-    return Math.max(0, Math.min(v, 100));
-  }
-
-  function setBar(barId, valId, value) {
-    const v = pct(value);
-    $(barId).style.width = ancho(v) + "%";
-    $(valId).textContent = formatPct(v);
   }
 
   /** Hitos de pago (si no cargan, la ficha dice que no hay y el resto sigue igual). */
@@ -276,36 +265,21 @@
     tech.hidden = !String(p.tecnologia || "").trim();
     document.querySelectorAll("[data-project-name]").forEach((el) => (el.textContent = texto(p.nombre, "")));
 
-    // Avance general
-    setBar("progGenBar", "progGenVal", p.avanceProg);
-    setBar("realGenBar", "realGenVal", p.avanceReal);
-    const diff = Math.round((pct(p.avanceReal) - pct(p.avanceProg)) * 100) / 100;
-    const variance = $("variance");
-    variance.hidden = false;
-    variance.className = "variance " + (diff >= 0 ? "variance--ok" : "variance--late");
-    if (diff > 0) variance.textContent = `Adelantado ${formatPts(diff)} pts respecto al programa`;
-    else if (diff < 0) variance.textContent = `Atraso de ${formatPts(diff)} pts respecto al programa`;
-    else variance.textContent = "Al día respecto al programa";
+    // Avance general: Real con la marca del Programado, semáforo y cambio
+    // desde el corte anterior (ver avance.js)
+    const A = window.CarteraAvance;
+    $("generalBody").innerHTML = A.generalHtml(pct(p.avanceReal), pct(p.avanceProg));
+    const historial = window.CarteraCurva ? window.CarteraCurva.cargar() : null;
+    A.pintarSemana($("generalBody"), historial, slugify(p.nombre), () => actual === p);
 
     // Avances particulares
-    $("particularGrid").innerHTML = PARTICULARES.map(([key, label]) => {
-      const pv = pct(p[`prog${key}`]);
-      const rv = pct(p[`real${key}`]);
-      return `
+    $("particularGrid").innerHTML = PARTICULARES.map(
+      ([key, label]) => `
         <div class="particular">
           <div class="particular__title">${label}</div>
-          <div class="mini-row">
-            <span class="mini-row__tag mini-row__tag--prog">P</span>
-            <div class="bar bar--mini"><span class="bar__fill bar__fill--prog" style="width:${ancho(pv)}%"></span></div>
-            <span class="mini-row__val">${formatPct(pv)}</span>
-          </div>
-          <div class="mini-row">
-            <span class="mini-row__tag mini-row__tag--real">R</span>
-            <div class="bar bar--mini"><span class="bar__fill bar__fill--real" style="width:${ancho(rv)}%"></span></div>
-            <span class="mini-row__val">${formatPct(rv)}</span>
-          </div>
-        </div>`;
-    }).join("");
+          ${A.miniHtml(pct(p[`real${key}`]), pct(p[`prog${key}`]))}
+        </div>`
+    ).join("");
 
     // Hitos de pago: anterior, actual y próximo (ver hitos.js)
     contratoHitos = 0;
