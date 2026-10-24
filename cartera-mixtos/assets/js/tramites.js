@@ -19,8 +19,6 @@
  */
 (function (global) {
   const TRAMITES = [
-    { id: "di", grupo: "Derechos inmobiliarios", nombre: "Derechos inmobiliarios", peso: 10, parque: "DI_P", lt: "DI_LT" },
-    { id: "int", grupo: "Interconexión", nombre: "Estudios de interconexión", peso: 10, parque: "ES_INT", lt: "ES_INT" },
     { id: "mia", grupo: "Ambientales", nombre: "MIA – DTU", peso: 20, parque: "A_MIA_P", lt: "A_MIA_LT" },
     { id: "etj", grupo: "Ambientales", nombre: "ETJ", peso: 10, parque: "A_ETJ_P", lt: "A_ETJ_LT" },
     { id: "misse", grupo: "Social", nombre: "MISSE (EvIS)", peso: 20, parque: "S_MISSE_C", lt: "S_MISSE_LT" },
@@ -29,6 +27,8 @@
     { id: "pemex", grupo: "Dependencias", nombre: "PEMEX", peso: 5, parque: "PEMEX_C", lt: "PEMEX_LT" },
     { id: "conagua", grupo: "Dependencias", nombre: "CONAGUA", peso: 5, parque: "CONA_C", lt: "CONA_LT" },
     { id: "afac", grupo: "Dependencias", nombre: "AFAC", peso: 5, parque: "AFAC_C", lt: "AFAC_LT" },
+    { id: "di", grupo: "Derechos inmobiliarios", nombre: "Derechos inmobiliarios", peso: 10, parque: "DI_P", lt: "DI_LT" },
+    { id: "int", grupo: "Interconexión", nombre: "Estudios de interconexión", peso: 10, parque: "ES_INT", lt: "ES_INT" },
   ];
   const PESO_GLOBAL = { parque: 0.8, lt: 0.2 };
   const COLUMNAS = Array.from(new Set(TRAMITES.flatMap((t) => [t.parque, t.lt])));

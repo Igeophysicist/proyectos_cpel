@@ -97,8 +97,8 @@
   }
 
   /**
-   * Trámites agrupados como en el Excel (Derechos inmobiliarios,
-   * Interconexión, Ambientales, Social, Dependencias), cada uno en una
+   * Trámites por grupo (Ambientales, Social, Dependencias, Derechos
+   * inmobiliarios e Interconexión; orden de tramites.js), cada uno en una
    * tarjeta pequeña de la cuadrícula: nombre y peso, y el avance de Parque
    * y de LT (los que cuentan igual para los dos, una sola barra). Los
    * terminados se marcan en verde.
@@ -107,7 +107,7 @@
     let grupo = null;
     return items
       .map((t) => {
-        const encabezado = t.grupo !== grupo && t.grupo !== t.nombre ? `<li class="tram-grupo">${esc(t.grupo)}</li>` : "";
+        const encabezado = t.grupo !== grupo ? `<li class="tram-grupo">${esc(t.grupo)}</li>` : "";
         grupo = t.grupo;
         const peso = conPeso ? `<span class="tram-peso" title="Peso en el avance">${t.peso}%</span>` : "";
         const barras = t.compartido
