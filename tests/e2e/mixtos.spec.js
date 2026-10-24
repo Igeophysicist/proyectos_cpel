@@ -196,12 +196,12 @@ test("Trámites: el botón de la ficha abre el desglose de los 10 trámites", as
   await page.goto(`/cartera-mixtos/?proyecto=${slugify(p.nombre)}`);
   await cargado(page);
   // En la ficha solo está el botón; el desglose se abre en su panel.
-  await expect(page.locator("#detail.is-open .tram-row")).toHaveCount(0);
+  await expect(page.locator("#detail.is-open .tram-card")).toHaveCount(0);
   await page.click("#detail [data-open-tramites]");
   const panel = page.locator("#tramites.is-open");
   await expect(panel.locator("#tramites-title")).toHaveText("Trámites");
-  await expect(panel.locator(".tram-row")).toHaveCount(10);
-  await expect(panel.locator(".tram-row", { hasText: "MIA – DTU" })).toContainText(String(parseFloat(p.A_MIA_P)));
+  await expect(panel.locator(".tram-card")).toHaveCount(10);
+  await expect(panel.locator(".tram-card", { hasText: "MIA – DTU" })).toContainText(String(parseFloat(p.A_MIA_P)));
   await expect(panel.locator(".tram-falta").first()).toContainText("Parque");
   await page.keyboard.press("Escape");
   await expect(panel).toHaveCount(0);

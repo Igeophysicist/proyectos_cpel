@@ -87,21 +87,21 @@
   const fmtPct = formatPct;
   const estadoTramite = (v) => (v === null ? "" : v >= 100 ? "ok" : v <= 0 ? "cero" : "medio");
 
-  /** Avance (0–100) de un lado (Parque, LT o ambos): etiqueta, barra y número. */
+  /** Avance (0–100) de un lado (Parque, LT o ambos): etiqueta y número arriba, barra abajo. */
   function miniBarra(v, etiqueta) {
     const pct = v === null ? 0 : Math.max(0, Math.min(v, 100));
-    return `<span class="tram-bar tram-bar--${estadoTramite(v)}">
-        <span class="tram-bar__tag">${esc(etiqueta)}</span>
+    return `<div class="tram-bar tram-bar--${estadoTramite(v)}">
+        <div class="tram-bar__info"><span class="tram-bar__tag">${esc(etiqueta)}</span><span class="tram-bar__val tabular">${fmtPct(v)}</span></div>
         <span class="tram-bar__track"><span class="tram-bar__fill" style="--pct:${pct}%"></span></span>
-        <span class="tram-bar__val tabular">${fmtPct(v)}</span>
-      </span>`;
+      </div>`;
   }
 
   /**
-   * Filas de trámites agrupadas como en el Excel (Derechos inmobiliarios,
-   * Interconexión, Ambientales, Social, Dependencias). Cada trámite lleva
-   * su nombre y peso arriba y, debajo, el avance de Parque y de LT lado a
-   * lado (los que cuentan igual para los dos, una sola barra a lo ancho).
+   * Trámites agrupados como en el Excel (Derechos inmobiliarios,
+   * Interconexión, Ambientales, Social, Dependencias), cada uno en una
+   * tarjeta pequeña de la cuadrícula: nombre y peso, y el avance de Parque
+   * y de LT (los que cuentan igual para los dos, una sola barra). Los
+   * terminados se marcan en verde.
    */
   function filasTramites(items, { conPeso = true } = {}) {
     let grupo = null;
@@ -109,11 +109,16 @@
       .map((t) => {
         const encabezado = t.grupo !== grupo && t.grupo !== t.nombre ? `<li class="tram-grupo">${esc(t.grupo)}</li>` : "";
         grupo = t.grupo;
-        const peso = conPeso ? `<span class="tram-peso">peso ${t.peso}%</span>` : "";
+        const peso = conPeso ? `<span class="tram-peso" title="Peso en el avance">${t.peso}%</span>` : "";
         const barras = t.compartido
-          ? `<span class="tram-ambos">${miniBarra(t.avParque, "Parque y LT")}</span>`
+          ? miniBarra(t.avParque, "Parque y LT")
           : `${miniBarra(t.avParque, "Parque")}${miniBarra(t.avLt, "LT")}`;
-        return `${encabezado}<li class="tram-row"><div class="tram-row__top"><span class="tram-name">${esc(t.nombre)}</span>${peso}</div><div class="tram-row__lados">${barras}</div></li>`;
+        const lados = t.compartido ? [t.avParque] : [t.avParque, t.avLt];
+        const listo = lados.every((v) => v !== null && v >= 100);
+        return `${encabezado}<li class="tram-card${listo ? " tram-card--ok" : ""}">
+            <div class="tram-card__top"><span class="tram-name">${esc(t.nombre)}</span>${peso}</div>
+            ${barras}
+          </li>`;
       })
       .join("");
   }
