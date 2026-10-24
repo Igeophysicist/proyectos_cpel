@@ -207,7 +207,12 @@ a{color:inherit;}
 .ranking__name{flex:1; min-width:0; font-size:12.5px; font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
 .ranking__bar{width:64px; height:6px; border-radius:99px; background:var(--surface-sunken); overflow:hidden; flex:none;}
 .ranking__bar > span{display:block; height:100%; background:var(--teal-700); width:var(--pct,0%); animation:bar-grow .7s ease-out;}
-.ranking__pct{width:40px; text-align:right; font-size:12px; font-weight:700; color:var(--ink-700); flex:none;}
+.ranking__pct{width:54px; white-space:nowrap; text-align:right; font-size:12px; font-weight:700; color:var(--ink-700); flex:none;}
+/* Celular angosto: barra más corta para que el nombre tenga lugar junto al % con dos decimales */
+@media (max-width:420px){
+  .ranking__bar{width:40px;}
+  .ranking__pct{width:50px; font-size:11.5px;}
+}
 
 /* ---------- Mapa ---------- */
 #group-mapa.tabgroup.is-active{padding:0; max-width:none;}
@@ -355,7 +360,7 @@ a{color:inherit;}
 .pbar__track{flex:1; height:6px; border-radius:99px; background:var(--surface-sunken); overflow:hidden;}
 .pbar__fill{display:block; height:100%; background:var(--teal-700); width:var(--pct,0%); animation:bar-grow .7s ease-out;}
 .pbar__fill--a{background:var(--status-a);} .pbar__fill--b{background:var(--status-b);} .pbar__fill--c{background:var(--status-c);}
-.pbar__val{width:36px; text-align:right; flex:none; font-weight:700; color:var(--ink-700);}
+.pbar__val{width:50px; white-space:nowrap; text-align:right; flex:none; font-weight:700; color:var(--ink-700);}
 .pcard--nogeo{opacity:.9;}
 .geo-flag{font-size:11px; color:var(--ink-500); display:flex; align-items:center; gap:4px; margin-top:6px;}
 /* Lo que falta en el Excel ("Sin dato", "por confirmar"): en gris, sin competir con los datos */
@@ -497,20 +502,22 @@ html.dialogo-abierto{overflow:hidden;}
 .detail-field__label{font-size:11.5px; color:var(--ink-500);}
 .detail-field__value{font-size:13.5px; font-weight:600; color:var(--ink-900); margin-top:1px;}
 /* Trámites y permisos (ficha y Resumen): nombre | Parque | LT */
-.tram-head, .tram-row{display:grid; grid-template-columns:minmax(0,1fr) 84px 84px; gap:8px; align-items:center;}
-.tram-head{font-size:10.5px; font-weight:700; color:var(--ink-500); text-transform:uppercase; letter-spacing:.04em; margin-bottom:4px;}
-.tram-head span:not(:first-child){text-align:center;}
 .tram-list{list-style:none; margin:0; padding:0; display:flex; flex-direction:column;}
-.tram-row{padding:4px 0; border-bottom:1px solid var(--surface-sunken); font-size:12px;}
+/* Cada trámite: nombre y peso arriba; Parque y LT lado a lado debajo */
+.tram-row{padding:8px 0; border-bottom:1px solid var(--surface-sunken); font-size:12px;}
+.tram-row__top{display:flex; align-items:baseline; justify-content:space-between; gap:8px; margin-bottom:5px;}
+.tram-row__lados{display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:6px 14px;}
 .tram-grupo{font-size:10.5px; font-weight:700; color:var(--gold-700); margin:8px 0 1px;}
 .tram-name{min-width:0; color:var(--ink-900); font-weight:600; line-height:1.25;}
-.tram-peso{margin-left:5px; font-size:10.5px; font-weight:600; color:var(--ink-500);}
-.tram-ambos{grid-column:2 / 4;}
-.tram-bar{display:flex; align-items:center; gap:5px;}
+.tram-peso{flex:none; font-size:10.5px; font-weight:600; color:var(--ink-500); white-space:nowrap;}
+.tram-ambos{grid-column:1 / -1;}
+.tram-bar{display:flex; align-items:center; gap:6px; min-width:0;}
+.tram-bar__tag{flex:none; font-size:10px; font-weight:700; color:var(--ink-500); text-transform:uppercase; letter-spacing:.03em;}
 .tram-bar__track{flex:1; height:6px; border-radius:99px; background:var(--surface-sunken); overflow:hidden;}
 .tram-bar__fill{display:block; height:100%; width:var(--pct,0%); background:var(--teal-700); animation:bar-grow .7s ease-out;}
 .tram-bar--ok .tram-bar__fill{background:var(--status-a);}
-.tram-bar__val{width:34px; text-align:right; font-size:11px; font-weight:700; color:var(--ink-700);}
+.tram-bar__val{flex:none; min-width:48px; text-align:right; font-size:11px; font-weight:700; color:var(--ink-700); white-space:nowrap;}
+.tram-bar--ok .tram-bar__val{color:var(--status-a);}
 .tram-bar--cero .tram-bar__val{color:var(--status-c);}
 .tram-falta{font-size:11.5px; color:var(--ink-700); margin-top:6px; line-height:1.4;}
 .tram-falta b{color:var(--ink-900);}
