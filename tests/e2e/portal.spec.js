@@ -45,6 +45,17 @@ test("sin clima, la fecha y la hora se siguen viendo", async ({ page }) => {
   await expect(page.locator("#cdmxClima")).toBeHidden();
 });
 
+test("detrás de la barra de estado del iPhone se ve el verde de la barra superior", async ({ page }) => {
+  for (const url of ["/", "/cartera-cpel/", "/cartera-mixtos/", "/cartera-anteproyectos/"]) {
+    await page.goto(url);
+    const [fondo, barra] = await page.evaluate(() => [
+      getComputedStyle(document.documentElement).backgroundColor,
+      getComputedStyle(document.querySelector(".topbar")).backgroundColor,
+    ]);
+    expect(fondo, url).toBe(barra);
+  }
+});
+
 test("colaboradores se abren desde el pie de página", async ({ page }) => {
   await page.goto("/");
   await page.click("#siteFooter");
