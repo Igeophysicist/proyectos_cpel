@@ -130,7 +130,7 @@
           ? `<ul class="pond-lista">${g.items
               .map(
                 (x) => `
-            <li class="pond${x.nota ? " pond--nota" : ""}">
+            <li class="pond">
               <div class="pond__titulo"><b>${esc(x.clave)}</b> ${esc(x.titulo)}</div>
               ${miniFilas(x, pendiente)}
               ${x.nota ? notaHtml(x.nota, "Nota") : ""}

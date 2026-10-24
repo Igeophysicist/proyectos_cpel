@@ -1,9 +1,8 @@
 /**
  * avance.js (Cartera CPEL y Cartera Anteproyectos)
- * Cómo se muestra el avance de un proyecto:
+ * Cómo se muestra el avance de un proyecto: barras de Programado y Real,
+ * y además
  *
- *  - Una sola barra con el avance Real y una marca vertical donde va el
- *    Programado (se ve de inmediato si va adelante o atrás).
  *  - Semáforo de la diferencia Real − Programado:
  *      verde ("ok")    al día o adelantado,
  *      ámbar ("leve")  atraso menor a ATRASO_LEVE pts,
@@ -48,58 +47,45 @@
     return { diff: r2(ahora.proyectos[slug].real - antes.proyectos[slug].real), desde: antes.fecha };
   }
 
-  /** Barra de Real con la marca del Programado (sin marca si prog es null). */
-  function barra(real, prog, { mini = false } = {}) {
-    const p = num(prog);
-    return `<span class="bala${mini ? " bala--mini" : ""}" aria-hidden="true">
-        <span class="bala__real" style="width:${ancho(num(real))}%"></span>
-        ${p === null ? "" : `<span class="bala__prog" style="left:${ancho(p)}%"></span>`}
-      </span>`;
-  }
+  /** Barra de un avance (lado "prog" o "real"), acotada a 0–100. */
+  const barra = (lado, v, mini = false) =>
+    `<span class="bar${mini ? " bar--mini" : ""}"><span class="bar__fill bar__fill--${lado}" style="width:${ancho(num(v))}%"></span></span>`;
 
   /**
-   * Avance General: Real grande, Programado a la derecha, la barra y el
-   * semáforo. pendiente = el Programado aún no se captura (sin marca ni
-   * semáforo). El cambio semanal se pinta después en [data-semana].
+   * Avance General: Programado y Real con sus barras y el semáforo.
+   * pendiente = el Programado aún no se captura ("—" y sin semáforo).
+   * El cambio semanal se pinta después en [data-semana], junto a "Real".
    */
   function generalHtml(real, prog, { pendiente = false } = {}) {
     const r = num(real);
     const p = pendiente ? null : num(prog);
     const diff = r !== null && p !== null ? r2(r - p) : null;
     const sem = semaforo(diff);
+    const fila = (lado, etiqueta, v, extra = "") => `
+        <div class="progress-row progress-row--${lado}">
+          <div class="progress-row__info"><span>${etiqueta}${extra}</span><span>${formatPct(v)}</span></div>
+          ${barra(lado, v)}
+        </div>`;
     return `
-      <div class="avg">
-        <div class="avg__top">
-          <div class="avg__real">
-            <span class="avg__label">Real</span>
-            <span class="avg__valor tabular">${formatPct(r)}</span>
-            <span class="avg__semana" data-semana hidden></span>
-          </div>
-          <div class="avg__prog">
-            <span class="avg__label"><i class="marca-prog" aria-hidden="true"></i>Programado</span>
-            <span class="avg__pvalor tabular">${pendiente ? "pendiente" : formatPct(p)}</span>
-          </div>
-        </div>
-        ${barra(r, p)}
-        ${sem ? `<div class="variance variance--${sem}">${textoDiferencia(diff)}</div>` : ""}
-      </div>`;
+      <div class="progress-stack">
+        ${fila("prog", "Programado", p)}
+        ${fila("real", "Real", r, ` <span class="avg__semana" data-semana hidden></span>`)}
+      </div>
+      ${sem ? `<div class="variance variance--${sem}">${textoDiferencia(diff)}</div>` : ""}`;
   }
 
   /**
-   * Avance chico (particulares, ponderados): Real y Programado arriba, la
-   * barra abajo. Solo <span> porque puede ir dentro de un botón.
+   * Filas P / R (Avances particulares y ponderados). Solo <span> porque
+   * puede ir dentro de un botón.
    */
   function miniHtml(real, prog, { pendiente = false } = {}) {
-    const r = num(real);
-    const p = pendiente ? null : num(prog);
-    return `
-      <span class="amini">
-        <span class="amini__top">
-          <span class="amini__real tabular" title="Real">${formatPct(r)}</span>
-          <span class="amini__prog tabular" title="Programado"><i class="marca-prog" aria-hidden="true"></i>${pendiente ? "pendiente" : formatPct(p)}</span>
-        </span>
-        ${barra(r, p, { mini: true })}
+    const fila = (lado, letra, v) => `
+      <span class="mini-row">
+        <span class="mini-row__tag mini-row__tag--${lado}">${letra}</span>
+        ${barra(lado, v, true)}
+        <span class="mini-row__val">${formatPct(num(v))}</span>
       </span>`;
+    return fila("prog", "P", pendiente ? null : prog) + fila("real", "R", real);
   }
 
   /**

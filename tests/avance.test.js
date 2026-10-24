@@ -1,5 +1,5 @@
-// Pruebas de cartera-cpel/assets/js/avance.js (barra con marca del
-// Programado, semáforo y cambio desde el corte anterior).
+// Pruebas de cartera-cpel/assets/js/avance.js (barras de Programado y
+// Real, semáforo y cambio desde el corte anterior).
 const test = require("node:test");
 const assert = require("node:assert/strict");
 globalThis.TextUtils = require("../assets/js/shared/text-utils.js");
@@ -32,24 +32,17 @@ test("cambioSemanal: Real de los dos últimos cortes con dato del proyecto", () 
   assert.equal(A.cambioSemanal(undefined, "a"), null);
 });
 
-test("barra: Real a lo ancho y marca en el Programado (sin marca si no hay Programado)", () => {
-  const html = A.barra(31.37, 34.3);
-  assert.match(html, /bala__real" style="width:31.37%"/);
-  assert.match(html, /bala__prog" style="left:34.3%"/);
-  assert.doesNotMatch(A.barra(10, null), /bala__prog/);
-  assert.match(A.barra(120, 150), /width:100%.*left:100%/s); // acotada a 0–100
-});
-
-test("generalHtml y miniHtml: valores con dos decimales, semáforo y Programado pendiente", () => {
+test("generalHtml y miniHtml: Programado y Real con dos decimales, semáforo y Programado pendiente", () => {
   const g = A.generalHtml(31.37, 34.3);
-  assert.match(g, /31\.37%/);
-  assert.match(g, /34\.30%/);
+  assert.match(g, /progress-row--prog[\s\S]*34\.30%[\s\S]*width:34.3%/);
+  assert.match(g, /progress-row--real[\s\S]*31\.37%[\s\S]*width:31.37%/);
   assert.match(g, /variance--leve">Atraso de 2\.93 pts/);
+  assert.match(A.generalHtml(120, 50), /width:100%/); // barra acotada a 0–100
   const p = A.generalHtml(12, 80, { pendiente: true });
-  assert.match(p, /pendiente/);
-  assert.doesNotMatch(p, /variance|bala__prog/);
+  assert.match(p, /Programado<\/span><span>—/);
+  assert.doesNotMatch(p, /variance/);
   const m = A.miniHtml(6.46, 6.36);
-  assert.match(m, /amini__real tabular" title="Real">6\.46%/);
-  assert.match(m, /6\.36%/);
+  assert.match(m, /mini-row__tag--prog">P[\s\S]*6\.36%[\s\S]*mini-row__tag--real">R[\s\S]*6\.46%/);
+  assert.match(A.miniHtml(5, 9, { pendiente: true }), /mini-row__val">—/);
   assert.doesNotMatch(m, /<div/); // puede ir dentro de un botón
 });

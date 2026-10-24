@@ -120,7 +120,7 @@ body{ padding-bottom: calc(var(--tabbar-h) + env(safe-area-inset-bottom, 0px)); 
 }
 .progress-row--prog .progress-row__info{ color: var(--prog-color); }
 .progress-row--real .progress-row__info{ color: var(--real-color); }
-.bar{ height: 10px; background: var(--surface-sunken); border-radius: 99px; overflow: hidden; }
+.bar{ display: block; height: 10px; background: var(--surface-sunken); border-radius: 99px; overflow: hidden; }
 .bar--mini{ height: 6px; flex: 1; background: rgba(26,36,34,.1); } /* fondo visible sobre las tarjetas grises */
 .bar__fill{ display: block; height: 100%; border-radius: 99px; width: 0; transition: width .6s cubic-bezier(.4,0,.2,1); }
 .bar__fill--prog{ background: var(--prog-color); }
@@ -134,33 +134,11 @@ body{ padding-bottom: calc(var(--tabbar-h) + env(safe-area-inset-bottom, 0px)); 
 .variance--leve{ background: #fbf0d9; color: #7f5a14; }
 .variance--grave{ background: var(--status-c-bg, #fbe9e9); color: #b83b3b; }
 
-/* ---------- Avance: barra de Real con la marca del Programado (avance.js) ---------- */
-.marca-prog{ display: inline-block; flex: none; width: 3px; height: 11px; border-radius: 2px; background: var(--prog-color); margin-right: 5px; vertical-align: -1px; }
-.legend .marca-prog{ margin-right: 0; height: 12px; }
-.bala{ position: relative; display: block; height: 12px; border-radius: 99px; background: var(--surface-sunken); }
-.bala--mini{ height: 6px; background: rgba(26,36,34,.1); }
-.bala__real{ display: block; height: 100%; border-radius: 99px; background: var(--real-color); }
-.bala__prog{
-  position: absolute; top: -4px; bottom: -4px; width: 3px; margin-left: -1.5px;
-  border-radius: 2px; background: var(--prog-color); box-shadow: 0 0 0 1.5px var(--surface, #fff);
-}
-.bala--mini .bala__prog{ top: -3px; bottom: -3px; }
-/* Avance General: Real grande a la izquierda, Programado a la derecha */
-.avg__top{ display: flex; justify-content: space-between; align-items: flex-end; gap: 12px; margin-bottom: 10px; }
-.avg__real, .avg__prog{ display: flex; flex-direction: column; min-width: 0; }
-.avg__prog{ align-items: flex-end; text-align: right; }
-.avg__label{ display: flex; align-items: center; font-size: 11px; font-weight: 700; color: var(--ink-500); text-transform: uppercase; letter-spacing: .04em; }
-.avg__valor{ font-size: 26px; font-weight: 800; color: var(--real-color); line-height: 1.1; }
-.avg__pvalor{ font-size: 16px; font-weight: 800; color: var(--prog-color); line-height: 1.3; }
-.avg__semana{ font-size: 12px; font-weight: 700; margin-top: 2px; }
+/* Cambio del Real desde el corte anterior, junto a "Real" (avance.js) */
+.avg__semana{ margin-left: 6px; font-size: 11.5px; font-weight: 700; }
 .avg__semana--sube{ color: #1e7a52; }
 .avg__semana--baja{ color: #b83b3b; }
 .avg__semana--igual{ color: var(--ink-500); }
-/* Avance chico (Avances particulares y ponderados) */
-.amini{ display: block; }
-.amini__top{ display: flex; justify-content: space-between; align-items: baseline; gap: 6px; margin-bottom: 7px; }
-.amini__real{ font-size: 15px; font-weight: 800; color: var(--real-color); }
-.amini__prog{ display: inline-flex; align-items: center; font-size: 11.5px; font-weight: 700; color: #6b5119; white-space: nowrap; } /* dorado más oscuro: contraste sobre el gris */
 
 /* ---------- Avances particulares ---------- */
 .particular-grid{ display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
@@ -502,12 +480,7 @@ body.modo-pdf .card--hitos, body.modo-pdf .card:has(#eventosVal){ grid-column: 1
 body.modo-pdf .progress-stack{ gap: 5px; }
 body.modo-pdf .bar{ height: 7px; }
 body.modo-pdf .variance{ margin-top: 5px; padding: 3px 8px; font-size: 10.5px; }
-body.modo-pdf .avg__top{ margin-bottom: 5px; }
-body.modo-pdf .avg__valor{ font-size: 16px; }
-body.modo-pdf .avg__pvalor{ font-size: 12px; }
-body.modo-pdf .bala{ height: 7px; }
-body.modo-pdf .amini__top{ margin-bottom: 4px; }
-body.modo-pdf .amini__real{ font-size: 11.5px; }
+body.modo-pdf .avg__semana{ font-size: 10px; }
 body.modo-pdf .legend{ margin-bottom: 4px; font-size: 10px; }
 body.modo-pdf .particular-grid, body.modo-pdf .hitos-tres{ gap: 5px; }
 body.modo-pdf .particular, body.modo-pdf .hito3{ padding: 5px 7px; }
