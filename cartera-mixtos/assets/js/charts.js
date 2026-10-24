@@ -6,7 +6,7 @@
 (function (global) {
   const instances = {};
   const GRUPO_INFO = global.AppData.GRUPO_INFO;
-  const { esc } = global.TextUtils;
+  const { esc, formatPct } = global.TextUtils;
 
   // Registra el plugin que dibuja los valores directamente sobre el
   // gráfico (rueda y barras), para que sean visibles siempre y no solo
@@ -50,7 +50,7 @@
     instances[canvasId] = new Chart(ctx, {
       type: "doughnut",
       data: {
-        labels: ["(A)", "(B)", "(C)"],
+        labels: ["A", "B", "C"].map((g) => `Grupo ${g} · ${counts[g]}`),
         datasets: [
           {
             data: [counts.A, counts.B, counts.C],
@@ -144,7 +144,7 @@
         <span class="ranking__bar"><span style="--pct:${Math.min(p.parquePct, 100)}%; background:${
           (GRUPO_INFO[p.grupo] || {}).color || "#2e534f"
         }"></span></span>
-        <span class="ranking__pct tabular">${p.parquePct}%</span>
+        <span class="ranking__pct tabular">${formatPct(p.parquePct)}</span>
       </button></li>`
       )
       .join("");

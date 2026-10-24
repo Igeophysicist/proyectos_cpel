@@ -26,7 +26,7 @@
  */
 (function (global) {
   // En Node (pruebas), la prueba pone TextUtils en globalThis antes de cargar este archivo.
-  const { esc, parseDate, formatDateShort } = global.TextUtils;
+  const { esc, parseDate, formatDateShort, formatPct } = global.TextUtils;
 
   const ESTATUS = {
     pagado: "Pagado",
@@ -255,7 +255,7 @@
     return `
       <div class="hlista__resumen">
         ${contrato.titulo ? `<div class="hlista__titulo">${esc(contrato.titulo)}</div>` : ""}
-        <div class="hlista__cifras">${pag} de ${contrato.hitos.length} hitos pagados${conPct ? ` · ${pctPagado(contrato)} % del contrato pagado` : ""}</div>
+        <div class="hlista__cifras">${pag} de ${contrato.hitos.length} hitos pagados${conPct ? ` · ${formatPct(pctPagado(contrato))} del contrato pagado` : ""}</div>
       </div>
       <ol class="hlista">
         ${porFecha(contrato.hitos)
@@ -265,7 +265,7 @@
               h.programada ? `Programado: ${fecha(h.programada)}` : "Sin fecha programada",
               h.solicitud ? `Solicitado: ${fecha(h.solicitud)}` : "",
               h.pago ? `Pagado: ${fecha(h.pago)}` : "",
-              h.pct !== null && h.pct !== undefined ? `${h.pct} % del contrato` : "",
+              h.pct !== null && h.pct !== undefined ? `${formatPct(h.pct)} del contrato` : "",
               h.tipo ? `Evento ${h.tipo.toLowerCase()}` : "",
             ].filter(Boolean);
             return `

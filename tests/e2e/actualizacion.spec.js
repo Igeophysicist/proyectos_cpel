@@ -44,6 +44,7 @@ test("un error real no provoca recargas sin fin: una recarga y el mensaje", asyn
   await page.route(/DATOS_MIXTOS\.json/, (r) => r.fulfill({ status: 500, body: "" }));
   await page.goto("/cartera-mixtos/");
   await expect(page.locator("#loader-text")).toContainText("No se pudieron cargar", { timeout: 20_000 });
+  await expect(page.locator("#loader-text")).toBeVisible(); // el error se ve en pantalla completa
   await page.waitForTimeout(1500);
   expect(cargas).toBe(2);
 });

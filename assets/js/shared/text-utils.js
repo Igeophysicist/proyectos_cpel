@@ -135,7 +135,18 @@
     };
   }
 
-  const api = { normalizeText, esc, parseNumber, parseDate, isPastOrToday, debounce, slugify, formatDateShort };
+  /** Porcentaje siempre con dos decimales ("34.30%"); "—" si no hay dato. */
+  function formatPct(value) {
+    const n = typeof value === "number" ? value : parseNumber(value);
+    return n === null || !Number.isFinite(n) ? "—" : n.toFixed(2) + "%";
+  }
+
+  /** Diferencia en puntos con dos decimales y sin signo ("2.90"). */
+  function formatPts(value) {
+    return Math.abs(Number(value) || 0).toFixed(2);
+  }
+
+  const api = { normalizeText, esc, parseNumber, parseDate, isPastOrToday, debounce, slugify, formatDateShort, formatPct, formatPts };
 
   if (typeof module !== "undefined" && module.exports) module.exports = api;
   else global.TextUtils = api;

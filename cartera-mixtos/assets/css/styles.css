@@ -207,7 +207,12 @@ a{color:inherit;}
 .ranking__name{flex:1; min-width:0; font-size:12.5px; font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
 .ranking__bar{width:64px; height:6px; border-radius:99px; background:var(--surface-sunken); overflow:hidden; flex:none;}
 .ranking__bar > span{display:block; height:100%; background:var(--teal-700); width:var(--pct,0%); animation:bar-grow .7s ease-out;}
-.ranking__pct{width:40px; text-align:right; font-size:12px; font-weight:700; color:var(--ink-700); flex:none;}
+.ranking__pct{width:54px; white-space:nowrap; text-align:right; font-size:12px; font-weight:700; color:var(--ink-700); flex:none;}
+/* Celular angosto: barra más corta para que el nombre tenga lugar junto al % con dos decimales */
+@media (max-width:420px){
+  .ranking__bar{width:40px;}
+  .ranking__pct{width:50px; font-size:11.5px;}
+}
 
 /* ---------- Mapa ---------- */
 #group-mapa.tabgroup.is-active{padding:0; max-width:none;}
@@ -354,9 +359,12 @@ a{color:inherit;}
 .pbar__label{width:52px; flex:none;}
 .pbar__track{flex:1; height:6px; border-radius:99px; background:var(--surface-sunken); overflow:hidden;}
 .pbar__fill{display:block; height:100%; background:var(--teal-700); width:var(--pct,0%); animation:bar-grow .7s ease-out;}
-.pbar__val{width:36px; text-align:right; flex:none; font-weight:700; color:var(--ink-700);}
+.pbar__fill--a{background:var(--status-a);} .pbar__fill--b{background:var(--status-b);} .pbar__fill--c{background:var(--status-c);}
+.pbar__val{width:50px; white-space:nowrap; text-align:right; flex:none; font-weight:700; color:var(--ink-700);}
 .pcard--nogeo{opacity:.9;}
 .geo-flag{font-size:11px; color:var(--ink-500); display:flex; align-items:center; gap:4px; margin-top:6px;}
+/* Lo que falta en el Excel ("Sin dato", "por confirmar"): en gris, sin competir con los datos */
+.dato-falta{color:var(--ink-500); font-weight:400; font-style:italic;}
 
 .empty-state{
   text-align:center; padding:var(--space-6) var(--space-4); color:var(--ink-500);
@@ -493,23 +501,30 @@ html.dialogo-abierto{overflow:hidden;}
 .detail-grid{display:grid; grid-template-columns:1fr 1fr; gap:10px 10px;}
 .detail-field__label{font-size:11.5px; color:var(--ink-500);}
 .detail-field__value{font-size:13.5px; font-weight:600; color:var(--ink-900); margin-top:1px;}
-/* Trámites y permisos (ficha y Resumen): nombre | Parque | LT */
-.tram-head, .tram-row{display:grid; grid-template-columns:minmax(0,1fr) 84px 84px; gap:8px; align-items:center;}
-.tram-head{font-size:10.5px; font-weight:700; color:var(--ink-500); text-transform:uppercase; letter-spacing:.04em; margin-bottom:4px;}
-.tram-head span:not(:first-child){text-align:center;}
-.tram-list{list-style:none; margin:0; padding:0; display:flex; flex-direction:column;}
-.tram-row{padding:4px 0; border-bottom:1px solid var(--surface-sunken); font-size:12px;}
-.tram-grupo{font-size:10.5px; font-weight:700; color:var(--gold-700); margin:8px 0 1px;}
-.tram-name{min-width:0; color:var(--ink-900); font-weight:600; line-height:1.25;}
-.tram-peso{margin-left:5px; font-size:10.5px; font-weight:600; color:var(--ink-500);}
-.tram-ambos{grid-column:2 / 4;}
-.tram-bar{display:flex; align-items:center; gap:5px;}
-.tram-bar__track{flex:1; height:6px; border-radius:99px; background:var(--surface-sunken); overflow:hidden;}
+/* Trámites y permisos: tarjetas pequeñas en cuadrícula, por grupo */
+.tram-list{list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:8px;}
+.tram-grupo{grid-column:1 / -1; font-size:11px; font-weight:700; color:var(--gold-700); margin:8px 0 -2px;}
+.tram-grupo:first-child{margin-top:0;}
+.tram-card{
+  display:flex; flex-direction:column; gap:7px; min-width:0;
+  padding:9px 10px; border-radius:var(--radius-m); background:var(--surface); border:1px solid var(--border);
+}
+.tram-card--ok{background:#f2f9f5; border-color:#cfe6da;}
+.tram-card__top{display:flex; align-items:flex-start; justify-content:space-between; gap:6px; margin-bottom:1px;}
+.tram-name{min-width:0; font-size:12px; color:var(--ink-900); font-weight:700; line-height:1.25;}
+.tram-peso{flex:none; font-size:10px; font-weight:700; color:var(--ink-500); background:var(--surface-sunken); border-radius:99px; padding:1px 6px; white-space:nowrap;}
+.tram-bar{display:flex; flex-direction:column; gap:3px; min-width:0;}
+.tram-bar__info{display:flex; align-items:baseline; justify-content:space-between; gap:6px;}
+.tram-bar__tag{font-size:9.5px; font-weight:700; color:var(--ink-500); text-transform:uppercase; letter-spacing:.04em; white-space:nowrap;}
+.tram-bar__track{display:block; height:5px; border-radius:99px; background:var(--surface-sunken); overflow:hidden;}
+.tram-card--ok .tram-bar__track{background:#dcefe4;}
 .tram-bar__fill{display:block; height:100%; width:var(--pct,0%); background:var(--teal-700); animation:bar-grow .7s ease-out;}
 .tram-bar--ok .tram-bar__fill{background:var(--status-a);}
-.tram-bar__val{width:34px; text-align:right; font-size:11px; font-weight:700; color:var(--ink-700);}
+.tram-bar__val{font-size:11px; font-weight:700; color:var(--ink-700); white-space:nowrap;}
+.tram-bar--ok .tram-bar__val{color:var(--status-a);}
 .tram-bar--cero .tram-bar__val{color:var(--status-c);}
-.tram-falta{font-size:11.5px; color:var(--ink-700); margin-top:6px; line-height:1.4;}
+.tram-falta{font-size:11.5px; color:var(--ink-700); margin-top:8px; line-height:1.4; padding:8px 10px; border-radius:var(--radius-m); background:var(--surface-sunken);}
+.tram-list + .tram-falta{margin-top:var(--space-4);}
 .tram-falta b{color:var(--ink-900);}
 .detail-progress{display:flex; flex-direction:column; gap:10px; margin-top:2px;}
 .evolucion__chart{position:relative; height:200px; margin:var(--space-2) 0;}
@@ -528,8 +543,13 @@ html.dialogo-abierto{overflow:hidden;}
 .evolucion__nota{font-size:11.5px; color:var(--ink-500); line-height:1.45; margin:var(--space-3) 0 0;}
 
 /* ---------- Loader / errores ---------- */
-.loader{
-  position:fixed; inset:0; z-index:1200; background:var(--teal-900); color:#fff;
+/* Mientras carga: solo para lectores de pantalla (la lista muestra tarjetas de relleno). */
+.loader{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap;}
+.loader .loader__spin{display:none;}
+/* Si los datos no cargan: pantalla completa con el error. */
+.loader.is-error{
+  position:fixed; inset:0; z-index:1200; width:auto; height:auto; clip:auto; white-space:normal;
+  padding:var(--space-4); text-align:center; background:var(--teal-900); color:#fff;
   display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px;
 }
 .loader.is-hidden{display:none;}
@@ -539,6 +559,20 @@ html.dialogo-abierto{overflow:hidden;}
 }
 @keyframes spin{to{transform:rotate(360deg);}}
 .loader__text{font-size:13px; color:#cfe0db;}
+
+/* Tarjetas de relleno mientras cargan los datos (mismo tamaño que las reales) */
+.pcard--esqueleto{display:flex; flex-direction:column; gap:10px; cursor:default; opacity:1; animation:none;}
+.pcard--esqueleto:hover{transform:none; box-shadow:var(--shadow-card);}
+.esq{
+  display:block; height:10px; border-radius:99px;
+  background:linear-gradient(90deg, var(--surface-sunken) 30%, #f7f9f8 50%, var(--surface-sunken) 70%) 0 0 / 300% 100%;
+  animation:esq-brillo 1.4s ease-in-out infinite;
+}
+.esq--titulo{height:14px; width:62%;}
+.esq--sub{width:45%;}
+.esq--meta{width:70%; margin-bottom:4px;}
+.esq--barra{height:6px;}
+@keyframes esq-brillo{from{background-position:100% 0;} to{background-position:0 0;}}
 .toast{
   position:fixed; left:var(--space-4); right:var(--space-4); bottom:calc(var(--tabbar-h) + var(--space-3));
   z-index:1100; background:var(--ink-900); color:#fff; padding:12px 14px; border-radius:var(--radius-m);
@@ -606,6 +640,7 @@ html.dialogo-abierto{overflow:hidden;}
 }
 
 @media (prefers-reduced-motion: reduce){
+  .esq{animation:none;}
   /* Sin retraso tampoco: las entradas escalonadas (indicadores, tarjetas)
      quedaban invisibles unos instantes aunque duraran casi nada. */
   *{animation-duration:.01ms !important; animation-delay:0s !important; transition-duration:.01ms !important;}

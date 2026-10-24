@@ -154,7 +154,7 @@
     ["plazo_operacion_fecha", "Operación"],
   ];
 
-  const { esc, parseNumber, parseDate, isPastOrToday, slugify, formatDateShort } = window.TextUtils;
+  const { esc, parseNumber, parseDate, isPastOrToday, slugify, formatDateShort, formatPct, formatPts } = window.TextUtils;
 
   let proyectos = [];
   let hitos = {}; // por proyecto (slug del nombre), de hitos.json
@@ -173,10 +173,10 @@
     return isPastOrToday(parseDate(String(value ?? "")));
   }
 
-  /** Porcentaje redondeado a 1 decimal ("30.76" o "30.76%" -> 30.8). */
+  /** Porcentaje redondeado a 2 decimales ("30.764" o "30.764%" -> 30.76). */
   function pct(value) {
     const n = parseNumber(value);
-    return n === null ? 0 : Math.round(n * 10) / 10;
+    return n === null ? 0 : Math.round(n * 100) / 100;
   }
 
   /** Ancho de barra acotado a 0–100%. */
@@ -187,7 +187,7 @@
   function setBar(barId, valId, value) {
     const v = pct(value);
     $(barId).style.width = ancho(v) + "%";
-    $(valId).textContent = v + "%";
+    $(valId).textContent = formatPct(v);
   }
 
   /** Hitos de pago (si no cargan, la ficha dice que no hay y el resto sigue igual). */
@@ -279,12 +279,12 @@
     // Avance general
     setBar("progGenBar", "progGenVal", p.avanceProg);
     setBar("realGenBar", "realGenVal", p.avanceReal);
-    const diff = Math.round((pct(p.avanceReal) - pct(p.avanceProg)) * 10) / 10;
+    const diff = Math.round((pct(p.avanceReal) - pct(p.avanceProg)) * 100) / 100;
     const variance = $("variance");
     variance.hidden = false;
     variance.className = "variance " + (diff >= 0 ? "variance--ok" : "variance--late");
-    if (diff > 0) variance.textContent = `Adelantado ${diff} pts respecto al programa`;
-    else if (diff < 0) variance.textContent = `Atraso de ${Math.abs(diff)} pts respecto al programa`;
+    if (diff > 0) variance.textContent = `Adelantado ${formatPts(diff)} pts respecto al programa`;
+    else if (diff < 0) variance.textContent = `Atraso de ${formatPts(diff)} pts respecto al programa`;
     else variance.textContent = "Al día respecto al programa";
 
     // Avances particulares
@@ -297,12 +297,12 @@
           <div class="mini-row">
             <span class="mini-row__tag mini-row__tag--prog">P</span>
             <div class="bar bar--mini"><span class="bar__fill bar__fill--prog" style="width:${ancho(pv)}%"></span></div>
-            <span class="mini-row__val">${pv}%</span>
+            <span class="mini-row__val">${formatPct(pv)}</span>
           </div>
           <div class="mini-row">
             <span class="mini-row__tag mini-row__tag--real">R</span>
             <div class="bar bar--mini"><span class="bar__fill bar__fill--real" style="width:${ancho(rv)}%"></span></div>
-            <span class="mini-row__val">${rv}%</span>
+            <span class="mini-row__val">${formatPct(rv)}</span>
           </div>
         </div>`;
     }).join("");
