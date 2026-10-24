@@ -88,3 +88,16 @@ test("formatDateShort usa fecha corta en español", () => {
   assert.equal(formatDateShort(null), "");
   assert.equal(formatDateShort(new Date("x")), "");
 });
+
+test("formatPct y formatPts: siempre dos decimales", () => {
+  const { formatPct, formatPts } = require("../assets/js/shared/text-utils.js");
+  assert.equal(formatPct(94), "94.00%");
+  assert.equal(formatPct(83.75), "83.75%");
+  assert.equal(formatPct(93.8), "93.80%");
+  assert.equal(formatPct("31.37%"), "31.37%");
+  assert.equal(formatPct(null), "—");
+  assert.equal(formatPct(undefined), "—");
+  assert.equal(formatPct("SIN DATO"), "—");
+  assert.equal(formatPts(-2.9), "2.90");
+  assert.equal(formatPts(0.5), "0.50");
+});

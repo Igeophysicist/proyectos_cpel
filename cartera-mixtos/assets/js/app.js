@@ -241,6 +241,7 @@
       const view = applyUrlState();
       render();
       els.loader.classList.add("is-hidden");
+      document.getElementById("project-list").removeAttribute("aria-hidden");
       if (view.proyecto) openProjectBySlug(view.proyecto);
       // Asegura un encuadre correcto también en escritorio (el mapa ya es
       // visible desde el inicio ahí, pero por si el layout se asienta
@@ -265,6 +266,7 @@
         els.loaderText.textContent = "Actualizando…";
         return;
       }
+      els.loader.classList.add("is-error");
       els.loaderText.textContent =
         "No se pudieron cargar los datos. Verifica que data/DATOS_MIXTOS.json y los KML estén publicados junto a este HTML. Detalle: " +
         err.message;

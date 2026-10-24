@@ -5,7 +5,7 @@
  */
 (function (global) {
   const GRUPO_INFO = global.AppData.GRUPO_INFO;
-  const { esc } = global.TextUtils;
+  const { esc, formatPct, formatPts } = global.TextUtils;
   const fmtInt = new Intl.NumberFormat("es-MX", { maximumFractionDigits: 0 });
   // CAPEX en millones de dólares, con comas en los miles: "8,112.9 M"
   // (la moneda va en el título de la tarjeta).
@@ -36,7 +36,7 @@
       },
       {
         label: "Avance global promedio",
-        value: avancePromedio !== null ? `${avancePromedio.toFixed(1)}%` : "—",
+        value: formatPct(avancePromedio),
         meta: "Trámites y permisos" + sinRonda,
         cls: "",
       },
@@ -61,16 +61,19 @@
   }
 
   // --------------------------------------------------------- Lista/tarjetas
-  function progressRow(label, pct) {
+  // grupo: la barra de Parque toma el color de su grupo de atención (A, B, C),
+  // como en el ranking y el mapa; LT y Global se quedan en verde oscuro.
+  function progressRow(label, pct, grupo) {
     if (pct === null || pct === undefined) return "";
+    const info = grupo && GRUPO_INFO[grupo];
     // "--pct" (en vez de un "width" fijo) es lo que permite que la barra
     // se anime creciendo desde 0 al pintarse (ver @keyframes bar-grow en
     // styles.css) en lugar de aparecer ya llena.
     return `
       <div class="pbar">
         <span class="pbar__label">${esc(label)}</span>
-        <span class="pbar__track"><span class="pbar__fill" style="--pct:${Math.min(pct, 100)}%"></span></span>
-        <span class="pbar__val tabular">${pct}%</span>
+        <span class="pbar__track"><span class="pbar__fill${info ? ` pbar__fill--${info.css}` : ""}" style="--pct:${Math.min(pct, 100)}%"></span></span>
+        <span class="pbar__val tabular">${formatPct(pct)}</span>
       </div>`;
   }
 
@@ -81,34 +84,41 @@
   const PRIO_CHIP = `<span class="prio-chip">★ Prioritario</span>`;
 
   // ---------------------------------------------- Trámites (panel de la ficha)
-  const fmtPct = (v) => (v === null || v === undefined ? "—" : `${Math.round(v * 10) / 10}%`);
+  const fmtPct = formatPct;
   const estadoTramite = (v) => (v === null ? "" : v >= 100 ? "ok" : v <= 0 ? "cero" : "medio");
 
-  /** Barra pequeña de un avance (0–100) con su número. */
+  /** Avance (0–100) de un lado (Parque, LT o ambos): etiqueta y número arriba, barra abajo. */
   function miniBarra(v, etiqueta) {
     const pct = v === null ? 0 : Math.max(0, Math.min(v, 100));
-    return `<span class="tram-bar tram-bar--${estadoTramite(v)}" title="${esc(etiqueta)}: ${fmtPct(v)}">
+    return `<div class="tram-bar tram-bar--${estadoTramite(v)}">
+        <div class="tram-bar__info"><span class="tram-bar__tag">${esc(etiqueta)}</span><span class="tram-bar__val tabular">${fmtPct(v)}</span></div>
         <span class="tram-bar__track"><span class="tram-bar__fill" style="--pct:${pct}%"></span></span>
-        <span class="tram-bar__val tabular">${fmtPct(v)}</span>
-      </span>`;
+      </div>`;
   }
 
   /**
-   * Filas de trámites agrupadas como en el Excel (Derechos inmobiliarios,
-   * Interconexión, Ambientales, Social, Dependencias). Los que cuentan
-   * igual para Parque y LT ocupan las dos columnas.
+   * Trámites por grupo (Ambientales, Social, Dependencias, Derechos
+   * inmobiliarios e Interconexión; orden de tramites.js), cada uno en una
+   * tarjeta pequeña de la cuadrícula: nombre y peso, y el avance de Parque
+   * y de LT (los que cuentan igual para los dos, una sola barra). Los
+   * terminados se marcan en verde.
    */
   function filasTramites(items, { conPeso = true } = {}) {
     let grupo = null;
     return items
       .map((t) => {
-        const encabezado = t.grupo !== grupo && t.grupo !== t.nombre ? `<li class="tram-grupo">${esc(t.grupo)}</li>` : "";
+        const encabezado = t.grupo !== grupo ? `<li class="tram-grupo">${esc(t.grupo)}</li>` : "";
         grupo = t.grupo;
-        const peso = conPeso ? `<span class="tram-peso">${t.peso}%</span>` : "";
+        const peso = conPeso ? `<span class="tram-peso" title="Peso en el avance">${t.peso}%</span>` : "";
         const barras = t.compartido
-          ? `<span class="tram-ambos">${miniBarra(t.avParque, "Parque y LT")}</span>`
+          ? miniBarra(t.avParque, "Parque y LT")
           : `${miniBarra(t.avParque, "Parque")}${miniBarra(t.avLt, "LT")}`;
-        return `${encabezado}<li class="tram-row"><span class="tram-name">${esc(t.nombre)}${peso}</span>${barras}</li>`;
+        const lados = t.compartido ? [t.avParque] : [t.avParque, t.avLt];
+        const listo = lados.every((v) => v !== null && v >= 100);
+        return `${encabezado}<li class="tram-card${listo ? " tram-card--ok" : ""}">
+            <div class="tram-card__top"><span class="tram-name">${esc(t.nombre)}</span>${peso}</div>
+            ${barras}
+          </li>`;
       })
       .join("");
   }
@@ -120,13 +130,24 @@
       const lista = T.faltantes(p.tramites, lado).slice(0, 4);
       if (!lista.length) return "completo";
       const total = T.faltantes(p.tramites, lado).reduce((s, f) => s + f.pts, 0);
-      return `faltan ${Math.round(total * 10) / 10} pts: ` + lista.map((f) => `${esc(f.nombre)} ${Math.round(f.pts * 10) / 10}`).join(" · ");
+      return `faltan ${formatPts(total)} pts: ` + lista.map((f) => `${esc(f.nombre)} ${formatPts(f.pts)}`).join(" · ");
     };
     return `
-      <div class="tram-head" aria-hidden="true"><span>Trámite (peso)</span><span>Parque</span><span>LT</span></div>
       <ul class="tram-list">${filasTramites(p.tramites)}</ul>
       <div class="tram-falta"><b>Parque</b> ${falta("parque")}</div>
       <div class="tram-falta"><b>LT</b> ${falta("lt")}</div>`;
+  }
+
+  /**
+   * Valor del Excel con lo que falta en gris y minúsculas, para que no
+   * compita con los datos reales: "SIN DATO" y "… (POR CONFIRMAR)".
+   */
+  function datoHtml(value) {
+    const t = String(value).trim();
+    if (/^sin dato$/i.test(t)) return `<span class="dato-falta">Sin dato</span>`;
+    const m = /^(.*?)\s*\(\s*por confirmar\s*\)?$/i.exec(t);
+    if (m) return `${esc(m[1])} <span class="dato-falta">por confirmar</span>`;
+    return esc(t);
   }
 
   function projectCardHtml(p) {
@@ -144,12 +165,12 @@
           </div>
         </div>
         <div class="pcard__meta">
-          ${p.tecnologia ? `<span><b>${esc(p.tecnologia)}</b></span>` : ""}
-          ${p.capacidad ? `<span>${esc(p.capacidad)}</span>` : ""}
-          ${p.capex ? `<span>${esc(p.capex)}</span>` : ""}
+          ${p.tecnologia ? `<span><b>${datoHtml(p.tecnologia)}</b></span>` : ""}
+          ${p.capacidad ? `<span>${datoHtml(p.capacidad)}</span>` : ""}
+          ${p.capex ? `<span>${datoHtml(p.capex)}</span>` : ""}
         </div>
         <div class="pcard__bars">
-          ${progressRow("Parque", p.parquePct)}
+          ${progressRow("Parque", p.parquePct, p.grupo)}
           ${progressRow("LT", p.ltPct)}
           ${progressRow("Global", p.globalPct)}
         </div>
@@ -200,7 +221,7 @@
   function detailField(p, key, label) {
     const value = p[key];
     if (value === null || value === undefined || value === "") return "";
-    return `<div><div class="detail-field__label">${esc(label)}</div><div class="detail-field__value">${esc(value)}</div></div>`;
+    return `<div><div class="detail-field__label">${esc(label)}</div><div class="detail-field__value">${datoHtml(value)}</div></div>`;
   }
 
   function renderDetail(elId, p) {
@@ -226,7 +247,7 @@
       <div class="detail__body">
         <div class="detail__section-title">Avance</div>
         <div class="detail-progress">
-          ${progressRow("Parque", p.parquePct)}
+          ${progressRow("Parque", p.parquePct, p.grupo)}
           ${progressRow("LT", p.ltPct)}
           ${progressRow("Global", p.globalPct)}
         </div>

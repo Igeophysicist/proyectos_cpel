@@ -19,8 +19,10 @@
 </head>
 <body>
 
-  <!-- Pantalla de carga -->
-  <div class="loader" id="loader">
+  <!-- Aviso de carga: mientras llegan los datos, la lista muestra tarjetas
+       de relleno (abajo) y este aviso solo lo leen los lectores de pantalla.
+       Si los datos no cargan, pasa a pantalla completa con el error. -->
+  <div class="loader" id="loader" role="status">
     <div class="loader__spin"></div>
     <div class="loader__text" id="loader-text">Cargando proyectos y ubicaciones…</div>
   </div>
@@ -128,7 +130,24 @@
             <select class="sortsel" id="sort-select"></select>
           </label>
         </div>
-        <div class="project-list" id="project-list"></div>
+        <div class="project-list" id="project-list" aria-hidden="true">
+          <div class="pcard pcard--esqueleto">
+            <span class="esq esq--titulo"></span><span class="esq esq--sub"></span><span class="esq esq--meta"></span>
+            <span class="esq esq--barra"></span><span class="esq esq--barra"></span><span class="esq esq--barra"></span>
+          </div>
+          <div class="pcard pcard--esqueleto">
+            <span class="esq esq--titulo"></span><span class="esq esq--sub"></span><span class="esq esq--meta"></span>
+            <span class="esq esq--barra"></span><span class="esq esq--barra"></span><span class="esq esq--barra"></span>
+          </div>
+          <div class="pcard pcard--esqueleto">
+            <span class="esq esq--titulo"></span><span class="esq esq--sub"></span><span class="esq esq--meta"></span>
+            <span class="esq esq--barra"></span><span class="esq esq--barra"></span><span class="esq esq--barra"></span>
+          </div>
+          <div class="pcard pcard--esqueleto">
+            <span class="esq esq--titulo"></span><span class="esq esq--sub"></span><span class="esq esq--meta"></span>
+            <span class="esq esq--barra"></span><span class="esq esq--barra"></span><span class="esq esq--barra"></span>
+          </div>
+        </div>
       </div>
 
       <!-- Logos institucionales al final de la página (como en el portal).

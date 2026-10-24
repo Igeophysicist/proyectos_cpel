@@ -20,10 +20,9 @@
       return r.json();
     });
 
-  const fmtPct = (v) => (v === null ? "—" : v.toLocaleString("es-MX", { maximumFractionDigits: 2 }) + "%");
-  // Cartera: siempre 2 decimales para que las cifras queden alineadas en la tabla.
-  const fmtPct2 = (v) => (v === null ? "—" : v.toLocaleString("es-MX", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + "%");
-  const fmtNum = (v) => Math.abs(v).toLocaleString("es-MX", { maximumFractionDigits: 2 });
+  // Porcentajes y diferencias siempre con 2 decimales (TextUtils.formatPct / formatPts).
+  const fmtPct = window.TextUtils.formatPct;
+  const fmtNum = window.TextUtils.formatPts;
   const fecha = (s, opts) => {
     const [y, m, d] = s.split("-").map(Number);
     return new Date(y, m - 1, d).toLocaleDateString("es-MX", opts).replace(/\./g, "");
@@ -117,8 +116,8 @@
             (f) => `
           <tr>
             <td><a class="semana-item__nombre" href="${CARTERA}?proyecto=${encodeURIComponent(f.slug)}">${esc(f.nombre)}</a></td>
-            <td class="semana-real">${fmtPct2(f.real)}</td>
-            <td>${fmtPct2(f.prog)}</td>
+            <td class="semana-real">${fmtPct(f.real)}</td>
+            <td>${fmtPct(f.prog)}</td>
             ${r.desde ? `<td>${flecha(f.cambio)}</td>` : ""}
           </tr>`
           )

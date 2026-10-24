@@ -79,7 +79,7 @@
                 const raw = items[0].raw;
                 return raw.fecha ? "Corte del " + fmtFull(raw.fecha) : "Tendencia al " + fmtFull(items[0].parsed.x);
               },
-              label: (item) => ` ${item.dataset.label}: ${item.parsed.y.toFixed(1)}%`,
+              label: (item) => ` ${item.dataset.label}: ${item.parsed.y.toFixed(2)}%`,
             },
           },
         },
