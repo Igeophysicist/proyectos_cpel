@@ -44,10 +44,6 @@
 
 *{box-sizing:border-box;}
 html,body{min-height:100%;}
-/* Fondo del documento en el color de la barra superior: en el iPhone, con la
-   app instalada, iOS pinta detrás de la hora y la batería el fondo de la
-   página (no el theme-color); así esa franja queda del mismo verde. */
-html{background:var(--teal-800);}
 body{
   margin:0;
   background:var(--bg);
@@ -58,7 +54,11 @@ body{
 h1,h2,p{margin:0;}
 a{color:inherit; text-decoration:none;}
 
+/* Fija arriba, como en las demás páginas: en el iPhone, con la app instalada,
+   iOS muestra detrás de la hora y la batería lo que queda en la orilla de
+   arriba; si la barra se desplazara con el contenido, ahí se vería el gris. */
 .topbar{
+  position:sticky; top:0; z-index:40;
   height:var(--topbar-h);
   background:var(--teal-800);
   color:var(--ink-on-dark);

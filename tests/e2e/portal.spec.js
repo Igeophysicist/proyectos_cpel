@@ -45,15 +45,12 @@ test("sin clima, la fecha y la hora se siguen viendo", async ({ page }) => {
   await expect(page.locator("#cdmxClima")).toBeHidden();
 });
 
-test("detrás de la barra de estado del iPhone se ve el verde de la barra superior", async ({ page }) => {
-  for (const url of ["/", "/cartera-cpel/", "/cartera-mixtos/", "/cartera-anteproyectos/"]) {
-    await page.goto(url);
-    const [fondo, barra] = await page.evaluate(() => [
-      getComputedStyle(document.documentElement).backgroundColor,
-      getComputedStyle(document.querySelector(".topbar")).backgroundColor,
-    ]);
-    expect(fondo, url).toBe(barra);
-  }
+test("la barra superior sigue arriba al desplazar la página", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 600 });
+  await page.goto("/");
+  await expect(page.locator("#semana")).toBeVisible();
+  await page.evaluate(() => window.scrollTo(0, 800));
+  await expect.poll(() => page.evaluate(() => Math.round(document.querySelector(".topbar").getBoundingClientRect().top))).toBe(0);
 });
 
 test("colaboradores se abren desde el pie de página", async ({ page }) => {

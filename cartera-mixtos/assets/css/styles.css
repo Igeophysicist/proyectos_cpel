@@ -63,10 +63,6 @@
 
 *{box-sizing:border-box;}
 html,body{height:100%;}
-/* Fondo del documento en el color de la barra superior: en el iPhone, con la
-   app instalada, iOS pinta detrás de la hora y la batería el fondo de la
-   página (no el theme-color); así esa franja queda del mismo verde. */
-html{background:var(--teal-800);}
 body{
   margin:0;
   background:var(--bg);
@@ -132,7 +128,7 @@ a{color:inherit;}
 .topbar__presbtn{display:none;}
 
 /* ---------- Layout general ---------- */
-.app{min-height:100%; background:var(--bg); padding-bottom:calc(var(--tabbar-h) + env(safe-area-inset-bottom));}
+.app{min-height:100%; padding-bottom:calc(var(--tabbar-h) + env(safe-area-inset-bottom));}
 .main{padding:var(--space-4); max-width:1400px; margin:0 auto;}
 .tabgroup{display:none;}
 .tabgroup.is-active{display:block; animation:tab-fade .25s ease-out;}
