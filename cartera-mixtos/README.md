@@ -121,7 +121,7 @@ agregar más archivos KML, súmalos al arreglo `KML_SOURCES` en
 ## Evolución por corte
 
 El botón **Evolución** (en cada tarjeta del listado, debajo de la
-etiqueta de grupo, y en la ficha junto a "Ver en el mapa") abre un
+etiqueta de grupo, y en la ficha junto a "Mapa") abre un
 panel con Parque, LT y Global de cada semana con actualizaciones
 (domingo a sábado, un punto con el último dato) y la tendencia de Global
 (`assets/js/evolucion.js`, con datos de `data/historial.json`; ver

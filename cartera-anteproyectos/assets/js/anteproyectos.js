@@ -28,43 +28,11 @@
   const DATA_FILE_PATH = "data/anteproyectos.json";
   const KML_FILE_PATH = "data/ANTEPROYECTOS.kml";
 
-  const { esc, slugify, formatDateShort, normalizeText } = window.TextUtils;
+  const { esc, slugify, formatDateShort, normalizeText, textoHtml } = window.TextUtils;
   const $ = (id) => document.getElementById(id);
 
   let proyectos = [];
   let actual = null;
-
-  // ------------------------------------------------------------ texto
-  /**
-   * Texto del Excel -> HTML: párrafos separados por línea en blanco,
-   * listas numeradas ("1. …") y con viñetas ("•", "-").
-   */
-  function textoHtml(texto) {
-    const t = String(texto || "").trim();
-    if (!t) return "";
-    return t
-      .split(/\n\s*\n/)
-      .map((bloque) => {
-        const out = [];
-        let lista = null;
-        bloque.split("\n").forEach((linea) => {
-          const num = /^(\d+)[.)]\s+(.+)$/.exec(linea);
-          const vin = /^[•\-–*]\s*(.+)$/.exec(linea);
-          const tipo = num ? "ol" : vin ? "ul" : null;
-          if (tipo) {
-            if (!lista || lista.tipo !== tipo) out.push((lista = { tipo, items: [] }));
-            lista.items.push((num || vin)[num ? 2 : 1]);
-          } else {
-            lista = null;
-            out.push({ p: linea });
-          }
-        });
-        return out
-          .map((b) => (b.p !== undefined ? `<p>${esc(b.p)}</p>` : `<${b.tipo}>${b.items.map((i) => `<li>${esc(i)}</li>`).join("")}</${b.tipo}>`))
-          .join("");
-      })
-      .join("");
-  }
 
   /** "Nivel de Tensión [kV]" -> { nombre: "Nivel de Tensión", unidad: "kV" }. */
   function separarUnidad(campo) {
@@ -262,6 +230,7 @@
     document.querySelectorAll("[data-project-name]").forEach((el) => (el.textContent = p.nombre));
 
     $("descVal").innerHTML = textoHtml(p.descripcion) || `<p class="state-msg">Sin descripción para este anteproyecto.</p>`;
+    window.Plegable.aplicar($("descVal"));
     const extras = p.extras || [];
     $("extrasVal").hidden = !extras.length;
     $("extrasVal").innerHTML = extras

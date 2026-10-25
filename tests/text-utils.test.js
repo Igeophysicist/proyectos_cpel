@@ -101,3 +101,12 @@ test("formatPct y formatPts: siempre dos decimales", () => {
   assert.equal(formatPts(-2.9), "2.90");
   assert.equal(formatPts(0.5), "0.50");
 });
+
+test("textoHtml: párrafos, viñetas (también separadas por líneas en blanco) y listas numeradas, escapado", () => {
+  const { textoHtml } = require("../assets/js/shared/text-utils.js");
+  assert.equal(textoHtml("•\tUno\r\n\r\n•\tDos <b>\r\n\r\nFin"), "<ul><li>Uno</li><li>Dos &lt;b&gt;</li></ul><p>Fin</p>");
+  assert.equal(textoHtml("Intro\n1. a\n2) b"), "<p>Intro</p><ol><li>a</li><li>b</li></ol>");
+  assert.equal(textoHtml("- x\n1. y"), "<ul><li>x</li></ul><ol><li>y</li></ol>");
+  assert.equal(textoHtml(""), "");
+  assert.equal(textoHtml(null), "");
+});

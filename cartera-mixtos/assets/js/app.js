@@ -189,6 +189,13 @@
 
   function wireEvents() {
     const renderDebounced = window.TextUtils.debounce(render, SEARCH_DEBOUNCE_MS);
+    // Texto de ayuda del buscador: en pantallas angostas solo "Buscar" (el
+    // completo no cabe y se veía cortado); aria-label sigue completo.
+    const angosta = window.matchMedia("(max-width: 600px)");
+    const ayudaBuscador = () => (els.search.placeholder = angosta.matches ? "Buscar" : "Buscar proyecto, socio o ubicación");
+    ayudaBuscador();
+    angosta.addEventListener("change", ayudaBuscador);
+
     els.search.addEventListener("input", (e) => {
       window.AppFilters.setSearch(e.target.value);
       renderDebounced();

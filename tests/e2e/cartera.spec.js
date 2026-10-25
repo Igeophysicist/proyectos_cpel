@@ -144,3 +144,21 @@ test("Avances particulares: la diferencia Real − Programado de cada área con 
   const d = Math.round((n(p.realIng) - n(p.progIng)) * 100) / 100;
   await expect(difs.first()).toHaveClass(new RegExp(`mini-dif--${A.semaforo(d)}`));
 });
+
+test("Eventos importantes: viñetas como lista y, si es largo, \"Ver más\" / \"Ver menos\"", async ({ page }) => {
+  const p = datos().cartera[0];
+  await page.goto(`/cartera-cpel/?proyecto=${slugify(p.nombre)}`);
+  await listo(page);
+  const eventos = page.locator("#eventosVal");
+  if (/^\s*•/m.test(p.eventos_importantes)) await expect(eventos.locator("ul li").first()).toBeVisible();
+  const alto = () => eventos.evaluate((el) => el.clientHeight);
+  const btn = page.locator("#eventosVal + .plegable__btn");
+  if (!(await btn.count())) return; // texto corto: sin botón
+  const plegado = await alto();
+  await btn.click();
+  await expect(btn).toHaveText("Ver menos");
+  await expect(btn).toHaveAttribute("aria-expanded", "true");
+  expect(await alto()).toBeGreaterThan(plegado);
+  await btn.click();
+  await expect(btn).toHaveText("Ver más");
+});

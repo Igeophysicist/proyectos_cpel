@@ -239,3 +239,19 @@ test("la barra de Parque de cada tarjeta lleva el color de su grupo", async ({ p
     await expect(t.locator(".pbar").nth(1).locator(".pbar__fill")).not.toHaveClass(/pbar__fill--/);
   }
 });
+
+test("celular: buscador con \"Buscar\", botón Mapa en la ficha y leyenda de la rueda en una fila", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  const p = proyectoConEvolucion();
+  await page.goto(`/cartera-mixtos/?proyecto=${slugify(p.nombre)}`);
+  await cargado(page);
+  await expect(page.locator("#search-input")).toHaveAttribute("placeholder", "Buscar");
+  await expect(page.locator("#search-input")).toHaveAttribute("aria-label", "Buscar proyecto, socio o ubicación");
+  await expect(page.locator("#detail [data-view-on-map]")).toHaveText("Mapa");
+  await page.keyboard.press("Escape");
+  await page.click(".tabbar__btn[data-tab=resumen]");
+  const items = page.locator(".dona-leyenda__item");
+  await expect(items).toHaveCount(3);
+  const tops = await items.evaluateAll((els) => els.map((e) => Math.round(e.getBoundingClientRect().top)));
+  expect(new Set(tops).size).toBe(1);
+});

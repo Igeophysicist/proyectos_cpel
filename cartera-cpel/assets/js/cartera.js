@@ -154,7 +154,7 @@
     ["plazo_operacion_fecha", "Operación"],
   ];
 
-  const { esc, parseNumber, parseDate, isPastOrToday, slugify, formatDateShort } = window.TextUtils;
+  const { esc, parseNumber, parseDate, isPastOrToday, slugify, formatDateShort, textoHtml } = window.TextUtils;
 
   let proyectos = [];
   let hitos = {}; // por proyecto (slug del nombre), de hitos.json
@@ -291,7 +291,8 @@
     $("srcVal").textContent = texto(p.fuenteRecursos);
 
     // Eventos importantes (texto libre)
-    $("eventosVal").textContent = texto(p.eventos_importantes, "Sin eventos registrados para este proyecto.");
+    $("eventosVal").innerHTML = textoHtml(p.eventos_importantes) || "<p>Sin eventos registrados para este proyecto.</p>";
+    window.Plegable.aplicar($("eventosVal"));
 
     // Ubicación en el mapa
     if (window.CarteraMap) window.CarteraMap.mostrarProyecto(p);

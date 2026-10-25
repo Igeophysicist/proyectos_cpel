@@ -411,7 +411,23 @@ body{ padding-bottom: calc(var(--tabbar-h) + env(safe-area-inset-bottom, 0px)); 
 .leaflet-tooltip.region-label::before{display:none;}
 
 /* ---------- Eventos importantes ---------- */
-.eventos-text{ font-size: 13px; color: var(--ink-700); line-height: 1.6; white-space: pre-line; text-align: justify;}
+/* Eventos importantes: párrafos y viñetas del Excel, alineados a la izquierda */
+.eventos-text{ font-size: 13px; color: var(--ink-700); line-height: 1.6; }
+.eventos-text p{ margin: 0 0 8px; }
+.eventos-text ul, .eventos-text ol{ margin: 0 0 8px; padding-left: 20px; }
+.eventos-text li{ margin: 0 0 8px; }
+.eventos-text li::marker{ color: var(--gold-700); }
+.eventos-text > :last-child, .eventos-text li:last-child{ margin-bottom: 0; }
+/* Textos largos (plegable.js): primeras 6 líneas y "Ver más" */
+.plegable.is-plegado{
+  max-height: 9.6em; overflow: hidden;
+  -webkit-mask-image: linear-gradient(#000 65%, transparent); mask-image: linear-gradient(#000 65%, transparent);
+}
+.plegable__btn{
+  display: inline-flex; margin-top: 6px; padding: 4px 0; border: 0; background: none; cursor: pointer;
+  font: inherit; font-size: 12.5px; font-weight: 700; color: var(--teal-800);
+}
+.plegable__btn:focus-visible{ outline: 2px solid var(--gold-500); outline-offset: 2px; border-radius: 4px; }
 
 /* ---------- Pantallas amplias ---------- */
 @media (min-width: 900px){
@@ -499,6 +515,8 @@ body.modo-pdf .hitos-ver{ display: none; }
 body.modo-pdf .particular__title{ font-size: 10px; padding-bottom: 3px; margin-bottom: 4px; }
 body.modo-pdf .mini-row + .mini-row{ margin-top: 3px; }
 body.modo-pdf .eventos-text{ font-size: 10px; line-height: 1.35; column-count: 2; column-gap: 14px; }
+body.modo-pdf .plegable{ max-height: none; -webkit-mask-image: none; mask-image: none; }
+body.modo-pdf .plegable__btn{ display: none; }
 body.modo-pdf .info-list{ gap: 4px; }
 body.modo-pdf .sheet{ display: none !important; }
 body.modo-pdf .print-only{ display: block; }
