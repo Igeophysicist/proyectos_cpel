@@ -159,6 +159,11 @@ body{ padding-bottom: calc(var(--tabbar-h) + env(safe-area-inset-bottom, 0px)); 
 .mini-row__tag--prog{ color: var(--prog-color); }
 .mini-row__tag--real{ color: var(--real-color); }
 .mini-row__val{ flex: none; min-width: 44px; white-space: nowrap; text-align: right; font-size: 11.5px; font-weight: 700; color: var(--ink-700); font-variant-numeric: tabular-nums; }
+/* Diferencia Real − Programado de cada área, con el color del semáforo (avance.js) */
+.mini-dif{ display: block; width: fit-content; margin: 7px 0 0 auto; font-size: 10.5px; font-weight: 700; border-radius: 99px; padding: 1px 8px; }
+.mini-dif--ok{ background: var(--status-a-bg, #e4f3ec); color: #1e7a52; }
+.mini-dif--leve{ background: #fbf0d9; color: #7f5a14; }
+.mini-dif--grave{ background: var(--status-c-bg, #fbe9e9); color: #b83b3b; }
 
 /* ---------- Hitos de pago (hitos.js) ---------- */
 /* Pagados sobre el total: verde los pagados, más claro los parciales. */

@@ -46,3 +46,14 @@ test("generalHtml y miniHtml: Programado y Real con dos decimales, semáforo y P
   assert.match(A.miniHtml(5, 9, { pendiente: true }), /mini-row__val">—/);
   assert.doesNotMatch(m, /<div/); // puede ir dentro de un botón
 });
+
+test("diferenciaHtml: diferencia Real − Programado con el color del semáforo", () => {
+  assert.match(A.diferenciaHtml(6.46, 6.36), /mini-dif--ok"[^>]*>\+0\.10 pts/);
+  assert.match(A.diferenciaHtml(7.62, 10.15), /mini-dif--leve"[^>]*>−2\.53 pts/);
+  assert.match(A.diferenciaHtml(32.21, 100), /mini-dif--grave"[^>]*>−67\.79 pts/);
+  assert.match(A.diferenciaHtml(5, 5), /mini-dif--ok"[^>]*>Al día/);
+  assert.equal(A.diferenciaHtml(null, 5), "");
+  assert.match(A.miniHtml(6.46, 6.36, { diferencia: true }), /mini-dif/);
+  assert.doesNotMatch(A.miniHtml(6.46, 6.36), /mini-dif/);
+  assert.doesNotMatch(A.miniHtml(6.46, 6.36, { diferencia: true, pendiente: true }), /mini-dif/);
+});

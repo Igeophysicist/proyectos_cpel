@@ -277,7 +277,7 @@
       ([key, label]) => `
         <div class="particular">
           <div class="particular__title">${label}</div>
-          ${A.miniHtml(pct(p[`real${key}`]), pct(p[`prog${key}`]))}
+          ${A.miniHtml(pct(p[`real${key}`]), pct(p[`prog${key}`]), { diferencia: true })}
         </div>`
     ).join("");
 
