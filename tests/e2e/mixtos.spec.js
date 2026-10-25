@@ -255,3 +255,13 @@ test("celular: buscador con \"Buscar\", botón Mapa en la ficha y leyenda de la 
   const tops = await items.evaluateAll((els) => els.map((e) => Math.round(e.getBoundingClientRect().top)));
   expect(new Set(tops).size).toBe(1);
 });
+
+test("tablet vertical: las tarjetas van en dos columnas", async ({ page }) => {
+  await page.setViewportSize({ width: 800, height: 1280 });
+  await page.goto("/cartera-mixtos/");
+  await cargado(page);
+  const [a, b] = await page.locator("#project-list .pcard").evaluateAll((els) => els.slice(0, 2).map((e) => e.getBoundingClientRect()));
+  expect(Math.round(a.top)).toBe(Math.round(b.top)); // misma fila
+  expect(b.left).toBeGreaterThan(a.right);
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+});
