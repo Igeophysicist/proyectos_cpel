@@ -75,17 +75,35 @@
   }
 
   /**
-   * Filas P / R (Avances particulares y ponderados). Solo <span> porque
-   * puede ir dentro de un botón.
+   * Diferencia Real − Programado en chico, con el color del semáforo
+   * ("−0.10 pts", "+1.20 pts", "Al día"); vacío si falta algún dato.
    */
-  function miniHtml(real, prog, { pendiente = false } = {}) {
+  function diferenciaHtml(real, prog) {
+    const r = num(real);
+    const p = num(prog);
+    if (r === null || p === null) return "";
+    const diff = r2(r - p);
+    const texto = diff > 0 ? `+${formatPts(diff)} pts` : diff < 0 ? `−${formatPts(diff)} pts` : "Al día";
+    return `<span class="mini-dif mini-dif--${semaforo(diff)}" title="Real − Programado">${texto}</span>`;
+  }
+
+  /**
+   * Filas P / R (Avances particulares y ponderados) y, con diferencia,
+   * la diferencia Real − Programado debajo. Solo <span> porque puede ir
+   * dentro de un botón.
+   */
+  function miniHtml(real, prog, { pendiente = false, diferencia = false } = {}) {
     const fila = (lado, letra, v) => `
       <span class="mini-row">
         <span class="mini-row__tag mini-row__tag--${lado}">${letra}</span>
         ${barra(lado, v, true)}
         <span class="mini-row__val">${formatPct(num(v))}</span>
       </span>`;
-    return fila("prog", "P", pendiente ? null : prog) + fila("real", "R", real);
+    return (
+      fila("prog", "P", pendiente ? null : prog) +
+      fila("real", "R", real) +
+      (diferencia && !pendiente ? diferenciaHtml(real, prog) : "")
+    );
   }
 
   /**
@@ -109,7 +127,7 @@
     });
   }
 
-  const api = { ATRASO_LEVE, semaforo, textoDiferencia, cambioSemanal, barra, generalHtml, miniHtml, pintarSemana };
+  const api = { ATRASO_LEVE, semaforo, textoDiferencia, cambioSemanal, barra, generalHtml, miniHtml, diferenciaHtml, pintarSemana };
   if (typeof module !== "undefined" && module.exports) module.exports = api;
   else global.CarteraAvance = api;
 })(typeof window !== "undefined" ? window : globalThis);

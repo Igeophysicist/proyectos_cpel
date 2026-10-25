@@ -99,7 +99,7 @@
     `<div class="av-nota">${titulo ? `<div class="av-nota__titulo">${esc(titulo)}</div>` : ""}${textoHtml(texto)}</div>`;
 
   /** Real y Programado de un avance, como en Avances particulares de Cartera CPEL. */
-  const miniFilas = (x, pendiente) => A.miniHtml(x.real, x.prog, { pendiente });
+  const miniFilas = (x, pendiente) => A.miniHtml(x.real, x.prog, { pendiente, diferencia: true });
 
   /** Avances particulares ("1. …", "2. …"): un botón por cada uno. */
   function particularesHtml(avance) {

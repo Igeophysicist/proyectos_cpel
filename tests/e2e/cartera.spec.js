@@ -130,3 +130,17 @@ test("Avance General: Programado y Real, semáforo y cambio desde el corte anter
   // Avances particulares: P y R por área
   await expect(page.locator("#particularGrid .particular .mini-row")).toHaveCount(8);
 });
+
+test("Avances particulares: la diferencia Real − Programado de cada área con el color del semáforo", async ({ page }) => {
+  globalThis.TextUtils = require("../../assets/js/shared/text-utils.js");
+  const A = require("../../cartera-cpel/assets/js/avance.js");
+  const p = datos().cartera[0];
+  const n = (v) => Math.round(parseFloat(String(v).replace("%", "")) * 100) / 100;
+  await page.goto(`/cartera-cpel/?proyecto=${slugify(p.nombre)}`);
+  await listo(page);
+  const difs = page.locator("#particularGrid .particular .mini-dif");
+  await expect(difs).toHaveCount(4);
+  // Ingeniería es la primera tarjeta (columnas realIng / progIng)
+  const d = Math.round((n(p.realIng) - n(p.progIng)) * 100) / 100;
+  await expect(difs.first()).toHaveClass(new RegExp(`mini-dif--${A.semaforo(d)}`));
+});
