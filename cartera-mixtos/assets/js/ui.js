@@ -78,6 +78,7 @@
   }
 
   const EVO_ICON = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 3v18h18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M7 15l4-4 3 3 6-7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+  const MAPA_ICON = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 4 3.5 6v14L9 18l6 2 5.5-2V4L15 6 9 4Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9 4v14M15 6v14" stroke="currentColor" stroke-width="2"/></svg>`;
   const TRAM_ICON = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 5h11M9 12h11M9 19h11" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M3.5 5l1.2 1.2L7 4M3.5 12l1.2 1.2L7 11M3.5 19l1.2 1.2L7 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
   const tieneEvolucion = (p) => global.AppEvolucion && global.AppEvolucion.tieneDatos(p);
 
@@ -155,14 +156,13 @@
     return `
       <div class="pcard${p.prioritario ? " pcard--prio" : ""}${p.geo ? "" : " pcard--nogeo"}" data-id="${esc(p.id)}">
         <div class="pcard__top">
-          <div>
-            <h2 class="pcard__title"><button type="button" class="pcard__open" data-id="${esc(p.id)}">${esc(p.nombre)}</button></h2>
-            <div class="pcard__sub">${esc([p.socio, p.ubicacion].filter(Boolean).join(" · "))}</div>
-          </div>
-          <div class="pcard__side">
-            ${p.prioritario ? PRIO_CHIP : ""}
-            ${grupoInfo ? `<span class="badge badge--${grupoInfo.css}">${grupoInfo.label}</span>` : ""}
-          </div>
+          <h2 class="pcard__title"><button type="button" class="pcard__open" data-id="${esc(p.id)}">${esc(p.nombre)}</button></h2>
+          ${
+            p.prioritario || grupoInfo
+              ? `<div class="pcard__chips">${p.prioritario ? PRIO_CHIP : ""}${grupoInfo ? `<span class="badge badge--${grupoInfo.css}">${grupoInfo.label}</span>` : ""}</div>`
+              : ""
+          }
+          <div class="pcard__sub">${esc([p.socio, p.ubicacion].filter(Boolean).join(" · "))}</div>
         </div>
         <div class="pcard__meta">
           ${p.tecnologia ? `<span><b>${datoHtml(p.tecnologia)}</b></span>` : ""}
@@ -227,7 +227,7 @@
   function renderDetail(elId, p) {
     const grupoInfo = GRUPO_INFO[p.grupo];
     const acciones = [
-      p.geo ? `<button class="detail__mapbtn" data-view-on-map="${esc(p.id)}">Ver en el mapa</button>` : "",
+      p.geo ? `<button class="detail__mapbtn" data-view-on-map="${esc(p.id)}" aria-label="Ver en el mapa">${MAPA_ICON}Mapa</button>` : "",
       tieneEvolucion(p) ? `<button class="detail__mapbtn" data-open-evolucion>${EVO_ICON}Evolución</button>` : "",
       p.tramites ? `<button class="detail__mapbtn" data-open-tramites>${TRAM_ICON}Trámites</button>` : "",
     ].join("");

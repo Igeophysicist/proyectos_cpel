@@ -135,6 +135,35 @@
     };
   }
 
+  /**
+   * Texto del Excel -> HTML (escapado): una línea es un párrafo; las
+   * líneas que empiezan con "1." son una lista numerada y las que empiezan
+   * con "•", "-" o "*", una lista con viñetas (las líneas en blanco entre
+   * viñetas no cortan la lista). "" si no hay texto.
+   */
+  function textoHtml(texto) {
+    const out = [];
+    let lista = null;
+    String(texto || "")
+      .replace(/\r\n?/g, "\n")
+      .split("\n")
+      .map((l) => l.trim())
+      .forEach((linea) => {
+        if (!linea) return;
+        const num = /^(\d+)[.)]\s+(.+)$/.exec(linea);
+        const vin = /^[•\-–*]\s*(.+)$/.exec(linea);
+        const tipo = num ? "ol" : vin ? "ul" : null;
+        if (!tipo) {
+          lista = null;
+          out.push(`<p>${esc(linea)}</p>`);
+          return;
+        }
+        if (!lista || lista.tipo !== tipo) out.push((lista = { tipo, items: [] }));
+        lista.items.push(esc((num || vin)[num ? 2 : 1]));
+      });
+    return out.map((b) => (typeof b === "string" ? b : `<${b.tipo}>${b.items.map((i) => `<li>${i}</li>`).join("")}</${b.tipo}>`)).join("");
+  }
+
   /** Porcentaje siempre con dos decimales ("34.30%"); "—" si no hay dato. */
   function formatPct(value) {
     const n = typeof value === "number" ? value : parseNumber(value);
@@ -146,7 +175,7 @@
     return Math.abs(Number(value) || 0).toFixed(2);
   }
 
-  const api = { normalizeText, esc, parseNumber, parseDate, isPastOrToday, debounce, slugify, formatDateShort, formatPct, formatPts };
+  const api = { normalizeText, esc, parseNumber, parseDate, isPastOrToday, debounce, slugify, formatDateShort, formatPct, formatPts, textoHtml };
 
   if (typeof module !== "undefined" && module.exports) module.exports = api;
   else global.TextUtils = api;

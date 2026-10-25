@@ -50,7 +50,7 @@
     instances[canvasId] = new Chart(ctx, {
       type: "doughnut",
       data: {
-        labels: ["A", "B", "C"].map((g) => `Grupo ${g} · ${counts[g]}`),
+        labels: ["A", "B", "C"].map((g) => `Grupo ${g}`),
         datasets: [
           {
             data: [counts.A, counts.B, counts.C],
@@ -63,7 +63,7 @@
         maintainAspectRatio: false,
         cutout: "68%",
         plugins: {
-          legend: { position: "bottom", labels: { boxWidth: 10, font: { size: 11 }, padding: 12 } },
+          legend: { display: false }, // leyenda propia en una sola fila (abajo)
           // Muestra el número dentro de cada segmento de forma permanente.
           datalabels: {
             color: "#ffffff",
@@ -73,6 +73,25 @@
         },
       },
     });
+    leyendaGrupos(ctx, counts);
+  }
+
+  /**
+   * Leyenda de la rueda en una sola fila: "■ A · 8  ■ B · 11  ■ C · 21"
+   * (en pantallas amplias, "Grupo A · 8"). Va debajo de la gráfica.
+   */
+  function leyendaGrupos(canvas, counts) {
+    const wrap = canvas.parentElement;
+    let el = wrap.nextElementSibling;
+    if (!el || !el.classList.contains("dona-leyenda")) {
+      el = document.createElement("div");
+      el.className = "dona-leyenda";
+      el.setAttribute("aria-hidden", "true"); // los números ya están en la descripción de la gráfica
+      wrap.after(el);
+    }
+    el.innerHTML = ["A", "B", "C"]
+      .map((g) => `<span class="dona-leyenda__item"><i style="background:${GRUPO_INFO[g].color}"></i><span class="dona-leyenda__g">Grupo </span>${g} · ${counts[g]}</span>`)
+      .join("");
   }
 
   // "FV - Fotovoltaica" -> "FV" para el eje (la tarjeta es angosta); el
