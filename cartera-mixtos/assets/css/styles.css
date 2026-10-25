@@ -299,6 +299,10 @@ a{color:inherit;}
   padding:6px 8px; background:var(--surface); color:var(--ink-700);
 }
 .project-list{display:flex; flex-direction:column; gap:var(--space-3);}
+/* Tablet vertical: tarjetas en cuadrícula de dos columnas (desde 900 px, ver abajo) */
+@media (min-width:600px) and (max-width:899px){
+  .project-list{display:grid; grid-template-columns:repeat(2, minmax(0, 1fr));}
+}
 .pcard{
   position:relative;
   background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-l);
