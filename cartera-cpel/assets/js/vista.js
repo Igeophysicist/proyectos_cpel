@@ -61,7 +61,9 @@
     function mostrarVista() {
       cerrar();
       document.body.classList.add("modo-vista");
+      document.body.classList.remove("vista-cargando");
       $("vista").hidden = false;
+      $("vistaGrid").removeAttribute("aria-hidden");
       const n = proyectos().length;
       const fecha = $("dataDate") ? $("dataDate").textContent : "";
       $("vistaSub").textContent = [`${n} proyecto${n === 1 ? "" : "s"}`, fecha].filter(Boolean).join(" · ");
@@ -75,7 +77,7 @@
     }
 
     function abrirFicha(i) {
-      document.body.classList.remove("modo-vista");
+      document.body.classList.remove("modo-vista", "vista-cargando");
       $("vista").hidden = true;
       abrir(i);
       $("backLink").href = "./";

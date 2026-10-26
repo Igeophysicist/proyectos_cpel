@@ -246,3 +246,26 @@ test("pantalla previa: tarjetas con nombre y tecnología, mapa del país, abrir 
   await expect(page.locator("#vista")).toBeHidden();
   await listo(page);
 });
+
+test("al entrar a la pantalla previa, mientras cargan los datos se ve su relleno (no el de la ficha)", async ({ page }) => {
+  let soltar;
+  const espera = new Promise((r) => (soltar = r));
+  await page.route(/datos_proyectos\.json/, async (route) => {
+    await espera;
+    await route.continue();
+  });
+  await page.goto("/cartera-cpel/");
+  await expect(page.locator("#vistaGrid .vcard--esq").first()).toBeVisible();
+  await expect(page.locator("#pdfRoot")).toBeHidden();
+  await expect(page.locator(".actionbar")).toBeHidden();
+  soltar();
+  await expect(page.locator("#vistaGrid .vcard--esq")).toHaveCount(0);
+  await expect(page.locator("#vistaGrid a.vcard").first()).toBeVisible();
+});
+
+test("si los datos no cargan, el mensaje de error se ve (también desde la pantalla previa)", async ({ page }) => {
+  await page.route(/datos_proyectos\.json/, (r) => r.fulfill({ status: 500, body: "" }));
+  await page.addInitScript(() => sessionStorage.setItem("pwa-recarga", String(Date.now()))); // sin la recarga automática
+  await page.goto("/cartera-cpel/");
+  await expect(page.locator("#cartera .state-msg")).toBeVisible({ timeout: 20_000 });
+});

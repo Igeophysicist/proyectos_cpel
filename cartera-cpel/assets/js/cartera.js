@@ -211,6 +211,7 @@
       console.error(err);
       // Copia vieja de la página con scripts nuevos (app instalada): recarga una vez.
       if (window.PWA && window.PWA.recargarSiHayRed()) return;
+      document.body.classList.remove("modo-vista", "vista-cargando"); // el mensaje va en la ficha
       $("projectSelect").innerHTML = "<option>Error al cargar datos</option>";
       $("cartera").innerHTML = `<div class="state-msg">No se pudieron cargar los datos. Detalle: ${esc(err.message)}</div>`;
     }
