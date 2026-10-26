@@ -2,7 +2,7 @@
  * hero.js (Cartera CPEL y Cartera Anteproyectos)
  * Foto del proyecto en la tarjeta de arriba. Si el proyecto no tiene foto
  * (o no carga), en lugar de un bloque liso se ve un fondo con el ícono de
- * su tecnología: solar, eólica, hidroeléctrica u otra.
+ * su tecnología: solar, eólica, hidráulica (hidroeléctricas y rebombeo) u otra.
  *
  * Expone: window.CarteraHero.foto(hero, img, src, tecnologia)
  *         window.CarteraHero.tipo(tecnologia) -> "solar" | "eolica" | "hidro" | "otra"
@@ -15,7 +15,7 @@
     const t = normalizeText(tecnologia || "");
     if (/FOTOVOLT|SOLAR|\bFV\b|TERMOSOLAR/.test(t)) return "solar";
     if (/EOLIC|VIENTO|\bEO\b/.test(t)) return "eolica";
-    if (/HIDRO/.test(t)) return "hidro";
+    if (/HIDRO|BOMBEO|\bPAEB\b/.test(t)) return "hidro";
     return "otra";
   }
 

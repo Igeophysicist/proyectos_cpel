@@ -22,11 +22,16 @@
  *   AVAN_<TIPO>   Avance: No., Proyecto, Tipo de avance (Real /
  *          Programado), GENERAL, "1. …", "1.1 …", "2. …"… y notas
  *          ("NOTA TOTAL", "NOTA (1.2)"). Se muestran tal cual, sin recalcular.
+ *          Puede tener varias tablas, una debajo de otra (cada una con su
+ *          fila de encabezados que empieza con "No."), cuando los
+ *          proyectos de la misma tecnología tienen ponderados distintos:
+ *          cada proyecto usa los encabezados de la tabla en la que está.
  *   TIPOS  (opcional) Tecnología | Sufijo, para tecnologías nuevas.
  *
  * <TIPO> sale de la tecnología de PRES: Fotovoltaico -> FOTOV, Termosolar
  * -> TERSOL, Eólico -> EO, Equipamiento Hidroeléctrico -> EQUIHIDRO,
- * Hidroeléctrico -> HIDRO (o lo que diga la hoja TIPOS).
+ * Hidroeléctrico -> HIDRO, Proyecto de Acumulación de Energía por Bombeo
+ * -> PAEB (o lo que diga la hoja TIPOS).
  *
  * Los proyectos se relacionan entre hojas por el No. (y si falta, por el
  * nombre). Se limpian los caracteres invisibles que deja copiar desde
@@ -37,6 +42,7 @@ const { normalizeText, parseNumber, slugify } = require("../assets/js/shared/tex
 // Tecnología (texto de PRES) -> sufijo de sus hojas. El orden importa:
 // "Equipamiento Hidroeléctrico" antes que "Hidroeléctrico".
 const TIPOS_BASE = [
+  [/ACUMULACION.*BOMBEO|\bPAEB\b/, "PAEB"],
   [/EQUIPAMIENTO.*HIDRO/, "EQUIHIDRO"],
   [/HIDRO/, "HIDRO"],
   [/FOTOVOLT/, "FOTOV"],
@@ -46,6 +52,13 @@ const TIPOS_BASE = [
 
 // Erratas conocidas en encabezados.
 const ERRATAS = { COMPONETES: "Componentes" };
+
+/** Índice de columna (0) -> letra de Excel ("A", …, "Z", "AA"). */
+function colExcel(c) {
+  let s = "";
+  for (let n = c + 1; n > 0; n = Math.floor((n - 1) / 26)) s = String.fromCharCode(65 + ((n - 1) % 26)) + s;
+  return s;
+}
 
 const vacio = (v) => v === null || v === undefined || String(v).trim() === "";
 
@@ -125,8 +138,9 @@ const pct = (v) => {
 };
 
 /** Avance: { general, grupos: [{ clave, titulo, real, prog, nota, items: [...] }], programadoPendiente }. */
-function leerAvance(t, filas, donde, errors) {
-  const enc = (t.filas[0] || []).map(encabezado);
+function leerAvance(t, filas, donde, errors, filaEnc = 0) {
+  const enc = (t.filas[filaEnc] || []).map(encabezado);
+  const vistas = new Map(); // clave -> columna, para avisar de números repetidos
   const columnas = [];
   const notas = {};
   enc.forEach((h, c) => {
@@ -142,6 +156,15 @@ function leerAvance(t, filas, donde, errors) {
       return;
     }
     const num = /^(\d+(?:\.\d+)*)\.?\s+(.+)$/.exec(h.trim());
+    if (num && vistas.has(num[1])) {
+      // Excel convierte "1.10" en "1.1": se mezclarían dos avances distintos.
+      errors.push(
+        `${donde}, fila ${filaEnc + 1}: el número ${num[1]} se repite (columnas ${colExcel(vistas.get(num[1]))} y ${colExcel(c)}). ` +
+          'Si es 1.10, escríbelo con apóstrofo al inicio (\'1.10) para que Excel no lo cambie a 1.1.'
+      );
+      return;
+    }
+    if (num) vistas.set(num[1], c);
     if (/^GENERAL/.test(n)) columnas.push({ c, clave: "general", titulo: "General" });
     else if (num) columnas.push({ c, clave: num[1], titulo: num[2].trim() });
     else columnas.push({ c, clave: h, titulo: h });
@@ -324,7 +347,7 @@ function leerAnteproyectos(wb, XLSX, { kml = [], existe = () => true } = {}) {
     if (!tipo) {
       errors.push(
         `${donde} (${nombre}): no se reconoce la tecnología "${tecnologia}". Usa Fotovoltaico, Termosolar, Eólico, ` +
-          'Equipamiento Hidroeléctrico o Hidroeléctrico, o agrégala en la hoja "TIPOS" (Tecnología | Sufijo).'
+          'Equipamiento Hidroeléctrico, Hidroeléctrico o Proyecto de Acumulación de Energía por Bombeo, o agrégala en la hoja "TIPOS" (Tecnología | Sufijo).'
       );
       return;
     }
@@ -332,9 +355,14 @@ function leerAnteproyectos(wb, XLSX, { kml = [], existe = () => true } = {}) {
     if (!avances[tipo]) {
       const t = tabla(hoja(`AVAN_${tipo}`), XLSX);
       const porNo = {};
-      const filas = filasPorProyecto(t, 1);
+      // Filas de encabezados (empiezan con "No."): una por tabla.
+      const encabezados = t.filas.map((f, r) => (/^NO\b/.test(normalizeText((f || [])[0])) ? r : -1)).filter((r) => r >= 0);
+      const filas = filasPorProyecto(t, 1).filter((f) => !encabezados.includes(f.r));
       [...new Set(filas.map((f) => f.no || slugify(f.nombre)))].forEach((k) => {
-        porNo[k] = leerAvance(t, filas.filter((f) => (f.no || slugify(f.nombre)) === k), `Hoja "AVAN_${tipo}"`, errors);
+        const suyas = filas.filter((f) => (f.no || slugify(f.nombre)) === k);
+        // Encabezados de la tabla del proyecto: la fila "No." más cercana arriba.
+        const filaEnc = Math.max(0, ...encabezados.filter((r) => r < suyas[0].r));
+        porNo[k] = leerAvance(t, suyas, `Hoja "AVAN_${tipo}"`, errors, filaEnc);
       });
       avances[tipo] = porNo;
     }

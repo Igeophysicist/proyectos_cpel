@@ -5,11 +5,21 @@
 	<StyleMap id="m_ylw-pushpin">
 		<Pair>
 			<key>normal</key>
-			<styleUrl>#s_ylw-pushpin</styleUrl>
+			<styleUrl>#s_ylw-pushpin0</styleUrl>
 		</Pair>
 		<Pair>
 			<key>highlight</key>
 			<styleUrl>#s_ylw-pushpin_hl</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="m_ylw-pushpin0">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl0</styleUrl>
 		</Pair>
 	</StyleMap>
 	<StyleMap id="msn_placemark_circle">
@@ -30,7 +40,27 @@
 			</Icon>
 		</IconStyle>
 	</Style>
+	<Style id="s_ylw-pushpin0">
+		<IconStyle>
+			<scale>1.2</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png</href>
+			</Icon>
+		</IconStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
 	<Style id="s_ylw-pushpin_hl">
+		<IconStyle>
+			<scale>1.2</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle_highlight.png</href>
+			</Icon>
+		</IconStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
+	<Style id="s_ylw-pushpin_hl0">
 		<IconStyle>
 			<scale>1.2</scale>
 			<Icon>
@@ -45,10 +75,6 @@
 				<href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle_highlight.png</href>
 			</Icon>
 		</IconStyle>
-		<BalloonStyle>
-		</BalloonStyle>
-		<ListStyle>
-		</ListStyle>
 	</Style>
 	<Style id="sn_placemark_circle">
 		<IconStyle>
@@ -57,14 +83,9 @@
 				<href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png</href>
 			</Icon>
 		</IconStyle>
-		<BalloonStyle>
-		</BalloonStyle>
-		<ListStyle>
-		</ListStyle>
 	</Style>
 	<Folder>
 		<name>kml_anteproyectos</name>
-		<open>1</open>
 		<Folder>
 			<name>Fotovoltaico</name>
 			<Placemark>
@@ -78,7 +99,7 @@
 					<range>853795.4394056967</range>
 					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
 				</LookAt>
-				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<styleUrl>#m_ylw-pushpin0</styleUrl>
 				<Point>
 					<gx:drawOrder>1</gx:drawOrder>
 					<coordinates>-102.1436048077433,17.93696571228943,0</coordinates>
@@ -87,7 +108,6 @@
 		</Folder>
 		<Folder>
 			<name>Equipamiento Hidroeléctrico</name>
-			<open>1</open>
 			<Placemark>
 				<name>PEH Tecate</name>
 				<LookAt>
@@ -103,6 +123,61 @@
 				<Point>
 					<gx:drawOrder>1</gx:drawOrder>
 					<coordinates>-116.6705468856285,32.47845843800717,0</coordinates>
+				</Point>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>Proyecto de Acumulación de Energía por Bombeo</name>
+			<open>1</open>
+			<Placemark>
+				<name>PAEB Agua Prieta</name>
+				<LookAt>
+					<longitude>-103.324860522776</longitude>
+					<latitude>20.78184868396384</latitude>
+					<altitude>0</altitude>
+					<heading>0.002398037029498217</heading>
+					<tilt>4.903508063357588</tilt>
+					<range>2381.670876990373</range>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<Point>
+					<gx:drawOrder>1</gx:drawOrder>
+					<coordinates>-103.3246431446182,20.78211653186844,0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>PAEB Zimapán-Alternativa B</name>
+				<LookAt>
+					<longitude>-99.51323632300146</longitude>
+					<latitude>20.64829035037134</latitude>
+					<altitude>0</altitude>
+					<heading>7.951386703658792e-15</heading>
+					<tilt>0</tilt>
+					<range>4608.071806276923</range>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<Point>
+					<gx:drawOrder>1</gx:drawOrder>
+					<coordinates>-99.51286223244094,20.64417830586305,0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>PAEB Benito Juárez</name>
+				<LookAt>
+					<longitude>-95.39941129533936</longitude>
+					<latitude>16.42860785109367</latitude>
+					<altitude>0</altitude>
+					<heading>0.01369625486421077</heading>
+					<tilt>4.728875111947429</tilt>
+					<range>8701.217998680599</range>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<Point>
+					<gx:drawOrder>1</gx:drawOrder>
+					<coordinates>-95.40112082443058,16.42431979554905,0</coordinates>
 				</Point>
 			</Placemark>
 		</Folder>

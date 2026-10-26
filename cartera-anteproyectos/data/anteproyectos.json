@@ -1,6 +1,6 @@
 {
   "fuente": "datos_anteproyectos.xlsx",
-  "excelModificado": "2026-10-23T19:22:32.000Z",
+  "excelModificado": "2026-10-26T15:36:14.000Z",
   "proyectos": [
     {
       "no": "1",
@@ -524,6 +524,823 @@
                 "clave": "2.6",
                 "titulo": "Estimación preliminar de CAPEX , OPEX y programa de obra.",
                 "real": 20,
+                "prog": 0
+              }
+            ]
+          }
+        ],
+        "programadoPendiente": false
+      }
+    },
+    {
+      "no": "3",
+      "nombre": "PAEB Agua Prieta",
+      "tecnologia": "Proyecto de Acumulación de Energía por Bombeo",
+      "tipo": "PAEB",
+      "ubicacion": "Zapopan, Jalisco",
+      "nivel": "Prefactibilidad",
+      "imagen": "data/IMAGENES/AGUA_PRIETA.jpg",
+      "descripcion": "El Proyecto de Acumulación de Energía por Bombeo (PAEB) Agua Prieta, plantea aprovechar parte de la infraestructura de la CH Agua Prieta, principalmente el actual tanque sedimentador y regulador, como tanque superior para el PAEB, integrando una tubería que conducirá a una casa de máquinas en caverna equipada con 2 equipos turbogeneradores con turbinas Francis reversibles y una estructura contenedora sobre el río Santiago como tanque inferior, con el objetivo de bombear hacia el tanque superior y generar hacia el tanque inferior.\n\nEl diseño del PAEB considerará las condiciones de operación de la CH Agua Prieta y se integrará de las obras tales como:\n\n1. Tanque superior\n2. Túnel y tubería de conducción\n3. Casa de máquinas\n4. Tanque inferior\n5. Subestación elevadora\n6. Interconexión",
+      "rta": {
+        "titulo": "Red de Transmisión Propuesta (RTA)",
+        "secciones": [
+          {
+            "tipo": "especificaciones",
+            "titulo": "Especificaciones del sistema",
+            "campos": [
+              {
+                "campo": "Nivel de Tensión [kV]",
+                "valor": "230"
+              },
+              {
+                "campo": "Capacidad de Evacuación [MVA]",
+                "valor": "240"
+              },
+              {
+                "campo": "Tipo de Conductor",
+                "valor": "ACSR / ACSS"
+              },
+              {
+                "campo": "Longitud de Línea [km]",
+                "valor": "3.3"
+              },
+              {
+                "campo": "Configuración",
+                "valor": "2 Circuitos"
+              },
+              {
+                "campo": "Tecnología de Datos",
+                "valor": "Cable OPGW"
+              }
+            ]
+          },
+          {
+            "tipo": "justificacion",
+            "titulo": "Justificación de la ruta",
+            "campos": [
+              {
+                "campo": "Optimización de Longitud",
+                "valor": "Minimización del trazado para reducir pérdidas técnicas y costos de inversión en conductor y contar con capacidad en el NODO"
+              },
+              {
+                "campo": "Criterio Socio-Ambiental",
+                "valor": "Alejamiento de zonas de alta densidad poblacional"
+              },
+              {
+                "campo": "Franjas de Servidumbre",
+                "valor": "Aprovechamiento de infraestructuras existentes para agilizar gestiones prediales y permisos"
+              }
+            ]
+          },
+          {
+            "tipo": "componentes",
+            "titulo": "Componentes",
+            "columnas": [
+              "COMPONENTE",
+              "DESCRIPCIÓN TÉCNICA",
+              "CANTIDAD"
+            ],
+            "filas": [
+              [
+                "Torres / Estructuras",
+                "Celosía metálica, altura 30-35 m",
+                "2 Unid."
+              ],
+              [
+                "S/E Elevadora",
+                "230/34 kV, Transformador ppal.",
+                "1 Unid."
+              ],
+              [
+                "S/E Interconexión",
+                "Ampliación de bahía en POI",
+                "2 Bahías"
+              ],
+              [
+                "Protecciones",
+                "Relés de distancia y diferencial",
+                "[X] Equip."
+              ]
+            ]
+          },
+          {
+            "tipo": "poi",
+            "titulo": "Punto de Interconexión (POI)",
+            "campos": [
+              {
+                "campo": "SE Eléctrica",
+                "valor": "Subestación Guadalajara Norte"
+              },
+              {
+                "campo": "Descripción",
+                "valor": "Conexión en el nodo 03GUN-230 de la SE Guadalajara Norte del sistema de transmisión nacional/regional."
+              },
+              {
+                "campo": "Confiabilidad",
+                "valor": "Alta Confiabilidad"
+              }
+            ]
+          }
+        ]
+      },
+      "ficha": [
+        {
+          "campo": "Potencia Instalada [MW]",
+          "valor": "240"
+        },
+        {
+          "campo": "Generación media anual [GWh]",
+          "valor": "380"
+        },
+        {
+          "campo": "Factor de planta [%]",
+          "valor": "17.9"
+        },
+        {
+          "campo": "Número de turbinas [#]",
+          "valor": "2"
+        },
+        {
+          "campo": "Tipo de turbina",
+          "valor": "Francis Reversibles"
+        },
+        {
+          "campo": "Consumo específico [m3/kWh]",
+          "valor": "0.77"
+        },
+        {
+          "campo": "Gasto de Diseño [m3/s]",
+          "valor": "51.7"
+        },
+        {
+          "campo": "Carga bruta [m]",
+          "valor": "513"
+        },
+        {
+          "campo": "Volumen útil [hm3]",
+          "valor": "0.8"
+        },
+        {
+          "campo": "Nodo de interconexión",
+          "valor": "S.E. Guadalajara Norte"
+        },
+        {
+          "campo": "CAPEX (MUSD)",
+          "valor": "828"
+        },
+        {
+          "campo": "OPEX (MUSD/Año)",
+          "valor": "6"
+        }
+      ],
+      "avance": {
+        "general": {
+          "clave": "general",
+          "titulo": "General",
+          "real": 42,
+          "prog": 61,
+          "nota": "• Levantamiento topográfico en campo, se concluye el informe el 14 de agosto.\n• El 09 de octubre se recibió información técnica de la CH Agua Prieta, ésta se utilizará para el planteamiento del proyecto de rebombeo.\n• Se realiza análisis hidrológico e hidroenergético, así como planteamientos de aprovechamiento hidroeléctrico como PAEB y como bombeo del río Santiago al tanque superior actual para incrementar FP de la CH Agua Prieta.\n• Se mapean terrenos externos a los de CFE y se ha identificado Núcleos Agrarios.\n• Se planea 2da visita técnica en noviembre de 2026.\n• Se continúa con gestión de la Clave de Registro Única para desarrollar los Estudios de Preinversión a partir de marzo de 2027."
+        },
+        "grupos": [
+          {
+            "clave": "1",
+            "titulo": "Certidumbre Social, Ambiental, Tenencia de la tierra e Hídrica",
+            "real": 50,
+            "prog": 60,
+            "items": [
+              {
+                "clave": "1.1",
+                "titulo": "Análisis de la disponibilidad del recurso hídrico.",
+                "real": 50,
+                "prog": 75,
+                "nota": "Se requiere reunión con CONAGUA para verificar Concesión de agua"
+              },
+              {
+                "clave": "1.2",
+                "titulo": "Certidumbre de los terrenos a ocupar.",
+                "real": 70,
+                "prog": 75
+              },
+              {
+                "clave": "1.3",
+                "titulo": "Diagnóstico social preliminar.",
+                "real": 70,
+                "prog": 69
+              },
+              {
+                "clave": "1.4",
+                "titulo": "Diagnóstico ambiental preliminar.",
+                "real": 50,
+                "prog": 69
+              },
+              {
+                "clave": "1.5",
+                "titulo": "Diagnóstico arqueológico preliminar.",
+                "real": 60,
+                "prog": 69
+              },
+              {
+                "clave": "1.6",
+                "titulo": "Análisis FODA.",
+                "real": 0,
+                "prog": 0
+              }
+            ]
+          },
+          {
+            "clave": "2",
+            "titulo": "Desarrollo de Ingeniería (Anteproyecto)",
+            "real": 33,
+            "prog": 62,
+            "items": [
+              {
+                "clave": "2.1",
+                "titulo": "Visita técnica al sitio del proyecto.",
+                "real": 50,
+                "prog": 100,
+                "nota": "Pendiente segunda visita técnica"
+              },
+              {
+                "clave": "2.2",
+                "titulo": "Levantamiento topográfico LiDAR con Dron, 7 de agosto",
+                "real": 100,
+                "prog": 100
+              },
+              {
+                "clave": "2.3",
+                "titulo": "Análisis de la operación de la CH Agua Prieta y estudio hidrológico.",
+                "real": 30,
+                "prog": 94,
+                "nota": "Se realizan análisis con información disponible"
+              },
+              {
+                "clave": "2.4",
+                "titulo": "Planteamiento de obras principales",
+                "real": 35,
+                "prog": 55
+              },
+              {
+                "clave": "2.5",
+                "titulo": "Análisis hidroenergético.",
+                "real": 10,
+                "prog": 44
+              },
+              {
+                "clave": "2.6",
+                "titulo": "Obras complementarias requeridas.",
+                "real": 7,
+                "prog": 44
+              },
+              {
+                "clave": "2.7",
+                "titulo": "Estimación preliminar de CAPEX , OPEX y programa de obra.",
+                "real": 0,
+                "prog": 0
+              }
+            ]
+          }
+        ],
+        "programadoPendiente": false
+      }
+    },
+    {
+      "no": "4",
+      "nombre": "PAEB Zimapán-Alternativa B",
+      "tecnologia": "Proyecto de Acumulación de Energía por Bombeo",
+      "tipo": "PAEB",
+      "ubicacion": "Tecozautla, Hidalgo",
+      "nivel": "Gran Visión",
+      "imagen": "data/IMAGENES/ZIMAPAN.jpg",
+      "descripcion": "El Proyecto de Acumulación de Energía por Bombeo (PAEB) Zimapán, aprovechará el embalse de la presa Zimapán de la CH Fernando Hiriart Balderrama y se busca la mejor opción para el diseño del vaso superior, mediante el estudio de viabilidad técnica, socioambiental, jurídica del predio, arqueológica y financiera de ocho alternativas en los municipios de Querétaro e Hidalgo.\nLa PAEB Zimapán está integrado por un tanque elevado excavado (1.86 Mm3), tubería a presión (Diam 4.6 m), casa de máquinas tipo galería (2U reversibles) tipo Francis, un tanque inferior-Presa Zimapán, subestación elevadora, línea al punto de interconexión y subestación de maniobras.\n\nEl diseño del PAEB considerará las condiciones de operación de la CH Zimapán y se integrará de las obras tales como:\n\n1. Tanque superior\n2. Túnel y tubería de conducción\n3. Casa de máquinas\n4. Tanque inferior (embalse Zimapán)\n5. Subestación elevadora\n6. Línea de interconexión-230 kV\n6. Interconexión (SE-Maniobras)",
+      "rta": {
+        "titulo": "Red de Transmisión Propuesta (RTA)",
+        "secciones": [
+          {
+            "tipo": "especificaciones",
+            "titulo": "Especificaciones del sistema",
+            "campos": [
+              {
+                "campo": "Nivel de Tensión [kV]",
+                "valor": "230"
+              },
+              {
+                "campo": "Capacidad de Evacuación [MVA]",
+                "valor": "197"
+              },
+              {
+                "campo": "Tipo de Conductor",
+                "valor": "ACSR / ACSS"
+              },
+              {
+                "campo": "Longitud de Línea [km]",
+                "valor": "6.2"
+              },
+              {
+                "campo": "Configuración",
+                "valor": "2 Circuitos"
+              },
+              {
+                "campo": "Tecnología de Datos",
+                "valor": "Cable OPGW"
+              }
+            ]
+          },
+          {
+            "tipo": "justificacion",
+            "titulo": "Justificación de la ruta",
+            "campos": [
+              {
+                "campo": "Optimización de Longitud",
+                "valor": "Minimización del trazado para reducir pérdidas técnicas y costos de inversión en conductor y contar con capacidad en el NODO"
+              },
+              {
+                "campo": "Criterio Socio-Ambiental",
+                "valor": "Alejamiento de zonas de alta densidad poblacional. No se encuentran dentro de alguna área de conservación (i. e., ANP's, AICAS, Sitios RAMSAR)."
+              },
+              {
+                "campo": "Franjas de Servidumbre",
+                "valor": "Aprovechamiento de infraestructuras existentes para agilizar gestiones prediales y permisos"
+              }
+            ]
+          },
+          {
+            "tipo": "componentes",
+            "titulo": "Componentes",
+            "columnas": [
+              "COMPONENTE",
+              "DESCRIPCIÓN TÉCNICA",
+              "CANTIDAD"
+            ],
+            "filas": [
+              [
+                "Torres / Estructuras",
+                "Celosía metálica, altura 30-35 m",
+                "47 Unid."
+              ],
+              [
+                "S/E Elevadora",
+                "230/34 kV, Transformador ppal.",
+                "1 Unid."
+              ],
+              [
+                "S/E Interconexión",
+                "Ampliación de bahía en POI",
+                "2 Bahías"
+              ],
+              [
+                "Protecciones",
+                "Relés de distancia y diferencial",
+                "[X] Equip."
+              ]
+            ]
+          },
+          {
+            "tipo": "poi",
+            "titulo": "Punto de Interconexión (POI)",
+            "campos": [
+              {
+                "campo": "SE Eléctrica",
+                "valor": "Subestación Dañu"
+              },
+              {
+                "campo": "Descripción",
+                "valor": "Conexión en el nodo del circuito 93060, LT-Zimapán PH-DAÑU, Occidente del sistema de transmisión nacional/regional."
+              },
+              {
+                "campo": "Confiabilidad",
+                "valor": "Alta Confiabilidad"
+              }
+            ]
+          }
+        ]
+      },
+      "ficha": [
+        {
+          "campo": "Potencia Instalada [MW]",
+          "valor": "197"
+        },
+        {
+          "campo": "Generación media anual [GWh]",
+          "valor": "431.71"
+        },
+        {
+          "campo": "Factor de planta [%]",
+          "valor": "25"
+        },
+        {
+          "campo": "Número de turbinas [#]",
+          "valor": "2"
+        },
+        {
+          "campo": "Tipo de turbina",
+          "valor": "Francis Reversibles"
+        },
+        {
+          "campo": "Consumo específico [m3/kWh]",
+          "valor": "0.0048"
+        },
+        {
+          "campo": "Gasto de Diseño [m3/s]",
+          "valor": "86.28"
+        },
+        {
+          "campo": "Carga bruta [m]",
+          "valor": "240.26"
+        },
+        {
+          "campo": "Volumen útil [hm3]",
+          "valor": "2.081"
+        },
+        {
+          "campo": "Nodo de interconexión",
+          "valor": "S.E. Dañú"
+        },
+        {
+          "campo": "CAPEX (MUSD)",
+          "valor": "702.5"
+        },
+        {
+          "campo": "OPEX (MUSD/Año)",
+          "valor": "4.75"
+        }
+      ],
+      "avance": {
+        "general": {
+          "clave": "general",
+          "titulo": "General",
+          "real": 48,
+          "prog": 48,
+          "nota": "• Con base en la consulta realizada a la Subestación 1 Querétaro, se planteó propuesta de interconexión, conexión a la LT de 230 kV que va de Zimapán a Tula.\n• Se realiza un análisis comparativo de alternativas para la evaluación técnica, ambiental, social y arqueológica para determinar de opción más viable.\n• Se concertará cita a finales de noviembre con la zona de transmisión Centro/Poniente de la región de Tula, encargada de operar y mantener las redes de alta tensión. Para evaluar la propuesta del punto de interconexión que corresponde a la Subestación Dañu.\n• Se coordina la visita con el personal de la central hidroeléctrica (noviembre 2026)."
+        },
+        "grupos": [
+          {
+            "clave": "1",
+            "titulo": "Planteamiento de sitios aprovechables",
+            "real": 66,
+            "prog": 75,
+            "items": [
+              {
+                "clave": "1.1",
+                "titulo": "Disponibilidad y factibilidad del uso del recurso hídrico",
+                "real": 100,
+                "prog": 100,
+                "nota": "Se confirmó la disponibilidad del agua"
+              },
+              {
+                "clave": "1.2",
+                "titulo": "Topografía",
+                "real": 100,
+                "prog": 100
+              },
+              {
+                "clave": "1.3",
+                "titulo": "Análisis de riesgos y áreas restringidas",
+                "real": 80,
+                "prog": 57,
+                "nota": "Se complementará el análisis con identificación en campo"
+              },
+              {
+                "clave": "1.4",
+                "titulo": "Propuesta de interconexión",
+                "real": 100,
+                "prog": 100
+              },
+              {
+                "clave": "1.5",
+                "titulo": "Diagnóstico ambiental",
+                "real": 45,
+                "prog": 58
+              },
+              {
+                "clave": "1.6",
+                "titulo": "Diagnóstico Social",
+                "real": 45,
+                "prog": 62
+              },
+              {
+                "clave": "1.7",
+                "titulo": "Diagnóstico Arqueológico",
+                "real": 30,
+                "prog": 62
+              },
+              {
+                "clave": "1.8",
+                "titulo": "Diagnóstico de la Certidumbre jurídica del predio",
+                "real": 30,
+                "prog": 62
+              }
+            ]
+          },
+          {
+            "clave": "2",
+            "titulo": "Análisis, priorización y selección de sitios",
+            "real": 30,
+            "prog": 22,
+            "items": [
+              {
+                "clave": "2.1",
+                "titulo": "Evaluación de la viabilidad técnica de alternativas",
+                "real": 70,
+                "prog": 54,
+                "nota": "Solo sitio 5, 6- Ejidos (registro RAN)"
+              },
+              {
+                "clave": "2.2",
+                "titulo": "Opción definitiva",
+                "real": 35,
+                "prog": 54,
+                "nota": "Se seleccionarán 2 opciones para estudio en campo."
+              },
+              {
+                "clave": "2.3",
+                "titulo": "Presupuesto",
+                "real": 45,
+                "prog": 0
+              },
+              {
+                "clave": "2.4",
+                "titulo": "Gestión del presupuesto para preinversión",
+                "real": 0,
+                "prog": 0
+              },
+              {
+                "clave": "2.5",
+                "titulo": "Informe",
+                "real": 0,
+                "prog": 0
+              }
+            ]
+          }
+        ],
+        "programadoPendiente": false
+      }
+    },
+    {
+      "no": "5",
+      "nombre": "PAEB Benito Juárez",
+      "tecnologia": "Proyecto de Acumulación de Energía por Bombeo",
+      "tipo": "PAEB",
+      "ubicacion": "Santa María Jalapa del Marqués, Oaxaca",
+      "nivel": "Gran Visión",
+      "imagen": "data/IMAGENES/OAXACA.jpg",
+      "descripcion": "Comprende la elaboración de un esquema de aprovechamiento de rebombeo utilizando como embalse inferior el correspondiente a la presa Benito Juárez, sin afectar la política de operación actual de ésta y sus compromisos hídricos. Eliminando la necesidad de construir un embalse inferior el objetivo es localizar un sitio factible para el emplazamiento del tanque superior con la capacidad de suministrar la potencia y energía requeridas en la red.\n\nA continuación, se listan las seis obras principales del proyecto:\n\n1. Tanque superior\n2. Conducción\n3. Casa de máquinas\n4. Desfogue\n5. Subestación elevadora\n6. Interconexión",
+      "rta": {
+        "titulo": "Red de Transmisión Propuesta (RTA)",
+        "secciones": [
+          {
+            "tipo": "especificaciones",
+            "titulo": "Especificaciones del sistema",
+            "campos": [
+              {
+                "campo": "Nivel de Tensión [kV]",
+                "valor": "400"
+              },
+              {
+                "campo": "Capacidad de Evacuación [MVA]",
+                "valor": "Por definir"
+              },
+              {
+                "campo": "Tipo de Conductor",
+                "valor": "Por definir"
+              },
+              {
+                "campo": "Longitud de Línea [km]",
+                "valor": "56"
+              },
+              {
+                "campo": "Configuración",
+                "valor": "Por definir"
+              },
+              {
+                "campo": "Tecnología de Datos",
+                "valor": "Por definir"
+              }
+            ]
+          },
+          {
+            "tipo": "justificacion",
+            "titulo": "Justificación de la ruta",
+            "campos": [
+              {
+                "campo": "Optimización de Longitud",
+                "valor": "Minimización del trazado para reducir pérdidas técnicas y costos de inversión en conductor y contar con capacidad en el NODO"
+              },
+              {
+                "campo": "Criterio Socio-Ambiental",
+                "valor": "Alejamiento de zonas de alta densidad poblacional"
+              },
+              {
+                "campo": "Franjas de Servidumbre",
+                "valor": "Aprovechamiento de infraestructuras existentes para agilizar gestiones prediales y permisos"
+              }
+            ]
+          },
+          {
+            "tipo": "componentes",
+            "titulo": "Componentes",
+            "columnas": [
+              "COMPONENTE",
+              "DESCRIPCIÓN TÉCNICA",
+              "CANTIDAD"
+            ],
+            "filas": [
+              [
+                "Torres / Estructuras",
+                "Celosía metálica, altura 30-35 m",
+                "Por definir"
+              ],
+              [
+                "S/E Elevadora",
+                "Transformador ppal.",
+                "Por definir"
+              ],
+              [
+                "S/E Interconexión",
+                "Ampliación de bahía en POI",
+                "Por definir"
+              ],
+              [
+                "Protecciones",
+                "Relés de distancia y diferencial",
+                "Por definir"
+              ]
+            ]
+          },
+          {
+            "tipo": "poi",
+            "titulo": "Punto de Interconexión (POI)",
+            "campos": [
+              {
+                "campo": "SE Eléctrica",
+                "valor": "Subestación Ixtepec Potencia"
+              },
+              {
+                "campo": "Descripción",
+                "valor": "Interconexión en el nodo 02IPO - 230 de la SE Ixtepec Potencia del sistema de transmisión nacional/regional"
+              },
+              {
+                "campo": "Confiabilidad",
+                "valor": "Alta Confiabilidad"
+              }
+            ]
+          }
+        ]
+      },
+      "ficha": [
+        {
+          "campo": "Potencia Instalada [MW]",
+          "valor": "900"
+        },
+        {
+          "campo": "Generación media anual [GWh]",
+          "valor": "1314"
+        },
+        {
+          "campo": "Factor de planta [%]",
+          "valor": "16.7"
+        },
+        {
+          "campo": "Número de turbinas [#]",
+          "valor": "2"
+        },
+        {
+          "campo": "Tipo de turbina",
+          "valor": "Francis Reversibles"
+        },
+        {
+          "campo": "Consumo específico [m3/kWh]",
+          "valor": "0.74"
+        },
+        {
+          "campo": "Gasto de Diseño [m3/s]",
+          "valor": "189.51"
+        },
+        {
+          "campo": "Carga bruta [m]",
+          "valor": "543"
+        },
+        {
+          "campo": "Volumen útil [hm3]",
+          "valor": "2.7"
+        },
+        {
+          "campo": "Nodo de interconexión",
+          "valor": "S.E. Ixtepec potencia"
+        },
+        {
+          "campo": "CAPEX (MUSD)",
+          "valor": "Sin dato"
+        },
+        {
+          "campo": "OPEX (MUSD/Año)",
+          "valor": "Sin dato"
+        }
+      ],
+      "avance": {
+        "general": {
+          "clave": "general",
+          "titulo": "General",
+          "real": 29,
+          "prog": 29,
+          "nota": "• Las actividades 1 y 2 se requiere información actualizada, se hará la gestión social para visita en campo que permita desarrollar los trabajo para topografía LiDAR y batimetría.\n• Se propone una visita multidisciplinaria al sitio, condicionada a la realización de las gestiones sociales correspondientes. Paralelamente, se elabora la cartografía social y los guiones de entrevista para las actividades de investigación en campo con autoridades municipales y funcionarios del Distrito de Riego 19.\n• Las actividades 4 y 5 se gestionará información acerca del nodo de interconexión.\n• El diagnostico ambiental se pauso TEMPORALMENTE.\n• En materia social: Avances en un 60% (Contextualización), planificación de reunión de trabajo con personal del Organismo de Cuenca Pacífico Sur.\n• Visita multidisciplinaria al sitio, condicionada a la realización de las gestiones sociales correspondientes. Paralelamente, se elabora la cartografía social y los guiones de entrevista para las actividades de investigación en campo con autoridades municipales y funcionarios del Distrito de Riego 19."
+        },
+        "grupos": [
+          {
+            "clave": "1",
+            "titulo": "Planteamiento de sitios aprovechables",
+            "real": 39,
+            "prog": 59,
+            "items": [
+              {
+                "clave": "1.1",
+                "titulo": "Análisis de la disponibilidad y factibilidad del uso del recurso hídrico",
+                "real": 90,
+                "prog": 100
+              },
+              {
+                "clave": "1.2",
+                "titulo": "Topografía",
+                "real": 90,
+                "prog": 100
+              },
+              {
+                "clave": "1.3",
+                "titulo": "Análisis de riesgos y áreas restringidas",
+                "real": 100,
+                "prog": 100
+              },
+              {
+                "clave": "1.4",
+                "titulo": "Diagnóstico de la Certidumbre jurídica del predio",
+                "real": 0,
+                "prog": 60
+              },
+              {
+                "clave": "1.5",
+                "titulo": "Análisis de demanda y generación de energía eléctrica",
+                "real": 10,
+                "prog": 60
+              },
+              {
+                "clave": "1.6",
+                "titulo": "Análisis de la red eléctrica",
+                "real": 10,
+                "prog": 60
+              },
+              {
+                "clave": "1.7",
+                "titulo": "Propuesta de interconexión",
+                "real": 0,
+                "prog": 0
+              },
+              {
+                "clave": "1.8",
+                "titulo": "Diagnóstico ambiental",
+                "real": 30,
+                "prog": 53
+              },
+              {
+                "clave": "1.9",
+                "titulo": "Diagnóstico Social",
+                "real": 60,
+                "prog": 53
+              },
+              {
+                "clave": "1.10",
+                "titulo": "Diagnóstico Arqueológico",
+                "real": 0,
+                "prog": 0
+              }
+            ]
+          },
+          {
+            "clave": "2",
+            "titulo": "Análisis, priorización y selección de sitios.",
+            "real": 18,
+            "prog": 0,
+            "items": [
+              {
+                "clave": "2.1",
+                "titulo": "Evaluación de la viabilidad técnica de alternativas",
+                "real": 73,
+                "prog": 0
+              },
+              {
+                "clave": "2.2",
+                "titulo": "Opción definitiva",
+                "real": 0,
+                "prog": 0
+              },
+              {
+                "clave": "2.3",
+                "titulo": "Presupuesto",
+                "real": 0,
+                "prog": 0
+              },
+              {
+                "clave": "2.4",
+                "titulo": "Gestión del presupuesto para preinversión",
+                "real": 0,
                 "prog": 0
               }
             ]

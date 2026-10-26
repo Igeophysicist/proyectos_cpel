@@ -3,7 +3,7 @@
     {
       "corte": "2026-10-22",
       "fecha": "2026-10-22",
-      "excel": "2026-10-23T19:22:32.000Z",
+      "excel": "2026-10-26T15:36:14.000Z",
       "proyectos": {
         "pfv-isla-cayacal-petacalco": {
           "prog": 87,
@@ -12,6 +12,18 @@
         "peh-tecate": {
           "prog": 47,
           "real": 33
+        },
+        "paeb-agua-prieta": {
+          "prog": 61,
+          "real": 42
+        },
+        "paeb-zimapan-alternativa-b": {
+          "prog": 48,
+          "real": 48
+        },
+        "paeb-benito-juarez": {
+          "prog": 29,
+          "real": 29
         }
       }
     }
