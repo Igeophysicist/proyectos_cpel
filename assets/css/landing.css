@@ -319,6 +319,10 @@ b.semana-item__nota{color:var(--ink-900);}
 html.dialogo-abierto{overflow:hidden;}
 .sheet__body{overscroll-behavior:contain;}
 .sheet__scrim{touch-action:none;}
+/* En tablet y computadora, con un ancho cómodo de leer y centrada. */
+@media (min-width:600px){
+  .sheet--portal .sheet__panel{max-width:600px; margin:0 auto;}
+}
 /* Asa: indica que la ventana se cierra deslizándola hacia abajo. */
 @media (max-width:699px){
   .sheet--portal .sheet__panel::before{content:""; position:absolute; z-index:5; top:6px; left:50%; width:38px; height:4px; margin-left:-19px; border-radius:2px; background:rgba(150,160,157,.75); pointer-events:none;}

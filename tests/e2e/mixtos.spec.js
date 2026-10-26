@@ -265,3 +265,12 @@ test("tablet vertical: las tarjetas van en dos columnas", async ({ page }) => {
   expect(b.left).toBeGreaterThan(a.right);
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
 });
+
+test("\"VER FASE II\" del Excel se ve en gris como \"ver Fase II\"", async ({ page }) => {
+  const r = datos().mixtos.find((x) => /^ver fase/i.test(String(x.CAPEX || "")));
+  test.skip(!r, "ningún proyecto dice VER FASE en el CAPEX");
+  await page.goto("/cartera-mixtos/");
+  await cargado(page);
+  const tarjeta = page.locator("#project-list .pcard", { hasText: r.nombre }).first();
+  await expect(tarjeta.locator(".pcard__meta .dato-falta", { hasText: /^ver Fase [IVX\d]+$/ })).toBeVisible();
+});

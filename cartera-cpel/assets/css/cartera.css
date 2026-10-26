@@ -140,6 +140,24 @@ body{ padding-bottom: calc(var(--tabbar-h) + env(safe-area-inset-bottom, 0px)); 
 .avg__semana--baja{ color: #b83b3b; }
 .avg__semana--igual{ color: var(--ink-500); }
 
+/* ---------- Tarjetas de relleno mientras cargan los datos ----------
+   Están en el HTML (avance, particulares, hitos, textos) y cartera.js /
+   anteproyectos.js las reemplazan al pintar el proyecto: así no se ven
+   barras en 0 % ni textos vacíos por un instante. */
+.esq-bloque{ display: flex; flex-direction: column; gap: 10px; }
+.esq{
+  display: block; height: 10px; border-radius: 99px;
+  background: linear-gradient(90deg, var(--surface-sunken) 30%, #f7f9f8 50%, var(--surface-sunken) 70%) 0 0 / 300% 100%;
+  animation: esq-brillo 1.4s ease-in-out infinite;
+}
+.esq--texto{ height: 10px; }
+.esq--barra{ height: 8px; }
+.esq--caja{ height: 70px; border-radius: var(--radius-m); }
+.esq--centro{ margin: 0 auto 4px; }
+.particular--esq{ display: flex; flex-direction: column; gap: 8px; }
+.particular--esq .esq{ background-image: linear-gradient(90deg, rgba(26,36,34,.1) 30%, rgba(26,36,34,.04) 50%, rgba(26,36,34,.1) 70%); } /* se distinguen sobre el gris de la tarjeta */
+@keyframes esq-brillo{ from{ background-position: 100% 0; } to{ background-position: 0 0; } }
+
 /* ---------- Avances particulares ---------- */
 .particular-grid{ display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
 .particular{
@@ -429,25 +447,31 @@ body{ padding-bottom: calc(var(--tabbar-h) + env(safe-area-inset-bottom, 0px)); 
 }
 .plegable__btn:focus-visible{ outline: 2px solid var(--gold-500); outline-offset: 2px; border-radius: 4px; }
 
-/* ---------- Pantallas amplias ---------- */
-@media (min-width: 900px){
-  .cartera{
-    display: grid; grid-template-columns: 1.2fr 1fr; align-items: start;
-    padding: var(--space-5);
-  }
-  .hero-card{ grid-column: 1 / -1; height: 300px; }
+/* ---------- Tablet vertical y pantallas amplias: tarjetas en dos columnas ---------- */
+@media (min-width: 600px){
+  .cartera{ display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
+  .hero-card{ grid-column: 1 / -1; height: 260px; }
+  .card--hitos{ grid-column: 1 / -1; }
   .hitos-tres{ grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .hito3{ grid-template-columns: minmax(0, 1fr); gap: 4px; }
+}
+/* Tablet vertical: las ventanas salen de abajo pero con un ancho cómodo de leer, centradas. */
+@media (min-width: 600px) and (max-width: 899px){
+  .sheet__panel{ max-width: 600px; margin: 0 auto; }
+}
+@media (min-width: 900px){
+  .cartera{ grid-template-columns: 1.2fr 1fr; padding: var(--space-5); }
+  .hero-card{ height: 300px; }
   .hitos-ver{ width: auto; padding: 8px 16px; }
   .particular__title{ font-size: 10px; padding-bottom: 3px; margin-bottom: 4px; }
   .mini-row + .mini-row{ margin-top: 3px; }
-  .card--hitos{ grid-column: 1 / -1; }
   .sheet__panel{ left: auto; top: 0; width: 440px; max-height: none; border-radius: 0; animation: none; }
 }
 
 @media (prefers-reduced-motion: reduce){
   *{ animation-duration:.01ms !important; transition-duration:.01ms !important; }
   .hito3{ animation-delay: 0s !important; }
+  .esq{ animation: none; }
   .hito3--actual::before{ display: none; }
 }
 

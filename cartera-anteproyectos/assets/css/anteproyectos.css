@@ -111,10 +111,12 @@
 .pond .av-nota{ margin-top: 0; font-size: 11px; line-height: 1.4; padding: 6px 8px; overflow-wrap: anywhere; }
 .pond .av-nota__titulo{ font-size: 10px; margin-bottom: 2px; }
 
-/* ---------- Pantallas amplias ---------- */
-@media (min-width: 900px){
+/* ---------- Tablet vertical y pantallas amplias ---------- */
+@media (min-width: 600px){
   /* Avance general y particulares lado a lado; lo demás a todo el ancho. */
   .ante .card--desc, .ante .card--rta, .ante .card--mapa{ grid-column: 1 / -1; }
+}
+@media (min-width: 900px){
   .rta-specs{ grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 

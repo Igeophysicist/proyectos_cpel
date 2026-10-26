@@ -141,11 +141,14 @@
 
   /**
    * Valor del Excel con lo que falta en gris y minúsculas, para que no
-   * compita con los datos reales: "SIN DATO" y "… (POR CONFIRMAR)".
+   * compita con los datos reales: "SIN DATO", "… (POR CONFIRMAR)" y
+   * "VER FASE II" (el dato está en otra fase del proyecto).
    */
   function datoHtml(value) {
     const t = String(value).trim();
     if (/^sin dato$/i.test(t)) return `<span class="dato-falta">Sin dato</span>`;
+    const fase = /^ver\s+fase\s+([ivx\d]+)$/i.exec(t);
+    if (fase) return `<span class="dato-falta">ver Fase ${esc(fase[1].toUpperCase())}</span>`;
     const m = /^(.*?)\s*\(\s*por confirmar\s*\)?$/i.exec(t);
     if (m) return `${esc(m[1])} <span class="dato-falta">por confirmar</span>`;
     return esc(t);
