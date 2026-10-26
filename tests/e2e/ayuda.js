@@ -32,6 +32,11 @@ function datos() {
   };
 }
 
+// Fichas de los primeros proyectos: sin ?proyecto= las carteras abren la
+// pantalla previa para elegir el proyecto (vista.js).
+const FICHA_CARTERA = `/cartera-cpel/?proyecto=${slugify(datos().cartera[0].nombre)}`;
+const FICHA_ANTE = `/cartera-anteproyectos/?proyecto=${slugify(leer("cartera-anteproyectos/data/anteproyectos.json").proyectos[0].nombre)}`;
+
 /** Fecha de hoy en México ("AAAA-MM-DD"). */
 const hoyMexico = () =>
   new Intl.DateTimeFormat("en-CA", { timeZone: "America/Mexico_City", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
@@ -52,4 +57,4 @@ const test = base.test.extend({
   },
 });
 
-module.exports = { test, expect: base.expect, datos, hoyMexico, slugify, PASSWORD, SESION };
+module.exports = { test, expect: base.expect, datos, hoyMexico, slugify, FICHA_CARTERA, FICHA_ANTE, PASSWORD, SESION };

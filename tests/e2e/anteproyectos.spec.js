@@ -1,7 +1,7 @@
 // Cartera Anteproyectos: tarjetas, ficha técnica, curva, mapa y PDF.
 const fs = require("fs");
 const path = require("path");
-const { test, expect, slugify } = require("./ayuda.js");
+const { test, expect, slugify, FICHA_ANTE } = require("./ayuda.js");
 
 const datos = () => JSON.parse(fs.readFileSync(path.join(__dirname, "../../cartera-anteproyectos/data/anteproyectos.json"), "utf8"));
 const listo = (page) => expect(page.locator("#projectName")).not.toHaveText("Cargando…");
@@ -12,7 +12,10 @@ test("el portal aún no muestra el acceso; la página abre por su dirección", a
   await expect(page.locator(".nav-card").first()).toBeVisible();
   // Oculto hasta liberarla (index.html: <template id="accesoAnteproyectos">).
   await expect(page.locator(".nav-card", { hasText: "Cartera Anteproyectos" })).toHaveCount(0);
+  // Por su dirección entra a la pantalla previa: una tarjeta por anteproyecto.
   await page.goto("/cartera-anteproyectos/");
+  await expect(page.locator("#vistaGrid .vcard")).toHaveCount(proyectos.length);
+  await page.locator("#vistaGrid .vcard").first().click();
   await listo(page);
   await expect(page.locator("#projectSelect option")).toHaveCount(proyectos.length);
   await expect(page.locator("#projectName")).toHaveText(proyectos[0].nombre);
@@ -71,7 +74,7 @@ test("cada avance particular abre sus avances ponderados con sus notas", async (
 
 test("Ficha técnica y Curva de avance abren con contenido", async ({ page }) => {
   const p = datos().proyectos[0];
-  await page.goto("/cartera-anteproyectos/");
+  await page.goto(FICHA_ANTE);
   await listo(page);
   await page.click('[data-open-sheet="sheetFicha"]');
   await expect(page.locator("#fichaBody .spec tr")).toHaveCount(p.ficha.length);
@@ -86,7 +89,7 @@ test("PDF en computadora: la hoja lleva la ficha técnica y la justificación ab
   await page.addInitScript(() => {
     window.print = () => (window.__impreso = true);
   });
-  await page.goto("/cartera-anteproyectos/");
+  await page.goto(FICHA_ANTE);
   await listo(page);
   await page.click("#printBtn");
   expect(await page.evaluate(() => window.__impreso)).toBe(true);
@@ -108,7 +111,7 @@ test("PDF en celular: genera el archivo de una hoja", async ({ page, isMobile })
 });
 
 test("sin desplazamiento horizontal", async ({ page }) => {
-  await page.goto("/cartera-anteproyectos/");
+  await page.goto(FICHA_ANTE);
   await listo(page);
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
 });

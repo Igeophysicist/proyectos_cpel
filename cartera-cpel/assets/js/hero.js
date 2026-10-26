@@ -6,6 +6,7 @@
  *
  * Expone: window.CarteraHero.foto(hero, img, src, tecnologia)
  *         window.CarteraHero.tipo(tecnologia) -> "solar" | "eolica" | "hidro" | "otra"
+ *         window.CarteraHero.icono(tecnologia) -> <svg> del ícono (vista de la cartera)
  */
 (function (global) {
   const { normalizeText } = global.TextUtils;
@@ -50,5 +51,7 @@
     }
   }
 
-  global.CarteraHero = { foto, tipo };
+  const icono = (tecnologia) => `<svg viewBox="0 0 24 24" fill="none" aria-hidden="true">${ICONOS[tipo(tecnologia)]}</svg>`;
+
+  global.CarteraHero = { foto, tipo, icono };
 })(window);

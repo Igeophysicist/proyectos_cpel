@@ -1,6 +1,6 @@
 // Accesibilidad (WCAG 2.2 AA + buenas prácticas) con axe-core en cada
 // página y en sus ventanas, y el foco del teclado dentro de las ventanas.
-const { test, expect } = require("./ayuda.js");
+const { test, expect, FICHA_CARTERA, FICHA_ANTE } = require("./ayuda.js");
 
 const AXE = require.resolve("axe-core/axe.min.js");
 const REGLAS = ["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa", "best-practice"];
@@ -41,6 +41,9 @@ test("portal sin problemas de accesibilidad", async ({ page }) => {
 
 test("Cartera y sus ventanas sin problemas de accesibilidad", async ({ page }) => {
   await page.goto("/cartera-cpel/");
+  await expect(page.locator("#vistaGrid .vcard").first()).toBeVisible();
+  await revisar(page, "cartera: pantalla previa");
+  await page.goto(FICHA_CARTERA);
   await expect(page.locator("#projectName")).not.toHaveText("Cargando…");
   await revisar(page, "cartera");
   for (const [boton, ventana] of [
@@ -61,6 +64,9 @@ test("Cartera y sus ventanas sin problemas de accesibilidad", async ({ page }) =
 
 test("Cartera Anteproyectos y sus ventanas sin problemas de accesibilidad", async ({ page }) => {
   await page.goto("/cartera-anteproyectos/");
+  await expect(page.locator("#vistaGrid .vcard").first()).toBeVisible();
+  await revisar(page, "anteproyectos: pantalla previa");
+  await page.goto(FICHA_ANTE);
   await expect(page.locator("#projectName")).not.toHaveText("Cargando…");
   await page.locator(".rta-mas summary").click();
   await page.locator(".av-notas-gen summary").click();

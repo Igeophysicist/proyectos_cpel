@@ -1,5 +1,5 @@
 // Cartera CPEL: selector, enlace directo, ventanas, curva de avance y PDF.
-const { test, expect, datos, slugify } = require("./ayuda.js");
+const { test, expect, datos, slugify, FICHA_CARTERA } = require("./ayuda.js");
 
 const listo = (page) => expect(page.locator("#projectName")).not.toHaveText("Cargando…");
 
@@ -16,7 +16,7 @@ test("el selector tiene todos los proyectos y el enlace directo abre el pedido",
 });
 
 test("Ficha técnica, Plazos y Curva de avance abren con contenido", async ({ page }) => {
-  await page.goto("/cartera-cpel/");
+  await page.goto(FICHA_CARTERA);
   await listo(page);
   for (const [sheet, cuerpo] of [
     ["sheetFicha", "#fichaBody"],
@@ -40,7 +40,7 @@ test("PDF en computadora: abre la impresión con la hoja completa", async ({ pag
       window.__impreso = true;
     };
   });
-  await page.goto("/cartera-cpel/");
+  await page.goto(FICHA_CARTERA);
   await listo(page);
   await page.click("#printBtn");
   expect(await page.evaluate(() => window.__impreso)).toBe(true);
@@ -67,14 +67,14 @@ test("PDF en celular: genera el archivo de una hoja", async ({ page, isMobile })
 });
 
 test("sin desplazamiento horizontal", async ({ page }) => {
-  await page.goto("/cartera-cpel/");
+  await page.goto(FICHA_CARTERA);
   await listo(page);
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
 });
 
 test("todas las fichas cargan (cada proyecto del Excel)", async ({ page }) => {
   const { cartera } = datos();
-  await page.goto("/cartera-cpel/");
+  await page.goto(FICHA_CARTERA);
   await listo(page);
   for (const [i, p] of cartera.entries()) {
     await page.selectOption("#projectSelect", { index: i });
@@ -187,7 +187,7 @@ test("mientras cargan los datos se ven tarjetas de relleno (no barras en 0 %)", 
     await espera;
     await route.continue();
   });
-  await page.goto("/cartera-cpel/");
+  await page.goto(FICHA_CARTERA);
   await expect(page.locator("#generalBody .esq").first()).toBeVisible();
   await expect(page.locator("#particularGrid .particular--esq")).toHaveCount(4);
   await expect(page.locator("#generalBody .progress-row")).toHaveCount(0);
@@ -212,4 +212,60 @@ test("celular: el selector de proyecto usa letra más chica para que quepa más 
   await page.goto(`/cartera-cpel/?proyecto=${slugify(datos().cartera[0].nombre)}`);
   await listo(page);
   expect(await page.locator("#projectSelect").evaluate((el) => getComputedStyle(el).fontSize)).toBe("12.5px");
+});
+
+test("pantalla previa: tarjetas con nombre y tecnología, mapa del país, abrir la ficha y regresar", async ({ page }) => {
+  const { cartera } = datos();
+  await page.goto("/cartera-cpel/");
+  const tarjetas = page.locator("#vistaGrid .vcard");
+  await expect(tarjetas).toHaveCount(cartera.length);
+  await expect(tarjetas.first().locator(".vcard__nombre")).toHaveText(cartera[0].nombre.trim());
+  await expect(tarjetas.first().locator(".vcard__tec")).toHaveText(cartera[0].tecnologia.trim());
+  await expect(page.locator("#pdfRoot")).toBeHidden();
+  await expect(page.locator(".actionbar")).toBeHidden();
+  // mapa de todo el país con un punto por proyecto con ubicación
+  await expect(page.locator("#vistaMapa .leaflet-interactive").first()).toBeVisible();
+  await expect(page.locator("#vistaLeyenda span").first()).toBeVisible();
+  // abrir desde una tarjeta
+  await tarjetas.nth(2).click();
+  await expect(page.locator("#projectName")).toHaveText(cartera[2].nombre.trim());
+  await expect(page).toHaveURL(new RegExp(`proyecto=${slugify(cartera[2].nombre)}`));
+  await expect(page.locator("#vista")).toBeHidden();
+  // la flecha de la barra regresa a la pantalla previa
+  await page.click("#backLink");
+  await expect(tarjetas.first()).toBeVisible();
+  await expect(page).not.toHaveURL(/proyecto=/);
+  // y el "atrás" del navegador también
+  await tarjetas.nth(1).click();
+  await expect(page.locator("#projectName")).toHaveText(cartera[1].nombre.trim());
+  await page.goBack();
+  await expect(tarjetas.first()).toBeVisible();
+  // desde el mapa: un punto abre su ventana con "Ver proyecto"
+  await page.locator("#vistaMapa .leaflet-interactive").last().click(); // el de arriba puede quedar bajo el aviso de mosaicos
+  await page.locator(".leaflet-popup [data-ver-proyecto]").click();
+  await expect(page.locator("#vista")).toBeHidden();
+  await listo(page);
+});
+
+test("al entrar a la pantalla previa, mientras cargan los datos se ve su relleno (no el de la ficha)", async ({ page }) => {
+  let soltar;
+  const espera = new Promise((r) => (soltar = r));
+  await page.route(/datos_proyectos\.json/, async (route) => {
+    await espera;
+    await route.continue();
+  });
+  await page.goto("/cartera-cpel/");
+  await expect(page.locator("#vistaGrid .vcard--esq").first()).toBeVisible();
+  await expect(page.locator("#pdfRoot")).toBeHidden();
+  await expect(page.locator(".actionbar")).toBeHidden();
+  soltar();
+  await expect(page.locator("#vistaGrid .vcard--esq")).toHaveCount(0);
+  await expect(page.locator("#vistaGrid a.vcard").first()).toBeVisible();
+});
+
+test("si los datos no cargan, el mensaje de error se ve (también desde la pantalla previa)", async ({ page }) => {
+  await page.route(/datos_proyectos\.json/, (r) => r.fulfill({ status: 500, body: "" }));
+  await page.addInitScript(() => sessionStorage.setItem("pwa-recarga", String(Date.now()))); // sin la recarga automática
+  await page.goto("/cartera-cpel/");
+  await expect(page.locator("#cartera .state-msg")).toBeVisible({ timeout: 20_000 });
 });

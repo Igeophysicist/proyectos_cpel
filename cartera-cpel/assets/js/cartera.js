@@ -205,11 +205,13 @@
       mostrarFechaDatos(datos.excelModificado ? new Date(datos.excelModificado) : null);
       poblarSelector();
       await Promise.all([kmlListo, hitosListos]);
-      seleccionar(indiceDesdeUrl());
+      // Pantalla previa para elegir el proyecto, o la ficha si la dirección trae ?proyecto= (vista.js).
+      window.CarteraVista.instalar({ titulo: "Cartera CPEL", proyectos: () => proyectos, abrir: seleccionar, cerrar: cerrarTodas }).iniciar();
     } catch (err) {
       console.error(err);
       // Copia vieja de la página con scripts nuevos (app instalada): recarga una vez.
       if (window.PWA && window.PWA.recargarSiHayRed()) return;
+      document.body.classList.remove("modo-vista", "vista-cargando"); // el mensaje va en la ficha
       $("projectSelect").innerHTML = "<option>Error al cargar datos</option>";
       $("cartera").innerHTML = `<div class="state-msg">No se pudieron cargar los datos. Detalle: ${esc(err.message)}</div>`;
     }
@@ -228,14 +230,6 @@
   }
 
   // ----------------------------------------------------- enlace directo
-  /** Índice del proyecto indicado en ?proyecto=..., o 0 si no hay o no existe. */
-  function indiceDesdeUrl() {
-    const buscado = new URLSearchParams(window.location.search).get("proyecto");
-    if (!buscado) return 0;
-    const i = proyectos.findIndex((p) => slugify(p.nombre) === slugify(buscado));
-    return i === -1 ? 0 : i;
-  }
-
   /** Muestra el proyecto i y deja su enlace directo en la dirección. */
   function seleccionar(i) {
     const p = proyectos[i];
@@ -245,7 +239,7 @@
     mostrarProyecto(p);
     const url = new URL(window.location.href);
     url.searchParams.set("proyecto", slugify(p.nombre));
-    window.history.replaceState(null, "", url);
+    window.history.replaceState(window.history.state, "", url); // conserva si se llegó desde la pantalla previa
     document.title = `${texto(p.nombre, "Proyecto")} — Cartera CPEL`;
   }
 

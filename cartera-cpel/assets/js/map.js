@@ -29,6 +29,9 @@
 
   let map = null;
   let layerGroup = null;
+  let ultimo = null; // último proyecto mostrado (para ajustar)
+  let mapaVista = null; // mapa de todo el país (vista de la cartera, ver vista.js)
+  let capaVista = null;
   const placemarksByName = new Map(); // nombre normalizado -> placemark KML
   let poligonosSecuencias = []; // [{name, type, latlngs}] del KML de secuencias
 
@@ -115,6 +118,7 @@
   /** Muestra el proyecto dado (si tiene coincidencia geográfica) en el mapa. */
   function mostrarProyecto(project) {
     if (!map) return;
+    ultimo = project;
     layerGroup.clearLayers();
 
     const pm = placemarksByName.get(normalizeText(project.nombre));
@@ -191,5 +195,57 @@
     }
   }
 
-  global.CarteraMap = { configurar, initMap, cargarKML, mostrarProyecto };
+  /**
+   * Recalcula el tamaño del mapa y vuelve a encuadrar el proyecto. Hace
+   * falta cuando el mapa estuvo oculto (vista de la cartera).
+   */
+  function ajustar() {
+    if (!map) return;
+    map.invalidateSize();
+    if (ultimo) mostrarProyecto(ultimo);
+  }
+
+  // Todo México (vista de la cartera).
+  const MEXICO = [
+    [14.5, -117.5],
+    [32.7, -86.7],
+  ];
+
+  /**
+   * Mapa de todo el país con un punto por proyecto (vista de la cartera).
+   * items: [{ i, nombre, color }]; al tocar un punto se abre una ventanita
+   * con el nombre y "Ver proyecto", que llama a onSelect(i). Devuelve
+   * cuántos proyectos tienen ubicación en el KML.
+   */
+  function mostrarTodos(elementId, items, onSelect) {
+    if (!mapaVista) {
+      mapaVista = global.BaseMap.create(elementId, { tileWarningId: "vistaTileWarning" });
+      capaVista = L.layerGroup().addTo(mapaVista);
+      window.addEventListener("resize", () => mapaVista.invalidateSize());
+      mapaVista.on("popupopen", (e) => {
+        const btn = e.popup.getElement().querySelector("[data-ver-proyecto]");
+        if (btn) btn.addEventListener("click", () => onSelect(Number(btn.dataset.verProyecto)), { once: true });
+      });
+    }
+    mapaVista.invalidateSize();
+    mapaVista.fitBounds(MEXICO);
+    capaVista.clearLayers();
+    let conUbicacion = 0;
+    items.forEach(({ i, nombre, color }) => {
+      const pm = placemarksByName.get(normalizeText(nombre));
+      if (!pm) return;
+      const punto = pm.type === "point" ? pm.latlngs : L.latLngBounds(pm.latlngs).getCenter();
+      conUbicacion++;
+      L.circleMarker(punto, { radius: 8, weight: 2, color: "#ffffff", fillColor: color, fillOpacity: 0.95 })
+        .bindTooltip(esc(nombre), { direction: "top", offset: [0, -8] })
+        .bindPopup(
+          `<div class="map-popup"><div class="map-popup__title">${esc(nombre)}</div>` +
+            `<button type="button" class="map-popup__link" data-ver-proyecto="${i}">Ver proyecto ›</button></div>`
+        )
+        .addTo(capaVista);
+    });
+    return conUbicacion;
+  }
+
+  global.CarteraMap = { configurar, initMap, cargarKML, mostrarProyecto, ajustar, mostrarTodos };
 })(window);

@@ -1,6 +1,6 @@
 // Uso en celular: leyenda del mapa siempre visible, ventanas que no
 // mueven la página de atrás y que se cierran deslizando hacia abajo.
-const { test, expect } = require("./ayuda.js");
+const { test, expect, FICHA_CARTERA } = require("./ayuda.js");
 
 test.skip(({ isMobile }) => !isMobile, "gestos de celular");
 
@@ -81,7 +81,7 @@ test("Mixtos: la ficha bloquea la página de atrás y se cierra deslizando hacia
 
 test("Cartera: el contenido de la ventana se desplaza y, ya arriba, deslizar hacia abajo la cierra", async ({ page }) => {
   await page.setViewportSize({ width: 360, height: 480 }); // pantalla chica: la ficha técnica no cabe
-  await page.goto("/cartera-cpel/");
+  await page.goto(FICHA_CARTERA);
   await expect(page.locator("#projectName")).not.toHaveText("Cargando…");
   await page.locator(".actionbar__btn", { hasText: "Ficha técnica" }).click();
   await expect(page.locator("#sheetFicha")).toHaveClass(/is-open/);
