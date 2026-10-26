@@ -23,6 +23,43 @@ body{ padding-bottom: calc(var(--tabbar-h) + env(safe-area-inset-bottom, 0px)); 
   background: rgba(255,255,255,.1); color: #fff;
 }
 .topbar__select-wrap{ flex: 1; min-width: 0; position: relative; }
+/* ---------- Pantalla previa: elegir el proyecto (vista.js) ----------
+   Título en lugar del selector; sin ficha, PDF ni barra inferior. */
+.topbar__titulo{ display: none; flex: 1; min-width: 0; font-size: 15px; font-weight: 700; color: #fff; }
+body.modo-vista .topbar__titulo{ display: block; }
+body.modo-vista .topbar__select-wrap, body.modo-vista .topbar__print, body.modo-vista #pdfRoot, body.modo-vista .actionbar{ display: none; }
+body.modo-vista{ padding-bottom: env(safe-area-inset-bottom, 0px); }
+.vista{ max-width: 1100px; margin: 0 auto; padding: var(--space-4) var(--space-4) var(--space-5); }
+.vista[hidden]{ display: none; }
+.vista__head{ margin-bottom: var(--space-3); }
+.vista__titulo{ font-size: 18px; font-weight: 800; color: var(--teal-900); }
+.vista__sub{ margin-top: 2px; font-size: 12.5px; color: var(--ink-500); }
+.vista-grid{ display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-bottom: var(--space-4); }
+.vcard{
+  display: flex; align-items: center; gap: 10px; padding: 12px; color: inherit; text-decoration: none;
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-l); box-shadow: var(--shadow-card);
+  transition: border-color .15s, box-shadow .15s;
+}
+.vcard:hover{ border-color: var(--teal-700); box-shadow: 0 2px 8px rgba(26,36,34,.1); }
+.vcard:focus-visible{ outline: 2px solid var(--gold-500); outline-offset: 2px; }
+.vcard__icono{ flex: none; width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; background: var(--teal-100, #e8efed); color: var(--teal-800); }
+.vcard__icono svg{ width: 22px; height: 22px; }
+.vcard__icono--solar{ background: #fbf0d9; color: #8a6113; }
+.vcard__icono--eolica{ background: #e3f0f6; color: #2f6f8f; }
+.vcard__icono--hidro{ background: #e1eef2; color: #1f6f8b; }
+.vcard__info{ display: flex; flex-direction: column; min-width: 0; }
+.vcard__nombre{ font-size: 13px; font-weight: 800; color: var(--teal-900); line-height: 1.25; overflow-wrap: anywhere; }
+.vcard__tec{ font-size: 11.5px; color: var(--ink-500); margin-top: 2px; line-height: 1.3; }
+.vista-mapa__wrap{ position: relative; height: 420px; border-radius: var(--radius-m); overflow: hidden; }
+.vista-mapa__wrap #vistaMapa{ position: absolute; inset: 0; }
+.vista-leyenda{ display: flex; flex-wrap: wrap; gap: 6px 14px; margin-top: 10px; font-size: 12px; font-weight: 600; color: var(--ink-700); }
+.vista-leyenda span{ display: inline-flex; align-items: center; gap: 6px; }
+.vista-leyenda i{ width: 10px; height: 10px; border-radius: 50%; border: 2px solid #fff; box-shadow: 0 0 0 1px rgba(26,36,34,.25); }
+.map-popup__title{ font-size: 13px; font-weight: 800; color: var(--teal-900); margin-bottom: 6px; }
+.map-popup__link{ font: inherit; font-size: 12.5px; font-weight: 700; color: var(--teal-800); background: none; border: 0; padding: 0; cursor: pointer; }
+.map-popup__link:focus-visible{ outline: 2px solid var(--gold-500); outline-offset: 2px; }
+@media (max-width: 380px){ .vista-grid{ grid-template-columns: minmax(0, 1fr); } }
+@media (min-width: 700px){ .vista-grid{ grid-template-columns: repeat(3, minmax(0, 1fr)); } .vista-mapa__wrap{ height: 480px; } }
 .topbar__select{
   width: 100%; height: 38px; padding: 0 34px 0 12px;
   border-radius: var(--radius-m); border: 1px solid rgba(255,255,255,.16);

@@ -1,7 +1,7 @@
 // Capa de referencia "Regiones" en los mapas de Mixtos y Cartera CPEL.
 const fs = require("fs");
 const path = require("path");
-const { test, expect } = require("./ayuda.js");
+const { test, expect, FICHA_CARTERA } = require("./ayuda.js");
 
 const regiones = JSON.parse(fs.readFileSync(path.join(__dirname, "../../assets/capas/regiones.geojson"), "utf8"));
 const NOMBRES = new Set(regiones.features.map((ft) => ft.properties.nombre)).size;
@@ -54,7 +54,7 @@ test("Mixtos: la capa se descarga al encenderla, muestra nombres al acercarse y 
 });
 
 test("Cartera: la capa Regiones se enciende desde el selector de capas", async ({ page }) => {
-  await page.goto("/cartera-cpel/");
+  await page.goto(FICHA_CARTERA);
   await expect(page.locator("#projectName")).not.toHaveText("Cargando…");
   await ponerRegiones(page, true);
   await expect(page.locator(".leaflet-regiones-pane canvas")).toBeAttached();

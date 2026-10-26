@@ -187,19 +187,14 @@
       $("dataDate").hidden = !fecha;
       $("projectSelect").innerHTML = proyectos.map((p, i) => `<option value="${i}">${esc(p.nombre)}</option>`).join("");
       await kmlListo;
-      seleccionar(indiceDesdeUrl());
+      // Pantalla previa para elegir el proyecto, o la ficha si la dirección trae ?proyecto= (vista.js).
+      window.CarteraVista.instalar({ titulo: "Cartera Anteproyectos", proyectos: () => proyectos, abrir: seleccionar, cerrar: cerrarTodas }).iniciar();
     } catch (err) {
       console.error(err);
       if (window.PWA && window.PWA.recargarSiHayRed()) return;
       $("projectSelect").innerHTML = "<option>Error al cargar datos</option>";
       $("cartera").innerHTML = `<div class="state-msg">No se pudieron cargar los datos. Detalle: ${esc(err.message)}</div>`;
     }
-  }
-
-  function indiceDesdeUrl() {
-    const buscado = new URLSearchParams(window.location.search).get("proyecto");
-    const i = buscado ? proyectos.findIndex((p) => slugify(p.nombre) === slugify(buscado)) : -1;
-    return i === -1 ? 0 : i;
   }
 
   function seleccionar(i) {
@@ -210,7 +205,7 @@
     mostrar(p);
     const url = new URL(window.location.href);
     url.searchParams.set("proyecto", slugify(p.nombre));
-    window.history.replaceState(null, "", url);
+    window.history.replaceState(window.history.state, "", url); // conserva si se llegó desde la pantalla previa
     document.title = `${p.nombre} — Cartera Anteproyectos`;
   }
 

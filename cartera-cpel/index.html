@@ -22,9 +22,11 @@
 <body>
 
   <header class="topbar">
-    <a class="topbar__back" href="../index.html" aria-label="Volver al portal">
+    <!-- En la pantalla previa vuelve al portal; en la ficha, a la pantalla previa (vista.js) -->
+    <a class="topbar__back" id="backLink" href="../index.html" aria-label="Volver al portal">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </a>
+    <div class="topbar__titulo" id="topbarTitulo">Cartera CPEL</div>
     <div class="topbar__select-wrap">
       <select id="projectSelect" class="topbar__select" aria-label="Seleccionar proyecto">
         <option>Cargando proyectos…</option>
@@ -37,6 +39,28 @@
       <span>PDF</span>
     </button>
   </header>
+
+  <!-- Pantalla previa: elegir el proyecto (tarjetas y mapa de todo el país).
+       Se ve al entrar sin ?proyecto= en la dirección (ver vista.js). -->
+  <main class="vista" id="vista" hidden>
+    <div class="vista__head">
+      <h1 class="vista__titulo">Proyectos de la cartera</h1>
+      <p class="vista__sub" id="vistaSub"></p>
+    </div>
+    <div class="vista-grid" id="vistaGrid"></div>
+    <section class="card vista-mapa">
+      <h2 class="card__title">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M9 4 3.5 6v14L9 18l6 2 5.5-2V4L15 6 9 4Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9 4v14M15 6v14" stroke="currentColor" stroke-width="2"/></svg>
+        Ubicación de los proyectos
+      </h2>
+      <div class="vista-mapa__wrap">
+        <div id="vistaMapa"></div>
+        <div class="map-empty" id="vistaMapaVacio" hidden>Ningún proyecto tiene ubicación en el KML.</div>
+        <div class="map-tile-warning" id="vistaTileWarning" hidden>No se pudieron cargar las imágenes del mapa (revisa tu conexión). Los proyectos siguen visibles.</div>
+      </div>
+      <div class="vista-leyenda" id="vistaLeyenda"></div>
+    </section>
+  </main>
 
   <!-- Contenido de la hoja PDF: encabezado (solo en el PDF) + ficha (ver pdf.js) -->
   <div id="pdfRoot">
@@ -297,6 +321,7 @@
   <script src="assets/js/hitos.js"></script>
   <script src="assets/js/avance.js"></script>
   <script src="assets/js/hero.js"></script>
+  <script src="assets/js/vista.js"></script>
   <script src="assets/js/cartera.js"></script>
 </body>
 </html>

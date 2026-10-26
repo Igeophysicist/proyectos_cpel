@@ -1,6 +1,6 @@
 // App instalada con una copia vieja de la página y scripts nuevos (versiones
 // mezcladas): la página se recarga una vez sola y carga bien (pwa.js).
-const { test, expect } = require("./ayuda.js");
+const { test, expect, FICHA_CARTERA } = require("./ayuda.js");
 
 // Sin Service Worker para poder servir la "copia vieja" desde la prueba.
 test.use({ serviceWorkers: "block" });
@@ -32,7 +32,7 @@ test.describe("Cartera", () => {
   test.use({ erroresEsperados: [/TextUtils/] });
   test("un script que falla al cargar provoca una sola recarga y carga", async ({ page }) => {
     const cargas = await copiaVieja(page, /cartera-cpel\/(index\.html)?(\?.*)?$/, "../assets/js/shared/text-utils.js");
-    await page.goto("/cartera-cpel/");
+    await page.goto(FICHA_CARTERA);
     await expect(page.locator("#projectName")).not.toHaveText("Cargando…", { timeout: 20_000 });
     expect(cargas()).toBe(2);
   });
