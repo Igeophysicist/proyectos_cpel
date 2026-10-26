@@ -178,3 +178,20 @@ test("tablet vertical: tarjetas en dos columnas y ventanas centradas de ancho cÃ
   expect(panel.width).toBeLessThanOrEqual(600);
   expect(Math.abs(panel.x + panel.width / 2 - 400)).toBeLessThan(2); // centrada
 });
+
+test("mientras cargan los datos se ven tarjetas de relleno (no barras en 0 %)", async ({ page }) => {
+  let soltar;
+  const espera = new Promise((r) => (soltar = r));
+  await page.route(/datos_proyectos\.json/, async (route) => {
+    await espera;
+    await route.continue();
+  });
+  await page.goto("/cartera-cpel/");
+  await expect(page.locator("#generalBody .esq").first()).toBeVisible();
+  await expect(page.locator("#particularGrid .particular--esq")).toHaveCount(4);
+  await expect(page.locator("#generalBody .progress-row")).toHaveCount(0);
+  soltar();
+  await listo(page);
+  await expect(page.locator("#cartera .esq")).toHaveCount(0);
+  await expect(page.locator("#generalBody .progress-row")).toHaveCount(2);
+});

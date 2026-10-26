@@ -140,6 +140,24 @@ body{ padding-bottom: calc(var(--tabbar-h) + env(safe-area-inset-bottom, 0px)); 
 .avg__semana--baja{ color: #b83b3b; }
 .avg__semana--igual{ color: var(--ink-500); }
 
+/* ---------- Tarjetas de relleno mientras cargan los datos ----------
+   Están en el HTML (avance, particulares, hitos, textos) y cartera.js /
+   anteproyectos.js las reemplazan al pintar el proyecto: así no se ven
+   barras en 0 % ni textos vacíos por un instante. */
+.esq-bloque{ display: flex; flex-direction: column; gap: 10px; }
+.esq{
+  display: block; height: 10px; border-radius: 99px;
+  background: linear-gradient(90deg, var(--surface-sunken) 30%, #f7f9f8 50%, var(--surface-sunken) 70%) 0 0 / 300% 100%;
+  animation: esq-brillo 1.4s ease-in-out infinite;
+}
+.esq--texto{ height: 10px; }
+.esq--barra{ height: 8px; }
+.esq--caja{ height: 70px; border-radius: var(--radius-m); }
+.esq--centro{ margin: 0 auto 4px; }
+.particular--esq{ display: flex; flex-direction: column; gap: 8px; }
+.particular--esq .esq{ background-image: linear-gradient(90deg, rgba(26,36,34,.1) 30%, rgba(26,36,34,.04) 50%, rgba(26,36,34,.1) 70%); } /* se distinguen sobre el gris de la tarjeta */
+@keyframes esq-brillo{ from{ background-position: 100% 0; } to{ background-position: 0 0; } }
+
 /* ---------- Avances particulares ---------- */
 .particular-grid{ display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
 .particular{
@@ -453,6 +471,7 @@ body{ padding-bottom: calc(var(--tabbar-h) + env(safe-area-inset-bottom, 0px)); 
 @media (prefers-reduced-motion: reduce){
   *{ animation-duration:.01ms !important; transition-duration:.01ms !important; }
   .hito3{ animation-delay: 0s !important; }
+  .esq{ animation: none; }
   .hito3--actual::before{ display: none; }
 }
 
