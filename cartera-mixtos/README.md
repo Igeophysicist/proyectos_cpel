@@ -57,15 +57,15 @@ página (así el navegador ya no descarga la librería SheetJS). Ver
 ### Cómo editar los datos
 
 Abre `data/DATOS_MIXTOS.xlsx`:
-- Todo va en la hoja **"Proyectos"** — una fila por proyecto. No
+- Los datos se leen de la hoja **"CAPEX"** — una fila por proyecto. No
   cambies los encabezados de la fila 1 (el código los lee por nombre
-  exacto) ni renombres esa hoja.
-- La hoja **"Instrucciones"** (dentro del mismo archivo) explica el
-  formato esperado de cada columna — en particular, `Parque`/`LT`/
-  `Global` y las fechas se guardan como **texto**, no con el formato
-  de fecha/porcentaje nativo de Excel, para que se lean tal cual se
-  escriben (evita que Excel reinterprete "92%" como 9200%, o una
-  fecha según la configuración regional de quien la edite).
+  exacto) ni renombres esa hoja. Las demás hojas del archivo no se leen.
+- Las filas sin `TÍTULO 1`/`TÍTULO 2` (totales y promedios al final)
+  se ignoran, y solo se publican las columnas que usa la página; las
+  demás (`INVERSIONISTA`, `CAPEX / MW`, `ESTADO`…) se quedan en el Excel.
+- `Parque`/`LT`/`Global` y las fechas se leen **tal como se ven** en
+  Excel (p. ej. "92.50%" o "03 de julio de 2026"), así que conviene
+  conservar su formato actual.
 - `TÍTULO 2` (o, en su defecto, `TÍTULO 1`) debe coincidir con el
   `<name>` del Placemark en el KML para que ese proyecto aparezca en el
   mapa (ver "Estrategia de vinculación" más abajo).
@@ -102,7 +102,7 @@ El Excel sigue siendo la única fuente de verdad para los datos
 ejecutivos. El o los KML solo aportan geometría. La vinculación es
 automática, por nombre:
 
-1. Cada proyecto en la hoja "Proyectos" tiene `TÍTULO 2` (con
+1. Cada proyecto en la hoja "CAPEX" tiene `TÍTULO 2` (con
    `TÍTULO 1` como respaldo si el primero falta o no coincide con
    ningún Placemark).
 2. Cada `Placemark` del KML tiene `<name>`.
@@ -203,7 +203,7 @@ Solo afecta al listado (no al mapa ni al resumen) y queda en el enlace
 
 ## Actualizar datos
 
-Edita únicamente `data/DATOS_MIXTOS.xlsx` (hoja "Proyectos") y
+Edita únicamente `data/DATOS_MIXTOS.xlsx` (hoja "CAPEX") y
 el/los KML si cambian ubicaciones, conservando exactamente los mismos
 encabezados de columna. El JSON se regenera y valida solo; si el Excel
 tiene errores, el sitio sigue con los datos anteriores hasta corregirlo.

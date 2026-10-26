@@ -5,7 +5,7 @@
  *
  * DE DÓNDE VIENEN LOS DATOS
  * ---------------------------------------------------------------
- * Se editan en data/DATOS_MIXTOS.xlsx (hoja "Proyectos"). La página lee
+ * Se editan en data/DATOS_MIXTOS.xlsx (hoja "CAPEX"). La página lee
  * data/DATOS_MIXTOS.json, que scripts/build-data.js genera y valida a
  * partir del Excel (automáticamente en GitHub Actions). Cada fila es un
  * objeto con la fila 1 (encabezados) como claves — por eso los

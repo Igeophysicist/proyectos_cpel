@@ -1,7 +1,7 @@
 /**
  * tramites.js
  * Desglose de trámites y permisos de cada proyecto de Mixtos: las columnas
- * DI_P … AFAC_LT de la hoja "Proyectos" (copiadas de la hoja "Base de
+ * DI_P … AFAC_LT de la hoja "CAPEX" (copiadas de la hoja "Base de
  * Datos" del Excel de Estado de Proyectos) y sus pesos.
  *
  *   Parque = Σ peso × avance del trámite en Parque
