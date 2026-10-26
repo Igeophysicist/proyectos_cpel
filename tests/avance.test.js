@@ -57,3 +57,11 @@ test("diferenciaHtml: diferencia Real − Programado con el color del semáforo"
   assert.doesNotMatch(A.miniHtml(6.46, 6.36), /mini-dif/);
   assert.doesNotMatch(A.miniHtml(6.46, 6.36, { diferencia: true, pendiente: true }), /mini-dif/);
 });
+
+test("Programado y Real en 0: \"Sin iniciar\" en gris (no \"Al día\")", () => {
+  assert.match(A.diferenciaHtml(0, 0), /mini-dif--sin"[^>]*>Sin iniciar/);
+  assert.match(A.diferenciaHtml(0, 0.5), /mini-dif--leve/); // programado ya empezó: atraso
+  assert.match(A.generalHtml(0, 0), /variance--sin">Sin iniciar/);
+  assert.doesNotMatch(A.generalHtml(0, 0), /Al día/);
+  assert.doesNotMatch(A.generalHtml(0, 5, { pendiente: true }), /Sin iniciar/);
+});

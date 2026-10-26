@@ -33,6 +33,10 @@ body{ padding-bottom: calc(var(--tabbar-h) + env(safe-area-inset-bottom, 0px)); 
 }
 .topbar__select option{ color: var(--ink-900); }
 .topbar__select:focus-visible{ outline: 2px solid var(--gold-500); outline-offset: 2px; }
+/* Celular: letra un poco más chica para que quepa más del nombre del proyecto */
+@media (max-width: 520px){
+  .topbar__select{ font-size: 12.5px; padding-left: 10px; padding-right: 30px; letter-spacing: -.1px; }
+}
 .topbar__select-arrow{
   position: absolute; right: 10px; top: 50%; transform: translateY(-50%);
   pointer-events: none; color: #cfe0db;
@@ -88,6 +92,15 @@ body{ padding-bottom: calc(var(--tabbar-h) + env(safe-area-inset-bottom, 0px)); 
   border-radius: var(--radius-l); background: var(--teal-900); box-shadow: var(--shadow-card);
 }
 .hero-card img{ width: 100%; height: 100%; object-fit: cover; display: block; }
+/* Sin foto (hero.js): fondo con degradado y el ícono de la tecnología */
+.hero-card__icono{ display: none; }
+.hero-card--sinfoto{ background: radial-gradient(circle at 78% 30%, #2f5a54 0%, var(--teal-900) 65%); }
+.hero-card--sinfoto img{ display: none; }
+.hero-card--sinfoto .hero-card__icono{
+  display: block; position: absolute; top: 50%; right: 8%; width: 46%; max-width: 190px; aspect-ratio: 1;
+  transform: translateY(-62%); color: rgba(238,243,241,.16); pointer-events: none;
+}
+.hero-card__icono svg{ width: 100%; height: 100%; display: block; }
 .hero-card__overlay{
   position: absolute; inset: auto 0 0 0;
   padding: 40px var(--space-4) var(--space-4);
@@ -133,6 +146,7 @@ body{ padding-bottom: calc(var(--tabbar-h) + env(safe-area-inset-bottom, 0px)); 
 .variance--ok{ background: var(--status-a-bg, #e4f3ec); color: #1e7a52; }
 .variance--leve{ background: #fbf0d9; color: #7f5a14; }
 .variance--grave{ background: var(--status-c-bg, #fbe9e9); color: #b83b3b; }
+.variance--sin{ background: var(--surface-sunken); color: var(--ink-500); }
 
 /* Cambio del Real desde el corte anterior, junto a "Real" (avance.js) */
 .avg__semana{ margin-left: 6px; font-size: 11.5px; font-weight: 700; }
@@ -182,6 +196,7 @@ body{ padding-bottom: calc(var(--tabbar-h) + env(safe-area-inset-bottom, 0px)); 
 .mini-dif--ok{ background: var(--status-a-bg, #e4f3ec); color: #1e7a52; }
 .mini-dif--leve{ background: #fbf0d9; color: #7f5a14; }
 .mini-dif--grave{ background: var(--status-c-bg, #fbe9e9); color: #b83b3b; }
+.mini-dif--sin{ background: var(--surface, #fff); color: var(--ink-700); }
 
 /* ---------- Hitos de pago (hitos.js) ---------- */
 /* Pagados sobre el total: verde los pagados, más claro los parciales. */
@@ -449,7 +464,10 @@ body{ padding-bottom: calc(var(--tabbar-h) + env(safe-area-inset-bottom, 0px)); 
 
 /* ---------- Tablet vertical y pantallas amplias: tarjetas en dos columnas ---------- */
 @media (min-width: 600px){
-  .cartera{ display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
+  /* Las tarjetas de una misma fila miden lo mismo (sin huecos debajo) y la
+     que quede sola sube a llenar el lugar libre (dense); el mapa, a lo ancho. */
+  .cartera{ display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: stretch; grid-auto-flow: row dense; }
+  .card--mapa{ grid-column: 1 / -1; }
   .hero-card{ grid-column: 1 / -1; height: 260px; }
   .card--hitos{ grid-column: 1 / -1; }
   .hitos-tres{ grid-template-columns: repeat(3, minmax(0, 1fr)); }
