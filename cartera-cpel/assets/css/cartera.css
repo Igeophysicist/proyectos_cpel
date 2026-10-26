@@ -429,19 +429,24 @@ body{ padding-bottom: calc(var(--tabbar-h) + env(safe-area-inset-bottom, 0px)); 
 }
 .plegable__btn:focus-visible{ outline: 2px solid var(--gold-500); outline-offset: 2px; border-radius: 4px; }
 
-/* ---------- Pantallas amplias ---------- */
-@media (min-width: 900px){
-  .cartera{
-    display: grid; grid-template-columns: 1.2fr 1fr; align-items: start;
-    padding: var(--space-5);
-  }
-  .hero-card{ grid-column: 1 / -1; height: 300px; }
+/* ---------- Tablet vertical y pantallas amplias: tarjetas en dos columnas ---------- */
+@media (min-width: 600px){
+  .cartera{ display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
+  .hero-card{ grid-column: 1 / -1; height: 260px; }
+  .card--hitos{ grid-column: 1 / -1; }
   .hitos-tres{ grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .hito3{ grid-template-columns: minmax(0, 1fr); gap: 4px; }
+}
+/* Tablet vertical: las ventanas salen de abajo pero con un ancho cómodo de leer, centradas. */
+@media (min-width: 600px) and (max-width: 899px){
+  .sheet__panel{ max-width: 600px; margin: 0 auto; }
+}
+@media (min-width: 900px){
+  .cartera{ grid-template-columns: 1.2fr 1fr; padding: var(--space-5); }
+  .hero-card{ height: 300px; }
   .hitos-ver{ width: auto; padding: 8px 16px; }
   .particular__title{ font-size: 10px; padding-bottom: 3px; margin-bottom: 4px; }
   .mini-row + .mini-row{ margin-top: 3px; }
-  .card--hitos{ grid-column: 1 / -1; }
   .sheet__panel{ left: auto; top: 0; width: 440px; max-height: none; border-radius: 0; animation: none; }
 }
 

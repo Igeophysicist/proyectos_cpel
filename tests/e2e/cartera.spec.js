@@ -162,3 +162,19 @@ test("Eventos importantes: viñetas como lista y, si es largo, \"Ver más\" / \"
   await btn.click();
   await expect(btn).toHaveText("Ver más");
 });
+
+test("tablet vertical: tarjetas en dos columnas y ventanas centradas de ancho cómodo", async ({ page }) => {
+  await page.setViewportSize({ width: 800, height: 1280 });
+  const p = datos().cartera[0];
+  await page.goto(`/cartera-cpel/?proyecto=${slugify(p.nombre)}`);
+  await listo(page);
+  // Avance General y Avances particulares lado a lado
+  const [a, b] = await page.locator("#cartera > .card").evaluateAll((els) => els.slice(0, 2).map((e) => e.getBoundingClientRect()));
+  expect(Math.abs(a.top - b.top)).toBeLessThan(20); // misma fila (con margen por la animación de entrada)
+  expect(b.left).toBeGreaterThan(a.right);
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+  await page.locator(".actionbar__btn", { hasText: "Ficha técnica" }).click();
+  const panel = await page.locator("#sheetFicha .sheet__panel").boundingBox();
+  expect(panel.width).toBeLessThanOrEqual(600);
+  expect(Math.abs(panel.x + panel.width / 2 - 400)).toBeLessThan(2); // centrada
+});

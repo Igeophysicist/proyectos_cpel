@@ -505,6 +505,10 @@ html.dialogo-abierto{overflow:hidden;}
 .filters__body, .detail__body{overscroll-behavior:contain;}
 .filters__scrim, .detail__scrim{touch-action:none;}
 /* Asa: en celular la ventana se cierra deslizándola hacia abajo. */
+/* Tablet vertical: ventanas desde abajo pero con un ancho cómodo de leer, centradas. */
+@media (min-width:600px) and (max-width:899px){
+  .detail__panel, .filters__panel{max-width:600px; margin:0 auto;}
+}
 @media (max-width:899px){
   .filters__panel::before, .detail__panel::before{content:""; position:absolute; z-index:5; top:6px; left:50%; width:38px; height:4px; margin-left:-19px; border-radius:2px; background:rgba(150,160,157,.75); pointer-events:none;}
 }
