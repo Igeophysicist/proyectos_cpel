@@ -49,6 +49,7 @@ test("tecnología -> sufijo de hojas, también con la hoja TIPOS", () => {
   assert.equal(sufijoDe("Hidroeléctrico"), "HIDRO");
   assert.equal(sufijoDe("Eólico"), "EO");
   assert.equal(sufijoDe("Termosolar"), "TERSOL");
+  assert.equal(sufijoDe("Proyecto de Acumulación de Energía por Bombeo"), "PAEB");
   assert.equal(sufijoDe("Geotérmico"), null);
   assert.equal(sufijoDe("Geotérmico", [{ tecnologia: "Geotérmico", sufijo: "GEO" }]), "GEO");
 });
@@ -126,4 +127,49 @@ test("errores: tecnología desconocida, porcentaje inválido y proyecto repetido
   assert.ok(errors.some((e) => /no se reconoce la tecnología "Geotérmico"/.test(e)));
   assert.ok(errors.some((e) => /"mucho" no es un porcentaje/.test(e)));
   assert.ok(errors.some((e) => /"PFV Uno" se repite/.test(e)));
+});
+
+test("AVAN con varias tablas: cada proyecto usa los encabezados (ponderados y notas) de su tabla", () => {
+  const T = "Proyecto de Acumulación de Energía por Bombeo";
+  const hojas = {
+    PRES: { filas: [["No.", "Proyecto", "Tecnología"], [3, "PAEB Uno", T], [4, "PAEB Dos", T]] },
+    FICHA_PAEB: { filas: [["No.", "Proyecto", "Potencia [MW]"], [3, "PAEB Uno", "240"], [4, "PAEB Dos", "197"]] },
+    AVAN_PAEB: {
+      filas: [
+        ["No.", "Proyecto", "TIPO DE AVANCE", "GENERAL", "1. Certidumbre", "1.1 Agua", "NOTA (1.1)"],
+        [3, "PAEB Uno", "Real", "42%", "50%", "50%", "Ver con CONAGUA"],
+        ["", "", "Programado", "61%", "60%", "75%"],
+        [],
+        ["No.", "Proyecto", "TIPO DE AVANCE", "GENERAL", "1 Planteamiento", "1.1 Agua", "1.2 Topografía", "2. Análisis", "NOTA TOTAL"],
+        [4, "PAEB Dos", "Real", "48%", "66%", "100%", "100%", "30%", "Nota de Dos"],
+        ["", "", "Programado", "48%", "75%", "100%", "100%", "22%"],
+      ],
+      merges: ["A2:A3", "B2:B3", "A6:A7", "B6:B7"],
+    },
+  };
+  const { errors, proyectos } = leerAnteproyectos(libro(hojas), XLSX);
+  assert.deepEqual(errors, []);
+  const [uno, dos] = proyectos;
+  assert.equal(uno.tipo, "PAEB");
+  assert.deepEqual(uno.avance.grupos.map((g) => g.titulo), ["Certidumbre"]);
+  assert.equal(uno.avance.grupos[0].items[0].nota, "Ver con CONAGUA");
+  assert.equal(uno.avance.general.real, 42);
+  assert.deepEqual(dos.avance.grupos.map((g) => g.titulo), ["Planteamiento", "Análisis"]);
+  assert.deepEqual(dos.avance.grupos[0].items.map((x) => x.clave), ["1.1", "1.2"]);
+  assert.equal(dos.avance.general.nota, "Nota de Dos");
+  assert.equal(dos.avance.grupos[1].prog, 22);
+});
+
+test("AVAN: un número repetido (1.10 que Excel cambió a 1.1) es error", () => {
+  const hojas = {
+    PRES: { filas: [["No.", "Proyecto", "Tecnología"], [1, "PFV Uno", "Fotovoltaico"]] },
+    AVAN_FOTOV: {
+      filas: [
+        ["No.", "Proyecto", "TIPO DE AVANCE", "GENERAL", "1. A", "1.1 Agua", "1.9 Social", "1.1 Arqueológico"],
+        [1, "PFV Uno", "Real", 0.1, 0.1, 0.1, 0.1, 0.1],
+      ],
+    },
+  };
+  const { errors } = leerAnteproyectos(libro(hojas), XLSX);
+  assert.ok(errors.some((e) => /AVAN_FOTOV", fila 1: el número 1\.1 se repite \(columnas F y H\).*'1\.10/.test(e)), errors.join("\n"));
 });
