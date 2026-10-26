@@ -253,11 +253,9 @@
   function mostrarProyecto(p) {
     // Encabezado
     const img = $("projectImg");
-    const imagen = String(p.imagen || "").trim();
-    if (imagen) img.src = imagen;
-    else img.removeAttribute("src");
     img.alt = texto(p.nombre, "");
-    img.style.visibility = imagen ? "visible" : "hidden";
+    // Sin foto (o si no carga): fondo con el ícono de su tecnología (hero.js)
+    window.CarteraHero.foto(document.querySelector(".hero-card"), img, String(p.imagen || "").trim(), p.tecnologia);
     $("projectName").textContent = texto(p.nombre, "Sin nombre");
     $("projectLocation").textContent = texto(p.ubicacion, "Sin ubicación");
     const tech = $("projectTech");

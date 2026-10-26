@@ -61,6 +61,12 @@
     const p = pendiente ? null : num(prog);
     const diff = r !== null && p !== null ? r2(r - p) : null;
     const sem = semaforo(diff);
+    // Programado y Real en 0: no ha empezado (no es "al día").
+    const pie = sinIniciar(r, p)
+      ? `<div class="variance variance--sin">Sin iniciar</div>`
+      : sem
+        ? `<div class="variance variance--${sem}">${textoDiferencia(diff)}</div>`
+        : "";
     const fila = (lado, etiqueta, v, extra = "") => `
         <div class="progress-row progress-row--${lado}">
           <div class="progress-row__info"><span>${etiqueta}${extra}</span><span>${formatPct(v)}</span></div>
@@ -71,17 +77,22 @@
         ${fila("prog", "Programado", p)}
         ${fila("real", "Real", r, ` <span class="avg__semana" data-semana hidden></span>`)}
       </div>
-      ${sem ? `<div class="variance variance--${sem}">${textoDiferencia(diff)}</div>` : ""}`;
+      ${pie}`;
   }
+
+  /** Programado y Real en 0: el área (o el proyecto) aún no empieza. */
+  const sinIniciar = (r, p) => r === 0 && p === 0;
 
   /**
    * Diferencia Real − Programado en chico, con el color del semáforo
-   * ("−0.10 pts", "+1.20 pts", "Al día"); vacío si falta algún dato.
+   * ("−0.10 pts", "+1.20 pts", "Al día"; "Sin iniciar" en gris si los dos
+   * están en 0); vacío si falta algún dato.
    */
   function diferenciaHtml(real, prog) {
     const r = num(real);
     const p = num(prog);
     if (r === null || p === null) return "";
+    if (sinIniciar(r, p)) return `<span class="mini-dif mini-dif--sin" title="Programado y Real en 0">Sin iniciar</span>`;
     const diff = r2(r - p);
     const texto = diff > 0 ? `+${formatPts(diff)} pts` : diff < 0 ? `−${formatPts(diff)} pts` : "Al día";
     return `<span class="mini-dif mini-dif--${semaforo(diff)}" title="Real − Programado">${texto}</span>`;

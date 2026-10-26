@@ -173,6 +173,7 @@ test("tablet vertical: tarjetas en dos columnas y ventanas centradas de ancho c�
   expect(Math.abs(a.top - b.top)).toBeLessThan(20); // misma fila (con margen por la animación de entrada)
   expect(b.left).toBeGreaterThan(a.right);
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+  expect(Math.abs(a.height - b.height)).toBeLessThan(2); // misma altura (sin hueco debajo)
   await page.locator(".actionbar__btn", { hasText: "Ficha técnica" }).click();
   const panel = await page.locator("#sheetFicha .sheet__panel").boundingBox();
   expect(panel.width).toBeLessThanOrEqual(600);
@@ -194,4 +195,21 @@ test("mientras cargan los datos se ven tarjetas de relleno (no barras en 0 %)", 
   await listo(page);
   await expect(page.locator("#cartera .esq")).toHaveCount(0);
   await expect(page.locator("#generalBody .progress-row")).toHaveCount(2);
+});
+
+test("proyecto sin foto (o que no carga): fondo con el ícono de su tecnología", async ({ page }) => {
+  const p = datos().cartera[0];
+  await page.route(/\/data\/.*\.(jpe?g|png|webp)(\?.*)?$/i, (r) => r.abort()); // la foto del proyecto no carga
+  await page.goto(`/cartera-cpel/?proyecto=${slugify(p.nombre)}`);
+  await listo(page);
+  await expect(page.locator(".hero-card")).toHaveClass(/hero-card--sinfoto/);
+  await expect(page.locator(".hero-card__icono svg")).toBeVisible();
+  await expect(page.locator("#projectImg")).toBeHidden();
+});
+
+test("celular: el selector de proyecto usa letra más chica para que quepa más del nombre", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto(`/cartera-cpel/?proyecto=${slugify(datos().cartera[0].nombre)}`);
+  await listo(page);
+  expect(await page.locator("#projectSelect").evaluate((el) => getComputedStyle(el).fontSize)).toBe("12.5px");
 });
