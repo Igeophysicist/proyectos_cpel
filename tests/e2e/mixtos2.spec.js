@@ -1,0 +1,63 @@
+// Mixtos 2da Ronda: la misma página que Mixtos con sus propios datos
+// (cartera-mixtos-2), el mapa vinculado por ID_VUPE, el filtro de Región
+// y el estatus de cada trámite.
+const { test, expect, datos } = require("./ayuda.js");
+
+const cargado = (page) => expect(page.locator("#loader")).toHaveClass(/is-hidden/, { timeout: 20_000 });
+
+test("el portal lleva a Mixtos 2da Ronda y se ven todos sus proyectos, todos en el mapa", async ({ page }) => {
+  const { mixtos2 } = datos();
+  await page.goto("/");
+  await page.locator(".nav-card", { hasText: "Mixtos 2da Ronda" }).click();
+  await expect(page).toHaveURL(/\/cartera-mixtos-2\//);
+  await cargado(page);
+  await expect(page.locator(".topbar__title")).toHaveText("Mixtos 2da Ronda");
+  await expect(page.locator("#list-count")).toHaveText(`${mixtos2.length} proyectos`);
+  // Cada punto del KML se llama como su ID_VUPE: ningún proyecto queda sin ubicación.
+  await expect(page.locator(".geo-flag")).toHaveCount(0);
+  // Sin presentación en PDF.
+  await expect(page.locator("[data-open-presentacion]")).toHaveCount(0);
+});
+
+test("la ficha muestra el nombre del Excel, la región y el ID VUPE", async ({ page }) => {
+  const [p] = datos().mixtos2;
+  await page.goto("/cartera-mixtos-2/");
+  await cargado(page);
+  await page.locator("#project-list .pcard", { hasText: p.nombre }).first().locator(".pcard__open").click();
+  await expect(page.locator("#detail-title")).toHaveText(p.nombre);
+  await expect(page.locator("#detail-body")).toContainText(p.Región);
+  await expect(page.locator("#detail-body")).toContainText(p.ID_VUPE);
+});
+
+test("filtro de Región: solo quedan los proyectos de esa región y queda en el enlace", async ({ page }) => {
+  const { mixtos2 } = datos();
+  const region = mixtos2[0].Región;
+  const cuantos = mixtos2.filter((p) => p.Región === region).length;
+  await page.goto("/cartera-mixtos-2/");
+  await cargado(page);
+  await page.click("#filter-btn");
+  await page.locator(".filter-group", { hasText: "Región" }).locator(".chip", { hasText: region }).click();
+  await page.click("#filter-apply");
+  await expect(page.locator("#list-count")).toHaveText(`${cuantos} proyecto${cuantos === 1 ? "" : "s"}`);
+  expect(new URL(page.url()).searchParams.get("region")).toBe(region);
+});
+
+test("Trámites muestra el estatus de cada lado con el color de REGLAS; en Mixtos no hay estatus", async ({ page }) => {
+  const [p] = datos().mixtos2;
+  await page.goto("/cartera-mixtos-2/");
+  await cargado(page);
+  await page.locator("#project-list .pcard", { hasText: p.nombre }).first().locator(".pcard__open").click();
+  await page.locator("[data-open-tramites]").click();
+  await expect(page.locator("#tramites")).toHaveClass(/is-open/);
+  // 10 trámites: 8 con Parque y LT, Interconexión y Consulta con uno solo.
+  await expect(page.locator("#tramites .tram-est")).toHaveCount(18);
+  const mia = page.locator("#tramites .tram-card", { hasText: "MIA" }).locator(".tram-est").first();
+  await expect(mia).toHaveText(p.A_MIA_P_ESTATUS);
+
+  await page.goto("/cartera-mixtos/");
+  await cargado(page);
+  await page.locator("#project-list .pcard__open").first().click();
+  await page.locator("[data-open-tramites]").click();
+  await expect(page.locator("#tramites")).toHaveClass(/is-open/);
+  await expect(page.locator("#tramites .tram-est")).toHaveCount(0);
+});

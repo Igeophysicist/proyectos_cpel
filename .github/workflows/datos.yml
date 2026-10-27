@@ -17,9 +17,11 @@ on:
       - "cartera-cpel/data/**"
       - "cartera-mixtos/data/**"
       - "cartera-anteproyectos/data/**"
+      - "cartera-mixtos-2/data/**"
       - "scripts/**"
       - "assets/js/shared/text-utils.js"
       - "cartera-mixtos/assets/js/grupo.js"
+      - "cartera-mixtos/assets/js/tramites.js"
       - "package-lock.json"
       - ".github/workflows/datos.yml"
   pull_request:
@@ -27,9 +29,11 @@ on:
       - "cartera-cpel/data/**"
       - "cartera-mixtos/data/**"
       - "cartera-anteproyectos/data/**"
+      - "cartera-mixtos-2/data/**"
       - "scripts/**"
       - "assets/js/shared/text-utils.js"
       - "cartera-mixtos/assets/js/grupo.js"
+      - "cartera-mixtos/assets/js/tramites.js"
       - "package-lock.json"
       - ".github/workflows/datos.yml"
   workflow_dispatch:
@@ -56,13 +60,13 @@ jobs:
       - name: Subir JSON e imágenes actualizados
         if: github.event_name != 'pull_request'
         run: |
-          if git diff --quiet -- cartera-cpel/data cartera-mixtos/data cartera-anteproyectos/data; then
+          if git diff --quiet -- cartera-cpel/data cartera-mixtos/data cartera-anteproyectos/data cartera-mixtos-2/data; then
             echo "Los JSON y las imágenes ya estaban al día."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add cartera-cpel/data/*.json cartera-mixtos/data/*.json cartera-anteproyectos/data/*.json cartera-cpel/data/CARTERA-CPEL cartera-anteproyectos/data/IMAGENES
+          git add cartera-cpel/data/*.json cartera-mixtos/data/*.json cartera-anteproyectos/data/*.json cartera-mixtos-2/data/*.json cartera-cpel/data/CARTERA-CPEL cartera-anteproyectos/data/IMAGENES
           if git diff --cached --quiet -- '*.json'; then
             mensaje="Optimiza imágenes"
           elif git diff --cached --quiet -- cartera-cpel/data/CARTERA-CPEL cartera-anteproyectos/data/IMAGENES; then

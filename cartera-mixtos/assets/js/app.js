@@ -275,7 +275,7 @@
       }
       els.loader.classList.add("is-error");
       els.loaderText.textContent =
-        "No se pudieron cargar los datos. Verifica que data/DATOS_MIXTOS.json y los KML estén publicados junto a este HTML. Detalle: " +
+        `No se pudieron cargar los datos. Verifica que ${window.AppData.DATA_FILE} y los KML estén publicados junto a este HTML. Detalle: ` +
         err.message;
     }
   }

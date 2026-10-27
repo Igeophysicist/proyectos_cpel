@@ -26,17 +26,24 @@
  *
  * Para agregar más archivos KML en el futuro, súmalos a KML_SOURCES.
  *
+ * MIXTOS 2DA RONDA (cartera-mixtos-2) usa esta misma página: su <body>
+ * dice qué archivos leer (data-datos, data-kml separados por comas). Sus
+ * puntos del KML se llaman como el ID_VUPE del proyecto, así que si la
+ * fila trae ID_VUPE se busca primero por él (el nombre que se muestra
+ * sigue siendo el del Excel).
+ *
  * Requiere: shared/text-utils.js y shared/kml-parser.js.
  */
 (function (global) {
   const { normalizeText, parseNumber, parseDate, slugify } = global.TextUtils;
 
+  const config = document.body.dataset;
   // Generado desde data/DATOS_MIXTOS.xlsx por scripts/build-data.js.
-  const DATA_FILE = "data/DATOS_MIXTOS.json";
+  const DATA_FILE = config.datos || "data/DATOS_MIXTOS.json";
   // Cortes semanales (Parque/LT/Global) para la evolución en la ficha.
   const HISTORIAL_FILE = "data/historial.json";
 
-  const KML_SOURCES = [
+  const KML_SOURCES = config.kml ? config.kml.split(",").map((k) => k.trim()) : [
     "data/ENTRADA_PROYECTOS.kml",
     // Para agregar una capa KML adicional (p. ej. polígonos de referencia
     // por proyecto), solo súmala aquí. Si sus Placemark usan el mismo
@@ -165,9 +172,10 @@
       .map((raw, index) => {
         const id = String(index);
         const nombre = raw["TÍTULO 2"] || raw["TÍTULO 1"] || `Proyecto ${id}`;
-        // Se busca primero por TÍTULO 2 y, si no hay geometría con ese
-        // nombre, por TÍTULO 1.
+        // Se busca primero por ID_VUPE (Mixtos 2da Ronda), luego por
+        // TÍTULO 2 y, si no hay geometría con ese nombre, por TÍTULO 1.
         const matches =
+          (raw.ID_VUPE && geo.index.get(normalizeText(raw.ID_VUPE))) ||
           geo.index.get(normalizeText(raw["TÍTULO 2"])) ||
           geo.index.get(normalizeText(raw["TÍTULO 1"])) ||
           [];
@@ -193,9 +201,13 @@
           tecnologia: raw["Tecnología"] || "",
           ubicacion: raw["Ubicación"] || "",
           estado: extractEstado(raw["Ubicación"]),
+          // Solo Mixtos 2da Ronda: región de la red y clave del proyecto.
+          region: raw["Región"] || "",
+          idVupe: raw.ID_VUPE || "",
           capacidad: raw["Capacidad"] || "",
           capacidadNum: parseNumber(raw["Capacidad"]),
           bess: raw["Almacenamiento (BESS)"] || "",
+          bessPct: raw["Porcentaje BESS"] || "",
           horasAlmacenamiento: raw["Horas de Almacenamiento"] ?? null,
           inicioInversion: raw["Inicio de Inversión"] || "",
           inicioInversionFecha: parseDate(raw["Inicio de Inversión"]),
@@ -235,6 +247,7 @@
 
   global.AppData = {
     loadDataset,
+    DATA_FILE,
     GRUPO_INFO,
   };
 })(window);

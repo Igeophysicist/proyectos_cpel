@@ -23,8 +23,10 @@ function datos() {
   const mixtos = leer("cartera-mixtos/data/DATOS_MIXTOS.json")
     .proyectos.map((r) => ({ ...r, nombre: String(r["TÍTULO 2"] || r["TÍTULO 1"] || "").trim() }))
     .filter((r) => r.nombre);
+  const mixtos2 = leer("cartera-mixtos-2/data/DATOS_MIXTOS_2.json").proyectos.map((r) => ({ ...r, nombre: String(r["TÍTULO 2"]).trim() }));
   return {
     cartera,
+    mixtos2,
     carteraHistorial: leer("cartera-cpel/data/historial.json").cortes,
     mixtos,
     mixtosHistorial: leer("cartera-mixtos/data/historial.json").cortes,

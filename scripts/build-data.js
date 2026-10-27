@@ -33,6 +33,10 @@
  * CARTERA ANTEPROYECTOS: cartera-anteproyectos/data/datos_anteproyectos.xlsx
  * (varias hojas, ver scripts/anteproyectos.js) -> data/anteproyectos.json,
  * con su corte semanal (jueves, como Cartera CPEL) para la curva de avance.
+ *
+ * MIXTOS 2DA RONDA: cartera-mixtos-2/data/DATOS_MIXTOS_2.xlsx (hoja
+ * BASE_DE_DATOS, ver scripts/mixtos2.js) -> data/DATOS_MIXTOS_2.json, con
+ * su corte semanal (domingo, como Mixtos) para la evolución.
  */
 const fs = require("fs");
 const path = require("path");
@@ -43,6 +47,7 @@ const { snapshotCartera, snapshotMixtos, upsertCorte, cambiosMixtos, registrarAc
 const { slugify } = require("../assets/js/shared/text-utils.js");
 const { leerHitos } = require("./hitos.js");
 const { leerAnteproyectos, snapshotAnteproyectos } = require("./anteproyectos.js");
+const { leerMixtos2 } = require("./mixtos2.js");
 
 const ROOT = path.resolve(__dirname, "..");
 
@@ -108,6 +113,17 @@ const ANTEPROYECTOS = {
   regla: "jueves",
   kml: ["data/ANTEPROYECTOS.kml"],
   imagenes: "data/IMAGENES",
+};
+
+// Mixtos 2da Ronda (misma página que Mixtos; ver scripts/mixtos2.js).
+const MIXTOS2 = {
+  label: "Mixtos 2da Ronda",
+  dir: "cartera-mixtos-2",
+  excel: "data/DATOS_MIXTOS_2.xlsx",
+  json: "data/DATOS_MIXTOS_2.json",
+  historial: "data/historial.json",
+  regla: "domingo",
+  kml: ["data/MIXTOS_2.kml"],
 };
 
 function decodeXml(s) {
@@ -238,6 +254,33 @@ function buildAnteproyectos() {
   };
 }
 
+/** Lee y valida el Excel de Mixtos 2da Ronda. */
+function buildMixtos2() {
+  const ds = MIXTOS2;
+  const dir = path.join(ROOT, ds.dir);
+  const excelPath = path.join(dir, ds.excel);
+  if (!fs.existsSync(excelPath)) return { errors: [`No existe ${ds.excel}.`], warnings: [] };
+  const wb = XLSX.read(fs.readFileSync(excelPath), { type: "buffer" });
+  const { errors, warnings, proyectos } = leerMixtos2(wb, XLSX, {
+    kml: ds.kml.flatMap((k) => placemarkNames(path.join(dir, k))),
+  });
+  const modified = wb.Props && wb.Props.ModifiedDate ? new Date(wb.Props.ModifiedDate) : null;
+  const excelModificado = modified && !Number.isNaN(modified.getTime()) ? modified.toISOString() : null;
+  const publicado = readJson(path.join(dir, ds.json));
+  const anterior = checkExcelAnterior(excelModificado, publicado && publicado.excelModificado);
+  if (anterior) errors.push(anterior);
+  if (!excelModificado) warnings.push("El Excel no tiene fecha de guardado: no se registró el corte en la evolución.");
+  return {
+    errors,
+    warnings,
+    json: toJson({ fuente: path.basename(ds.excel), excelModificado, proyectos }),
+    jsonPath: path.join(dir, ds.json),
+    corte: excelModificado ? { excel: excelModificado, proyectos: snapshotMixtos(proyectos) } : null,
+    regla: ds.regla,
+    historialPath: path.join(dir, ds.historial),
+  };
+}
+
 /** Historial con el corte de este Excel agregado (o reemplazado en su semana). */
 function historialWithCorte(result) {
   const current = readJson(result.historialPath);
@@ -307,6 +350,7 @@ async function main() {
   const nombresCartera = cartera && cartera.json ? JSON.parse(cartera.json).proyectos.map((p) => String(p.nombre || "").trim()).filter(Boolean) : [];
   results.push({ ds: HITOS, ...buildHitos(nombresCartera) });
   results.push({ ds: ANTEPROYECTOS, ...buildAnteproyectos() });
+  results.push({ ds: MIXTOS2, ...buildMixtos2() });
   results.forEach((r) => report(r.ds, r, summary));
 
   const failed = results.some((r) => r.errors.length);
@@ -349,4 +393,4 @@ if (require.main === module) {
   });
 }
 
-module.exports = { DATASETS, HITOS, ANTEPROYECTOS, buildDataset, buildHitos, buildAnteproyectos, toJson, ROOT };
+module.exports = { DATASETS, HITOS, ANTEPROYECTOS, MIXTOS2, buildDataset, buildHitos, buildAnteproyectos, buildMixtos2, toJson, ROOT };

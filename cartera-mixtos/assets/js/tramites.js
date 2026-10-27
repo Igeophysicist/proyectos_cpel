@@ -11,6 +11,11 @@
  * Estudios de interconexión y Consulta indígena tienen un solo valor que
  * cuenta igual para Parque y LT.
  *
+ * ESTATUS (Mixtos 2da Ronda): cada trámite trae además su estatus en la
+ * columna <columna>_ESTATUS (DI_P_ESTATUS…). El avance de cada estatus y
+ * su color son los de la hoja REGLAS del Excel (ver ESTATUS). Si el
+ * Excel no trae esas columnas (Mixtos), no se muestra el estatus.
+ *
  * Lo usan la página (data.js, ui.js) y la Action "Datos"
  * (scripts/data-rules.js, que avisa si Parque/LT/Global del Excel no
  * cuadran con esta ponderación). Si cambian los pesos, se editan aquí.
@@ -31,6 +36,21 @@
     { id: "int", grupo: "Interconexión", nombre: "Estudios de interconexión", peso: 10, parque: "ES_INT", lt: "ES_INT" },
   ];
   const PESO_GLOBAL = { parque: 0.8, lt: 0.2 };
+  // Hoja REGLAS del Excel de Mixtos 2da Ronda: avance (%) y color de cada estatus.
+  const ESTATUS = [
+    { nombre: "Pendiente", avance: 0, color: "#BFBFBF" },
+    { nombre: "En elaboración", avance: 20, color: "#FF7C80" },
+    { nombre: "En evaluación", avance: 50, color: "#FFFF99" },
+    { nombre: "Requerimiento", avance: 75, color: "#95B3D7" },
+    { nombre: "En actualización", avance: 75, color: "#95B3D7" },
+    { nombre: "En dictaminación", avance: 85, color: "#FABF8F" },
+    { nombre: "Liberado", avance: 100, color: "#92D050" },
+    { nombre: "N/A", avance: 100, color: "#92D050" },
+  ];
+  const sinAcentos = (t) => String(t ?? "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, " ").trim().toLowerCase();
+  /** Estatus de la lista que corresponde al texto (sin importar acentos ni mayúsculas), o null. */
+  const estatus = (texto) => ESTATUS.find((e) => sinAcentos(e.nombre) === sinAcentos(texto)) || null;
+  const colEstatus = (col) => `${col}_ESTATUS`;
   const COLUMNAS = Array.from(new Set(TRAMITES.flatMap((t) => [t.parque, t.lt])));
 
   /** "90%", "90", 0.9 (número de Excel) -> 90; vacío o texto -> null. */
@@ -47,7 +67,15 @@
    */
   function desglose(raw) {
     if (!raw || !COLUMNAS.some((c) => pct(raw[c]) !== null)) return null;
-    return TRAMITES.map((t) => ({ ...t, compartido: t.parque === t.lt, avParque: pct(raw[t.parque]), avLt: pct(raw[t.lt]) }));
+    return TRAMITES.map((t) => ({
+      ...t,
+      compartido: t.parque === t.lt,
+      avParque: pct(raw[t.parque]),
+      avLt: pct(raw[t.lt]),
+      // null si el Excel no trae estatus (Mixtos)
+      estParque: estatus(raw[colEstatus(t.parque)]),
+      estLt: estatus(raw[colEstatus(t.lt)]),
+    }));
   }
 
   /** { parque, lt, global } (en %) ponderados; null si falta algún dato. */
@@ -71,7 +99,7 @@
   }
 
 
-  const api = { TRAMITES, PESO_GLOBAL, COLUMNAS, pct, desglose, ponderado, faltantes };
+  const api = { TRAMITES, PESO_GLOBAL, COLUMNAS, ESTATUS, estatus, colEstatus, pct, desglose, ponderado, faltantes };
   if (typeof module !== "undefined" && module.exports) module.exports = api;
   else global.AppTramites = api;
 })(typeof window !== "undefined" ? window : globalThis);
