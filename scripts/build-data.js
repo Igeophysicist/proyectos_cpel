@@ -37,7 +37,7 @@
 const fs = require("fs");
 const path = require("path");
 const XLSX = require("xlsx");
-const { validateCartera, validateMixtos, checkExcelAnterior, MIXTOS_SHEET } = require("./data-rules.js");
+const { validateCartera, validateMixtos, checkExcelAnterior, MIXTOS_SHEET, MIXTOS_COLUMNAS } = require("./data-rules.js");
 const { optimizarCarpeta } = require("./imagenes.js");
 const { snapshotCartera, snapshotMixtos, upsertCorte, cambiosMixtos, registrarActualizacion } = require("./historial.js");
 const { slugify } = require("../assets/js/shared/text-utils.js");
@@ -73,8 +73,19 @@ const DATASETS = [
     actualizaciones: "data/actualizaciones.json",
     nombre: (r) => String(r["TÍTULO 2"] || r["TÍTULO 1"] || "").trim(),
     kml: ["data/ENTRADA_PROYECTOS.kml", "data/AREAS_REFERENCIA.kml"],
-    // Igual que data.js antes: hoja "Proyectos", texto tal como se ve en Excel.
+    // Hoja "CAPEX", texto tal como se ve en Excel.
     read: (wb) => ({ sheetName: wb.SheetNames.includes(MIXTOS_SHEET) ? MIXTOS_SHEET : null, options: { raw: false, defval: "" } }),
+    // Solo se publican los proyectos (no las filas de totales y promedios
+    // de abajo, que no tienen TÍTULO) y las columnas que usa la página,
+    // sin los espacios que agrega el formato de contabilidad (" $93.9 ").
+    publicar: (r) =>
+      String(r["TÍTULO 2"] || r["TÍTULO 1"] || "").trim()
+        ? Object.fromEntries(
+            Object.entries(r)
+              .filter(([k]) => MIXTOS_COLUMNAS.includes(k))
+              .map(([k, v]) => [k, typeof v === "string" ? v.trim() : v])
+          )
+        : null,
     validate: validateMixtos,
   },
 ];
@@ -154,7 +165,7 @@ function buildDataset(ds) {
   const data = {
     fuente: path.basename(ds.excel),
     excelModificado: modified && !Number.isNaN(modified.getTime()) ? modified.toISOString() : null,
-    proyectos: rows,
+    proyectos: ds.publicar ? rows.map(ds.publicar).filter(Boolean) : rows,
   };
   // Un Excel guardado antes que el ya publicado es casi siempre una copia
   // vieja: se bloquea para no regresar los avances (ver data-rules.js).

@@ -485,6 +485,36 @@
           }
         }
       ]
+    },
+    {
+      "excel": "2026-10-26T23:38:12.000Z",
+      "fecha": "2026-10-26",
+      "cambios": [
+        {
+          "slug": "alvaro-obregon",
+          "nombre": "ÁLVARO OBREGÓN",
+          "antes": {
+            "parque": 85.5,
+            "grupo": "A"
+          },
+          "ahora": {
+            "parque": 82.5,
+            "grupo": "B"
+          }
+        },
+        {
+          "slug": "delaro-2da-ronda",
+          "nombre": "DELARO (2DA RONDA)",
+          "antes": {
+            "parque": 87.5,
+            "grupo": "A"
+          },
+          "ahora": {
+            "parque": 83,
+            "grupo": "B"
+          }
+        }
+      ]
     }
   ]
 }

@@ -107,7 +107,7 @@ function validateCartera({ headers, rows, placemarkNames = [], fileExists = () =
 }
 
 // ------------------------------------------------------------- Mixtos
-const MIXTOS_SHEET = "Proyectos";
+const MIXTOS_SHEET = "CAPEX";
 const MIXTOS_REQUIRED = [
   "TÍTULO 1", "TÍTULO 2", "Socio", "Tecnología", "Ubicación", "Capacidad",
   "Almacenamiento (BESS)", "Horas de Almacenamiento",
@@ -116,6 +116,10 @@ const MIXTOS_REQUIRED = [
   // Desglose de trámites (cartera-mixtos/assets/js/tramites.js)
   ...Tramites.COLUMNAS,
 ];
+// Columnas que se publican en DATOS_MIXTOS.json: las que usa la página
+// (más NO. y name_BD, de control). Las demás de la hoja (INVERSIONISTA,
+// CAPEX/MW, ESTADO…) se quedan solo en el Excel.
+const MIXTOS_COLUMNAS = ["NO.", "name_BD", ...MIXTOS_REQUIRED];
 // Diferencia (puntos) a partir de la cual Parque/LT/Global del Excel no
 // cuadran con la ponderación de los trámites.
 const TOLERANCIA_PONDERADO = 0.05;
@@ -157,7 +161,7 @@ function validateMixtos({ headers, rows, placemarkNames = [] }) {
     }
   });
 
-  if (!names.length) errors.push('La hoja "Proyectos" no tiene proyectos.');
+  if (!names.length) errors.push(`La hoja "${MIXTOS_SHEET}" no tiene proyectos.`);
   checkUniqueNames(names, errors);
   return { errors, warnings };
 }
@@ -185,4 +189,4 @@ function checkExcelAnterior(subido, publicado) {
   );
 }
 
-module.exports = { validateCartera, validateMixtos, checkExcelAnterior, MIXTOS_SHEET };
+module.exports = { validateCartera, validateMixtos, checkExcelAnterior, MIXTOS_SHEET, MIXTOS_COLUMNAS };

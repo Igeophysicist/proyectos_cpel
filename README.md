@@ -80,7 +80,7 @@ revisa).
 
 ### Trámites y permisos (Mixtos)
 
-La hoja "Proyectos" de `DATOS_MIXTOS.xlsx` trae, además, el desglose de
+La hoja "CAPEX" de `DATOS_MIXTOS.xlsx` trae, además, el desglose de
 trámites copiado de la hoja "Base de Datos" del Excel de Estado de
 Proyectos: `name_BD` (nombre en esa hoja, solo de control) y las columnas
 `DI_P` … `AFAC_LT` (avance de cada trámite en Parque y LT, con el signo %).
