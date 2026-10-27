@@ -27,6 +27,20 @@ test("la ficha muestra el nombre del Excel, la región y el ID VUPE", async ({ p
   await expect(page.locator("#detail-title")).toHaveText(p.nombre);
   await expect(page.locator("#detail-body")).toContainText(p.Región);
   await expect(page.locator("#detail-body")).toContainText(p.ID_VUPE);
+  // Almacenamiento: los cuatro datos por separado, como en el Excel.
+  for (const etiqueta of ["Porcentaje BESS", "Almacenamiento BESS", "Horas de almacenamiento", "Energía por horas"]) {
+    await expect(page.locator("#detail-body .detail-field__label", { hasText: new RegExp(`^${etiqueta}$`) })).toHaveCount(1);
+  }
+});
+
+test("sin proyectos prioritarios no se muestra el ranking (en Mixtos sí)", async ({ page }) => {
+  test.skip(datos().mixtos2.some((p) => /^P$/i.test(p.PRIORI)), "ya hay prioritarios en el Excel");
+  await page.goto("/cartera-mixtos-2/?tab=resumen");
+  await cargado(page);
+  await expect(page.locator("#group-resumen .section", { has: page.locator("#ranking") })).toBeHidden();
+  await page.goto("/cartera-mixtos/?tab=resumen");
+  await cargado(page);
+  await expect(page.locator("#group-resumen .section", { has: page.locator("#ranking") })).toBeVisible();
 });
 
 test("filtro de Región: solo quedan los proyectos de esa región y queda en el enlace", async ({ page }) => {

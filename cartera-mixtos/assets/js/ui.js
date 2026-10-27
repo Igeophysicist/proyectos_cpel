@@ -217,7 +217,9 @@
       ["capacidad", "Capacidad"], ["idVupe", "ID VUPE"],
     ]},
     { section: "Almacenamiento", items: [
-      ["bess", "Almacenamiento (BESS)"], ["bessPct", "Porcentaje BESS"], ["horasAlmacenamiento", "Horas de almacenamiento"],
+      // Mixtos: "Almacenamiento (BESS)" y horas; 2da Ronda: porcentaje, MW, horas y MWh.
+      ["bess", "Almacenamiento (BESS)"], ["bessPct", "Porcentaje BESS"], ["bessMw", "Almacenamiento BESS"],
+      ["horasAlmacenamiento", "Horas de almacenamiento"], ["energiaHoras", "Energía por horas"],
     ]},
     { section: "Programa", items: [
       ["inicioInversion", "Inicio de inversión"], ["finConstruccion", "COD"], ["firmaContrato", "Firma de contrato"],

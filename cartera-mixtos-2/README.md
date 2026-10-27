@@ -19,7 +19,9 @@ Al convertir el Excel (`scripts/mixtos2.js`):
 
 - Cada proyecto toma los nombres de columna de Mixtos: "Proyecto" →
   título, "Grupo de Interés Económico" → socio, "Municipio, Entidad" →
-  ubicación, "Capacidad Neta [MW]" → capacidad, BESS en MW / MWh.
+  ubicación, "Capacidad Neta [MW]" → capacidad. Los cuatro datos de
+  almacenamiento (Porcentaje BESS, Almacenamiento BESS [MW], Horas de
+  almacenamiento y Energía por horas [MWh]) se muestran por separado.
 - **Parque, LT y Global se calculan** con los pesos de los trámites
   (`cartera-mixtos/assets/js/tramites.js`, los mismos de la hoja "Base
   valores"); el grupo de atención sale de Parque, como en Mixtos.
@@ -37,6 +39,8 @@ columnas nuevas sin problema; no renombres los encabezados.
 ## Diferencias con Mixtos
 
 - Filtro de **Región** (y búsqueda por región e ID VUPE).
-- Ficha: Región, ID VUPE y Porcentaje BESS.
+- Ficha: Región, ID VUPE y los cuatro datos de almacenamiento.
+- El **ranking de prioritarios** no se muestra mientras ningún proyecto
+  tenga PRIORI = "P"; aparece solo en cuanto se marque alguno.
 - Trámites: el **estatus** de cada trámite con el color de REGLAS.
 - No aparece (todavía) en "Últimas actualizaciones" del portal.

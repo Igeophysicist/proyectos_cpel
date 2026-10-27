@@ -207,7 +207,10 @@
           capacidad: raw["Capacidad"] || "",
           capacidadNum: parseNumber(raw["Capacidad"]),
           bess: raw["Almacenamiento (BESS)"] || "",
+          // Solo Mixtos 2da Ronda: los cuatro datos de almacenamiento por separado.
           bessPct: raw["Porcentaje BESS"] || "",
+          bessMw: raw["Almacenamiento BESS"] || "",
+          energiaHoras: raw["Energía por horas"] || "",
           horasAlmacenamiento: raw["Horas de Almacenamiento"] ?? null,
           inicioInversion: raw["Inicio de Inversión"] || "",
           inicioInversionFecha: parseDate(raw["Inicio de Inversión"]),

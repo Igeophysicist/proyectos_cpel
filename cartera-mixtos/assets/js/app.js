@@ -245,6 +245,10 @@
       const fecha = formatDateShort(dataDate);
       if (fecha) els.dataDate.textContent = `Datos al ${fecha}`;
 
+      // Ranking de prioritarios: se oculta si la cartera aún no tiene
+      // ninguno (Mixtos 2da Ronda, todo "NoP"); aparece solo al marcar "P".
+      document.getElementById("ranking").closest(".section").hidden = !projects.some((p) => p.prioritario);
+
       const view = applyUrlState();
       render();
       els.loader.classList.add("is-hidden");

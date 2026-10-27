@@ -17,7 +17,9 @@
  *
  * La página es la misma de Mixtos, así que cada proyecto se publica con
  * los nombres de columna de Mixtos (TÍTULO 1/2, Socio, Ubicación,
- * Capacidad, Almacenamiento (BESS)…) más ID_VUPE, Región y los estatus.
+ * Capacidad…) más ID_VUPE, Región, los cuatro datos de almacenamiento
+ * (Porcentaje BESS, Almacenamiento BESS, Horas, Energía por horas) y los
+ * estatus.
  * Parque, LT y Global no vienen en la hoja: se calculan con los pesos de
  * los trámites (cartera-mixtos/assets/js/tramites.js), los mismos de la
  * hoja "Base valores".
@@ -71,12 +73,6 @@ function conUnidad(v, unidad) {
   if (vacio(v) || esMarcador(v)) return texto(v);
   const n = parseNumber(v);
   return n === null ? texto(v) : `${fmtNum.format(n)} ${unidad}`;
-}
-
-/** "24 MW / 72 MWh"; si no hay ninguno de los dos, el marcador del Excel ("SIN DATO"). */
-function almacenamiento(mw, mwh) {
-  const partes = [[mw, "MW"], [mwh, "MWh"]].filter(([v]) => !vacio(v) && !esMarcador(v)).map(([v, u]) => conUnidad(v, u));
-  return partes.length ? partes.join(" / ") : texto(mw) || texto(mwh);
 }
 
 const pctTexto = (v) => `${v.toFixed(2)}%`;
@@ -153,8 +149,9 @@ function leerMixtos2(wb, XLSX, { kml = [] } = {}) {
       Ubicación: [v(COLUMNAS.municipio), v(COLUMNAS.entidad)].filter(Boolean).join(", "),
       Capacidad: conUnidad(v(COLUMNAS.capacidad), "MW"),
       "Porcentaje BESS": v(COLUMNAS.bessPct),
-      "Almacenamiento (BESS)": almacenamiento(v(COLUMNAS.bessMw), v(COLUMNAS.bessMwh)),
+      "Almacenamiento BESS": conUnidad(v(COLUMNAS.bessMw), "MW"),
       "Horas de Almacenamiento": v(COLUMNAS.horas),
+      "Energía por horas": conUnidad(v(COLUMNAS.bessMwh), "MWh"),
       "Inicio de Inversión": v(COLUMNAS.inicio),
       "Fin de Construcción": v(COLUMNAS.fin),
       "Fecha firma de contrato": v(COLUMNAS.firma),
@@ -177,4 +174,4 @@ function leerMixtos2(wb, XLSX, { kml = [] } = {}) {
   return { errors, warnings, proyectos };
 }
 
-module.exports = { leerMixtos2, HOJA, COLUMNAS, almacenamiento, conUnidad };
+module.exports = { leerMixtos2, HOJA, COLUMNAS, conUnidad };

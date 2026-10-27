@@ -2,7 +2,7 @@
 const test = require("node:test");
 const assert = require("node:assert/strict");
 const XLSX = require("xlsx");
-const { leerMixtos2, almacenamiento, conUnidad } = require("../scripts/mixtos2.js");
+const { leerMixtos2, conUnidad } = require("../scripts/mixtos2.js");
 const Tramites = require("../cartera-mixtos/assets/js/tramites.js");
 
 const DATOS = [
@@ -53,7 +53,9 @@ test("lee los proyectos con los nombres de columna de Mixtos y calcula Parque, L
   assert.equal(p.Región, "Noreste");
   assert.equal(p.Socio, "Socio SA");
   assert.equal(p.Capacidad, "120 MW");
-  assert.equal(p["Almacenamiento (BESS)"], "SIN DATO");
+  assert.equal(p["Almacenamiento BESS"], "SIN DATO");
+  assert.equal(p["Energía por horas"], "SIN DATO");
+  assert.equal(p["Porcentaje BESS"], "SIN DATO");
   assert.equal(p.A_MIA_P_ESTATUS, "Liberado");
   // Parque = MIA 20 × 100 % + Interconexión 10 × 100 % = 30; LT = MIA 20 × 50 % + 10 = 20.
   assert.equal(p.Parque, "30.00%");
@@ -99,9 +101,13 @@ test("ID_VUPE repetido o sin punto en el KML, PRIORI inválido y columnas faltan
   assert.match(sinCol.errors[0], /Falta la columna "S_CONS_ESTATUS" en la fila 3/);
 });
 
-test("almacenamiento y capacidad con su unidad", () => {
-  assert.equal(almacenamiento("24", "72"), "24 MW / 72 MWh");
-  assert.equal(almacenamiento("SIN DATO", "SIN DATO"), "SIN DATO");
+test("almacenamiento, energía y capacidad con su unidad", () => {
+  const wb = libro([proyecto(1, "1", "Uno", {}, { "Porcentaje BESS [%]": "30.00%", "Almacenamiento BESS [MW]": "24.00", "HORAS DE ALMACENAMIENTO": "3", "Energía por horas [MWh]": "72.00" })]);
+  const [p] = leerMixtos2(wb, XLSX, { kml: ["1"] }).proyectos;
+  assert.equal(p["Porcentaje BESS"], "30.00%");
+  assert.equal(p["Almacenamiento BESS"], "24 MW");
+  assert.equal(p["Horas de Almacenamiento"], "3");
+  assert.equal(p["Energía por horas"], "72 MWh");
   assert.equal(conUnidad("301.50", "MW"), "301.5 MW");
   assert.equal(conUnidad("SIN DATO", "MW"), "SIN DATO");
 });
