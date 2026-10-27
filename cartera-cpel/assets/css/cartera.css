@@ -530,8 +530,7 @@ body.vista-cargando #vista{ display: block; }
 }
 
 @media (prefers-reduced-motion: reduce){
-  *{ animation-duration:.01ms !important; transition-duration:.01ms !important; }
-  .hito3{ animation-delay: 0s !important; }
+  *{ animation-duration:.01ms !important; animation-delay:0s !important; transition-duration:.01ms !important; }
   .esq{ animation: none; }
   .hito3--actual::before{ display: none; }
 }

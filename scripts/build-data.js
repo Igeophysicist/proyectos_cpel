@@ -76,10 +76,15 @@ const DATASETS = [
     // Hoja "CAPEX", texto tal como se ve en Excel.
     read: (wb) => ({ sheetName: wb.SheetNames.includes(MIXTOS_SHEET) ? MIXTOS_SHEET : null, options: { raw: false, defval: "" } }),
     // Solo se publican los proyectos (no las filas de totales y promedios
-    // de abajo, que no tienen TÍTULO) y las columnas que usa la página.
+    // de abajo, que no tienen TÍTULO) y las columnas que usa la página,
+    // sin los espacios que agrega el formato de contabilidad (" $93.9 ").
     publicar: (r) =>
       String(r["TÍTULO 2"] || r["TÍTULO 1"] || "").trim()
-        ? Object.fromEntries(Object.entries(r).filter(([k]) => MIXTOS_COLUMNAS.includes(k)))
+        ? Object.fromEntries(
+            Object.entries(r)
+              .filter(([k]) => MIXTOS_COLUMNAS.includes(k))
+              .map(([k, v]) => [k, typeof v === "string" ? v.trim() : v])
+          )
         : null,
     validate: validateMixtos,
   },
