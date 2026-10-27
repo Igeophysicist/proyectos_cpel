@@ -114,16 +114,18 @@
   let gesto = null;
 
   /**
-   * Panel de la ventana de arriba si sale desde abajo (celular): ocupa
-   * todo el ancho y llega al borde inferior. Los paneles laterales de la
-   * computadora no se cierran deslizando.
+   * Panel de la ventana de arriba si sale desde abajo: llega al borde
+   * inferior y está centrado (todo el ancho en celular, 600 px en
+   * tablet). Los paneles laterales de la computadora no se cierran
+   * deslizando.
    */
   function hojaDeAbajo() {
     const top = stack[stack.length - 1];
     if (!top) return null;
     const panel = panelDe(top.el);
     const r = panel.getBoundingClientRect();
-    const deAbajo = r.left <= 1 && r.right >= global.innerWidth - 1 && r.bottom >= global.innerHeight - 2;
+    const centrado = Math.abs(r.left - (global.innerWidth - r.right)) <= 2;
+    const deAbajo = centrado && r.bottom >= global.innerHeight - 2;
     return deAbajo ? { top, panel } : null;
   }
 

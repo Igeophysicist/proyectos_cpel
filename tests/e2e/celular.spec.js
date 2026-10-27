@@ -102,6 +102,24 @@ test("Cartera: el contenido de la ventana se desplaza y, ya arriba, deslizar hac
   await expect(page.locator("#sheetFicha")).not.toHaveClass(/is-open/);
 });
 
+test("tablet vertical: las ventanas centradas también se cierran deslizando hacia abajo", async ({ page }) => {
+  await page.setViewportSize({ width: 820, height: 1180 });
+  await page.goto(FICHA_CARTERA);
+  await expect(page.locator("#projectName")).not.toHaveText("Cargando…");
+  await page.locator(".actionbar__btn", { hasText: "Ficha técnica" }).click();
+  await expect(page.locator("#sheetFicha")).toHaveClass(/is-open/);
+  expect((await page.locator("#sheetFicha .sheet__panel").boundingBox()).width).toBeLessThan(820); // centrada, no a todo lo ancho
+  await deslizarParaCerrar(page, "#sheetFicha .sheet__head");
+  await expect(page.locator("#sheetFicha")).not.toHaveClass(/is-open/);
+
+  await page.goto("/cartera-mixtos/");
+  await mixtosCargado(page);
+  await page.locator("#project-list .pcard__open").first().click();
+  await expect(page.locator("#detail")).toHaveClass(/is-open/);
+  await deslizarParaCerrar(page, "#detail .detail__head");
+  await expect(page.locator("#detail")).not.toHaveClass(/is-open/);
+});
+
 test("Mixtos: los logos van al final de Proyectos y Resumen, y en Mapa solo sobre la leyenda", async ({ page }) => {
   await page.goto("/cartera-mixtos/");
   await mixtosCargado(page);
