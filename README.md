@@ -328,6 +328,15 @@ espera 1.5 s tras cada intento fallido, pero no bloquea por IP.
 Settings → Variables and Secrets → edita `SITE_PASSWORD` → Deployments
 → Retry deployment. Todas las sesiones abiertas se cierran.
 
+### Si una publicación se queda atorada
+
+Si en GitHub el check "Cloudflare Pages" de un commit de `main` se queda
+en "Building" por mucho tiempo (normalmente tarda menos de un minuto):
+Deployments → abre esa publicación → Retry deployment. Si Cloudflare dice
+que ya terminó pero el sitio no cambió, revisa cuál está marcada como
+Production. Si la publicación ya no existe, cualquier commit nuevo en
+`main` arranca una publicación desde cero.
+
 ### Probar en local con contraseña
 
 ```bash
