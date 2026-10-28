@@ -5,11 +5,13 @@ const { test, expect, datos } = require("./ayuda.js");
 
 const cargado = (page) => expect(page.locator("#loader")).toHaveClass(/is-hidden/, { timeout: 20_000 });
 
-test("el portal lleva a Mixtos 2da Ronda y se ven todos sus proyectos, todos en el mapa", async ({ page }) => {
+test("el portal aún no muestra el acceso; por su dirección se ven todos sus proyectos, todos en el mapa", async ({ page }) => {
   const { mixtos2 } = datos();
   await page.goto("/");
-  await page.locator(".nav-card", { hasText: "Mixtos 2da Ronda" }).click();
-  await expect(page).toHaveURL(/\/cartera-mixtos-2\//);
+  await expect(page.locator(".nav-card").first()).toBeVisible();
+  // Oculto hasta liberarla (index.html: <template id="accesoMixtos2">).
+  await expect(page.locator(".nav-card", { hasText: "Mixtos 2da Ronda" })).toHaveCount(0);
+  await page.goto("/cartera-mixtos-2/");
   await cargado(page);
   await expect(page.locator(".topbar__title")).toHaveText("Mixtos 2da Ronda");
   await expect(page.locator("#list-count")).toHaveText(`${mixtos2.length} proyectos`);

@@ -6,7 +6,7 @@ Sitio estático (HTML/CSS/JS sin build step) publicado en GitHub Pages.
 |---|---|
 | `index.html` | Portal: accesos, sección "Esta semana" y colaboradores (`data/colaboradores.json`). |
 | `cartera-mixtos/` | Panel de proyectos mixtos: listado, filtros, mapa y resumen. Ver su [README](cartera-mixtos/README.md). |
-| `cartera-mixtos-2/` | Mixtos 2da Ronda: la misma página que Mixtos (usa sus scripts y estilos) con sus propios datos, filtro de Región y estatus de cada trámite. Ver su [README](cartera-mixtos-2/README.md). |
+| `cartera-mixtos-2/` | Mixtos 2da Ronda: la misma página que Mixtos (usa sus scripts y estilos) con sus propios datos, filtro de Región y estatus de cada trámite. Su acceso en el portal está oculto hasta liberarla (`<template id="accesoMixtos2">` en `index.html`). Ver su [README](cartera-mixtos-2/README.md). |
 | `cartera-cpel/` | Ficha por proyecto de la cartera CPEL. Ver su [README](cartera-cpel/README.md). |
 | `cartera-anteproyectos/` | Ficha por anteproyecto (mismo diseño que Cartera CPEL). Su acceso en el portal está oculto hasta liberarla (`<template id="accesoAnteproyectos">` en `index.html`). Ver su [README](cartera-anteproyectos/README.md). |
 | `assets/js/shared/` | Módulos compartidos por las tres páginas (ver abajo). |

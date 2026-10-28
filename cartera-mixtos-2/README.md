@@ -6,6 +6,10 @@ que Mixtos**: `index.html` carga los scripts y estilos de
 `data-datos` y `data-kml` del `<body>`). Cualquier mejora a Mixtos aparece
 aquí también. No tiene presentación en PDF.
 
+Su tarjeta en el portal está **oculta** hasta liberarla: la página ya
+funciona en `/cartera-mixtos-2/`. Para mostrarla, quita el
+`<template id="accesoMixtos2">` que la envuelve en `index.html`.
+
 ## Datos
 
 | Archivo | Qué es |
