@@ -515,6 +515,36 @@
           }
         }
       ]
+    },
+    {
+      "excel": "2026-10-28T23:45:16.000Z",
+      "fecha": "2026-10-28",
+      "cambios": [
+        {
+          "slug": "planta-solar-haab-kiin",
+          "nombre": "PLANTA SOLAR HAAB KIIN",
+          "antes": {
+            "parque": 83,
+            "grupo": "B"
+          },
+          "ahora": {
+            "parque": 83.5,
+            "grupo": "B"
+          }
+        },
+        {
+          "slug": "planta-solar-cerro-colorado",
+          "nombre": "PLANTA SOLAR CERRO COLORADO",
+          "antes": {
+            "parque": 76,
+            "grupo": "B"
+          },
+          "ahora": {
+            "parque": 77,
+            "grupo": "B"
+          }
+        }
+      ]
     }
   ]
 }

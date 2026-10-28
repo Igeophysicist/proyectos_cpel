@@ -1236,8 +1236,8 @@
     },
     {
       "semana": "2026-10-25",
-      "fecha": "2026-10-26",
-      "excel": "2026-10-26T23:38:12.000Z",
+      "fecha": "2026-10-28",
+      "excel": "2026-10-28T23:45:16.000Z",
       "proyectos": {
         "san-simon-solar": {
           "parque": 94,
@@ -1300,15 +1300,15 @@
           "grupo": "A"
         },
         "planta-solar-haab-kiin": {
-          "parque": 83,
-          "lt": 78.5,
-          "global": 82.1,
+          "parque": 83.5,
+          "lt": 73,
+          "global": 81.4,
           "grupo": "B"
         },
         "planta-solar-cerro-colorado": {
-          "parque": 76,
-          "lt": 59.5,
-          "global": 72.7,
+          "parque": 77,
+          "lt": 60.5,
+          "global": 73.7,
           "grupo": "B"
         },
         "central-fotovoltaica-quasara": {
