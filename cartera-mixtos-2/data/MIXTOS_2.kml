@@ -1,0 +1,4354 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>MIXTOS_2.kml</name>
+	<Style id="failed">
+	</Style>
+	<Style id="failed0">
+	</Style>
+	<StyleMap id="failed1">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#failed27</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#failed2</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="failed10">
+	</Style>
+	<StyleMap id="failed11">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#failed19</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#failed33</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="failed12">
+	</Style>
+	<Style id="failed13">
+	</Style>
+	<StyleMap id="failed14">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#failed13</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#failed8</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="failed15">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#failed10</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#failed21</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="failed16">
+	</Style>
+	<Style id="failed17">
+	</Style>
+	<StyleMap id="failed18">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#failed24</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#failed36</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="failed19">
+	</Style>
+	<Style id="failed2">
+	</Style>
+	<Style id="failed20">
+	</Style>
+	<Style id="failed21">
+	</Style>
+	<StyleMap id="failed22">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#failed23</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#failed37</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="failed23">
+	</Style>
+	<Style id="failed24">
+	</Style>
+	<Style id="failed25">
+	</Style>
+	<StyleMap id="failed26">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#failed34</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#failed7</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="failed27">
+	</Style>
+	<Style id="failed28">
+	</Style>
+	<Style id="failed29">
+	</Style>
+	<StyleMap id="failed3">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#failed16</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#failed12</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="failed30">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#failed9</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#failed17</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="failed31">
+	</Style>
+	<Style id="failed32">
+	</Style>
+	<Style id="failed33">
+	</Style>
+	<Style id="failed34">
+	</Style>
+	<StyleMap id="failed35">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#failed28</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#failed29</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="failed36">
+	</Style>
+	<Style id="failed37">
+	</Style>
+	<StyleMap id="failed4">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#failed25</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#failed20</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="failed5">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#failed0</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#failed32</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="failed6">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#failed</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#failed31</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="failed7">
+	</Style>
+	<Style id="failed8">
+	</Style>
+	<Style id="failed9">
+	</Style>
+	<StyleMap id="m_ylw-pushpin">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="mfailed">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#failed19</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_ylw-pushpin3</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="mfailed0">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#failed10</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_ylw-pushpin2</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="mfailed1">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#failed24</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_ylw-pushpin0</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="mfailed2">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#failed25</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_ylw-pushpin1</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_ylw-pushpin">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_ylw-pushpin</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_ylw-pushpin</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="s_ylw-pushpin">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+	</Style>
+	<Style id="s_ylw-pushpin_hl">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+	</Style>
+	<Style id="sh_ylw-pushpin">
+		<IconStyle>
+			<scale>1.2</scale>
+		</IconStyle>
+	</Style>
+	<Style id="sh_ylw-pushpin0">
+		<IconStyle>
+			<scale>1.2</scale>
+		</IconStyle>
+	</Style>
+	<Style id="sh_ylw-pushpin1">
+		<IconStyle>
+			<scale>1.2</scale>
+		</IconStyle>
+	</Style>
+	<Style id="sh_ylw-pushpin2">
+		<IconStyle>
+			<scale>1.2</scale>
+		</IconStyle>
+	</Style>
+	<Style id="sh_ylw-pushpin3">
+		<IconStyle>
+			<scale>1.2</scale>
+		</IconStyle>
+	</Style>
+	<Style id="sn_ylw-pushpin">
+	</Style>
+	<Folder>
+		<name>MIXTOS_2</name>
+		<open>1</open>
+		<Folder>
+			<name>BAJA_CALIFORNIA</name>
+			<Folder>
+				<name>573 BURA ENERGY CENTER II</name>
+				<Placemark>
+					<name>573</name>
+					<description><![CDATA[<div style="font-family:Arial, Helvetica, sans-serif; width:400px;">
+
+  <div style="border: 3px solid #846623; background:#335955; padding:10px 10px; text-align:center;">
+    <span style="color:#e6d194; font-size:12px; letter-spacing:1px;">FICHA TÉCNICA DEL PROYECTO</span>
+    </br>
+    <span style="color:#ffffff; font-size:22px; font-weight:bold; letter-spacing:1px;">573</span>
+  </div>
+
+
+  <table cellpadding="6" cellspacing="0" style="width:100%; border-collapse:collapse; font-size:12px;">
+    
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Nombre del Proyecto</td>
+      <td style="border:1px solid #C9B280;">Bura Energy Center II</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Región</td>
+      <td style="border:1px solid #C9B280;">BAJA CALIFORNIA</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Socio</td>
+      <td style="border:1px solid #C9B280;">INVENERGY SOLAR DEVELOPMENT MEXICO S DE RL DECV</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Tecnología</td>
+      <td style="border:1px solid #C9B280;">FOTOVOLTAICA</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Estado</td>
+      <td style="border:1px solid #C9B280;">Baja California</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Municipio</td>
+      <td style="border:1px solid #C9B280;">Tecate</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Capacidad Neta (Mwac)</td>
+      <td style="border:1px solid #C9B280;">38.00</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Correo</td>
+      <td style="border:1px solid #C9B280;">cdelgado@invenergy.com</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Horas de Almacenamiento</td>
+      <td style="border:1px solid #C9B280;">5541708523</td>
+    </tr>
+  </table>
+
+<div style="width:100%; text-align:left; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#c0c0c0;
+    margin-top:2px; font-style:italic;">© CPEL // Gerencia de Construcción // Subgerencia Técnica de Construcción</div>
+
+</div>]]></description>
+					<Point>
+						<coordinates>-115.927153,32.573081,0</coordinates>
+					</Point>
+				</Placemark>
+			</Folder>
+			<Folder>
+				<name>70 CFE CERRO PRIETO</name>
+				<Placemark>
+					<name>70</name>
+					<description><![CDATA[<div style="font-family:Arial, Helvetica, sans-serif; width:400px;">
+
+  <div style="border: 3px solid #846623; background:#335955; padding:10px 10px; text-align:center;">
+    <span style="color:#e6d194; font-size:12px; letter-spacing:1px;">FICHA TÉCNICA DEL PROYECTO</span>
+    </br>
+    <span style="color:#ffffff; font-size:22px; font-weight:bold; letter-spacing:1px;">70</span>
+  </div>
+
+
+  <table cellpadding="6" cellspacing="0" style="width:100%; border-collapse:collapse; font-size:12px;">
+    
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Nombre del Proyecto</td>
+      <td style="border:1px solid #C9B280;">Cfe Cerro Prieto</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Región</td>
+      <td style="border:1px solid #C9B280;">BAJA CALIFORNIA</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Socio</td>
+      <td style="border:1px solid #C9B280;">ENERGICA TENEDORA DE MEXICO SA DE CV</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Tecnología</td>
+      <td style="border:1px solid #C9B280;">FOTOVOLTAICA</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Estado</td>
+      <td style="border:1px solid #C9B280;">Baja California</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Municipio</td>
+      <td style="border:1px solid #C9B280;">Mexicali</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Capacidad Neta (Mwac)</td>
+      <td style="border:1px solid #C9B280;">215.00</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Correo</td>
+      <td style="border:1px solid #C9B280;">energica@ica.mx</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Horas de Almacenamiento</td>
+      <td style="border:1px solid #C9B280;">5552729991</td>
+    </tr>
+  </table>
+
+<div style="width:100%; text-align:left; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#c0c0c0;
+    margin-top:2px; font-style:italic;">© CPEL // Gerencia de Construcción // Subgerencia Técnica de Construcción</div>
+
+</div>]]></description>
+					<LookAt>
+						<longitude>-115.1953699199162</longitude>
+						<latitude>32.36971886023269</latitude>
+						<altitude>0</altitude>
+						<heading>-0.04285232516807424</heading>
+						<tilt>0</tilt>
+						<range>19646.52270095574</range>
+						<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+					</LookAt>
+					<styleUrl>#m_ylw-pushpin</styleUrl>
+					<Point>
+						<gx:drawOrder>1</gx:drawOrder>
+						<coordinates>-115.2436039207174,32.36232673458677,0</coordinates>
+					</Point>
+				</Placemark>
+			</Folder>
+			<Folder>
+				<name>58 ICA PUNTA COLONET</name>
+				<Placemark>
+					<name>58</name>
+					<description><![CDATA[<div style="font-family:Arial, Helvetica, sans-serif; width:400px;">
+
+  <div style="border: 3px solid #846623; background:#335955; padding:10px 10px; text-align:center;">
+    <span style="color:#e6d194; font-size:12px; letter-spacing:1px;">FICHA TÉCNICA DEL PROYECTO</span>
+    </br>
+    <span style="color:#ffffff; font-size:22px; font-weight:bold; letter-spacing:1px;">58</span>
+  </div>
+
+
+  <table cellpadding="6" cellspacing="0" style="width:100%; border-collapse:collapse; font-size:12px;">
+    
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Nombre del Proyecto</td>
+      <td style="border:1px solid #C9B280;">Ica Punta Colonet</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Región</td>
+      <td style="border:1px solid #C9B280;">BAJA CALIFORNIA</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Socio</td>
+      <td style="border:1px solid #C9B280;">ENERGICA TENEDORA DE MEXICO SA DE CV</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Tecnología</td>
+      <td style="border:1px solid #C9B280;">FOTOVOLTAICA</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Estado</td>
+      <td style="border:1px solid #C9B280;">Baja California</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Municipio</td>
+      <td style="border:1px solid #C9B280;">Ensenada</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Capacidad Neta (Mwac)</td>
+      <td style="border:1px solid #C9B280;">120.00</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Correo</td>
+      <td style="border:1px solid #C9B280;">energica@ica.mx</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Horas de Almacenamiento</td>
+      <td style="border:1px solid #C9B280;">5552729991</td>
+    </tr>
+  </table>
+
+<div style="width:100%; text-align:left; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#c0c0c0;
+    margin-top:2px; font-style:italic;">© CPEL // Gerencia de Construcción // Subgerencia Técnica de Construcción</div>
+
+</div>]]></description>
+					<Point>
+						<coordinates>-116.238758,30.961897,0</coordinates>
+					</Point>
+				</Placemark>
+			</Folder>
+			<Folder>
+				<name>68 ICA SAN LUIS RIO COLORADO</name>
+				<Placemark>
+					<name>68</name>
+					<description><![CDATA[<div style="font-family:Arial, Helvetica, sans-serif; width:400px;">
+
+  <div style="border: 3px solid #846623; background:#335955; padding:10px 10px; text-align:center;">
+    <span style="color:#e6d194; font-size:12px; letter-spacing:1px;">FICHA TÉCNICA DEL PROYECTO</span>
+    </br>
+    <span style="color:#ffffff; font-size:22px; font-weight:bold; letter-spacing:1px;">68</span>
+  </div>
+
+
+  <table cellpadding="6" cellspacing="0" style="width:100%; border-collapse:collapse; font-size:12px;">
+    
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Nombre del Proyecto</td>
+      <td style="border:1px solid #C9B280;">Ica San Luis Rio Colorado</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Región</td>
+      <td style="border:1px solid #C9B280;">BAJA CALIFORNIA</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Socio</td>
+      <td style="border:1px solid #C9B280;">ENERGICA TENEDORA DE MEXICO SA DE CV</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Tecnología</td>
+      <td style="border:1px solid #C9B280;">FOTOVOLTAICA</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Estado</td>
+      <td style="border:1px solid #C9B280;">Sonora</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Municipio</td>
+      <td style="border:1px solid #C9B280;">San Luis Río Colorado</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Capacidad Neta (Mwac)</td>
+      <td style="border:1px solid #C9B280;">100.00</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Correo</td>
+      <td style="border:1px solid #C9B280;">energica@ica.mx</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Horas de Almacenamiento</td>
+      <td style="border:1px solid #C9B280;">5552729991</td>
+    </tr>
+  </table>
+
+<div style="width:100%; text-align:left; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#c0c0c0;
+    margin-top:2px; font-style:italic;">© CPEL // Gerencia de Construcción // Subgerencia Técnica de Construcción</div>
+
+</div>]]></description>
+					<Point>
+						<coordinates>-114.728,32.417,0</coordinates>
+					</Point>
+				</Placemark>
+			</Folder>
+			<Folder>
+				<name>216 PLANTA SOLAR FOTOVOLTAICA MESA ANDRADE I</name>
+				<Placemark>
+					<name>216</name>
+					<description><![CDATA[<div style="font-family:Arial, Helvetica, sans-serif; width:400px;">
+
+  <div style="border: 3px solid #846623; background:#335955; padding:10px 10px; text-align:center;">
+    <span style="color:#e6d194; font-size:12px; letter-spacing:1px;">FICHA TÉCNICA DEL PROYECTO</span>
+    </br>
+    <span style="color:#ffffff; font-size:22px; font-weight:bold; letter-spacing:1px;">216</span>
+  </div>
+
+
+  <table cellpadding="6" cellspacing="0" style="width:100%; border-collapse:collapse; font-size:12px;">
+    
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Nombre del Proyecto</td>
+      <td style="border:1px solid #C9B280;">Planta Solar Fotovoltaica Mesa Andrade I</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Región</td>
+      <td style="border:1px solid #C9B280;">BAJA CALIFORNIA</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Socio</td>
+      <td style="border:1px solid #C9B280;">PYE ELECTRIFICACIONES S DE RL DE CV</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Tecnología</td>
+      <td style="border:1px solid #C9B280;">FOTOVOLTAICA</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Estado</td>
+      <td style="border:1px solid #C9B280;">Baja California</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Municipio</td>
+      <td style="border:1px solid #C9B280;">Mexicali</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Capacidad Neta (Mwac)</td>
+      <td style="border:1px solid #C9B280;">132.00</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Correo</td>
+      <td style="border:1px solid #C9B280;">gaston@pye-electrificaciones.com</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Horas de Almacenamiento</td>
+      <td style="border:1px solid #C9B280;">6646388081</td>
+    </tr>
+  </table>
+
+<div style="width:100%; text-align:left; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#c0c0c0;
+    margin-top:2px; font-style:italic;">© CPEL // Gerencia de Construcción // Subgerencia Técnica de Construcción</div>
+
+</div>]]></description>
+					<Point>
+						<coordinates>-115.076628,32.677639,0</coordinates>
+					</Point>
+				</Placemark>
+			</Folder>
+			<Folder>
+				<name>598 SAN FELIPE SOLAR</name>
+				<Placemark>
+					<name>598</name>
+					<description><![CDATA[<div style="font-family:Arial, Helvetica, sans-serif; width:400px;">
+
+  <div style="border: 3px solid #846623; background:#335955; padding:10px 10px; text-align:center;">
+    <span style="color:#e6d194; font-size:12px; letter-spacing:1px;">FICHA TÉCNICA DEL PROYECTO</span>
+    </br>
+    <span style="color:#ffffff; font-size:22px; font-weight:bold; letter-spacing:1px;">598</span>
+  </div>
+
+
+  <table cellpadding="6" cellspacing="0" style="width:100%; border-collapse:collapse; font-size:12px;">
+    
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Nombre del Proyecto</td>
+      <td style="border:1px solid #C9B280;">San Felipe Solar</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Región</td>
+      <td style="border:1px solid #C9B280;">BAJA CALIFORNIA</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Socio</td>
+      <td style="border:1px solid #C9B280;">ENERGIA FIRME SIGMA S A P I DE CV</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Tecnología</td>
+      <td style="border:1px solid #C9B280;">FOTOVOLTAICA</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Estado</td>
+      <td style="border:1px solid #C9B280;">Baja California</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Municipio</td>
+      <td style="border:1px solid #C9B280;">San Felipe</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Capacidad Neta (Mwac)</td>
+      <td style="border:1px solid #C9B280;">100.00</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Correo</td>
+      <td style="border:1px solid #C9B280;">mbuenrostro@firmenergy.com</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Horas de Almacenamiento</td>
+      <td style="border:1px solid #C9B280;">0</td>
+    </tr>
+  </table>
+
+<div style="width:100%; text-align:left; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#c0c0c0;
+    margin-top:2px; font-style:italic;">© CPEL // Gerencia de Construcción // Subgerencia Técnica de Construcción</div>
+
+</div>]]></description>
+					<Point>
+						<coordinates>-115.15663,31.374268,0</coordinates>
+					</Point>
+				</Placemark>
+			</Folder>
+			<Folder>
+				<name>467 INSURGENTES</name>
+				<Placemark>
+					<name>467</name>
+					<description><![CDATA[<div style="font-family:Arial, Helvetica, sans-serif; width:400px;">
+
+  <div style="border: 3px solid #846623; background:#335955; padding:10px 10px; text-align:center;">
+    <span style="color:#e6d194; font-size:12px; letter-spacing:1px;">FICHA TÉCNICA DEL PROYECTO</span>
+    </br>
+    <span style="color:#ffffff; font-size:22px; font-weight:bold; letter-spacing:1px;">467</span>
+  </div>
+
+
+  <table cellpadding="6" cellspacing="0" style="width:100%; border-collapse:collapse; font-size:12px;">
+    
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Nombre del Proyecto</td>
+      <td style="border:1px solid #C9B280;">Insurgentes</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Región</td>
+      <td style="border:1px solid #C9B280;">BAJA CALIFORNIA</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Socio</td>
+      <td style="border:1px solid #C9B280;">ELECTRICA ASELCO SA DE CV</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Tecnología</td>
+      <td style="border:1px solid #C9B280;">FOTOVOLTAICA</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Estado</td>
+      <td style="border:1px solid #C9B280;">Baja California Sur</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Municipio</td>
+      <td style="border:1px solid #C9B280;">Comondú</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Capacidad Neta (Mwac)</td>
+      <td style="border:1px solid #C9B280;">36.58</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Correo</td>
+      <td style="border:1px solid #C9B280;">maribel.contreras@aselco.mx</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Horas de Almacenamiento</td>
+      <td style="border:1px solid #C9B280;">6622151599</td>
+    </tr>
+  </table>
+
+<div style="width:100%; text-align:left; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#c0c0c0;
+    margin-top:2px; font-style:italic;">© CPEL // Gerencia de Construcción // Subgerencia Técnica de Construcción</div>
+
+</div>]]></description>
+					<Point>
+						<coordinates>-111.699347,25.302272,0</coordinates>
+					</Point>
+				</Placemark>
+			</Folder>
+			<Folder>
+				<name>508 LORETO</name>
+				<Placemark>
+					<name>508</name>
+					<description><![CDATA[<div style="font-family:Arial, Helvetica, sans-serif; width:400px;">
+
+  <div style="border: 3px solid #846623; background:#335955; padding:10px 10px; text-align:center;">
+    <span style="color:#e6d194; font-size:12px; letter-spacing:1px;">FICHA TÉCNICA DEL PROYECTO</span>
+    </br>
+    <span style="color:#ffffff; font-size:22px; font-weight:bold; letter-spacing:1px;">508</span>
+  </div>
+
+
+  <table cellpadding="6" cellspacing="0" style="width:100%; border-collapse:collapse; font-size:12px;">
+    
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Nombre del Proyecto</td>
+      <td style="border:1px solid #C9B280;">Loreto</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Región</td>
+      <td style="border:1px solid #C9B280;">BAJA CALIFORNIA</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Socio</td>
+      <td style="border:1px solid #C9B280;">INNOVACIONES ENERGETICAS INNER SA DE CV</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Tecnología</td>
+      <td style="border:1px solid #C9B280;">FOTOVOLTAICA</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Estado</td>
+      <td style="border:1px solid #C9B280;">Baja California Sur</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Municipio</td>
+      <td style="border:1px solid #C9B280;">Loreto</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Capacidad Neta (Mwac)</td>
+      <td style="border:1px solid #C9B280;">50.00</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Correo</td>
+      <td style="border:1px solid #C9B280;">ccarrera@troy.org.mx</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Horas de Almacenamiento</td>
+      <td style="border:1px solid #C9B280;">5591495810</td>
+    </tr>
+  </table>
+
+<div style="width:100%; text-align:left; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#c0c0c0;
+    margin-top:2px; font-style:italic;">© CPEL // Gerencia de Construcción // Subgerencia Técnica de Construcción</div>
+
+</div>]]></description>
+					<LookAt>
+						<longitude>-111.3592218994712</longitude>
+						<latitude>25.93901696732521</latitude>
+						<altitude>0</altitude>
+						<heading>-0.003334247304456894</heading>
+						<tilt>2.746873794887465</tilt>
+						<range>12361.02778989371</range>
+						<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+					</LookAt>
+					<styleUrl>#m_ylw-pushpin</styleUrl>
+					<Point>
+						<gx:drawOrder>1</gx:drawOrder>
+						<coordinates>-111.3737844087872,25.93845309830274,0</coordinates>
+					</Point>
+				</Placemark>
+			</Folder>
+			<Folder>
+				<name>201 LORETO ENERGY CENTER</name>
+				<Placemark>
+					<name>201</name>
+					<description><![CDATA[<div style="font-family:Arial, Helvetica, sans-serif; width:400px;">
+
+  <div style="border: 3px solid #846623; background:#335955; padding:10px 10px; text-align:center;">
+    <span style="color:#e6d194; font-size:12px; letter-spacing:1px;">FICHA TÉCNICA DEL PROYECTO</span>
+    </br>
+    <span style="color:#ffffff; font-size:22px; font-weight:bold; letter-spacing:1px;">201</span>
+  </div>
+
+
+  <table cellpadding="6" cellspacing="0" style="width:100%; border-collapse:collapse; font-size:12px;">
+    
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Nombre del Proyecto</td>
+      <td style="border:1px solid #C9B280;">Loreto Energy Center</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Región</td>
+      <td style="border:1px solid #C9B280;">BAJA CALIFORNIA</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Socio</td>
+      <td style="border:1px solid #C9B280;">INVENERGY SOLAR DEVELOPMENT MEXICO S DE RL DECV</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Tecnología</td>
+      <td style="border:1px solid #C9B280;">FOTOVOLTAICA</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Estado</td>
+      <td style="border:1px solid #C9B280;">Baja California Sur</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Municipio</td>
+      <td style="border:1px solid #C9B280;">Loreto</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Capacidad Neta (Mwac)</td>
+      <td style="border:1px solid #C9B280;">30.00</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Correo</td>
+      <td style="border:1px solid #C9B280;">cdelgado@invenergy.com</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Horas de Almacenamiento</td>
+      <td style="border:1px solid #C9B280;">5541708523</td>
+    </tr>
+  </table>
+
+<div style="width:100%; text-align:left; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#c0c0c0;
+    margin-top:2px; font-style:italic;">© CPEL // Gerencia de Construcción // Subgerencia Técnica de Construcción</div>
+
+</div>]]></description>
+					<Point>
+						<coordinates>-111.382981,25.973478,0</coordinates>
+					</Point>
+				</Placemark>
+			</Folder>
+			<Folder>
+				<name>658 PROYECTO SOLAR SAN JOSE DEL CABO</name>
+				<Placemark>
+					<name>658</name>
+					<description><![CDATA[<div style="font-family:Arial, Helvetica, sans-serif; width:400px;">
+
+  <div style="border: 3px solid #846623; background:#335955; padding:10px 10px; text-align:center;">
+    <span style="color:#e6d194; font-size:12px; letter-spacing:1px;">FICHA TÉCNICA DEL PROYECTO</span>
+    </br>
+    <span style="color:#ffffff; font-size:22px; font-weight:bold; letter-spacing:1px;">658</span>
+  </div>
+
+
+  <table cellpadding="6" cellspacing="0" style="width:100%; border-collapse:collapse; font-size:12px;">
+    
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Nombre del Proyecto</td>
+      <td style="border:1px solid #C9B280;">Proyecto Solar San Jose Del Cabo</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Región</td>
+      <td style="border:1px solid #C9B280;">BAJA CALIFORNIA</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Socio</td>
+      <td style="border:1px solid #C9B280;">SOLUCIONES ENERGETICAS PARA LATRANSFORMACION BCS S A P I DE CV</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Tecnología</td>
+      <td style="border:1px solid #C9B280;">FOTOVOLTAICA</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Estado</td>
+      <td style="border:1px solid #C9B280;">Baja California Sur</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Municipio</td>
+      <td style="border:1px solid #C9B280;">Los Cabos</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Capacidad Neta (Mwac)</td>
+      <td style="border:1px solid #C9B280;">30.00</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Correo</td>
+      <td style="border:1px solid #C9B280;">andrea@monarch.mx</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Horas de Almacenamiento</td>
+      <td style="border:1px solid #C9B280;">7266887351</td>
+    </tr>
+  </table>
+
+<div style="width:100%; text-align:left; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#c0c0c0;
+    margin-top:2px; font-style:italic;">© CPEL // Gerencia de Construcción // Subgerencia Técnica de Construcción</div>
+
+</div>]]></description>
+					<Point>
+						<coordinates>-109.770911,23.234544,0</coordinates>
+					</Point>
+				</Placemark>
+			</Folder>
+			<Folder>
+				<name>684 SANTIAGO SOLAR</name>
+				<Placemark>
+					<name>684</name>
+					<description><![CDATA[<div style="font-family:Arial, Helvetica, sans-serif; width:400px;">
+
+  <div style="border: 3px solid #846623; background:#335955; padding:10px 10px; text-align:center;">
+    <span style="color:#e6d194; font-size:12px; letter-spacing:1px;">FICHA TÉCNICA DEL PROYECTO</span>
+    </br>
+    <span style="color:#ffffff; font-size:22px; font-weight:bold; letter-spacing:1px;">684</span>
+  </div>
+
+
+  <table cellpadding="6" cellspacing="0" style="width:100%; border-collapse:collapse; font-size:12px;">
+    
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Nombre del Proyecto</td>
+      <td style="border:1px solid #C9B280;">Santiago Solar</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Región</td>
+      <td style="border:1px solid #C9B280;">BAJA CALIFORNIA</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Socio</td>
+      <td style="border:1px solid #C9B280;">BU ST SERVICES S DE RL DE CV</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Tecnología</td>
+      <td style="border:1px solid #C9B280;">FOTOVOLTAICA</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Estado</td>
+      <td style="border:1px solid #C9B280;">Baja California Sur</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Municipio</td>
+      <td style="border:1px solid #C9B280;">Los Cabos</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Capacidad Neta (Mwac)</td>
+      <td style="border:1px solid #C9B280;">40.00</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Correo</td>
+      <td style="border:1px solid #C9B280;">slodela@gmail.com</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Horas de Almacenamiento</td>
+      <td style="border:1px solid #C9B280;">5568218083</td>
+    </tr>
+  </table>
+
+<div style="width:100%; text-align:left; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#c0c0c0;
+    margin-top:2px; font-style:italic;">© CPEL // Gerencia de Construcción // Subgerencia Técnica de Construcción</div>
+
+</div>]]></description>
+					<Point>
+						<coordinates>-109.724454,23.583512,0</coordinates>
+					</Point>
+				</Placemark>
+			</Folder>
+		</Folder>
+		<Folder>
+			<name>CENTRAL</name>
+			<Folder>
+				<name>187 ATLACOMULCO</name>
+				<Placemark>
+					<name>187</name>
+					<description><![CDATA[<div style="font-family:Arial, Helvetica, sans-serif; width:400px;">
+
+  <div style="border: 3px solid #846623; background:#335955; padding:10px 10px; text-align:center;">
+    <span style="color:#e6d194; font-size:12px; letter-spacing:1px;">FICHA TÉCNICA DEL PROYECTO</span>
+    </br>
+    <span style="color:#ffffff; font-size:22px; font-weight:bold; letter-spacing:1px;">187</span>
+  </div>
+
+
+  <table cellpadding="6" cellspacing="0" style="width:100%; border-collapse:collapse; font-size:12px;">
+    
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Nombre del Proyecto</td>
+      <td style="border:1px solid #C9B280;">Atlacomulco</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Región</td>
+      <td style="border:1px solid #C9B280;">CENTRAL</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Socio</td>
+      <td style="border:1px solid #C9B280;">ATLACOMULCO SOLAR FOTOVOLTAICA SA DE CV</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Tecnología</td>
+      <td style="border:1px solid #C9B280;">FOTOVOLTAICA</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Estado</td>
+      <td style="border:1px solid #C9B280;">Estado De México</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Municipio</td>
+      <td style="border:1px solid #C9B280;">Jocotitlán</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Capacidad Neta (Mwac)</td>
+      <td style="border:1px solid #C9B280;">100.00</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Correo</td>
+      <td style="border:1px solid #C9B280;">dan.correa@exiomgroup.com</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Horas de Almacenamiento</td>
+      <td style="border:1px solid #C9B280;">5580436729</td>
+    </tr>
+  </table>
+
+<div style="width:100%; text-align:left; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#c0c0c0;
+    margin-top:2px; font-style:italic;">© CPEL // Gerencia de Construcción // Subgerencia Técnica de Construcción</div>
+
+</div>]]></description>
+					<Point>
+						<coordinates>-99.88346699999998,19.735731,0</coordinates>
+					</Point>
+				</Placemark>
+			</Folder>
+			<Folder>
+				<name>425 ATLACOMULCO SOLAR</name>
+				<Placemark>
+					<name>425</name>
+					<description><![CDATA[<div style="font-family:Arial, Helvetica, sans-serif; width:400px;">
+
+  <div style="border: 3px solid #846623; background:#335955; padding:10px 10px; text-align:center;">
+    <span style="color:#e6d194; font-size:12px; letter-spacing:1px;">FICHA TÉCNICA DEL PROYECTO</span>
+    </br>
+    <span style="color:#ffffff; font-size:22px; font-weight:bold; letter-spacing:1px;">425</span>
+  </div>
+
+
+  <table cellpadding="6" cellspacing="0" style="width:100%; border-collapse:collapse; font-size:12px;">
+    
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Nombre del Proyecto</td>
+      <td style="border:1px solid #C9B280;">Atlacomulco Solar</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Región</td>
+      <td style="border:1px solid #C9B280;">CENTRAL</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Socio</td>
+      <td style="border:1px solid #C9B280;">ATLACOMULCO SOLAR SA DE CV</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Tecnología</td>
+      <td style="border:1px solid #C9B280;">FOTOVOLTAICA</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Estado</td>
+      <td style="border:1px solid #C9B280;">Estado De México</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Municipio</td>
+      <td style="border:1px solid #C9B280;">Almoloya De Juárez</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Capacidad Neta (Mwac)</td>
+      <td style="border:1px solid #C9B280;">90.00</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Correo</td>
+      <td style="border:1px solid #C9B280;">samuel.palomino@grupocox.com</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Horas de Almacenamiento</td>
+      <td style="border:1px solid #C9B280;">5585034600</td>
+    </tr>
+  </table>
+
+<div style="width:100%; text-align:left; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#c0c0c0;
+    margin-top:2px; font-style:italic;">© CPEL // Gerencia de Construcción // Subgerencia Técnica de Construcción</div>
+
+</div>]]></description>
+					<styleUrl>#msn_ylw-pushpin</styleUrl>
+					<Point>
+						<coordinates>-99.71898955849869,19.45401184282801,0</coordinates>
+					</Point>
+				</Placemark>
+			</Folder>
+			<Folder>
+				<name>545 CENTRAL FV IXTAPAN</name>
+				<Placemark>
+					<name>545</name>
+					<description><![CDATA[<div style="font-family:Arial, Helvetica, sans-serif; width:400px;">
+
+  <div style="border: 3px solid #846623; background:#335955; padding:10px 10px; text-align:center;">
+    <span style="color:#e6d194; font-size:12px; letter-spacing:1px;">FICHA TÉCNICA DEL PROYECTO</span>
+    </br>
+    <span style="color:#ffffff; font-size:22px; font-weight:bold; letter-spacing:1px;">545</span>
+  </div>
+
+
+  <table cellpadding="6" cellspacing="0" style="width:100%; border-collapse:collapse; font-size:12px;">
+    
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Nombre del Proyecto</td>
+      <td style="border:1px solid #C9B280;">Central Fv Ixtapan</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Región</td>
+      <td style="border:1px solid #C9B280;">CENTRAL</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Socio</td>
+      <td style="border:1px solid #C9B280;">RUENERGY PROJECTS MEXICO SA DE CV</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Tecnología</td>
+      <td style="border:1px solid #C9B280;">FOTOVOLTAICA</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Estado</td>
+      <td style="border:1px solid #C9B280;">Estado De México</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Municipio</td>
+      <td style="border:1px solid #C9B280;">Ixtapan De La Sal</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Capacidad Neta (Mwac)</td>
+      <td style="border:1px solid #C9B280;">59.70</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Correo</td>
+      <td style="border:1px solid #C9B280;">acarrillo@decenergy.com.mx</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Horas de Almacenamiento</td>
+      <td style="border:1px solid #C9B280;">5598655056</td>
+    </tr>
+  </table>
+
+<div style="width:100%; text-align:left; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#c0c0c0;
+    margin-top:2px; font-style:italic;">© CPEL // Gerencia de Construcción // Subgerencia Técnica de Construcción</div>
+
+</div>]]></description>
+					<styleUrl>#msn_ylw-pushpin</styleUrl>
+					<Point>
+						<coordinates>-99.7388205606638,18.82395755646591,0</coordinates>
+					</Point>
+				</Placemark>
+			</Folder>
+			<Folder>
+				<name>107 MANZANO</name>
+				<Placemark>
+					<name>107</name>
+					<description><![CDATA[<div style="font-family:Arial, Helvetica, sans-serif; width:400px;">
+
+  <div style="border: 3px solid #846623; background:#335955; padding:10px 10px; text-align:center;">
+    <span style="color:#e6d194; font-size:12px; letter-spacing:1px;">FICHA TÉCNICA DEL PROYECTO</span>
+    </br>
+    <span style="color:#ffffff; font-size:22px; font-weight:bold; letter-spacing:1px;">107</span>
+  </div>
+
+
+  <table cellpadding="6" cellspacing="0" style="width:100%; border-collapse:collapse; font-size:12px;">
+    
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Nombre del Proyecto</td>
+      <td style="border:1px solid #C9B280;">Manzano</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Región</td>
+      <td style="border:1px solid #C9B280;">CENTRAL</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Socio</td>
+      <td style="border:1px solid #C9B280;">TERRALIA ENERGIA Y CAMPO SA DE CV</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Tecnología</td>
+      <td style="border:1px solid #C9B280;">FOTOVOLTAICA</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Estado</td>
+      <td style="border:1px solid #C9B280;">Michoacán</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Municipio</td>
+      <td style="border:1px solid #C9B280;">Contepec</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Capacidad Neta (Mwac)</td>
+      <td style="border:1px solid #C9B280;">46.21</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Correo</td>
+      <td style="border:1px solid #C9B280;">ricardo.hurtado@gammx.com</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Horas de Almacenamiento</td>
+      <td style="border:1px solid #C9B280;">5528929251</td>
+    </tr>
+  </table>
+
+<div style="width:100%; text-align:left; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#c0c0c0;
+    margin-top:2px; font-style:italic;">© CPEL // Gerencia de Construcción // Subgerencia Técnica de Construcción</div>
+
+</div>]]></description>
+					<Point>
+						<coordinates>-100.142783,19.842532,0</coordinates>
+					</Point>
+				</Placemark>
+			</Folder>
+		</Folder>
+		<Folder>
+			<name>NORESTE</name>
+			<Folder>
+				<name>149 ATRIA WIND FARM 1</name>
+				<Placemark>
+					<name>149</name>
+					<description><![CDATA[<div style="font-family:Arial, Helvetica, sans-serif; width:400px;">
+
+  <div style="border: 3px solid #846623; background:#335955; padding:10px 10px; text-align:center;">
+    <span style="color:#e6d194; font-size:12px; letter-spacing:1px;">FICHA TÉCNICA DEL PROYECTO</span>
+    </br>
+    <span style="color:#ffffff; font-size:22px; font-weight:bold; letter-spacing:1px;">149</span>
+  </div>
+
+
+  <table cellpadding="6" cellspacing="0" style="width:100%; border-collapse:collapse; font-size:12px;">
+    
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Nombre del Proyecto</td>
+      <td style="border:1px solid #C9B280;">Atria Wind Farm 1</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Región</td>
+      <td style="border:1px solid #C9B280;">NORESTE</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Socio</td>
+      <td style="border:1px solid #C9B280;">ATRIA WIND FARM 1 S A P I DE CV</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Tecnología</td>
+      <td style="border:1px solid #C9B280;">EÓLICA</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Estado</td>
+      <td style="border:1px solid #C9B280;">Nuevo León</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Municipio</td>
+      <td style="border:1px solid #C9B280;">General Bravo</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Capacidad Neta (Mwac)</td>
+      <td style="border:1px solid #C9B280;">140.00</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Correo</td>
+      <td style="border:1px solid #C9B280;">fernando.gonzalez@natcoenergy.com</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Horas de Almacenamiento</td>
+      <td style="border:1px solid #C9B280;">8115222305</td>
+    </tr>
+  </table>
+
+<div style="width:100%; text-align:left; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#c0c0c0;
+    margin-top:2px; font-style:italic;">© CPEL // Gerencia de Construcción // Subgerencia Técnica de Construcción</div>
+
+</div>]]></description>
+					<Point>
+						<coordinates>-98.861203,25.897551,0</coordinates>
+					</Point>
+				</Placemark>
+			</Folder>
+			<Folder>
+				<name>96 ATRIA WIND FARM II</name>
+				<Placemark>
+					<name>96</name>
+					<description><![CDATA[<div style="font-family:Arial, Helvetica, sans-serif; width:400px;">
+
+  <div style="border: 3px solid #846623; background:#335955; padding:10px 10px; text-align:center;">
+    <span style="color:#e6d194; font-size:12px; letter-spacing:1px;">FICHA TÉCNICA DEL PROYECTO</span>
+    </br>
+    <span style="color:#ffffff; font-size:22px; font-weight:bold; letter-spacing:1px;">96</span>
+  </div>
+
+
+  <table cellpadding="6" cellspacing="0" style="width:100%; border-collapse:collapse; font-size:12px;">
+    
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Nombre del Proyecto</td>
+      <td style="border:1px solid #C9B280;">Atria Wind Farm Ii</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Región</td>
+      <td style="border:1px solid #C9B280;">NORESTE</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Socio</td>
+      <td style="border:1px solid #C9B280;">ATRIA WIND FARM II S A P I DE CV</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Tecnología</td>
+      <td style="border:1px solid #C9B280;">EÓLICA</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Estado</td>
+      <td style="border:1px solid #C9B280;">Nuevo León</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Municipio</td>
+      <td style="border:1px solid #C9B280;">General Bravo</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Capacidad Neta (Mwac)</td>
+      <td style="border:1px solid #C9B280;">259.00</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Correo</td>
+      <td style="border:1px solid #C9B280;">fernando.gonzalez@natcoenergy.com</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Horas de Almacenamiento</td>
+      <td style="border:1px solid #C9B280;">8115222305</td>
+    </tr>
+  </table>
+
+<div style="width:100%; text-align:left; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#c0c0c0;
+    margin-top:2px; font-style:italic;">© CPEL // Gerencia de Construcción // Subgerencia Técnica de Construcción</div>
+
+</div>]]></description>
+					<Point>
+						<coordinates>-98.840249,25.782527,0</coordinates>
+					</Point>
+				</Placemark>
+			</Folder>
+			<Folder>
+				<name>602 AURORA I</name>
+				<Placemark>
+					<name>602</name>
+					<description><![CDATA[<div style="font-family:Arial, Helvetica, sans-serif; width:400px;">
+
+  <div style="border: 3px solid #846623; background:#335955; padding:10px 10px; text-align:center;">
+    <span style="color:#e6d194; font-size:12px; letter-spacing:1px;">FICHA TÉCNICA DEL PROYECTO</span>
+    </br>
+    <span style="color:#ffffff; font-size:22px; font-weight:bold; letter-spacing:1px;">602</span>
+  </div>
+
+
+  <table cellpadding="6" cellspacing="0" style="width:100%; border-collapse:collapse; font-size:12px;">
+    
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Nombre del Proyecto</td>
+      <td style="border:1px solid #C9B280;">Aurora I</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Región</td>
+      <td style="border:1px solid #C9B280;">NORESTE</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Socio</td>
+      <td style="border:1px solid #C9B280;">VIVA EL SOL F1 S A P I DE CV</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Tecnología</td>
+      <td style="border:1px solid #C9B280;">FOTOVOLTAICA</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Estado</td>
+      <td style="border:1px solid #C9B280;">Coahuila</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Municipio</td>
+      <td style="border:1px solid #C9B280;">Nadadores</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Capacidad Neta (Mwac)</td>
+      <td style="border:1px solid #C9B280;">10.00</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Correo</td>
+      <td style="border:1px solid #C9B280;">vitaminad@solario.mx</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Horas de Almacenamiento</td>
+      <td style="border:1px solid #C9B280;">8111813548</td>
+    </tr>
+  </table>
+
+<div style="width:100%; text-align:left; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#c0c0c0;
+    margin-top:2px; font-style:italic;">© CPEL // Gerencia de Construcción // Subgerencia Técnica de Construcción</div>
+
+</div>]]></description>
+					<LookAt>
+						<longitude>-101.6034239501005</longitude>
+						<latitude>27.03157067635398</latitude>
+						<altitude>0</altitude>
+						<heading>-0.0001498931282230245</heading>
+						<tilt>0</tilt>
+						<range>999.9999999994888</range>
+						<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+					</LookAt>
+					<styleUrl>#msn_ylw-pushpin</styleUrl>
+					<Point>
+						<gx:drawOrder>1</gx:drawOrder>
+						<coordinates>-101.6059013660821,27.0314342553983,0</coordinates>
+					</Point>
+				</Placemark>
+			</Folder>
+			<Folder>
+				<name>114 BARAJAS SOLAR</name>
+				<Placemark>
+					<name>114</name>
+					<description><![CDATA[<div style="font-family:Arial, Helvetica, sans-serif; width:400px;">
+
+  <div style="border: 3px solid #846623; background:#335955; padding:10px 10px; text-align:center;">
+    <span style="color:#e6d194; font-size:12px; letter-spacing:1px;">FICHA TÉCNICA DEL PROYECTO</span>
+    </br>
+    <span style="color:#ffffff; font-size:22px; font-weight:bold; letter-spacing:1px;">114</span>
+  </div>
+
+
+  <table cellpadding="6" cellspacing="0" style="width:100%; border-collapse:collapse; font-size:12px;">
+    
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Nombre del Proyecto</td>
+      <td style="border:1px solid #C9B280;">Barajas Solar</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Región</td>
+      <td style="border:1px solid #C9B280;">NORESTE</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Socio</td>
+      <td style="border:1px solid #C9B280;">ARMERIA NEW ENERGY SA DE CV</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Tecnología</td>
+      <td style="border:1px solid #C9B280;">FOTOVOLTAICA</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Estado</td>
+      <td style="border:1px solid #C9B280;">Coahuila</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Municipio</td>
+      <td style="border:1px solid #C9B280;">Frontera</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Capacidad Neta (Mwac)</td>
+      <td style="border:1px solid #C9B280;">110.40</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Correo</td>
+      <td style="border:1px solid #C9B280;">mamacias@progressum.es</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Horas de Almacenamiento</td>
+      <td style="border:1px solid #C9B280;">4492774217</td>
+    </tr>
+  </table>
+
+<div style="width:100%; text-align:left; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#c0c0c0;
+    margin-top:2px; font-style:italic;">© CPEL // Gerencia de Construcción // Subgerencia Técnica de Construcción</div>
+
+</div>]]></description>
+					<Point>
+						<coordinates>-101.576567,26.927942,0</coordinates>
+					</Point>
+				</Placemark>
+			</Folder>
+			<Folder>
+				<name>493 CENTRAL FOTOVOLTAICA HORCONES</name>
+				<Placemark>
+					<name>493</name>
+					<description><![CDATA[<div style="font-family:Arial, Helvetica, sans-serif; width:400px;">
+
+  <div style="border: 3px solid #846623; background:#335955; padding:10px 10px; text-align:center;">
+    <span style="color:#e6d194; font-size:12px; letter-spacing:1px;">FICHA TÉCNICA DEL PROYECTO</span>
+    </br>
+    <span style="color:#ffffff; font-size:22px; font-weight:bold; letter-spacing:1px;">493</span>
+  </div>
+
+
+  <table cellpadding="6" cellspacing="0" style="width:100%; border-collapse:collapse; font-size:12px;">
+    
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Nombre del Proyecto</td>
+      <td style="border:1px solid #C9B280;">Central Fotovoltaica Horcones</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Región</td>
+      <td style="border:1px solid #C9B280;">NORESTE</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Socio</td>
+      <td style="border:1px solid #C9B280;">PROSIENERGY CORPORACION SA DE CV</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Tecnología</td>
+      <td style="border:1px solid #C9B280;">FOTOVOLTAICA</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Estado</td>
+      <td style="border:1px solid #C9B280;">Nuevo León</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Municipio</td>
+      <td style="border:1px solid #C9B280;">Los Ramones</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Capacidad Neta (Mwac)</td>
+      <td style="border:1px solid #C9B280;">99.90</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Correo</td>
+      <td style="border:1px solid #C9B280;">acarrillo@decenergy.com.mx</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Horas de Almacenamiento</td>
+      <td style="border:1px solid #C9B280;">5588790072</td>
+    </tr>
+  </table>
+
+<div style="width:100%; text-align:left; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#c0c0c0;
+    margin-top:2px; font-style:italic;">© CPEL // Gerencia de Construcción // Subgerencia Técnica de Construcción</div>
+
+</div>]]></description>
+					<Point>
+						<coordinates>-99.64613900000002,25.5666,0</coordinates>
+					</Point>
+				</Placemark>
+			</Folder>
+			<Folder>
+				<name>618 CFV LAS AGUILAS</name>
+				<Placemark>
+					<name>618</name>
+					<description><![CDATA[<div style="font-family:Arial, Helvetica, sans-serif; width:400px;">
+
+  <div style="border: 3px solid #846623; background:#335955; padding:10px 10px; text-align:center;">
+    <span style="color:#e6d194; font-size:12px; letter-spacing:1px;">FICHA TÉCNICA DEL PROYECTO</span>
+    </br>
+    <span style="color:#ffffff; font-size:22px; font-weight:bold; letter-spacing:1px;">618</span>
+  </div>
+
+
+  <table cellpadding="6" cellspacing="0" style="width:100%; border-collapse:collapse; font-size:12px;">
+    
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Nombre del Proyecto</td>
+      <td style="border:1px solid #C9B280;">Cfv Las Aguilas</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Región</td>
+      <td style="border:1px solid #C9B280;">NORESTE</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Socio</td>
+      <td style="border:1px solid #C9B280;">FREEMAN MEZCAL SA DE CV</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Tecnología</td>
+      <td style="border:1px solid #C9B280;">FOTOVOLTAICA</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Estado</td>
+      <td style="border:1px solid #C9B280;">Coahuila</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Municipio</td>
+      <td style="border:1px solid #C9B280;">Saltillo</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Capacidad Neta (Mwac)</td>
+      <td style="border:1px solid #C9B280;">600.00</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Correo</td>
+      <td style="border:1px solid #C9B280;">canovalles@freemansc.com</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Horas de Almacenamiento</td>
+      <td style="border:1px solid #C9B280;">8712197224</td>
+    </tr>
+  </table>
+
+<div style="width:100%; text-align:left; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#c0c0c0;
+    margin-top:2px; font-style:italic;">© CPEL // Gerencia de Construcción // Subgerencia Técnica de Construcción</div>
+
+</div>]]></description>
+					<Point>
+						<coordinates>-101.220912,25.049793,0</coordinates>
+					</Point>
+				</Placemark>
+			</Folder>
+			<Folder>
+				<name>172 DELARO</name>
+				<Placemark>
+					<name>172</name>
+					<description><![CDATA[<div style="font-family:Arial, Helvetica, sans-serif; width:400px;">
+
+  <div style="border: 3px solid #846623; background:#335955; padding:10px 10px; text-align:center;">
+    <span style="color:#e6d194; font-size:12px; letter-spacing:1px;">FICHA TÉCNICA DEL PROYECTO</span>
+    </br>
+    <span style="color:#ffffff; font-size:22px; font-weight:bold; letter-spacing:1px;">172</span>
+  </div>
+
+
+  <table cellpadding="6" cellspacing="0" style="width:100%; border-collapse:collapse; font-size:12px;">
+    
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Nombre del Proyecto</td>
+      <td style="border:1px solid #C9B280;">Delaro</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Región</td>
+      <td style="border:1px solid #C9B280;">NORESTE</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Socio</td>
+      <td style="border:1px solid #C9B280;">DELARO S A P I DE CV</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Tecnología</td>
+      <td style="border:1px solid #C9B280;">EÓLICA</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Estado</td>
+      <td style="border:1px solid #C9B280;">Tamaulipas</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Municipio</td>
+      <td style="border:1px solid #C9B280;">Reynosa</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Capacidad Neta (Mwac)</td>
+      <td style="border:1px solid #C9B280;">117.00</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Correo</td>
+      <td style="border:1px solid #C9B280;">bvelazquez@thermion.mx</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Horas de Almacenamiento</td>
+      <td style="border:1px solid #C9B280;">5513289400</td>
+    </tr>
+  </table>
+
+<div style="width:100%; text-align:left; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#c0c0c0;
+    margin-top:2px; font-style:italic;">© CPEL // Gerencia de Construcción // Subgerencia Técnica de Construcción</div>
+
+</div>]]></description>
+					<styleUrl>#failed30</styleUrl>
+					<Point>
+						<coordinates>-98.54226173798286,25.75840826534951,0</coordinates>
+					</Point>
+				</Placemark>
+			</Folder>
+			<Folder>
+				<name>171 EL GORRION</name>
+				<Placemark>
+					<name>171</name>
+					<description><![CDATA[<div style="font-family:Arial, Helvetica, sans-serif; width:400px;">
+
+  <div style="border: 3px solid #846623; background:#335955; padding:10px 10px; text-align:center;">
+    <span style="color:#e6d194; font-size:12px; letter-spacing:1px;">FICHA TÉCNICA DEL PROYECTO</span>
+    </br>
+    <span style="color:#ffffff; font-size:22px; font-weight:bold; letter-spacing:1px;">171</span>
+  </div>
+
+
+  <table cellpadding="6" cellspacing="0" style="width:100%; border-collapse:collapse; font-size:12px;">
+    
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Nombre del Proyecto</td>
+      <td style="border:1px solid #C9B280;">El Gorrion</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Región</td>
+      <td style="border:1px solid #C9B280;">NORESTE</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Socio</td>
+      <td style="border:1px solid #C9B280;">TUSAE ENERGY I SA DE CV</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Tecnología</td>
+      <td style="border:1px solid #C9B280;">FOTOVOLTAICA</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Estado</td>
+      <td style="border:1px solid #C9B280;">Coahuila</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Municipio</td>
+      <td style="border:1px solid #C9B280;">Saltillo</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Capacidad Neta (Mwac)</td>
+      <td style="border:1px solid #C9B280;">100.00</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Correo</td>
+      <td style="border:1px solid #C9B280;">rafaelaguado@agrorenovables.com</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Horas de Almacenamiento</td>
+      <td style="border:1px solid #C9B280;">4449072948</td>
+    </tr>
+  </table>
+
+<div style="width:100%; text-align:left; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#c0c0c0;
+    margin-top:2px; font-style:italic;">© CPEL // Gerencia de Construcción // Subgerencia Técnica de Construcción</div>
+
+</div>]]></description>
+					<styleUrl>#failed14</styleUrl>
+					<Point>
+						<coordinates>-101.0686327825454,24.86066325575769,0</coordinates>
+					</Point>
+				</Placemark>
+			</Folder>
+			<Folder>
+				<name>36 PARQUE EÓLICO EURONOTUS</name>
+				<Placemark>
+					<name>36</name>
+					<description><![CDATA[<div style="font-family:Arial, Helvetica, sans-serif; width:400px;">
+
+  <div style="border: 3px solid #846623; background:#335955; padding:10px 10px; text-align:center;">
+    <span style="color:#e6d194; font-size:12px; letter-spacing:1px;">FICHA TÉCNICA DEL PROYECTO</span>
+    </br>
+    <span style="color:#ffffff; font-size:22px; font-weight:bold; letter-spacing:1px;">36</span>
+  </div>
+
+
+  <table cellpadding="6" cellspacing="0" style="width:100%; border-collapse:collapse; font-size:12px;">
+    
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Nombre del Proyecto</td>
+      <td style="border:1px solid #C9B280;">Parque Eólico Euronotus</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Región</td>
+      <td style="border:1px solid #C9B280;">NORESTE</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Socio</td>
+      <td style="border:1px solid #C9B280;">PARQUE EOLICO DE EURONOTUS S DE RL DE CV</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Tecnología</td>
+      <td style="border:1px solid #C9B280;">EÓLICA</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Estado</td>
+      <td style="border:1px solid #C9B280;">Nuevo León</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Municipio</td>
+      <td style="border:1px solid #C9B280;">China</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Capacidad Neta (Mwac)</td>
+      <td style="border:1px solid #C9B280;">400.00</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Correo</td>
+      <td style="border:1px solid #C9B280;">cdelgado@invenergy.com</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Horas de Almacenamiento</td>
+      <td style="border:1px solid #C9B280;">5541708523</td>
+    </tr>
+  </table>
+
+<div style="width:100%; text-align:left; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#c0c0c0;
+    margin-top:2px; font-style:italic;">© CPEL // Gerencia de Construcción // Subgerencia Técnica de Construcción</div>
+
+</div>]]></description>
+					<Point>
+						<coordinates>-98.657122,25.655039,0</coordinates>
+					</Point>
+				</Placemark>
+			</Folder>
+			<Folder>
+				<name>155 PROYECTO EOLICO SIERRA MADRE</name>
+				<Placemark>
+					<name>155</name>
+					<description><![CDATA[<div style="font-family:Arial, Helvetica, sans-serif; width:400px;">
+
+  <div style="border: 3px solid #846623; background:#335955; padding:10px 10px; text-align:center;">
+    <span style="color:#e6d194; font-size:12px; letter-spacing:1px;">FICHA TÉCNICA DEL PROYECTO</span>
+    </br>
+    <span style="color:#ffffff; font-size:22px; font-weight:bold; letter-spacing:1px;">155</span>
+  </div>
+
+
+  <table cellpadding="6" cellspacing="0" style="width:100%; border-collapse:collapse; font-size:12px;">
+    
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Nombre del Proyecto</td>
+      <td style="border:1px solid #C9B280;">Proyecto Eolico Sierra Madre</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Región</td>
+      <td style="border:1px solid #C9B280;">NORESTE</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Socio</td>
+      <td style="border:1px solid #C9B280;">JESUS GILBERTO MARTINEZ CRODA</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Tecnología</td>
+      <td style="border:1px solid #C9B280;">EÓLICA</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Estado</td>
+      <td style="border:1px solid #C9B280;">Tamaulipas</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Municipio</td>
+      <td style="border:1px solid #C9B280;">Casas</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Capacidad Neta (Mwac)</td>
+      <td style="border:1px solid #C9B280;">580.00</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Correo</td>
+      <td style="border:1px solid #C9B280;">gilberto.martinez@gemex.mx</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Horas de Almacenamiento</td>
+      <td style="border:1px solid #C9B280;">5565990600</td>
+    </tr>
+  </table>
+
+<div style="width:100%; text-align:left; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#c0c0c0;
+    margin-top:2px; font-style:italic;">© CPEL // Gerencia de Construcción // Subgerencia Técnica de Construcción</div>
+
+</div>]]></description>
+					<Camera>
+						<longitude>-98.82601620814594</longitude>
+						<latitude>23.66549530474637</latitude>
+						<altitude>21860.94014807974</altitude>
+						<heading>3.222512687575676</heading>
+						<tilt>0.1925430159464987</tilt>
+						<roll>-1.183066215057274</roll>
+						<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+					</Camera>
+					<styleUrl>#failed4</styleUrl>
+					<Point>
+						<gx:drawOrder>1</gx:drawOrder>
+						<coordinates>-98.81587462338869,23.66183729968247,0</coordinates>
+					</Point>
+				</Placemark>
+			</Folder>
+			<Folder>
+				<name>655 PV TAMESÍ SOLAR</name>
+				<Placemark>
+					<name>655</name>
+					<description><![CDATA[<div style="font-family:Arial, Helvetica, sans-serif; width:400px;">
+
+  <div style="border: 3px solid #846623; background:#335955; padding:10px 10px; text-align:center;">
+    <span style="color:#e6d194; font-size:12px; letter-spacing:1px;">FICHA TÉCNICA DEL PROYECTO</span>
+    </br>
+    <span style="color:#ffffff; font-size:22px; font-weight:bold; letter-spacing:1px;">655</span>
+  </div>
+
+
+  <table cellpadding="6" cellspacing="0" style="width:100%; border-collapse:collapse; font-size:12px;">
+    
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Nombre del Proyecto</td>
+      <td style="border:1px solid #C9B280;">Pv Tamesí Solar</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Región</td>
+      <td style="border:1px solid #C9B280;">NORESTE</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Socio</td>
+      <td style="border:1px solid #C9B280;">PV TAMESI SOLAR SG S DE RL DE CV</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Tecnología</td>
+      <td style="border:1px solid #C9B280;">FOTOVOLTAICA</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Estado</td>
+      <td style="border:1px solid #C9B280;">Tamaulipas</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Municipio</td>
+      <td style="border:1px solid #C9B280;">Altamira</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Capacidad Neta (Mwac)</td>
+      <td style="border:1px solid #C9B280;">110.00</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Correo</td>
+      <td style="border:1px solid #C9B280;">elara@solarig.com</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Horas de Almacenamiento</td>
+      <td style="border:1px solid #C9B280;">5511691149</td>
+    </tr>
+  </table>
+
+<div style="width:100%; text-align:left; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#c0c0c0;
+    margin-top:2px; font-style:italic;">© CPEL // Gerencia de Construcción // Subgerencia Técnica de Construcción</div>
+
+</div>]]></description>
+					<Point>
+						<coordinates>-97.979467,22.600656,0</coordinates>
+					</Point>
+				</Placemark>
+			</Folder>
+			<Folder>
+				<name>170 SANTOS</name>
+				<Placemark>
+					<name>170</name>
+					<description><![CDATA[<div style="font-family:Arial, Helvetica, sans-serif; width:400px;">
+
+  <div style="border: 3px solid #846623; background:#335955; padding:10px 10px; text-align:center;">
+    <span style="color:#e6d194; font-size:12px; letter-spacing:1px;">FICHA TÉCNICA DEL PROYECTO</span>
+    </br>
+    <span style="color:#ffffff; font-size:22px; font-weight:bold; letter-spacing:1px;">170</span>
+  </div>
+
+
+  <table cellpadding="6" cellspacing="0" style="width:100%; border-collapse:collapse; font-size:12px;">
+    
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Nombre del Proyecto</td>
+      <td style="border:1px solid #C9B280;">Santos</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Región</td>
+      <td style="border:1px solid #C9B280;">NORESTE</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Socio</td>
+      <td style="border:1px solid #C9B280;">GREENDAT CAPITAL S A P I DE CV</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Tecnología</td>
+      <td style="border:1px solid #C9B280;">FOTOVOLTAICA</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Estado</td>
+      <td style="border:1px solid #C9B280;">Nuevo León</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Municipio</td>
+      <td style="border:1px solid #C9B280;">Anáhuac</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Capacidad Neta (Mwac)</td>
+      <td style="border:1px solid #C9B280;">100.00</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Correo</td>
+      <td style="border:1px solid #C9B280;">mberges@agrorenovables.com</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Horas de Almacenamiento</td>
+      <td style="border:1px solid #C9B280;">4449072948</td>
+    </tr>
+  </table>
+
+<div style="width:100%; text-align:left; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#c0c0c0;
+    margin-top:2px; font-style:italic;">© CPEL // Gerencia de Construcción // Subgerencia Técnica de Construcción</div>
+
+</div>]]></description>
+					<Point>
+						<coordinates>-100.086999,27.258733,0</coordinates>
+					</Point>
+				</Placemark>
+			</Folder>
+		</Folder>
+		<Folder>
+			<name>OCCIDENTAL</name>
+			<Folder>
+				<name>44 ACATLAN GENERACION</name>
+				<Placemark>
+					<name>44</name>
+					<description><![CDATA[<div style="font-family:Arial, Helvetica, sans-serif; width:400px;">
+
+  <div style="border: 3px solid #846623; background:#335955; padding:10px 10px; text-align:center;">
+    <span style="color:#e6d194; font-size:12px; letter-spacing:1px;">FICHA TÉCNICA DEL PROYECTO</span>
+    </br>
+    <span style="color:#ffffff; font-size:22px; font-weight:bold; letter-spacing:1px;">44</span>
+  </div>
+
+
+  <table cellpadding="6" cellspacing="0" style="width:100%; border-collapse:collapse; font-size:12px;">
+    
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Nombre del Proyecto</td>
+      <td style="border:1px solid #C9B280;">Acatlan Generacion</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Región</td>
+      <td style="border:1px solid #C9B280;">OCCIDENTAL</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Socio</td>
+      <td style="border:1px solid #C9B280;">PROYENER S DE RL DE CV</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Tecnología</td>
+      <td style="border:1px solid #C9B280;">FOTOVOLTAICA</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Estado</td>
+      <td style="border:1px solid #C9B280;">Jalisco</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Municipio</td>
+      <td style="border:1px solid #C9B280;">Acatlán De Juárez</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Capacidad Neta (Mwac)</td>
+      <td style="border:1px solid #C9B280;">118.00</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Correo</td>
+      <td style="border:1px solid #C9B280;">ADMINISTRACION@PROYENER.MX</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Horas de Almacenamiento</td>
+      <td style="border:1px solid #C9B280;">3310310458</td>
+    </tr>
+  </table>
+
+<div style="width:100%; text-align:left; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#c0c0c0;
+    margin-top:2px; font-style:italic;">© CPEL // Gerencia de Construcción // Subgerencia Técnica de Construcción</div>
+
+</div>]]></description>
+					<styleUrl>#mfailed2</styleUrl>
+					<Point>
+						<coordinates>-103.6067743045975,20.33978297286139,0</coordinates>
+					</Point>
+				</Placemark>
+			</Folder>
+			<Folder>
+				<name>53 CENTRAL FOTOVOLTAICA MESA REDONDA</name>
+				<Placemark>
+					<name>53</name>
+					<description><![CDATA[<div style="font-family:Arial, Helvetica, sans-serif; width:400px;">
+
+  <div style="border: 3px solid #846623; background:#335955; padding:10px 10px; text-align:center;">
+    <span style="color:#e6d194; font-size:12px; letter-spacing:1px;">FICHA TÉCNICA DEL PROYECTO</span>
+    </br>
+    <span style="color:#ffffff; font-size:22px; font-weight:bold; letter-spacing:1px;">53</span>
+  </div>
+
+
+  <table cellpadding="6" cellspacing="0" style="width:100%; border-collapse:collapse; font-size:12px;">
+    
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Nombre del Proyecto</td>
+      <td style="border:1px solid #C9B280;">Central Fotovoltaica Mesa Redonda</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Región</td>
+      <td style="border:1px solid #C9B280;">OCCIDENTAL</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Socio</td>
+      <td style="border:1px solid #C9B280;">AQUILES CAPITAL GROUP S A P I DE CV</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Tecnología</td>
+      <td style="border:1px solid #C9B280;">FOTOVOLTAICA</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Estado</td>
+      <td style="border:1px solid #C9B280;">Jalisco</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Municipio</td>
+      <td style="border:1px solid #C9B280;">Villa Corona</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Capacidad Neta (Mwac)</td>
+      <td style="border:1px solid #C9B280;">395.40</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Correo</td>
+      <td style="border:1px solid #C9B280;">aquilescapital0@gmail.com</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Horas de Almacenamiento</td>
+      <td style="border:1px solid #C9B280;">5536778978</td>
+    </tr>
+  </table>
+
+<div style="width:100%; text-align:left; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#c0c0c0;
+    margin-top:2px; font-style:italic;">© CPEL // Gerencia de Construcción // Subgerencia Técnica de Construcción</div>
+
+</div>]]></description>
+					<Point>
+						<coordinates>-103.616423,20.34486,0</coordinates>
+					</Point>
+				</Placemark>
+			</Folder>
+			<Folder>
+				<name>407 FV EL TORO</name>
+				<Placemark>
+					<name>407</name>
+					<description><![CDATA[<div style="font-family:Arial, Helvetica, sans-serif; width:400px;">
+
+  <div style="border: 3px solid #846623; background:#335955; padding:10px 10px; text-align:center;">
+    <span style="color:#e6d194; font-size:12px; letter-spacing:1px;">FICHA TÉCNICA DEL PROYECTO</span>
+    </br>
+    <span style="color:#ffffff; font-size:22px; font-weight:bold; letter-spacing:1px;">407</span>
+  </div>
+
+
+  <table cellpadding="6" cellspacing="0" style="width:100%; border-collapse:collapse; font-size:12px;">
+    
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Nombre del Proyecto</td>
+      <td style="border:1px solid #C9B280;">Fv El Toro</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Región</td>
+      <td style="border:1px solid #C9B280;">OCCIDENTAL</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Socio</td>
+      <td style="border:1px solid #C9B280;">GREEN PARK ENERGY SA DE CV</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Tecnología</td>
+      <td style="border:1px solid #C9B280;">FOTOVOLTAICA</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Estado</td>
+      <td style="border:1px solid #C9B280;">Guanajuato</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Municipio</td>
+      <td style="border:1px solid #C9B280;">Manuel Doblado</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Capacidad Neta (Mwac)</td>
+      <td style="border:1px solid #C9B280;">90.00</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Correo</td>
+      <td style="border:1px solid #C9B280;">alejandros.alarcon@grupocox.com</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Horas de Almacenamiento</td>
+      <td style="border:1px solid #C9B280;">5585034600</td>
+    </tr>
+  </table>
+
+<div style="width:100%; text-align:left; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#c0c0c0;
+    margin-top:2px; font-style:italic;">© CPEL // Gerencia de Construcción // Subgerencia Técnica de Construcción</div>
+
+</div>]]></description>
+					<Point>
+						<coordinates>-101.853078,20.735921,0</coordinates>
+					</Point>
+				</Placemark>
+			</Folder>
+			<Folder>
+				<name>444 FV SANTA FE</name>
+				<Placemark>
+					<name>444</name>
+					<description><![CDATA[<div style="font-family:Arial, Helvetica, sans-serif; width:400px;">
+
+  <div style="border: 3px solid #846623; background:#335955; padding:10px 10px; text-align:center;">
+    <span style="color:#e6d194; font-size:12px; letter-spacing:1px;">FICHA TÉCNICA DEL PROYECTO</span>
+    </br>
+    <span style="color:#ffffff; font-size:22px; font-weight:bold; letter-spacing:1px;">444</span>
+  </div>
+
+
+  <table cellpadding="6" cellspacing="0" style="width:100%; border-collapse:collapse; font-size:12px;">
+    
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Nombre del Proyecto</td>
+      <td style="border:1px solid #C9B280;">Fv Santa Fe</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Región</td>
+      <td style="border:1px solid #C9B280;">OCCIDENTAL</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Socio</td>
+      <td style="border:1px solid #C9B280;">BLUEMEX SAN MIGUEL SA DE CV</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Tecnología</td>
+      <td style="border:1px solid #C9B280;">FOTOVOLTAICA</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Estado</td>
+      <td style="border:1px solid #C9B280;">Guanajuato</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Municipio</td>
+      <td style="border:1px solid #C9B280;">San Miguel De Allende</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Capacidad Neta (Mwac)</td>
+      <td style="border:1px solid #C9B280;">100.00</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Correo</td>
+      <td style="border:1px solid #C9B280;">info@internovum-solar.com</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Horas de Almacenamiento</td>
+      <td style="border:1px solid #C9B280;">5547440267</td>
+    </tr>
+  </table>
+
+<div style="width:100%; text-align:left; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#c0c0c0;
+    margin-top:2px; font-style:italic;">© CPEL // Gerencia de Construcción // Subgerencia Técnica de Construcción</div>
+
+</div>]]></description>
+					<Point>
+						<coordinates>-100.586083,20.9009,0</coordinates>
+					</Point>
+				</Placemark>
+			</Folder>
+			<Folder>
+				<name>406 FV VILLA JUAREZ</name>
+				<Placemark>
+					<name>406</name>
+					<description><![CDATA[<div style="font-family:Arial, Helvetica, sans-serif; width:400px;">
+
+  <div style="border: 3px solid #846623; background:#335955; padding:10px 10px; text-align:center;">
+    <span style="color:#e6d194; font-size:12px; letter-spacing:1px;">FICHA TÉCNICA DEL PROYECTO</span>
+    </br>
+    <span style="color:#ffffff; font-size:22px; font-weight:bold; letter-spacing:1px;">406</span>
+  </div>
+
+
+  <table cellpadding="6" cellspacing="0" style="width:100%; border-collapse:collapse; font-size:12px;">
+    
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Nombre del Proyecto</td>
+      <td style="border:1px solid #C9B280;">Fv Villa Juarez</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Región</td>
+      <td style="border:1px solid #C9B280;">OCCIDENTAL</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Socio</td>
+      <td style="border:1px solid #C9B280;">GREEN PARK ENERGY SA DE CV</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Tecnología</td>
+      <td style="border:1px solid #C9B280;">FOTOVOLTAICA</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Estado</td>
+      <td style="border:1px solid #C9B280;">Aguascalientes</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Municipio</td>
+      <td style="border:1px solid #C9B280;">El Llano</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Capacidad Neta (Mwac)</td>
+      <td style="border:1px solid #C9B280;">120.00</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Correo</td>
+      <td style="border:1px solid #C9B280;">alejandros.alarcon@grupocox.com</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Horas de Almacenamiento</td>
+      <td style="border:1px solid #C9B280;">5585034600</td>
+    </tr>
+  </table>
+
+<div style="width:100%; text-align:left; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#c0c0c0;
+    margin-top:2px; font-style:italic;">© CPEL // Gerencia de Construcción // Subgerencia Técnica de Construcción</div>
+
+</div>]]></description>
+					<Point>
+						<coordinates>-102.036416,22.025235,0</coordinates>
+					</Point>
+				</Placemark>
+			</Folder>
+			<Folder>
+				<name>590 MAJOMA SOLAR</name>
+				<Placemark>
+					<name>590</name>
+					<description><![CDATA[<div style="font-family:Arial, Helvetica, sans-serif; width:400px;">
+
+  <div style="border: 3px solid #846623; background:#335955; padding:10px 10px; text-align:center;">
+    <span style="color:#e6d194; font-size:12px; letter-spacing:1px;">FICHA TÉCNICA DEL PROYECTO</span>
+    </br>
+    <span style="color:#ffffff; font-size:22px; font-weight:bold; letter-spacing:1px;">590</span>
+  </div>
+
+
+  <table cellpadding="6" cellspacing="0" style="width:100%; border-collapse:collapse; font-size:12px;">
+    
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Nombre del Proyecto</td>
+      <td style="border:1px solid #C9B280;">Majoma Solar</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Región</td>
+      <td style="border:1px solid #C9B280;">OCCIDENTAL</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Socio</td>
+      <td style="border:1px solid #C9B280;">MAJOMA SOLAR II S A P I DE CV</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Tecnología</td>
+      <td style="border:1px solid #C9B280;">FOTOVOLTAICA</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Estado</td>
+      <td style="border:1px solid #C9B280;">Zacatecas</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Municipio</td>
+      <td style="border:1px solid #C9B280;">Mazapil</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Capacidad Neta (Mwac)</td>
+      <td style="border:1px solid #C9B280;">330.00</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Correo</td>
+      <td style="border:1px solid #C9B280;">egrieger@vwys.com.mx</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Horas de Almacenamiento</td>
+      <td style="border:1px solid #C9B280;">5552581048</td>
+    </tr>
+  </table>
+
+<div style="width:100%; text-align:left; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#c0c0c0;
+    margin-top:2px; font-style:italic;">© CPEL // Gerencia de Construcción // Subgerencia Técnica de Construcción</div>
+
+</div>]]></description>
+					<Point>
+						<coordinates>-101.73221,23.865241,0</coordinates>
+					</Point>
+				</Placemark>
+			</Folder>
+			<Folder>
+				<name>142 PARQUE SOLAR CUQUÍO</name>
+				<Placemark>
+					<name>142</name>
+					<description><![CDATA[<div style="font-family:Arial, Helvetica, sans-serif; width:400px;">
+
+  <div style="border: 3px solid #846623; background:#335955; padding:10px 10px; text-align:center;">
+    <span style="color:#e6d194; font-size:12px; letter-spacing:1px;">FICHA TÉCNICA DEL PROYECTO</span>
+    </br>
+    <span style="color:#ffffff; font-size:22px; font-weight:bold; letter-spacing:1px;">142</span>
+  </div>
+
+
+  <table cellpadding="6" cellspacing="0" style="width:100%; border-collapse:collapse; font-size:12px;">
+    
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Nombre del Proyecto</td>
+      <td style="border:1px solid #C9B280;">Parque Solar Cuquío</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Región</td>
+      <td style="border:1px solid #C9B280;">OCCIDENTAL</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Socio</td>
+      <td style="border:1px solid #C9B280;">ARTURO ENERGIA S DE RL DE CV</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Tecnología</td>
+      <td style="border:1px solid #C9B280;">FOTOVOLTAICA</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Estado</td>
+      <td style="border:1px solid #C9B280;">Jalisco</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Municipio</td>
+      <td style="border:1px solid #C9B280;">Cuquío</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Capacidad Neta (Mwac)</td>
+      <td style="border:1px solid #C9B280;">80.00</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Correo</td>
+      <td style="border:1px solid #C9B280;">development@mater-energia.com.mx</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Horas de Almacenamiento</td>
+      <td style="border:1px solid #C9B280;">5517034292</td>
+    </tr>
+  </table>
+
+<div style="width:100%; text-align:left; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#c0c0c0;
+    margin-top:2px; font-style:italic;">© CPEL // Gerencia de Construcción // Subgerencia Técnica de Construcción</div>
+
+</div>]]></description>
+					<Point>
+						<coordinates>-103.051944,20.910833,0</coordinates>
+					</Point>
+				</Placemark>
+			</Folder>
+			<Folder>
+				<name>415 PARQUE SOLAR LA BARCA</name>
+				<Placemark>
+					<name>415</name>
+					<description><![CDATA[<div style="font-family:Arial, Helvetica, sans-serif; width:400px;">
+
+  <div style="border: 3px solid #846623; background:#335955; padding:10px 10px; text-align:center;">
+    <span style="color:#e6d194; font-size:12px; letter-spacing:1px;">FICHA TÉCNICA DEL PROYECTO</span>
+    </br>
+    <span style="color:#ffffff; font-size:22px; font-weight:bold; letter-spacing:1px;">415</span>
+  </div>
+
+
+  <table cellpadding="6" cellspacing="0" style="width:100%; border-collapse:collapse; font-size:12px;">
+    
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Nombre del Proyecto</td>
+      <td style="border:1px solid #C9B280;">Parque Solar La Barca</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Región</td>
+      <td style="border:1px solid #C9B280;">OCCIDENTAL</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Socio</td>
+      <td style="border:1px solid #C9B280;">HOLA ENERGIA S DE RL DE CV</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Tecnología</td>
+      <td style="border:1px solid #C9B280;">FOTOVOLTAICA</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Estado</td>
+      <td style="border:1px solid #C9B280;">Jalisco</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Municipio</td>
+      <td style="border:1px solid #C9B280;">La Barca</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Capacidad Neta (Mwac)</td>
+      <td style="border:1px solid #C9B280;">100.00</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Correo</td>
+      <td style="border:1px solid #C9B280;">development@mater-energia.com.mx</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Horas de Almacenamiento</td>
+      <td style="border:1px solid #C9B280;">5517034292</td>
+    </tr>
+  </table>
+
+<div style="width:100%; text-align:left; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#c0c0c0;
+    margin-top:2px; font-style:italic;">© CPEL // Gerencia de Construcción // Subgerencia Técnica de Construcción</div>
+
+</div>]]></description>
+					<Point>
+						<coordinates>-102.632778,20.325,0</coordinates>
+					</Point>
+				</Placemark>
+			</Folder>
+			<Folder>
+				<name>150 PARQUE SOLAR LA ENCANTADA</name>
+				<Placemark>
+					<name>150</name>
+					<description><![CDATA[<div style="font-family:Arial, Helvetica, sans-serif; width:400px;">
+
+  <div style="border: 3px solid #846623; background:#335955; padding:10px 10px; text-align:center;">
+    <span style="color:#e6d194; font-size:12px; letter-spacing:1px;">FICHA TÉCNICA DEL PROYECTO</span>
+    </br>
+    <span style="color:#ffffff; font-size:22px; font-weight:bold; letter-spacing:1px;">150</span>
+  </div>
+
+
+  <table cellpadding="6" cellspacing="0" style="width:100%; border-collapse:collapse; font-size:12px;">
+    
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Nombre del Proyecto</td>
+      <td style="border:1px solid #C9B280;">Parque Solar La Encantada</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Región</td>
+      <td style="border:1px solid #C9B280;">OCCIDENTAL</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Socio</td>
+      <td style="border:1px solid #C9B280;">TRANSFORMAES CREACION SOSTENIBLE S DE RL DE CV</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Tecnología</td>
+      <td style="border:1px solid #C9B280;">FOTOVOLTAICA</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Estado</td>
+      <td style="border:1px solid #C9B280;">Zacatecas</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Municipio</td>
+      <td style="border:1px solid #C9B280;">Fresnillo</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Capacidad Neta (Mwac)</td>
+      <td style="border:1px solid #C9B280;">75.00</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Correo</td>
+      <td style="border:1px solid #C9B280;">andres.cabrera@aes.com</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Horas de Almacenamiento</td>
+      <td style="border:1px solid #C9B280;">5521220310</td>
+    </tr>
+  </table>
+
+<div style="width:100%; text-align:left; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#c0c0c0;
+    margin-top:2px; font-style:italic;">© CPEL // Gerencia de Construcción // Subgerencia Técnica de Construcción</div>
+
+</div>]]></description>
+					<styleUrl>#failed35</styleUrl>
+					<Point>
+						<coordinates>-102.8742924985164,23.45445653969439,0</coordinates>
+					</Point>
+				</Placemark>
+			</Folder>
+			<Folder>
+				<name>198 PARQUE SOLAR LA NAVIDAD</name>
+				<Placemark>
+					<name>198</name>
+					<description><![CDATA[<div style="font-family:Arial, Helvetica, sans-serif; width:400px;">
+
+  <div style="border: 3px solid #846623; background:#335955; padding:10px 10px; text-align:center;">
+    <span style="color:#e6d194; font-size:12px; letter-spacing:1px;">FICHA TÉCNICA DEL PROYECTO</span>
+    </br>
+    <span style="color:#ffffff; font-size:22px; font-weight:bold; letter-spacing:1px;">198</span>
+  </div>
+
+
+  <table cellpadding="6" cellspacing="0" style="width:100%; border-collapse:collapse; font-size:12px;">
+    
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Nombre del Proyecto</td>
+      <td style="border:1px solid #C9B280;">Parque Solar La Navidad</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Región</td>
+      <td style="border:1px solid #C9B280;">OCCIDENTAL</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Socio</td>
+      <td style="border:1px solid #C9B280;">ALMA ENERGIA S DE RL DE CV</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Tecnología</td>
+      <td style="border:1px solid #C9B280;">FOTOVOLTAICA</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Estado</td>
+      <td style="border:1px solid #C9B280;">Guanajuato</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Municipio</td>
+      <td style="border:1px solid #C9B280;">Abasolo</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Capacidad Neta (Mwac)</td>
+      <td style="border:1px solid #C9B280;">100.00</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Correo</td>
+      <td style="border:1px solid #C9B280;">development@mater-energia.com.mx</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Horas de Almacenamiento</td>
+      <td style="border:1px solid #C9B280;">5517034292</td>
+    </tr>
+  </table>
+
+<div style="width:100%; text-align:left; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#c0c0c0;
+    margin-top:2px; font-style:italic;">© CPEL // Gerencia de Construcción // Subgerencia Técnica de Construcción</div>
+
+</div>]]></description>
+					<Point>
+						<coordinates>-101.583333,20.523611,0</coordinates>
+					</Point>
+				</Placemark>
+			</Folder>
+			<Folder>
+				<name>145 PARQUE SOLAR LAGOS EL POTRERO</name>
+				<Placemark>
+					<name>145</name>
+					<description><![CDATA[<div style="font-family:Arial, Helvetica, sans-serif; width:400px;">
+
+  <div style="border: 3px solid #846623; background:#335955; padding:10px 10px; text-align:center;">
+    <span style="color:#e6d194; font-size:12px; letter-spacing:1px;">FICHA TÉCNICA DEL PROYECTO</span>
+    </br>
+    <span style="color:#ffffff; font-size:22px; font-weight:bold; letter-spacing:1px;">145</span>
+  </div>
+
+
+  <table cellpadding="6" cellspacing="0" style="width:100%; border-collapse:collapse; font-size:12px;">
+    
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Nombre del Proyecto</td>
+      <td style="border:1px solid #C9B280;">Parque Solar Lagos El Potrero</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Región</td>
+      <td style="border:1px solid #C9B280;">OCCIDENTAL</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Socio</td>
+      <td style="border:1px solid #C9B280;">AMBRA ENERGIA S DE RL DE CV</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Tecnología</td>
+      <td style="border:1px solid #C9B280;">FOTOVOLTAICA</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Estado</td>
+      <td style="border:1px solid #C9B280;">Jalisco</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Municipio</td>
+      <td style="border:1px solid #C9B280;">Lagos De Moreno</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Capacidad Neta (Mwac)</td>
+      <td style="border:1px solid #C9B280;">150.00</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Correo</td>
+      <td style="border:1px solid #C9B280;">development@mater-energia.com.mx</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Horas de Almacenamiento</td>
+      <td style="border:1px solid #C9B280;">5559800200</td>
+    </tr>
+  </table>
+
+<div style="width:100%; text-align:left; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#c0c0c0;
+    margin-top:2px; font-style:italic;">© CPEL // Gerencia de Construcción // Subgerencia Técnica de Construcción</div>
+
+</div>]]></description>
+					<Point>
+						<coordinates>-101.874719,21.415311,0</coordinates>
+					</Point>
+				</Placemark>
+			</Folder>
+			<Folder>
+				<name>42 PARQUE SOLAR SAN CAYETANO</name>
+				<Placemark>
+					<name>42</name>
+					<description><![CDATA[<div style="font-family:Arial, Helvetica, sans-serif; width:400px;">
+
+  <div style="border: 3px solid #846623; background:#335955; padding:10px 10px; text-align:center;">
+    <span style="color:#e6d194; font-size:12px; letter-spacing:1px;">FICHA TÉCNICA DEL PROYECTO</span>
+    </br>
+    <span style="color:#ffffff; font-size:22px; font-weight:bold; letter-spacing:1px;">42</span>
+  </div>
+
+
+  <table cellpadding="6" cellspacing="0" style="width:100%; border-collapse:collapse; font-size:12px;">
+    
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Nombre del Proyecto</td>
+      <td style="border:1px solid #C9B280;">Parque Solar San Cayetano</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Región</td>
+      <td style="border:1px solid #C9B280;">OCCIDENTAL</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Socio</td>
+      <td style="border:1px solid #C9B280;">JESUS GILBERTO MARTINEZ CRODA</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Tecnología</td>
+      <td style="border:1px solid #C9B280;">FOTOVOLTAICA</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Estado</td>
+      <td style="border:1px solid #C9B280;">Jalisco</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Municipio</td>
+      <td style="border:1px solid #C9B280;">Lagos De Moreno</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Capacidad Neta (Mwac)</td>
+      <td style="border:1px solid #C9B280;">90.00</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Correo</td>
+      <td style="border:1px solid #C9B280;">gilberto.martinez@gemex.mx</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Horas de Almacenamiento</td>
+      <td style="border:1px solid #C9B280;">5565990600</td>
+    </tr>
+  </table>
+
+<div style="width:100%; text-align:left; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#c0c0c0;
+    margin-top:2px; font-style:italic;">© CPEL // Gerencia de Construcción // Subgerencia Técnica de Construcción</div>
+
+</div>]]></description>
+					<Point>
+						<coordinates>-101.961851,21.425853,0</coordinates>
+					</Point>
+				</Placemark>
+			</Folder>
+			<Folder>
+				<name>43 PROYECTO SOLAR LOS NOGALES</name>
+				<Placemark>
+					<name>43</name>
+					<description><![CDATA[<div style="font-family:Arial, Helvetica, sans-serif; width:400px;">
+
+  <div style="border: 3px solid #846623; background:#335955; padding:10px 10px; text-align:center;">
+    <span style="color:#e6d194; font-size:12px; letter-spacing:1px;">FICHA TÉCNICA DEL PROYECTO</span>
+    </br>
+    <span style="color:#ffffff; font-size:22px; font-weight:bold; letter-spacing:1px;">43</span>
+  </div>
+
+
+  <table cellpadding="6" cellspacing="0" style="width:100%; border-collapse:collapse; font-size:12px;">
+    
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Nombre del Proyecto</td>
+      <td style="border:1px solid #C9B280;">Proyecto Solar Los Nogales</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Región</td>
+      <td style="border:1px solid #C9B280;">OCCIDENTAL</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Socio</td>
+      <td style="border:1px solid #C9B280;">JESUS GILBERTO MARTINEZ CRODA</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Tecnología</td>
+      <td style="border:1px solid #C9B280;">FOTOVOLTAICA</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Estado</td>
+      <td style="border:1px solid #C9B280;">Guanajuato</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Municipio</td>
+      <td style="border:1px solid #C9B280;">San Luis De La Paz</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Capacidad Neta (Mwac)</td>
+      <td style="border:1px solid #C9B280;">64.00</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Correo</td>
+      <td style="border:1px solid #C9B280;">gilberto.martinez@gemex.mx</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Horas de Almacenamiento</td>
+      <td style="border:1px solid #C9B280;">5565990600</td>
+    </tr>
+  </table>
+
+<div style="width:100%; text-align:left; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#c0c0c0;
+    margin-top:2px; font-style:italic;">© CPEL // Gerencia de Construcción // Subgerencia Técnica de Construcción</div>
+
+</div>]]></description>
+					<Point>
+						<coordinates>-100.572145,21.308736,0</coordinates>
+					</Point>
+				</Placemark>
+			</Folder>
+			<Folder>
+				<name>456 SANTIAGO PV</name>
+				<Placemark>
+					<name>456</name>
+					<description><![CDATA[<div style="font-family:Arial, Helvetica, sans-serif; width:400px;">
+
+  <div style="border: 3px solid #846623; background:#335955; padding:10px 10px; text-align:center;">
+    <span style="color:#e6d194; font-size:12px; letter-spacing:1px;">FICHA TÉCNICA DEL PROYECTO</span>
+    </br>
+    <span style="color:#ffffff; font-size:22px; font-weight:bold; letter-spacing:1px;">456</span>
+  </div>
+
+
+  <table cellpadding="6" cellspacing="0" style="width:100%; border-collapse:collapse; font-size:12px;">
+    
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Nombre del Proyecto</td>
+      <td style="border:1px solid #C9B280;">Santiago Pv</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Región</td>
+      <td style="border:1px solid #C9B280;">OCCIDENTAL</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Socio</td>
+      <td style="border:1px solid #C9B280;">TECOLOTE RECURSOS AMBIENTALES S DE RL DE CV</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Tecnología</td>
+      <td style="border:1px solid #C9B280;">FOTOVOLTAICA</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Estado</td>
+      <td style="border:1px solid #C9B280;">Nayarit</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Municipio</td>
+      <td style="border:1px solid #C9B280;">Santiago Ixcuintla</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Capacidad Neta (Mwac)</td>
+      <td style="border:1px solid #C9B280;">60.00</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Correo</td>
+      <td style="border:1px solid #C9B280;">mfdominguez@twsolar.com</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Horas de Almacenamiento</td>
+      <td style="border:1px solid #C9B280;">5576675890</td>
+    </tr>
+  </table>
+
+<div style="width:100%; text-align:left; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#c0c0c0;
+    margin-top:2px; font-style:italic;">© CPEL // Gerencia de Construcción // Subgerencia Técnica de Construcción</div>
+
+</div>]]></description>
+					<styleUrl>#failed22</styleUrl>
+					<Point>
+						<coordinates>-105.1691408244758,21.82148622847182,0</coordinates>
+					</Point>
+				</Placemark>
+			</Folder>
+			<Folder>
+				<name>566 SOL DE ZACATECAS</name>
+				<Placemark>
+					<name>566</name>
+					<description><![CDATA[<div style="font-family:Arial, Helvetica, sans-serif; width:400px;">
+
+  <div style="border: 3px solid #846623; background:#335955; padding:10px 10px; text-align:center;">
+    <span style="color:#e6d194; font-size:12px; letter-spacing:1px;">FICHA TÉCNICA DEL PROYECTO</span>
+    </br>
+    <span style="color:#ffffff; font-size:22px; font-weight:bold; letter-spacing:1px;">566</span>
+  </div>
+
+
+  <table cellpadding="6" cellspacing="0" style="width:100%; border-collapse:collapse; font-size:12px;">
+    
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Nombre del Proyecto</td>
+      <td style="border:1px solid #C9B280;">Sol De Zacatecas</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Región</td>
+      <td style="border:1px solid #C9B280;">OCCIDENTAL</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Socio</td>
+      <td style="border:1px solid #C9B280;">INVENERGY SOLAR DEVELOPMENT MEXICO S DE RL DECV</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Tecnología</td>
+      <td style="border:1px solid #C9B280;">FOTOVOLTAICA</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Estado</td>
+      <td style="border:1px solid #C9B280;">Zacatecas</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Municipio</td>
+      <td style="border:1px solid #C9B280;">Villa De Cos</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Capacidad Neta (Mwac)</td>
+      <td style="border:1px solid #C9B280;">60.00</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Correo</td>
+      <td style="border:1px solid #C9B280;">cdelgado@invenergy.com</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Horas de Almacenamiento</td>
+      <td style="border:1px solid #C9B280;">5541708523</td>
+    </tr>
+  </table>
+
+<div style="width:100%; text-align:left; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#c0c0c0;
+    margin-top:2px; font-style:italic;">© CPEL // Gerencia de Construcción // Subgerencia Técnica de Construcción</div>
+
+</div>]]></description>
+					<Point>
+						<coordinates>-102.396925,23.215097,0</coordinates>
+					</Point>
+				</Placemark>
+			</Folder>
+			<Folder>
+				<name>518 TAI ANAHUAC SOLAR</name>
+				<Placemark>
+					<name>518</name>
+					<description><![CDATA[<div style="font-family:Arial, Helvetica, sans-serif; width:400px;">
+
+  <div style="border: 3px solid #846623; background:#335955; padding:10px 10px; text-align:center;">
+    <span style="color:#e6d194; font-size:12px; letter-spacing:1px;">FICHA TÉCNICA DEL PROYECTO</span>
+    </br>
+    <span style="color:#ffffff; font-size:22px; font-weight:bold; letter-spacing:1px;">518</span>
+  </div>
+
+
+  <table cellpadding="6" cellspacing="0" style="width:100%; border-collapse:collapse; font-size:12px;">
+    
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Nombre del Proyecto</td>
+      <td style="border:1px solid #C9B280;">Tai Anahuac Solar</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Región</td>
+      <td style="border:1px solid #C9B280;">OCCIDENTAL</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Socio</td>
+      <td style="border:1px solid #C9B280;">RAUL MARTINEZ MARTIN</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Tecnología</td>
+      <td style="border:1px solid #C9B280;">FOTOVOLTAICA</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Estado</td>
+      <td style="border:1px solid #C9B280;">Zacatecas</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Municipio</td>
+      <td style="border:1px solid #C9B280;">Concepción Del Oro</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Capacidad Neta (Mwac)</td>
+      <td style="border:1px solid #C9B280;">226.00</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Correo</td>
+      <td style="border:1px solid #C9B280;">arturo.lopez@cuasarcapital.com</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Horas de Almacenamiento</td>
+      <td style="border:1px solid #C9B280;">6181072850</td>
+    </tr>
+  </table>
+
+<div style="width:100%; text-align:left; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#c0c0c0;
+    margin-top:2px; font-style:italic;">© CPEL // Gerencia de Construcción // Subgerencia Técnica de Construcción</div>
+
+</div>]]></description>
+					<Point>
+						<coordinates>-101.311139,24.535275,0</coordinates>
+					</Point>
+				</Placemark>
+			</Folder>
+		</Folder>
+		<Folder>
+			<name>ORIENTAL</name>
+			<Folder>
+				<name>370 ALBORADA SOLAR</name>
+				<Placemark>
+					<name>370</name>
+					<description><![CDATA[<div style="font-family:Arial, Helvetica, sans-serif; width:400px;">
+
+  <div style="border: 3px solid #846623; background:#335955; padding:10px 10px; text-align:center;">
+    <span style="color:#e6d194; font-size:12px; letter-spacing:1px;">FICHA TÉCNICA DEL PROYECTO</span>
+    </br>
+    <span style="color:#ffffff; font-size:22px; font-weight:bold; letter-spacing:1px;">370</span>
+  </div>
+
+
+  <table cellpadding="6" cellspacing="0" style="width:100%; border-collapse:collapse; font-size:12px;">
+    
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Nombre del Proyecto</td>
+      <td style="border:1px solid #C9B280;">Alborada Solar</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Región</td>
+      <td style="border:1px solid #C9B280;">ORIENTAL</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Socio</td>
+      <td style="border:1px solid #C9B280;">BELLATERRA ENERGIA SA DE CV</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Tecnología</td>
+      <td style="border:1px solid #C9B280;">FOTOVOLTAICA</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Estado</td>
+      <td style="border:1px solid #C9B280;">Veracruz</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Municipio</td>
+      <td style="border:1px solid #C9B280;">Tres Valles</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Capacidad Neta (Mwac)</td>
+      <td style="border:1px solid #C9B280;">102.11</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Correo</td>
+      <td style="border:1px solid #C9B280;">eduardo.galicia@aureapartners.mx</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Horas de Almacenamiento</td>
+      <td style="border:1px solid #C9B280;">5521207979</td>
+    </tr>
+  </table>
+
+<div style="width:100%; text-align:left; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#c0c0c0;
+    margin-top:2px; font-style:italic;">© CPEL // Gerencia de Construcción // Subgerencia Técnica de Construcción</div>
+
+</div>]]></description>
+					<Point>
+						<coordinates>-96.270781,18.373494,0</coordinates>
+					</Point>
+				</Placemark>
+			</Folder>
+			<Folder>
+				<name>47 ALTEN SIETE</name>
+				<Placemark>
+					<name>47</name>
+					<description><![CDATA[<div style="font-family:Arial, Helvetica, sans-serif; width:400px;">
+
+  <div style="border: 3px solid #846623; background:#335955; padding:10px 10px; text-align:center;">
+    <span style="color:#e6d194; font-size:12px; letter-spacing:1px;">FICHA TÉCNICA DEL PROYECTO</span>
+    </br>
+    <span style="color:#ffffff; font-size:22px; font-weight:bold; letter-spacing:1px;">47</span>
+  </div>
+
+
+  <table cellpadding="6" cellspacing="0" style="width:100%; border-collapse:collapse; font-size:12px;">
+    
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Nombre del Proyecto</td>
+      <td style="border:1px solid #C9B280;">Alten Siete</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Región</td>
+      <td style="border:1px solid #C9B280;">ORIENTAL</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Socio</td>
+      <td style="border:1px solid #C9B280;">ALTEN ENERGIAS RENOVABLES MEXICO SIETE SA DECV</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Tecnología</td>
+      <td style="border:1px solid #C9B280;">FOTOVOLTAICA</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Estado</td>
+      <td style="border:1px solid #C9B280;">Puebla</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Municipio</td>
+      <td style="border:1px solid #C9B280;">Tepeyahualco</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Capacidad Neta (Mwac)</td>
+      <td style="border:1px solid #C9B280;">250.00</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Correo</td>
+      <td style="border:1px solid #C9B280;">ricardo.morales@alten-energy.com</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Horas de Almacenamiento</td>
+      <td style="border:1px solid #C9B280;">5550866916</td>
+    </tr>
+  </table>
+
+<div style="width:100%; text-align:left; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#c0c0c0;
+    margin-top:2px; font-style:italic;">© CPEL // Gerencia de Construcción // Subgerencia Técnica de Construcción</div>
+
+</div>]]></description>
+					<styleUrl>#failed18</styleUrl>
+					<Point>
+						<coordinates>-97.41069322303976,19.4410756692536,0</coordinates>
+					</Point>
+				</Placemark>
+			</Folder>
+			<Folder>
+				<name>522 AMBAR SOLAR</name>
+				<Placemark>
+					<name>522</name>
+					<description><![CDATA[<div style="font-family:Arial, Helvetica, sans-serif; width:400px;">
+
+  <div style="border: 3px solid #846623; background:#335955; padding:10px 10px; text-align:center;">
+    <span style="color:#e6d194; font-size:12px; letter-spacing:1px;">FICHA TÉCNICA DEL PROYECTO</span>
+    </br>
+    <span style="color:#ffffff; font-size:22px; font-weight:bold; letter-spacing:1px;">522</span>
+  </div>
+
+
+  <table cellpadding="6" cellspacing="0" style="width:100%; border-collapse:collapse; font-size:12px;">
+    
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Nombre del Proyecto</td>
+      <td style="border:1px solid #C9B280;">Ambar Solar</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Región</td>
+      <td style="border:1px solid #C9B280;">ORIENTAL</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Socio</td>
+      <td style="border:1px solid #C9B280;">SAN MARTI POWER SA DE CV</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Tecnología</td>
+      <td style="border:1px solid #C9B280;">FOTOVOLTAICA</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Estado</td>
+      <td style="border:1px solid #C9B280;">Veracruz</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Municipio</td>
+      <td style="border:1px solid #C9B280;">Tres Valles</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Capacidad Neta (Mwac)</td>
+      <td style="border:1px solid #C9B280;">74.70</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Correo</td>
+      <td style="border:1px solid #C9B280;">gilberto.guzman@nxbuenaenergia.com</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Horas de Almacenamiento</td>
+      <td style="border:1px solid #C9B280;">5521207979</td>
+    </tr>
+  </table>
+
+<div style="width:100%; text-align:left; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#c0c0c0;
+    margin-top:2px; font-style:italic;">© CPEL // Gerencia de Construcción // Subgerencia Técnica de Construcción</div>
+
+</div>]]></description>
+					<Point>
+						<coordinates>-96.078552,18.269581,0</coordinates>
+					</Point>
+				</Placemark>
+			</Folder>
+			<Folder>
+				<name>276 CENTRAL EÓLICA DE MÉXICO 2, S.A.P.I. DE C.V.</name>
+				<Placemark>
+					<name>276</name>
+					<description><![CDATA[<div style="font-family:Arial, Helvetica, sans-serif; width:400px;">
+
+  <div style="border: 3px solid #846623; background:#335955; padding:10px 10px; text-align:center;">
+    <span style="color:#e6d194; font-size:12px; letter-spacing:1px;">FICHA TÉCNICA DEL PROYECTO</span>
+    </br>
+    <span style="color:#ffffff; font-size:22px; font-weight:bold; letter-spacing:1px;">276</span>
+  </div>
+
+
+  <table cellpadding="6" cellspacing="0" style="width:100%; border-collapse:collapse; font-size:12px;">
+    
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Nombre del Proyecto</td>
+      <td style="border:1px solid #C9B280;">Central Eólica De México 2, S.A.P.I. De C.V.</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Región</td>
+      <td style="border:1px solid #C9B280;">ORIENTAL</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Socio</td>
+      <td style="border:1px solid #C9B280;">TERRALIA ENERGIA Y CAMPO SA DE CV</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Tecnología</td>
+      <td style="border:1px solid #C9B280;">EÓLICA</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Estado</td>
+      <td style="border:1px solid #C9B280;">Puebla</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Municipio</td>
+      <td style="border:1px solid #C9B280;">Atzitzintla</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Capacidad Neta (Mwac)</td>
+      <td style="border:1px solid #C9B280;">102.00</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Correo</td>
+      <td style="border:1px solid #C9B280;">ricardo.hurtado@gammx.com</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Horas de Almacenamiento</td>
+      <td style="border:1px solid #C9B280;">5528929251</td>
+    </tr>
+  </table>
+
+<div style="width:100%; text-align:left; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#c0c0c0;
+    margin-top:2px; font-style:italic;">© CPEL // Gerencia de Construcción // Subgerencia Técnica de Construcción</div>
+
+</div>]]></description>
+					<Point>
+						<coordinates>-97.30803899999998,18.899356,0</coordinates>
+					</Point>
+				</Placemark>
+			</Folder>
+			<Folder>
+				<name>581 CIP - HORIZONTE SOLAR</name>
+				<Placemark>
+					<name>581</name>
+					<description><![CDATA[<div style="font-family:Arial, Helvetica, sans-serif; width:400px;">
+
+  <div style="border: 3px solid #846623; background:#335955; padding:10px 10px; text-align:center;">
+    <span style="color:#e6d194; font-size:12px; letter-spacing:1px;">FICHA TÉCNICA DEL PROYECTO</span>
+    </br>
+    <span style="color:#ffffff; font-size:22px; font-weight:bold; letter-spacing:1px;">581</span>
+  </div>
+
+
+  <table cellpadding="6" cellspacing="0" style="width:100%; border-collapse:collapse; font-size:12px;">
+    
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Nombre del Proyecto</td>
+      <td style="border:1px solid #C9B280;">Cip - Horizonte Solar</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Región</td>
+      <td style="border:1px solid #C9B280;">ORIENTAL</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Socio</td>
+      <td style="border:1px solid #C9B280;">SUNSTONE POWER 1 S DE RL DE CV</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Tecnología</td>
+      <td style="border:1px solid #C9B280;">FOTOVOLTAICA</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Estado</td>
+      <td style="border:1px solid #C9B280;">Chiapas</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Municipio</td>
+      <td style="border:1px solid #C9B280;">Tapachula</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Capacidad Neta (Mwac)</td>
+      <td style="border:1px solid #C9B280;">150.00</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Correo</td>
+      <td style="border:1px solid #C9B280;">mife@cip-tt.com</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Horas de Almacenamiento</td>
+      <td style="border:1px solid #C9B280;">5510050846</td>
+    </tr>
+  </table>
+
+<div style="width:100%; text-align:left; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#c0c0c0;
+    margin-top:2px; font-style:italic;">© CPEL // Gerencia de Construcción // Subgerencia Técnica de Construcción</div>
+
+</div>]]></description>
+					<Point>
+						<coordinates>-92.35821000000001,14.822501,0</coordinates>
+					</Point>
+				</Placemark>
+			</Folder>
+			<Folder>
+				<name>595 LOS RIOS</name>
+				<Placemark>
+					<name>595</name>
+					<description><![CDATA[<div style="font-family:Arial, Helvetica, sans-serif; width:400px;">
+
+  <div style="border: 3px solid #846623; background:#335955; padding:10px 10px; text-align:center;">
+    <span style="color:#e6d194; font-size:12px; letter-spacing:1px;">FICHA TÉCNICA DEL PROYECTO</span>
+    </br>
+    <span style="color:#ffffff; font-size:22px; font-weight:bold; letter-spacing:1px;">595</span>
+  </div>
+
+
+  <table cellpadding="6" cellspacing="0" style="width:100%; border-collapse:collapse; font-size:12px;">
+    
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Nombre del Proyecto</td>
+      <td style="border:1px solid #C9B280;">Los Rios</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Región</td>
+      <td style="border:1px solid #C9B280;">ORIENTAL</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Socio</td>
+      <td style="border:1px solid #C9B280;">TERRALIA ENERGIA Y CAMPO SA DE CV</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Tecnología</td>
+      <td style="border:1px solid #C9B280;">FOTOVOLTAICA</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Estado</td>
+      <td style="border:1px solid #C9B280;">Chiapas</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Municipio</td>
+      <td style="border:1px solid #C9B280;">Palenque</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Capacidad Neta (Mwac)</td>
+      <td style="border:1px solid #C9B280;">100.00</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Correo</td>
+      <td style="border:1px solid #C9B280;">ricardo.hurtado@gammx.com</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Horas de Almacenamiento</td>
+      <td style="border:1px solid #C9B280;">5528929251</td>
+    </tr>
+  </table>
+
+<div style="width:100%; text-align:left; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#c0c0c0;
+    margin-top:2px; font-style:italic;">© CPEL // Gerencia de Construcción // Subgerencia Técnica de Construcción</div>
+
+</div>]]></description>
+					<Point>
+						<coordinates>-91.89981199999998,17.802368,0</coordinates>
+					</Point>
+				</Placemark>
+			</Folder>
+			<Folder>
+				<name>113 MALVA SOLAR</name>
+				<Placemark>
+					<name>113</name>
+					<description><![CDATA[<div style="font-family:Arial, Helvetica, sans-serif; width:400px;">
+
+  <div style="border: 3px solid #846623; background:#335955; padding:10px 10px; text-align:center;">
+    <span style="color:#e6d194; font-size:12px; letter-spacing:1px;">FICHA TÉCNICA DEL PROYECTO</span>
+    </br>
+    <span style="color:#ffffff; font-size:22px; font-weight:bold; letter-spacing:1px;">113</span>
+  </div>
+
+
+  <table cellpadding="6" cellspacing="0" style="width:100%; border-collapse:collapse; font-size:12px;">
+    
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Nombre del Proyecto</td>
+      <td style="border:1px solid #C9B280;">Malva Solar</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Región</td>
+      <td style="border:1px solid #C9B280;">ORIENTAL</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Socio</td>
+      <td style="border:1px solid #C9B280;">MALVA NEW ENERGY SA DE CV</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Tecnología</td>
+      <td style="border:1px solid #C9B280;">FOTOVOLTAICA</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Estado</td>
+      <td style="border:1px solid #C9B280;">Veracruz</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Municipio</td>
+      <td style="border:1px solid #C9B280;">Moloacán</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Capacidad Neta (Mwac)</td>
+      <td style="border:1px solid #C9B280;">100.20</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Correo</td>
+      <td style="border:1px solid #C9B280;">mamacias@progressum.es</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Horas de Almacenamiento</td>
+      <td style="border:1px solid #C9B280;">4492774217</td>
+    </tr>
+  </table>
+
+<div style="width:100%; text-align:left; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#c0c0c0;
+    margin-top:2px; font-style:italic;">© CPEL // Gerencia de Construcción // Subgerencia Técnica de Construcción</div>
+
+</div>]]></description>
+					<styleUrl>#mfailed1</styleUrl>
+					<Point>
+						<coordinates>-94.3065223558983,18.01376940025155,0</coordinates>
+					</Point>
+				</Placemark>
+			</Folder>
+			<Folder>
+				<name>555 MARIMBA SOLAR</name>
+				<Placemark>
+					<name>555</name>
+					<description><![CDATA[<div style="font-family:Arial, Helvetica, sans-serif; width:400px;">
+
+  <div style="border: 3px solid #846623; background:#335955; padding:10px 10px; text-align:center;">
+    <span style="color:#e6d194; font-size:12px; letter-spacing:1px;">FICHA TÉCNICA DEL PROYECTO</span>
+    </br>
+    <span style="color:#ffffff; font-size:22px; font-weight:bold; letter-spacing:1px;">555</span>
+  </div>
+
+
+  <table cellpadding="6" cellspacing="0" style="width:100%; border-collapse:collapse; font-size:12px;">
+    
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Nombre del Proyecto</td>
+      <td style="border:1px solid #C9B280;">Marimba Solar</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Región</td>
+      <td style="border:1px solid #C9B280;">ORIENTAL</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Socio</td>
+      <td style="border:1px solid #C9B280;">GUAYACAN INFRAESTRUCTURA SUSTENTABLE S DE RLDE CV</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Tecnología</td>
+      <td style="border:1px solid #C9B280;">FOTOVOLTAICA</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Estado</td>
+      <td style="border:1px solid #C9B280;">Veracruz</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Municipio</td>
+      <td style="border:1px solid #C9B280;">Agua Dulce</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Capacidad Neta (Mwac)</td>
+      <td style="border:1px solid #C9B280;">150.00</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Correo</td>
+      <td style="border:1px solid #C9B280;">mgonzalez@evereninvestment.com</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Horas de Almacenamiento</td>
+      <td style="border:1px solid #C9B280;">5543492011</td>
+    </tr>
+  </table>
+
+<div style="width:100%; text-align:left; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#c0c0c0;
+    margin-top:2px; font-style:italic;">© CPEL // Gerencia de Construcción // Subgerencia Técnica de Construcción</div>
+
+</div>]]></description>
+					<LookAt>
+						<longitude>-94.1858680463491</longitude>
+						<latitude>17.99201872081457</latitude>
+						<altitude>0</altitude>
+						<heading>0.0217679083568239</heading>
+						<tilt>1.198220440745954</tilt>
+						<range>1883.204854242447</range>
+						<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+					</LookAt>
+					<styleUrl>#mfailed1</styleUrl>
+					<Point>
+						<gx:drawOrder>1</gx:drawOrder>
+						<coordinates>-94.1858680463491,17.99201872081457,0</coordinates>
+					</Point>
+				</Placemark>
+			</Folder>
+			<Folder>
+				<name>300 MATRACA MAYA</name>
+				<Placemark>
+					<name>300</name>
+					<description><![CDATA[<div style="font-family:Arial, Helvetica, sans-serif; width:400px;">
+
+  <div style="border: 3px solid #846623; background:#335955; padding:10px 10px; text-align:center;">
+    <span style="color:#e6d194; font-size:12px; letter-spacing:1px;">FICHA TÉCNICA DEL PROYECTO</span>
+    </br>
+    <span style="color:#ffffff; font-size:22px; font-weight:bold; letter-spacing:1px;">300</span>
+  </div>
+
+
+  <table cellpadding="6" cellspacing="0" style="width:100%; border-collapse:collapse; font-size:12px;">
+    
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Nombre del Proyecto</td>
+      <td style="border:1px solid #C9B280;">Matraca Maya</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Región</td>
+      <td style="border:1px solid #C9B280;">ORIENTAL</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Socio</td>
+      <td style="border:1px solid #C9B280;">MATRACA MAYA SA DE CV</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Tecnología</td>
+      <td style="border:1px solid #C9B280;">FOTOVOLTAICA</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Estado</td>
+      <td style="border:1px solid #C9B280;">Puebla</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Municipio</td>
+      <td style="border:1px solid #C9B280;">San José Chiapa</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Capacidad Neta (Mwac)</td>
+      <td style="border:1px solid #C9B280;">80.00</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Correo</td>
+      <td style="border:1px solid #C9B280;">dolores@libienergy.com.mx</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Horas de Almacenamiento</td>
+      <td style="border:1px solid #C9B280;">5541437329</td>
+    </tr>
+  </table>
+
+<div style="width:100%; text-align:left; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#c0c0c0;
+    margin-top:2px; font-style:italic;">© CPEL // Gerencia de Construcción // Subgerencia Técnica de Construcción</div>
+
+</div>]]></description>
+					<Point>
+						<coordinates>-97.68173099999998,19.257253,0</coordinates>
+					</Point>
+				</Placemark>
+			</Folder>
+			<Folder>
+				<name>419 PARQUE SOLAR ÁNGEL 2</name>
+				<Placemark>
+					<name>419</name>
+					<description><![CDATA[<div style="font-family:Arial, Helvetica, sans-serif; width:400px;">
+
+  <div style="border: 3px solid #846623; background:#335955; padding:10px 10px; text-align:center;">
+    <span style="color:#e6d194; font-size:12px; letter-spacing:1px;">FICHA TÉCNICA DEL PROYECTO</span>
+    </br>
+    <span style="color:#ffffff; font-size:22px; font-weight:bold; letter-spacing:1px;">419</span>
+  </div>
+
+
+  <table cellpadding="6" cellspacing="0" style="width:100%; border-collapse:collapse; font-size:12px;">
+    
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Nombre del Proyecto</td>
+      <td style="border:1px solid #C9B280;">Parque Solar Ángel 2</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Región</td>
+      <td style="border:1px solid #C9B280;">ORIENTAL</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Socio</td>
+      <td style="border:1px solid #C9B280;">ANGEL ENERGIA S DE RL DE CV</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Tecnología</td>
+      <td style="border:1px solid #C9B280;">FOTOVOLTAICA</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Estado</td>
+      <td style="border:1px solid #C9B280;">Tlaxcala</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Municipio</td>
+      <td style="border:1px solid #C9B280;">Tlaxco</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Capacidad Neta (Mwac)</td>
+      <td style="border:1px solid #C9B280;">150.00</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Correo</td>
+      <td style="border:1px solid #C9B280;">development@mater-energia.com.mx</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Horas de Almacenamiento</td>
+      <td style="border:1px solid #C9B280;">5517034292</td>
+    </tr>
+  </table>
+
+<div style="width:100%; text-align:left; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#c0c0c0;
+    margin-top:2px; font-style:italic;">© CPEL // Gerencia de Construcción // Subgerencia Técnica de Construcción</div>
+
+</div>]]></description>
+					<styleUrl>#failed3</styleUrl>
+					<Point>
+						<coordinates>-98.35122291558636,19.59935582613006,0</coordinates>
+					</Point>
+				</Placemark>
+			</Folder>
+			<Folder>
+				<name>158 PARQUE SOLAR MIGUEL</name>
+				<Placemark>
+					<name>158</name>
+					<description><![CDATA[<div style="font-family:Arial, Helvetica, sans-serif; width:400px;">
+
+  <div style="border: 3px solid #846623; background:#335955; padding:10px 10px; text-align:center;">
+    <span style="color:#e6d194; font-size:12px; letter-spacing:1px;">FICHA TÉCNICA DEL PROYECTO</span>
+    </br>
+    <span style="color:#ffffff; font-size:22px; font-weight:bold; letter-spacing:1px;">158</span>
+  </div>
+
+
+  <table cellpadding="6" cellspacing="0" style="width:100%; border-collapse:collapse; font-size:12px;">
+    
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Nombre del Proyecto</td>
+      <td style="border:1px solid #C9B280;">Parque Solar Miguel</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Región</td>
+      <td style="border:1px solid #C9B280;">ORIENTAL</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Socio</td>
+      <td style="border:1px solid #C9B280;">TURQUESA ENERGIA S DE RL DE CV</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Tecnología</td>
+      <td style="border:1px solid #C9B280;">FOTOVOLTAICA</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Estado</td>
+      <td style="border:1px solid #C9B280;">Tlaxcala</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Municipio</td>
+      <td style="border:1px solid #C9B280;">Hueyotlipan</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Capacidad Neta (Mwac)</td>
+      <td style="border:1px solid #C9B280;">150.00</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Correo</td>
+      <td style="border:1px solid #C9B280;">development@mater-energia.com.mx</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Horas de Almacenamiento</td>
+      <td style="border:1px solid #C9B280;">5517034292</td>
+    </tr>
+  </table>
+
+<div style="width:100%; text-align:left; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#c0c0c0;
+    margin-top:2px; font-style:italic;">© CPEL // Gerencia de Construcción // Subgerencia Técnica de Construcción</div>
+
+</div>]]></description>
+					<styleUrl>#failed11</styleUrl>
+					<Point>
+						<coordinates>-98.35091314771454,19.54914707253693,0</coordinates>
+					</Point>
+				</Placemark>
+			</Folder>
+			<Folder>
+				<name>666 PFV SANTA FE II</name>
+				<Placemark>
+					<name>666</name>
+					<description><![CDATA[<div style="font-family:Arial, Helvetica, sans-serif; width:400px;">
+
+  <div style="border: 3px solid #846623; background:#335955; padding:10px 10px; text-align:center;">
+    <span style="color:#e6d194; font-size:12px; letter-spacing:1px;">FICHA TÉCNICA DEL PROYECTO</span>
+    </br>
+    <span style="color:#ffffff; font-size:22px; font-weight:bold; letter-spacing:1px;">666</span>
+  </div>
+
+
+  <table cellpadding="6" cellspacing="0" style="width:100%; border-collapse:collapse; font-size:12px;">
+    
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Nombre del Proyecto</td>
+      <td style="border:1px solid #C9B280;">Pfv Santa Fe Ii</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Región</td>
+      <td style="border:1px solid #C9B280;">ORIENTAL</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Socio</td>
+      <td style="border:1px solid #C9B280;">SE RENEWABLE DELTA SA DE CV</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Tecnología</td>
+      <td style="border:1px solid #C9B280;">FOTOVOLTAICA</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Estado</td>
+      <td style="border:1px solid #C9B280;">Veracruz</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Municipio</td>
+      <td style="border:1px solid #C9B280;">La Antigua</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Capacidad Neta (Mwac)</td>
+      <td style="border:1px solid #C9B280;">65.00</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Correo</td>
+      <td style="border:1px solid #C9B280;">pmoralejo@squarenergy.mx</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Horas de Almacenamiento</td>
+      <td style="border:1px solid #C9B280;">5516336348</td>
+    </tr>
+  </table>
+
+<div style="width:100%; text-align:left; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#c0c0c0;
+    margin-top:2px; font-style:italic;">© CPEL // Gerencia de Construcción // Subgerencia Técnica de Construcción</div>
+
+</div>]]></description>
+					<Point>
+						<coordinates>-96.32632700000002,19.246269,0</coordinates>
+					</Point>
+				</Placemark>
+			</Folder>
+			<Folder>
+				<name>378 JAROCHO SOLAR</name>
+				<Placemark>
+					<name>378</name>
+					<description><![CDATA[<div style="font-family:Arial, Helvetica, sans-serif; width:400px;">
+
+  <div style="border: 3px solid #846623; background:#335955; padding:10px 10px; text-align:center;">
+    <span style="color:#e6d194; font-size:12px; letter-spacing:1px;">FICHA TÉCNICA DEL PROYECTO</span>
+    </br>
+    <span style="color:#ffffff; font-size:22px; font-weight:bold; letter-spacing:1px;">378</span>
+  </div>
+
+
+  <table cellpadding="6" cellspacing="0" style="width:100%; border-collapse:collapse; font-size:12px;">
+    
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Nombre del Proyecto</td>
+      <td style="border:1px solid #C9B280;">Jarocho Solar</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Región</td>
+      <td style="border:1px solid #C9B280;">ORIENTAL</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Socio</td>
+      <td style="border:1px solid #C9B280;">CARCASOLA S DE RL DE CV</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Tecnología</td>
+      <td style="border:1px solid #C9B280;">FOTOVOLTAICA</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Estado</td>
+      <td style="border:1px solid #C9B280;">Veracruz</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Municipio</td>
+      <td style="border:1px solid #C9B280;">La Antigua</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Capacidad Neta (Mwac)</td>
+      <td style="border:1px solid #C9B280;">115.00</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Correo</td>
+      <td style="border:1px solid #C9B280;">mgonzalez@evereninvestment.com</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Horas de Almacenamiento</td>
+      <td style="border:1px solid #C9B280;">5543492011</td>
+    </tr>
+  </table>
+
+<div style="width:100%; text-align:left; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#c0c0c0;
+    margin-top:2px; font-style:italic;">© CPEL // Gerencia de Construcción // Subgerencia Técnica de Construcción</div>
+
+</div>]]></description>
+					<styleUrl>#mfailed</styleUrl>
+					<Point>
+						<coordinates>-96.31244183684592,19.25687347459354,0</coordinates>
+					</Point>
+				</Placemark>
+			</Folder>
+			<Folder>
+				<name>166 PROYECTO SOLAR LAS CAÑAS</name>
+				<Placemark>
+					<name>166</name>
+					<description><![CDATA[<div style="font-family:Arial, Helvetica, sans-serif; width:400px;">
+
+  <div style="border: 3px solid #846623; background:#335955; padding:10px 10px; text-align:center;">
+    <span style="color:#e6d194; font-size:12px; letter-spacing:1px;">FICHA TÉCNICA DEL PROYECTO</span>
+    </br>
+    <span style="color:#ffffff; font-size:22px; font-weight:bold; letter-spacing:1px;">166</span>
+  </div>
+
+
+  <table cellpadding="6" cellspacing="0" style="width:100%; border-collapse:collapse; font-size:12px;">
+    
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Nombre del Proyecto</td>
+      <td style="border:1px solid #C9B280;">Proyecto Solar Las Cañas</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Región</td>
+      <td style="border:1px solid #C9B280;">ORIENTAL</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Socio</td>
+      <td style="border:1px solid #C9B280;">JESUS GILBERTO MARTINEZ CRODA</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Tecnología</td>
+      <td style="border:1px solid #C9B280;">FOTOVOLTAICA</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Estado</td>
+      <td style="border:1px solid #C9B280;">Veracruz</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Municipio</td>
+      <td style="border:1px solid #C9B280;">Puente Nacional</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Capacidad Neta (Mwac)</td>
+      <td style="border:1px solid #C9B280;">80.00</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Correo</td>
+      <td style="border:1px solid #C9B280;">gilberto.martinez@gemex.mx</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Horas de Almacenamiento</td>
+      <td style="border:1px solid #C9B280;">5565990600</td>
+    </tr>
+  </table>
+
+<div style="width:100%; text-align:left; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#c0c0c0;
+    margin-top:2px; font-style:italic;">© CPEL // Gerencia de Construcción // Subgerencia Técnica de Construcción</div>
+
+</div>]]></description>
+					<styleUrl>#failed5</styleUrl>
+					<Point>
+						<coordinates>-96.51337923174106,19.34124677993353,0</coordinates>
+					</Point>
+				</Placemark>
+			</Folder>
+			<Folder>
+				<name>368 TRAPICHE SOLAR</name>
+				<Placemark>
+					<name>368</name>
+					<description><![CDATA[<div style="font-family:Arial, Helvetica, sans-serif; width:400px;">
+
+  <div style="border: 3px solid #846623; background:#335955; padding:10px 10px; text-align:center;">
+    <span style="color:#e6d194; font-size:12px; letter-spacing:1px;">FICHA TÉCNICA DEL PROYECTO</span>
+    </br>
+    <span style="color:#ffffff; font-size:22px; font-weight:bold; letter-spacing:1px;">368</span>
+  </div>
+
+
+  <table cellpadding="6" cellspacing="0" style="width:100%; border-collapse:collapse; font-size:12px;">
+    
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Nombre del Proyecto</td>
+      <td style="border:1px solid #C9B280;">Trapiche Solar</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Región</td>
+      <td style="border:1px solid #C9B280;">ORIENTAL</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Socio</td>
+      <td style="border:1px solid #C9B280;">KINEOM S DE RL DE CV</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Tecnología</td>
+      <td style="border:1px solid #C9B280;">FOTOVOLTAICA</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Estado</td>
+      <td style="border:1px solid #C9B280;">Veracruz</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Municipio</td>
+      <td style="border:1px solid #C9B280;">Soledad De Doblado</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Capacidad Neta (Mwac)</td>
+      <td style="border:1px solid #C9B280;">110.00</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Correo</td>
+      <td style="border:1px solid #C9B280;">mgonzalez@evereninvestment.com</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Horas de Almacenamiento</td>
+      <td style="border:1px solid #C9B280;">5543492011</td>
+    </tr>
+  </table>
+
+<div style="width:100%; text-align:left; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#c0c0c0;
+    margin-top:2px; font-style:italic;">© CPEL // Gerencia de Construcción // Subgerencia Técnica de Construcción</div>
+
+</div>]]></description>
+					<Point>
+						<coordinates>-96.55097199999999,19.120528,0</coordinates>
+					</Point>
+				</Placemark>
+			</Folder>
+			<Folder>
+				<name>123 PLANTA FOTOVOLTAICA CARMELA</name>
+				<Placemark>
+					<name>123</name>
+					<description><![CDATA[<div style="font-family:Arial, Helvetica, sans-serif; width:400px;">
+
+  <div style="border: 3px solid #846623; background:#335955; padding:10px 10px; text-align:center;">
+    <span style="color:#e6d194; font-size:12px; letter-spacing:1px;">FICHA TÉCNICA DEL PROYECTO</span>
+    </br>
+    <span style="color:#ffffff; font-size:22px; font-weight:bold; letter-spacing:1px;">123</span>
+  </div>
+
+
+  <table cellpadding="6" cellspacing="0" style="width:100%; border-collapse:collapse; font-size:12px;">
+    
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Nombre del Proyecto</td>
+      <td style="border:1px solid #C9B280;">Planta Fotovoltaica Carmela</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Región</td>
+      <td style="border:1px solid #C9B280;">ORIENTAL</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Socio</td>
+      <td style="border:1px solid #C9B280;">SOLARVATIO SA DE CV</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Tecnología</td>
+      <td style="border:1px solid #C9B280;">FOTOVOLTAICA</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Estado</td>
+      <td style="border:1px solid #C9B280;">Oaxaca</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Municipio</td>
+      <td style="border:1px solid #C9B280;">San Pablo Etla</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Capacidad Neta (Mwac)</td>
+      <td style="border:1px solid #C9B280;">4.04</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Correo</td>
+      <td style="border:1px solid #C9B280;">contacto@solarvatio.com</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Horas de Almacenamiento</td>
+      <td style="border:1px solid #C9B280;">9515167389</td>
+    </tr>
+  </table>
+
+<div style="width:100%; text-align:left; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#c0c0c0;
+    margin-top:2px; font-style:italic;">© CPEL // Gerencia de Construcción // Subgerencia Técnica de Construcción</div>
+
+</div>]]></description>
+					<Point>
+						<coordinates>-96.75049199999999,17.144422,0</coordinates>
+					</Point>
+				</Placemark>
+			</Folder>
+			<Folder>
+				<name>363 PS ALTAMIRANO</name>
+				<Placemark>
+					<name>363</name>
+					<description><![CDATA[<div style="font-family:Arial, Helvetica, sans-serif; width:400px;">
+
+  <div style="border: 3px solid #846623; background:#335955; padding:10px 10px; text-align:center;">
+    <span style="color:#e6d194; font-size:12px; letter-spacing:1px;">FICHA TÉCNICA DEL PROYECTO</span>
+    </br>
+    <span style="color:#ffffff; font-size:22px; font-weight:bold; letter-spacing:1px;">363</span>
+  </div>
+
+
+  <table cellpadding="6" cellspacing="0" style="width:100%; border-collapse:collapse; font-size:12px;">
+    
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Nombre del Proyecto</td>
+      <td style="border:1px solid #C9B280;">Ps Altamirano</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Región</td>
+      <td style="border:1px solid #C9B280;">ORIENTAL</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Socio</td>
+      <td style="border:1px solid #C9B280;">RHO SOLAR S DE RL DE CV</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Tecnología</td>
+      <td style="border:1px solid #C9B280;">FOTOVOLTAICA</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Estado</td>
+      <td style="border:1px solid #C9B280;">Veracruz</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Municipio</td>
+      <td style="border:1px solid #C9B280;">Manlio Fabio Altamirano</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Capacidad Neta (Mwac)</td>
+      <td style="border:1px solid #C9B280;">139.00</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Correo</td>
+      <td style="border:1px solid #C9B280;">contabilidad33@urglobal.com</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Horas de Almacenamiento</td>
+      <td style="border:1px solid #C9B280;">5563508475</td>
+    </tr>
+  </table>
+
+<div style="width:100%; text-align:left; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#c0c0c0;
+    margin-top:2px; font-style:italic;">© CPEL // Gerencia de Construcción // Subgerencia Técnica de Construcción</div>
+
+</div>]]></description>
+					<styleUrl>#failed26</styleUrl>
+					<Point>
+						<coordinates>-96.27934449468285,19.10334088357756,0</coordinates>
+					</Point>
+				</Placemark>
+			</Folder>
+			<Folder>
+				<name>623 PV ALAMO I SOLAR</name>
+				<Placemark>
+					<name>623</name>
+					<description><![CDATA[<div style="font-family:Arial, Helvetica, sans-serif; width:400px;">
+
+  <div style="border: 3px solid #846623; background:#335955; padding:10px 10px; text-align:center;">
+    <span style="color:#e6d194; font-size:12px; letter-spacing:1px;">FICHA TÉCNICA DEL PROYECTO</span>
+    </br>
+    <span style="color:#ffffff; font-size:22px; font-weight:bold; letter-spacing:1px;">623</span>
+  </div>
+
+
+  <table cellpadding="6" cellspacing="0" style="width:100%; border-collapse:collapse; font-size:12px;">
+    
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Nombre del Proyecto</td>
+      <td style="border:1px solid #C9B280;">Pv Alamo I Solar</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Región</td>
+      <td style="border:1px solid #C9B280;">ORIENTAL</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Socio</td>
+      <td style="border:1px solid #C9B280;">PV EL SOL DE SANTA CLARA SG S DE RL DE CV</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Tecnología</td>
+      <td style="border:1px solid #C9B280;">FOTOVOLTAICA</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Estado</td>
+      <td style="border:1px solid #C9B280;">Veracruz</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Municipio</td>
+      <td style="border:1px solid #C9B280;">Álamo Temapache</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Capacidad Neta (Mwac)</td>
+      <td style="border:1px solid #C9B280;">52.00</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Correo</td>
+      <td style="border:1px solid #C9B280;">elara@solarig.com</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Horas de Almacenamiento</td>
+      <td style="border:1px solid #C9B280;">5511691149</td>
+    </tr>
+  </table>
+
+<div style="width:100%; text-align:left; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#c0c0c0;
+    margin-top:2px; font-style:italic;">© CPEL // Gerencia de Construcción // Subgerencia Técnica de Construcción</div>
+
+</div>]]></description>
+					<styleUrl>#failed15</styleUrl>
+					<Point>
+						<coordinates>-97.64109920775198,20.93355697826736,0</coordinates>
+					</Point>
+				</Placemark>
+			</Folder>
+			<Folder>
+				<name>414 PV LOMA BONITA SOLAR</name>
+				<Placemark>
+					<name>414</name>
+					<description><![CDATA[<div style="font-family:Arial, Helvetica, sans-serif; width:400px;">
+
+  <div style="border: 3px solid #846623; background:#335955; padding:10px 10px; text-align:center;">
+    <span style="color:#e6d194; font-size:12px; letter-spacing:1px;">FICHA TÉCNICA DEL PROYECTO</span>
+    </br>
+    <span style="color:#ffffff; font-size:22px; font-weight:bold; letter-spacing:1px;">414</span>
+  </div>
+
+
+  <table cellpadding="6" cellspacing="0" style="width:100%; border-collapse:collapse; font-size:12px;">
+    
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Nombre del Proyecto</td>
+      <td style="border:1px solid #C9B280;">Pv Loma Bonita Solar</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Región</td>
+      <td style="border:1px solid #C9B280;">ORIENTAL</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Socio</td>
+      <td style="border:1px solid #C9B280;">PV LOMA BONITA SOLAR SG S DE RL DE CV</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Tecnología</td>
+      <td style="border:1px solid #C9B280;">FOTOVOLTAICA</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Estado</td>
+      <td style="border:1px solid #C9B280;">Oaxaca</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Municipio</td>
+      <td style="border:1px solid #C9B280;">Loma Bonita</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Capacidad Neta (Mwac)</td>
+      <td style="border:1px solid #C9B280;">67.00</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Correo</td>
+      <td style="border:1px solid #C9B280;">elara@solarig.com</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Horas de Almacenamiento</td>
+      <td style="border:1px solid #C9B280;">5511691149</td>
+    </tr>
+  </table>
+
+<div style="width:100%; text-align:left; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#c0c0c0;
+    margin-top:2px; font-style:italic;">© CPEL // Gerencia de Construcción // Subgerencia Técnica de Construcción</div>
+
+</div>]]></description>
+					<styleUrl>#mfailed0</styleUrl>
+					<Point>
+						<coordinates>-95.88831368126964,18.07915827509144,0</coordinates>
+					</Point>
+				</Placemark>
+			</Folder>
+			<Folder>
+				<name>429 PV TACANA SOLAR</name>
+				<Placemark>
+					<name>429</name>
+					<description><![CDATA[<div style="font-family:Arial, Helvetica, sans-serif; width:400px;">
+
+  <div style="border: 3px solid #846623; background:#335955; padding:10px 10px; text-align:center;">
+    <span style="color:#e6d194; font-size:12px; letter-spacing:1px;">FICHA TÉCNICA DEL PROYECTO</span>
+    </br>
+    <span style="color:#ffffff; font-size:22px; font-weight:bold; letter-spacing:1px;">429</span>
+  </div>
+
+
+  <table cellpadding="6" cellspacing="0" style="width:100%; border-collapse:collapse; font-size:12px;">
+    
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Nombre del Proyecto</td>
+      <td style="border:1px solid #C9B280;">Pv Tacana Solar</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Región</td>
+      <td style="border:1px solid #C9B280;">ORIENTAL</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Socio</td>
+      <td style="border:1px solid #C9B280;">PV TACANA SOLAR SG S DE RL DE CV</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Tecnología</td>
+      <td style="border:1px solid #C9B280;">FOTOVOLTAICA</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Estado</td>
+      <td style="border:1px solid #C9B280;">Chiapas</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Municipio</td>
+      <td style="border:1px solid #C9B280;">Tapachula</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Capacidad Neta (Mwac)</td>
+      <td style="border:1px solid #C9B280;">49.80</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Correo</td>
+      <td style="border:1px solid #C9B280;">elara@solarig.com</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Horas de Almacenamiento</td>
+      <td style="border:1px solid #C9B280;">5511691149</td>
+    </tr>
+  </table>
+
+<div style="width:100%; text-align:left; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#c0c0c0;
+    margin-top:2px; font-style:italic;">© CPEL // Gerencia de Construcción // Subgerencia Técnica de Construcción</div>
+
+</div>]]></description>
+					<styleUrl>#failed1</styleUrl>
+					<Point>
+						<coordinates>-92.35163223821519,14.85745450913274,0</coordinates>
+					</Point>
+				</Placemark>
+			</Folder>
+			<Folder>
+				<name>633 PV TECAMACHALCO SOLAR</name>
+				<Placemark>
+					<name>633</name>
+					<description><![CDATA[<div style="font-family:Arial, Helvetica, sans-serif; width:400px;">
+
+  <div style="border: 3px solid #846623; background:#335955; padding:10px 10px; text-align:center;">
+    <span style="color:#e6d194; font-size:12px; letter-spacing:1px;">FICHA TÉCNICA DEL PROYECTO</span>
+    </br>
+    <span style="color:#ffffff; font-size:22px; font-weight:bold; letter-spacing:1px;">633</span>
+  </div>
+
+
+  <table cellpadding="6" cellspacing="0" style="width:100%; border-collapse:collapse; font-size:12px;">
+    
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Nombre del Proyecto</td>
+      <td style="border:1px solid #C9B280;">Pv Tecamachalco Solar</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Región</td>
+      <td style="border:1px solid #C9B280;">ORIENTAL</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Socio</td>
+      <td style="border:1px solid #C9B280;">PV EL TINTILLO SOLAR SG S DE RL DE CV</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Tecnología</td>
+      <td style="border:1px solid #C9B280;">FOTOVOLTAICA</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Estado</td>
+      <td style="border:1px solid #C9B280;">Puebla</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Municipio</td>
+      <td style="border:1px solid #C9B280;">Tecamachalco</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Capacidad Neta (Mwac)</td>
+      <td style="border:1px solid #C9B280;">36.00</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Correo</td>
+      <td style="border:1px solid #C9B280;">elara@solarig.com</td>
+    </tr>
+    <tr style="background:#f4f1ea;">
+      <td style="border:1px solid #C9B280; font-weight:bold; color:#5c574f;">Horas de Almacenamiento</td>
+      <td style="border:1px solid #C9B280;">5511691149</td>
+    </tr>
+  </table>
+
+<div style="width:100%; text-align:left; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#c0c0c0;
+    margin-top:2px; font-style:italic;">© CPEL // Gerencia de Construcción // Subgerencia Técnica de Construcción</div>
+
+</div>]]></description>
+					<styleUrl>#failed6</styleUrl>
+					<Point>
+						<coordinates>-97.74719352093035,18.86617648011083,0</coordinates>
+					</Point>
+				</Placemark>
+			</Folder>
+		</Folder>
+		<atom:link rel="app" href="https://www.google.com/earth/about/versions/#earth-pro" title="Google Earth Pro 7.3.7.1327"></atom:link>
+	</Folder>
+</Document>
+</kml>

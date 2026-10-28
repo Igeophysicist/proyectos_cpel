@@ -1,0 +1,395 @@
+{
+  "cortes": [
+    {
+      "semana": "2026-10-25",
+      "fecha": "2026-10-27",
+      "excel": "2026-10-27T20:43:48.000Z",
+      "proyectos": {
+        "bura-energy-center-ii": {
+          "parque": 0,
+          "lt": 0,
+          "global": 0,
+          "grupo": "C"
+        },
+        "cfe-cerro-prieto": {
+          "parque": 0,
+          "lt": 0,
+          "global": 0,
+          "grupo": "C"
+        },
+        "ica-punta-colonet": {
+          "parque": 0,
+          "lt": 0,
+          "global": 0,
+          "grupo": "C"
+        },
+        "ica-san-luis-rio-colorado": {
+          "parque": 0,
+          "lt": 0,
+          "global": 0,
+          "grupo": "C"
+        },
+        "planta-solar-fotovoltaica-mesa-andrade-i": {
+          "parque": 0,
+          "lt": 0,
+          "global": 0,
+          "grupo": "C"
+        },
+        "san-felipe-solar": {
+          "parque": 0,
+          "lt": 0,
+          "global": 0,
+          "grupo": "C"
+        },
+        "insurgentes": {
+          "parque": 0,
+          "lt": 0,
+          "global": 0,
+          "grupo": "C"
+        },
+        "loreto": {
+          "parque": 0,
+          "lt": 0,
+          "global": 0,
+          "grupo": "C"
+        },
+        "loreto-energy-center": {
+          "parque": 0,
+          "lt": 0,
+          "global": 0,
+          "grupo": "C"
+        },
+        "proyecto-solar-san-jose-del-cabo": {
+          "parque": 0,
+          "lt": 0,
+          "global": 0,
+          "grupo": "C"
+        },
+        "santiago-solar": {
+          "parque": 0,
+          "lt": 0,
+          "global": 0,
+          "grupo": "C"
+        },
+        "atlacomulco": {
+          "parque": 0,
+          "lt": 0,
+          "global": 0,
+          "grupo": "C"
+        },
+        "atlacomulco-solar": {
+          "parque": 0,
+          "lt": 0,
+          "global": 0,
+          "grupo": "C"
+        },
+        "central-fv-ixtapan": {
+          "parque": 0,
+          "lt": 0,
+          "global": 0,
+          "grupo": "C"
+        },
+        "manzano": {
+          "parque": 0,
+          "lt": 0,
+          "global": 0,
+          "grupo": "C"
+        },
+        "atria-wind-farm-i": {
+          "parque": 0,
+          "lt": 0,
+          "global": 0,
+          "grupo": "C"
+        },
+        "atria-wind-farm-ii": {
+          "parque": 0,
+          "lt": 0,
+          "global": 0,
+          "grupo": "C"
+        },
+        "aurora-i": {
+          "parque": 0,
+          "lt": 0,
+          "global": 0,
+          "grupo": "C"
+        },
+        "barajas-solar": {
+          "parque": 0,
+          "lt": 0,
+          "global": 0,
+          "grupo": "C"
+        },
+        "central-fotovoltaica-horcones": {
+          "parque": 0,
+          "lt": 0,
+          "global": 0,
+          "grupo": "C"
+        },
+        "cfv-las-aguilas": {
+          "parque": 0,
+          "lt": 0,
+          "global": 0,
+          "grupo": "C"
+        },
+        "delaro": {
+          "parque": 0,
+          "lt": 0,
+          "global": 0,
+          "grupo": "C"
+        },
+        "el-gorrion": {
+          "parque": 0,
+          "lt": 0,
+          "global": 0,
+          "grupo": "C"
+        },
+        "parque-eolico-euronotus": {
+          "parque": 0,
+          "lt": 0,
+          "global": 0,
+          "grupo": "C"
+        },
+        "proyecto-eolico-sierra-madre": {
+          "parque": 0,
+          "lt": 0,
+          "global": 0,
+          "grupo": "C"
+        },
+        "pv-tamesi-solar": {
+          "parque": 0,
+          "lt": 0,
+          "global": 0,
+          "grupo": "C"
+        },
+        "santos": {
+          "parque": 0,
+          "lt": 0,
+          "global": 0,
+          "grupo": "C"
+        },
+        "acatlan-generacion": {
+          "parque": 0,
+          "lt": 0,
+          "global": 0,
+          "grupo": "C"
+        },
+        "central-fotovoltaica-mesa-redonda": {
+          "parque": 0,
+          "lt": 0,
+          "global": 0,
+          "grupo": "C"
+        },
+        "fv-el-toro": {
+          "parque": 0,
+          "lt": 0,
+          "global": 0,
+          "grupo": "C"
+        },
+        "fv-santa-fe": {
+          "parque": 0,
+          "lt": 0,
+          "global": 0,
+          "grupo": "C"
+        },
+        "fv-villa-juarez": {
+          "parque": 0,
+          "lt": 0,
+          "global": 0,
+          "grupo": "C"
+        },
+        "majoma-solar": {
+          "parque": 0,
+          "lt": 0,
+          "global": 0,
+          "grupo": "C"
+        },
+        "parque-solar-cuquio": {
+          "parque": 0,
+          "lt": 0,
+          "global": 0,
+          "grupo": "C"
+        },
+        "parque-solar-la-barca": {
+          "parque": 0,
+          "lt": 0,
+          "global": 0,
+          "grupo": "C"
+        },
+        "parque-solar-la-encantada": {
+          "parque": 0,
+          "lt": 0,
+          "global": 0,
+          "grupo": "C"
+        },
+        "parque-solar-la-navidad": {
+          "parque": 0,
+          "lt": 0,
+          "global": 0,
+          "grupo": "C"
+        },
+        "parque-solar-lagos-el-potrero": {
+          "parque": 0,
+          "lt": 0,
+          "global": 0,
+          "grupo": "C"
+        },
+        "parque-solar-san-cayetano": {
+          "parque": 0,
+          "lt": 0,
+          "global": 0,
+          "grupo": "C"
+        },
+        "proyecto-solar-los-nogales": {
+          "parque": 0,
+          "lt": 0,
+          "global": 0,
+          "grupo": "C"
+        },
+        "santiago-pv": {
+          "parque": 0,
+          "lt": 0,
+          "global": 0,
+          "grupo": "C"
+        },
+        "sol-de-zacatecas": {
+          "parque": 0,
+          "lt": 0,
+          "global": 0,
+          "grupo": "C"
+        },
+        "tai-anahuac-solar": {
+          "parque": 0,
+          "lt": 0,
+          "global": 0,
+          "grupo": "C"
+        },
+        "alborada-solar": {
+          "parque": 0,
+          "lt": 0,
+          "global": 0,
+          "grupo": "C"
+        },
+        "alten-siete": {
+          "parque": 0,
+          "lt": 0,
+          "global": 0,
+          "grupo": "C"
+        },
+        "ambar-solar": {
+          "parque": 0,
+          "lt": 0,
+          "global": 0,
+          "grupo": "C"
+        },
+        "central-eolica-de-mexico-2-sapi-de-cv": {
+          "parque": 0,
+          "lt": 0,
+          "global": 0,
+          "grupo": "C"
+        },
+        "cip-horizonte-solar": {
+          "parque": 0,
+          "lt": 0,
+          "global": 0,
+          "grupo": "C"
+        },
+        "los-rios": {
+          "parque": 0,
+          "lt": 0,
+          "global": 0,
+          "grupo": "C"
+        },
+        "malva-solar": {
+          "parque": 0,
+          "lt": 0,
+          "global": 0,
+          "grupo": "C"
+        },
+        "marimba-solar": {
+          "parque": 0,
+          "lt": 0,
+          "global": 0,
+          "grupo": "C"
+        },
+        "matraca-maya": {
+          "parque": 0,
+          "lt": 0,
+          "global": 0,
+          "grupo": "C"
+        },
+        "parque-solar-angel-2": {
+          "parque": 0,
+          "lt": 0,
+          "global": 0,
+          "grupo": "C"
+        },
+        "parque-solar-miguel": {
+          "parque": 0,
+          "lt": 0,
+          "global": 0,
+          "grupo": "C"
+        },
+        "pfv-santa-fe-ii": {
+          "parque": 0,
+          "lt": 0,
+          "global": 0,
+          "grupo": "C"
+        },
+        "jarocho-solar": {
+          "parque": 0,
+          "lt": 0,
+          "global": 0,
+          "grupo": "C"
+        },
+        "proyecto-solar-las-canas": {
+          "parque": 0,
+          "lt": 0,
+          "global": 0,
+          "grupo": "C"
+        },
+        "trapiche-solar": {
+          "parque": 0,
+          "lt": 0,
+          "global": 0,
+          "grupo": "C"
+        },
+        "planta-fotovoltaica-carmela": {
+          "parque": 0,
+          "lt": 0,
+          "global": 0,
+          "grupo": "C"
+        },
+        "ps-altamirano": {
+          "parque": 0,
+          "lt": 0,
+          "global": 0,
+          "grupo": "C"
+        },
+        "pv-alamo-i-solar": {
+          "parque": 0,
+          "lt": 0,
+          "global": 0,
+          "grupo": "C"
+        },
+        "pv-loma-bonita-solar": {
+          "parque": 0,
+          "lt": 0,
+          "global": 0,
+          "grupo": "C"
+        },
+        "pv-tacana-solar": {
+          "parque": 0,
+          "lt": 0,
+          "global": 0,
+          "grupo": "C"
+        },
+        "pv-tecamachalco-solar": {
+          "parque": 0,
+          "lt": 0,
+          "global": 0,
+          "grupo": "C"
+        }
+      }
+    }
+  ]
+}

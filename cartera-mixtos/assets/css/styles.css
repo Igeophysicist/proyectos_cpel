@@ -539,6 +539,8 @@ html.dialogo-abierto{overflow:hidden;}
 .tram-bar__val{font-size:11px; font-weight:700; color:var(--ink-700); white-space:nowrap;}
 .tram-bar--ok .tram-bar__val{color:var(--status-a);}
 .tram-bar--cero .tram-bar__val{color:var(--status-c);}
+/* Estatus del trámite (Mixtos 2da Ronda), con el color de la hoja REGLAS del Excel. */
+.tram-est{align-self:flex-start; max-width:100%; font-size:10px; font-weight:700; line-height:1.3; color:#1f2a28; background:var(--est, #e7ebea); border-radius:99px; padding:1px 7px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
 .tram-falta{font-size:11.5px; color:var(--ink-700); margin-top:8px; line-height:1.4; padding:8px 10px; border-radius:var(--radius-m); background:var(--surface-sunken);}
 .tram-list + .tram-falta{margin-top:var(--space-4);}
 .tram-falta b{color:var(--ink-900);}

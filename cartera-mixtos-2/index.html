@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="theme-color" content="#234240">
+<!-- Solo tema claro: evita que el modo oscuro automático de Chrome/Samsung Internet en Android recoloree el sitio. -->
+<meta name="color-scheme" content="only light">
+<link rel="manifest" href="../manifest.json">
+<link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png">
+<link rel="icon" href="../assets/img/apple-touch-icon.png">
+<title>Panel Mixtos 2da Ronda</title>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha384-sHL9NAb7lN7rfvG5lfHpm643Xkcjzp4jFvuavGOndn6pjVqS6ny56CAt3nsEVT4H" crossorigin="anonymous" />
+<link rel="stylesheet" href="../cartera-mixtos/assets/css/styles.css" />
+</head>
+<body data-datos="data/DATOS_MIXTOS_2.json" data-kml="data/MIXTOS_2.kml">
+  <!-- Mixtos 2da Ronda usa la misma página que Mixtos (sus scripts y estilos
+       están en ../cartera-mixtos); aquí solo cambian los datos (data-datos,
+       data-kml) y no hay presentación en PDF. Ver cartera-mixtos/README.md. -->
+
+  <!-- Aviso de carga: mientras llegan los datos, la lista muestra tarjetas
+       de relleno (abajo) y este aviso solo lo leen los lectores de pantalla.
+       Si los datos no cargan, pasa a pantalla completa con el error. -->
+  <div class="loader" id="loader" role="status">
+    <div class="loader__spin"></div>
+    <div class="loader__text" id="loader-text">Cargando proyectos y ubicaciones…</div>
+  </div>
+
+  <!-- Barra superior -->
+  <header class="topbar">
+    <div class="topbar__brand">
+      <a class="topbar__back" href="../index.html" aria-label="Volver al portal">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <div>
+        <h1 class="topbar__title">Mixtos 2da Ronda</h1>
+        <!-- "Datos al ..." = fecha de guardado del Excel (ver app.js) -->
+        <div class="topbar__subtitle" id="data-date">Seguimiento</div>
+      </div>
+    </div>
+    <div class="topbar__search">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="M21 21l-4.3-4.3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <input type="search" id="search-input" placeholder="Buscar proyecto, socio o ubicación" aria-label="Buscar proyecto, socio o ubicación">
+    </div>
+    <button class="topbar__filterbtn" id="filter-btn">
+      Filtros <span class="count" id="filter-count" style="display:none;">0</span>
+    </button>
+  </header>
+
+  <div class="app">
+    <main class="main">
+
+      <!-- Resumen: KPIs + analítica -->
+      <div class="tabgroup" id="group-resumen">
+
+        <section class="section">
+          <div class="section__head">
+            <h2 class="section__title">Ranking de proyectos prioritarios</h2>
+            <span class="section__hint" id="ranking-hint"></span>
+          </div>
+          <ul class="ranking" id="ranking"></ul>
+        </section>
+
+        
+        <!-- Una sola tarjeta: grupo de atención a la izquierda, tecnología a la derecha -->
+        <section class="section">
+          <div class="section__head">
+            <h2 class="section__title">Distribución de proyectos</h2>
+          </div>
+          <div class="chart-pair">
+            <div class="chart-pair__item">
+              <h3 class="chart-pair__title">Por grupo de atención</h3>
+              <div class="chart-wrap chart-wrap--dona"><canvas id="chart-grupo"></canvas></div>
+            </div>
+            <div class="chart-pair__item">
+              <h3 class="chart-pair__title">Por tecnología</h3>
+              <div class="chart-wrap"><canvas id="chart-tecnologia"></canvas></div>
+            </div>
+          </div>
+        </section>
+
+        
+        <div class="kpis" id="kpis"></div>
+      
+        
+
+        
+      </div>
+
+      <!-- Mapa -->
+      <div class="tabgroup" id="group-mapa">
+        <div class="map-heading">
+          <h2 class="section__title">Ubicación geográfica de proyectos</h2>
+          <span class="section__hint">Fuente: KML vinculado por ID_VUPE</span>
+        </div>
+        <!-- Marco del mapa: la leyenda y los avisos van encima del mapa. -->
+        <div class="map-frame">
+          <div id="map"></div>
+          <!-- Esquina inferior: logos institucionales (pequeños) sobre la leyenda -->
+          <div class="map-corner">
+            <div class="map-logos">
+              <img src="../assets/img/logo-cfe.png" alt="CFE" class="map-logos__img map-logos__img--cfe">
+              <img src="../assets/img/logo-cpel.png" alt="CPEL" class="map-logos__img map-logos__img--cpel">
+            </div>
+            <div class="map-legend">
+              <span><span class="dot dot--a"></span>Grupo A</span>
+              <span><span class="dot dot--b"></span>Grupo B</span>
+              <span><span class="dot dot--c"></span>Grupo C</span>
+            </div>
+          </div>
+          <div class="map-empty" id="map-empty" style="display:none;"></div>
+          <div class="map-tile-warning" id="map-tile-warning" hidden>No se pudieron cargar las imágenes del mapa (revisa tu conexión). Los proyectos siguen visibles como puntos.</div>
+        </div>
+      </div>
+
+      <!-- Listado de proyectos -->
+      <div class="tabgroup is-active" id="group-proyectos">
+        <div class="list-toolbar">
+          <span class="list-toolbar__count" id="list-count" role="status"></span>
+          <!-- Orden de las tarjetas (ver orden.js) -->
+          <label class="list-toolbar__orden">
+            <span>Ordenar por</span>
+            <select class="sortsel" id="sort-select"></select>
+          </label>
+        </div>
+        <div class="project-list" id="project-list" aria-hidden="true">
+          <div class="pcard pcard--esqueleto">
+            <span class="esq esq--titulo"></span><span class="esq esq--sub"></span><span class="esq esq--meta"></span>
+            <span class="esq esq--barra"></span><span class="esq esq--barra"></span><span class="esq esq--barra"></span>
+          </div>
+          <div class="pcard pcard--esqueleto">
+            <span class="esq esq--titulo"></span><span class="esq esq--sub"></span><span class="esq esq--meta"></span>
+            <span class="esq esq--barra"></span><span class="esq esq--barra"></span><span class="esq esq--barra"></span>
+          </div>
+          <div class="pcard pcard--esqueleto">
+            <span class="esq esq--titulo"></span><span class="esq esq--sub"></span><span class="esq esq--meta"></span>
+            <span class="esq esq--barra"></span><span class="esq esq--barra"></span><span class="esq esq--barra"></span>
+          </div>
+          <div class="pcard pcard--esqueleto">
+            <span class="esq esq--titulo"></span><span class="esq esq--sub"></span><span class="esq esq--meta"></span>
+            <span class="esq esq--barra"></span><span class="esq esq--barra"></span><span class="esq esq--barra"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Logos institucionales al final de la página (como en el portal).
+           En celular no se muestran en la pestaña Mapa (ahí van sobre la leyenda). -->
+      <footer class="brand-footer">
+        <img src="../assets/img/logo-cfe.png" alt="CFE" class="brand-footer__logo brand-footer__logo--cfe">
+        <img src="../assets/img/logo-cpel.png" alt="CPEL" class="brand-footer__logo brand-footer__logo--cpel">
+      </footer>
+    </main>
+  </div>
+
+  <!-- Barra de pestañas (solo móvil) -->
+  <!-- Íconos de la barra: misma retícula (24), trazo 1.8, puntas redondeadas y figuras centradas -->
+  <nav class="tabbar">
+    <button class="tabbar__btn is-active" data-tab="proyectos">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6.5h11M9 12h11M9 17.5h11"/><circle cx="4.5" cy="6.5" r=".6"/><circle cx="4.5" cy="12" r=".6"/><circle cx="4.5" cy="17.5" r=".6"/></svg>
+      Proyectos
+    </button>
+    <button class="tabbar__btn" data-tab="mapa">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6.5l6-2.5 6 2.5 6-2.5v13.5l-6 2.5-6-2.5-6 2.5z"/><path d="M9 4v13.5M15 6.5V20"/></svg>
+      Mapa
+    </button>
+    <button class="tabbar__btn" data-tab="resumen">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="6.5" height="6.5" rx="1.5"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="1.5"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="1.5"/><rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.5"/></svg>
+      Resumen
+    </button>
+  </nav>
+
+  <!-- Hoja de filtros -->
+  <div class="filters" id="filters" aria-hidden="true">
+    <div class="filters__scrim"></div>
+    <div class="filters__panel" role="dialog" aria-modal="true" aria-labelledby="filters-title">
+      <div class="filters__head">
+        <span class="filters__title" id="filters-title">Filtros</span>
+        <button class="filters__clear" id="filter-clear">Limpiar todo</button>
+      </div>
+      <div class="filters__body" id="filter-options"></div>
+      <div class="filters__foot">
+        <button class="filters__apply" id="filter-apply">Ver resultados</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Panel de detalle -->
+  <div class="detail" id="detail" aria-hidden="true">
+    <div class="detail__scrim"></div>
+    <div class="detail__panel" id="detail-body" role="dialog" aria-modal="true" aria-labelledby="detail-title"></div>
+  </div>
+
+  <!-- Panel: trámites y permisos de un proyecto (ver ui.js → abrirTramites) -->
+  <div class="detail detail--evolucion" id="tramites" aria-hidden="true">
+    <div class="detail__scrim" data-close-tramites></div>
+    <div class="detail__panel" id="tramites-body" role="dialog" aria-modal="true" aria-labelledby="tramites-title"></div>
+  </div>
+
+  <!-- Panel: Evolución por corte de un proyecto (ver evolucion.js) -->
+  <div class="detail detail--evolucion" id="evolucion" aria-hidden="true">
+    <div class="detail__scrim" data-close-evolucion></div>
+    <div class="detail__panel" id="evolucion-body" role="dialog" aria-modal="true" aria-labelledby="evolucion-title"></div>
+  </div>
+
+  <div class="toast" id="toast" role="status"></div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+          integrity="sha384-cxOPjt7s7Iz04uaHJceBmS+qpjv2JkIHNVcuOrM+YHwZOmJGBXI00mdUXEq65HTH" crossorigin="anonymous"></script>
+  <!-- chart.umd.js ya viene minificado en Chart.js 4.4.4 (chart.umd.min.js no
+       existe en el paquete: jsDelivr lo generaba al vuelo y no admite SRI). -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.js"
+          integrity="sha384-G436+Z2nlA8+PNoeRvWdxKbvOf8E/y+lYxqht2iBwNHTQDV5CJr3+AGVj8fGZi5t" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"
+          integrity="sha384-y49Zu59jZHJL/PLKgZPv3k2WI9c0Yp3pWB76V8OBVCb0QBKS8l4Ff3YslzHVX76Y" crossorigin="anonymous"></script>
+
+  <script src="../assets/js/shared/text-utils.js"></script>
+  <script src="../assets/js/shared/dialog.js"></script>
+  <script src="../assets/js/shared/pwa.js"></script>
+  <script src="../assets/js/shared/kml-parser.js"></script>
+  <script src="../assets/js/shared/regiones.js"></script>
+  <script src="../assets/js/shared/base-map.js"></script>
+  <script src="../assets/js/shared/trend.js"></script>
+  <script src="../assets/js/shared/progress-chart.js"></script>
+  <script src="../cartera-mixtos/assets/js/grupo.js"></script>
+  <script src="../cartera-mixtos/assets/js/tramites.js"></script>
+  <script src="../cartera-mixtos/assets/js/data.js"></script>
+  <script src="../cartera-mixtos/assets/js/map.js"></script>
+  <script src="../cartera-mixtos/assets/js/charts.js"></script>
+  <script src="../cartera-mixtos/assets/js/evolucion.js"></script>
+  <script src="../cartera-mixtos/assets/js/filters.js"></script>
+  <script src="../cartera-mixtos/assets/js/kpis.js"></script>
+  <script src="../cartera-mixtos/assets/js/ui.js"></script>
+  <script src="../cartera-mixtos/assets/js/orden.js"></script>
+  <script src="../cartera-mixtos/assets/js/url-state.js"></script>
+  <script src="../cartera-mixtos/assets/js/app.js"></script>
+</body>
+</html>

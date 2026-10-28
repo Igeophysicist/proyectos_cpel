@@ -88,12 +88,17 @@
   const fmtPct = formatPct;
   const estadoTramite = (v) => (v === null ? "" : v >= 100 ? "ok" : v <= 0 ? "cero" : "medio");
 
-  /** Avance (0–100) de un lado (Parque, LT o ambos): etiqueta y número arriba, barra abajo. */
-  function miniBarra(v, etiqueta) {
+  /**
+   * Avance (0–100) de un lado (Parque, LT o ambos): etiqueta y número
+   * arriba, barra abajo y, si el Excel lo trae (Mixtos 2da Ronda), el
+   * estatus del trámite con el color de la hoja REGLAS.
+   */
+  function miniBarra(v, etiqueta, est) {
     const pct = v === null ? 0 : Math.max(0, Math.min(v, 100));
     return `<div class="tram-bar tram-bar--${estadoTramite(v)}">
         <div class="tram-bar__info"><span class="tram-bar__tag">${esc(etiqueta)}</span><span class="tram-bar__val tabular">${fmtPct(v)}</span></div>
         <span class="tram-bar__track"><span class="tram-bar__fill" style="--pct:${pct}%"></span></span>
+        ${est ? `<span class="tram-est" style="--est:${esc(est.color)}">${esc(est.nombre)}</span>` : ""}
       </div>`;
   }
 
@@ -112,8 +117,8 @@
         grupo = t.grupo;
         const peso = conPeso ? `<span class="tram-peso" title="Peso en el avance">${t.peso}%</span>` : "";
         const barras = t.compartido
-          ? miniBarra(t.avParque, "Parque y LT")
-          : `${miniBarra(t.avParque, "Parque")}${miniBarra(t.avLt, "LT")}`;
+          ? miniBarra(t.avParque, "Parque y LT", t.estParque)
+          : `${miniBarra(t.avParque, "Parque", t.estParque)}${miniBarra(t.avLt, "LT", t.estLt)}`;
         const lados = t.compartido ? [t.avParque] : [t.avParque, t.avLt];
         const listo = lados.every((v) => v !== null && v >= 100);
         return `${encabezado}<li class="tram-card${listo ? " tram-card--ok" : ""}">
@@ -208,10 +213,13 @@
   // ------------------------------------------------------------ Detalle
   const DETAIL_FIELDS = [
     { section: "Datos generales", items: [
-      ["socio", "Socio"], ["tecnologia", "Tecnología"], ["ubicacion", "Ubicación"], ["capacidad", "Capacidad"],
+      ["socio", "Socio"], ["tecnologia", "Tecnología"], ["ubicacion", "Ubicación"], ["region", "Región"],
+      ["capacidad", "Capacidad"], ["idVupe", "ID VUPE"],
     ]},
     { section: "Almacenamiento", items: [
-      ["bess", "Almacenamiento (BESS)"], ["horasAlmacenamiento", "Horas de almacenamiento"],
+      // Mixtos: "Almacenamiento (BESS)" y horas; 2da Ronda: porcentaje, MW, horas y MWh.
+      ["bess", "Almacenamiento (BESS)"], ["bessPct", "Porcentaje BESS"], ["bessMw", "Almacenamiento BESS"],
+      ["horasAlmacenamiento", "Horas de almacenamiento"], ["energiaHoras", "Energía por horas"],
     ]},
     { section: "Programa", items: [
       ["inicioInversion", "Inicio de inversión"], ["finConstruccion", "COD"], ["firmaContrato", "Firma de contrato"],
@@ -264,6 +272,7 @@
     const LABELS = {
       prioridad: "Prioridad",
       tecnologia: "Tecnología",
+      region: "Región",
       estado: "Estado",
       socio: "Socio",
       grupo: "Grupo de atención",
@@ -316,7 +325,7 @@
         <div class="detail__title" id="tramites-title">Trámites</div>
         <div class="detail__sub">${esc(p.nombre)}</div>
       </div>
-      <div class="detail__body">${seccionTramites(p)}</div>`;
+      <div class="detail__body" tabindex="0">${seccionTramites(p)}</div>`; // tabindex: se desplaza con el teclado (no tiene botones)
     global.Dialog.open(document.getElementById("tramites"));
   }
   document.addEventListener("click", (e) => {

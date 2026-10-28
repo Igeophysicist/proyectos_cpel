@@ -105,6 +105,18 @@ test("Mixtos y sus ventanas sin problemas de accesibilidad", async ({ page, isMo
   await revisar(page, "mixtos: ficha");
 });
 
+test("Mixtos 2da Ronda: ficha y trámites con estatus sin problemas de accesibilidad", async ({ page }) => {
+  await page.goto("/cartera-mixtos-2/");
+  await mixtosCargado(page);
+  await revisar(page, "mixtos 2: listado");
+  await page.locator("#project-list .pcard").first().click();
+  await expect(page.locator("#detail")).toHaveClass(/is-open/);
+  await revisar(page, "mixtos 2: ficha");
+  await page.locator("[data-open-tramites]").click();
+  await expect(page.locator("#tramites")).toHaveClass(/is-open/);
+  await revisar(page, "mixtos 2: trámites");
+});
+
 test("con una ventana abierta, el tabulador no sale de ella", async ({ page, isMobile }) => {
   test.skip(isMobile, "teclado: basta con computadora");
   await page.goto("/cartera-mixtos/");

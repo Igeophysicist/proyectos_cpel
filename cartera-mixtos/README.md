@@ -4,6 +4,12 @@ Dashboard ejecutivo, geoespacial y responsivo (mobile-first) para el
 seguimiento de proyectos de infraestructura. Publicable directamente en
 GitHub Pages, sin build step: HTML/CSS/JS planos.
 
+> **Mixtos 2da Ronda** (`../cartera-mixtos-2/`) usa estos mismos scripts y
+> estilos con sus propios datos: un cambio aquí se ve en las dos páginas.
+> Lo que solo aplica a 2da Ronda (Región, ID VUPE, estatus de trámites)
+> aparece únicamente si el JSON trae esos campos. Ver
+> [su README](../cartera-mixtos-2/README.md).
+
 ## Por qué este rediseño
 
 La versión anterior era una tabla HTML de una sola columna con un

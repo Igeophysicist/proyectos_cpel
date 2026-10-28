@@ -6,6 +6,7 @@ Sitio estático (HTML/CSS/JS sin build step) publicado en GitHub Pages.
 |---|---|
 | `index.html` | Portal: accesos, sección "Esta semana" y colaboradores (`data/colaboradores.json`). |
 | `cartera-mixtos/` | Panel de proyectos mixtos: listado, filtros, mapa y resumen. Ver su [README](cartera-mixtos/README.md). |
+| `cartera-mixtos-2/` | Mixtos 2da Ronda: la misma página que Mixtos (usa sus scripts y estilos) con sus propios datos, filtro de Región y estatus de cada trámite. Su acceso en el portal está oculto hasta liberarla (`<template id="accesoMixtos2">` en `index.html`). Ver su [README](cartera-mixtos-2/README.md). |
 | `cartera-cpel/` | Ficha por proyecto de la cartera CPEL. Ver su [README](cartera-cpel/README.md). |
 | `cartera-anteproyectos/` | Ficha por anteproyecto (mismo diseño que Cartera CPEL). Su acceso en el portal está oculto hasta liberarla (`<template id="accesoAnteproyectos">` en `index.html`). Ver su [README](cartera-anteproyectos/README.md). |
 | `assets/js/shared/` | Módulos compartidos por las tres páginas (ver abajo). |
@@ -30,6 +31,7 @@ Los datos se siguen editando en los **Excel** de cada tablero
 (`cartera-cpel/data/datos_proyectos.xlsx`,
 `cartera-cpel/data/HITOS_CARTERA_CPEL.xlsx` (hitos de pago, ver
 `cartera-cpel/README.md`), `cartera-mixtos/data/DATOS_MIXTOS.xlsx`,
+`cartera-mixtos-2/data/DATOS_MIXTOS_2.xlsx`,
 `cartera-anteproyectos/data/datos_anteproyectos.xlsx`). Las páginas no leen el Excel:
 leen un **JSON** que se genera y **valida** automáticamente.
 
@@ -93,6 +95,24 @@ Proyectos: `name_BD` (nombre en esa hoja, solo de control) y las columnas
   10 %, INAH/PEMEX/CONAGUA/AFAC 5 % cada uno; Global = 80 % Parque + 20 % LT.
 - La Action "Datos" **avisa** si Parque, LT o Global de una fila no cuadran
   con esa ponderación (diferencia mayor a 0.05 puntos).
+
+### Trámites con estatus (Mixtos 2da Ronda)
+
+`cartera-mixtos-2/data/DATOS_MIXTOS_2.xlsx`, hoja **BASE_DE_DATOS**
+(encabezados en la fila 3; ver `scripts/mixtos2.js`): además del avance de
+cada trámite (`DI_P` … `AFAC_LT`) trae su **estatus** (`DI_P_ESTATUS` …
+`AFAC_LT_ESTATUS`), elegido de la lista de la hoja REGLAS.
+
+- Parque, LT y Global no vienen en la hoja: se calculan con los mismos
+  pesos de arriba.
+- La Action "Datos" marca **error** si un estatus no es de la lista
+  (Pendiente, En elaboración, En evaluación, Requerimiento, En
+  actualización, En dictaminación, Liberado, N/A) o si el avance no es el
+  de su estatus (0, 20, 50, 75, 75, 85, 100 y 100 %).
+- En la ventana **Trámites**, debajo de cada barra se ve el estatus con
+  el color de REGLAS (`ESTATUS` en `tramites.js`).
+- En el KML (`data/MIXTOS_2.kml`) cada punto se llama como el **ID_VUPE**
+  del proyecto; la página muestra el nombre de la columna "Proyecto".
 
 ### Presentación de seguimiento (Mixtos)
 

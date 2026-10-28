@@ -13,6 +13,8 @@
     prioridad: new Set(),
     tecnologia: new Set(),
     grupo: new Set(),
+    // Región (solo Mixtos 2da Ronda; en Mixtos no hay y no se muestra).
+    region: new Set(),
     estado: new Set(),
     socio: new Set(),
     // Año de COD (Fin de Construcción). Chip de selección múltiple, igual
@@ -33,6 +35,7 @@
     const options = {};
     const prioridad = ["P", "NoP"].filter((v) => projects.some((p) => (p.prioritario ? "P" : "NoP") === v));
     const tecnologia = uniqueValues(projects, "tecnologia");
+    const region = uniqueValues(projects, "region");
     const estado = uniqueValues(projects, "estado");
     const socio = uniqueValues(projects, "socio");
     const grupo = ["A", "B", "C"].filter((g) => projects.some((p) => p.grupo === g));
@@ -41,6 +44,7 @@
 
     if (prioridad.length > 1) options.prioridad = prioridad;
     if (tecnologia.length > 1) options.tecnologia = tecnologia;
+    if (region.length > 1) options.region = region;
     if (estado.length > 1) options.estado = estado;
     if (socio.length > 1) options.socio = socio;
     if (grupo.length) options.grupo = grupo;
@@ -65,6 +69,7 @@
     state.prioridad.clear();
     state.tecnologia.clear();
     state.grupo.clear();
+    state.region.clear();
     state.estado.clear();
     state.socio.clear();
     state.codAnio.clear();
@@ -75,6 +80,7 @@
       state.prioridad.size +
       state.tecnologia.size +
       state.grupo.size +
+      state.region.size +
       state.estado.size +
       state.socio.size +
       state.codAnio.size +
@@ -85,7 +91,7 @@
   function matchesSearch(project) {
     if (!state.search) return true;
     const haystack = normalize(
-      [project.nombre, project.socio, project.ubicacion, project.tecnologia].join(" ")
+      [project.nombre, project.socio, project.ubicacion, project.tecnologia, project.region, project.idVupe].join(" ")
     );
     return haystack.includes(state.search);
   }
@@ -96,6 +102,7 @@
       if (state.prioridad.size && !state.prioridad.has(p.prioritario ? "P" : "NoP")) return false;
       if (state.tecnologia.size && !state.tecnologia.has(p.tecnologia)) return false;
       if (state.grupo.size && !state.grupo.has(p.grupo)) return false;
+      if (state.region.size && !state.region.has(p.region)) return false;
       if (state.estado.size && !state.estado.has(p.estado)) return false;
       if (state.socio.size && !state.socio.has(p.socio)) return false;
       if (state.codAnio.size && !state.codAnio.has(p.codAnio)) return false;

@@ -245,6 +245,10 @@
       const fecha = formatDateShort(dataDate);
       if (fecha) els.dataDate.textContent = `Datos al ${fecha}`;
 
+      // Ranking de prioritarios: se oculta si la cartera aún no tiene
+      // ninguno (Mixtos 2da Ronda, todo "NoP"); aparece solo al marcar "P".
+      document.getElementById("ranking").closest(".section").hidden = !projects.some((p) => p.prioritario);
+
       const view = applyUrlState();
       render();
       els.loader.classList.add("is-hidden");
@@ -275,7 +279,7 @@
       }
       els.loader.classList.add("is-error");
       els.loaderText.textContent =
-        "No se pudieron cargar los datos. Verifica que data/DATOS_MIXTOS.json y los KML estén publicados junto a este HTML. Detalle: " +
+        `No se pudieron cargar los datos. Verifica que ${window.AppData.DATA_FILE} y los KML estén publicados junto a este HTML. Detalle: ` +
         err.message;
     }
   }
