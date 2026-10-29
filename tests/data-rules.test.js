@@ -45,6 +45,14 @@ test("Cartera: porcentaje inválido, fecha inválida e imagen faltante indican f
   assert.ok(errors.some((e) => /imagen: no existe el archivo "data\/img.jpg"/.test(e)));
 });
 
+test("Cartera: imagen subida con un espacio al inicio del nombre: el error dice cómo quedó", () => {
+  const { errors } = cartera([carteraRow({ imagen: "data/CARTERA-CPEL/CHICOASEN.jpg" })], {
+    fileExists: () => false,
+    parecido: () => "data/CARTERA-CPEL/ CHICOASEN.jpg",
+  });
+  assert.ok(errors.some((e) => /no existe el archivo "data\/CARTERA-CPEL\/CHICOASEN.jpg" \(en la carpeta está como "data\/CARTERA-CPEL\/ CHICOASEN.jpg"/.test(e)));
+});
+
 test("Cartera: columna video opcional — enlace o archivo válidos; formato, archivo faltante o de más de 25 MB son error", () => {
   assert.deepEqual(cartera([carteraRow({ video: "https://youtu.be/dQw4w9WgXcQ" })]).errors, []);
   assert.deepEqual(cartera([carteraRow({ video: "data/VIDEOS/a.mp4" })], { fileSize: () => 10 * 1024 * 1024 }).errors, []);

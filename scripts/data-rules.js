@@ -9,6 +9,8 @@
  *   placemarkNames  nombres de los Placemark de los KML del tablero
  *   fileExists(rel) para comprobar imágenes y videos (solo Cartera)
  *   fileSize(rel)   tamaño en bytes de un archivo (videos de Cartera)
+ *   parecido(rel)   nombre de un archivo que existe y solo cambia en
+ *                   espacios o mayúsculas (para sugerirlo en el error)
  * y devuelve { errors: [...], warnings: [...] } con mensajes en español
  * que indican la FILA DEL EXCEL (la 2 es el primer proyecto) y la columna.
  *
@@ -71,7 +73,12 @@ const CARTERA_REQUIRED = [
 ];
 const CARTERA_PERCENTS = ["avanceProg", "avanceReal", ...CARTERA_PARTICULARES.flatMap((k) => [`prog${k}`, `real${k}`])];
 
-function validateCartera({ headers, rows, placemarkNames = [], fileExists = () => true, fileSize = () => 0 }) {
+function validateCartera({ headers, rows, placemarkNames = [], fileExists = () => true, fileSize = () => 0, parecido = () => null }) {
+  // "no existe el archivo …", con el nombre parecido si lo hay (p. ej. subido con un espacio al inicio).
+  const noExiste = (donde, rel) => {
+    const otro = parecido(rel);
+    return `${donde}: no existe el archivo "${rel}"` + (otro ? ` (en la carpeta está como "${otro}": corrige el nombre del archivo o del Excel).` : ".");
+  };
   const errors = [];
   const warnings = [];
   checkHeaders(headers, CARTERA_REQUIRED, errors);
@@ -95,7 +102,7 @@ function validateCartera({ headers, rows, placemarkNames = [], fileExists = () =
             (/\.hei[cf]$/i.test(imagen) ? " (las fotos HEIC del iPhone no se ven en Chrome ni Android: conviértela a JPG)." : ".")
         );
       } else if (!fileExists(imagen)) {
-        errors.push(`Fila ${row} (${name}), columna imagen: no existe el archivo "${r.imagen}".`);
+        errors.push(noExiste(`Fila ${row} (${name}), columna imagen`, imagen));
       }
     }
     // Columna "video" (opcional; ver cartera-cpel/assets/js/video.js).
@@ -109,7 +116,7 @@ function validateCartera({ headers, rows, placemarkNames = [], fileExists = () =
             (/\.(mov|avi|wmv|mkv|m4v)$/i.test(video) ? " (convierte el video a MP4)." : ".")
         );
       } else if (f.origen === "archivo") {
-        if (!fileExists(video)) errors.push(`${donde}: no existe el archivo "${video}".`);
+        if (!fileExists(video)) errors.push(noExiste(donde, video));
         else if (fileSize(video) > Video.MAX_MB * 1024 * 1024) {
           errors.push(
             `${donde}: "${video}" pesa ${(fileSize(video) / 1024 / 1024).toFixed(1)} MB; el máximo es ${Video.MAX_MB} MB ` +
