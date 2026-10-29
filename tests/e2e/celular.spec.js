@@ -29,8 +29,36 @@ async function arrastrar(page, x, y1, y2) {
   await page.waitForTimeout(300); // que el navegador termine el gesto
 }
 
-/** Arrastra hacia abajo desde el encabezado de la ventana. */
+/**
+ * Espera a que la ventana esté quieta en su lugar: pegada abajo y sin
+ * moverse entre dos cuadros. En una máquina lenta (GitHub Actions) el
+ * panel puede seguir acomodándose justo después de abrir; si el dedo
+ * empieza a medio camino, el gesto no se reconoce como "deslizar para
+ * cerrar" y la prueba falla sin que la página tenga un error.
+ */
+async function ventanaQuieta(page, encabezado) {
+  await expect
+    .poll(() =>
+      page.locator(encabezado).evaluate(
+        (el) =>
+          new Promise((listo) => {
+            const panel = el.closest('[role="dialog"]') || el;
+            const a = panel.getBoundingClientRect();
+            requestAnimationFrame(() =>
+              requestAnimationFrame(() => {
+                const b = panel.getBoundingClientRect();
+                listo(a.top === b.top && a.left === b.left && Math.abs(b.bottom - window.innerHeight) <= 2);
+              })
+            );
+          })
+      )
+    )
+    .toBe(true);
+}
+
+/** Arrastra hacia abajo desde el encabezado de la ventana (ya quieta). */
 async function deslizarParaCerrar(page, encabezado, distancia = 260) {
+  await ventanaQuieta(page, encabezado);
   const r = await page.locator(encabezado).boundingBox();
   const y = r.y + Math.min(r.height / 2, 30);
   await arrastrar(page, r.x + r.width / 2, y, y + distancia);
