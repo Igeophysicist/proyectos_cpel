@@ -175,6 +175,14 @@ function buildDataset(ds) {
     rows,
     placemarkNames: ds.kml.flatMap((k) => placemarkNames(path.join(dir, k))),
     fileExists: (rel) => fs.existsSync(path.join(dir, rel)),
+    fileSize: (rel) => fs.statSync(path.join(dir, rel)).size,
+    parecido: (rel) => {
+      const carpeta = path.join(dir, path.dirname(rel));
+      const clave = (n) => n.trim().toLowerCase();
+      if (!fs.existsSync(carpeta)) return null;
+      const otro = fs.readdirSync(carpeta).find((n) => clave(n) === clave(path.basename(rel)));
+      return otro ? path.posix.join(path.dirname(rel), otro) : null;
+    },
   });
 
   const modified = wb.Props && wb.Props.ModifiedDate ? new Date(wb.Props.ModifiedDate) : null;

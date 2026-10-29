@@ -269,3 +269,49 @@ test("si los datos no cargan, el mensaje de error se ve (también desde la panta
   await page.goto("/cartera-cpel/");
   await expect(page.locator("#cartera .state-msg")).toBeVisible({ timeout: 20_000 });
 });
+
+test("video del proyecto: botón arriba a la derecha de la foto solo si tiene, y el visor se vacía al cerrar", async ({ page }) => {
+  const { cartera } = datos();
+  // Datos de prueba: el primer proyecto con un enlace de YouTube y el segundo con un MP4.
+  await page.route("**/cartera-cpel/data/datos_proyectos.json", async (route) => {
+    const json = await (await route.fetch()).json();
+    const conNombre = json.proyectos.filter((p) => String(p.nombre || "").trim());
+    json.proyectos.forEach((p) => delete p.video);
+    conNombre[0].video = "https://youtu.be/dQw4w9WgXcQ";
+    conNombre[1].video = "data/VIDEOS/prueba.mp4";
+    await route.fulfill({ json });
+  });
+  await page.route(/youtube-nocookie\.com/, (r) => r.fulfill({ contentType: "text/html", body: "<p>video</p>" }));
+  await page.route("**/data/VIDEOS/**", (r) => r.fulfill({ status: 404, body: "" }));
+
+  await page.goto(FICHA_CARTERA);
+  await listo(page);
+  const boton = page.locator("#projectVideo");
+  await expect(boton).toBeVisible();
+  // En la esquina superior derecha de la foto.
+  const foto = await page.locator(".hero-card").boundingBox();
+  const b = await boton.boundingBox();
+  expect(b.y - foto.y).toBeLessThan(20);
+  expect(foto.x + foto.width - (b.x + b.width)).toBeLessThan(20);
+
+  await boton.click();
+  await expect(page.locator("#sheetVideo")).toHaveClass(/is-open/);
+  await expect(page.locator("#videoBody iframe")).toHaveAttribute("src", "https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ?autoplay=1&rel=0");
+  await page.keyboard.press("Escape");
+  await expect(page.locator("#sheetVideo")).not.toHaveClass(/is-open/);
+  await expect(page.locator("#videoBody")).toBeEmpty(); // deja de sonar
+
+  // Segundo proyecto: archivo MP4 en un <video>.
+  await page.selectOption("#projectSelect", { index: 1 });
+  await expect(page.locator("#projectName")).toHaveText(cartera[1].nombre.trim());
+  await boton.click();
+  await expect(page.locator("#videoBody video")).toHaveAttribute("src", "data/VIDEOS/prueba.mp4");
+  await page.locator("#sheetVideo .sheet__close").click();
+  await expect(page.locator("#videoBody")).toBeEmpty();
+
+  // Sin video: sin botón.
+  if (cartera.length > 2) {
+    await page.selectOption("#projectSelect", { index: 2 });
+    await expect(boton).toBeHidden();
+  }
+});

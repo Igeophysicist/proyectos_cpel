@@ -60,6 +60,12 @@ test("Cartera y sus ventanas sin problemas de accesibilidad", async ({ page }) =
   await page.locator("#hitosCard .hitos-ver").click();
   await expect(page.locator("#sheetHitos")).toHaveClass(/is-open/);
   await revisar(page, "cartera: hitos de pago");
+  await page.keyboard.press("Escape");
+  // Video del proyecto (con un enlace de prueba; el reproductor no se descarga).
+  await page.evaluate(() => {
+    document.getElementById("projectVideo").hidden = false;
+  });
+  await revisar(page, "cartera: botón de video");
 });
 
 test("Cartera Anteproyectos y sus ventanas sin problemas de accesibilidad", async ({ page }) => {

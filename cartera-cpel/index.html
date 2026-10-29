@@ -90,6 +90,11 @@
     <!-- Encabezado del proyecto (imagen) -->
     <section class="hero-card">
       <img id="projectImg" alt="">
+      <!-- Video del proyecto (columna "video" del Excel; ver video.js). Oculto si no tiene. -->
+      <button type="button" class="hero-card__video" id="projectVideo" aria-label="Ver video del proyecto" title="Ver video" hidden>
+        <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z" fill="currentColor"/></svg>
+        <span>Video</span>
+      </button>
       <div class="hero-card__overlay">
         <span class="hero-card__tag" id="projectTech" hidden></span>
         <h1 class="hero-card__name" id="projectName">Cargando…</h1>
@@ -299,6 +304,26 @@
     </div>
   </div>
 
+  <!-- Ventana: video del proyecto (ver video.js; se vacía al cerrar para que deje de sonar) -->
+  <div class="sheet sheet--video" id="sheetVideo" aria-hidden="true">
+    <div class="sheet__scrim" data-close-sheet></div>
+    <div class="sheet__panel" role="dialog" aria-modal="true" aria-labelledby="sheetVideoTitle">
+      <div class="sheet__head">
+        <div class="sheet__title" id="sheetVideoTitle">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2.5" stroke="currentColor" stroke-width="2"/><path d="M10 9v6l5-3z" fill="currentColor"/></svg>
+          Video del proyecto
+        </div>
+        <div class="sheet__sub" data-project-name></div>
+        <button class="sheet__close" data-close-sheet aria-label="Cerrar">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+      <div class="sheet__body">
+        <div class="video-marco" id="videoBody"></div>
+      </div>
+    </div>
+  </div>
+
   <div class="sheet" id="sheetCurva" aria-hidden="true">
     <div class="sheet__scrim" data-close-sheet></div>
     <div class="sheet__panel" role="dialog" aria-modal="true" aria-labelledby="sheetCurvaTitle">
@@ -333,6 +358,7 @@
   <script src="assets/js/hitos.js"></script>
   <script src="assets/js/avance.js"></script>
   <script src="assets/js/hero.js"></script>
+  <script src="assets/js/video.js"></script>
   <script src="assets/js/vista.js"></script>
   <script src="assets/js/cartera.js"></script>
 </body>

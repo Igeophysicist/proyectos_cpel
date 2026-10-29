@@ -161,6 +161,31 @@ body.vista-cargando #vista{ display: block; }
 }
 .hero-card__loc svg{ color: var(--gold-500); flex: none; }
 .hero-card__date{ margin-top: 6px; font-size: 11.5px; color: #cfe0db; }
+/* Botón de video (video.js): pequeño, arriba a la derecha de la foto */
+.hero-card__video{
+  position: absolute; top: 10px; right: 10px; z-index: 2;
+  display: inline-flex; align-items: center; gap: 5px; height: 30px; padding: 0 11px 0 9px;
+  border: 1px solid rgba(255,255,255,.35); border-radius: 99px; cursor: pointer;
+  background: rgba(17,32,29,.62); color: #fff; font: inherit; font-size: 12px; font-weight: 700;
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+  transition: background .15s ease, transform .15s ease;
+}
+.hero-card__video[hidden]{ display: none; }
+.hero-card__video svg{ color: var(--gold-500); flex: none; }
+.hero-card__video:hover{ background: rgba(17,32,29,.8); transform: translateY(-1px); }
+.hero-card__video:focus-visible{ outline: 2px solid var(--gold-500); outline-offset: 2px; }
+/* Ventana del video: en celular y tablet solo lo alto del video (no 82 %);
+   en computadora, centrada y más ancha que las demás ventanas. */
+@media (max-width: 899px){ .sheet--video .sheet__panel{ height: auto; } }
+@media (min-width: 900px){
+  .sheet--video .sheet__panel{
+    inset: 50% auto auto 50%; transform: translate(-50%, -50%);
+    width: min(960px, calc(100vw - 64px)); max-height: calc(100vh - 48px); border-radius: var(--radius-l);
+  }
+}
+/* Visor: 16:9, ocupa el ancho de la ventana */
+.video-marco{ position: relative; width: 100%; aspect-ratio: 16 / 9; background: #000; border-radius: 10px; overflow: hidden; }
+.video-marco iframe, .video-marco video{ position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; background: #000; }
 
 /* ---------- Avance general ---------- */
 .legend{ display: flex; gap: 14px; font-size: 11.5px; font-weight: 600; color: var(--ink-700); margin-bottom: var(--space-3); }
@@ -578,6 +603,7 @@ body.modo-pdf .cartera{
 body.modo-pdf .card, body.modo-pdf .hero-card__name{ overflow-wrap: anywhere; }
 body.modo-pdf .hero-card{ grid-column: 1 / -1; height: 90px; border-radius: 8px; box-shadow: none; }
 body.modo-pdf .hero-card__overlay{ padding: 16px 12px 8px; }
+body.modo-pdf .hero-card__video{ display: none; }
 body.modo-pdf .card{ padding: 8px 10px; border-radius: 8px; box-shadow: none; break-inside: avoid; }
 body.modo-pdf .card__title{ font-size: 11.5px; margin-bottom: 5px; }
 body.modo-pdf .card__title svg{ width: 13px; height: 13px; }
