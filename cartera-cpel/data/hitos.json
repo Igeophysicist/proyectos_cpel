@@ -1,6 +1,6 @@
 {
   "fuente": "HITOS_CARTERA_CPEL.xlsx",
-  "excelModificado": "2026-10-21T16:10:00.000Z",
+  "excelModificado": "2026-10-29T23:36:46.000Z",
   "proyectos": {
     "cfv-puerto-penasco-secuencia-iii": {
       "nombre": "CFV PUERTO PEÑASCO SECUENCIA III",
@@ -246,8 +246,8 @@
               "pct": 5,
               "programada": "2026-09-21",
               "solicitud": "2026-09-21",
-              "pago": "",
-              "estatus": "transito",
+              "pago": "2026-10-26",
+              "estatus": "pagado",
               "monto": 17200000,
               "moneda": "USD"
             },
