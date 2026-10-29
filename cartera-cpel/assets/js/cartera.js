@@ -160,6 +160,7 @@
   let hitos = {}; // por proyecto (slug del nombre), de hitos.json
   let contratoHitos = 0; // pestaña abierta en "Ver todos los hitos"
   let actual = null; // proyecto mostrado (para la curva de avance)
+  let video = null; // botón y visor del video del proyecto (video.js)
   const $ = (id) => document.getElementById(id);
 
   // ---------------------------------------------------------- utilidades
@@ -250,6 +251,7 @@
     img.alt = texto(p.nombre, "");
     // Sin foto (o si no carga): fondo con el ícono de su tecnología (hero.js)
     window.CarteraHero.foto(document.querySelector(".hero-card"), img, String(p.imagen || "").trim(), p.tecnologia);
+    if (video) video.mostrar(p); // botón de video, solo si el proyecto tiene (video.js)
     $("projectName").textContent = texto(p.nombre, "Sin nombre");
     $("projectLocation").textContent = texto(p.ubicacion, "Sin ubicación");
     const tech = $("projectTech");
@@ -370,6 +372,7 @@
     });
 
     if (window.CarteraMap) window.CarteraMap.initMap("mapaProyecto");
+    if (window.CarteraVideo) video = window.CarteraVideo.instalar({ proyecto: () => actual });
 
     cargarExcel();
   });

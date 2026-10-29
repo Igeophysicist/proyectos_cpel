@@ -7,7 +7,8 @@
  *   headers         encabezados de la fila 1 del Excel
  *   rows            filas como objetos (lo mismo que verá la página)
  *   placemarkNames  nombres de los Placemark de los KML del tablero
- *   fileExists(rel) para comprobar imágenes (solo Cartera)
+ *   fileExists(rel) para comprobar imágenes y videos (solo Cartera)
+ *   fileSize(rel)   tamaño en bytes de un archivo (videos de Cartera)
  * y devuelve { errors: [...], warnings: [...] } con mensajes en español
  * que indican la FILA DEL EXCEL (la 2 es el primer proyecto) y la columna.
  *
@@ -16,6 +17,7 @@
  */
 const { normalizeText, parseNumber, parseDate, slugify } = require("../assets/js/shared/text-utils.js");
 const Tramites = require("../cartera-mixtos/assets/js/tramites.js");
+const Video = require("../cartera-cpel/assets/js/video.js");
 
 const isEmpty = (v) => v === null || v === undefined || String(v).trim() === "";
 
@@ -69,7 +71,7 @@ const CARTERA_REQUIRED = [
 ];
 const CARTERA_PERCENTS = ["avanceProg", "avanceReal", ...CARTERA_PARTICULARES.flatMap((k) => [`prog${k}`, `real${k}`])];
 
-function validateCartera({ headers, rows, placemarkNames = [], fileExists = () => true }) {
+function validateCartera({ headers, rows, placemarkNames = [], fileExists = () => true, fileSize = () => 0 }) {
   const errors = [];
   const warnings = [];
   checkHeaders(headers, CARTERA_REQUIRED, errors);
@@ -94,6 +96,26 @@ function validateCartera({ headers, rows, placemarkNames = [], fileExists = () =
         );
       } else if (!fileExists(imagen)) {
         errors.push(`Fila ${row} (${name}), columna imagen: no existe el archivo "${r.imagen}".`);
+      }
+    }
+    // Columna "video" (opcional; ver cartera-cpel/assets/js/video.js).
+    if (!isEmpty(r.video)) {
+      const video = String(r.video).trim();
+      const f = Video.fuente(video);
+      const donde = `Fila ${row} (${name}), columna video`;
+      if (!f) {
+        errors.push(
+          `${donde}: "${video}" no es un enlace de YouTube, Vimeo o Google Drive, ni un archivo MP4/WebM` +
+            (/\.(mov|avi|wmv|mkv|m4v)$/i.test(video) ? " (convierte el video a MP4)." : ".")
+        );
+      } else if (f.origen === "archivo") {
+        if (!fileExists(video)) errors.push(`${donde}: no existe el archivo "${video}".`);
+        else if (fileSize(video) > Video.MAX_MB * 1024 * 1024) {
+          errors.push(
+            `${donde}: "${video}" pesa ${(fileSize(video) / 1024 / 1024).toFixed(1)} MB; el máximo es ${Video.MAX_MB} MB ` +
+              "(límite de Cloudflare). Comprímelo o súbelo a YouTube o Google Drive y pon el enlace."
+          );
+        }
       }
     }
     if (!geo.has(normalizeText(name))) {

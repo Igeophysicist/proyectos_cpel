@@ -175,6 +175,7 @@ function buildDataset(ds) {
     rows,
     placemarkNames: ds.kml.flatMap((k) => placemarkNames(path.join(dir, k))),
     fileExists: (rel) => fs.existsSync(path.join(dir, rel)),
+    fileSize: (rel) => fs.statSync(path.join(dir, rel)).size,
   });
 
   const modified = wb.Props && wb.Props.ModifiedDate ? new Date(wb.Props.ModifiedDate) : null;
