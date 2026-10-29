@@ -64,6 +64,11 @@ test("Cartera: columna video opcional — enlace o archivo válidos; formato, ar
   assert.ok(pesado.some((e) => /pesa 40.0 MB; el máximo es 25 MB/.test(e)));
 });
 
+test("Cartera: avance financiero (avanfinProg/avanfinReal) se valida como porcentaje", () => {
+  assert.deepEqual(cartera([carteraRow({ avanfinProg: 53, avanfinReal: "40%" })]).errors, []);
+  assert.ok(cartera([carteraRow({ avanfinReal: 140 })]).errors.some((e) => /avanfinReal: 140 está fuera del rango/.test(e)));
+});
+
 test("Cartera: proyecto repetido es error y sin KML es solo aviso", () => {
   const { errors, warnings } = cartera([carteraRow(), carteraRow({ nombre: "PH Chicoasen II" }), carteraRow({ nombre: "NUEVO" })]);
   assert.ok(errors.some((e) => /Fila 3: el proyecto "PH Chicoasen II" se repite \(igual que la fila 2\)/.test(e)));

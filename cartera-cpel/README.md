@@ -41,7 +41,8 @@ del Excel al sitio" en el README de la raíz).
 | `nombre`, `tecnologia`, `ubicacion` | Encabezado. `nombre` debe coincidir con el `<name>` del Placemark en `CARTERA-CPEL.kml` para que aparezca en el mapa (sin importar acentos ni mayúsculas). |
 | `imagen` | Ruta de la imagen, p. ej. `data/CARTERA-CPEL/AMATA.jpg` (JPG o PNG). Se puede subir pesada: la Action "Datos" la reduce a 1200 px y le quita los metadatos (ver "Imágenes de Cartera CPEL" en el README de la raíz). |
 | `video` (opcional) | Video del proyecto: botón "Video" arriba a la derecha de la foto, que abre el visor (`assets/js/video.js`). Acepta un enlace de **YouTube**, **Vimeo** o **Google Drive** (compartido con quien lo vea) o un archivo **MP4/WebM** subido al repositorio, p. ej. `data/VIDEOS/AMATA.mp4` (máximo 25 MB, límite de Cloudflare; si pesa más, súbelo a YouTube o Drive). Vacío = sin botón. La Action "Datos" marca error si el enlace o el formato no sirven, si el archivo no existe o si pesa más de 25 MB. |
-| `avanceProg`, `avanceReal` | Avance general (número o `"30.5%"`). |
+| `avanceProg`, `avanceReal` | Avance general físico (número o `"30.5%"`). |
+| `avanfinProg`, `avanfinReal` (opcionales) | Avance financiero programado y real. Con ellos, la tarjeta "Avance General" se divide: **Físico** a la izquierda y **Financiero** a la derecha, cada uno con barras, semáforo y cambio desde el corte anterior (el del financiero aparece a partir del segundo corte que lo tenga). Sin ellos, solo el físico a todo lo ancho. |
 | `prog<X>`, `real<X>` | Avances particulares (`Ing`, `Sum`, `Cons`, `Pps`). Ver `PARTICULARES` en `cartera.js`. |
 | `hitoN_*` | Ya no se usan: los hitos salen de `HITOS_CARTERA_CPEL.xlsx` (abajo). Se pueden borrar del Excel. |
 | `eventos_importantes` | Texto libre. |

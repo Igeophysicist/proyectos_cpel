@@ -8,6 +8,9 @@
  *      ámbar ("leve")  atraso menor a ATRASO_LEVE pts,
  *      rojo ("grave")  atraso de ATRASO_LEVE pts o más.
  *  - Cambio del Real desde el corte semanal anterior (data/historial.json).
+ *  - En Cartera CPEL, la tarjeta se divide en Avance físico (izquierda) y
+ *    Avance financiero (derecha), cada uno con generalHtml en modo
+ *    "compacto" (texto del semáforo corto y el cambio semanal en su renglón).
  *
  * Las funciones puras se prueban en tests/avance.test.js.
  *
@@ -29,22 +32,27 @@
     return -diff < ATRASO_LEVE ? "leve" : "grave";
   }
 
-  /** Texto de la diferencia: "Atraso de 2.93 pts respecto al programa", etc. */
-  function textoDiferencia(diff) {
-    if (diff > 0) return `Adelantado ${formatPts(diff)} pts respecto al programa`;
-    if (diff < 0) return `Atraso de ${formatPts(diff)} pts respecto al programa`;
-    return "Al día respecto al programa";
+  /**
+   * Texto de la diferencia: "Atraso de 2.93 pts respecto al programa", etc.
+   * Compacto (media tarjeta): "Atraso de 2.93 pts".
+   */
+  function textoDiferencia(diff, compacto = false) {
+    const resto = compacto ? "" : " respecto al programa";
+    if (diff > 0) return `Adelantado ${formatPts(diff)} pts${resto}`;
+    if (diff < 0) return `Atraso de ${formatPts(diff)} pts${resto}`;
+    return compacto ? "Al día" : "Al día respecto al programa";
   }
 
   /**
-   * Cambio del Real entre los dos últimos cortes que tienen dato del
-   * proyecto: { diff, desde: "AAAA-MM-DD" } o null si hay menos de dos.
+   * Cambio del Real (o del campo dado, p. ej. "finReal") entre los dos
+   * últimos cortes que tienen dato del proyecto: { diff, desde:
+   * "AAAA-MM-DD" } o null si hay menos de dos.
    */
-  function cambioSemanal(cortes, slug) {
-    const con = (cortes || []).filter((c) => c.proyectos && c.proyectos[slug] && num(c.proyectos[slug].real) !== null);
+  function cambioSemanal(cortes, slug, campo = "real") {
+    const con = (cortes || []).filter((c) => c.proyectos && c.proyectos[slug] && num(c.proyectos[slug][campo]) !== null);
     if (con.length < 2) return null;
     const [antes, ahora] = con.slice(-2);
-    return { diff: r2(ahora.proyectos[slug].real - antes.proyectos[slug].real), desde: antes.fecha };
+    return { diff: r2(ahora.proyectos[slug][campo] - antes.proyectos[slug][campo]), desde: antes.fecha };
   }
 
   /** Barra de un avance (lado "prog" o "real"), acotada a 0–100. */
@@ -54,9 +62,10 @@
   /**
    * Avance General: Programado y Real con sus barras y el semáforo.
    * pendiente = el Programado aún no se captura ("—" y sin semáforo).
-   * El cambio semanal se pinta después en [data-semana], junto a "Real".
+   * El cambio semanal se pinta después en [data-semana], junto a "Real"
+   * (compacto: en su propio renglón, debajo de la barra del Real).
    */
-  function generalHtml(real, prog, { pendiente = false } = {}) {
+  function generalHtml(real, prog, { pendiente = false, compacto = false } = {}) {
     const r = num(real);
     const p = pendiente ? null : num(prog);
     const diff = r !== null && p !== null ? r2(r - p) : null;
@@ -65,17 +74,18 @@
     const pie = sinIniciar(r, p)
       ? `<div class="variance variance--sin">Sin iniciar</div>`
       : sem
-        ? `<div class="variance variance--${sem}">${textoDiferencia(diff)}</div>`
+        ? `<div class="variance variance--${sem}">${textoDiferencia(diff, compacto)}</div>`
         : "";
     const fila = (lado, etiqueta, v, extra = "") => `
         <div class="progress-row progress-row--${lado}">
           <div class="progress-row__info"><span>${etiqueta}${extra}</span><span>${formatPct(v)}</span></div>
           ${barra(lado, v)}
         </div>`;
+    const semana = `<span class="avg__semana" data-semana hidden></span>`;
     return `
       <div class="progress-stack">
         ${fila("prog", "Programado", p)}
-        ${fila("real", "Real", r, ` <span class="avg__semana" data-semana hidden></span>`)}
+        ${compacto ? fila("real", "Real", r) + `<div class="avg__semana-fila">${semana}</div>` : fila("real", "Real", r, " " + semana)}
       </div>
       ${pie}`;
   }
@@ -122,11 +132,11 @@
    * historial tiene dos cortes del proyecto. "vigente()" dice si el
    * proyecto sigue en pantalla cuando llega el historial.
    */
-  function pintarSemana(contenedor, historialPromise, slug, vigente = () => true) {
+  function pintarSemana(contenedor, historialPromise, slug, vigente = () => true, campo = "real") {
     if (!historialPromise) return;
     historialPromise.then(({ cortes = [] } = {}) => {
       const el = contenedor && contenedor.querySelector("[data-semana]");
-      const c = cambioSemanal(cortes, slug);
+      const c = cambioSemanal(cortes, slug, campo);
       if (!el || !c || !vigente()) return;
       const [, m, d] = c.desde.split("-").map(Number);
       const fecha = new Date(2000, m - 1, d).toLocaleDateString("es-MX", { day: "numeric", month: "short" }).replace(/\./g, "");

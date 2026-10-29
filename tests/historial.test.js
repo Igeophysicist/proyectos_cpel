@@ -45,6 +45,10 @@ test("snapshotCartera toma prog/real por proyecto (con % o vacío)", () => {
     { nombre: "" },
   ]);
   assert.deepEqual(snap, { "ph-chicoasen-ii": { prog: 49.7, real: 49.7 }, nuevo: { prog: null, real: null } });
+  // Con avance financiero en el Excel, también finProg/finReal.
+  assert.deepEqual(snapshotCartera([{ nombre: "A", avanceProg: 10, avanceReal: 9, avanfinProg: 53, avanfinReal: "40%" }]), {
+    a: { prog: 10, real: 9, finProg: 53, finReal: 40 },
+  });
 });
 
 test("snapshotMixtos usa TÍTULO 2 o TÍTULO 1 y el grupo sale de Parque (no de la columna)", () => {

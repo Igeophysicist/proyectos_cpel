@@ -120,13 +120,27 @@ test("Avance General: Programado y Real, semáforo y cambio desde el corte anter
   const prog = n(p.avanceProg);
   await page.goto(`/cartera-cpel/?proyecto=${slugify(p.nombre)}`);
   await listo(page);
-  const general = page.locator("#generalBody");
-  await expect(general.locator(".progress-row--real .progress-row__info > span").last()).toHaveText(`${real.toFixed(2)}%`);
-  await expect(general.locator(".progress-row--prog .progress-row__info > span").last()).toHaveText(`${prog.toFixed(2)}%`);
-  const sem = A.semaforo(Math.round((real - prog) * 100) / 100);
-  await expect(general.locator(".variance")).toHaveClass(new RegExp(`variance--${sem}`));
-  const cambio = A.cambioSemanal(carteraHistorial, slugify(p.nombre));
-  if (cambio) await expect(general.locator(".avg__semana")).toContainText(`${Math.abs(cambio.diff).toFixed(2)} desde el`);
+  // Con avance financiero en el Excel, la tarjeta se divide: Físico | Financiero.
+  const conFin = p.avanfinReal !== undefined && p.avanfinReal !== "";
+  const mitad = (cual) => page.locator(conFin ? `#generalBody [data-avance="${cual}"]` : "#generalBody");
+  const revisar = async (cual, real, prog, campo) => {
+    const general = mitad(cual);
+    await expect(general.locator(".progress-row--real .progress-row__info > span").last()).toHaveText(`${real.toFixed(2)}%`);
+    await expect(general.locator(".progress-row--prog .progress-row__info > span").last()).toHaveText(`${prog.toFixed(2)}%`);
+    const sem = A.semaforo(Math.round((real - prog) * 100) / 100);
+    if (sem) await expect(general.locator(".variance")).toHaveClass(new RegExp(`variance--${sem}`));
+    const cambio = A.cambioSemanal(carteraHistorial, slugify(p.nombre), campo);
+    if (cambio) await expect(general.locator(".avg__semana")).toContainText(`${Math.abs(cambio.diff).toFixed(2)} desde el`);
+  };
+  await revisar("fisico", real, prog, "real");
+  if (conFin) {
+    await expect(page.locator("#generalBody .avance-mitad__titulo")).toHaveText(["Físico", "Financiero"]);
+    await revisar("financiero", n(p.avanfinReal), n(p.avanfinProg), "finReal");
+    // Izquierda y derecha, a la misma altura
+    const [f, fin] = [await mitad("fisico").boundingBox(), await mitad("financiero").boundingBox()];
+    expect(fin.x).toBeGreaterThan(f.x + f.width - 1);
+    expect(Math.abs(fin.y - f.y)).toBeLessThan(2);
+  }
   // Avances particulares: P y R por área
   await expect(page.locator("#particularGrid .particular .mini-row")).toHaveCount(8);
 });
@@ -194,7 +208,9 @@ test("mientras cargan los datos se ven tarjetas de relleno (no barras en 0 %)", 
   soltar();
   await listo(page);
   await expect(page.locator("#cartera .esq")).toHaveCount(0);
-  await expect(page.locator("#generalBody .progress-row")).toHaveCount(2);
+  // Programado y Real; con avance financiero, también los suyos (Físico | Financiero)
+  const conFin = String(datos().cartera[0].avanfinReal ?? "") !== "";
+  await expect(page.locator("#generalBody .progress-row")).toHaveCount(conFin ? 4 : 2);
 });
 
 test("proyecto sin foto (o que no carga): fondo con el ícono de su tecnología", async ({ page }) => {

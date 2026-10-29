@@ -216,6 +216,20 @@ body.vista-cargando #vista{ display: block; }
 .variance--grave{ background: var(--status-c-bg, #fbe9e9); color: #b83b3b; }
 .variance--sin{ background: var(--surface-sunken); color: var(--ink-500); }
 
+/* Avance general dividido: Físico | Financiero (cartera.js). Cada mitad
+   con su Programado, Real, semáforo y cambio semanal. */
+.avance-doble{ display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+/* Cada mitad en columna: el semáforo va hasta abajo, así los dos quedan alineados
+   aunque solo uno tenga el renglón del cambio semanal. */
+.avance-mitad{ min-width: 0; display: flex; flex-direction: column; }
+.avance-mitad > .variance{ align-self: flex-start; margin-top: auto; }
+.avance-mitad > .progress-stack{ margin-bottom: 10px; }
+.avance-mitad + .avance-mitad{ border-left: 1px solid var(--border); padding-left: var(--space-3); margin-left: var(--space-3); }
+.avance-mitad__titulo{ font-size: 11px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-500); margin: 0 0 6px; }
+.avance-mitad .variance{ white-space: nowrap; }
+.avg__semana-fila{ margin-top: -4px; line-height: 1.2; }
+.avg__semana-fila .avg__semana{ margin-left: 0; font-size: 11px; }
+
 /* Cambio del Real desde el corte anterior, junto a "Real" (avance.js) */
 .avg__semana{ margin-left: 6px; font-size: 11.5px; font-weight: 700; }
 .avg__semana--sube{ color: #1e7a52; }
