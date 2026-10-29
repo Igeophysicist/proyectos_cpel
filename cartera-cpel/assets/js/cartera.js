@@ -259,12 +259,34 @@
     tech.hidden = !String(p.tecnologia || "").trim();
     document.querySelectorAll("[data-project-name]").forEach((el) => (el.textContent = texto(p.nombre, "")));
 
-    // Avance general: Real con la marca del Programado, semáforo y cambio
-    // desde el corte anterior (ver avance.js)
+    // Avance general: físico (avanceProg/avanceReal) a la izquierda y
+    // financiero (avanfinProg/avanfinReal) a la derecha, cada uno con
+    // Programado, Real, semáforo y cambio desde el corte anterior (ver
+    // avance.js). Sin datos financieros, solo el físico a todo lo ancho.
     const A = window.CarteraAvance;
-    $("generalBody").innerHTML = A.generalHtml(pct(p.avanceReal), pct(p.avanceProg));
     const historial = window.CarteraCurva ? window.CarteraCurva.cargar() : null;
-    A.pintarSemana($("generalBody"), historial, slugify(p.nombre), () => actual === p);
+    const vigente = () => actual === p;
+    const finReal = pct(p.avanfinReal);
+    const finProg = pct(p.avanfinProg);
+    if (finReal === null && finProg === null) {
+      $("generalBody").innerHTML = A.generalHtml(pct(p.avanceReal), pct(p.avanceProg));
+      A.pintarSemana($("generalBody"), historial, slugify(p.nombre), vigente);
+    } else {
+      $("generalBody").innerHTML = `
+        <div class="avance-doble">
+          <div class="avance-mitad" data-avance="fisico">
+            <h3 class="avance-mitad__titulo">Físico</h3>
+            ${A.generalHtml(pct(p.avanceReal), pct(p.avanceProg), { compacto: true })}
+          </div>
+          <div class="avance-mitad" data-avance="financiero">
+            <h3 class="avance-mitad__titulo">Financiero</h3>
+            ${A.generalHtml(finReal, finProg, { compacto: true })}
+          </div>
+        </div>`;
+      const mitad = (cual) => $("generalBody").querySelector(`[data-avance="${cual}"]`);
+      A.pintarSemana(mitad("fisico"), historial, slugify(p.nombre), vigente);
+      A.pintarSemana(mitad("financiero"), historial, slugify(p.nombre), vigente, "finReal");
+    }
 
     // Avances particulares
     $("particularGrid").innerHTML = PARTICULARES.map(

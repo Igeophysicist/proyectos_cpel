@@ -93,13 +93,20 @@ const pct = (v) => {
   return n === null ? null : Math.round(n * 100) / 100;
 };
 
-/** Avance de cada proyecto de Cartera CPEL: { slug: { prog, real } }. */
+/**
+ * Avance de cada proyecto de Cartera CPEL: { slug: { prog, real } } y, si
+ * el Excel trae el avance financiero, también { finProg, finReal }.
+ */
 function snapshotCartera(rows) {
   const out = {};
   rows.forEach((r) => {
     const name = String(r.nombre || "").trim();
     if (!name) return;
-    out[slugify(name)] = { prog: pct(r.avanceProg), real: pct(r.avanceReal) };
+    const corte = { prog: pct(r.avanceProg), real: pct(r.avanceReal) };
+    const finProg = pct(r.avanfinProg);
+    const finReal = pct(r.avanfinReal);
+    if (finProg !== null || finReal !== null) Object.assign(corte, { finProg, finReal });
+    out[slugify(name)] = corte;
   });
   return out;
 }

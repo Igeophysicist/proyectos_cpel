@@ -187,31 +187,43 @@
     {
       "corte": "2026-10-29",
       "fecha": "2026-10-29",
-      "excel": "2026-10-29T20:42:43.000Z",
+      "excel": "2026-10-29T23:21:32.000Z",
       "proyectos": {
         "cfv-puerto-penasco-secuencia-iii": {
           "prog": 36.08,
-          "real": 32.17
+          "real": 32.17,
+          "finProg": 53,
+          "finReal": 40
         },
         "cfv-puerto-penasco-secuencia-iv": {
           "prog": 9.75,
-          "real": 9.63
+          "real": 9.63,
+          "finProg": 30,
+          "finReal": 30
         },
         "peh-santa-maria": {
           "prog": 81.39,
-          "real": 84.36
+          "real": 84.36,
+          "finProg": 81.39,
+          "finReal": 72.08
         },
         "peh-picachos": {
           "prog": 93.3,
-          "real": 74.47
+          "real": 74.47,
+          "finProg": 63.79,
+          "finReal": 62.56
         },
         "peh-amata": {
           "prog": 100,
-          "real": 32.39
+          "real": 32.39,
+          "finProg": 100,
+          "finReal": 24
         },
         "ph-chicoasen-ii": {
           "prog": 54.57,
-          "real": 51.68
+          "real": 51.68,
+          "finProg": 54.57,
+          "finReal": 53.51
         }
       }
     }

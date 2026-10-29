@@ -16,6 +16,22 @@ test("semáforo: al día o adelantado, atraso leve (< 3 pts) y atraso mayor", ()
   assert.equal(A.textoDiferencia(-2.93), "Atraso de 2.93 pts respecto al programa");
   assert.equal(A.textoDiferencia(1.5), "Adelantado 1.50 pts respecto al programa");
   assert.equal(A.textoDiferencia(0), "Al día respecto al programa");
+  // Media tarjeta (Físico | Financiero): texto corto
+  assert.equal(A.textoDiferencia(-2.93, true), "Atraso de 2.93 pts");
+  assert.equal(A.textoDiferencia(1.5, true), "Adelantado 1.50 pts");
+  assert.equal(A.textoDiferencia(0, true), "Al día");
+});
+
+test("cambioSemanal de otro campo (avance financiero) y generalHtml compacto", () => {
+  const cortes = [
+    { fecha: "2026-10-22", proyectos: { a: { real: 20, finReal: 38 } } },
+    { fecha: "2026-10-29", proyectos: { a: { real: 21, finReal: 40 } } },
+  ];
+  assert.deepEqual(A.cambioSemanal(cortes, "a", "finReal"), { diff: 2, desde: "2026-10-22" });
+  assert.equal(A.cambioSemanal([{ fecha: "x", proyectos: { a: { real: 1 } } }, ...cortes.slice(1)], "a", "finReal"), null);
+  const c = A.generalHtml(40, 53, { compacto: true });
+  assert.match(c, /variance--grave">Atraso de 13\.00 pts<\/div>/);
+  assert.match(c, /avg__semana-fila"><span class="avg__semana" data-semana hidden>/);
 });
 
 test("cambioSemanal: Real de los dos últimos cortes con dato del proyecto", () => {

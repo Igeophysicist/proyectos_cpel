@@ -71,7 +71,12 @@ const CARTERA_REQUIRED = [
   "plazo_dias", "plazo_contrato", "plazo_firmado",
   "plazo_inicio_fecha", "plazo_pruebas_fecha", "plazo_aceptacion_fecha", "plazo_operacion_fecha",
 ];
-const CARTERA_PERCENTS = ["avanceProg", "avanceReal", ...CARTERA_PARTICULARES.flatMap((k) => [`prog${k}`, `real${k}`])];
+// avanfinProg/avanfinReal (avance financiero) son opcionales: sin ellas la
+// tarjeta de avance general muestra solo el físico.
+const CARTERA_PERCENTS = [
+  "avanceProg", "avanceReal", "avanfinProg", "avanfinReal",
+  ...CARTERA_PARTICULARES.flatMap((k) => [`prog${k}`, `real${k}`]),
+];
 
 function validateCartera({ headers, rows, placemarkNames = [], fileExists = () => true, fileSize = () => 0, parecido = () => null }) {
   // "no existe el archivo …", con el nombre parecido si lo hay (p. ej. subido con un espacio al inicio).
