@@ -1236,8 +1236,8 @@
     },
     {
       "semana": "2026-10-25",
-      "fecha": "2026-10-28",
-      "excel": "2026-10-28T23:45:16.000Z",
+      "fecha": "2026-10-29",
+      "excel": "2026-10-29T18:23:09.000Z",
       "proyectos": {
         "san-simon-solar": {
           "parque": 94,
@@ -1264,9 +1264,9 @@
           "grupo": "B"
         },
         "pv-sandom-solar": {
-          "parque": 77,
-          "lt": 52.5,
-          "global": 72.1,
+          "parque": 80,
+          "lt": 55.5,
+          "global": 75.1,
           "grupo": "B"
         },
         "santa-gertrudis": {
@@ -1300,16 +1300,16 @@
           "grupo": "A"
         },
         "planta-solar-haab-kiin": {
-          "parque": 83.5,
-          "lt": 73,
-          "global": 81.4,
+          "parque": 84,
+          "lt": 73.5,
+          "global": 81.9,
           "grupo": "B"
         },
         "planta-solar-cerro-colorado": {
-          "parque": 77,
-          "lt": 60.5,
-          "global": 73.7,
-          "grupo": "B"
+          "parque": 75,
+          "lt": 58.5,
+          "global": 71.7,
+          "grupo": "C"
         },
         "central-fotovoltaica-quasara": {
           "parque": 35.5,
@@ -1348,21 +1348,21 @@
           "grupo": "C"
         },
         "parque-fv-energias-renovables-de-mexico-tres": {
-          "parque": 77,
-          "lt": 77,
-          "global": 77,
-          "grupo": "B"
+          "parque": 75,
+          "lt": 75,
+          "global": 75,
+          "grupo": "C"
         },
         "parque-fv-energias-renovables-saas-peto": {
-          "parque": 73,
-          "lt": 63,
-          "global": 71,
+          "parque": 74,
+          "lt": 64,
+          "global": 72,
           "grupo": "C"
         },
         "parque-fv-energias-renovables-kiin-tekax": {
-          "parque": 71,
-          "lt": 66,
-          "global": 70,
+          "parque": 72,
+          "lt": 67,
+          "global": 71,
           "grupo": "C"
         },
         "parque-fv-energias-renovables-de-tamaulipas": {
@@ -1378,9 +1378,9 @@
           "grupo": "C"
         },
         "dalia-3-pv-castamay": {
-          "parque": 81,
-          "lt": 55.5,
-          "global": 75.9,
+          "parque": 79,
+          "lt": 53.5,
+          "global": 73.9,
           "grupo": "B"
         },
         "fresnillo-pv-atocha": {
@@ -1408,9 +1408,9 @@
           "grupo": "B"
         },
         "pv-moquel-solar": {
-          "parque": 79,
-          "lt": 67,
-          "global": 76.6,
+          "parque": 82,
+          "lt": 70,
+          "global": 79.6,
           "grupo": "B"
         },
         "selka-power-plant-i": {
@@ -1438,10 +1438,10 @@
           "grupo": "B"
         },
         "global-solar-3-campeche": {
-          "parque": 84.5,
-          "lt": 77,
-          "global": 83,
-          "grupo": "B"
+          "parque": 87.5,
+          "lt": 80,
+          "global": 86,
+          "grupo": "A"
         },
         "cfv-las-garzas": {
           "parque": 44,
