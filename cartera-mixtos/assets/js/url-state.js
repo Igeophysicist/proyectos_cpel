@@ -5,7 +5,7 @@
  *
  *   ?proyecto=san-simon-solar          ficha de un proyecto abierta
  *   &q=solar                            texto de búsqueda
- *   &tecnologia=FV%20-%20Fotovoltaica   filtros (se repiten si hay varios)
+ *   &tecnologia=Fotovoltaica           filtros (se repiten si hay varios)
  *   &region=…&estado=…&socio=…&grupo=A&cod=2029&prioridad=P
  *   &tab=mapa                           pestaña (en celular)
  *   &orden=global                       orden del listado (ver orden.js)

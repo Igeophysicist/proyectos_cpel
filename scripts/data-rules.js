@@ -223,4 +223,4 @@ function checkExcelAnterior(subido, publicado) {
   );
 }
 
-module.exports = { validateCartera, validateMixtos, checkExcelAnterior, MIXTOS_SHEET, MIXTOS_COLUMNAS };
+module.exports = { validateCartera, validateMixtos, checkExcelAnterior, MIXTOS_SHEET, MIXTOS_COLUMNAS, MIXTOS_DATES };
