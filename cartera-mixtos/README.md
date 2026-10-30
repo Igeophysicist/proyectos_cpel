@@ -72,9 +72,10 @@ Abre `data/DATOS_MIXTOS.xlsx`:
 - Las columnas de estatus `DI_P_ESTATUS` … `AFAC_LT_ESTATUS` (opcionales)
   se muestran en la ventana **Trámites**, debajo de la barra de cada lado.
   Son texto libre copiado de otra base de datos: no cambian el avance ni
-  se validan. Si el texto es de la lista de REGLAS de 2da Ronda (Liberado,
-  En evaluación…) toma su color; cualquier otro (p. ej. "Iniciada") va en
-  gris. Vacío o `0` = sin estatus.
+  se validan. Colores (código de colores del Excel, `COLORES_MIXTOS` en
+  `tramites.js`): verde claro N/A y Liberado, rojo En elaboración, azul
+  En actualización, amarillo En evaluación, naranja Concluida, gris
+  Iniciada; otro texto, gris claro. Vacío o `0` = sin estatus.
 - Las fechas pueden ir con formato de fecha de Excel o como texto ("03 de
   julio de 2026"); en la página se ven igual.
 - `Parque`/`LT`/`Global` y las fechas se leen **tal como se ven** en

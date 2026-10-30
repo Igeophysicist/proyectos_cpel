@@ -236,7 +236,8 @@
           prioritario: String(raw["PRIORI"] || "").trim().toUpperCase() === "P",
           // Desglose de trámites y permisos (ver tramites.js); null si el
           // Excel no lo trae.
-          tramites: global.AppTramites ? global.AppTramites.desglose(raw) : null,
+          // Colores del estatus: los de Mixtos, o los de REGLAS en 2da Ronda (data-estatus).
+          tramites: global.AppTramites ? global.AppTramites.desglose(raw, { paleta: config.estatus }) : null,
           geo: primary
             ? { type: primary.type, latlngs: primary.latlngs, folderPath: primary.folderPath }
             : null,

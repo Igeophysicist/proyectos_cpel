@@ -112,9 +112,17 @@ test("almacenamiento, energía y capacidad con su unidad", () => {
   assert.equal(conUnidad("SIN DATO", "MW"), "SIN DATO");
 });
 
-test("estatus de Mixtos (texto libre): de REGLAS con color, otro texto en gris, vacío o 0 sin estatus", () => {
-  assert.equal(Tramites.estatusMostrado("liberado").color, "#92D050");
-  assert.deepEqual(Tramites.estatusMostrado(" Iniciada "), { nombre: "Iniciada", avance: null, color: "#e7ebea" });
+test("estatus de Mixtos (texto libre): colores del código de Mixtos, otro texto en gris claro, vacío o 0 sin estatus", () => {
+  assert.equal(Tramites.estatusMostrado("Liberado").color, "#D8E4BC");
+  assert.equal(Tramites.estatusMostrado("N/A").color, "#D8E4BC");
+  assert.equal(Tramites.estatusMostrado("En elaboracion").color, "#E79999");
+  assert.equal(Tramites.estatusMostrado("En actualización").color, "#8DB4E2");
+  assert.equal(Tramites.estatusMostrado("En evaluación").color, "#FFFF99");
+  assert.equal(Tramites.estatusMostrado("Concluida").color, "#FABF8F");
+  assert.deepEqual(Tramites.estatusMostrado(" Iniciada "), { nombre: "Iniciada", avance: null, color: "#D9D9D9" });
+  assert.equal(Tramites.estatusMostrado("Otro").color, "#e7ebea");
+  // 2da Ronda: colores de REGLAS
+  assert.equal(Tramites.estatusMostrado("liberado", "reglas").color, "#92D050");
   assert.equal(Tramites.estatusMostrado("0"), null);
   assert.equal(Tramites.estatusMostrado(0), null);
   assert.equal(Tramites.estatusMostrado(""), null);
@@ -124,7 +132,7 @@ test("desglose de trámites: estatus por lado, y null en Mixtos (sin columnas de
   const raw = Object.fromEntries(Tramites.COLUMNAS.map((c) => [c, "0%"]));
   assert.equal(Tramites.desglose(raw)[0].estParque, null);
   raw.A_MIA_P_ESTATUS = "Liberado";
-  const mia = Tramites.desglose(raw).find((t) => t.id === "mia");
+  const mia = Tramites.desglose(raw, { paleta: "reglas" }).find((t) => t.id === "mia");
   assert.equal(mia.estParque.nombre, "Liberado");
   assert.equal(mia.estParque.color, "#92D050");
 });
