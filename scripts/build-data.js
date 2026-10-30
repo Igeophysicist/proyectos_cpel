@@ -41,7 +41,7 @@
 const fs = require("fs");
 const path = require("path");
 const XLSX = require("xlsx");
-const { validateCartera, validateMixtos, checkExcelAnterior, MIXTOS_SHEET, MIXTOS_COLUMNAS } = require("./data-rules.js");
+const { validateCartera, validateMixtos, checkExcelAnterior, MIXTOS_SHEET, MIXTOS_COLUMNAS, MIXTOS_DATES } = require("./data-rules.js");
 const { optimizarCarpeta } = require("./imagenes.js");
 const { snapshotCartera, snapshotMixtos, upsertCorte, cambiosMixtos, registrarActualizacion } = require("./historial.js");
 const { slugify } = require("../assets/js/shared/text-utils.js");
@@ -91,9 +91,21 @@ const DATASETS = [
               .map(([k, v]) => [k, typeof v === "string" ? v.trim() : v])
           )
         : null,
+    // Fechas con formato de fecha de Excel: se publican como "03 de julio de
+    // 2026" (como cuando se escribían a mano), no como "7/3/26", que es
+    // ambiguo (¿3 de julio o 7 de marzo?).
+    fechas: MIXTOS_DATES,
     validate: validateMixtos,
   },
 ];
+
+const MESES = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
+
+/** Número de serie de una fecha de Excel -> "03 de julio de 2026". */
+function fechaLarga(serie) {
+  const f = XLSX.SSF.parse_date_code(serie);
+  return f && f.y ? `${String(f.d).padStart(2, "0")} de ${MESES[f.m - 1]} de ${f.y}` : null;
+}
 
 // Hitos de pago de Cartera CPEL (un Excel aparte, una hoja por proyecto).
 const HITOS = {
@@ -169,6 +181,16 @@ function buildDataset(ds) {
   const rows = XLSX.utils.sheet_to_json(sheet, options).map((r) =>
     Object.fromEntries(Object.entries(r).filter(([k]) => !k.startsWith("__EMPTY") && !/^hito\d+_/.test(k)))
   );
+  if (ds.fechas) {
+    // Celdas con fecha de Excel (número de serie): a texto largo en español.
+    const crudas = XLSX.utils.sheet_to_json(sheet, { ...options, raw: true });
+    rows.forEach((r, i) =>
+      ds.fechas.forEach((c) => {
+        const v = crudas[i] && crudas[i][c];
+        if (typeof v === "number" && fechaLarga(v)) r[c] = fechaLarga(v);
+      })
+    );
+  }
 
   const { errors, warnings } = ds.validate({
     headers,
@@ -401,4 +423,4 @@ if (require.main === module) {
   });
 }
 
-module.exports = { DATASETS, HITOS, ANTEPROYECTOS, MIXTOS2, buildDataset, buildHitos, buildAnteproyectos, buildMixtos2, toJson, ROOT };
+module.exports = { DATASETS, HITOS, ANTEPROYECTOS, MIXTOS2, buildDataset, buildHitos, buildAnteproyectos, buildMixtos2, fechaLarga, toJson, ROOT };

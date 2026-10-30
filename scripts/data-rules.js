@@ -153,7 +153,9 @@ const MIXTOS_REQUIRED = [
 // Columnas que se publican en DATOS_MIXTOS.json: las que usa la página
 // (más NO. y name_BD, de control). Las demás de la hoja (INVERSIONISTA,
 // CAPEX/MW, ESTADO…) se quedan solo en el Excel.
-const MIXTOS_COLUMNAS = ["NO.", "name_BD", ...MIXTOS_REQUIRED];
+// Estatus de cada trámite (DI_P_ESTATUS…; opcionales, texto libre: se
+// muestran en la ventana Trámites sin ninguna regla de avance).
+const MIXTOS_COLUMNAS = ["NO.", "name_BD", ...MIXTOS_REQUIRED, ...Tramites.COLUMNAS.map(Tramites.colEstatus)];
 // Diferencia (puntos) a partir de la cual Parque/LT/Global del Excel no
 // cuadran con la ponderación de los trámites.
 const TOLERANCIA_PONDERADO = 0.05;
@@ -223,4 +225,4 @@ function checkExcelAnterior(subido, publicado) {
   );
 }
 
-module.exports = { validateCartera, validateMixtos, checkExcelAnterior, MIXTOS_SHEET, MIXTOS_COLUMNAS };
+module.exports = { validateCartera, validateMixtos, checkExcelAnterior, MIXTOS_SHEET, MIXTOS_COLUMNAS, MIXTOS_DATES };

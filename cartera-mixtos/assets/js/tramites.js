@@ -11,10 +11,17 @@
  * Estudios de interconexión y Consulta indígena tienen un solo valor que
  * cuenta igual para Parque y LT.
  *
- * ESTATUS (Mixtos 2da Ronda): cada trámite trae además su estatus en la
- * columna <columna>_ESTATUS (DI_P_ESTATUS…). El avance de cada estatus y
- * su color son los de la hoja REGLAS del Excel (ver ESTATUS). Si el
- * Excel no trae esas columnas (Mixtos), no se muestra el estatus.
+ * ESTATUS: cada trámite puede traer además su estatus en la columna
+ * <columna>_ESTATUS (DI_P_ESTATUS…).
+ *  - Mixtos 2da Ronda: el estatus es uno de la hoja REGLAS y define el
+ *    avance (ver ESTATUS; scripts/mixtos2.js lo valida).
+ *  - Mixtos: texto libre copiado de otra base de datos, sin relación con
+ *    el avance. Toma el color del código de colores de su Excel
+ *    (COLORES_MIXTOS); un texto que no está ahí se muestra en gris claro.
+ *    Vacío o "0" = sin estatus.
+ * La página dice qué colores usar: Mixtos 2da Ronda lleva
+ * data-estatus="reglas" en el <body> (ver data.js).
+ * Sin esas columnas en el Excel no se muestra el estatus.
  *
  * Lo usan la página (data.js, ui.js) y la Action "Datos"
  * (scripts/data-rules.js, que avisa si Parque/LT/Global del Excel no
@@ -51,6 +58,28 @@
   /** Estatus de la lista que corresponde al texto (sin importar acentos ni mayúsculas), o null. */
   const estatus = (texto) => ESTATUS.find((e) => sinAcentos(e.nombre) === sinAcentos(texto)) || null;
   const colEstatus = (col) => `${col}_ESTATUS`;
+  const SIN_COLOR = "#e7ebea";
+  // Código de colores del Excel de Mixtos (celdas de estatus).
+  const COLORES_MIXTOS = {
+    "liberado": "#D8E4BC", // verde claro: listo al 100 %
+    "n/a": "#D8E4BC",
+    "en elaboracion": "#E79999", // rojo: por parte del socio
+    "en actualizacion": "#8DB4E2", // azul: la autoridad pide información adicional
+    "en evaluacion": "#FFFF99", // amarillo: en espera de respuesta de la autoridad
+    "concluida": "#FABF8F", // naranja: consulta concluida por SENER, en espera de liberación
+    "iniciada": "#D9D9D9", // gris: consulta iniciada por SENER
+  };
+  /**
+   * Estatus a mostrar, o null si está vacío o en 0. paleta "reglas"
+   * (Mixtos 2da Ronda): el de REGLAS; "mixtos": el texto tal cual con el
+   * color de COLORES_MIXTOS. Un texto desconocido va en gris claro.
+   */
+  function estatusMostrado(valor, paleta = "mixtos") {
+    const t = String(valor ?? "").replace(/\s+/g, " ").trim();
+    if (!t || t === "0") return null;
+    if (paleta === "reglas") return estatus(t) || { nombre: t, avance: null, color: SIN_COLOR };
+    return { nombre: t, avance: null, color: COLORES_MIXTOS[sinAcentos(t)] || SIN_COLOR };
+  }
   const COLUMNAS = Array.from(new Set(TRAMITES.flatMap((t) => [t.parque, t.lt])));
 
   /** "90%", "90", 0.9 (número de Excel) -> 90; vacío o texto -> null. */
@@ -65,16 +94,16 @@
    * Trámites de una fila del Excel: [{ ...trámite, avParque, avLt }].
    * null si la fila no trae ningún dato de trámites.
    */
-  function desglose(raw) {
+  function desglose(raw, { paleta } = {}) {
     if (!raw || !COLUMNAS.some((c) => pct(raw[c]) !== null)) return null;
     return TRAMITES.map((t) => ({
       ...t,
       compartido: t.parque === t.lt,
       avParque: pct(raw[t.parque]),
       avLt: pct(raw[t.lt]),
-      // null si el Excel no trae estatus (Mixtos)
-      estParque: estatus(raw[colEstatus(t.parque)]),
-      estLt: estatus(raw[colEstatus(t.lt)]),
+      // null si el Excel no trae estatus o la celda está vacía
+      estParque: estatusMostrado(raw[colEstatus(t.parque)], paleta),
+      estLt: estatusMostrado(raw[colEstatus(t.lt)], paleta),
     }));
   }
 
@@ -99,7 +128,7 @@
   }
 
 
-  const api = { TRAMITES, PESO_GLOBAL, COLUMNAS, ESTATUS, estatus, colEstatus, pct, desglose, ponderado, faltantes };
+  const api = { TRAMITES, PESO_GLOBAL, COLUMNAS, ESTATUS, COLORES_MIXTOS, estatus, estatusMostrado, colEstatus, pct, desglose, ponderado, faltantes };
   if (typeof module !== "undefined" && module.exports) module.exports = api;
   else global.AppTramites = api;
 })(typeof window !== "undefined" ? window : globalThis);

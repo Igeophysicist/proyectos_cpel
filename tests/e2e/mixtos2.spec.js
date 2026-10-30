@@ -58,7 +58,7 @@ test("filtro de Región: solo quedan los proyectos de esa región y queda en el 
   expect(new URL(page.url()).searchParams.get("region")).toBe(region);
 });
 
-test("Trámites muestra el estatus de cada lado con el color de REGLAS; en Mixtos no hay estatus", async ({ page }) => {
+test("Trámites muestra el estatus de cada lado con el color de REGLAS", async ({ page }) => {
   const [p] = datos().mixtos2;
   await page.goto("/cartera-mixtos-2/");
   await cargado(page);
@@ -69,11 +69,4 @@ test("Trámites muestra el estatus de cada lado con el color de REGLAS; en Mixto
   await expect(page.locator("#tramites .tram-est")).toHaveCount(18);
   const mia = page.locator("#tramites .tram-card", { hasText: "MIA" }).locator(".tram-est").first();
   await expect(mia).toHaveText(p.A_MIA_P_ESTATUS);
-
-  await page.goto("/cartera-mixtos/");
-  await cargado(page);
-  await page.locator("#project-list .pcard__open").first().click();
-  await page.locator("[data-open-tramites]").click();
-  await expect(page.locator("#tramites")).toHaveClass(/is-open/);
-  await expect(page.locator("#tramites .tram-est")).toHaveCount(0);
 });
