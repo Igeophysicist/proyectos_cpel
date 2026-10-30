@@ -190,6 +190,30 @@ test("Filtro de prioridad: Prioritario / No prioritario, también desde el enlac
   await expect(page.locator("#ranking .ranking__name")).toHaveCount(0); // ningún prioritario entre los mostrados
 });
 
+test("Trámites: estatus de texto libre (de otra base de datos): con color si es de REGLAS, gris si no, nada si está en 0", async ({ page }) => {
+  const p = datos().mixtos.find((r) => r.DI_P !== undefined && r.DI_P !== "");
+  test.skip(!p, "el Excel no trae desglose de trámites");
+  // Datos de prueba: estatus en tres trámites del primer proyecto, el resto en 0.
+  await page.route("**/cartera-mixtos/data/DATOS_MIXTOS.json", async (route) => {
+    const json = await (await route.fetch()).json();
+    const r = json.proyectos.find((x) => x["TÍTULO 2"] === p["TÍTULO 2"]);
+    Object.keys(r).filter((k) => k.endsWith("_ESTATUS")).forEach((k) => (r[k] = "0"));
+    Object.assign(r, { A_MIA_P_ESTATUS: "Liberado", A_MIA_LT_ESTATUS: "Iniciada", DI_P_ESTATUS: "En evaluación", DI_LT_ESTATUS: "0" });
+    await route.fulfill({ json });
+  });
+  await page.goto(`/cartera-mixtos/?proyecto=${slugify(p.nombre)}`);
+  await cargado(page);
+  await page.click("#detail [data-open-tramites]");
+  const panel = page.locator("#tramites.is-open");
+  await expect(panel.locator(".tram-est")).toHaveCount(3);
+  const mia = panel.locator(".tram-card", { hasText: "MIA – DTU" }).locator(".tram-est");
+  await expect(mia).toHaveText(["Liberado", "Iniciada"]);
+  await expect(mia.first()).toHaveCSS("background-color", "rgb(146, 208, 80)"); // verde de REGLAS
+  await expect(mia.last()).toHaveCSS("background-color", "rgb(231, 235, 234)"); // fuera de REGLAS: gris
+  // El estatus no cambia el avance: el % sigue siendo el del Excel.
+  await expect(panel.locator(".tram-card", { hasText: "MIA – DTU" })).toContainText(String(parseFloat(p.A_MIA_P)));
+});
+
 test("Trámites: el botón de la ficha abre el desglose de los 10 trámites", async ({ page }) => {
   const p = datos().mixtos.find((r) => r.DI_P !== undefined && r.DI_P !== "");
   test.skip(!p, "el Excel no trae desglose de trámites");

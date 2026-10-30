@@ -112,6 +112,14 @@ test("almacenamiento, energía y capacidad con su unidad", () => {
   assert.equal(conUnidad("SIN DATO", "MW"), "SIN DATO");
 });
 
+test("estatus de Mixtos (texto libre): de REGLAS con color, otro texto en gris, vacío o 0 sin estatus", () => {
+  assert.equal(Tramites.estatusMostrado("liberado").color, "#92D050");
+  assert.deepEqual(Tramites.estatusMostrado(" Iniciada "), { nombre: "Iniciada", avance: null, color: "#e7ebea" });
+  assert.equal(Tramites.estatusMostrado("0"), null);
+  assert.equal(Tramites.estatusMostrado(0), null);
+  assert.equal(Tramites.estatusMostrado(""), null);
+});
+
 test("desglose de trámites: estatus por lado, y null en Mixtos (sin columnas de estatus)", () => {
   const raw = Object.fromEntries(Tramites.COLUMNAS.map((c) => [c, "0%"]));
   assert.equal(Tramites.desglose(raw)[0].estParque, null);

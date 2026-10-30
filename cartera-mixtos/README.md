@@ -69,6 +69,14 @@ Abre `data/DATOS_MIXTOS.xlsx`:
 - Las filas sin `TÍTULO 1`/`TÍTULO 2` (totales y promedios al final)
   se ignoran, y solo se publican las columnas que usa la página; las
   demás (`INVERSIONISTA`, `CAPEX / MW`, `ESTADO`…) se quedan en el Excel.
+- Las columnas de estatus `DI_P_ESTATUS` … `AFAC_LT_ESTATUS` (opcionales)
+  se muestran en la ventana **Trámites**, debajo de la barra de cada lado.
+  Son texto libre copiado de otra base de datos: no cambian el avance ni
+  se validan. Si el texto es de la lista de REGLAS de 2da Ronda (Liberado,
+  En evaluación…) toma su color; cualquier otro (p. ej. "Iniciada") va en
+  gris. Vacío o `0` = sin estatus.
+- Las fechas pueden ir con formato de fecha de Excel o como texto ("03 de
+  julio de 2026"); en la página se ven igual.
 - `Parque`/`LT`/`Global` y las fechas se leen **tal como se ven** en
   Excel (p. ej. "92.50%" o "03 de julio de 2026"), así que conviene
   conservar su formato actual.

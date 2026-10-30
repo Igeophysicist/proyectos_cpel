@@ -11,10 +11,14 @@
  * Estudios de interconexión y Consulta indígena tienen un solo valor que
  * cuenta igual para Parque y LT.
  *
- * ESTATUS (Mixtos 2da Ronda): cada trámite trae además su estatus en la
- * columna <columna>_ESTATUS (DI_P_ESTATUS…). El avance de cada estatus y
- * su color son los de la hoja REGLAS del Excel (ver ESTATUS). Si el
- * Excel no trae esas columnas (Mixtos), no se muestra el estatus.
+ * ESTATUS: cada trámite puede traer además su estatus en la columna
+ * <columna>_ESTATUS (DI_P_ESTATUS…).
+ *  - Mixtos 2da Ronda: el estatus es uno de la hoja REGLAS y define el
+ *    avance (ver ESTATUS; scripts/mixtos2.js lo valida).
+ *  - Mixtos: texto libre copiado de otra base de datos, sin relación con
+ *    el avance. Si coincide con uno de REGLAS toma su color; si no (p. ej.
+ *    "Iniciada"), se muestra en gris. Vacío o "0" = sin estatus.
+ * Sin esas columnas en el Excel no se muestra el estatus.
  *
  * Lo usan la página (data.js, ui.js) y la Action "Datos"
  * (scripts/data-rules.js, que avisa si Parque/LT/Global del Excel no
@@ -51,6 +55,13 @@
   /** Estatus de la lista que corresponde al texto (sin importar acentos ni mayúsculas), o null. */
   const estatus = (texto) => ESTATUS.find((e) => sinAcentos(e.nombre) === sinAcentos(texto)) || null;
   const colEstatus = (col) => `${col}_ESTATUS`;
+  const SIN_COLOR = "#e7ebea";
+  /** Estatus a mostrar: el de REGLAS (con su color), cualquier otro texto en gris, o null si está vacío o en 0. */
+  function estatusMostrado(valor) {
+    const t = String(valor ?? "").replace(/\s+/g, " ").trim();
+    if (!t || t === "0") return null;
+    return estatus(t) || { nombre: t, avance: null, color: SIN_COLOR };
+  }
   const COLUMNAS = Array.from(new Set(TRAMITES.flatMap((t) => [t.parque, t.lt])));
 
   /** "90%", "90", 0.9 (número de Excel) -> 90; vacío o texto -> null. */
@@ -72,9 +83,9 @@
       compartido: t.parque === t.lt,
       avParque: pct(raw[t.parque]),
       avLt: pct(raw[t.lt]),
-      // null si el Excel no trae estatus (Mixtos)
-      estParque: estatus(raw[colEstatus(t.parque)]),
-      estLt: estatus(raw[colEstatus(t.lt)]),
+      // null si el Excel no trae estatus o la celda está vacía
+      estParque: estatusMostrado(raw[colEstatus(t.parque)]),
+      estLt: estatusMostrado(raw[colEstatus(t.lt)]),
     }));
   }
 
@@ -99,7 +110,7 @@
   }
 
 
-  const api = { TRAMITES, PESO_GLOBAL, COLUMNAS, ESTATUS, estatus, colEstatus, pct, desglose, ponderado, faltantes };
+  const api = { TRAMITES, PESO_GLOBAL, COLUMNAS, ESTATUS, estatus, estatusMostrado, colEstatus, pct, desglose, ponderado, faltantes };
   if (typeof module !== "undefined" && module.exports) module.exports = api;
   else global.AppTramites = api;
 })(typeof window !== "undefined" ? window : globalThis);
