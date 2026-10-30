@@ -1237,7 +1237,7 @@
     {
       "semana": "2026-10-25",
       "fecha": "2026-10-30",
-      "excel": "2026-10-30T19:07:08.000Z",
+      "excel": "2026-10-30T23:41:35.000Z",
       "proyectos": {
         "pv-moquel-solar": {
           "parque": 82,
@@ -1252,9 +1252,9 @@
           "grupo": "B"
         },
         "viento-de-bella-union": {
-          "parque": 60,
-          "lt": 64.5,
-          "global": 60.9,
+          "parque": 62.5,
+          "lt": 67,
+          "global": 63.4,
           "grupo": "C"
         },
         "global-solar-3-campeche": {
@@ -1264,9 +1264,9 @@
           "grupo": "A"
         },
         "dalia-3-pv-castamay": {
-          "parque": 79,
-          "lt": 53.5,
-          "global": 73.9,
+          "parque": 83,
+          "lt": 57.5,
+          "global": 77.9,
           "grupo": "B"
         },
         "fresnillo-pv-atocha": {
@@ -1396,9 +1396,9 @@
           "grupo": "C"
         },
         "alvaro-obregon": {
-          "parque": 82.5,
-          "lt": 80.5,
-          "global": 82.1,
+          "parque": 83.5,
+          "lt": 81.5,
+          "global": 83.1,
           "grupo": "B"
         },
         "cfv-las-garzas": {
@@ -1408,9 +1408,9 @@
           "grupo": "C"
         },
         "don-humberto": {
-          "parque": 86,
-          "lt": 77,
-          "global": 84.2,
+          "parque": 88.5,
+          "lt": 79.5,
+          "global": 86.7,
           "grupo": "A"
         },
         "los-girasoles": {

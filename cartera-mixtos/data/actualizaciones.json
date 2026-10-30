@@ -659,6 +659,60 @@
           }
         }
       ]
+    },
+    {
+      "excel": "2026-10-30T23:41:35.000Z",
+      "fecha": "2026-10-30",
+      "cambios": [
+        {
+          "slug": "viento-de-bella-union",
+          "nombre": "VIENTO DE BELLA UNIÓN",
+          "antes": {
+            "parque": 60,
+            "grupo": "C"
+          },
+          "ahora": {
+            "parque": 62.5,
+            "grupo": "C"
+          }
+        },
+        {
+          "slug": "dalia-3-pv-castamay",
+          "nombre": "DALIA 3 PV (CASTAMAY)",
+          "antes": {
+            "parque": 79,
+            "grupo": "B"
+          },
+          "ahora": {
+            "parque": 83,
+            "grupo": "B"
+          }
+        },
+        {
+          "slug": "alvaro-obregon",
+          "nombre": "ÁLVARO OBREGÓN",
+          "antes": {
+            "parque": 82.5,
+            "grupo": "B"
+          },
+          "ahora": {
+            "parque": 83.5,
+            "grupo": "B"
+          }
+        },
+        {
+          "slug": "don-humberto",
+          "nombre": "DON HUMBERTO",
+          "antes": {
+            "parque": 86,
+            "grupo": "A"
+          },
+          "ahora": {
+            "parque": 88.5,
+            "grupo": "A"
+          }
+        }
+      ]
     }
   ]
 }
