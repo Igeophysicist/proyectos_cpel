@@ -82,8 +82,8 @@ Abre `data/DATOS_MIXTOS.xlsx`:
   algún comentario llevan un ícono de globo. Vacío = "Sin comentarios por
   ahora". Se respetan los renglones y las listas con "•" o "1.".
 - `Inicio de Inversión (Comprometida)` y `Fecha de inicio de construcción`
-  (opcionales): se ven en la tarjeta del proyecto (solo si tienen dato) y
-  en la sección Programa de la ficha. Aceptan fecha o texto ("Pendiente").
+  (opcionales): se ven en la sección Programa de la ficha (solo si tienen
+  dato). Aceptan fecha o texto ("Pendiente").
 - Las fechas pueden ir con formato de fecha de Excel o como texto ("03 de
   julio de 2026"); en la página se ven igual.
 - `Parque`/`LT`/`Global` y las fechas se leen **tal como se ven** en

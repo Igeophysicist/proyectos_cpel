@@ -5,7 +5,7 @@
  */
 (function (global) {
   const GRUPO_INFO = global.AppData.GRUPO_INFO;
-  const { esc, formatPct, formatPts, formatDateShort, textoHtml } = global.TextUtils;
+  const { esc, formatPct, formatPts, textoHtml } = global.TextUtils;
   const fmtInt = new Intl.NumberFormat("es-MX", { maximumFractionDigits: 0 });
   // CAPEX en millones de dólares, con comas en los miles: "8,112.9 M"
   // (la moneda va en el título de la tarjeta).
@@ -168,22 +168,6 @@
     return esc(t);
   }
 
-  /**
-   * Fechas del programa en la tarjeta: inicio de inversión comprometida e
-   * inicio de construcción (solo las que tengan dato; columnas opcionales).
-   */
-  function fechasProgramaHtml(p) {
-    const fecha = (texto, fechaDate) => (fechaDate ? esc(formatDateShort(fechaDate)) : datoHtml(texto));
-    const items = [
-      ["Inversión comprometida", p.inversionComprometida, p.inversionComprometidaFecha],
-      ["Inicio de construcción", p.inicioConstruccion, p.inicioConstruccionFecha],
-    ].filter(([, texto]) => String(texto || "").trim());
-    if (!items.length) return "";
-    return `<div class="pcard__fechas">${items
-      .map(([etiqueta, texto, f]) => `<span><span class="pcard__fecha-tag">${etiqueta}</span> <b>${fecha(texto, f)}</b></span>`)
-      .join("")}</div>`;
-  }
-
   function projectCardHtml(p) {
     const grupoInfo = GRUPO_INFO[p.grupo];
     return `
@@ -202,7 +186,6 @@
           ${p.capacidad ? `<span>${datoHtml(p.capacidad)}</span>` : ""}
           ${p.capex ? `<span>${datoHtml(p.capex)}</span>` : ""}
         </div>
-        ${fechasProgramaHtml(p)}
         <div class="pcard__bars">
           ${progressRow("Parque", p.parquePct, p.grupo)}
           ${progressRow("LT", p.ltPct)}

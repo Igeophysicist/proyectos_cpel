@@ -214,20 +214,18 @@ test("Trámites: estatus de texto libre (de otra base de datos) con el código d
   await expect(panel.locator(".tram-card", { hasText: "MIA – DTU" })).toContainText(String(parseFloat(p.A_MIA_P)));
 });
 
-test("tarjeta y ficha: inicio de inversión comprometida e inicio de construcción (solo si tienen dato)", async ({ page }) => {
+test("Programa de la ficha: inicio de inversión comprometida e inicio de construcción (no en la tarjeta)", async ({ page }) => {
   const { mixtos } = datos();
   const p = mixtos.find((r) => r["Inicio de Inversión (Comprometida)"] && r["Fecha de inicio de construcción"]);
   test.skip(!p, "ningún proyecto tiene esas fechas");
-  const sin = mixtos.find((r) => !r["Inicio de Inversión (Comprometida)"] && !r["Fecha de inicio de construcción"]);
   await page.goto("/cartera-mixtos/");
   await cargado(page);
   const tarjeta = page.locator("#project-list .pcard", { hasText: p.nombre }).first();
-  await expect(tarjeta.locator(".pcard__fechas")).toContainText("Inversión comprometida");
-  await expect(tarjeta.locator(".pcard__fechas")).toContainText("Inicio de construcción");
-  if (sin) await expect(page.locator("#project-list .pcard", { hasText: sin.nombre }).first().locator(".pcard__fechas")).toHaveCount(0);
+  await expect(tarjeta).not.toContainText("Inicio de construcción");
   await tarjeta.locator(".pcard__open").click();
-  await expect(page.locator("#detail-body")).toContainText("Inicio de inversión (comprometida)");
-  await expect(page.locator("#detail-body")).toContainText("Inicio de construcción");
+  const ficha = page.locator("#detail-body");
+  await expect(ficha.locator(".detail-field__label", { hasText: "Inicio de inversión (comprometida)" })).toHaveCount(1);
+  await expect(ficha.locator(".detail-field__label", { hasText: "Inicio de construcción" })).toHaveCount(1);
 });
 
 test("Trámites: al tocar un trámite se abre su ventana de comentarios (Parque y LT)", async ({ page }) => {
