@@ -153,16 +153,22 @@ const MIXTOS_REQUIRED = [
 // Columnas que se publican en DATOS_MIXTOS.json: las que usa la página
 // (más NO. y name_BD, de control). Las demás de la hoja (INVERSIONISTA,
 // CAPEX/MW, ESTADO…) se quedan solo en el Excel.
-// Estatus de cada trámite (DI_P_ESTATUS…; opcionales, texto libre: se
-// muestran en la ventana Trámites sin ninguna regla de avance).
-const MIXTOS_COLUMNAS = ["NO.", "name_BD", ...MIXTOS_REQUIRED, ...Tramites.COLUMNAS.map(Tramites.colEstatus)];
+// Opcionales: estatus de cada trámite (DI_P_ESTATUS…; texto libre, se
+// muestra en la ventana Trámites sin ninguna regla de avance), comentario
+// de cada uno (DI_P_OBS…; al tocar la tarjeta del trámite) y dos fechas
+// más del programa (pueden ir vacías mientras se llenan).
+const MIXTOS_FECHAS_OPCIONALES = ["Inicio de Inversión (Comprometida)", "Fecha de inicio de construcción"];
+const MIXTOS_COLUMNAS = [
+  "NO.", "name_BD", ...MIXTOS_REQUIRED, ...MIXTOS_FECHAS_OPCIONALES,
+  ...Tramites.COLUMNAS.map(Tramites.colEstatus), ...Tramites.COLUMNAS.map(Tramites.colObs),
+];
 // Diferencia (puntos) a partir de la cual Parque/LT/Global del Excel no
 // cuadran con la ponderación de los trámites.
 const TOLERANCIA_PONDERADO = 0.05;
 // "Grupo de atención" ya no se lee del Excel: sale del avance de Parque
 // (cartera-mixtos/assets/js/grupo.js). Si la columna sigue, se ignora.
 const MIXTOS_PERCENTS = ["Parque", "LT", "Global"];
-const MIXTOS_DATES = ["Inicio de Inversión", "Fin de Construcción", "Fecha firma de contrato"];
+const MIXTOS_DATES = ["Inicio de Inversión", "Fin de Construcción", "Fecha firma de contrato", ...MIXTOS_FECHAS_OPCIONALES];
 
 function validateMixtos({ headers, rows, placemarkNames = [] }) {
   const errors = [];

@@ -76,6 +76,14 @@ Abre `data/DATOS_MIXTOS.xlsx`:
   `tramites.js`): verde claro N/A y Liberado, rojo En elaboración, azul
   En actualización, amarillo En evaluación, naranja Concluida, gris
   Iniciada; otro texto, gris claro. Vacío o `0` = sin estatus.
+- Comentarios `DI_P_OBS` … `AFAC_LT_OBS` (opcionales, texto libre): en la
+  ventana **Trámites** cada tarjeta se toca y abre una ventana con el
+  avance, el estatus y el comentario de Parque y de LT. Las que tienen
+  algún comentario llevan un ícono de globo. Vacío = "Sin comentarios por
+  ahora". Se respetan los renglones y las listas con "•" o "1.".
+- `Inicio de Inversión (Comprometida)` y `Fecha de inicio de construcción`
+  (opcionales): se ven en la sección Programa de la ficha (solo si tienen
+  dato). Aceptan fecha o texto ("Pendiente").
 - Las fechas pueden ir con formato de fecha de Excel o como texto ("03 de
   julio de 2026"); en la página se ven igual.
 - `Parque`/`LT`/`Global` y las fechas se leen **tal como se ven** en

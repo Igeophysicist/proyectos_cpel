@@ -58,6 +58,8 @@
   /** Estatus de la lista que corresponde al texto (sin importar acentos ni mayúsculas), o null. */
   const estatus = (texto) => ESTATUS.find((e) => sinAcentos(e.nombre) === sinAcentos(texto)) || null;
   const colEstatus = (col) => `${col}_ESTATUS`;
+  // Comentario de cada trámite (Mixtos: DI_P_OBS…), texto libre.
+  const colObs = (col) => `${col}_OBS`;
   const SIN_COLOR = "#e7ebea";
   // Código de colores del Excel de Mixtos (celdas de estatus).
   const COLORES_MIXTOS = {
@@ -104,7 +106,17 @@
       // null si el Excel no trae estatus o la celda está vacía
       estParque: estatusMostrado(raw[colEstatus(t.parque)], paleta),
       estLt: estatusMostrado(raw[colEstatus(t.lt)], paleta),
+      // Comentarios: null si el Excel no trae esas columnas (2da Ronda);
+      // "" si la celda está vacía (o en 0).
+      obsParque: textoObs(raw, t.parque),
+      obsLt: textoObs(raw, t.lt),
     }));
+  }
+
+  function textoObs(raw, col) {
+    if (!(colObs(col) in raw)) return null;
+    const t = String(raw[colObs(col)] ?? "").trim();
+    return t === "0" ? "" : t;
   }
 
   /** { parque, lt, global } (en %) ponderados; null si falta algún dato. */
@@ -128,7 +140,7 @@
   }
 
 
-  const api = { TRAMITES, PESO_GLOBAL, COLUMNAS, ESTATUS, COLORES_MIXTOS, estatus, estatusMostrado, colEstatus, pct, desglose, ponderado, faltantes };
+  const api = { TRAMITES, PESO_GLOBAL, COLUMNAS, ESTATUS, COLORES_MIXTOS, estatus, estatusMostrado, colEstatus, colObs, pct, desglose, ponderado, faltantes };
   if (typeof module !== "undefined" && module.exports) module.exports = api;
   else global.AppTramites = api;
 })(typeof window !== "undefined" ? window : globalThis);

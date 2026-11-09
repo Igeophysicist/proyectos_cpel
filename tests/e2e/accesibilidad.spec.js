@@ -109,6 +109,15 @@ test("Mixtos y sus ventanas sin problemas de accesibilidad", async ({ page, isMo
   await page.locator("#project-list .pcard").first().click();
   await expect(page.locator("#detail")).toHaveClass(/is-open/);
   await revisar(page, "mixtos: ficha");
+  await page.locator("#detail [data-open-tramites]").click();
+  await expect(page.locator("#tramites")).toHaveClass(/is-open/);
+  await revisar(page, "mixtos: trámites");
+  const abrir = page.locator("#tramites .tram-card__abrir").first();
+  if (await abrir.count()) {
+    await abrir.click();
+    await expect(page.locator("#tramite-obs")).toHaveClass(/is-open/);
+    await revisar(page, "mixtos: comentarios de un trámite");
+  }
 });
 
 test("Mixtos 2da Ronda: ficha y trámites con estatus sin problemas de accesibilidad", async ({ page }) => {

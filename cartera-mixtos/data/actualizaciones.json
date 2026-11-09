@@ -713,6 +713,60 @@
           }
         }
       ]
+    },
+    {
+      "excel": "2026-11-09T22:17:21.000Z",
+      "fecha": "2026-11-09",
+      "cambios": [
+        {
+          "slug": "san-pedro-solar",
+          "nombre": "SAN PEDRO SOLAR",
+          "antes": {
+            "parque": 91.5,
+            "grupo": "A"
+          },
+          "ahora": {
+            "parque": 88,
+            "grupo": "A"
+          }
+        },
+        {
+          "slug": "planta-solar-haab-kiin",
+          "nombre": "PLANTA SOLAR HAAB KIIN",
+          "antes": {
+            "parque": 84,
+            "grupo": "B"
+          },
+          "ahora": {
+            "parque": 82.5,
+            "grupo": "B"
+          }
+        },
+        {
+          "slug": "planta-solar-cerro-colorado",
+          "nombre": "PLANTA SOLAR CERRO COLORADO",
+          "antes": {
+            "parque": 75,
+            "grupo": "C"
+          },
+          "ahora": {
+            "parque": 79,
+            "grupo": "B"
+          }
+        },
+        {
+          "slug": "san-simon-solar",
+          "nombre": "SAN SIMÓN SOLAR",
+          "antes": {
+            "parque": 94,
+            "grupo": "A"
+          },
+          "ahora": {
+            "parque": 97.5,
+            "grupo": "A"
+          }
+        }
+      ]
     }
   ]
 }

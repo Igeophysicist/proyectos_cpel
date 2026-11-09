@@ -5,7 +5,7 @@
  */
 (function (global) {
   const GRUPO_INFO = global.AppData.GRUPO_INFO;
-  const { esc, formatPct, formatPts } = global.TextUtils;
+  const { esc, formatPct, formatPts, textoHtml } = global.TextUtils;
   const fmtInt = new Intl.NumberFormat("es-MX", { maximumFractionDigits: 0 });
   // CAPEX en millones de dólares, con comas en los miles: "8,112.9 M"
   // (la moneda va en el título de la tarjeta).
@@ -83,6 +83,7 @@
   const tieneEvolucion = (p) => global.AppEvolucion && global.AppEvolucion.tieneDatos(p);
 
   const PRIO_CHIP = `<span class="prio-chip">★ Prioritario</span>`;
+  const COMENTARIO_ICON = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 5h16v11H9l-5 4V5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>`;
 
   // ---------------------------------------------- Trámites (panel de la ficha)
   const fmtPct = formatPct;
@@ -121,9 +122,17 @@
           : `${miniBarra(t.avParque, "Parque", t.estParque)}${miniBarra(t.avLt, "LT", t.estLt)}`;
         const lados = t.compartido ? [t.avParque] : [t.avParque, t.avLt];
         const listo = lados.every((v) => v !== null && v >= 100);
-        return `${encabezado}<li class="tram-card${listo ? " tram-card--ok" : ""}">
-            <div class="tram-card__top"><span class="tram-name">${esc(t.nombre)}</span>${peso}</div>
+        // Con columnas de comentarios (Mixtos), la tarjeta se toca para verlos.
+        const conObs = t.obsParque !== null && t.obsParque !== undefined;
+        const hayObs = conObs && [t.obsParque, t.compartido ? "" : t.obsLt].some(Boolean);
+        const abre = conObs
+          ? `<button type="button" class="tram-card__abrir" data-tramite="${esc(t.id)}" aria-label="Ver comentarios de ${esc(t.nombre)}"></button>`
+          : "";
+        const marca = hayObs ? `<span class="tram-obs-marca" title="Tiene comentarios" aria-hidden="true">${COMENTARIO_ICON}</span>` : "";
+        return `${encabezado}<li class="tram-card${listo ? " tram-card--ok" : ""}${conObs ? " tram-card--clic" : ""}">
+            <div class="tram-card__top"><span class="tram-name">${esc(t.nombre)}</span>${marca}${peso}</div>
             ${barras}
+            ${abre}
           </li>`;
       })
       .join("");
@@ -222,7 +231,8 @@
       ["horasAlmacenamiento", "Horas de almacenamiento"], ["energiaHoras", "Energía por horas"],
     ]},
     { section: "Programa", items: [
-      ["inicioInversion", "Inicio de inversión"], ["finConstruccion", "COD"], ["firmaContrato", "Firma de contrato"],
+      ["inicioInversion", "Inicio de inversión"], ["inversionComprometida", "Inicio de inversión (comprometida)"],
+      ["inicioConstruccion", "Inicio de construcción"], ["finConstruccion", "COD"], ["firmaContrato", "Firma de contrato"],
     ]},
     { section: "Financiero", items: [
       ["capex", "CAPEX (USD)"],
@@ -319,17 +329,66 @@
   /** Panel "Trámites" de un proyecto (se abre encima de la ficha). */
   function abrirTramites(p) {
     if (!p || !p.tramites) return;
+    tramitesDe = p;
     document.getElementById("tramites-body").innerHTML = `
       <div class="detail__head">
         <button class="detail__close" data-close-tramites aria-label="Cerrar">&times;</button>
         <div class="detail__title" id="tramites-title">Trámites</div>
         <div class="detail__sub">${esc(p.nombre)}</div>
       </div>
-      <div class="detail__body" tabindex="0">${seccionTramites(p)}</div>`; // tabindex: se desplaza con el teclado (no tiene botones)
+      <div class="detail__body" tabindex="0">${seccionTramites(p)}</div>`; // tabindex: se desplaza con el teclado (en 2da Ronda no tiene botones)
     global.Dialog.open(document.getElementById("tramites"));
   }
+  let tramitesDe = null; // proyecto de la ventana Trámites abierta
+
+  /**
+   * Ventana con los comentarios de un trámite (columnas <col>_OBS del
+   * Excel de Mixtos), encima de Trámites. Se crea la primera vez.
+   */
+  function ventanaObs() {
+    let el = document.getElementById("tramite-obs");
+    if (el) return el;
+    el = document.createElement("div");
+    el.className = "detail detail--evolucion detail--obs";
+    el.id = "tramite-obs";
+    el.setAttribute("aria-hidden", "true");
+    el.innerHTML = `<div class="detail__scrim" data-close-obs></div>
+      <div class="detail__panel" id="tramite-obs-body" role="dialog" aria-modal="true" aria-labelledby="tramite-obs-title"></div>`;
+    document.body.appendChild(el);
+    return el;
+  }
+
+  function abrirObs(p, id) {
+    const t = p && p.tramites && p.tramites.find((x) => x.id === id);
+    if (!t) return;
+    const lado = (etiqueta, av, est, obs) => `
+      <section class="obs-lado">
+        <div class="obs-lado__top">
+          <span class="tram-bar__tag">${esc(etiqueta)}</span>
+          <span class="tram-bar__val tabular">${formatPct(av)}</span>
+          ${est ? `<span class="tram-est" style="--est:${esc(est.color)}">${esc(est.nombre)}</span>` : ""}
+        </div>
+        <div class="obs-texto">${obs ? textoHtml(obs) : `<p class="obs-vacio">Sin comentarios por ahora.</p>`}</div>
+      </section>`;
+    const lados = t.compartido
+      ? lado("Parque y LT", t.avParque, t.estParque, t.obsParque)
+      : lado("Parque", t.avParque, t.estParque, t.obsParque) + lado("LT", t.avLt, t.estLt, t.obsLt);
+    const el = ventanaObs();
+    el.querySelector("#tramite-obs-body").innerHTML = `
+      <div class="detail__head">
+        <button class="detail__close" data-close-obs aria-label="Cerrar">&times;</button>
+        <div class="detail__title" id="tramite-obs-title">${esc(t.nombre)}</div>
+        <div class="detail__sub">${esc(p.nombre)} · Comentarios</div>
+      </div>
+      <div class="detail__body" tabindex="0">${lados}</div>`;
+    global.Dialog.open(el);
+  }
+
   document.addEventListener("click", (e) => {
     if (e.target.closest("[data-close-tramites]")) global.Dialog.close(document.getElementById("tramites"));
+    if (e.target.closest("[data-close-obs]")) global.Dialog.close(document.getElementById("tramite-obs"));
+    const tarjeta = e.target.closest("#tramites [data-tramite]");
+    if (tarjeta) abrirObs(tramitesDe, tarjeta.dataset.tramite);
   });
 
   global.AppUI = { abrirTramites, renderKPIs, renderProjectList, renderDetail, renderFilterOptions, showToast };
