@@ -214,6 +214,11 @@
           horasAlmacenamiento: raw["Horas de Almacenamiento"] ?? null,
           inicioInversion: raw["Inicio de Inversión"] || "",
           inicioInversionFecha: parseDate(raw["Inicio de Inversión"]),
+          // Opcionales (Mixtos); pueden venir vacías mientras se llenan.
+          inversionComprometida: raw["Inicio de Inversión (Comprometida)"] || "",
+          inversionComprometidaFecha: parseDate(raw["Inicio de Inversión (Comprometida)"]),
+          inicioConstruccion: raw["Fecha de inicio de construcción"] || "",
+          inicioConstruccionFecha: parseDate(raw["Fecha de inicio de construcción"]),
           finConstruccion: raw["Fin de Construcción"] || "",
           finConstruccionFecha,
           // Año de COD derivado de la fecha ya parseada, usado para el

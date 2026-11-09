@@ -214,6 +214,48 @@ test("Trámites: estatus de texto libre (de otra base de datos) con el código d
   await expect(panel.locator(".tram-card", { hasText: "MIA – DTU" })).toContainText(String(parseFloat(p.A_MIA_P)));
 });
 
+test("tarjeta y ficha: inicio de inversión comprometida e inicio de construcción (solo si tienen dato)", async ({ page }) => {
+  const { mixtos } = datos();
+  const p = mixtos.find((r) => r["Inicio de Inversión (Comprometida)"] && r["Fecha de inicio de construcción"]);
+  test.skip(!p, "ningún proyecto tiene esas fechas");
+  const sin = mixtos.find((r) => !r["Inicio de Inversión (Comprometida)"] && !r["Fecha de inicio de construcción"]);
+  await page.goto("/cartera-mixtos/");
+  await cargado(page);
+  const tarjeta = page.locator("#project-list .pcard", { hasText: p.nombre }).first();
+  await expect(tarjeta.locator(".pcard__fechas")).toContainText("Inversión comprometida");
+  await expect(tarjeta.locator(".pcard__fechas")).toContainText("Inicio de construcción");
+  if (sin) await expect(page.locator("#project-list .pcard", { hasText: sin.nombre }).first().locator(".pcard__fechas")).toHaveCount(0);
+  await tarjeta.locator(".pcard__open").click();
+  await expect(page.locator("#detail-body")).toContainText("Inicio de inversión (comprometida)");
+  await expect(page.locator("#detail-body")).toContainText("Inicio de construcción");
+});
+
+test("Trámites: al tocar un trámite se abre su ventana de comentarios (Parque y LT)", async ({ page }) => {
+  const p = datos().mixtos.find((r) => r.DI_P !== undefined && r.DI_P !== "" && "A_MIA_P_OBS" in r);
+  test.skip(!p, "el Excel no trae columnas de comentarios");
+  await page.route("**/cartera-mixtos/data/DATOS_MIXTOS.json", async (route) => {
+    const json = await (await route.fetch()).json();
+    const r = json.proyectos.find((x) => x["TÍTULO 2"] === p["TÍTULO 2"]);
+    Object.assign(r, { A_MIA_P_OBS: "Se ingresó a SEMARNAT.\n• Falta respuesta", A_MIA_LT_OBS: "" });
+    await route.fulfill({ json });
+  });
+  await page.goto(`/cartera-mixtos/?proyecto=${slugify(p.nombre)}`);
+  await cargado(page);
+  await page.click("#detail [data-open-tramites]");
+  const mia = page.locator("#tramites .tram-card", { hasText: "MIA – DTU" });
+  await expect(mia.locator(".tram-obs-marca")).toHaveCount(1); // tiene comentario
+  await mia.locator(".tram-card__abrir").click();
+  const obs = page.locator("#tramite-obs");
+  await expect(obs).toHaveClass(/is-open/);
+  await expect(obs.locator("#tramite-obs-title")).toHaveText("MIA – DTU");
+  await expect(obs.locator(".obs-lado").first()).toContainText("Se ingresó a SEMARNAT.");
+  await expect(obs.locator(".obs-lado").first().locator("li")).toHaveText("Falta respuesta");
+  await expect(obs.locator(".obs-lado").last()).toContainText("Sin comentarios por ahora.");
+  await page.keyboard.press("Escape");
+  await expect(obs).not.toHaveClass(/is-open/);
+  await expect(page.locator("#tramites")).toHaveClass(/is-open/); // Trámites sigue abierta
+});
+
 test("Trámites: el botón de la ficha abre el desglose de los 10 trámites", async ({ page }) => {
   const p = datos().mixtos.find((r) => r.DI_P !== undefined && r.DI_P !== "");
   test.skip(!p, "el Excel no trae desglose de trámites");

@@ -69,4 +69,6 @@ test("Trámites muestra el estatus de cada lado con el color de REGLAS", async (
   await expect(page.locator("#tramites .tram-est")).toHaveCount(18);
   const mia = page.locator("#tramites .tram-card", { hasText: "MIA" }).locator(".tram-est").first();
   await expect(mia).toHaveText(p.A_MIA_P_ESTATUS);
+  // 2da Ronda no tiene comentarios: las tarjetas no se tocan.
+  await expect(page.locator("#tramites .tram-card__abrir")).toHaveCount(0);
 });
