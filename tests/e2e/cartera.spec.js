@@ -128,7 +128,9 @@ test("Avance General: Programado y Real, semáforo y cambio desde el corte anter
     await expect(general.locator(".progress-row--real .progress-row__info > span").last()).toHaveText(`${real.toFixed(2)}%`);
     await expect(general.locator(".progress-row--prog .progress-row__info > span").last()).toHaveText(`${prog.toFixed(2)}%`);
     const sem = A.semaforo(Math.round((real - prog) * 100) / 100);
-    if (sem) await expect(general.locator(".variance")).toHaveClass(new RegExp(`variance--${sem}`));
+    // El semáforo (atraso / al día) solo va en el avance físico.
+    if (cual === "financiero") await expect(general.locator(".variance")).toHaveCount(0);
+    else if (sem) await expect(general.locator(".variance")).toHaveClass(new RegExp(`variance--${sem}`));
     const cambio = A.cambioSemanal(carteraHistorial, slugify(p.nombre), campo);
     if (cambio) await expect(general.locator(".avg__semana")).toContainText(`${Math.abs(cambio.diff).toFixed(2)} desde el`);
   };

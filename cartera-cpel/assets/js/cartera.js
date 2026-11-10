@@ -261,8 +261,8 @@
 
     // Avance general: físico (avanceProg/avanceReal) a la izquierda y
     // financiero (avanfinProg/avanfinReal) a la derecha, cada uno con
-    // Programado, Real, semáforo y cambio desde el corte anterior (ver
-    // avance.js). Sin datos financieros, solo el físico a todo lo ancho.
+    // Programado, Real y cambio desde el corte anterior; el semáforo
+    // (atraso / al día) solo en el físico (ver avance.js). Sin datos financieros, solo el físico a todo lo ancho.
     const A = window.CarteraAvance;
     const historial = window.CarteraCurva ? window.CarteraCurva.cargar() : null;
     const vigente = () => actual === p;
@@ -280,7 +280,7 @@
           </div>
           <div class="avance-mitad" data-avance="financiero">
             <h3 class="avance-mitad__titulo">Financiero</h3>
-            ${A.generalHtml(finReal, finProg, { compacto: true })}
+            ${A.generalHtml(finReal, finProg, { compacto: true, semaforo: false })}
           </div>
         </div>`;
       const mitad = (cual) => $("generalBody").querySelector(`[data-avance="${cual}"]`);

@@ -32,6 +32,10 @@ test("cambioSemanal de otro campo (avance financiero) y generalHtml compacto", (
   const c = A.generalHtml(40, 53, { compacto: true });
   assert.match(c, /variance--grave">Atraso de 13\.00 pts<\/div>/);
   assert.match(c, /avg__semana-fila"><span class="avg__semana" data-semana hidden>/);
+  // Avance financiero: sin leyenda de atraso / al día
+  const f = A.generalHtml(40, 53, { compacto: true, semaforo: false });
+  assert.doesNotMatch(f, /variance/);
+  assert.match(f, /progress-row--real/);
 });
 
 test("cambioSemanal: Real de los dos últimos cortes con dato del proyecto", () => {

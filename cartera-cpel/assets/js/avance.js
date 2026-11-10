@@ -64,14 +64,17 @@
    * pendiente = el Programado aún no se captura ("—" y sin semáforo).
    * El cambio semanal se pinta después en [data-semana], junto a "Real"
    * (compacto: en su propio renglón, debajo de la barra del Real).
+   * semaforo: false = sin la leyenda de atraso / al día (avance financiero).
    */
-  function generalHtml(real, prog, { pendiente = false, compacto = false } = {}) {
+  function generalHtml(real, prog, { pendiente = false, compacto = false, semaforo: conSemaforo = true } = {}) {
     const r = num(real);
     const p = pendiente ? null : num(prog);
     const diff = r !== null && p !== null ? r2(r - p) : null;
     const sem = semaforo(diff);
     // Programado y Real en 0: no ha empezado (no es "al día").
-    const pie = sinIniciar(r, p)
+    const pie = !conSemaforo
+      ? ""
+      : sinIniciar(r, p)
       ? `<div class="variance variance--sin">Sin iniciar</div>`
       : sem
         ? `<div class="variance variance--${sem}">${textoDiferencia(diff, compacto)}</div>`
