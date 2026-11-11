@@ -1,6 +1,6 @@
 // Uso en celular: leyenda del mapa siempre visible, ventanas que no
 // mueven la página de atrás y que se cierran deslizando hacia abajo.
-const { test, expect, FICHA_CARTERA } = require("./ayuda.js");
+const { test, expect, datos, slugify, FICHA_CARTERA } = require("./ayuda.js");
 
 test.skip(({ isMobile }) => !isMobile, "gestos de celular");
 
@@ -157,4 +157,31 @@ test("Mixtos: los logos van al final de Proyectos y Resumen, y en Mapa solo sobr
   await expect(page.locator(".map-logos")).toBeVisible();
   await page.click("[data-tab=resumen]");
   await expect(page.locator(".brand-footer")).toBeVisible();
+});
+
+test("Mixtos: la ventana de comentarios tiene la misma altura con poco o mucho texto", async ({ page }) => {
+  const p = datos().mixtos.find((r) => "S_CONS_OBS" in r);
+  test.skip(!p, "el Excel no trae columnas de comentarios");
+  await page.route("**/cartera-mixtos/data/DATOS_MIXTOS.json", async (route) => {
+    const json = await (await route.fetch()).json();
+    const r = json.proyectos.find((x) => x["TÍTULO 2"] === p["TÍTULO 2"]);
+    Object.assign(r, { S_CONS_OBS: "No aplica.", DI_P_OBS: "Texto largo. ".repeat(80), DI_LT_OBS: "Otro." });
+    await route.fulfill({ json });
+  });
+  await page.goto(`/cartera-mixtos/?proyecto=${slugify(p.nombre)}`);
+  await mixtosCargado(page);
+  await page.click("#detail [data-open-tramites]");
+  const alto = async (tramite) => {
+    await page.locator("#tramites .tram-card", { hasText: tramite }).locator(".tram-card__abrir").click();
+    await expect(page.locator("#tramite-obs")).toHaveClass(/is-open/);
+    const h = (await page.locator("#tramite-obs-body").boundingBox()).height;
+    await page.keyboard.press("Escape");
+    await expect(page.locator("#tramite-obs")).not.toHaveClass(/is-open/);
+    return h;
+  };
+  const corto = await alto("Consulta indígena");
+  const largo = await alto("Derechos inmobiliarios");
+  expect(Math.abs(corto - largo)).toBeLessThan(1);
+  // Debajo de la cabecera de Trámites, que sigue a la vista.
+  expect(corto).toBeLessThan((await page.locator("#tramites .detail__panel").boundingBox()).height - 60);
 });
