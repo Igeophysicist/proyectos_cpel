@@ -115,6 +115,7 @@ test("almacenamiento, energía y capacidad con su unidad", () => {
 test("estatus de Mixtos (texto libre): colores del código de Mixtos, otro texto en gris claro, vacío o 0 sin estatus", () => {
   assert.equal(Tramites.estatusMostrado("Liberado").color, "#D8E4BC");
   assert.equal(Tramites.estatusMostrado("N/A").color, "#D8E4BC");
+  assert.equal(Tramites.estatusMostrado("Liberada").color, "#D8E4BC");
   assert.equal(Tramites.estatusMostrado("En elaboracion").color, "#E79999");
   assert.equal(Tramites.estatusMostrado("En actualización").color, "#8DB4E2");
   assert.equal(Tramites.estatusMostrado("En evaluación").color, "#FFFF99");

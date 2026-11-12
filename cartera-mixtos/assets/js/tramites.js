@@ -64,6 +64,7 @@
   // Código de colores del Excel de Mixtos (celdas de estatus).
   const COLORES_MIXTOS = {
     "liberado": "#D8E4BC", // verde claro: listo al 100 %
+    "liberada": "#D8E4BC", // (la consulta indígena va en femenino)
     "n/a": "#D8E4BC",
     "en elaboracion": "#E79999", // rojo: por parte del socio
     "en actualizacion": "#8DB4E2", // azul: la autoridad pide información adicional

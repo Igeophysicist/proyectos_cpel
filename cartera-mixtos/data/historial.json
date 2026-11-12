@@ -1483,31 +1483,31 @@
     },
     {
       "semana": "2026-11-08",
-      "fecha": "2026-11-10",
-      "excel": "2026-11-10T15:24:22.000Z",
+      "fecha": "2026-11-11",
+      "excel": "2026-11-11T21:22:19.000Z",
       "proyectos": {
         "pv-moquel-solar": {
-          "parque": 82,
+          "parque": 82.5,
           "lt": 70,
-          "global": 79.6,
+          "global": 80,
           "grupo": "B"
         },
         "pv-sandom-solar": {
-          "parque": 80,
-          "lt": 55.5,
-          "global": 75.1,
+          "parque": 81.5,
+          "lt": 58.5,
+          "global": 76.9,
           "grupo": "B"
         },
         "viento-de-bella-union": {
-          "parque": 62.5,
-          "lt": 67,
-          "global": 63.4,
-          "grupo": "C"
+          "parque": 81,
+          "lt": 84,
+          "global": 81.6,
+          "grupo": "B"
         },
         "global-solar-3-campeche": {
-          "parque": 87.5,
-          "lt": 80,
-          "global": 86,
+          "parque": 88,
+          "lt": 68.5,
+          "global": 84.1,
           "grupo": "A"
         },
         "dalia-3-pv-castamay": {
@@ -1673,9 +1673,9 @@
           "grupo": "C"
         },
         "selka-power-plant-i": {
-          "parque": 86.5,
-          "lt": 37,
-          "global": 76.6,
+          "parque": 87,
+          "lt": 36,
+          "global": 76.8,
           "grupo": "A"
         },
         "central-fotovoltaica-quasara": {
