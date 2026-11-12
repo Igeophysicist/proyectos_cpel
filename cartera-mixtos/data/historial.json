@@ -1484,7 +1484,7 @@
     {
       "semana": "2026-11-08",
       "fecha": "2026-11-11",
-      "excel": "2026-11-11T21:22:19.000Z",
+      "excel": "2026-11-12T01:18:57.000Z",
       "proyectos": {
         "pv-moquel-solar": {
           "parque": 82.5,
@@ -1703,9 +1703,9 @@
           "grupo": "C"
         },
         "energeo-los-molinos": {
-          "parque": 85.5,
-          "lt": 85.5,
-          "global": 85.5,
+          "parque": 87.5,
+          "lt": 87.5,
+          "global": 87.5,
           "grupo": "A"
         },
         "montecristo": {

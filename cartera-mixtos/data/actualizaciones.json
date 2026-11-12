@@ -769,7 +769,7 @@
       ]
     },
     {
-      "excel": "2026-11-11T21:22:19.000Z",
+      "excel": "2026-11-12T01:18:57.000Z",
       "fecha": "2026-11-11",
       "cambios": [
         {
@@ -829,6 +829,18 @@
           },
           "ahora": {
             "parque": 87,
+            "grupo": "A"
+          }
+        },
+        {
+          "slug": "energeo-los-molinos",
+          "nombre": "ENERGEO LOS MOLINOS",
+          "antes": {
+            "parque": 85.5,
+            "grupo": "A"
+          },
+          "ahora": {
+            "parque": 87.5,
             "grupo": "A"
           }
         }
