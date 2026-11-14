@@ -845,6 +845,108 @@
           }
         }
       ]
+    },
+    {
+      "excel": "2026-11-14T00:22:15.000Z",
+      "fecha": "2026-11-13",
+      "cambios": [
+        {
+          "slug": "dalia-3-pv-castamay",
+          "nombre": "DALIA 3 PV (CASTAMAY)",
+          "antes": {
+            "parque": 83,
+            "grupo": "B"
+          },
+          "ahora": {
+            "parque": 80,
+            "grupo": "B"
+          }
+        },
+        {
+          "slug": "concepcion-mendizabal-mendoza-fase-i",
+          "nombre": "CONCEPCIÓN MENDIZÁBAL MENDOZA FASE I",
+          "antes": {
+            "parque": 83.75,
+            "grupo": "B"
+          },
+          "ahora": {
+            "parque": 79.75,
+            "grupo": "B"
+          }
+        },
+        {
+          "slug": "concepcion-mendizabal-mendoza-fase-ii",
+          "nombre": "CONCEPCIÓN MENDIZÁBAL MENDOZA FASE II",
+          "antes": {
+            "parque": 83.75,
+            "grupo": "B"
+          },
+          "ahora": {
+            "parque": 79.75,
+            "grupo": "B"
+          }
+        },
+        {
+          "slug": "concepcion-mendizabal-mendoza-fase-iii",
+          "nombre": "CONCEPCIÓN MENDIZÁBAL MENDOZA FASE III",
+          "antes": {
+            "parque": 82.75,
+            "grupo": "B"
+          },
+          "ahora": {
+            "parque": 76,
+            "grupo": "B"
+          }
+        },
+        {
+          "slug": "cimarron-solar",
+          "nombre": "CIMARRÓN SOLAR",
+          "antes": {
+            "parque": 35,
+            "grupo": "C"
+          },
+          "ahora": {
+            "parque": 40,
+            "grupo": "C"
+          }
+        },
+        {
+          "slug": "la-poza-solar",
+          "nombre": "LA POZA SOLAR",
+          "antes": {
+            "parque": 35,
+            "grupo": "C"
+          },
+          "ahora": {
+            "parque": 37.5,
+            "grupo": "C"
+          }
+        },
+        {
+          "slug": "sunora",
+          "nombre": "SUNORA",
+          "antes": {
+            "parque": 49,
+            "grupo": "C"
+          },
+          "ahora": {
+            "parque": 54,
+            "grupo": "C"
+          }
+        },
+        {
+          "slug": "alvaro-obregon",
+          "nombre": "ÁLVARO OBREGÓN",
+          "antes": {
+            "parque": 83.5,
+            "grupo": "B"
+          },
+          "ahora": {
+            "parque": 86.5,
+            "grupo": "A"
+          }
+        }
+      ]
     }
   ]
 }

@@ -1483,8 +1483,8 @@
     },
     {
       "semana": "2026-11-08",
-      "fecha": "2026-11-11",
-      "excel": "2026-11-12T01:18:57.000Z",
+      "fecha": "2026-11-13",
+      "excel": "2026-11-14T00:22:15.000Z",
       "proyectos": {
         "pv-moquel-solar": {
           "parque": 82.5,
@@ -1511,9 +1511,9 @@
           "grupo": "A"
         },
         "dalia-3-pv-castamay": {
-          "parque": 83,
-          "lt": 57.5,
-          "global": 77.9,
+          "parque": 80,
+          "lt": 54.5,
+          "global": 74.9,
           "grupo": "B"
         },
         "fresnillo-pv-atocha": {
@@ -1523,39 +1523,39 @@
           "grupo": "C"
         },
         "concepcion-mendizabal-mendoza-fase-i": {
-          "parque": 83.75,
-          "lt": 83.75,
-          "global": 83.75,
+          "parque": 79.75,
+          "lt": 79.75,
+          "global": 79.75,
           "grupo": "B"
         },
         "concepcion-mendizabal-mendoza-fase-ii": {
-          "parque": 83.75,
-          "lt": 83.75,
-          "global": 83.75,
+          "parque": 79.75,
+          "lt": 79.75,
+          "global": 79.75,
           "grupo": "B"
         },
         "concepcion-mendizabal-mendoza-fase-iii": {
-          "parque": 82.75,
-          "lt": 82.75,
-          "global": 82.75,
+          "parque": 76,
+          "lt": 76,
+          "global": 76,
           "grupo": "B"
         },
         "cimarron-solar": {
-          "parque": 35,
-          "lt": 40,
-          "global": 36,
+          "parque": 40,
+          "lt": 45,
+          "global": 41,
           "grupo": "C"
         },
         "la-poza-solar": {
-          "parque": 35,
-          "lt": 35,
-          "global": 35,
+          "parque": 37.5,
+          "lt": 42.5,
+          "global": 38.5,
           "grupo": "C"
         },
         "sunora": {
-          "parque": 49,
-          "lt": 54,
-          "global": 50,
+          "parque": 54,
+          "lt": 59,
+          "global": 55,
           "grupo": "C"
         },
         "parque-fv-energias-renovables-de-tamaulipas": {
@@ -1643,10 +1643,10 @@
           "grupo": "C"
         },
         "alvaro-obregon": {
-          "parque": 83.5,
-          "lt": 81.5,
-          "global": 83.1,
-          "grupo": "B"
+          "parque": 86.5,
+          "lt": 83.5,
+          "global": 85.9,
+          "grupo": "A"
         },
         "cfv-las-garzas": {
           "parque": 44,
