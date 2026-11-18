@@ -947,6 +947,60 @@
           }
         }
       ]
+    },
+    {
+      "excel": "2026-11-18T00:49:22.000Z",
+      "fecha": "2026-11-17",
+      "cambios": [
+        {
+          "slug": "dalia-3-pv-castamay",
+          "nombre": "DALIA 3 PV (CASTAMAY)",
+          "antes": {
+            "parque": 80,
+            "grupo": "B"
+          },
+          "ahora": {
+            "parque": 81,
+            "grupo": "B"
+          }
+        },
+        {
+          "slug": "fresnillo-pv-atocha",
+          "nombre": "FRESNILLO (PV ATOCHA)",
+          "antes": {
+            "parque": 62.5,
+            "grupo": "C"
+          },
+          "ahora": {
+            "parque": 61,
+            "grupo": "C"
+          }
+        },
+        {
+          "slug": "proyecto-eolico-region-noreste-la-noria",
+          "nombre": "PROYECTO EÓLICO REGIÓN NORESTE (LA NORIA)",
+          "antes": {
+            "parque": 54,
+            "grupo": "C"
+          },
+          "ahora": {
+            "parque": 60.5,
+            "grupo": "C"
+          }
+        },
+        {
+          "slug": "solitario",
+          "nombre": "SOLITARIO",
+          "antes": {
+            "parque": 68,
+            "grupo": "C"
+          },
+          "ahora": {
+            "parque": 74,
+            "grupo": "C"
+          }
+        }
+      ]
     }
   ]
 }
