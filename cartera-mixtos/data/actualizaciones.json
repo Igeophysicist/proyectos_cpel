@@ -1001,6 +1001,60 @@
           }
         }
       ]
+    },
+    {
+      "excel": "2026-11-19T22:58:24.000Z",
+      "fecha": "2026-11-19",
+      "cambios": [
+        {
+          "slug": "don-humberto",
+          "nombre": "DON HUMBERTO",
+          "antes": {
+            "parque": 88.5,
+            "grupo": "A"
+          },
+          "ahora": {
+            "parque": 89,
+            "grupo": "A"
+          }
+        },
+        {
+          "slug": "los-girasoles",
+          "nombre": "LOS GIRASOLES",
+          "antes": {
+            "parque": 64,
+            "grupo": "C"
+          },
+          "ahora": {
+            "parque": 78,
+            "grupo": "B"
+          }
+        },
+        {
+          "slug": "solar-energia-tres-hermanos",
+          "nombre": "SOLAR ENERGÍA TRES HERMANOS",
+          "antes": {
+            "parque": 65.5,
+            "grupo": "C"
+          },
+          "ahora": {
+            "parque": 74,
+            "grupo": "C"
+          }
+        },
+        {
+          "slug": "central-fotovoltaica-quasara",
+          "nombre": "CENTRAL FOTOVOLTAICA QUASARA",
+          "antes": {
+            "parque": 35.5,
+            "grupo": "C"
+          },
+          "ahora": {
+            "parque": 62.5,
+            "grupo": "C"
+          }
+        }
+      ]
     }
   ]
 }
