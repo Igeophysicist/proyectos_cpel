@@ -1730,8 +1730,8 @@
     },
     {
       "semana": "2026-11-15",
-      "fecha": "2026-11-17",
-      "excel": "2026-11-18T00:49:22.000Z",
+      "fecha": "2026-11-19",
+      "excel": "2026-11-19T22:58:24.000Z",
       "proyectos": {
         "pv-moquel-solar": {
           "parque": 82.5,
@@ -1902,21 +1902,21 @@
           "grupo": "C"
         },
         "don-humberto": {
-          "parque": 88.5,
-          "lt": 79.5,
-          "global": 86.7,
+          "parque": 89,
+          "lt": 80,
+          "global": 87.2,
           "grupo": "A"
         },
         "los-girasoles": {
-          "parque": 64,
-          "lt": 64,
-          "global": 64,
-          "grupo": "C"
+          "parque": 78,
+          "lt": 78,
+          "global": 78,
+          "grupo": "B"
         },
         "solar-energia-tres-hermanos": {
-          "parque": 65.5,
-          "lt": 43,
-          "global": 61,
+          "parque": 74,
+          "lt": 44,
+          "global": 68,
           "grupo": "C"
         },
         "selka-power-plant-i": {
@@ -1926,9 +1926,9 @@
           "grupo": "A"
         },
         "central-fotovoltaica-quasara": {
-          "parque": 35.5,
-          "lt": 35,
-          "global": 35.4,
+          "parque": 62.5,
+          "lt": 37.5,
+          "global": 57.5,
           "grupo": "C"
         },
         "sierra-madre-el-chorro-2da-ronda": {
