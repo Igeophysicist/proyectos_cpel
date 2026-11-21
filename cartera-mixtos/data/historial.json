@@ -1730,8 +1730,8 @@
     },
     {
       "semana": "2026-11-15",
-      "fecha": "2026-11-19",
-      "excel": "2026-11-19T22:58:24.000Z",
+      "fecha": "2026-11-20",
+      "excel": "2026-11-21T00:47:22.000Z",
       "proyectos": {
         "pv-moquel-solar": {
           "parque": 82.5,
@@ -1807,33 +1807,33 @@
         },
         "parque-fv-energias-renovables-de-tamaulipas": {
           "parque": 94,
-          "lt": 93,
-          "global": 93.8,
+          "lt": 91,
+          "global": 93.4,
           "grupo": "A"
         },
         "parque-fv-energias-renovables-de-mexico-tres": {
-          "parque": 75,
-          "lt": 75,
-          "global": 75,
-          "grupo": "C"
-        },
-        "energia-limpia-el-mezquite": {
-          "parque": 40,
-          "lt": 34,
-          "global": 38.8,
-          "grupo": "C"
-        },
-        "parque-fv-energias-renovables-saas-peto": {
-          "parque": 74,
-          "lt": 64,
+          "parque": 72,
+          "lt": 72,
           "global": 72,
           "grupo": "C"
         },
-        "parque-fv-energias-renovables-kiin-tekax": {
-          "parque": 72,
-          "lt": 67,
-          "global": 71,
+        "energia-limpia-el-mezquite": {
+          "parque": 47,
+          "lt": 32,
+          "global": 44,
           "grupo": "C"
+        },
+        "parque-fv-energias-renovables-saas-peto": {
+          "parque": 80,
+          "lt": 70,
+          "global": 78,
+          "grupo": "B"
+        },
+        "parque-fv-energias-renovables-kiin-tekax": {
+          "parque": 79,
+          "lt": 74,
+          "global": 78,
+          "grupo": "B"
         },
         "san-pedro-solar": {
           "parque": 88,
@@ -1938,9 +1938,9 @@
           "grupo": "C"
         },
         "delaro-2da-ronda": {
-          "parque": 83,
-          "lt": 83,
-          "global": 83,
+          "parque": 82.5,
+          "lt": 82.5,
+          "global": 82.5,
           "grupo": "B"
         },
         "el-guajillo": {
