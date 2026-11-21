@@ -1055,6 +1055,60 @@
           }
         }
       ]
+    },
+    {
+      "excel": "2026-11-21T00:31:04.000Z",
+      "fecha": "2026-11-20",
+      "cambios": [
+        {
+          "slug": "parque-fv-energias-renovables-de-mexico-tres",
+          "nombre": "PARQUE FV ENERGÍAS RENOVABLES DE MÉXICO TRES",
+          "antes": {
+            "parque": 75,
+            "grupo": "C"
+          },
+          "ahora": {
+            "parque": 72,
+            "grupo": "C"
+          }
+        },
+        {
+          "slug": "energia-limpia-el-mezquite",
+          "nombre": "ENERGÍA LIMPIA EL MEZQUITE",
+          "antes": {
+            "parque": 40,
+            "grupo": "C"
+          },
+          "ahora": {
+            "parque": 47,
+            "grupo": "C"
+          }
+        },
+        {
+          "slug": "parque-fv-energias-renovables-saas-peto",
+          "nombre": "PARQUE FV ENERGÍAS RENOVABLES SAAS (PETO)",
+          "antes": {
+            "parque": 74,
+            "grupo": "C"
+          },
+          "ahora": {
+            "parque": 80,
+            "grupo": "B"
+          }
+        },
+        {
+          "slug": "parque-fv-energias-renovables-kiin-tekax",
+          "nombre": "PARQUE FV ENERGÍAS RENOVABLES KIIN (TEKAX)",
+          "antes": {
+            "parque": 72,
+            "grupo": "C"
+          },
+          "ahora": {
+            "parque": 79,
+            "grupo": "B"
+          }
+        }
+      ]
     }
   ]
 }
