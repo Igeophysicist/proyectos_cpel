@@ -1731,7 +1731,7 @@
     {
       "semana": "2026-11-15",
       "fecha": "2026-11-20",
-      "excel": "2026-11-21T00:31:04.000Z",
+      "excel": "2026-11-21T00:47:22.000Z",
       "proyectos": {
         "pv-moquel-solar": {
           "parque": 82.5,
@@ -1938,9 +1938,9 @@
           "grupo": "C"
         },
         "delaro-2da-ronda": {
-          "parque": 83,
-          "lt": 83,
-          "global": 83,
+          "parque": 82.5,
+          "lt": 82.5,
+          "global": 82.5,
           "grupo": "B"
         },
         "el-guajillo": {

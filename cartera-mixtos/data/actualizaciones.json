@@ -1057,7 +1057,7 @@
       ]
     },
     {
-      "excel": "2026-11-21T00:31:04.000Z",
+      "excel": "2026-11-21T00:47:22.000Z",
       "fecha": "2026-11-20",
       "cambios": [
         {
@@ -1105,6 +1105,18 @@
           },
           "ahora": {
             "parque": 79,
+            "grupo": "B"
+          }
+        },
+        {
+          "slug": "delaro-2da-ronda",
+          "nombre": "DELARO (2DA RONDA)",
+          "antes": {
+            "parque": 83,
+            "grupo": "B"
+          },
+          "ahora": {
+            "parque": 82.5,
             "grupo": "B"
           }
         }
