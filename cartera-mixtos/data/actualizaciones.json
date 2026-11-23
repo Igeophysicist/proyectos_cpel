@@ -1121,6 +1121,72 @@
           }
         }
       ]
+    },
+    {
+      "excel": "2026-11-23T20:01:55.000Z",
+      "fecha": "2026-11-23",
+      "cambios": [
+        {
+          "slug": "san-pedro-solar",
+          "nombre": "SAN PEDRO SOLAR",
+          "antes": {
+            "parque": 88,
+            "grupo": "A"
+          },
+          "ahora": {
+            "parque": 90,
+            "grupo": "A"
+          }
+        },
+        {
+          "slug": "el-palmar",
+          "nombre": "EL PALMAR",
+          "antes": {
+            "parque": 30.5,
+            "grupo": "C"
+          },
+          "ahora": {
+            "parque": 57.5,
+            "grupo": "C"
+          }
+        },
+        {
+          "slug": "la-pasion",
+          "nombre": "LA PASIÓN",
+          "antes": {
+            "parque": 29.5,
+            "grupo": "C"
+          },
+          "ahora": {
+            "parque": 54.5,
+            "grupo": "C"
+          }
+        },
+        {
+          "slug": "tikinmul",
+          "nombre": "TIKINMUL",
+          "antes": {
+            "parque": 30,
+            "grupo": "C"
+          },
+          "ahora": {
+            "parque": 43,
+            "grupo": "C"
+          }
+        },
+        {
+          "slug": "cfv-las-garzas",
+          "nombre": "CFV LAS GARZAS",
+          "antes": {
+            "parque": 44,
+            "grupo": "C"
+          },
+          "ahora": {
+            "parque": 48.5,
+            "grupo": "C"
+          }
+        }
+      ]
     }
   ]
 }
