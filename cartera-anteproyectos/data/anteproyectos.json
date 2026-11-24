@@ -1165,7 +1165,7 @@
               },
               {
                 "clave": "2.3",
-                "titulo": "Presupuesto",
+                "titulo": "Estimación preliminar de CAPEX",
                 "real": 68,
                 "prog": 79
               },
@@ -1485,7 +1485,7 @@
               },
               {
                 "clave": "2.3",
-                "titulo": "Presupuesto",
+                "titulo": "Estimación preliminar de CAPEX",
                 "real": 0,
                 "prog": 0
               },
