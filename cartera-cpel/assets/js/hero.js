@@ -7,6 +7,7 @@
  * Expone: window.CarteraHero.foto(hero, img, src, tecnologia)
  *         window.CarteraHero.tipo(tecnologia) -> "solar" | "eolica" | "hidro" | "otra"
  *         window.CarteraHero.icono(tecnologia) -> <svg> del ícono (vista de la cartera)
+ *         window.CarteraHero.reanimar(contenedor) -> repite la entrada de sus tarjetas
  */
 (function (global) {
   const { normalizeText } = global.TextUtils;
@@ -43,8 +44,12 @@
     img.onerror = sinFoto;
     hero.classList.remove("hero-card--sinfoto");
     if (src) {
+      // Aparece con un fundido cuando termina de cargar (ver .hero-card img en cartera.css).
+      img.classList.add("is-cargando");
+      img.onload = () => requestAnimationFrame(() => img.classList.remove("is-cargando"));
       img.src = src;
       img.style.visibility = "visible";
+      if (img.complete && img.naturalWidth) img.onload();
     } else {
       img.removeAttribute("src");
       sinFoto();
@@ -53,5 +58,18 @@
 
   const icono = (tecnologia) => `<svg viewBox="0 0 24 24" fill="none" aria-hidden="true">${ICONOS[tipo(tecnologia)]}</svg>`;
 
-  global.CarteraHero = { foto, tipo, icono };
+  /**
+   * Vuelve a reproducir la entrada de las tarjetas de la ficha (las de
+   * contenedor > *) al cambiar de proyecto, como al abrir la página.
+   */
+  function reanimar(contenedor) {
+    if (!contenedor) return;
+    contenedor.querySelectorAll(":scope > *, .hero-card__overlay > *").forEach((el) => {
+      el.style.animation = "none";
+      void el.offsetWidth; // reinicia la animación
+      el.style.animation = "";
+    });
+  }
+
+  global.CarteraHero = { foto, tipo, icono, reanimar };
 })(window);

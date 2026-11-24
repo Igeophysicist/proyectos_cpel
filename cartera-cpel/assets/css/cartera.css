@@ -46,6 +46,13 @@ body.vista-cargando #vista{ display: block; }
   background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-l); box-shadow: var(--shadow-card);
   transition: border-color .15s, box-shadow .15s;
 }
+/* Tarjetas de la pantalla previa: entran escalonadas, como las de Mixtos */
+.vista-grid .vcard{ opacity: 0; animation: card-in .35s ease-out forwards; }
+.vista-grid .vcard:nth-child(2){ animation-delay: .04s; } .vista-grid .vcard:nth-child(3){ animation-delay: .08s; }
+.vista-grid .vcard:nth-child(4){ animation-delay: .12s; } .vista-grid .vcard:nth-child(5){ animation-delay: .16s; }
+.vista-grid .vcard:nth-child(6){ animation-delay: .2s; } .vista-grid .vcard:nth-child(7){ animation-delay: .24s; }
+.vista-grid .vcard:nth-child(n+8){ animation-delay: .28s; }
+.vista-grid .vcard--esq{ opacity: 1; animation: none; }
 .vcard:hover{ border-color: var(--teal-700); box-shadow: 0 2px 8px rgba(26,36,34,.1); }
 .vcard:focus-visible{ outline: 2px solid var(--gold-500); outline-offset: 2px; }
 .vcard__icono{ flex: none; width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; background: var(--teal-100, #e8efed); color: var(--teal-800); }
@@ -142,7 +149,13 @@ body.vista-cargando #vista{ display: block; }
   position: relative; overflow: hidden; height: 220px;
   border-radius: var(--radius-l); background: var(--teal-900); box-shadow: var(--shadow-card);
 }
-.hero-card img{ width: 100%; height: 100%; object-fit: cover; display: block; }
+.hero-card img{ width: 100%; height: 100%; object-fit: cover; display: block; transition: opacity .7s ease-out, transform 1.4s cubic-bezier(.16,1,.3,1); }
+/* La foto aparece con un fundido y un ligero acercamiento al cargar (hero.js) */
+.hero-card img.is-cargando{ opacity: 0; transform: scale(1.06); transition: none; }
+/* Nombre, ubicación y etiquetas sobre la foto: entran después de la foto */
+.hero-card__overlay > *{ opacity: 0; animation: card-in .45s ease-out forwards; animation-delay: .25s; }
+.hero-card__overlay > *:nth-child(2){ animation-delay: .32s; } .hero-card__overlay > *:nth-child(3){ animation-delay: .39s; }
+.hero-card__overlay > *:nth-child(4){ animation-delay: .46s; } .hero-card__overlay > *:nth-child(5){ animation-delay: .53s; }
 /* Sin foto (hero.js): fondo con degradado y el ícono de la tecnología */
 .hero-card__icono{ display: none; }
 .hero-card--sinfoto{ background: radial-gradient(circle at 78% 30%, #2f5a54 0%, var(--teal-900) 65%); }
@@ -654,7 +667,8 @@ body.vista-cargando #vista{ display: block; }
 }
 body.modo-pdf{ background: #fff; padding: 0; font-size: 11px; }
 body.modo-pdf *, body.modo-pdf *::before, body.modo-pdf *::after{ animation: none !important; transition: none !important; }
-body.modo-pdf .cartera > *, body.modo-pdf .timeline li, body.modo-pdf .info-item, body.modo-pdf .hito3, body.modo-pdf .particular{ opacity: 1 !important; }
+body.modo-pdf .hero-card img{ transform: none !important; }
+body.modo-pdf .cartera > *, body.modo-pdf .hero-card__overlay > *, body.modo-pdf .hero-card img, body.modo-pdf .timeline li, body.modo-pdf .info-item, body.modo-pdf .hito3, body.modo-pdf .particular{ opacity: 1 !important; }
 body.modo-pdf .topbar, body.modo-pdf .actionbar, body.modo-pdf .brand-footer, body.modo-pdf .sheet__scrim, body.modo-pdf .sheet__close, body.modo-pdf #sheetCurva, body.modo-pdf .card:has(.map-wrap){ display: none !important; }
 body.modo-pdf .print-head{
   display: flex; justify-content: space-between; align-items: center; font-size: 10px; font-weight: 700;
