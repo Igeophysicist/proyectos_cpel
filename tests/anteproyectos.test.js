@@ -173,3 +173,11 @@ test("AVAN: un número repetido (1.10 que Excel cambió a 1.1) es error", () => 
   const { errors } = leerAnteproyectos(libro(hojas), XLSX);
   assert.ok(errors.some((e) => /AVAN_FOTOV", fila 1: el número 1\.1 se repite \(columnas F y H\).*'1\.10/.test(e)), errors.join("\n"));
 });
+
+test("PLAZOS: los meses se escriben como \"febrero 2026\"", () => {
+  const { mesAnio } = require("../scripts/anteproyectos.js");
+  assert.equal(mesAnio("febrero 2026"), "2026-02");
+  assert.equal(mesAnio("Septiembre de 2027"), "2027-09");
+  assert.equal(mesAnio("sept. 2027"), "2027-09");
+  assert.equal(mesAnio("2026"), null);
+});

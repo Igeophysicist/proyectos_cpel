@@ -42,10 +42,16 @@ test("las tarjetas muestran la información del Excel", async ({ page }) => {
   // Avance general (con la nota total) y avances particulares
   await expect(page.locator("#generalBody .progress-row--real")).toContainText(`${p.avance.general.real.toFixed(2)}%`);
   if (p.avance.general.nota) {
-    // La nota total va plegada: se abre al tocarla.
-    await expect(page.locator(".av-notas-gen__texto")).toBeHidden();
-    await page.locator(".av-notas-gen summary").click();
-    await expect(page.locator(".av-notas-gen__texto")).toBeVisible();
+    // Con NOTA TOTAL la tarjeta lleva el distintivo y, al tocarla, abre la ventana Notas.
+    await expect(page.locator("#generalMarca")).toBeVisible();
+    await page.locator("#generalCard").click();
+    await expect(page.locator("#sheetNota")).toHaveClass(/is-open/);
+    await expect(page.locator("#notaTitulo")).toHaveText("Avance General");
+    await expect(page.locator("#notaBody .nota-texto")).not.toBeEmpty();
+    await page.keyboard.press("Escape");
+    await expect(page.locator("#sheetNota")).not.toHaveClass(/is-open/);
+  } else {
+    await expect(page.locator("#generalMarca")).toBeHidden();
   }
   if (p.avance.programadoPendiente) await expect(page.locator(".av-pendiente")).toBeVisible();
   await expect(page.locator("#particularGrid .particular--btn")).toHaveCount(p.avance.grupos.length);
@@ -57,7 +63,7 @@ test("las tarjetas muestran la información del Excel", async ({ page }) => {
   await expect(page.locator(".leaflet-interactive").first()).toBeVisible();
 });
 
-test("cada avance particular abre sus avances ponderados con sus notas", async ({ page }) => {
+test("cada avance particular abre sus avances ponderados; los que tienen nota la abren en otra ventana", async ({ page }) => {
   const p = datos().proyectos[0];
   await page.goto(`/cartera-anteproyectos/?proyecto=${slugify(p.nombre)}`);
   await listo(page);
@@ -66,7 +72,18 @@ test("cada avance particular abre sus avances ponderados con sus notas", async (
     await expect(page.locator("#sheetPonderado")).toHaveClass(/is-open/);
     await expect(page.locator("#ponderadoTitulo")).toHaveText(`${g.clave}. ${g.titulo}`);
     await expect(page.locator("#ponderadoBody .pond")).toHaveCount(g.items.length);
-    await expect(page.locator("#ponderadoBody .pond .av-nota")).toHaveCount(g.items.filter((x) => x.nota).length);
+    const conNota = g.items.filter((x) => x.nota);
+    await expect(page.locator("#ponderadoBody li.pond--clic")).toHaveCount(conNota.length);
+    await expect(page.locator("#ponderadoBody li.pond--clic .nota-marca")).toHaveCount(conNota.length);
+    if (conNota.length) {
+      await page.locator("#ponderadoBody li.pond--clic").first().click();
+      await expect(page.locator("#sheetNota")).toHaveClass(/is-open/);
+      await expect(page.locator("#notaTitulo")).toHaveText(`${conNota[0].clave} ${conNota[0].titulo}`);
+      // Al cerrar Notas sigue abierta la ventana de los ponderados.
+      await page.locator("#sheetNota .sheet__close").click();
+      await expect(page.locator("#sheetNota")).not.toHaveClass(/is-open/);
+      await expect(page.locator("#sheetPonderado")).toHaveClass(/is-open/);
+    }
     await page.keyboard.press("Escape");
     await expect(page.locator("#sheetPonderado")).not.toHaveClass(/is-open/);
   }
@@ -97,7 +114,7 @@ test("PDF en computadora: la hoja lleva la ficha técnica y la justificación ab
   await expect(page.locator("body")).toHaveClass(/modo-pdf/);
   await expect(page.locator("#printFicha .spec")).toBeVisible();
   await expect(page.locator(".rta-mas")).toHaveAttribute("open", "");
-  await expect(page.locator(".av-notas-gen")).toHaveAttribute("open", "");
+  if (datos().proyectos[0].avance.general.nota) await expect(page.locator("#generalBody .av-nota-pdf")).toBeVisible();
   await page.evaluate(() => window.dispatchEvent(new Event("afterprint")));
 });
 
@@ -114,4 +131,24 @@ test("sin desplazamiento horizontal", async ({ page }) => {
   await page.goto(FICHA_ANTE);
   await listo(page);
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+});
+
+test("Plazos: el botón abre las etapas de la hoja PLAZOS con su estado según el mes de hoy", async ({ page }) => {
+  const p = datos().proyectos.find((x) => x.plazos && x.plazos.length);
+  test.skip(!p, "el Excel no trae la hoja PLAZOS");
+  // Mes fijo para que el estado de las etapas no dependa del día de la prueba.
+  const e = p.plazos[1];
+  await page.clock.setFixedTime(new Date(`${e.inicio}-15T12:00:00-06:00`));
+  await page.goto(`/cartera-anteproyectos/?proyecto=${slugify(p.nombre)}`);
+  await listo(page);
+  await page.click("#plazosBtn");
+  const ventana = page.locator("#sheetPlazos");
+  await expect(ventana).toHaveClass(/is-open/);
+  await expect(ventana.locator(".etapa")).toHaveCount(p.plazos.length);
+  await expect(ventana.locator(".etapa").first()).toContainText(p.plazos[0].etapa);
+  await expect(ventana.locator(".etapa--curso")).toHaveCount(1);
+  await expect(ventana.locator(".etapa--curso")).toContainText(e.etapa);
+  await expect(ventana.locator(".etapa--curso")).toContainText("mes 1 de");
+  await expect(ventana.locator(".plazo-actual")).toHaveText(e.etapa);
+  await expect(ventana.locator(".etapa--concluida")).toHaveCount(1);
 });

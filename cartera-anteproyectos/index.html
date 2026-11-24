@@ -104,10 +104,13 @@
     </section>
 
     <!-- 2a. Avance general (hoja AVAN_<tipo>: GENERAL y NOTA TOTAL) -->
-    <section class="card card--general">
+    <section class="card card--general" id="generalCard">
+      <!-- Con NOTA TOTAL: toda la tarjeta abre la ventana de notas -->
+      <button type="button" class="card__abrir" id="generalAbrir" aria-label="Avance General: ver notas" hidden></button>
       <h2 class="card__title">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M3 17l6-6 4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 7h6v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         Avance General
+        <span class="nota-marca" id="generalMarca" title="Tiene notas" hidden><svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 5h16v11H9l-5 4V5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg> Notas</span>
       </h2>
       <div id="generalBody">
         <div class="esq-bloque" aria-hidden="true">
@@ -197,11 +200,15 @@
     <img src="../assets/img/logo-cpel.png" alt="CPEL" class="brand-footer__logo brand-footer__logo--cpel">
   </footer>
 
-  <!-- Barra inferior: Ficha técnica (hoja FICHA_<tipo>) y Curva de avance -->
+  <!-- Barra inferior: Ficha técnica (hoja FICHA_<tipo>), Plazos (hoja PLAZOS) y Curva de avance -->
   <nav class="actionbar">
     <button class="actionbar__btn" data-open-sheet="sheetFicha">
       <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M14 3H6a1 1 0 00-1 1v16a1 1 0 001 1h12a1 1 0 001-1V8l-5-5z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M14 3v5h5M9 13h6M9 17h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
       Ficha técnica
+    </button>
+    <button class="actionbar__btn" data-open-sheet="sheetPlazos" id="plazosBtn" hidden>
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="16" rx="2" stroke="currentColor" stroke-width="2"/><path d="M3 10h18M8 3v4M16 3v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      Plazos
     </button>
     <button class="actionbar__btn" data-open-sheet="sheetCurva">
       <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M3 3v18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M7 15l4-4 3 3 6-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -224,6 +231,24 @@
         </button>
       </div>
       <div class="sheet__body" id="fichaBody" tabindex="0" aria-label="Ficha técnica del anteproyecto"></div>
+    </div>
+  </div>
+
+  <!-- Ventana: Plazos (etapas del estudio, hoja PLAZOS) -->
+  <div class="sheet" id="sheetPlazos" aria-hidden="true">
+    <div class="sheet__scrim" data-close-sheet></div>
+    <div class="sheet__panel" role="dialog" aria-modal="true" aria-labelledby="sheetPlazosTitle">
+      <div class="sheet__head">
+        <div class="sheet__title" id="sheetPlazosTitle">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="16" rx="2" stroke="currentColor" stroke-width="2"/><path d="M3 10h18M8 3v4M16 3v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          Plazos del anteproyecto
+        </div>
+        <div class="sheet__sub" data-project-name></div>
+        <button class="sheet__close" data-close-sheet aria-label="Cerrar">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+      <div class="sheet__body" id="plazosBody" tabindex="0" aria-label="Plazos del anteproyecto"></div>
     </div>
   </div>
 
@@ -260,6 +285,24 @@
         </button>
       </div>
       <div class="sheet__body" id="curvaBody" tabindex="0" aria-label="Curva de avance del anteproyecto"></div>
+    </div>
+  </div>
+
+  <!-- Ventana: notas (NOTA TOTAL del Avance General o la nota de un avance); va encima de las demás -->
+  <div class="sheet sheet--nota" id="sheetNota" aria-hidden="true">
+    <div class="sheet__scrim" data-close-nota></div>
+    <div class="sheet__panel" role="dialog" aria-modal="true" aria-labelledby="sheetNotaTitle">
+      <div class="sheet__head">
+        <div class="sheet__title" id="sheetNotaTitle">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 5h16v11H9l-5 4V5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+          <span id="notaTitulo">Notas</span>
+        </div>
+        <div class="sheet__sub"><span data-project-name></span> · Notas</div>
+        <button class="sheet__close" data-close-nota aria-label="Cerrar">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+      <div class="sheet__body" id="notaBody" tabindex="0" aria-label="Notas"></div>
     </div>
   </div>
 

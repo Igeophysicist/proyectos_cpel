@@ -26,6 +26,9 @@
  *          fila de encabezados que empieza con "No."), cuando los
  *          proyectos de la misma tecnología tienen ponderados distintos:
  *          cada proyecto usa los encabezados de la tabla en la que está.
+ *   PLAZOS (opcional) No., Proyecto, Etapa, Plazos y Fechas: tres filas
+ *          por etapa (Total "6 meses", Inicio y Final "julio 2026").
+ *          Las etapas y su número salen de la hoja.
  *   TIPOS  (opcional) Tecnología | Sufijo, para tecnologías nuevas.
  *
  * <TIPO> sale de la tecnología de PRES: Fotovoltaico -> FOTOV, Termosolar
@@ -290,6 +293,62 @@ function leerFicha(t) {
   return porNo;
 }
 
+const MESES = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
+
+/** "febrero 2026" (o "feb 2026", "sept. 2026") -> "2026-02"; null si no se entiende. */
+function mesAnio(v) {
+  const m = /^([a-z]+)\.?\s*(?:de\s+|del\s+)?(\d{4})$/.exec(normalizeText(v).toLowerCase().replace(/\s+/g, " ").trim());
+  if (!m) return null;
+  const i = MESES.findIndex((x) => x === m[1] || (m[1].length >= 3 && x.startsWith(m[1])));
+  return i < 0 ? null : `${m[2]}-${String(i + 1).padStart(2, "0")}`;
+}
+
+/**
+ * Plazos (hoja PLAZOS): No., Proyecto, Etapa, Plazos (Total / Inicio /
+ * Final) y Fechas. Cada etapa ocupa tres filas (celdas combinadas en
+ * No., Proyecto y Etapa). Devuelve { porNo: { clave: [{ etapa, total,
+ * inicio: "AAAA-MM", fin: "AAAA-MM" }] } }.
+ */
+function leerPlazos(t, errors) {
+  const donde = 'Hoja "PLAZOS"';
+  const enc = (t.filas[0] || []).map((h) => normalizeText(encabezado(h)));
+  const col = (re, def) => {
+    const c = enc.findIndex((h) => re.test(h));
+    return c < 0 ? def : c;
+  };
+  const cEtapa = col(/^ETAPA/, 2);
+  const cTipo = col(/^PLAZO/, 3);
+  const cFecha = col(/^FECHA/, 4);
+  const porNo = {};
+  filasPorProyecto(t, 1).forEach(({ r, no, nombre, fila }) => {
+    const etapa = limpiar(t.valor(r, cEtapa));
+    const tipo = normalizeText(fila[cTipo]);
+    const valor = fila[cFecha] || "";
+    if (!etapa) return errors.push(`${donde}, fila ${r + 1} (${nombre}): falta el nombre de la etapa.`);
+    const lista = (porNo[no || slugify(nombre)] ??= []);
+    let e = lista.find((x) => x.etapa === etapa);
+    if (!e) lista.push((e = { etapa, total: "", inicio: null, fin: null }));
+    if (/^TOTAL/.test(tipo)) {
+      // "1mes" -> "1 mes"
+      e.total = valor.replace(/^(\d+(?:[.,]\d+)?)\s*(mes(?:es)?)$/i, "$1 $2");
+    } else if (/^INICIO|^FINAL|^FIN\b/.test(tipo)) {
+      const ym = mesAnio(valor);
+      if (!ym) errors.push(`${donde}, fila ${r + 1} (${nombre}, ${etapa}): "${valor}" no es un mes válido; escríbelo como "febrero 2026".`);
+      else if (/^INICIO/.test(tipo)) e.inicio = ym;
+      else e.fin = ym;
+    } else if (!vacio(fila[cTipo])) {
+      errors.push(`${donde}, fila ${r + 1} (${nombre}): "${fila[cTipo]}" debe ser "Total", "Inicio" o "Final".`);
+    }
+  });
+  Object.values(porNo).forEach((lista) =>
+    lista.forEach((e) => {
+      if (!e.inicio || !e.fin) errors.push(`${donde}: a la etapa "${e.etapa}" le falta la fecha de ${e.inicio ? "final" : "inicio"}.`);
+      else if (e.fin < e.inicio) errors.push(`${donde}: en la etapa "${e.etapa}" la fecha final es anterior a la de inicio.`);
+    })
+  );
+  return { porNo };
+}
+
 /**
  * Lee el libro completo. kml = nombres de los Placemark (para avisar si
  * un proyecto no sale en el mapa); existe(ruta) comprueba imágenes.
@@ -326,6 +385,8 @@ function leerAnteproyectos(wb, XLSX, { kml = [], existe = () => true } = {}) {
   const descripciones = {};
   filasPorProyecto(desc, 1).forEach(({ no, nombre, fila }) => (descripciones[no || slugify(nombre)] ??= fila[cDesc] || ""));
   const rta = tabla(hoja("RTA"), XLSX).filas.length ? leerRta(tabla(hoja("RTA"), XLSX), errors) : { titulo: "", porNo: {} };
+  const tPlazos = tabla(hoja("PLAZOS"), XLSX);
+  const plazos = tPlazos.filas.length ? leerPlazos(tPlazos, errors) : null;
 
   const fichas = {};
   const avances = {};
@@ -386,6 +447,8 @@ function leerAnteproyectos(wb, XLSX, { kml = [], existe = () => true } = {}) {
     if (!red) warnings.push(`${nombre}: no tiene filas en la hoja "RTA".`);
     if (!ficha) warnings.push(`${nombre}: no tiene fila en la hoja "FICHA_${tipo}".`);
     if (!avance) warnings.push(`${nombre}: no tiene filas en la hoja "AVAN_${tipo}".`);
+    const etapas = plazos ? plazos.porNo[clave] || plazos.porNo[id] || null : null;
+    if (plazos && !etapas) warnings.push(`${nombre}: no tiene filas en la hoja "PLAZOS".`);
     if (!geo.has(normalizeText(nombre))) warnings.push(`${nombre}: no tiene ubicación en el KML; no aparecerá en el mapa.`);
 
     proyectos.push({
@@ -401,6 +464,7 @@ function leerAnteproyectos(wb, XLSX, { kml = [], existe = () => true } = {}) {
       rta: red ? { titulo: rta.titulo || "Red de Transmisión Propuesta (RTA)", secciones: red.secciones } : null,
       ficha,
       avance,
+      ...(etapas ? { plazos: etapas } : {}),
     });
   });
   if (!proyectos.length && !errors.length) errors.push('La hoja "PRES" no tiene proyectos.');
@@ -420,4 +484,4 @@ function snapshotAnteproyectos(proyectos) {
   return out;
 }
 
-module.exports = { leerAnteproyectos, snapshotAnteproyectos, sufijoDe, limpiar, encabezado };
+module.exports = { leerAnteproyectos, snapshotAnteproyectos, sufijoDe, limpiar, encabezado, mesAnio };
