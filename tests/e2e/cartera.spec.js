@@ -20,7 +20,7 @@ test("Ficha técnica, Plazos y Curva de avance abren con contenido", async ({ pa
   await listo(page);
   for (const [sheet, cuerpo] of [
     ["sheetFicha", "#fichaBody"],
-    ["sheetPlazos", "#plazosBody .timeline li"],
+    ["sheetPlazos", "#plazosBody .etapa"],
   ]) {
     await page.click(`[data-open-sheet="${sheet}"]`);
     await expect(page.locator(`#${sheet}`)).toBeVisible();
@@ -332,4 +332,20 @@ test("video del proyecto: botón arriba a la derecha de la foto solo si tiene, y
     await page.selectOption("#projectSelect", { index: 2 });
     await expect(boton).toBeHidden();
   }
+});
+
+test("Plazos: los hitos del cronograma con su estado según la fecha de hoy", async ({ page }) => {
+  const p = datos().cartera.find((x) => x.plazo_pruebas_fecha && x.plazo_operacion_fecha);
+  test.skip(!p, "sin fechas de cronograma");
+  // Un día después del inicio: Inicio ya pasó y el próximo es Inicio de pruebas.
+  const [d, m, a] = p.plazo_inicio_fecha.split("/");
+  await page.clock.setFixedTime(new Date(`${a}-${m}-${d}T12:00:00-06:00`).getTime() + 86400000);
+  await page.goto(`/cartera-cpel/?proyecto=${slugify(p.nombre)}`);
+  await expect(page.locator("#projectName")).not.toHaveText("Cargando…");
+  await page.click('[data-open-sheet="sheetPlazos"]');
+  const ventana = page.locator("#sheetPlazos");
+  await expect(ventana.locator(".etapa")).toHaveCount(4);
+  await expect(ventana.locator(".etapa").first()).toHaveClass(/etapa--concluida/);
+  await expect(ventana.locator(".etapa--curso")).toContainText("Inicio de pruebas");
+  await expect(ventana.locator(".plazo-avance__nota")).toContainText("Día 1 de");
 });
