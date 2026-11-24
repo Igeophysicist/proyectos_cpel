@@ -154,7 +154,7 @@
     ["plazo_operacion_fecha", "Operación"],
   ];
 
-  const { esc, parseNumber, parseDate, isPastOrToday, slugify, formatDateShort, textoHtml } = window.TextUtils;
+  const { esc, parseNumber, parseDate, slugify, formatDateShort, textoHtml } = window.TextUtils;
 
   let proyectos = [];
   let hitos = {}; // por proyecto (slug del nombre), de hitos.json
@@ -169,9 +169,114 @@
     return s === "" ? fallback : s;
   }
 
-  /** true si la fecha de la celda (dd/mm/aaaa o dd/mm/aa) ya pasó o es hoy. */
-  function yaPaso(value) {
-    return isPastOrToday(parseDate(String(value ?? "")));
+  // ------------------------------------------------------------- plazos
+  /** Día corrido (UTC) de una fecha del Excel (dd/mm/aaaa) o ISO; null si no hay. */
+  function diaDe(value) {
+    const d = parseDate(String(value ?? ""));
+    return d ? Math.round(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()) / 86400000) : null;
+  }
+  const fechaCorta = (n) => formatDateShort(new Date(n * 86400000 + new Date(n * 86400000).getTimezoneOffset() * 60000));
+  const enDias = (n) => `${n} día${n === 1 ? "" : "s"}`;
+  /** "Aceptación" -> "la aceptación", "Inicio de pruebas" -> "el inicio de pruebas". */
+  const conArticulo = (label) => `${/ción\b/i.test(label.split(" ")[0]) ? "la" : "el"} ${label.toLowerCase()}`;
+
+  /**
+   * Ventana Plazos: resumen del contrato, tiempo transcurrido y los hitos
+   * del cronograma (Inicio, Inicio de pruebas, Aceptación, Operación) como
+   * línea de tiempo: cada hito muestra el tramo desde el anterior, su
+   * estado según la fecha de hoy y la marca de Hoy (misma vista que los
+   * Plazos de Cartera Anteproyectos).
+   */
+  function plazosHtml(p, hoyIso = window.CarteraHitos ? window.CarteraHitos.hoyMexico() : null) {
+    const hoy = diaDe(hoyIso) ?? Math.round(Date.now() / 86400000);
+    const hitos = PLAZOS_TIMELINE.map(([col, label]) => ({ label, dia: diaDe(p[col]) })).filter((h) => h.dia !== null);
+    const resumen = `
+      <div class="plazo-summary">
+        <div class="plazo-summary__item">
+          <div class="plazo-summary__label">Plazo de ejecución</div>
+          <div class="plazo-summary__value">${esc(texto(p.plazo_dias))} días</div>
+        </div>
+        <div class="plazo-summary__item">
+          <div class="plazo-summary__label">Firma de contrato</div>
+          <div class="plazo-summary__value">${esc(texto(p.plazo_firmado))}</div>
+        </div>
+        <div class="plazo-summary__item plazo-summary__item--wide">
+          <div class="plazo-summary__label">Contrato</div>
+          <div class="plazo-summary__value">${esc(texto(p.plazo_contrato))}</div>
+        </div>
+      </div>`;
+    if (hitos.length < 2) return resumen + `<div class="state-msg">Sin fechas del cronograma para este proyecto.</div>`;
+
+    const ini = Math.min(...hitos.map((h) => h.dia));
+    const fin = Math.max(...hitos.map((h) => h.dia));
+    const span = Math.max(1, fin - ini);
+    const pos = (n) => Math.min(100, Math.max(0, ((n - ini) / span) * 100));
+    // Tiempo transcurrido: del inicio a la operación según las fechas del cronograma.
+    const total = Math.max(1, fin - hitos[0].dia);
+    const transcurrido = Math.max(0, Math.min(total, hoy - hitos[0].dia));
+    const pctT = Math.round((transcurrido / total) * 100);
+    const operacion = hitos[hitos.length - 1];
+    const falta = operacion.dia - hoy;
+    // Próximo hito: el primero con fecha de hoy en adelante.
+    const iProx = hitos.findIndex((h) => h.dia >= hoy);
+    const estado = (i) => (iProx === -1 || i < iProx ? "concluida" : i === iProx ? "curso" : "pendiente");
+    const etiqueta = { concluida: "Ya pasó", curso: "Próximo", pendiente: "Por venir" };
+    const relativo = (n) => (n === hoy ? "hoy" : n < hoy ? `hace ${enDias(hoy - n)}` : `en ${enDias(n - hoy)}`);
+    // Años del eje
+    const anios = [];
+    const anioDe = (n) => new Date(n * 86400000).getUTCFullYear();
+    for (let a = anioDe(ini); a <= anioDe(fin); a++) {
+      const desde = Math.max(Math.round(Date.UTC(a, 0, 1) / 86400000), ini);
+      const hasta = Math.min(Math.round(Date.UTC(a + 1, 0, 1) / 86400000), fin);
+      const ancho = pos(hasta) - pos(desde);
+      if (ancho >= 3) anios.push({ a, izq: pos(desde), ancho }); // un año casi sin días no lleva marca
+    }
+    const hoyVisible = hoy >= ini && hoy <= fin;
+
+    return `${resumen}
+      <div class="plazo-avance">
+        <div class="plazo-avance__fila">
+          <span>Tiempo transcurrido</span>
+          <b>${pctT}%</b>
+        </div>
+        <div class="plazo-avance__barra" aria-hidden="true"><i style="width:${pctT}%"></i></div>
+        <div class="plazo-avance__nota">Día ${Math.max(0, hoy - hitos[0].dia)} de ${total}${
+          falta > 0 ? ` · faltan ${enDias(falta)} para ${esc(operacion.label.toLowerCase())}` : falta === 0 ? ` · ${esc(operacion.label.toLowerCase())} hoy` : ` · la fecha de ${esc(operacion.label.toLowerCase())} ya pasó`
+        }</div>
+      </div>
+      <div class="gantt" style="--hoy:${pos(hoy)}%">
+        <div class="gantt__eje" aria-hidden="true">
+          ${anios.map((x) => `<span style="left:${x.izq}%;width:${x.ancho}%">${x.ancho >= 10 ? x.a : ""}</span>`).join("")}
+        </div>
+        <ol class="gantt__lista">
+          ${hitos
+            .map((h, i) => {
+              const est = estado(i);
+              const desde = i ? hitos[i - 1].dia : h.dia;
+              const tramo = i ? h.dia - desde : 0;
+              const avanzado = est === "curso" && tramo > 0 ? Math.max(0, Math.min(1, (hoy - desde) / tramo)) : 0;
+              const anterior = i ? conArticulo(hitos[i - 1].label) : "";
+              const meta = i ? (tramo ? `${enDias(tramo)} desde ${anterior}` : `el mismo día que ${anterior}`) : "Arranque del contrato";
+              return `
+            <li class="etapa etapa--${est}">
+              <div class="etapa__top">
+                <span class="etapa__num">${i + 1}</span>
+                <span class="etapa__nombre">${esc(h.label)} <span class="etapa__fecha">${esc(fechaCorta(h.dia))}</span></span>
+                <span class="etapa__estado">${etiqueta[est]}</span>
+              </div>
+              <div class="etapa__meta">${esc(meta)} · <b>${esc(relativo(h.dia))}</b></div>
+              <div class="etapa__pista" aria-hidden="true">
+                <span class="etapa__barra${i ? "" : " etapa__barra--punto"}" style="left:${pos(desde)}%;width:${pos(h.dia) - pos(desde)}%">${
+                  avanzado ? `<i style="width:${avanzado * 100}%"></i>` : ""
+                }</span>
+                ${hoyVisible ? `<span class="etapa__hoy"></span>` : ""}
+              </div>
+            </li>`;
+            })
+            .join("")}
+        </ol>
+        ${hoyVisible ? `<div class="gantt__leyenda"><span class="gantt__hoy-marca"></span> Hoy (${esc(fechaCorta(hoy))})</div>` : ""}
+      </div>`;
   }
 
   /** Porcentaje redondeado a 2 decimales ("30.764" o "30.764%" -> 30.76). */
@@ -326,29 +431,7 @@
       </div>`).join("")
       : `<div class="state-msg">No hay una ficha técnica configurada para la tecnología "${esc(texto(p.tecnologia, "sin especificar"))}".</div>`;
 
-    // Plazos
-    $("plazosBody").innerHTML = `
-      <div class="plazo-summary">
-        <div class="plazo-summary__item">
-          <div class="plazo-summary__label">Plazo de ejecución</div>
-          <div class="plazo-summary__value">${esc(texto(p.plazo_dias))} días</div>
-        </div>
-        <div class="plazo-summary__item">
-          <div class="plazo-summary__label">Firma de contrato</div>
-          <div class="plazo-summary__value">${esc(texto(p.plazo_firmado))}</div>
-        </div>
-        <div class="plazo-summary__item plazo-summary__item--wide">
-          <div class="plazo-summary__label">Contrato</div>
-          <div class="plazo-summary__value">${esc(texto(p.plazo_contrato))}</div>
-        </div>
-      </div>
-      <ul class="timeline">
-        ${PLAZOS_TIMELINE.map(([col, label]) => `
-          <li class="${yaPaso(p[col]) ? "is-past" : ""}">
-            <div class="timeline__label">${label}</div>
-            <div class="timeline__date">${esc(texto(p[col]))}</div>
-          </li>`).join("")}
-      </ul>`;
+    $("plazosBody").innerHTML = plazosHtml(p);
   }
 
   function mostrarHitos(p) {
