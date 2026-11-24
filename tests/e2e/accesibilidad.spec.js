@@ -75,13 +75,15 @@ test("Cartera Anteproyectos y sus ventanas sin problemas de accesibilidad", asyn
   await page.goto(FICHA_ANTE);
   await expect(page.locator("#projectName")).not.toHaveText("Cargando…");
   await page.locator(".rta-mas summary").click();
-  await page.locator(".av-notas-gen summary").click();
   await revisar(page, "anteproyectos");
   for (const [boton, ventana] of [
     ["Ficha técnica", "#sheetFicha"],
+    ["Plazos", "#sheetPlazos"],
     ["Curva de avance", "#sheetCurva"],
   ]) {
-    await page.locator(".actionbar__btn", { hasText: boton }).click();
+    const btn = page.locator(".actionbar__btn", { hasText: boton });
+    if (!(await btn.isVisible())) continue; // Plazos solo con la hoja PLAZOS
+    await btn.click();
     await expect(page.locator(ventana)).toHaveClass(/is-open/);
     await revisar(page, "anteproyectos: " + boton);
     await page.keyboard.press("Escape");
@@ -90,6 +92,12 @@ test("Cartera Anteproyectos y sus ventanas sin problemas de accesibilidad", asyn
   await page.locator("#particularGrid .particular--btn").first().click();
   await expect(page.locator("#sheetPonderado")).toHaveClass(/is-open/);
   await revisar(page, "anteproyectos: avances ponderados");
+  const conNota = page.locator("#ponderadoBody .pond--clic");
+  if (await conNota.count()) {
+    await conNota.first().click();
+    await expect(page.locator("#sheetNota")).toHaveClass(/is-open/);
+    await revisar(page, "anteproyectos: notas");
+  }
 });
 
 test("Mixtos y sus ventanas sin problemas de accesibilidad", async ({ page, isMobile }) => {

@@ -49,23 +49,20 @@
   // ../cartera-cpel/assets/js/avance.js, el mismo de Cartera CPEL).
   const A = window.CarteraAvance;
 
-  /** Avance general: Real, Programado (o "pendiente"), semáforo y la NOTA TOTAL. */
+  // Notas: la tarjeta que tiene nota lleva el ícono de comentario y, al
+  // tocarla, abre la ventana "Notas" (como los trámites de Mixtos).
+  const NOTA_ICON = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 5h16v11H9l-5 4V5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>`;
+  const notaMarca = () => `<span class="nota-marca nota-marca--icono" title="Tiene notas" aria-hidden="true">${NOTA_ICON}</span>`;
+
+  /** Avance general: Real, Programado (o "pendiente") y semáforo. La NOTA TOTAL va en la ventana Notas (y en el PDF). */
   function generalHtml(avance) {
     if (!avance || !avance.general) return `<div class="state-msg">Sin avance registrado para este anteproyecto.</div>`;
     const { general, programadoPendiente } = avance;
     return `
       ${A.generalHtml(general.real, general.prog, { pendiente: programadoPendiente })}
       ${programadoPendiente ? `<p class="av-pendiente">Programado: pendiente de captura.</p>` : ""}
-      ${
-        general.nota
-          ? `<details class="av-notas-gen"><summary>Notas</summary><div class="av-notas-gen__texto">${textoHtml(general.nota)}</div></details>`
-          : ""
-      }`;
+      ${general.nota ? `<p class="nota-ayuda">Toca la tarjeta para ver las notas.</p><div class="print-only av-nota-pdf">${textoHtml(general.nota)}</div>` : ""}`;
   }
-
-  /** Nota del Excel, en rojo para que destaque. */
-  const notaHtml = (texto, titulo = "") =>
-    `<div class="av-nota">${titulo ? `<div class="av-nota__titulo">${esc(titulo)}</div>` : ""}${textoHtml(texto)}</div>`;
 
   /** Real y Programado de un avance, como en Avances particulares de Cartera CPEL. */
   const miniFilas = (x, pendiente) => A.miniHtml(x.real, x.prog, { pendiente, diferencia: true });
@@ -80,34 +77,65 @@
           <span class="particular__title"><b>${esc(g.clave)}.</b> ${esc(g.titulo)}</span>
           ${miniFilas(g, avance.programadoPendiente)}
           <span class="particular__mas">${g.items.length ? `Ver ${g.items.length} avance${g.items.length === 1 ? "" : "s"} ponderado${g.items.length === 1 ? "" : "s"}` : "Ver detalle"}${
-            g.items.some((x) => x.nota) || g.nota ? ' <span class="particular__nota">con notas</span>' : ""
+            g.items.some((x) => x.nota) || g.nota ? ` <span class="particular__nota">${NOTA_ICON} con notas</span>` : ""
           }</span>
         </button>`
       )
       .join("");
   }
 
-  /** Ventana con los avances ponderados de un avance particular. */
+  /** Botón que cubre una tarjeta con nota y abre la ventana Notas. */
+  const abrirNotaBtn = (clave, titulo) =>
+    `<button type="button" class="card__abrir" data-nota="${esc(clave)}" aria-label="${esc(`${titulo}: ver notas`)}"></button>`;
+
+  /** Ventana con los avances ponderados de un avance particular; los que tienen nota abren la ventana Notas. */
   function ponderadosHtml(g, pendiente) {
     return `
-      <div class="pond-resumen">
+      <div class="pond-resumen${g.nota ? " pond--clic" : ""}">
+        ${g.nota ? abrirNotaBtn(g.clave, `${g.clave}. ${g.titulo}`) : ""}
+        ${g.nota ? `<div class="pond__titulo pond__titulo--resumen">Total del avance ${notaMarca()}</div>` : ""}
         ${miniFilas(g, pendiente)}
-        ${g.nota ? notaHtml(g.nota) : ""}
       </div>
       ${
         g.items.length
           ? `<ul class="pond-lista">${g.items
               .map(
                 (x) => `
-            <li class="pond">
-              <div class="pond__titulo"><b>${esc(x.clave)}</b> ${esc(x.titulo)}</div>
+            <li class="pond${x.nota ? " pond--clic" : ""}">
+              ${x.nota ? abrirNotaBtn(x.clave, `${x.clave} ${x.titulo}`) : ""}
+              <div class="pond__titulo"><span><b>${esc(x.clave)}</b> ${esc(x.titulo)}</span>${x.nota ? notaMarca() : ""}</div>
               ${miniFilas(x, pendiente)}
-              ${x.nota ? notaHtml(x.nota, "Nota") : ""}
             </li>`
               )
-              .join("")}</ul>`
+              .join("")}</ul>
+            ${g.items.some((x) => x.nota) || g.nota ? `<p class="nota-ayuda">Toca un avance con ${NOTA_ICON} para ver su nota.</p>` : ""}`
           : `<div class="state-msg">Este avance no tiene avances ponderados.</div>`
       }`;
+  }
+
+  /** Avance (General, "1." o "1.1") por su clave. */
+  function avancePorClave(clave) {
+    const av = actual && actual.avance;
+    if (!av) return null;
+    if (clave === "general") return av.general ? { ...av.general, titulo: "Avance General" } : null;
+    for (const g of av.grupos) {
+      if (g.clave === clave) return { ...g, titulo: `${g.clave}. ${g.titulo}` };
+      const x = g.items.find((i) => i.clave === clave);
+      if (x) return { ...x, titulo: `${x.clave} ${x.titulo}` };
+    }
+    return null;
+  }
+
+  /** Ventana Notas: el avance (Real y Programado) y su nota. */
+  function abrirNota(clave) {
+    const x = avancePorClave(clave);
+    if (!x || !x.nota) return;
+    const pendiente = actual.avance.programadoPendiente;
+    $("notaTitulo").textContent = x.titulo;
+    $("notaBody").innerHTML = `
+      <div class="nota-avance">${miniFilas(x, pendiente)}</div>
+      <div class="nota-texto">${textoHtml(x.nota)}</div>`;
+    window.Dialog.open($("sheetNota"));
   }
 
   function abrirPonderados(i) {
@@ -338,6 +366,11 @@
     $("rtaTitle").textContent = (p.rta && p.rta.titulo) || "Red de Transmisión Propuesta (RTA)";
     $("rtaBody").innerHTML = rtaHtml(p.rta);
     $("generalBody").innerHTML = generalHtml(p.avance);
+    const notaGeneral = !!(p.avance && p.avance.general && p.avance.general.nota);
+    $("generalAbrir").hidden = !notaGeneral;
+    $("generalAbrir").dataset.nota = "general";
+    $("generalMarca").hidden = !notaGeneral;
+    $("generalCard").classList.toggle("card--clic", notaGeneral);
     A.pintarSemana($("generalBody"), window.CarteraCurva.cargar(), slugify(p.nombre), () => actual === p);
     $("particularGrid").innerHTML = particularesHtml(p.avance);
     $("fichaBody").innerHTML = fichaHtml(p);
@@ -373,7 +406,10 @@
         if (abre.dataset.openSheet === "sheetCurva" && actual) window.CarteraCurva.mostrar(actual);
         return;
       }
+      if (e.target.closest("[data-close-nota]")) return window.Dialog.close($("sheetNota")); // solo Notas; la de abajo sigue abierta
       if (e.target.closest("[data-close-sheet]")) return cerrarTodas();
+      const nota = e.target.closest("[data-nota]");
+      if (nota) return abrirNota(nota.dataset.nota);
       const grupo = e.target.closest("[data-grupo]");
       if (grupo) abrirPonderados(Number(grupo.dataset.grupo));
     });
