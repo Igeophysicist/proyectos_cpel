@@ -110,6 +110,9 @@ body.vista-cargando #vista{ display: block; }
   from{ opacity: 0; transform: translateY(10px); }
   to{ opacity: 1; transform: translateY(0); }
 }
+/* Las barras de avance crecen desde 0 hasta su ancho (como en Mixtos):
+   sin "to", la animación termina en el ancho que les da la página. */
+@keyframes bar-grow{ from{ width: 0; } }
 
 /* ---------- Layout ---------- */
 .cartera{
@@ -208,7 +211,7 @@ body.vista-cargando #vista{ display: block; }
 .progress-row--real .progress-row__info{ color: var(--real-color); }
 .bar{ display: block; height: 8px; background: var(--surface-sunken); border-radius: 99px; overflow: hidden; }
 .bar--mini{ height: 6px; flex: 1; background: rgba(26,36,34,.1); } /* fondo visible sobre las tarjetas grises */
-.bar__fill{ display: block; height: 100%; border-radius: 99px; width: 0; transition: width .6s cubic-bezier(.4,0,.2,1); }
+.bar__fill{ display: block; height: 100%; border-radius: 99px; width: 0; transition: width .6s cubic-bezier(.4,0,.2,1); animation: bar-grow .7s ease-out; }
 .bar__fill--prog{ background: var(--prog-color); }
 .bar__fill--real{ background: var(--real-color); }
 .variance{
@@ -518,7 +521,7 @@ body.vista-cargando #vista{ display: block; }
 .etapa__meta b{ color: var(--teal-800); }
 .etapa__pista{ position: relative; height: 8px; border-radius: 99px; background: var(--surface-sunken); margin-left: 30px; }
 .etapa__barra{ position: absolute; top: 0; bottom: 0; border-radius: 99px; background: var(--border-strong); overflow: hidden; min-width: 4px; }
-.etapa__barra i{ position: absolute; left: 0; top: 0; bottom: 0; background: var(--teal-700); }
+.etapa__barra i{ position: absolute; left: 0; top: 0; bottom: 0; background: var(--teal-700); animation: bar-grow .7s ease-out; }
 .etapa__hoy{ position: absolute; top: -4px; bottom: -4px; left: var(--hoy); width: 2px; margin-left: -1px; background: var(--gold-500); border-radius: 1px; }
 /* Concluida: verde; En curso: resaltada; Por iniciar: gris */
 .etapa--concluida .etapa__num{ background: var(--teal-700); border-color: var(--teal-700); color: #fff; }
@@ -538,7 +541,7 @@ body.vista-cargando #vista{ display: block; }
 .plazo-avance__fila{ display: flex; justify-content: space-between; align-items: baseline; font-size: 12.5px; font-weight: 600; color: var(--ink-700); }
 .plazo-avance__fila b{ font-size: 14px; color: var(--teal-900); }
 .plazo-avance__barra{ position: relative; height: 8px; border-radius: 99px; background: var(--surface-sunken); margin: 6px 0 4px; overflow: hidden; }
-.plazo-avance__barra i{ position: absolute; left: 0; top: 0; bottom: 0; background: var(--teal-700); border-radius: 99px; }
+.plazo-avance__barra i{ position: absolute; left: 0; top: 0; bottom: 0; background: var(--teal-700); border-radius: 99px; animation: bar-grow .7s ease-out; }
 .plazo-avance__nota{ font-size: 11.5px; color: var(--ink-500); }
 
 /* Carga / error */
