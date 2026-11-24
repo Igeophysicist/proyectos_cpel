@@ -335,6 +335,7 @@
     actual = p;
     $("projectSelect").value = String(i);
     mostrar(p);
+    window.CarteraHero.reanimar($("cartera")); // las tarjetas vuelven a entrar al cambiar de proyecto
     const url = new URL(window.location.href);
     url.searchParams.set("proyecto", slugify(p.nombre));
     window.history.replaceState(window.history.state, "", url); // conserva si se llegó desde la pantalla previa
