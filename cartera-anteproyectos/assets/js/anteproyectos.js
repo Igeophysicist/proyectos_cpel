@@ -7,7 +7,8 @@
  *
  * Tarjetas: 1) Presentación (PRES), 2) Descripción técnica (DESC),
  * 3) Red de Transmisión Propuesta (RTA), 4) Ficha técnica (FICHA_<tipo>,
- * en la ventana del botón) y 5) Avance (AVAN_<tipo>), en dos tarjetas:
+ * en la ventana del botón), Plazos (PLAZOS, ventana con las etapas y su
+ * estado según el mes de hoy) y 5) Avance (AVAN_<tipo>), en dos tarjetas:
  * Avance General (con la NOTA TOTAL) y Avances particulares ("1. …",
  * "2. …"), que abren una ventana con sus avances ponderados ("1.1 …").
  * En pantalla el orden es: presentación, avances, descripción, RTA y
@@ -171,6 +172,108 @@
       </div>`;
   }
 
+  // ------------------------------------------------------------ plazos
+  // Etapas de la hoja PLAZOS: { etapa, total, inicio: "AAAA-MM", fin: "AAAA-MM" }.
+  const MESES_CORTOS = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"];
+  const MESES_LARGOS = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
+  /** "2026-07" -> número de mes corrido (para restar). */
+  const mesNum = (ym) => {
+    const [a, m] = String(ym).split("-").map(Number);
+    return a * 12 + (m - 1);
+  };
+  const mesCorto = (ym) => `${MESES_CORTOS[mesNum(ym) % 12]} ${Math.floor(mesNum(ym) / 12)}`;
+  const mesLargo = (ym) => `${MESES_LARGOS[mesNum(ym) % 12]} ${Math.floor(mesNum(ym) / 12)}`;
+
+  /** Mes actual en la Ciudad de México, "AAAA-MM". */
+  function mesHoy() {
+    try {
+      const f = new Intl.DateTimeFormat("en-CA", { timeZone: "America/Mexico_City", year: "numeric", month: "2-digit" }).formatToParts(new Date());
+      return `${f.find((x) => x.type === "year").value}-${f.find((x) => x.type === "month").value}`;
+    } catch {
+      const d = new Date();
+      return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}`;
+    }
+  }
+
+  /** "concluida" | "curso" | "pendiente" de una etapa respecto al mes de hoy. */
+  const estadoEtapa = (e, hoy) => (mesNum(e.fin) < mesNum(hoy) ? "concluida" : mesNum(e.inicio) > mesNum(hoy) ? "pendiente" : "curso");
+
+  function plazosHtml(etapas, hoy = mesHoy()) {
+    const validas = (etapas || []).filter((e) => e.inicio && e.fin);
+    if (!validas.length) return `<div class="state-msg">Sin plazos registrados para este anteproyecto.</div>`;
+    const ini = Math.min(...validas.map((e) => mesNum(e.inicio)));
+    const fin = Math.max(...validas.map((e) => mesNum(e.fin)));
+    const span = fin - ini + 1;
+    const h = mesNum(hoy);
+    const actualEt = validas.find((e) => estadoEtapa(e, hoy) === "curso");
+    const estadoTxt = actualEt ? actualEt.etapa : h < ini ? "Por iniciar" : h > fin ? "Concluido" : "Entre etapas";
+    const pos = (n) => ((n - ini) / span) * 100;
+    // Años del eje (marca en cada enero; sin texto si el año casi no cabe)
+    const anios = [];
+    for (let a = Math.floor(ini / 12); a <= Math.floor(fin / 12); a++) {
+      const desde = Math.max(a * 12, ini);
+      const hasta = Math.min(a * 12 + 11, fin);
+      anios.push({ a, izq: pos(desde), ancho: pos(hasta + 1) - pos(desde) });
+    }
+    const hoyVisible = h >= ini && h <= fin;
+    const hoyPos = pos(h + 0.5);
+    const etiqueta = { concluida: "Concluida", curso: "En curso", pendiente: "Por iniciar" };
+    return `
+      <div class="plazo-summary">
+        <div class="plazo-summary__item">
+          <div class="plazo-summary__label">Inicio</div>
+          <div class="plazo-summary__value">${esc(mesLargo(`${Math.floor(ini / 12)}-${String((ini % 12) + 1).padStart(2, "0")}`))}</div>
+        </div>
+        <div class="plazo-summary__item">
+          <div class="plazo-summary__label">Conclusión estimada</div>
+          <div class="plazo-summary__value">${esc(mesLargo(`${Math.floor(fin / 12)}-${String((fin % 12) + 1).padStart(2, "0")}`))}</div>
+        </div>
+        <div class="plazo-summary__item">
+          <div class="plazo-summary__label">Duración total</div>
+          <div class="plazo-summary__value">${span} meses</div>
+        </div>
+        <div class="plazo-summary__item">
+          <div class="plazo-summary__label">Etapa actual</div>
+          <div class="plazo-summary__value plazo-actual">${esc(estadoTxt)}</div>
+        </div>
+      </div>
+      <div class="gantt" style="--hoy:${hoyPos}%">
+        <div class="gantt__eje" aria-hidden="true">
+          ${anios.map((x) => `<span style="left:${x.izq}%;width:${x.ancho}%">${x.ancho >= 10 ? x.a : ""}</span>`).join("")}
+        </div>
+        <ol class="gantt__lista">
+          ${validas
+            .map((e, i) => {
+              const est = estadoEtapa(e, hoy);
+              const a = mesNum(e.inicio);
+              const b = mesNum(e.fin);
+              const meses = b - a + 1;
+              const transcurrido = est === "curso" ? h - a + 1 : 0;
+              const periodo = a === b ? mesCorto(e.inicio) : `${mesCorto(e.inicio)} – ${mesCorto(e.fin)}`;
+              return `
+            <li class="etapa etapa--${est}">
+              <div class="etapa__top">
+                <span class="etapa__num">${i + 1}</span>
+                <span class="etapa__nombre">${esc(e.etapa)}</span>
+                <span class="etapa__estado">${etiqueta[est]}</span>
+              </div>
+              <div class="etapa__meta">${esc(e.total || `${meses} ${meses === 1 ? "mes" : "meses"}`)} · ${esc(periodo)}${
+                est === "curso" ? ` · <b>mes ${transcurrido} de ${meses}</b>` : ""
+              }</div>
+              <div class="etapa__pista" aria-hidden="true">
+                <span class="etapa__barra" style="left:${pos(a)}%;width:${pos(b + 1) - pos(a)}%">${
+                  est === "curso" ? `<i style="width:${(transcurrido / meses) * 100}%"></i>` : ""
+                }</span>
+                ${hoyVisible ? `<span class="etapa__hoy"></span>` : ""}
+              </div>
+            </li>`;
+            })
+            .join("")}
+        </ol>
+        ${hoyVisible ? `<div class="gantt__leyenda"><span class="gantt__hoy-marca"></span> Hoy (${esc(mesCorto(hoy))})</div>` : ""}
+      </div>`;
+  }
+
   // ------------------------------------------------------------- carga
   async function cargar() {
     window.CarteraMap.configurar({ kml: KML_FILE_PATH, secuencias: null });
@@ -238,6 +341,8 @@
     A.pintarSemana($("generalBody"), window.CarteraCurva.cargar(), slugify(p.nombre), () => actual === p);
     $("particularGrid").innerHTML = particularesHtml(p.avance);
     $("fichaBody").innerHTML = fichaHtml(p);
+    $("plazosBtn").hidden = !(p.plazos && p.plazos.length);
+    $("plazosBody").innerHTML = plazosHtml(p.plazos);
 
     // Color del punto: verde si va al día o sin programa (ver map.js de Cartera CPEL).
     const g = p.avance && p.avance.general;
