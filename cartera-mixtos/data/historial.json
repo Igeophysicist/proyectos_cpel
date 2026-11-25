@@ -1977,8 +1977,8 @@
     },
     {
       "semana": "2026-11-22",
-      "fecha": "2026-11-24",
-      "excel": "2026-11-25T01:04:08.000Z",
+      "fecha": "2026-11-25",
+      "excel": "2026-11-25T23:42:32.000Z",
       "proyectos": {
         "pv-moquel-solar": {
           "parque": 82.5,
@@ -2179,46 +2179,46 @@
           "grupo": "C"
         },
         "sierra-madre-el-chorro-2da-ronda": {
-          "parque": 3,
-          "lt": 0,
-          "global": 2.4,
+          "parque": 28,
+          "lt": 23,
+          "global": 27,
           "grupo": "C"
         },
         "delaro-2da-ronda": {
-          "parque": 82.5,
-          "lt": 82.5,
-          "global": 82.5,
-          "grupo": "B"
+          "parque": 86.5,
+          "lt": 86.5,
+          "global": 86.5,
+          "grupo": "A"
         },
         "el-guajillo": {
-          "parque": 33.5,
-          "lt": 25,
-          "global": 31.8,
+          "parque": 35,
+          "lt": 23,
+          "global": 32.6,
           "grupo": "C"
         },
         "energeo-los-molinos": {
-          "parque": 87.5,
-          "lt": 87.5,
-          "global": 87.5,
+          "parque": 88,
+          "lt": 88,
+          "global": 88,
           "grupo": "A"
         },
         "montecristo": {
-          "parque": 44,
-          "lt": 25,
-          "global": 40.2,
+          "parque": 60,
+          "lt": 23,
+          "global": 52.6,
           "grupo": "C"
         },
         "santa-gertrudis": {
-          "parque": 55.5,
-          "lt": 27.5,
-          "global": 49.9,
+          "parque": 59.5,
+          "lt": 23,
+          "global": 52.2,
           "grupo": "C"
         },
         "sol-de-sonora-70": {
-          "parque": 82,
-          "lt": 82,
-          "global": 82,
-          "grupo": "B"
+          "parque": 85,
+          "lt": 85,
+          "global": 85,
+          "grupo": "A"
         }
       }
     }

@@ -1187,6 +1187,96 @@
           }
         }
       ]
+    },
+    {
+      "excel": "2026-11-25T23:42:32.000Z",
+      "fecha": "2026-11-25",
+      "cambios": [
+        {
+          "slug": "sierra-madre-el-chorro-2da-ronda",
+          "nombre": "SIERRA MADRE [EL CHORRO] (2DA RONDA)",
+          "antes": {
+            "parque": 3,
+            "grupo": "C"
+          },
+          "ahora": {
+            "parque": 28,
+            "grupo": "C"
+          }
+        },
+        {
+          "slug": "delaro-2da-ronda",
+          "nombre": "DELARO (2DA RONDA)",
+          "antes": {
+            "parque": 82.5,
+            "grupo": "B"
+          },
+          "ahora": {
+            "parque": 86.5,
+            "grupo": "A"
+          }
+        },
+        {
+          "slug": "el-guajillo",
+          "nombre": "EL GUAJILLO",
+          "antes": {
+            "parque": 33.5,
+            "grupo": "C"
+          },
+          "ahora": {
+            "parque": 35,
+            "grupo": "C"
+          }
+        },
+        {
+          "slug": "energeo-los-molinos",
+          "nombre": "ENERGEO LOS MOLINOS",
+          "antes": {
+            "parque": 87.5,
+            "grupo": "A"
+          },
+          "ahora": {
+            "parque": 88,
+            "grupo": "A"
+          }
+        },
+        {
+          "slug": "montecristo",
+          "nombre": "MONTECRISTO",
+          "antes": {
+            "parque": 44,
+            "grupo": "C"
+          },
+          "ahora": {
+            "parque": 60,
+            "grupo": "C"
+          }
+        },
+        {
+          "slug": "santa-gertrudis",
+          "nombre": "SANTA GERTRUDIS",
+          "antes": {
+            "parque": 55.5,
+            "grupo": "C"
+          },
+          "ahora": {
+            "parque": 59.5,
+            "grupo": "C"
+          }
+        },
+        {
+          "slug": "sol-de-sonora-70",
+          "nombre": "SOL DE SONORA - 70",
+          "antes": {
+            "parque": 82,
+            "grupo": "B"
+          },
+          "ahora": {
+            "parque": 85,
+            "grupo": "A"
+          }
+        }
+      ]
     }
   ]
 }
