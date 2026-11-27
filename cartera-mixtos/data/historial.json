@@ -1977,8 +1977,8 @@
     },
     {
       "semana": "2026-11-22",
-      "fecha": "2026-11-25",
-      "excel": "2026-11-25T23:42:32.000Z",
+      "fecha": "2026-11-26",
+      "excel": "2026-11-27T00:50:38.000Z",
       "proyectos": {
         "pv-moquel-solar": {
           "parque": 82.5,
@@ -2005,10 +2005,10 @@
           "grupo": "A"
         },
         "dalia-3-pv-castamay": {
-          "parque": 81,
+          "parque": 86,
           "lt": 49.5,
-          "global": 74.7,
-          "grupo": "B"
+          "global": 78.7,
+          "grupo": "A"
         },
         "fresnillo-pv-atocha": {
           "parque": 61,
@@ -2113,9 +2113,9 @@
           "grupo": "B"
         },
         "planta-solar-cerro-colorado": {
-          "parque": 79,
+          "parque": 83,
           "lt": 60.5,
-          "global": 75.3,
+          "global": 78.5,
           "grupo": "B"
         },
         "san-simon-solar": {

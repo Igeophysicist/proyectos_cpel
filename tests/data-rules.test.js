@@ -140,3 +140,13 @@ test("Mixtos: avisa si Parque/LT/Global no cuadran con la ponderación de los tr
   assert.match(warnings[0], /Parque dice 60%, pero la ponderación de los trámites da 50.00%/);
   assert.match(mixtos([mixRow({ ...todo("50%"), DI_P: "abc" })]).errors[0], /DI_P/);
 });
+
+test("Mixtos: montos de CENACE opcionales; avisa si el total no es la suma", () => {
+  const montos = (i, r, t) => ({ "MONTO_INTERCONEXIÓN": i, MONTO_REFUERZO: r, TOTAL_CENACE: t });
+  assert.deepEqual(mixtos([mixRow(montos("$100.50", "$50.25", "$150.75"))]).warnings, []);
+  assert.deepEqual(mixtos([mixRow(montos("VER FASE II", "VER FASE II", "VER FASE II"))]).warnings, []);
+  assert.deepEqual(mixtos([mixRow(montos("", "", ""))]).warnings, []);
+  const { warnings } = mixtos([mixRow(montos("$100", "$50", "$170"))]);
+  assert.equal(warnings.length, 1);
+  assert.match(warnings[0], /TOTAL_CENACE dice \$170, pero MONTO_INTERCONEXIÓN \+ MONTO_REFUERZO da 150.00/);
+});

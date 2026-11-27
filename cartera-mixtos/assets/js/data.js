@@ -228,6 +228,10 @@
           firmaContratoFecha: parseDate(raw["Fecha firma de contrato"]),
           capex: raw["CAPEX"] || "",
           capexNum: parseNumber(raw["CAPEX"]),
+          // Montos de CENACE (opcionales; solo Mixtos): apartado "CENACE" de la ficha.
+          montoInterconexion: raw["MONTO_INTERCONEXIÓN"] || "",
+          montoRefuerzo: raw["MONTO_REFUERZO"] || "",
+          totalCenace: raw["TOTAL_CENACE"] || "",
           parque: raw["Parque"] || "",
           parquePct: parsePercent(raw["Parque"]),
           lt: raw["LT"] || "",

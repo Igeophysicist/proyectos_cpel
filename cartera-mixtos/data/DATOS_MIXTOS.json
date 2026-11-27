@@ -1,6 +1,6 @@
 {
   "fuente": "DATOS_MIXTOS.xlsx",
-  "excelModificado": "2026-11-25T23:42:32.000Z",
+  "excelModificado": "2026-11-27T00:50:38.000Z",
   "proyectos": [
     {
       "NO.": "29",
@@ -76,7 +76,10 @@
       "CONA_C_OBS": "Se tiene liberado.",
       "CONA_LT_OBS": "Se tiene liberado.",
       "AFAC_C_OBS": "Se ingresó en 14 de octubre.",
-      "AFAC_LT_OBS": "Se ingresó en 14 de octubre."
+      "AFAC_LT_OBS": "Se ingresó en 14 de octubre.",
+      "MONTO_INTERCONEXIÓN": "$108,657,156.04",
+      "MONTO_REFUERZO": "$63,727,263.88",
+      "TOTAL_CENACE": "$172,384,419.92"
     },
     {
       "NO.": "5",
@@ -152,7 +155,10 @@
       "CONA_C_OBS": "Se tiene liberado. 13 octubre 2026.",
       "CONA_LT_OBS": "Se tiene liberado. 13 octubre 2026.",
       "AFAC_C_OBS": "Se ingresó en 15 de octubre.",
-      "AFAC_LT_OBS": "Se ingresó en 15 de octubre."
+      "AFAC_LT_OBS": "Se ingresó en 15 de octubre.",
+      "MONTO_INTERCONEXIÓN": "$144,670,330.81",
+      "MONTO_REFUERZO": "$50,904,111.50",
+      "TOTAL_CENACE": "$195,574,442.31"
     },
     {
       "NO.": "23",
@@ -228,7 +234,10 @@
       "CONA_C_OBS": "Se tiene liberado.",
       "CONA_LT_OBS": "Se tiene liberado.",
       "AFAC_C_OBS": "El socio menciona que ingresó el trámite el 23 de octubre y la autoridad solicitó requerimiento de información adicional. A entregar el 20 de noviembre.",
-      "AFAC_LT_OBS": "El socio menciona que ingresó el trámite el 23 de octubre y la autoridad solicitó requerimiento de información adicional. A entregar el 20 de noviembre."
+      "AFAC_LT_OBS": "El socio menciona que ingresó el trámite el 23 de octubre y la autoridad solicitó requerimiento de información adicional. A entregar el 20 de noviembre.",
+      "MONTO_INTERCONEXIÓN": "$62,658,338.71",
+      "MONTO_REFUERZO": "$161,743,039.46",
+      "TOTAL_CENACE": "$224,401,378.17"
     },
     {
       "NO.": "34",
@@ -304,7 +313,10 @@
       "CONA_C_OBS": "El socio informa que se tiene autorizado",
       "CONA_LT_OBS": "Depende de la obtención de los derechos inmobiliarios.",
       "AFAC_C_OBS": "El 20 de octubre el socio atendió las observaciones realizadas por la autoridad",
-      "AFAC_LT_OBS": "El 20 de octubre el socio atendió las observaciones realizadas por la autoridad"
+      "AFAC_LT_OBS": "El 20 de octubre el socio atendió las observaciones realizadas por la autoridad",
+      "MONTO_INTERCONEXIÓN": "$351,961,802.04",
+      "MONTO_REFUERZO": "$553,598,574.59",
+      "TOTAL_CENACE": "$905,560,376.63"
     },
     {
       "NO.": "24",
@@ -324,13 +336,13 @@
       "Fecha firma de contrato": "03 de julio de 2026",
       "CAPEX": "$98,564,828.00",
       "PRIORI": "P",
-      "Parque": "81.00%",
+      "Parque": "86.00%",
       "LT": "49.50%",
-      "Global": "74.70%",
+      "Global": "78.70%",
       "DI_P": "90.00%",
       "DI_LT": "50.00%",
       "ES_INT": "90.00%",
-      "A_MIA_P": "75.00%",
+      "A_MIA_P": "100.00%",
       "A_MIA_LT": "50.00%",
       "A_ETJ_P": "50.00%",
       "A_ETJ_LT": "0.00%",
@@ -348,7 +360,7 @@
       "DI_P_ESTATUS": "En elaboración",
       "DI_LT_ESTATUS": "En elaboración",
       "ES_INT_ESTATUS": "En actualización",
-      "A_MIA_P_ESTATUS": "En evaluación",
+      "A_MIA_P_ESTATUS": "Liberado",
       "A_MIA_LT_ESTATUS": "En evaluación",
       "A_ETJ_P_ESTATUS": "En evaluación",
       "A_ETJ_LT_ESTATUS": "En elaboración",
@@ -366,7 +378,7 @@
       "DI_P_OBS": "El polígono de la central tiene 272 ha, bajo un contrato firmado y registrado (30 años + 10) ante RPP. \r\nEl 20 de noviembre se hizo el Convenio Modificatorio al contrato por temas de colindancia, está en proceso de registro al RPP.",
       "DI_LT_OBS": "LT (18.9 km) está en proceso la obtención de los derechos de vía (carretera federal Campeche-Hopelchen). Se tienen ubicados.\r\nEl socio informa que hay un cruce (no está definido) con el Tren Maya, CPTT de CFE apoyará con este tema. Asimismo, el socio informa que CPTT-CFE apoyará (está en proceso la adenda en el contrato).",
       "ES_INT_OBS": "El 03 de noviembre recibió los estudios de interconexión actualizados, con las obras instruidas. Por ende, solicitan la fecha de conclusión de dichas obras para asegurar el COD del proyecto.\r\n\r\nSENER informa que está en proceso de publicar las fechas de dichas obras.",
-      "A_MIA_P_OBS": "El socio informa que el 27 de octubre se ingresó el requerimiento de información adicional.",
+      "A_MIA_P_OBS": "Liberada con el BESS incluido",
       "A_MIA_LT_OBS": "El 20 de octubre se ingresó el documento de no aplicabilidad, toda vez que es terreno impactado por ser derecho de vía de SICT.",
       "A_ETJ_P_OBS": "El socio informó que el 05 de noviembre se ingresó.",
       "A_ETJ_LT_OBS": "Para la LT se ingresará el trámite de no aplicabilidad.",
@@ -380,7 +392,10 @@
       "CONA_C_OBS": "Liberado. junio 2023",
       "CONA_LT_OBS": "El socio informa que para la LT se iniciará el trámite el 20 de noviembre.",
       "AFAC_C_OBS": "Liberado. Mayo 2026",
-      "AFAC_LT_OBS": "El socio informa que para la LT se ingresará a principios de diciembre."
+      "AFAC_LT_OBS": "El socio informa que para la LT se ingresará a principios de diciembre.",
+      "MONTO_INTERCONEXIÓN": "$303,385,507.30",
+      "MONTO_REFUERZO": "$27,453,769.20",
+      "TOTAL_CENACE": "$330,839,276.50"
     },
     {
       "NO.": "25",
@@ -456,7 +471,10 @@
       "CONA_C_OBS": "El socio informa que, derivado del oficio emitido por CONAGUA del 21 de agosto, el socio deberá realizar dos trámites adicionales ante CONAGUA. De lo anterior se deben efectuar estudios hidrológicos, los cuales están en cotización.\r\nSe considerará la LT.",
       "CONA_LT_OBS": "El socio informa que, derivado del oficio emitido por CONAGUA del 21 de agosto, el socio deberá realizar dos trámites adicionales ante CONAGUA. De lo anterior se deben efectuar estudios hidrológicos, los cuales están en cotización.\r\nSe considerará la LT.",
       "AFAC_C_OBS": "El socio informa que ingresará el trámite a más tardar el 30 de noviembre.\r\nSe prevé ingresar la LT",
-      "AFAC_LT_OBS": "El socio informa que ingresará el trámite a más tardar el 30 de noviembre.\r\nSe prevé ingresar la LT"
+      "AFAC_LT_OBS": "El socio informa que ingresará el trámite a más tardar el 30 de noviembre.\r\nSe prevé ingresar la LT",
+      "MONTO_INTERCONEXIÓN": "$65,946,815.00",
+      "MONTO_REFUERZO": "$51,135,117.00",
+      "TOTAL_CENACE": "$117,081,931.00"
     },
     {
       "NO.": "31",
@@ -532,7 +550,10 @@
       "CONA_C_OBS": "CFE-DIPI informa que el 29 de octubre, personal de la GASIR-CONAGUA llevará a cabo el reconocimiento físico del sitio para la verificación de escurrimientos y cauces naturales en el predio del PFV.",
       "CONA_LT_OBS": "CFE-DIPI informa que el 29 de octubre, personal de la GASIR-CONAGUA llevará a cabo el reconocimiento físico del sitio para la verificación de escurrimientos y cauces naturales en el predio del PFV.",
       "AFAC_C_OBS": "el socio se encuentra a la espera de la ingeniería de detalle de la línea aérea correspondiente a la Fase III para ingresar el trámite, se prevé ingresarlo a mediados de noviembre.",
-      "AFAC_LT_OBS": "el socio se encuentra a la espera de la ingeniería de detalle de la línea aérea correspondiente a la Fase III para ingresar el trámite, se prevé ingresarlo a mediados de noviembre."
+      "AFAC_LT_OBS": "el socio se encuentra a la espera de la ingeniería de detalle de la línea aérea correspondiente a la Fase III para ingresar el trámite, se prevé ingresarlo a mediados de noviembre.",
+      "MONTO_INTERCONEXIÓN": "VER FASE II",
+      "MONTO_REFUERZO": "VER FASE II",
+      "TOTAL_CENACE": "VER FASE II"
     },
     {
       "NO.": "32",
@@ -608,7 +629,10 @@
       "CONA_C_OBS": "Se emitió una nota (mediados de mayo) sobre la no afectación del arroyo “la sangre”.",
       "CONA_LT_OBS": "Se emitió una nota (mediados de mayo) sobre la no afectación del arroyo “la sangre”.",
       "AFAC_C_OBS": "el socio se encuentra a la espera de la ingeniería de detalle de la línea aérea correspondiente a la Fase III para ingresar el trámite, se prevé ingresarlo a mediados de noviembre.",
-      "AFAC_LT_OBS": "el socio se encuentra a la espera de la ingeniería de detalle de la línea aérea correspondiente a la Fase III para ingresar el trámite, se prevé ingresarlo a mediados de noviembre."
+      "AFAC_LT_OBS": "el socio se encuentra a la espera de la ingeniería de detalle de la línea aérea correspondiente a la Fase III para ingresar el trámite, se prevé ingresarlo a mediados de noviembre.",
+      "MONTO_INTERCONEXIÓN": "$252,281,273.64",
+      "MONTO_REFUERZO": "$269,203,881.21",
+      "TOTAL_CENACE": "$521,485,154.90"
     },
     {
       "NO.": "33",
@@ -684,7 +708,10 @@
       "CONA_C_OBS": "No aplica, sin embargo, se realizará el trámite para la opinión técnica.",
       "CONA_LT_OBS": "No aplica, sin embargo, se realizará el trámite para la opinión técnica.",
       "AFAC_C_OBS": "el socio se encuentra a la espera de la ingeniería de detalle de la línea aérea correspondiente a la Fase III para ingresar el trámite, se prevé ingresarlo a mediados de noviembre.",
-      "AFAC_LT_OBS": "el socio se encuentra a la espera de la ingeniería de detalle de la línea aérea correspondiente a la Fase III para ingresar el trámite, se prevé ingresarlo a mediados de noviembre."
+      "AFAC_LT_OBS": "el socio se encuentra a la espera de la ingeniería de detalle de la línea aérea correspondiente a la Fase III para ingresar el trámite, se prevé ingresarlo a mediados de noviembre.",
+      "MONTO_INTERCONEXIÓN": "VER FASE II",
+      "MONTO_REFUERZO": "VER FASE II",
+      "TOTAL_CENACE": "VER FASE II"
     },
     {
       "NO.": "36",
@@ -760,7 +787,10 @@
       "CONA_C_OBS": "a inicios de agosto renovaron los permisos y el cronograma de trabajo, sin embargo, CONAGUA no ha respondido.",
       "CONA_LT_OBS": "a inicios de agosto renovaron los permisos y el cronograma de trabajo, sin embargo, CONAGUA no ha respondido.",
       "AFAC_C_OBS": "liberado (06 de noviembre de 2026).",
-      "AFAC_LT_OBS": "liberado (06 de noviembre de 2026)."
+      "AFAC_LT_OBS": "liberado (06 de noviembre de 2026).",
+      "MONTO_INTERCONEXIÓN": "",
+      "MONTO_REFUERZO": "",
+      "TOTAL_CENACE": ""
     },
     {
       "NO.": "38",
@@ -836,7 +866,10 @@
       "CONA_C_OBS": "continúa en proceso el levantamiento de topografía (fotogrametría con drones) se pretende terminar en octubre.",
       "CONA_LT_OBS": "continúa en proceso el levantamiento de topografía (fotogrametría con drones) se pretende terminar en octubre.",
       "AFAC_C_OBS": "liberado (06 de noviembre de 2026).",
-      "AFAC_LT_OBS": "liberado (06 de noviembre de 2026)."
+      "AFAC_LT_OBS": "liberado (06 de noviembre de 2026).",
+      "MONTO_INTERCONEXIÓN": "",
+      "MONTO_REFUERZO": "",
+      "TOTAL_CENACE": ""
     },
     {
       "NO.": "37",
@@ -912,7 +945,10 @@
       "CONA_C_OBS": "el socio concluyó el levantamiento de topografía (fotogrametría con drones) y los estudios solicitados, no hay fecha para ingresar el trámite.",
       "CONA_LT_OBS": "el socio concluyó el levantamiento de topografía (fotogrametría con drones) y los estudios solicitados, no hay fecha para ingresar el trámite.",
       "AFAC_C_OBS": "liberado (06 de noviembre de 2026).",
-      "AFAC_LT_OBS": "liberado (06 de noviembre de 2026)."
+      "AFAC_LT_OBS": "liberado (06 de noviembre de 2026).",
+      "MONTO_INTERCONEXIÓN": "",
+      "MONTO_REFUERZO": "",
+      "TOTAL_CENACE": ""
     },
     {
       "NO.": "22",
@@ -988,7 +1024,10 @@
       "CONA_C_OBS": "El socio informa que está liberado.",
       "CONA_LT_OBS": "El socio informa que está liberado.",
       "AFAC_C_OBS": "El socio comenta que, el 11 de noviembre atendieron las observaciones.",
-      "AFAC_LT_OBS": "El socio comenta que, el 11 de noviembre atendieron las observaciones."
+      "AFAC_LT_OBS": "El socio comenta que, el 11 de noviembre atendieron las observaciones.",
+      "MONTO_INTERCONEXIÓN": "$111,516,135.02",
+      "MONTO_REFUERZO": "$15,066,198.51",
+      "TOTAL_CENACE": "$126,582,333.53"
     },
     {
       "NO.": "19",
@@ -1064,7 +1103,10 @@
       "CONA_C_OBS": "Liberado",
       "CONA_LT_OBS": "Liberado",
       "AFAC_C_OBS": "El socio comenta que el 21 de septiembre ingresó las observaciones atendidas.",
-      "AFAC_LT_OBS": "El socio comenta que el 21 de septiembre ingresó las observaciones atendidas."
+      "AFAC_LT_OBS": "El socio comenta que el 21 de septiembre ingresó las observaciones atendidas.",
+      "MONTO_INTERCONEXIÓN": "$56,030,060.78",
+      "MONTO_REFUERZO": "$196,619,312.04",
+      "TOTAL_CENACE": "$252,649,372.82"
     },
     {
       "NO.": "18",
@@ -1140,7 +1182,10 @@
       "CONA_C_OBS": "El socio informa que está realizando estudios hidrológicos, una vez que se finalicen se ingresará el trámite. Se prevé ingresar a inicios de diciembre.",
       "CONA_LT_OBS": "El socio informa que está realizando estudios hidrológicos, una vez que se finalicen se ingresará el trámite. Se prevé ingresar a inicios de diciembre.",
       "AFAC_C_OBS": "El socio informa que una vez que tenga la ingeniería ingresa el trámite a principios de diciembre.",
-      "AFAC_LT_OBS": "El socio informa que una vez que tenga la ingeniería ingresa el trámite a principios de diciembre."
+      "AFAC_LT_OBS": "El socio informa que una vez que tenga la ingeniería ingresa el trámite a principios de diciembre.",
+      "MONTO_INTERCONEXIÓN": "$560,062,413.79",
+      "MONTO_REFUERZO": "$626,117,811.19",
+      "TOTAL_CENACE": "$1,186,180,224.98"
     },
     {
       "NO.": "20",
@@ -1216,7 +1261,10 @@
       "CONA_C_OBS": "liberado",
       "CONA_LT_OBS": "liberado",
       "AFAC_C_OBS": "El socio comenta que, el 21 de septiembre atendió las observaciones.",
-      "AFAC_LT_OBS": "El socio comenta que, el 21 de septiembre atendió las observaciones."
+      "AFAC_LT_OBS": "El socio comenta que, el 21 de septiembre atendió las observaciones.",
+      "MONTO_INTERCONEXIÓN": "$64,497,683.99",
+      "MONTO_REFUERZO": "$322,140,270.32",
+      "TOTAL_CENACE": "$386,637,954.31"
     },
     {
       "NO.": "21",
@@ -1292,7 +1340,10 @@
       "CONA_C_OBS": "liberado",
       "CONA_LT_OBS": "liberado",
       "AFAC_C_OBS": "El socio comenta que, el 21 de septiembre atendió las observaciones.",
-      "AFAC_LT_OBS": "El socio comenta que, el 21 de septiembre atendió las observaciones."
+      "AFAC_LT_OBS": "El socio comenta que, el 21 de septiembre atendió las observaciones.",
+      "MONTO_INTERCONEXIÓN": "$60,167,249.51",
+      "MONTO_REFUERZO": "$195,067,975.25",
+      "TOTAL_CENACE": "$255,235,224.76"
     },
     {
       "NO.": "17",
@@ -1368,7 +1419,10 @@
       "CONA_C_OBS": "El socio informa el 05 de noviembre recibió respuesta por parte de la autoridad, si bien, se consideran los 7 arroyos, los cuales se deben respetar.",
       "CONA_LT_OBS": "El socio informa el 05 de noviembre recibió respuesta por parte de la autoridad, si bien, se consideran los 7 arroyos, los cuales se deben respetar.",
       "AFAC_C_OBS": "El socio informa que ingresaron el trámite el 04 de agosto y el 03 de septiembre entregaron la información adicional.\r\n\r\nCFE-DIPI dará seguimiento.",
-      "AFAC_LT_OBS": "El socio informa que ingresaron el trámite el 04 de agosto y el 03 de septiembre entregaron la información adicional.\r\n\r\nCFE-DIPI dará seguimiento."
+      "AFAC_LT_OBS": "El socio informa que ingresaron el trámite el 04 de agosto y el 03 de septiembre entregaron la información adicional.\r\n\r\nCFE-DIPI dará seguimiento.",
+      "MONTO_INTERCONEXIÓN": "$156,766,223.25",
+      "MONTO_REFUERZO": "$86,612,156.25",
+      "TOTAL_CENACE": "$243,378,379.50"
     },
     {
       "NO.": "15",
@@ -1444,7 +1498,10 @@
       "CONA_C_OBS": "El socio informa que, se ingresó el 05 de noviembre.",
       "CONA_LT_OBS": "El socio informa que, se ingresó el 05 de noviembre.",
       "AFAC_C_OBS": "El socio menciona que se encuentra integrando la información y se compromete a ingresar el trámite el 30 de noviembre",
-      "AFAC_LT_OBS": "El socio menciona que se encuentra integrando la información y se compromete a ingresar el trámite el 30 de noviembre"
+      "AFAC_LT_OBS": "El socio menciona que se encuentra integrando la información y se compromete a ingresar el trámite el 30 de noviembre",
+      "MONTO_INTERCONEXIÓN": "$132,741,641.45",
+      "MONTO_REFUERZO": "$296,291,835.83",
+      "TOTAL_CENACE": "$429,033,477.28"
     },
     {
       "NO.": "16",
@@ -1520,7 +1577,10 @@
       "CONA_C_OBS": "se llevó a cabo una reunión con CONAGUA. De lo anterior, se solicitó un nuevo estudio hidrológico y se prevé ingresar el trámite con el nuevo polígono posteriormente el 30 de noviembre",
       "CONA_LT_OBS": "se llevó a cabo una reunión con CONAGUA. De lo anterior, se solicitó un nuevo estudio hidrológico y se prevé ingresar el trámite con el nuevo polígono posteriormente el 30 de noviembre",
       "AFAC_C_OBS": "El socio menciona se encuentra integrando el expediente",
-      "AFAC_LT_OBS": "El socio menciona se encuentra integrando el expediente"
+      "AFAC_LT_OBS": "El socio menciona se encuentra integrando el expediente",
+      "MONTO_INTERCONEXIÓN": "$210,847,118.90",
+      "MONTO_REFUERZO": "$78,410,334.20",
+      "TOTAL_CENACE": "$289,257,453.10"
     },
     {
       "NO.": "14",
@@ -1596,7 +1656,10 @@
       "CONA_C_OBS": "En proceso de ingreso ya con la información necesaria. Pendiente 2 km",
       "CONA_LT_OBS": "En proceso de ingreso ya con la información necesaria. Pendiente 2 km",
       "AFAC_C_OBS": "El socio menciona que iniciará el trámite el 30 de noviembre",
-      "AFAC_LT_OBS": "El socio menciona que iniciará el trámite el 30 de noviembre"
+      "AFAC_LT_OBS": "El socio menciona que iniciará el trámite el 30 de noviembre",
+      "MONTO_INTERCONEXIÓN": "$225,543,425.72",
+      "MONTO_REFUERZO": "$269,675,982.40",
+      "TOTAL_CENACE": "$495,219,408.12"
     },
     {
       "NO.": "11",
@@ -1672,7 +1735,10 @@
       "CONA_C_OBS": "El socio informa que está liberado.",
       "CONA_LT_OBS": "El socio informa que está liberado.",
       "AFAC_C_OBS": "El socio informa que el 21 de octubre presentaron la información adicional solicitada.",
-      "AFAC_LT_OBS": "El socio informa que el 21 de octubre presentaron la información adicional solicitada."
+      "AFAC_LT_OBS": "El socio informa que el 21 de octubre presentaron la información adicional solicitada.",
+      "MONTO_INTERCONEXIÓN": "$265,387,781.52",
+      "MONTO_REFUERZO": "$185,169,473.20",
+      "TOTAL_CENACE": "$450,557,254.72"
     },
     {
       "NO.": "12",
@@ -1692,13 +1758,13 @@
       "Fecha firma de contrato": "03 de julio de 2026",
       "CAPEX": "$420,828,931.20",
       "PRIORI": "NoP",
-      "Parque": "79.00%",
+      "Parque": "83.00%",
       "LT": "60.50%",
-      "Global": "75.30%",
+      "Global": "78.50%",
       "DI_P": "100.00%",
       "DI_LT": "75.00%",
       "ES_INT": "90.00%",
-      "A_MIA_P": "80.00%",
+      "A_MIA_P": "100.00%",
       "A_MIA_LT": "70.00%",
       "A_ETJ_P": "100.00%",
       "A_ETJ_LT": "0.00%",
@@ -1716,7 +1782,7 @@
       "DI_P_ESTATUS": "Liberado",
       "DI_LT_ESTATUS": "En elaboración",
       "ES_INT_ESTATUS": "En evaluación",
-      "A_MIA_P_ESTATUS": "En evaluación",
+      "A_MIA_P_ESTATUS": "Liberado",
       "A_MIA_LT_ESTATUS": "En actualización",
       "A_ETJ_P_ESTATUS": "N/A",
       "A_ETJ_LT_ESTATUS": "En elaboración",
@@ -1734,7 +1800,7 @@
       "DI_P_OBS": "El socio informa que tiene 1,200 ha bajo un acta de liberación catastral por 20 años + 5 +5 +5+5.",
       "DI_LT_OBS": "Respecto a la Línea de Transmisión (23 km), se tiene el 75% de los derechos inmobiliarios y están en espera de la Consulta Indígena para continuar con las negociaciones con los propietarios (46).\r\n\r\nEl socio informa que la Consulta Indígena inicia el 09 de noviembre.",
       "ES_INT_OBS": "El socio informa que tiene los estudios de interconexión y menciona que recibió los estudios actualizados derivado de obras instruidas a CFE. De lo anterior el socio, manifiesta preocupación por conocer las fechas de conclusión de dichas obras, toda vez que no sé detallan en los estudios de interconexión, ya que representa un limitante para el financiamiento.",
-      "A_MIA_P_OBS": "El socio menciona que se tiene un estudio ingresado y con un requerimiento de información adicional emitido el 16 de mayo, el cual se atendió el 05 de agosto. En evaluación por la autoridad.",
+      "A_MIA_P_OBS": "Con resolutivo. 18 de noviembre de 2026",
       "A_MIA_LT_OBS": "El socio informa que, para la LT se ingresó el 21 de agosto, el 26 de octubre recibió requerimiento de información adicional se prevé ingresarlo a finales de noviembre.",
       "A_ETJ_P_OBS": "No aplica.",
       "A_ETJ_LT_OBS": "El socio informa que para la LT se ingresará una vez teniendo la firma de las servidumbres de paso.",
@@ -1748,7 +1814,10 @@
       "CONA_C_OBS": "El socio menciona que se ingresó el trámite el 22 de octubre y se incluyó el requerimiento solicitado por CONAGUA.",
       "CONA_LT_OBS": "El socio menciona que se ingresó el trámite el 22 de octubre y se incluyó el requerimiento solicitado por CONAGUA.",
       "AFAC_C_OBS": "Se ingresó el trámite el 29 de julio. AFAC requirió información adicional (CPTT está realizando algunos trabajos para solventar el requerimiento adicional). Se ingresará a mediados de diciembre.",
-      "AFAC_LT_OBS": "Se ingresó el trámite el 29 de julio. AFAC requirió información adicional (CPTT está realizando algunos trabajos para solventar el requerimiento adicional). Se ingresará a mediados de diciembre."
+      "AFAC_LT_OBS": "Se ingresó el trámite el 29 de julio. AFAC requirió información adicional (CPTT está realizando algunos trabajos para solventar el requerimiento adicional). Se ingresará a mediados de diciembre.",
+      "MONTO_INTERCONEXIÓN": "$360,536,301.95",
+      "MONTO_REFUERZO": "$445,451,884.82",
+      "TOTAL_CENACE": "$805,988,156.77"
     },
     {
       "NO.": "1",
@@ -1824,7 +1893,10 @@
       "CONA_C_OBS": "Se tiene liberado.",
       "CONA_LT_OBS": "Se tiene liberado.",
       "AFAC_C_OBS": "Se tiene liberado.",
-      "AFAC_LT_OBS": "Se tiene liberado."
+      "AFAC_LT_OBS": "Se tiene liberado.",
+      "MONTO_INTERCONEXIÓN": "$63,041,607.01",
+      "MONTO_REFUERZO": "$20,391,911.44",
+      "TOTAL_CENACE": "$83,433,518.45"
     },
     {
       "NO.": "2",
@@ -1900,7 +1972,10 @@
       "CONA_C_OBS": "El socio menciona que, se ingresará el 20 de noviembre",
       "CONA_LT_OBS": "El socio menciona que, se ingresará el 20 de noviembre",
       "AFAC_C_OBS": "El socio informa que, se tiene una autorización, pero se hará una actualización por tecnología (aerogeneradores), se prevé ingresar a finales de noviembre.",
-      "AFAC_LT_OBS": "El socio informa que, se tiene una autorización, pero se hará una actualización por tecnología (aerogeneradores), se prevé ingresar a finales de noviembre."
+      "AFAC_LT_OBS": "El socio informa que, se tiene una autorización, pero se hará una actualización por tecnología (aerogeneradores), se prevé ingresar a finales de noviembre.",
+      "MONTO_INTERCONEXIÓN": "$298,636,761.61",
+      "MONTO_REFUERZO": "$401,185,794.04",
+      "TOTAL_CENACE": "$699,822,555.65"
     },
     {
       "NO.": "3",
@@ -1976,7 +2051,10 @@
       "CONA_C_OBS": "El socio solicita apoyo para dar seguimiento a los trámites ingresados, toda vez que desde el 30 de octubre se envió solicitud de respuesta y a la fecha no se tiene.",
       "CONA_LT_OBS": "Para la LT, una vez que se tenga el trazo definitivo se harán los trámites, no obstante, se tienen identificados cruces con canales de riego.",
       "AFAC_C_OBS": "Se ingreso información solicitada el 14 de octubre 2026",
-      "AFAC_LT_OBS": "Se ingreso información solicitada el 14 de octubre 2026"
+      "AFAC_LT_OBS": "Se ingreso información solicitada el 14 de octubre 2026",
+      "MONTO_INTERCONEXIÓN": "$263,916,479.09",
+      "MONTO_REFUERZO": "$39,205,167.11",
+      "TOTAL_CENACE": "$303,121,646.20"
     },
     {
       "NO.": "4",
@@ -2052,7 +2130,10 @@
       "CONA_C_OBS": "Liberado 21 de octubre 2026",
       "CONA_LT_OBS": "Liberado 21 de octubre 2026",
       "AFAC_C_OBS": "Liberado 28 de octubre 2026",
-      "AFAC_LT_OBS": "Liberado 28 de octubre 2026"
+      "AFAC_LT_OBS": "Liberado 28 de octubre 2026",
+      "MONTO_INTERCONEXIÓN": "$251,773,154.48",
+      "MONTO_REFUERZO": "$320,108,349.49",
+      "TOTAL_CENACE": "$571,881,503.97"
     },
     {
       "NO.": "35",
@@ -2128,7 +2209,10 @@
       "CONA_C_OBS": "Se ingresó el 07 de octubre. El 24 de noviembre se preveé una visita a sitio por parte de la autoridad",
       "CONA_LT_OBS": "El socio informa que la LT se ingresará el 31 de enero del 2027.",
       "AFAC_C_OBS": "El socio informa que se requiere concluir la ingeniería para poder ingresar el trámite. Se prevé ingresarlo a el 27 de noviembre.",
-      "AFAC_LT_OBS": "El socio informa que se requiere concluir la ingeniería para poder ingresar el trámite. Se prevé ingresarlo a el 27 de noviembre."
+      "AFAC_LT_OBS": "El socio informa que se requiere concluir la ingeniería para poder ingresar el trámite. Se prevé ingresarlo a el 27 de noviembre.",
+      "MONTO_INTERCONEXIÓN": "",
+      "MONTO_REFUERZO": "",
+      "TOTAL_CENACE": ""
     },
     {
       "NO.": "10",
@@ -2204,7 +2288,10 @@
       "CONA_C_OBS": "El socio informa que el 28 de octubre se ingresó",
       "CONA_LT_OBS": "El socio informa que el 28 de octubre se ingresó",
       "AFAC_C_OBS": "El socio preveé ingresar la infirmación solicita el día 27 de noviembre",
-      "AFAC_LT_OBS": "El socio preveé ingresar la infirmación solicita el día 27 de noviembre"
+      "AFAC_LT_OBS": "El socio preveé ingresar la infirmación solicita el día 27 de noviembre",
+      "MONTO_INTERCONEXIÓN": "$13,121,658.38",
+      "MONTO_REFUERZO": "$23,736,660.76",
+      "TOTAL_CENACE": "$36,858,319.14"
     },
     {
       "NO.": "9",
@@ -2280,7 +2367,10 @@
       "CONA_C_OBS": "ingresado el 18 de noviembre en la cuenca de la peninsula. Pendiente una reunión",
       "CONA_LT_OBS": "ingresado el 18 de noviembre en la cuenca de la peninsula. Pendiente una reunión",
       "AFAC_C_OBS": "Liberado",
-      "AFAC_LT_OBS": "Liberado"
+      "AFAC_LT_OBS": "Liberado",
+      "MONTO_INTERCONEXIÓN": "$64,497,683.99",
+      "MONTO_REFUERZO": "$190,811,183.85",
+      "TOTAL_CENACE": "$255,308,867.84"
     },
     {
       "NO.": "8",
@@ -2356,7 +2446,10 @@
       "CONA_C_OBS": "se ingresó el 18 de noviembre.",
       "CONA_LT_OBS": "Una vez que se defina el trazo final de la LT, se iniciará el trámite. Hasta que se tenga la consulta indígena finalizada.",
       "AFAC_C_OBS": "Una vez que se defina el trazo final de la LT, se iniciará el trámite. Hasta que se tenga la consulta indígena finalizada.",
-      "AFAC_LT_OBS": "Una vez que se defina el trazo final de la LT, se iniciará el trámite. Hasta que se tenga la consulta indígena finalizada."
+      "AFAC_LT_OBS": "Una vez que se defina el trazo final de la LT, se iniciará el trámite. Hasta que se tenga la consulta indígena finalizada.",
+      "MONTO_INTERCONEXIÓN": "$39,007,961.60",
+      "MONTO_REFUERZO": "$25,818,128.25",
+      "TOTAL_CENACE": "$64,826,089.85"
     },
     {
       "NO.": "30",
@@ -2432,7 +2525,10 @@
       "CONA_C_OBS": "Conagua respondió el 06 de noviembre. El socio analizó la información e integrará el expediente para ingresar el VoBo.",
       "CONA_LT_OBS": "En espera de la ruta final de la LT.",
       "AFAC_C_OBS": "En espera de la ruta final de la LT.",
-      "AFAC_LT_OBS": "En espera de la ruta final de la LT."
+      "AFAC_LT_OBS": "En espera de la ruta final de la LT.",
+      "MONTO_INTERCONEXIÓN": "$220,641,733.05",
+      "MONTO_REFUERZO": "$509,197,464.88",
+      "TOTAL_CENACE": "$729,839,197.93"
     },
     {
       "NO.": "13",
@@ -2508,7 +2604,10 @@
       "CONA_C_OBS": "El socio informa que el 14 de octubre se ingresó. Con posible VoBo por parte de la autoridad a emitir el 20 de noviembre",
       "CONA_LT_OBS": "El socio informa que una vez que se tenga el trazo definitivo de la LT, se ingresará el trámite.",
       "AFAC_C_OBS": "El socio informa que el  30 de octubre se entregó la información para revisión. Sin embargo hasta que se tengas todos los posicionamientos del proyecto (layout) se ingresará la información. A mediados de diciembre",
-      "AFAC_LT_OBS": "El socio informa que una vez que se tenga el trazo definitivo de la LT y el layout posible, se ingresará el trámite."
+      "AFAC_LT_OBS": "El socio informa que una vez que se tenga el trazo definitivo de la LT y el layout posible, se ingresará el trámite.",
+      "MONTO_INTERCONEXIÓN": "$199,373,225.26",
+      "MONTO_REFUERZO": "$217,136,166.40",
+      "TOTAL_CENACE": "$416,509,391.66"
     },
     {
       "NO.": "39",
@@ -2584,7 +2683,10 @@
       "CONA_C_OBS": "En espera de hacer estudios hidrológicos",
       "CONA_LT_OBS": "En espera de hacer estudios hidrológicos",
       "AFAC_C_OBS": "En espera de definición de la Huella del Proyecto",
-      "AFAC_LT_OBS": "En espera de definición de la Huella del Proyecto"
+      "AFAC_LT_OBS": "En espera de definición de la Huella del Proyecto",
+      "MONTO_INTERCONEXIÓN": "",
+      "MONTO_REFUERZO": "",
+      "TOTAL_CENACE": ""
     },
     {
       "NO.": "40",
@@ -2660,7 +2762,10 @@
       "CONA_C_OBS": "en evaluación",
       "CONA_LT_OBS": "en evaluación",
       "AFAC_C_OBS": "el 18 de noviembre se solicitó el VoBo por correo",
-      "AFAC_LT_OBS": "el 18 de noviembre se solicitó el VoBo por correo"
+      "AFAC_LT_OBS": "el 18 de noviembre se solicitó el VoBo por correo",
+      "MONTO_INTERCONEXIÓN": "",
+      "MONTO_REFUERZO": "",
+      "TOTAL_CENACE": ""
     },
     {
       "NO.": "7",
@@ -2736,7 +2841,10 @@
       "CONA_C_OBS": "liberado",
       "CONA_LT_OBS": "Se trabajará por tramos a espera de la definición de la LT",
       "AFAC_C_OBS": "Se ingresará a mediados de diciembre",
-      "AFAC_LT_OBS": "Se trabajará por tramos a espera de la definición de la LT"
+      "AFAC_LT_OBS": "Se trabajará por tramos a espera de la definición de la LT",
+      "MONTO_INTERCONEXIÓN": "$933,527,631.19",
+      "MONTO_REFUERZO": "$6,301,391,897.22",
+      "TOTAL_CENACE": "$7,234,919,528.41"
     },
     {
       "NO.": "26",
@@ -2812,7 +2920,10 @@
       "CONA_C_OBS": "ingresado el 06 de octubre. en evaluación",
       "CONA_LT_OBS": "ingresado el 06 de octubre. en evaluación",
       "AFAC_C_OBS": "el 20 de octubre ingresado de manera formal. en evaluación",
-      "AFAC_LT_OBS": "el 20 de octubre ingresado de manera formal. en evaluación"
+      "AFAC_LT_OBS": "el 20 de octubre ingresado de manera formal. en evaluación",
+      "MONTO_INTERCONEXIÓN": "$268,407,834.24",
+      "MONTO_REFUERZO": "$283,061,931.10",
+      "TOTAL_CENACE": "$551,469,765.34"
     },
     {
       "NO.": "27",
@@ -2888,7 +2999,10 @@
       "CONA_C_OBS": "esperando entregar a mediados de diciembre",
       "CONA_LT_OBS": "Se trabajará por tramos a espera de la definición de la LT",
       "AFAC_C_OBS": "ingresada el 21 de octubre, resuelta el 30 de octubre",
-      "AFAC_LT_OBS": "Se trabajará por tramos a espera de la definición de la LT"
+      "AFAC_LT_OBS": "Se trabajará por tramos a espera de la definición de la LT",
+      "MONTO_INTERCONEXIÓN": "$1,381,550,479.76",
+      "MONTO_REFUERZO": "$6,301,391,897.22",
+      "TOTAL_CENACE": "$7,662,704,704.21"
     },
     {
       "NO.": "6",
@@ -2964,7 +3078,10 @@
       "CONA_C_OBS": "liberado en una cuenca, otra superficie",
       "CONA_LT_OBS": "Se trabajará por tramos a espera de la definición de la LT",
       "AFAC_C_OBS": "Se ingresó el 13 de octubre. en evaluación",
-      "AFAC_LT_OBS": "Se trabajará por tramos a espera de la definición de la LT"
+      "AFAC_LT_OBS": "Se trabajará por tramos a espera de la definición de la LT",
+      "MONTO_INTERCONEXIÓN": "$1,045,431,784.10",
+      "MONTO_REFUERZO": "$6,301,391,897.22",
+      "TOTAL_CENACE": "$7,326,585,378.55"
     },
     {
       "NO.": "28",
@@ -3040,7 +3157,10 @@
       "CONA_C_OBS": "se ingresó el 04 de nov. en evaluación",
       "CONA_LT_OBS": "se ingresó el 04 de nov. en evaluación",
       "AFAC_C_OBS": "ingresado el 27 de octubre. en evaluación",
-      "AFAC_LT_OBS": "ingresado el 27 de octubre. en evaluación"
+      "AFAC_LT_OBS": "ingresado el 27 de octubre. en evaluación",
+      "MONTO_INTERCONEXIÓN": "$76,091,599.60",
+      "MONTO_REFUERZO": "$123,924,258.77",
+      "TOTAL_CENACE": "$200,015,858.37"
     }
   ]
 }

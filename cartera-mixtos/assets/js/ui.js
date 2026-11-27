@@ -237,6 +237,12 @@
     { section: "Financiero", items: [
       ["capex", "CAPEX (USD)"],
     ]},
+    // Montos de CENACE (columnas MONTO_INTERCONEXIÓN, MONTO_REFUERZO y
+    // TOTAL_CENACE), en pesos; sin datos, el apartado no aparece.
+    { section: "CENACE", items: [
+      ["montoInterconexion", "Monto de interconexión (MXN)"], ["montoRefuerzo", "Monto de refuerzo (MXN)"],
+      ["totalCenace", "Total CENACE (MXN)"],
+    ]},
   ];
 
   function detailField(p, key, label) {
