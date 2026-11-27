@@ -237,6 +237,12 @@
     { section: "Financiero", items: [
       ["capex", "CAPEX (USD)"],
     ]},
+    // Montos de CENACE (columnas MONTO_INTERCONEXIÓN, MONTO_REFUERZO y
+    // TOTAL_CENACE); sin datos, el apartado no aparece.
+    { section: "CENACE", items: [
+      ["montoInterconexion", "Monto de interconexión"], ["montoRefuerzo", "Monto de refuerzo"],
+      ["totalCenace", "Total CENACE"],
+    ]},
   ];
 
   function detailField(p, key, label) {

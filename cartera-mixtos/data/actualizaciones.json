@@ -1277,6 +1277,36 @@
           }
         }
       ]
+    },
+    {
+      "excel": "2026-11-27T00:50:38.000Z",
+      "fecha": "2026-11-26",
+      "cambios": [
+        {
+          "slug": "dalia-3-pv-castamay",
+          "nombre": "DALIA 3 PV (CASTAMAY)",
+          "antes": {
+            "parque": 81,
+            "grupo": "B"
+          },
+          "ahora": {
+            "parque": 86,
+            "grupo": "A"
+          }
+        },
+        {
+          "slug": "planta-solar-cerro-colorado",
+          "nombre": "PLANTA SOLAR CERRO COLORADO",
+          "antes": {
+            "parque": 79,
+            "grupo": "B"
+          },
+          "ahora": {
+            "parque": 83,
+            "grupo": "B"
+          }
+        }
+      ]
     }
   ]
 }

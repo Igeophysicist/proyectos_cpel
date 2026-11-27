@@ -178,12 +178,19 @@ function buildDataset(ds) {
   // de la tabla) no son datos: SheetJS las nombra "__EMPTY…" y se quitan.
   // Tampoco se publican las columnas viejas de hitos de Cartera (hitoN_*:
   // traían montos); ahora los hitos salen de HITOS_CARTERA_CPEL.xlsx.
+  // Los encabezados se leen sin espacios al inicio o al final: con formato
+  // de contabilidad, SheetJS los entrega como " TOTAL_CENACE ".
   const rows = XLSX.utils.sheet_to_json(sheet, options).map((r) =>
-    Object.fromEntries(Object.entries(r).filter(([k]) => !k.startsWith("__EMPTY") && !/^hito\d+_/.test(k)))
+    Object.fromEntries(
+      Object.entries(r)
+        .map(([k, v]) => [k.trim(), v])
+        .filter(([k]) => !k.startsWith("__EMPTY") && !/^hito\d+_/.test(k))
+    )
   );
   if (ds.fechas) {
     // Celdas con fecha de Excel (número de serie): a texto largo en español.
-    const crudas = XLSX.utils.sheet_to_json(sheet, { ...options, raw: true });
+    const crudas = XLSX.utils.sheet_to_json(sheet, { ...options, raw: true })
+      .map((r) => Object.fromEntries(Object.entries(r).map(([k, v]) => [k.trim(), v])));
     rows.forEach((r, i) =>
       ds.fechas.forEach((c) => {
         const v = crudas[i] && crudas[i][c];

@@ -158,8 +158,13 @@ const MIXTOS_REQUIRED = [
 // de cada uno (DI_P_OBS…; al tocar la tarjeta del trámite) y dos fechas
 // más del programa (pueden ir vacías mientras se llenan).
 const MIXTOS_FECHAS_OPCIONALES = ["Inicio de Inversión (Comprometida)", "Fecha de inicio de construcción"];
+// Montos de CENACE (opcionales): apartado "CENACE" de la ficha. Pueden
+// traer texto ("VER FASE II") o ir vacíos; si los tres son números, el
+// total debe ser la suma de los otros dos (si no, aviso).
+const MIXTOS_CENACE = ["MONTO_INTERCONEXIÓN", "MONTO_REFUERZO", "TOTAL_CENACE"];
+const TOLERANCIA_CENACE = 1; // pesos/dólares: redondeo de centavos
 const MIXTOS_COLUMNAS = [
-  "NO.", "name_BD", ...MIXTOS_REQUIRED, ...MIXTOS_FECHAS_OPCIONALES,
+  "NO.", "name_BD", ...MIXTOS_REQUIRED, ...MIXTOS_FECHAS_OPCIONALES, ...MIXTOS_CENACE,
   ...Tramites.COLUMNAS.map(Tramites.colEstatus), ...Tramites.COLUMNAS.map(Tramites.colObs),
 ];
 // Diferencia (puntos) a partir de la cual Parque/LT/Global del Excel no
@@ -197,6 +202,11 @@ function validateMixtos({ headers, rows, placemarkNames = [] }) {
           warnings.push(`Fila ${row} (${name}): ${col} dice ${r[col]}, pero la ponderación de los trámites da ${valor.toFixed(2)}%.`);
         }
       });
+    }
+    const [interconexion, refuerzo, total] = MIXTOS_CENACE.map((c) => parseNumber(r[c]));
+    if (interconexion !== null && refuerzo !== null && total !== null &&
+        Math.abs(interconexion + refuerzo - total) > TOLERANCIA_CENACE) {
+      warnings.push(`Fila ${row} (${name}): TOTAL_CENACE dice ${String(r["TOTAL_CENACE"]).trim()}, pero MONTO_INTERCONEXIÓN + MONTO_REFUERZO da ${(interconexion + refuerzo).toFixed(2)}.`);
     }
     if (!geo.has(normalizeText(r["TÍTULO 2"])) && !geo.has(normalizeText(r["TÍTULO 1"]))) {
       warnings.push(`Fila ${row}: "${name}" no tiene ubicación en el KML; no aparecerá en el mapa.`);

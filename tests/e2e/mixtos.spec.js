@@ -338,3 +338,25 @@ test("\"VER FASE II\" del Excel se ve en gris como \"ver Fase II\"", async ({ pa
   const tarjeta = page.locator("#project-list .pcard", { hasText: r.nombre }).first();
   await expect(tarjeta.locator(".pcard__meta .dato-falta", { hasText: /^ver Fase [IVX\d]+$/ })).toBeVisible();
 });
+
+test("ficha: apartado CENACE después de Financiero, con los montos del Excel; sin montos no aparece", async ({ page }) => {
+  const d = datos();
+  const conMontos = d.mixtos.find((r) => /^\$/.test(String(r.TOTAL_CENACE || "")));
+  test.skip(!conMontos, "ningún proyecto trae montos de CENACE");
+  await page.goto(`/cartera-mixtos/?proyecto=${slugify(conMontos.nombre)}`);
+  await cargado(page);
+  await expect(page.locator("#detail.is-open #detail-title")).toHaveText(conMontos.nombre);
+  const titulos = await page.locator("#detail .detail__section-title").allTextContents();
+  expect(titulos.indexOf("CENACE")).toBe(titulos.indexOf("Financiero") + 1);
+  const cenace = page.locator("#detail .detail__section-title", { hasText: "CENACE" }).locator("xpath=following-sibling::div[1]");
+  await expect(cenace.locator(".detail-field__label")).toHaveText(["Monto de interconexión", "Monto de refuerzo", "Total CENACE"]);
+  await expect(cenace.locator(".detail-field__value").last()).toHaveText(conMontos.TOTAL_CENACE);
+
+  const sinMontos = d.mixtos.find((r) => !r.MONTO_INTERCONEXIÓN && !r.MONTO_REFUERZO && !r.TOTAL_CENACE);
+  if (sinMontos) {
+    await page.goto(`/cartera-mixtos/?proyecto=${slugify(sinMontos.nombre)}`);
+    await cargado(page);
+    await expect(page.locator("#detail.is-open #detail-title")).toHaveText(sinMontos.nombre);
+    await expect(page.locator("#detail .detail__section-title", { hasText: "CENACE" })).toHaveCount(0);
+  }
+});
