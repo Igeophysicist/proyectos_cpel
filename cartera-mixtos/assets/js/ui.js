@@ -240,8 +240,9 @@
     // Montos de CENACE (columnas MONTO_INTERCONEXIÓN, MONTO_REFUERZO y
     // TOTAL_CENACE), en pesos; sin datos, el apartado no aparece.
     { section: "CENACE", items: [
-      ["montoInterconexion", "Monto de interconexión (MXN)"], ["montoRefuerzo", "Monto de refuerzo (MXN)"],
-      ["totalCenace", "Total CENACE (MXN)"],
+      ["montoInterconexion", "Monto de obras de interconexión (MXN)"],
+      ["montoRefuerzo", "Monto de obras de refuerzo (MXN)"],
+      ["totalCenace", "Monto total de obras de interconexión y de refuerzo CENACE (MXN)"],
     ]},
   ];
 
