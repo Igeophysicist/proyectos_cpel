@@ -238,10 +238,10 @@
       ["capex", "CAPEX (USD)"],
     ]},
     // Montos de CENACE (columnas MONTO_INTERCONEXIÓN, MONTO_REFUERZO y
-    // TOTAL_CENACE); sin datos, el apartado no aparece.
+    // TOTAL_CENACE), en pesos; sin datos, el apartado no aparece.
     { section: "CENACE", items: [
-      ["montoInterconexion", "Monto de interconexión"], ["montoRefuerzo", "Monto de refuerzo"],
-      ["totalCenace", "Total CENACE"],
+      ["montoInterconexion", "Monto de interconexión (MXN)"], ["montoRefuerzo", "Monto de refuerzo (MXN)"],
+      ["totalCenace", "Total CENACE (MXN)"],
     ]},
   ];
 

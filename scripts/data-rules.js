@@ -162,7 +162,7 @@ const MIXTOS_FECHAS_OPCIONALES = ["Inicio de Inversión (Comprometida)", "Fecha 
 // traer texto ("VER FASE II") o ir vacíos; si los tres son números, el
 // total debe ser la suma de los otros dos (si no, aviso).
 const MIXTOS_CENACE = ["MONTO_INTERCONEXIÓN", "MONTO_REFUERZO", "TOTAL_CENACE"];
-const TOLERANCIA_CENACE = 1; // pesos/dólares: redondeo de centavos
+const TOLERANCIA_CENACE = 1; // pesos (MXN): redondeo de centavos
 const MIXTOS_COLUMNAS = [
   "NO.", "name_BD", ...MIXTOS_REQUIRED, ...MIXTOS_FECHAS_OPCIONALES, ...MIXTOS_CENACE,
   ...Tramites.COLUMNAS.map(Tramites.colEstatus), ...Tramites.COLUMNAS.map(Tramites.colObs),

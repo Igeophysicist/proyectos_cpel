@@ -349,7 +349,7 @@ test("ficha: apartado CENACE después de Financiero, con los montos del Excel; s
   const titulos = await page.locator("#detail .detail__section-title").allTextContents();
   expect(titulos.indexOf("CENACE")).toBe(titulos.indexOf("Financiero") + 1);
   const cenace = page.locator("#detail .detail__section-title", { hasText: "CENACE" }).locator("xpath=following-sibling::div[1]");
-  await expect(cenace.locator(".detail-field__label")).toHaveText(["Monto de interconexión", "Monto de refuerzo", "Total CENACE"]);
+  await expect(cenace.locator(".detail-field__label")).toHaveText(["Monto de interconexión (MXN)", "Monto de refuerzo (MXN)", "Total CENACE (MXN)"]);
   await expect(cenace.locator(".detail-field__value").last()).toHaveText(conMontos.TOTAL_CENACE);
 
   const sinMontos = d.mixtos.find((r) => !r.MONTO_INTERCONEXIÓN && !r.MONTO_REFUERZO && !r.TOTAL_CENACE);
